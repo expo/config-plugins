@@ -1,0 +1,200 @@
+import {
+  ConfigPlugin,
+  ExportedConfigWithProps,
+  IOSConfig,
+  withDangerousMod,
+  withInfoPlist,
+  withXcodeProject,
+  XcodeProject,
+} from "@expo/config-plugins";
+import { generateImageAsync } from "@expo/image-utils";
+import fs from "fs";
+import path from "path";
+
+type Props = {
+  icons: Record<string, { image: string; prerendered?: boolean }>;
+};
+
+const withDynamicIcon: ConfigPlugin<{
+  icons?: string[] | Record<string, { image: string; prerendered?: boolean }>;
+} | void> = (config, { icons } = {}) => {
+  const prepped = Array.isArray(icons)
+    ? icons.reduce((prev, curr, i) => ({ ...prev, [i]: { image: curr } }), {})
+    : icons || {};
+
+  config = withIconXcodeProject(config, { icons: prepped });
+  config = withIconInfoPlist(config, { icons: prepped });
+  config = withIconImages(config, { icons: prepped });
+  return config;
+};
+
+const folderName = "dynamic-app-icons";
+
+function getIconName(name: string, size: number, scale?: number) {
+  const fileName = `${name}-Icon-${size}x${size}`;
+
+  if (scale != null) {
+    return `${fileName}@${scale}x.png`;
+  }
+  return fileName;
+}
+
+export function addIconFileToXcode({
+  projectRoot,
+  project,
+  projectName,
+  fileName,
+}: {
+  project: XcodeProject;
+  projectName: string;
+  projectRoot: string;
+  fileName: string;
+}): XcodeProject {
+  // const googleServiceFilePath = path.resolve(projectRoot, googleServicesFileRelativePath);
+  // fs.copyFileSync(
+  //   googleServiceFilePath,
+  //   path.join(getSourceRoot(projectRoot), 'GoogleService-Info.plist')
+  // );
+
+  const plistFilePath = fileName; // `GoogleService-Info.plist`;
+  if (!project.hasFile(plistFilePath)) {
+    project = IOSConfig.XcodeUtils.addResourceFileToGroup({
+      filepath: plistFilePath,
+      groupName: `${projectName}/${folderName}`,
+      project,
+      isBuildFile: false,
+      verbose: true,
+    });
+  }
+  return project;
+}
+
+const withIconXcodeProject: ConfigPlugin<Props> = (config, { icons }) => {
+  return withXcodeProject(config, async (config) => {
+    await iterateIconsAsync({ icons }, async (key, icon, index) => {
+      for (const scale of scales) {
+        const iconFileName = getIconName(String(index), size, scale);
+
+        addIconFileToXcode({
+          projectRoot: config.modRequest.projectRoot,
+          projectName: config.modRequest.projectName!,
+          project: config.modResults,
+          fileName: iconFileName,
+        });
+      }
+    });
+
+    return config;
+  });
+};
+const withIconInfoPlist: ConfigPlugin<Props> = (config, { icons }) => {
+  return withInfoPlist(config, async (config) => {
+    const altIcons: Record<
+      string,
+      { CFBundleIconFiles: string[]; UIPrerenderedIcon: boolean }
+    > = {};
+
+    // 'CFBundleIcons~ipad'
+
+    await iterateIconsAsync({ icons }, async (key, icon, index) => {
+      const refFileName = `${folderName}/${getIconName(String(index), size)}`;
+
+      altIcons[key] = {
+        CFBundleIconFiles: [
+          // Must be a file path relative to the source root (not a icon set it seems).
+          // i.e. `appIcons/Bacon-Icon-60x60` when the image is `ios/somn/appIcons/Bacon-Icon-60x60@2x.png`
+          refFileName,
+        ],
+        UIPrerenderedIcon: !!icon.prerendered,
+      };
+    });
+
+    if (
+      typeof config.modResults.CFBundleIcons !== "object" ||
+      Array.isArray(config.modResults.CFBundleIcons) ||
+      !config.modResults.CFBundleIcons
+    ) {
+      config.modResults.CFBundleIcons = {};
+    }
+
+    config.modResults.CFBundleIcons.CFBundleAlternateIcons = altIcons;
+
+    config.modResults.CFBundleIcons.CFBundlePrimaryIcon = {
+      CFBundleIconFiles: ["AppIcon"],
+    };
+
+    return config;
+  });
+};
+
+const withIconImages: ConfigPlugin<Props> = (config, props) => {
+  return withDangerousMod(config, [
+    "ios",
+    async (config) => {
+      await createIconsAsync(config, props);
+      return config;
+    },
+  ]);
+};
+
+const size = 60;
+const scales = [2, 3];
+
+async function createIconsAsync(
+  config: ExportedConfigWithProps,
+  { icons }: Props
+) {
+  const iosRoot = path.join(
+    config.modRequest.platformProjectRoot,
+    config.modRequest.projectName!
+  );
+
+  // Delete all existing assets...
+  await fs.promises.rmdir(path.join(iosRoot, folderName), { recursive: true });
+
+  // Generate new assets...
+  await iterateIconsAsync({ icons }, async (key, icon, index) => {
+    for (const scale of scales) {
+      const iconFileName = getIconName(String(index), size, scale);
+      const fileName = path.join(folderName, iconFileName);
+      const outputPath = path.join(iosRoot, folderName, fileName);
+
+      const scaledSize = scale * size;
+      const { source } = await generateImageAsync(
+        {
+          projectRoot: config.modRequest.projectRoot,
+          cacheType: "react-native-dynamic-app-icon",
+        },
+        {
+          name: iconFileName,
+          src: icon.image,
+          removeTransparency: true,
+          backgroundColor: "#ffffff",
+          resizeMode: "cover",
+          width: scaledSize,
+          height: scaledSize,
+        }
+      );
+
+      await fs.promises.writeFile(outputPath, source);
+    }
+  });
+}
+
+async function iterateIconsAsync(
+  { icons }: Props,
+  callback: (
+    key: string,
+    icon: { image: string; prerendered?: boolean },
+    index: number
+  ) => Promise<void>
+) {
+  const entries = Object.entries(icons);
+  for (let i = 0; i < entries.length; i++) {
+    const [key, val] = entries[i];
+
+    await callback(key, val, i);
+  }
+}
+
+export default withDynamicIcon;
