@@ -10,9 +10,30 @@ const fs_1 = __importDefault(require("fs"));
 const { addMetaDataItemToMainApplication, getMainApplicationOrThrow } = config_plugins_1.AndroidConfig.Manifest;
 const META_PROVIDER_CLASS = "com.google.android.gms.cast.framework.OPTIONS_PROVIDER_CLASS_NAME";
 const META_RECEIVER_APP_ID = "com.reactnative.googlecast.RECEIVER_APPLICATION_ID";
+const CUSTOM_ACTIVITY = "com.reactnative.googlecast.RNGCExpandedControllerActivity";
+async function ensureCustomActivityAsync({ mainApplication, }) {
+    if (Array.isArray(mainApplication.activity)) {
+        // Remove all activities matching the custom name
+        mainApplication.activity = mainApplication.activity.filter((activity) => {
+            var _a;
+            return ((_a = activity.$) === null || _a === void 0 ? void 0 : _a["android:name"]) !== CUSTOM_ACTIVITY;
+        });
+    }
+    else {
+        mainApplication.activity = [];
+    }
+    // `<activity android:name="${CUSTOM_ACTIVITY}" />`
+    mainApplication.activity.push({
+        $: {
+            "android:name": CUSTOM_ACTIVITY,
+        },
+    });
+    return mainApplication;
+}
 const withAndroidManifestCast = (config, { receiverAppId } = {}) => {
-    return config_plugins_1.withAndroidManifest(config, (config) => {
+    return config_plugins_1.withAndroidManifest(config, async (config) => {
         const mainApplication = getMainApplicationOrThrow(config.modResults);
+        ensureCustomActivityAsync({ mainApplication });
         addMetaDataItemToMainApplication(mainApplication, META_PROVIDER_CLASS, 
         // This is the native Java class
         "com.reactnative.googlecast.GoogleCastOptionsProvider");
@@ -38,7 +59,8 @@ const withMainActivityLazyLoading = (config) => {
         async (config) => {
             const file = await config_plugins_1.AndroidConfig.Paths.getMainActivityAsync(config.modRequest.projectRoot);
             if (file.language === "java") {
-                const src = addGoogleCastLazyLoadingImport(file.contents).contents;
+                let src = config_plugins_1.AndroidConfig.UserInterfaceStyle.addJavaImports(file.contents, ["com.google.android.gms.cast.framework.CastContext"], true);
+                src = addGoogleCastLazyLoadingImport(src).contents;
                 await fs_1.default.promises.writeFile(file.path, src, "utf-8");
             }
             else {

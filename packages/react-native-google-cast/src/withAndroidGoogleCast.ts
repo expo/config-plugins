@@ -20,12 +20,41 @@ type Props = {
   receiverAppId?: string;
 };
 
+const CUSTOM_ACTIVITY =
+  "com.reactnative.googlecast.RNGCExpandedControllerActivity";
+
+async function ensureCustomActivityAsync({
+  mainApplication,
+}: {
+  mainApplication: AndroidConfig.Manifest.ManifestApplication;
+}) {
+  if (Array.isArray(mainApplication.activity)) {
+    // Remove all activities matching the custom name
+    mainApplication.activity = mainApplication.activity.filter((activity) => {
+      return activity.$?.["android:name"] !== CUSTOM_ACTIVITY;
+    });
+  } else {
+    mainApplication.activity = [];
+  }
+
+  // `<activity android:name="${CUSTOM_ACTIVITY}" />`
+  mainApplication.activity.push({
+    $: {
+      "android:name": CUSTOM_ACTIVITY,
+    },
+  });
+  return mainApplication;
+}
+
 const withAndroidManifestCast: ConfigPlugin<Props> = (
   config,
   { receiverAppId } = {}
 ) => {
-  return withAndroidManifest(config, (config) => {
+  return withAndroidManifest(config, async (config) => {
     const mainApplication = getMainApplicationOrThrow(config.modResults);
+
+    ensureCustomActivityAsync({ mainApplication });
+
     addMetaDataItemToMainApplication(
       mainApplication,
       META_PROVIDER_CLASS,
@@ -71,7 +100,13 @@ const withMainActivityLazyLoading: ConfigPlugin = (config) => {
         config.modRequest.projectRoot
       );
       if (file.language === "java") {
-        const src = addGoogleCastLazyLoadingImport(file.contents).contents;
+        let src = AndroidConfig.UserInterfaceStyle.addJavaImports(
+          file.contents,
+          ["com.google.android.gms.cast.framework.CastContext"],
+          true
+        );
+
+        src = addGoogleCastLazyLoadingImport(src).contents;
         await fs.promises.writeFile(file.path, src, "utf-8");
       } else {
         throw new Error(
