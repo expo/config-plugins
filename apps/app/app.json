@@ -31,6 +31,7 @@
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
+      "@react-native-mapbox-gl/maps",
       "@config-plugins/detox",
       "@config-plugins/react-native-ble-plx",
       "@config-plugins/react-native-webrtc",

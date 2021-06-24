@@ -8,6 +8,13 @@ target 'app' do
   use_unimodules!
   config = use_native_modules!
 
+# @generated begin pre_installer - expo prebuild (DO NOT MODIFY) sync-c8812095000d6054b846ce74840f0ffb540c2757
+  pre_install do |installer|
+# @generated begin @react-native-mapbox-gl/maps-pre_installer - expo prebuild (DO NOT MODIFY) sync-5a7ed0a20d5aff2d61639bc5bb4fd5551233d57c
+    $RNMBGL.pre_install(installer)
+# @generated end @react-native-mapbox-gl/maps-pre_installer
+  end
+# @generated end pre_installer
   use_react_native!(:path => config["reactNativePath"])
 
   # Uncomment to opt-in to using Flipper
