@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		01641F72542145D3B7030C21 /* Stickers.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FD9CD25F5774484A9C8ABB7 /* Stickers.xcassets */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -15,37 +14,13 @@
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
 		96905EF65AED1B983A6B3ABC /* libPods-app.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EEBF8E8E6FB1BC6CAF49B5 /* libPods-app.a */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
-		D23F0101DB9D4452B58DB4C3 /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B0EDEAF9B34D859CEC6DB1 /* noop-file.swift */; };
-		DD9EE59B0B8A43CCB8C037D4 /* app Stickers.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 89171CAE160040E58799BACB /* app Stickers.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8DA5D7EF8D05430BBA2BC47B /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F99C5F72A8459E9E79E450 /* noop-file.swift */; };
+		2BC67129D3204BCDAD04C137 /* app Stickers.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 508EAA67542943E38035FE87 /* app Stickers.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8C792453B47247C4986E1E7C /* Stickers.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E7102A9DCF4457893FD8214 /* Stickers.xcassets */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		9F00C6468957444CA11222ED /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 311FB39960824C5BBEB3F62B;
-			remoteInfo = "app Stickers";
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		E11E6F9B5DE143B699A8A988 /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				DD9EE59B0B8A43CCB8C037D4 /* app Stickers.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
-		0760A26C93AC4979BB78192E /* app-Bridging-Header.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "app-Bridging-Header.h"; path = "app/app-Bridging-Header.h"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = app/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = app/AppDelegate.m; sourceTree = "<group>"; };
@@ -55,15 +30,16 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = app/main.m; sourceTree = "<group>"; };
 		58EEBF8E8E6FB1BC6CAF49B5 /* libPods-app.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-app.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C2E3173556A471DD304B334 /* Pods-app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app.debug.xcconfig"; path = "Target Support Files/Pods-app/Pods-app.debug.xcconfig"; sourceTree = "<group>"; };
-		6C48B422474348949BAD71A2 /* Info.plist */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.plist.xml; name = Info.plist; path = Info.plist; sourceTree = "<group>"; };
-		6FD9CD25F5774484A9C8ABB7 /* Stickers.xcassets */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = folder.assetcatalog; name = Stickers.xcassets; path = Stickers.xcassets; sourceTree = "<group>"; };
 		7A4D352CD337FB3A3BF06240 /* Pods-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app.release.xcconfig"; path = "Target Support Files/Pods-app/Pods-app.release.xcconfig"; sourceTree = "<group>"; };
-		89171CAE160040E58799BACB /* app Stickers.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = undefined; name = "app Stickers.appex"; path = "app Stickers.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = app/SplashScreen.storyboard; sourceTree = "<group>"; };
-		B6B0EDEAF9B34D859CEC6DB1 /* noop-file.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = "noop-file.swift"; path = "app/noop-file.swift"; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		70F99C5F72A8459E9E79E450 /* noop-file.swift */ = {isa = PBXFileReference; name = "noop-file.swift"; path = "app/noop-file.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
+		FF72808C870D468FACD4702E /* app-Bridging-Header.h */ = {isa = PBXFileReference; name = "app-Bridging-Header.h"; path = "app/app-Bridging-Header.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		508EAA67542943E38035FE87 /* app Stickers.appex */ = {isa = PBXFileReference; name = "app Stickers.appex"; path = "app Stickers.appex"; sourceTree = BUILT_PRODUCTS_DIR; fileEncoding = undefined; lastKnownFileType = undefined; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; };
+		5E7102A9DCF4457893FD8214 /* Stickers.xcassets */ = {isa = PBXFileReference; name = "Stickers.xcassets"; path = "Stickers.xcassets"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = folder.assetcatalog; explicitFileType = undefined; includeInIndex = 0; };
+		4D3E71E8A79A4C3B8AEB6644 /* Info.plist */ = {isa = PBXFileReference; name = "Info.plist"; path = "Info.plist"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = text.plist.xml; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,13 +48,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				96905EF65AED1B983A6B3ABC /* libPods-app.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BDC111CA1C21ABEF159ACA65 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,8 +66,8 @@
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				B6B0EDEAF9B34D859CEC6DB1 /* noop-file.swift */,
-				0760A26C93AC4979BB78192E /* app-Bridging-Header.h */,
+				70F99C5F72A8459E9E79E450 /* noop-file.swift */,
+				FF72808C870D468FACD4702E /* app-Bridging-Header.h */,
 			);
 			name = app;
 			sourceTree = "<group>";
@@ -128,7 +97,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				D65327D7A22EEC0BE12398D9 /* Pods */,
-				9354203BA7F74095BC62BFBD /* app Stickers */,
+				D3349C07C1D54ADBB2368A14 /* "app Stickers" */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -139,19 +108,9 @@
 			isa = PBXGroup;
 			children = (
 				13B07F961A680F5B00A75B9A /* app.app */,
-				89171CAE160040E58799BACB /* app Stickers.appex */,
+				508EAA67542943E38035FE87 /* app Stickers.appex */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		9354203BA7F74095BC62BFBD /* app Stickers */ = {
-			isa = PBXGroup;
-			children = (
-				6FD9CD25F5774484A9C8ABB7 /* Stickers.xcassets */,
-				6C48B422474348949BAD71A2 /* Info.plist */,
-			);
-			name = "app Stickers";
-			path = "app Stickers";
 			sourceTree = "<group>";
 		};
 		BB2F792B24A3F905000567C9 /* Supporting */ = {
@@ -172,6 +131,16 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D3349C07C1D54ADBB2368A14 /* "app Stickers" */ = {
+			isa = "PBXGroup";
+			children = (
+				5E7102A9DCF4457893FD8214 /* Stickers.xcassets */,
+				4D3E71E8A79A4C3B8AEB6644 /* Info.plist */,
+			);
+			name = "app Stickers";
+			sourceTree = "<group>";
+			path = "app Stickers";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -186,33 +155,32 @@
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				E11E6F9B5DE143B699A8A988 /* Embed App Extensions */,
+				606C9BEC2D1247CC8FC333EC /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				784ABDD32ED449EBBF8B261B /* PBXTargetDependency */,
+				2B80ADE7C2F347F4831539F6 /* PBXTargetDependency */,
 			);
 			name = app;
 			productName = app;
 			productReference = 13B07F961A680F5B00A75B9A /* app.app */;
 			productType = "com.apple.product-type.application";
 		};
-		311FB39960824C5BBEB3F62B /* app Stickers */ = {
+		8D5BABDDE6B24337AE7DFBAB /* "app Stickers" */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 657582D358ED40009A3968D1 /* Build configuration list for PBXNativeTarget "app Stickers" */;
+			name = "app Stickers";
+			productName = "app Stickers";
+			productReference = 508EAA67542943E38035FE87;
+			productType = "com.apple.product-type.app-extension.messages-sticker-pack";
+			buildConfigurationList = 56F254893EB940FCAEDDC641;
 			buildPhases = (
-				846AE55FFE8449EFB779E576 /* Resources */,
-				BDC111CA1C21ABEF159ACA65 /* Frameworks */,
+				B5BA7E57858B43CC838BCC1F /* app Stickers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "app Stickers";
-			productName = "app Stickers";
-			productReference = 89171CAE160040E58799BACB /* app Stickers.appex */;
-			productType = "com.apple.product-type.app-extension.messages-sticker-pack";
 		};
 /* End PBXNativeTarget section */
 
@@ -225,7 +193,7 @@
 					13B07F861A680F5B00A75B9A = {
 						LastSwiftMigration = 1120;
 					};
-					311FB39960824C5BBEB3F62B = {
+					8D5BABDDE6B24337AE7DFBAB = {
 						CreatedOnToolsVersion = 12.5;
 						ProvisioningStyle = Automatic;
 					};
@@ -245,7 +213,7 @@
 			projectRoot = "";
 			targets = (
 				13B07F861A680F5B00A75B9A /* app */,
-				311FB39960824C5BBEB3F62B /* app Stickers */,
+				8D5BABDDE6B24337AE7DFBAB /* "app Stickers" */,
 			);
 		};
 /* End PBXProject section */
@@ -259,14 +227,15 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
+				7A1DF5D8DE7D4213BF152067 /* app-Bridging-Header.h in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		846AE55FFE8449EFB779E576 /* Resources */ = {
+		B5BA7E57858B43CC838BCC1F /* app Stickers */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01641F72542145D3B7030C21 /* Stickers.xcassets in Resources */,
+				8C792453B47247C4986E1E7C /* Stickers.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,19 +324,11 @@
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
-				D23F0101DB9D4452B58DB4C3 /* noop-file.swift in Sources */,
+				8DA5D7EF8D05430BBA2BC47B /* noop-file.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		784ABDD32ED449EBBF8B261B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 311FB39960824C5BBEB3F62B /* app Stickers */;
-			targetProxy = 9F00C6468957444CA11222ED /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		13B07FB11A68108700A75B9A /* LaunchScreen.xib */ = {
@@ -388,7 +349,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = app/app.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -403,13 +363,14 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bacon.app;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bacon.app";
 				PRODUCT_NAME = app;
-				SWIFT_OBJC_BRIDGING_HEADER = "app/app-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_OBJC_BRIDGING_HEADER = app/app-Bridging-Header.h;
+				CODE_SIGN_ENTITLEMENTS = app/app.entitlements;
 			};
 			name = Debug;
 		};
@@ -419,7 +380,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = app/app.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = app/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -429,66 +389,15 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bacon.app;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bacon.app";
 				PRODUCT_NAME = app;
-				SWIFT_OBJC_BRIDGING_HEADER = "app/app-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_OBJC_BRIDGING_HEADER = app/app-Bridging-Header.h;
+				CODE_SIGN_ENTITLEMENTS = app/app.entitlements;
 			};
 			name = Release;
-		};
-		25BEDDED3B40444C98A4B1D0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = app/app.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "app Stickers/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bacon.app.app-Stickers";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		5D04D72C545D45368C8041F1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = app/app.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "app Stickers/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bacon.app.app-Stickers";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
 		};
 		83CBBA201A601CBA00E9B192 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -518,7 +427,6 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_ENTITLEMENTS = app/app.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -540,10 +448,13 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
-				LIBRARY_SEARCH_PATHS = "\"$(inherited)\"";
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(inherited)\"",
+				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				CODE_SIGN_ENTITLEMENTS = app/app.entitlements;
 			};
 			name = Debug;
 		};
@@ -575,7 +486,6 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_ENTITLEMENTS = app/app.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -590,12 +500,67 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
-				LIBRARY_SEARCH_PATHS = "\"$(inherited)\"";
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(inherited)\"",
+				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+				CODE_SIGN_ENTITLEMENTS = app/app.entitlements;
 			};
 			name = Release;
+		};
+		2245E8194E7E4072B5751567 /* Debug */ = {
+			name = Debug;
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "app Stickers/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bacon.app.app-Stickers";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				CODE_SIGN_ENTITLEMENTS = app/app.entitlements;
+			};
+		};
+		032D080B58E04E98BB05B39B /* Release */ = {
+			name = Release;
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "app Stickers/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bacon.app.app-Stickers";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				COPY_PHASE_STRIP = NO;
+				CODE_SIGN_ENTITLEMENTS = app/app.entitlements;
+			};
 		};
 /* End XCBuildConfiguration section */
 
@@ -609,15 +574,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		657582D358ED40009A3968D1 /* Build configuration list for PBXNativeTarget "app Stickers" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5D04D72C545D45368C8041F1 /* Debug */,
-				25BEDDED3B40444C98A4B1D0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "app" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -627,7 +583,48 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		56F254893EB940FCAEDDC641 /* Build configuration list for PBXNativeTarget "app Stickers" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2245E8194E7E4072B5751567 /* Debug */,
+				032D080B58E04E98BB05B39B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		606C9BEC2D1247CC8FC333EC /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BC67129D3204BCDAD04C137 /* app Stickers.appex in Embed App Extensions */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			name = "Embed App Extensions";
+			dstPath = "";
+			dstSubfolderSpec = 13;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2B80ADE7C2F347F4831539F6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D5BABDDE6B24337AE7DFBAB /* "app Stickers" */;
+			targetProxy = A8734D25F71341C094FD3C68 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXContainerItemProxy section */
+		A8734D25F71341C094FD3C68 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D5BABDDE6B24337AE7DFBAB;
+			remoteInfo = "app Stickers";
+		};
+/* End PBXContainerItemProxy section */
 	};
 	rootObject = 83CBB9F71A601CBA00E9B192 /* Project object */;
 }
