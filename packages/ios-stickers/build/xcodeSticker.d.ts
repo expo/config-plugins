@@ -13,8 +13,8 @@ export declare function addStickersTarget(proj: XcodeProject, name: string, bund
         productReference: any;
         productType: string;
         buildConfigurationList: any;
-        buildPhases: {};
-        buildRules: {};
-        dependencies: {};
+        buildPhases: never[];
+        buildRules: never[];
+        dependencies: never[];
     };
 };

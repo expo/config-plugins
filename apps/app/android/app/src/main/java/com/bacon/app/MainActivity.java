@@ -1,4 +1,5 @@
 package com.bacon.app;
+import com.google.android.gms.cast.framework.CastContext;
 import android.content.res.Configuration;
 import android.content.Intent;
 
@@ -27,6 +28,9 @@ public class MainActivity extends ReactActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(null);
+// @generated begin react-native-google-cast-onCreate - expo prebuild (DO NOT MODIFY) sync-db583defdeb0226930ad5278e6c069db65777d42
+    CastContext.getSharedInstance(this);
+// @generated end react-native-google-cast-onCreate
     // SplashScreen.show(...) has to be called after super.onCreate(...)
     // Below line is handled by '@expo/configure-splash-screen' command and it's discouraged to modify it manually
     SplashScreen.show(this, SplashScreenImageResizeMode.CONTAIN, ReactRootView.class, false);

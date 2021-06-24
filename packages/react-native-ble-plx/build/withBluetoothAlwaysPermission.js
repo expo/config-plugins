@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.withBluetoothAlwaysPermission = void 0;
 const config_plugins_1 = require("@expo/config-plugins");
 const BLUETOOTH_ALWAYS = 'Allow $(PRODUCT_NAME) to connect to bluetooth devices';
-exports.withBluetoothAlwaysPermission = (c, { bluetoothAlwaysPermission } = {}) => {
+const withBluetoothAlwaysPermission = (c, { bluetoothAlwaysPermission } = {}) => {
     if (bluetoothAlwaysPermission === false) {
         return c;
     }
@@ -14,3 +14,4 @@ exports.withBluetoothAlwaysPermission = (c, { bluetoothAlwaysPermission } = {}) 
         return config;
     });
 };
+exports.withBluetoothAlwaysPermission = withBluetoothAlwaysPermission;

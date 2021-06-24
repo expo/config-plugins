@@ -71,7 +71,7 @@ public class DetoxTest {
 /**
  * [Step 5](https://github.com/wix/Detox/blob/master/docs/Introduction.Android.md#5-create-a-detox-test-class). Create `DetoxTest.java`
  */
-exports.withDetoxTestClass = (config) => {
+const withDetoxTestClass = (config) => {
     return config_plugins_1.withDangerousMod(config, [
         "android",
         async (config) => {
@@ -85,3 +85,4 @@ exports.withDetoxTestClass = (config) => {
         },
     ]);
 };
+exports.withDetoxTestClass = withDetoxTestClass;
