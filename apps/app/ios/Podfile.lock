@@ -52,10 +52,17 @@ PODS:
     - DoubleConversion
     - glog
   - glog (0.3.5)
+  - google-cast-sdk-no-bluetooth (4.6.1):
+    - google-cast-sdk-no-bluetooth/Core (= 4.6.1)
+    - Protobuf (~> 3.13)
+  - google-cast-sdk-no-bluetooth/Core (4.6.1):
+    - Protobuf (~> 3.13)
   - Mapbox-iOS-SDK (5.9.0):
     - MapboxMobileEvents (= 0.10.2)
   - MapboxMobileEvents (0.10.2)
   - MultiplatformBleAdapter (0.1.7)
+  - PromisesObjC (2.0.0)
+  - Protobuf (3.17.0)
   - RCTRequired (0.63.4)
   - RCTTypeSafety (0.63.4):
     - FBLazyVector (= 0.63.4)
@@ -225,6 +232,16 @@ PODS:
   - react-native-ble-plx (2.0.2):
     - MultiplatformBleAdapter (= 0.1.7)
     - React
+  - react-native-google-cast (4.1.2):
+    - React
+    - react-native-google-cast/NoBluetooth (= 4.1.2)
+  - react-native-google-cast/NoBluetooth (4.1.2):
+    - google-cast-sdk-no-bluetooth
+    - React
+    - react-native-google-cast/RNGoogleCast
+  - react-native-google-cast/RNGoogleCast (4.1.2):
+    - PromisesObjC
+    - React
   - react-native-mapbox-gl (8.2.1):
     - Mapbox-iOS-SDK (~> 5.9.0)
     - React
@@ -391,6 +408,7 @@ DEPENDENCIES:
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - react-native-ble-plx (from `../../../node_modules/react-native-ble-plx`)
+  - react-native-google-cast (from `../../../node_modules/react-native-google-cast/ios`)
   - "react-native-mapbox-gl (from `../../../node_modules/@react-native-mapbox-gl/maps`)"
   - react-native-webrtc (from `../../../node_modules/react-native-webrtc`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
@@ -425,9 +443,12 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - boost-for-react-native
+    - google-cast-sdk-no-bluetooth
     - Mapbox-iOS-SDK
     - MapboxMobileEvents
     - MultiplatformBleAdapter
+    - PromisesObjC
+    - Protobuf
 
 EXTERNAL SOURCES:
   DoubleConversion:
@@ -498,6 +519,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   react-native-ble-plx:
     :path: "../../../node_modules/react-native-ble-plx"
+  react-native-google-cast:
+    :path: "../../../node_modules/react-native-google-cast/ios"
   react-native-mapbox-gl:
     :path: "../../../node_modules/@react-native-mapbox-gl/maps"
   react-native-webrtc:
@@ -591,9 +614,12 @@ SPEC CHECKSUMS:
   FBReactNativeSpec: f2c97f2529dd79c083355182cc158c9f98f4bd6e
   Folly: b73c3869541e86821df3c387eb0af5f65addfab4
   glog: 40a13f7840415b9a77023fbcae0f1e6f43192af3
+  google-cast-sdk-no-bluetooth: b3037c14fdf07a794326502e799beb0875ab2029
   Mapbox-iOS-SDK: a5915700ec84bc1a7f8b3e746d474789e35b7956
   MapboxMobileEvents: 2bc0ca2eedb627b73cf403258dce2b2fa98074a6
   MultiplatformBleAdapter: 975cfb2a333b2c42b7a11628bd100ccb61872da2
+  PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
+  Protobuf: 7327d4444215b5f18e560a97f879ff5503c4581c
   RCTRequired: 082f10cd3f905d6c124597fd1c14f6f2655ff65e
   RCTTypeSafety: 8c9c544ecbf20337d069e4ae7fd9a377aadf504b
   React: b0a957a2c44da4113b0c4c9853d8387f8e64e615
@@ -605,6 +631,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 93bd528844ad21dc07aab1c67cb10abae6df6949
   React-jsinspector: 58aef7155bc9a9683f5b60b35eccea8722a4f53a
   react-native-ble-plx: caac53ee98151ec81198239d591c203809a1ed6e
+  react-native-google-cast: 8538c321da08b2289d24c173cbdfb1bacf8d3be8
   react-native-mapbox-gl: b79f2d7522556eeabd9fe5c4c94f8f6ce4412304
   react-native-webrtc: 2e8095a43dd3d95ce796d9750280c0f48aadad3d
   React-RCTActionSheet: 89a0ca9f4a06c1f93c26067af074ccdce0f40336

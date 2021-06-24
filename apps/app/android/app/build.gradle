@@ -190,6 +190,9 @@ android {
 }
 
 dependencies {
+// @generated begin react-native-google-cast-dependencies - expo prebuild (DO NOT MODIFY) sync-06074fa1ef99fa9a9c8362df11420620dc2411cf
+  implementation "com.google.android.gms:play-services-cast-framework:+"
+// @generated end react-native-google-cast-dependencies
     androidTestImplementation('com.wix:detox:+')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion

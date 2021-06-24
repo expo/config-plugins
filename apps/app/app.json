@@ -33,6 +33,7 @@
     "plugins": [
       "@react-native-mapbox-gl/maps",
       "@config-plugins/detox",
+      "@config-plugins/react-native-google-cast",
       "@config-plugins/react-native-ble-plx",
       "@config-plugins/react-native-webrtc",
       "@config-plugins/react-native-callkeep",
