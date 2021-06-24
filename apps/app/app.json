@@ -35,7 +35,7 @@
       [
         "@config-plugins/ios-stickers",
         {
-          "name": "Avocoder",
+          "name": "Stickers",
           "icon": "./assets/imessage-icon.png",
           "columns": 4,
           "stickers": [
