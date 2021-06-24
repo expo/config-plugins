@@ -1,4 +1,9 @@
 apply plugin: "com.android.application"
+// @generated begin safeExtGet - expo prebuild (DO NOT MODIFY) sync-be4acad6508a6820102c74ab393bd7ab1093e6c0
+def safeExtGet(prop, fallback) {
+  rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
+}
+// @generated end safeExtGet
 
 import com.android.build.OutputFile
 
@@ -190,8 +195,8 @@ android {
 }
 
 dependencies {
-// @generated begin react-native-google-cast-dependencies - expo prebuild (DO NOT MODIFY) sync-e17c5de840037378ee081b37a27f8f4c24d27b4b
-    implementation "com.google.android.gms:play-services-cast-framework:+"
+// @generated begin react-native-google-cast-dependencies - expo prebuild (DO NOT MODIFY) sync-3822a3c86222e7aca74039b551612aab7e75365d
+    implementation "com.google.android.gms:play-services-cast-framework:${safeExtGet('castFrameworkVersion', '+')}"
 // @generated end react-native-google-cast-dependencies
     androidTestImplementation('com.wix:detox:+')
     implementation fileTree(dir: "libs", include: ["*.jar"])

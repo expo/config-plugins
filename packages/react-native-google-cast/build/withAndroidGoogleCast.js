@@ -43,10 +43,21 @@ const withAndroidManifestCast = (config, { receiverAppId } = {}) => {
         return config;
     });
 };
+const withProjectBuildGradleVersion = (config, { version }) => {
+    return config_plugins_1.withProjectBuildGradle(config, (config) => {
+        if (config.modResults.language !== "groovy")
+            throw new Error("react-native-google-cast config plugin does not support Kotlin /build.gradle yet.");
+        config.modResults.contents = addGoogleCastVersionImport(config.modResults.contents, {
+            version,
+        }).contents;
+        return config;
+    });
+};
 const withAppBuildGradleImport = (config, { version }) => {
     return config_plugins_1.withAppBuildGradle(config, (config) => {
         if (config.modResults.language !== "groovy")
             throw new Error("react-native-google-cast config plugin does not support Kotlin app/build.gradle yet.");
+        config.modResults.contents = addSafeExtGet(config.modResults.contents);
         config.modResults.contents = addGoogleCastImport(config.modResults.contents, {
             version,
         }).contents;
@@ -70,15 +81,20 @@ const withMainActivityLazyLoading = (config) => {
         },
     ]);
 };
+// castFrameworkVersion
 const withAndroidGoogleCast = (config, props) => {
-    var _a;
+    var _a, _b;
     config = withAndroidManifestCast(config, {
         receiverAppId: props.receiverAppId,
     });
     config = withMainActivityLazyLoading(config);
-    config = withAppBuildGradleImport(config, {
+    config = withProjectBuildGradleVersion(config, {
         // gradle dep version
         version: (_a = props.androidPlayServicesCastFrameworkVersion) !== null && _a !== void 0 ? _a : "+",
+    });
+    config = withAppBuildGradleImport(config, {
+        // gradle dep version
+        version: (_b = props.androidPlayServicesCastFrameworkVersion) !== null && _b !== void 0 ? _b : "+",
     });
     return config;
 };
@@ -99,12 +115,44 @@ function addGoogleCastLazyLoadingImport(src) {
 // dependencies { implementation "com.google.android.gms:play-services-cast-framework:+" }
 function addGoogleCastImport(src, { version } = {}) {
     const newSrc = [];
-    newSrc.push(`    implementation "com.google.android.gms:play-services-cast-framework:${version || "+"}"`);
+    newSrc.push(`    implementation "com.google.android.gms:play-services-cast-framework:\${safeExtGet('castFrameworkVersion', '${version}')}"`);
     return generateCode_1.mergeContents({
         tag: "react-native-google-cast-dependencies",
         src,
         newSrc: newSrc.join("\n"),
         anchor: /dependencies(?:\s+)?\{/,
+        offset: 1,
+        comment: "//",
+    });
+}
+function addSafeExtGet(src) {
+    const tag = "safeExtGet";
+    src = generateCode_1.removeContents({ src, tag }).contents;
+    // If the source already has a safeExtGet method after removing this one, then go with the existing one.
+    if (src.match(/def(?:\s+)?safeExtGet\(/)) {
+        return src;
+    }
+    // Otherwise add a new one
+    const newSrc = [];
+    newSrc.push("def safeExtGet(prop, fallback) {", "  rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback", "}");
+    return generateCode_1.mergeContents({
+        tag: "safeExtGet",
+        src,
+        newSrc: newSrc.join("\n"),
+        // This block can go anywhere in the upper scope
+        anchor: /apply plugin/,
+        offset: 1,
+        comment: "//",
+    }).contents;
+}
+function addGoogleCastVersionImport(src, { version } = {}) {
+    const newSrc = [];
+    newSrc.push(`        castFrameworkVersion = "${version}"`);
+    return generateCode_1.mergeContents({
+        tag: "react-native-google-cast-version",
+        src,
+        newSrc: newSrc.join("\n"),
+        anchor: /ext(?:\s+)?\{/,
         offset: 1,
         comment: "//",
     });

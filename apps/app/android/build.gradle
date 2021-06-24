@@ -2,6 +2,9 @@
 
 buildscript {
     ext {
+// @generated begin react-native-google-cast-version - expo prebuild (DO NOT MODIFY) sync-db817f4a724fb91198c6371e63f6b1188e44e98d
+        castFrameworkVersion = "+"
+// @generated end react-native-google-cast-version
         kotlinVersion = "1.3.50"
         buildToolsVersion = "29.0.3"
         minSdkVersion = 21
