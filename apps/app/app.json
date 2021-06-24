@@ -32,6 +32,9 @@
     },
     "plugins": [
       "@config-plugins/detox",
+      "@config-plugins/react-native-ble-plx",
+      "@config-plugins/react-native-webrtc",
+      "@config-plugins/react-native-callkeep",
       [
         "@config-plugins/ios-stickers",
         {

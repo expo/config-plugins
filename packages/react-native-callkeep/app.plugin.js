@@ -1,1 +1,1 @@
-module.exports = require("./build/withDetox");
+module.exports = require("./build/withCallkeep");
