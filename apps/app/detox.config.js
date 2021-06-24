@@ -1,4 +1,4 @@
-const iosName = "yolo31";
+const iosName = "app";
 const emulator = "Pixel_3a_API_30";
 const simulator = "iPhone 11 Pro";
 const derivedDataPath = "ios/build";
@@ -17,12 +17,12 @@ module.exports = {
     "ios.release": {
       type: "ios.app",
       binaryPath: `${derivedDataPath}/Build/Products/Release-${sdk}/${iosName}.app`,
-      build: `export RCT_NO_LAUNCH_PACKAGER=true && xcodebuild -workspace ios/${iosName}.xcworkspace -scheme ${iosName} -configuration Release -sdk ${sdk} -derivedDataPath ${derivedDataPath} | npx @expo/xcpretty ./`,
+      build: `export RCT_NO_LAUNCH_PACKAGER=true && xcodebuild -workspace ios/${iosName}.xcworkspace -scheme ${iosName} -configuration Release -sdk ${sdk} -derivedDataPath ${derivedDataPath} | npx excpretty ./`,
     },
     "ios.debug": {
       type: "ios.app",
       binaryPath: `${derivedDataPath}/Build/Products/Debug-${sdk}/${iosName}.app`,
-      build: `xcodebuild -workspace ios/${iosName}.xcworkspace -scheme ${iosName} -configuration Debug -sdk ${sdk} -derivedDataPath ${derivedDataPath} | npx @expo/xcpretty ./`,
+      build: `xcodebuild -workspace ios/${iosName}.xcworkspace -scheme ${iosName} -configuration Debug -sdk ${sdk} -derivedDataPath ${derivedDataPath} | npx excpretty ./`,
     },
     "android.debug": {
       type: "android.apk",
