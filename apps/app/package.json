@@ -26,7 +26,8 @@
       "detox",
       "expo-constants",
       "expo-camera",
-      "expo-updates"
+      "expo-updates",
+      "react-native-callkeep"
     ]
   },
   "react-native-unimodules": {
@@ -51,6 +52,9 @@
   "dependencies": {
     "@config-plugins/detox": "0.0.0",
     "@config-plugins/ios-stickers": "0.0.0",
+    "@config-plugins/react-native-ble-plx": "0.0.0",
+    "@config-plugins/react-native-callkeep": "0.0.0",
+    "@config-plugins/react-native-webrtc": "0.0.0",
     "@react-native-mapbox-gl/maps": "^8.2.1",
     "expo": "~41.0.0",
     "expo-localization": "~10.1.0",
@@ -61,11 +65,14 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "~0.63.4",
+    "react-native-ble-plx": "^2.0.2",
+    "react-native-callkeep": "^4.2.0",
     "react-native-gesture-handler": "~1.10.2",
     "react-native-reanimated": "~2.1.0",
     "react-native-screens": "~3.0.0",
     "react-native-unimodules": "~0.13.3",
-    "react-native-web": "~0.13.12"
+    "react-native-web": "~0.13.12",
+    "react-native-webrtc": "^1.89.3"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",
