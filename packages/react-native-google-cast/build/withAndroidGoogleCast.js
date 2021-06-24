@@ -99,7 +99,7 @@ function addGoogleCastLazyLoadingImport(src) {
 // dependencies { implementation "com.google.android.gms:play-services-cast-framework:+" }
 function addGoogleCastImport(src, { version } = {}) {
     const newSrc = [];
-    newSrc.push(`  implementation "com.google.android.gms:play-services-cast-framework:${version || "+"}"`);
+    newSrc.push(`    implementation "com.google.android.gms:play-services-cast-framework:${version || "+"}"`);
     return generateCode_1.mergeContents({
         tag: "react-native-google-cast-dependencies",
         src,

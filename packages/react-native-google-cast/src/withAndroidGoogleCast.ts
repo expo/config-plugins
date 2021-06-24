@@ -163,7 +163,7 @@ function addGoogleCastImport(
 ) {
   const newSrc = [];
   newSrc.push(
-    `  implementation "com.google.android.gms:play-services-cast-framework:${
+    `    implementation "com.google.android.gms:play-services-cast-framework:${
       version || "+"
     }"`
   );
