@@ -1,0 +1,57 @@
+{
+  "expo": {
+    "name": "app",
+    "slug": "app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.bacon.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "@config-plugins/detox",
+      [
+        "@config-plugins/ios-stickers",
+        {
+          "name": "Avocoder",
+          "icon": "./assets/imessage-icon.png",
+          "columns": 4,
+          "stickers": [
+            "./assets/stickers/annoyed.png",
+            "./assets/stickers/cuddle.png",
+            "./assets/stickers/crazy.png",
+            "./assets/stickers/cant.png",
+            "./assets/stickers/donno.png",
+            "./assets/stickers/cozzy.png",
+            "./assets/stickers/dork.png",
+            "./assets/stickers/focus.png",
+            "./assets/stickers/avocool.png",
+            "./assets/stickers/coder-girl.png",
+            "./assets/stickers/teapot.png"
+          ]
+        }
+      ]
+    ]
+  }
+}
