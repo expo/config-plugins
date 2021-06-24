@@ -17,6 +17,8 @@
 		8DA5D7EF8D05430BBA2BC47B /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F99C5F72A8459E9E79E450 /* noop-file.swift */; };
 		96905EF65AED1B983A6B3ABC /* libPods-app.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EEBF8E8E6FB1BC6CAF49B5 /* libPods-app.a */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
+		D7A7F886DCE94C9390CD69B2 /* CallKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E857D9C8B5ED4FDAB87C96B2 /* CallKit.framework */; };
+		0D52070EA2B1498B87AFE933 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B0CB47714E24947BFBC108E /* Intents.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,8 @@
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		FF72808C870D468FACD4702E /* app-Bridging-Header.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "app-Bridging-Header.h"; path = "app/app-Bridging-Header.h"; sourceTree = "<group>"; };
+		E857D9C8B5ED4FDAB87C96B2 /* CallKit.framework */ = {isa = PBXFileReference; name = "CallKit.framework"; path = "System/Library/Frameworks/CallKit.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		7B0CB47714E24947BFBC108E /* Intents.framework */ = {isa = PBXFileReference; name = "Intents.framework"; path = "System/Library/Frameworks/Intents.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				96905EF65AED1B983A6B3ABC /* libPods-app.a in Frameworks */,
+				D7A7F886DCE94C9390CD69B2 /* CallKit.framework in Frameworks */,
+				0D52070EA2B1498B87AFE933 /* Intents.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +115,8 @@
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				58EEBF8E8E6FB1BC6CAF49B5 /* libPods-app.a */,
+				E857D9C8B5ED4FDAB87C96B2 /* CallKit.framework */,
+				7B0CB47714E24947BFBC108E /* Intents.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -405,6 +413,10 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					$(SRCROOT)/../node_modules/react-native-callkeep/ios/RNCallKeep,
+				);
 			};
 			name = Release;
 		};
@@ -487,6 +499,10 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					$(SRCROOT)/../node_modules/react-native-callkeep/ios/RNCallKeep,
+				);
 			};
 			name = Debug;
 		};

@@ -63,5 +63,15 @@
     <string>Light</string>
     <key>CFBundleDisplayName</key>
     <string>app</string>
+    <key>UIBackgroundModes</key>
+    <array>
+      <string>voip</string>
+    </array>
+    <key>NSCameraUsageDescription</key>
+    <string>Allow $(PRODUCT_NAME) to access your camera</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Allow $(PRODUCT_NAME) to access your microphone</string>
+    <key>NSBluetoothAlwaysUsageDescription</key>
+    <string>Allow $(PRODUCT_NAME) to connect to bluetooth devices</string>
   </dict>
 </plist>

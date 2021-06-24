@@ -14,7 +14,7 @@ const withCallkeep = (config) => {
     });
     const path = "$(SRCROOT)/../node_modules/react-native-callkeep/ios/RNCallKeep";
     config = config_plugins_1.withXcodeProject(config, (config) => {
-        config.modResults.removeFromHeaderSearchPaths(path);
+        // config.modResults.removeFromHeaderSearchPaths(path);
         config.modResults.addToHeaderSearchPaths(path);
         return config;
     });
