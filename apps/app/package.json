@@ -26,7 +26,8 @@
       "detox",
       "expo-constants",
       "expo-camera",
-      "expo-updates"
+      "expo-updates",
+      "react-native-callkeep"
     ]
   },
   "react-native-unimodules": {

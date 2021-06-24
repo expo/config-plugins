@@ -12,7 +12,7 @@ const withCallkeep = (config) => {
         }
         return config;
     });
-    const path = "$(SRCROOT)/../node_modules/react-native-callkeep/ios/RNCallKeep";
+    const path = `"$(SRCROOT)/../node_modules/react-native-callkeep/ios/RNCallKeep"`;
     config = config_plugins_1.withXcodeProject(config, (config) => {
         // config.modResults.removeFromHeaderSearchPaths(path);
         config.modResults.addToHeaderSearchPaths(path);
