@@ -32,6 +32,7 @@ const withDetox = (config, { skipProguard, subdomains } = {}) => {
 };
 let pkg = {
     name: "detox",
+    // UNVERSIONED...
 };
 try {
     const detoxPkg = require("detox/package.json");
