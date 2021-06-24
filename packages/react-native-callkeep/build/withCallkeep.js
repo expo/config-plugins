@@ -2,36 +2,16 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.withXcodeLinkBinaryWithLibraries = void 0;
 const config_plugins_1 = require("@expo/config-plugins");
-const withCallkeep = (config) => {
-    config = config_plugins_1.withInfoPlist(config, (config) => {
-        if (!Array.isArray(config.modResults.UIBackgroundModes)) {
-            config.modResults.UIBackgroundModes = [];
-        }
-        if (!config.modResults.UIBackgroundModes.includes("voip")) {
-            config.modResults.UIBackgroundModes.push("voip");
-        }
+const ensureHeaderSearchPath_1 = require("./ensureHeaderSearchPath");
+const withCallkeepHeaderSearchPath = (config) => {
+    const headerSearchPath = `"$(SRCROOT)/../node_modules/react-native-callkeep/ios/RNCallKeep"`;
+    return config_plugins_1.withXcodeProject(config, (config) => {
+        ensureHeaderSearchPath_1.ensureHeaderSearchPath(config.modResults, headerSearchPath);
         return config;
     });
-    const path = `"$(SRCROOT)/../node_modules/react-native-callkeep/ios/RNCallKeep"`;
-    config = config_plugins_1.withXcodeProject(config, (config) => {
-        // config.modResults.removeFromHeaderSearchPaths(path);
-        config.modResults.addToHeaderSearchPaths(path);
-        return config;
-    });
-    config = exports.withXcodeLinkBinaryWithLibraries(config, {
-        library: "Intents.framework",
-        status: "optional",
-    });
-    config = exports.withXcodeLinkBinaryWithLibraries(config, {
-        library: "CallKit.framework",
-    });
-    config = config_plugins_1.AndroidConfig.Permissions.withPermissions(config, [
-        "android.permission.BIND_TELECOM_CONNECTION_SERVICE",
-        "android.permission.FOREGROUND_SERVICE",
-        "android.permission.READ_PHONE_STATE",
-        "android.permission.CALL_PHONE",
-    ]);
-    config = config_plugins_1.withAndroidManifest(config, (config) => {
+};
+const withAndroidManifestService = (config) => {
+    return config_plugins_1.withAndroidManifest(config, (config) => {
         // <service
         //   android:name="io.wazo.callkeep.VoiceConnectionService"
         //   android:label="Wazo"
@@ -84,6 +64,32 @@ const withCallkeep = (config) => {
         }
         return config;
     });
+};
+const withCallkeep = (config) => {
+    config = config_plugins_1.withInfoPlist(config, (config) => {
+        if (!Array.isArray(config.modResults.UIBackgroundModes)) {
+            config.modResults.UIBackgroundModes = [];
+        }
+        if (!config.modResults.UIBackgroundModes.includes("voip")) {
+            config.modResults.UIBackgroundModes.push("voip");
+        }
+        return config;
+    });
+    config = withCallkeepHeaderSearchPath(config);
+    config = exports.withXcodeLinkBinaryWithLibraries(config, {
+        library: "Intents.framework",
+        status: "optional",
+    });
+    config = exports.withXcodeLinkBinaryWithLibraries(config, {
+        library: "CallKit.framework",
+    });
+    config = config_plugins_1.AndroidConfig.Permissions.withPermissions(config, [
+        "android.permission.BIND_TELECOM_CONNECTION_SERVICE",
+        "android.permission.FOREGROUND_SERVICE",
+        "android.permission.READ_PHONE_STATE",
+        "android.permission.CALL_PHONE",
+    ]);
+    config = withAndroidManifestService(config);
     return config;
 };
 exports.withXcodeLinkBinaryWithLibraries = (config, { library, status }) => {
