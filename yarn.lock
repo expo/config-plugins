@@ -13822,6 +13822,11 @@ react-native-gesture-handler@~1.10.2:
     invariant "^2.2.4"
     prop-types "^15.7.2"
 
+react-native-google-cast@^4.1.2:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/react-native-google-cast/-/react-native-google-cast-4.1.2.tgz#8a2b83849034029665f49fb36222c2439abb6c12"
+  integrity sha512-XfrbYBjhNCOz3JOoFEiLHqKJyAAdyAA8c5Ga/U0xdG4ejcPXFgVWnErANxwyH77wxQRhkCZ+hGRO8w1PFNuVCA==
+
 react-native-reanimated@~2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-2.1.0.tgz#b9ad04aee490e1e030d0a6cdaa43a14895d9a54d"
