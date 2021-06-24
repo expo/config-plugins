@@ -23,6 +23,7 @@
   },
   "expo-yarn-workspaces": {
     "symlinks": [
+      "detox",
       "expo-constants",
       "expo-camera",
       "expo-updates"
