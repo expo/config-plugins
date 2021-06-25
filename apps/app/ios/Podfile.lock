@@ -320,6 +320,8 @@ PODS:
     - React-jsi (= 0.63.4)
   - RNCallKeep (4.2.0):
     - React
+  - RNDynamicAppIcon (1.1.0):
+    - React
   - RNGestureHandler (1.10.3):
     - React-Core
   - RNReanimated (2.1.0):
@@ -422,6 +424,7 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - RNCallKeep (from `../../../node_modules/react-native-callkeep`)
+  - RNDynamicAppIcon (from `../../../node_modules/react-native-dynamic-app-icon`)
   - RNGestureHandler (from `../../../node_modules/react-native-gesture-handler`)
   - RNReanimated (from `../../../node_modules/react-native-reanimated`)
   - RNScreens (from `../../../node_modules/react-native-screens`)
@@ -547,6 +550,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   RNCallKeep:
     :path: "../../../node_modules/react-native-callkeep"
+  RNDynamicAppIcon:
+    :path: "../../../node_modules/react-native-dynamic-app-icon"
   RNGestureHandler:
     :path: "../../../node_modules/react-native-gesture-handler"
   RNReanimated:
@@ -645,6 +650,7 @@ SPEC CHECKSUMS:
   React-RCTVibration: ae4f914cfe8de7d4de95ae1ea6cc8f6315d73d9d
   ReactCommon: 73d79c7039f473b76db6ff7c6b159c478acbbb3b
   RNCallKeep: 8cbaafb72c4a1738f4a6e70fdaf041a14083ce5b
+  RNDynamicAppIcon: f7eb12d6c2e6e957eead111dacdb93af318396ac
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNReanimated: 70f662b5232dd5d19ccff581e919a54ea73df51c
   RNScreens: e8e8dd0588b5da0ab57dcca76ab9b2d8987757e0
