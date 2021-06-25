@@ -4,8 +4,10 @@ Config plugin to auto configure Detox when the native code is generated (`expo p
 
 ### Add the package to your npm dependencies
 
+> Tested against Expo SDK 41
+
 ```
-yarn add @config-plugins/detox
+yarn add detox @config-plugins/detox
 ```
 
 Detox is an end-to-end (e2e) testing library for iOS and Android. You can use it to automate usage of your native project. This example demonstrates how to use Detox and Jest in a native project that you build locally.

@@ -4,11 +4,13 @@ Config plugin to auto configure `react-native-webrtc` when the native code is ge
 
 ## Expo installation
 
+> Tested against Expo SDK 41
+
 > This package cannot be used in the "Expo Go" app because [it requires custom native code](https://docs.expo.io/workflow/customizing/).
 > First install the package with yarn, npm, or [`expo install`](https://docs.expo.io/workflow/expo-cli/#expo-install).
 
 ```sh
-expo install @config-plugins/react-native-webrtc
+expo install react-native-webrtc @config-plugins/react-native-webrtc
 ```
 
 After installing this npm package, add the [config plugin](https://docs.expo.io/guides/config-plugins/) to the [`plugins`](https://docs.expo.io/versions/latest/config/app/#plugins) array of your `app.json` or `app.config.js`:

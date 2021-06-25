@@ -4,6 +4,8 @@ Config plugin to auto configure `react-native-dynamic-app-icon`
 
 ## Install
 
+> Tested against Expo SDK 41
+
 ```
 yarn add react-native-dynamic-app-icon @config-plugins/react-native-dynamic-app-icon
 ```
