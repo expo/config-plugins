@@ -19,6 +19,12 @@
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
 		CD36796AEE6244C7A943FA27 /* Stickers.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1515960A6D8A4C93BDC97D76 /* Stickers.xcassets */; };
 		FE2D65856BDB4AE68E4FBFDA /* CallKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6F172152AC431199566FF9 /* CallKit.framework */; };
+		88505994A68B46F2B74CA702 /* 0-Icon-60x60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 997E8978C2714042BE1B8B5B /* 0-Icon-60x60@2x.png */; };
+		E247C3A37A6E46D5BE85F8BE /* 0-Icon-60x60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A16B9E26A640ACB2DD81BE /* 0-Icon-60x60@3x.png */; };
+		597C56B3EA54427A855E73AF /* 1-Icon-60x60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 342234C8B88F49D29350B2AC /* 1-Icon-60x60@2x.png */; };
+		3B06E97B096F4A5EA90EB988 /* 1-Icon-60x60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 71A5158F54E94B118735EDCE /* 1-Icon-60x60@3x.png */; };
+		314C2F88E2CC48BC966DC6B3 /* 2-Icon-60x60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F1189BB581C47588C26A56D /* 2-Icon-60x60@2x.png */; };
+		3A65FC4E0090429FB2805821 /* 2-Icon-60x60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E56C0EB78784418CB338A01F /* 2-Icon-60x60@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +74,12 @@
 		E6EE00422E144806A348BC6D /* app-Bridging-Header.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "app-Bridging-Header.h"; path = "app/app-Bridging-Header.h"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		997E8978C2714042BE1B8B5B /* 0-Icon-60x60@2x.png */ = {isa = PBXFileReference; name = "0-Icon-60x60@2x.png"; path = "app/dynamic-app-icons/0-Icon-60x60@2x.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		58A16B9E26A640ACB2DD81BE /* 0-Icon-60x60@3x.png */ = {isa = PBXFileReference; name = "0-Icon-60x60@3x.png"; path = "app/dynamic-app-icons/0-Icon-60x60@3x.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		342234C8B88F49D29350B2AC /* 1-Icon-60x60@2x.png */ = {isa = PBXFileReference; name = "1-Icon-60x60@2x.png"; path = "app/dynamic-app-icons/1-Icon-60x60@2x.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		71A5158F54E94B118735EDCE /* 1-Icon-60x60@3x.png */ = {isa = PBXFileReference; name = "1-Icon-60x60@3x.png"; path = "app/dynamic-app-icons/1-Icon-60x60@3x.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		8F1189BB581C47588C26A56D /* 2-Icon-60x60@2x.png */ = {isa = PBXFileReference; name = "2-Icon-60x60@2x.png"; path = "app/dynamic-app-icons/2-Icon-60x60@2x.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E56C0EB78784418CB338A01F /* 2-Icon-60x60@3x.png */ = {isa = PBXFileReference; name = "2-Icon-60x60@3x.png"; path = "app/dynamic-app-icons/2-Icon-60x60@3x.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +117,7 @@
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
 				24DD4375D1A44EC49EAD7208 /* noop-file.swift */,
 				E6EE00422E144806A348BC6D /* app-Bridging-Header.h */,
+				CB4DC089C9A645EDAB8C750C /* dynamic-app-icons */,
 			);
 			name = app;
 			sourceTree = "<group>";
@@ -179,6 +192,20 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		CB4DC089C9A645EDAB8C750C /* dynamic-app-icons */ = {
+			isa = "PBXGroup";
+			children = (
+				997E8978C2714042BE1B8B5B /* 0-Icon-60x60@2x.png */,
+				58A16B9E26A640ACB2DD81BE /* 0-Icon-60x60@3x.png */,
+				342234C8B88F49D29350B2AC /* 1-Icon-60x60@2x.png */,
+				71A5158F54E94B118735EDCE /* 1-Icon-60x60@3x.png */,
+				8F1189BB581C47588C26A56D /* 2-Icon-60x60@2x.png */,
+				E56C0EB78784418CB338A01F /* 2-Icon-60x60@3x.png */,
+			);
+			name = dynamic-app-icons;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -268,6 +295,12 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
+				88505994A68B46F2B74CA702 /* 0-Icon-60x60@2x.png in Resources */,
+				E247C3A37A6E46D5BE85F8BE /* 0-Icon-60x60@3x.png in Resources */,
+				597C56B3EA54427A855E73AF /* 1-Icon-60x60@2x.png in Resources */,
+				3B06E97B096F4A5EA90EB988 /* 1-Icon-60x60@3x.png in Resources */,
+				314C2F88E2CC48BC966DC6B3 /* 2-Icon-60x60@2x.png in Resources */,
+				3A65FC4E0090429FB2805821 /* 2-Icon-60x60@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
