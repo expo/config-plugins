@@ -52,6 +52,7 @@
   "dependencies": {
     "@config-plugins/detox": "0.0.0",
     "@config-plugins/ios-stickers": "0.0.0",
+    "@config-plugins/react-native-dynamic-app-icon": "0.0.0",
     "@config-plugins/react-native-ble-plx": "0.0.0",
     "@config-plugins/react-native-callkeep": "0.0.0",
     "@config-plugins/react-native-webrtc": "0.0.0",

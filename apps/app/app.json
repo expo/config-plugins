@@ -32,6 +32,14 @@
     },
     "plugins": [
       "@react-native-mapbox-gl/maps",
+      [
+        "@config-plugins/react-native-dynamic-app-icon",
+        {
+          "icons": [
+            "./assets/stickers/avocool.png"
+          ]
+        }
+      ],
       "@config-plugins/detox",
       "@config-plugins/react-native-google-cast",
       "@config-plugins/react-native-ble-plx",
