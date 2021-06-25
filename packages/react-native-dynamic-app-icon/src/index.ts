@@ -151,13 +151,13 @@ async function createIconsAsync(
 
   // Delete all existing assets...
   await fs.promises.rmdir(path.join(iosRoot, folderName), { recursive: true });
-
+  await fs.promises.mkdir(path.join(iosRoot, folderName), { recursive: true });
   // Generate new assets...
   await iterateIconsAsync({ icons }, async (key, icon, index) => {
     for (const scale of scales) {
       const iconFileName = getIconName(String(index), size, scale);
       const fileName = path.join(folderName, iconFileName);
-      const outputPath = path.join(iosRoot, folderName, fileName);
+      const outputPath = path.join(iosRoot, fileName);
 
       const scaledSize = scale * size;
       const { source } = await generateImageAsync(

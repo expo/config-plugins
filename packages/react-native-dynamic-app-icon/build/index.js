@@ -102,12 +102,13 @@ async function createIconsAsync(config, { icons }) {
     const iosRoot = path_1.default.join(config.modRequest.platformProjectRoot, config.modRequest.projectName);
     // Delete all existing assets...
     await fs_1.default.promises.rmdir(path_1.default.join(iosRoot, folderName), { recursive: true });
+    await fs_1.default.promises.mkdir(path_1.default.join(iosRoot, folderName), { recursive: true });
     // Generate new assets...
     await iterateIconsAsync({ icons }, async (key, icon, index) => {
         for (const scale of scales) {
             const iconFileName = getIconName(String(index), size, scale);
             const fileName = path_1.default.join(folderName, iconFileName);
-            const outputPath = path_1.default.join(iosRoot, folderName, fileName);
+            const outputPath = path_1.default.join(iosRoot, fileName);
             const scaledSize = scale * size;
             const { source } = await image_utils_1.generateImageAsync({
                 projectRoot: config.modRequest.projectRoot,
