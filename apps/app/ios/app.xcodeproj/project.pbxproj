@@ -19,6 +19,8 @@
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
 		CD36796AEE6244C7A943FA27 /* Stickers.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1515960A6D8A4C93BDC97D76 /* Stickers.xcassets */; };
 		FE2D65856BDB4AE68E4FBFDA /* CallKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6F172152AC431199566FF9 /* CallKit.framework */; };
+		F7B3D237EC644CF5BF13BB99 /* 0_-Icon-60x60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B38321A4A03C40ADB0E28481 /* 0_-Icon-60x60@2x.png */; };
+		27DC486928854D21A35E9594 /* 0_-Icon-60x60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC29E0754573425B93C11F02 /* 0_-Icon-60x60@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,8 @@
 		E6EE00422E144806A348BC6D /* app-Bridging-Header.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "app-Bridging-Header.h"; path = "app/app-Bridging-Header.h"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		B38321A4A03C40ADB0E28481 /* 0_-Icon-60x60@2x.png */ = {isa = PBXFileReference; name = "0_-Icon-60x60@2x.png"; path = "/Users/evanbacon/Documents/GitHub/lab/config-plugins/apps/app/ios/app/dynamic-app-icons/0_-Icon-60x60@2x.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		CC29E0754573425B93C11F02 /* 0_-Icon-60x60@3x.png */ = {isa = PBXFileReference; name = "0_-Icon-60x60@3x.png"; path = "/Users/evanbacon/Documents/GitHub/lab/config-plugins/apps/app/ios/app/dynamic-app-icons/0_-Icon-60x60@3x.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +109,7 @@
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
 				24DD4375D1A44EC49EAD7208 /* noop-file.swift */,
 				E6EE00422E144806A348BC6D /* app-Bridging-Header.h */,
+				CB4DC089C9A645EDAB8C750C /* dynamic-app-icons */,
 			);
 			name = app;
 			sourceTree = "<group>";
@@ -179,6 +184,16 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		CB4DC089C9A645EDAB8C750C /* dynamic-app-icons */ = {
+			isa = "PBXGroup";
+			children = (
+				B38321A4A03C40ADB0E28481 /* 0_-Icon-60x60@2x.png */,
+				CC29E0754573425B93C11F02 /* 0_-Icon-60x60@3x.png */,
+			);
+			name = dynamic-app-icons;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -268,6 +283,8 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
+				F7B3D237EC644CF5BF13BB99 /* 0_-Icon-60x60@2x.png in Resources */,
+				27DC486928854D21A35E9594 /* 0_-Icon-60x60@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

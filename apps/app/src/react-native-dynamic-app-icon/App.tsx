@@ -29,7 +29,7 @@ export default function App() {
             <Text>Current: {icon}</Text>
             <Button
                 onPress={() => {
-                    setIcon(icon === "main" ? "alternate" : "main");
+                    setIcon(icon === "main" ? "0" : "main");
                 }}
                 title="Toggle Icon"
             />

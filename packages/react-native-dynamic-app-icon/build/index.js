@@ -32,9 +32,9 @@ function addIconFileToXcode({ projectRoot, project, projectName, fileName, }) {
     //   path.join(getSourceRoot(projectRoot), 'GoogleService-Info.plist')
     // );
     const plistFilePath = fileName; // `GoogleService-Info.plist`;
-    if (!project.hasFile(plistFilePath)) {
+    if (!project.hasFile(`${folderName}/${plistFilePath}`)) {
         project = config_plugins_1.IOSConfig.XcodeUtils.addResourceFileToGroup({
-            filepath: plistFilePath,
+            filepath: `${folderName}/${plistFilePath}`,
             groupName: `${projectName}/${folderName}`,
             project,
             isBuildFile: false,
@@ -46,15 +46,32 @@ function addIconFileToXcode({ projectRoot, project, projectName, fileName, }) {
 exports.addIconFileToXcode = addIconFileToXcode;
 const withIconXcodeProject = (config, { icons }) => {
     return config_plugins_1.withXcodeProject(config, async (config) => {
+        const groupPath = `${config.modRequest.projectName}/${folderName}`;
+        const group = config_plugins_1.IOSConfig.XcodeUtils.ensureGroupRecursively(config.modResults, groupPath);
+        console.log("GROUP:", group);
         await iterateIconsAsync({ icons }, async (key, icon, index) => {
             for (const scale of scales) {
-                const iconFileName = getIconName(String(index), size, scale);
-                addIconFileToXcode({
-                    projectRoot: config.modRequest.projectRoot,
-                    projectName: config.modRequest.projectName,
-                    project: config.modResults,
-                    fileName: iconFileName,
-                });
+                const iconFileName = getIconName(key, size, scale);
+                if (!(group === null || group === void 0 ? void 0 : group.children.some(({ comment }) => comment === iconFileName))) {
+                    //  TODO: target membership
+                    // Only write the file if it doesn't already exist.
+                    config.modResults = config_plugins_1.IOSConfig.XcodeUtils.addResourceFileToGroup({
+                        filepath: path_1.default.join(config.modRequest.platformProjectRoot, groupPath, iconFileName),
+                        groupName: path_1.default.join(groupPath, iconFileName),
+                        project: config.modResults,
+                        isBuildFile: true,
+                        verbose: true,
+                    });
+                }
+                else {
+                    console.log("Skipping duplicate: ", iconFileName);
+                }
+                // addIconFileToXcode({
+                //   projectRoot: config.modRequest.projectRoot,
+                //   projectName: config.modRequest.projectName!,
+                //   project: config.modResults,
+                //   fileName: iconFileName,
+                // });
             }
         });
         return config;
@@ -64,8 +81,8 @@ const withIconInfoPlist = (config, { icons }) => {
     return config_plugins_1.withInfoPlist(config, async (config) => {
         const altIcons = {};
         // 'CFBundleIcons~ipad'
-        await iterateIconsAsync({ icons }, async (key, icon, index) => {
-            const refFileName = `${folderName}/${getIconName(String(index), size)}`;
+        await iterateIconsAsync({ icons }, async (key, icon) => {
+            const refFileName = `${folderName}/${getIconName(key, size)}`;
             altIcons[key] = {
                 CFBundleIconFiles: [
                     // Must be a file path relative to the source root (not a icon set it seems).
@@ -104,9 +121,9 @@ async function createIconsAsync(config, { icons }) {
     await fs_1.default.promises.rmdir(path_1.default.join(iosRoot, folderName), { recursive: true });
     await fs_1.default.promises.mkdir(path_1.default.join(iosRoot, folderName), { recursive: true });
     // Generate new assets...
-    await iterateIconsAsync({ icons }, async (key, icon, index) => {
+    await iterateIconsAsync({ icons }, async (key, icon) => {
         for (const scale of scales) {
-            const iconFileName = getIconName(String(index), size, scale);
+            const iconFileName = getIconName(key, size, scale);
             const fileName = path_1.default.join(folderName, iconFileName);
             const outputPath = path_1.default.join(iosRoot, fileName);
             const scaledSize = scale * size;

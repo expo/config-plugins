@@ -57,9 +57,9 @@ export function addIconFileToXcode({
   // );
 
   const plistFilePath = fileName; // `GoogleService-Info.plist`;
-  if (!project.hasFile(plistFilePath)) {
+  if (!project.hasFile(`${folderName}/${plistFilePath}`)) {
     project = IOSConfig.XcodeUtils.addResourceFileToGroup({
-      filepath: plistFilePath,
+      filepath: `${folderName}/${plistFilePath}`,
       groupName: `${projectName}/${folderName}`,
       project,
       isBuildFile: false,
@@ -71,16 +71,47 @@ export function addIconFileToXcode({
 
 const withIconXcodeProject: ConfigPlugin<Props> = (config, { icons }) => {
   return withXcodeProject(config, async (config) => {
+    const groupPath = `${config.modRequest.projectName!}/${folderName}`;
+    const group = IOSConfig.XcodeUtils.ensureGroupRecursively(
+      config.modResults,
+      groupPath
+    );
+
+    console.log("GROUP:", group);
+
     await iterateIconsAsync({ icons }, async (key, icon, index) => {
       for (const scale of scales) {
-        const iconFileName = getIconName(String(index), size, scale);
+        const iconFileName = getIconName(key, size, scale);
 
-        addIconFileToXcode({
-          projectRoot: config.modRequest.projectRoot,
-          projectName: config.modRequest.projectName!,
-          project: config.modResults,
-          fileName: iconFileName,
-        });
+        if (
+          !group?.children.some(
+            ({ comment }: { comment: string }) => comment === iconFileName
+          )
+        ) {
+          //  TODO: target membership
+
+          // Only write the file if it doesn't already exist.
+          config.modResults = IOSConfig.XcodeUtils.addResourceFileToGroup({
+            filepath: path.join(
+              config.modRequest.platformProjectRoot,
+              groupPath,
+              iconFileName
+            ),
+            groupName: path.join(groupPath, iconFileName),
+            project: config.modResults,
+            isBuildFile: true,
+            verbose: true,
+          });
+        } else {
+          console.log("Skipping duplicate: ", iconFileName);
+        }
+
+        // addIconFileToXcode({
+        //   projectRoot: config.modRequest.projectRoot,
+        //   projectName: config.modRequest.projectName!,
+        //   project: config.modResults,
+        //   fileName: iconFileName,
+        // });
       }
     });
 
@@ -96,8 +127,8 @@ const withIconInfoPlist: ConfigPlugin<Props> = (config, { icons }) => {
 
     // 'CFBundleIcons~ipad'
 
-    await iterateIconsAsync({ icons }, async (key, icon, index) => {
-      const refFileName = `${folderName}/${getIconName(String(index), size)}`;
+    await iterateIconsAsync({ icons }, async (key, icon) => {
+      const refFileName = `${folderName}/${getIconName(key, size)}`;
 
       altIcons[key] = {
         CFBundleIconFiles: [
@@ -153,9 +184,9 @@ async function createIconsAsync(
   await fs.promises.rmdir(path.join(iosRoot, folderName), { recursive: true });
   await fs.promises.mkdir(path.join(iosRoot, folderName), { recursive: true });
   // Generate new assets...
-  await iterateIconsAsync({ icons }, async (key, icon, index) => {
+  await iterateIconsAsync({ icons }, async (key, icon) => {
     for (const scale of scales) {
-      const iconFileName = getIconName(String(index), size, scale);
+      const iconFileName = getIconName(key, size, scale);
       const fileName = path.join(folderName, iconFileName);
       const outputPath = path.join(iosRoot, fileName);
 
