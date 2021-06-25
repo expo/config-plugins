@@ -39,65 +39,6 @@ function getIconName(name: string, size: number, scale?: number) {
   return fileName;
 }
 
-export function addIconFileToXcode({
-  projectRoot,
-  project,
-  projectName,
-  fileName,
-}: {
-  project: XcodeProject;
-  projectName: string;
-  projectRoot: string;
-  fileName: string;
-}): XcodeProject {
-  // const googleServiceFilePath = path.resolve(projectRoot, googleServicesFileRelativePath);
-  // fs.copyFileSync(
-  //   googleServiceFilePath,
-  //   path.join(getSourceRoot(projectRoot), 'GoogleService-Info.plist')
-  // );
-
-  const plistFilePath = fileName; // `GoogleService-Info.plist`;
-  if (!project.hasFile(`${folderName}/${plistFilePath}`)) {
-    project = IOSConfig.XcodeUtils.addResourceFileToGroup({
-      filepath: `${folderName}/${plistFilePath}`,
-      groupName: `${projectName}/${folderName}`,
-      project,
-      isBuildFile: false,
-      verbose: true,
-    });
-  }
-  return project;
-}
-
-/**
- * Unlinks assets from iOS project. Removes references for fonts from `Info.plist`
- * fonts provided by application and from `Resources` group
- */
-export function removeResourceFile(
-  project: XcodeProject,
-  projectDir: string,
-  files: any
-) {
-  if (!project.pbxGroupByName("Resources")) {
-    console.error(
-      'Group "Resources" does not exist in your Xcode project. There is nothing to unlink.'
-    );
-    return;
-  }
-
-  const removeResourceFiles = (f: Array<any> = []) =>
-    (f || [])
-      .map((asset) => {
-        console.debug(`Unlinking asset ${asset}`);
-        return project.removeResourceFile(path.relative(projectDir, asset), {
-          target: project.getFirstTarget().uuid,
-        });
-      })
-      .map((file) => file.basename);
-
-  removeResourceFiles(files);
-}
-
 // @ts-ignore
 import pbxFile from "xcode/lib/pbxFile";
 
@@ -110,6 +51,8 @@ const withIconXcodeProject: ConfigPlugin<Props> = (config, { icons }) => {
     );
     const project = config.modResults;
     const opt: any = {};
+
+    // Unlink old assets
 
     const groupId = Object.keys(project.hash.project.objects["PBXGroup"]).find(
       (id) => {
@@ -145,6 +88,8 @@ const withIconXcodeProject: ConfigPlugin<Props> = (config, { icons }) => {
       project.removeFromPbxResourcesBuildPhase(file); // PBXResourcesBuildPhase
     }
 
+    // Link new assets
+
     await iterateIconsAsync({ icons }, async (key, icon, index) => {
       for (const scale of scales) {
         const iconFileName = getIconName(key, size, scale);
@@ -154,15 +99,9 @@ const withIconXcodeProject: ConfigPlugin<Props> = (config, { icons }) => {
             ({ comment }: { comment: string }) => comment === iconFileName
           )
         ) {
-          //  TODO: target membership
-
           // Only write the file if it doesn't already exist.
           config.modResults = IOSConfig.XcodeUtils.addResourceFileToGroup({
-            filepath: path.join(
-              // config.modRequest.platformProjectRoot,
-              folderName,
-              iconFileName
-            ),
+            filepath: path.join(folderName, iconFileName),
             groupName: path.join(groupPath, iconFileName),
             project: config.modResults,
             isBuildFile: true,
@@ -171,13 +110,6 @@ const withIconXcodeProject: ConfigPlugin<Props> = (config, { icons }) => {
         } else {
           console.log("Skipping duplicate: ", iconFileName);
         }
-
-        // addIconFileToXcode({
-        //   projectRoot: config.modRequest.projectRoot,
-        //   projectName: config.modRequest.projectName!,
-        //   project: config.modResults,
-        //   fileName: iconFileName,
-        // });
       }
     });
 
