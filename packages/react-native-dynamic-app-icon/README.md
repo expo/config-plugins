@@ -41,4 +41,11 @@ Or as objects:
 
 > Note: Icon URLs will be downloaded and embedded at build time, you cannot push new icons OTA.
 
+## Usage
+
+In list format, icons are named after the item index (`'0', '1', '2'`), they can be changed like `AppIcon.setAppIcon('2')` (from the package `react-native-dynamic-app-icon`).
+
+This isn't tied to `react-native-dynamic-app-icon` in any way, so any method of swapping icons works.
+
+
 <!-- Android support: https://github.com/myinnos/AppIconNameChanger -->
