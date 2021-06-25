@@ -44,7 +44,7 @@ function createSticker({ stickerpackPath, name, imageBuffer, extension, accessib
         name: stickerName,
     };
 }
-const withStickerAssets = (config, { stickers, icon, size }) => {
+exports.withStickerAssets = (config, { stickers, icon, size }) => {
     // Default to using the app icon
     if (!icon) {
         icon = (config.ios || {}).icon || config.icon;
@@ -118,4 +118,3 @@ const withStickerAssets = (config, { stickers, icon, size }) => {
         },
     ]);
 };
-exports.withStickerAssets = withStickerAssets;

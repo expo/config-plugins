@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.addBLEHardwareFeatureToManifest = exports.addFineControlPermissionToManifest = exports.withBLEAndroidManifest = void 0;
 const config_plugins_1 = require("@expo/config-plugins");
-const withBLEAndroidManifest = (config, { isBackgroundEnabled }) => {
+exports.withBLEAndroidManifest = (config, { isBackgroundEnabled }) => {
     return config_plugins_1.withAndroidManifest(config, (config) => {
         config.modResults = addFineControlPermissionToManifest(config.modResults);
         if (isBackgroundEnabled) {
@@ -12,7 +12,6 @@ const withBLEAndroidManifest = (config, { isBackgroundEnabled }) => {
         return config;
     });
 };
-exports.withBLEAndroidManifest = withBLEAndroidManifest;
 function addFineControlPermissionToManifest(androidManifest) {
     var _a;
     // Add `<uses-permission-sdk-23 android:name="android.permission.ACCESS_FINE_LOCATION"/>` to the AndroidManifest.xml

@@ -92,7 +92,7 @@ const withCallkeep = (config) => {
     config = withAndroidManifestService(config);
     return config;
 };
-const withXcodeLinkBinaryWithLibraries = (config, { library, status }) => {
+exports.withXcodeLinkBinaryWithLibraries = (config, { library, status }) => {
     return config_plugins_1.withXcodeProject(config, (config) => {
         const options = status === "optional" ? { settings: { ATTRIBUTES: ["Weak"] } } : {};
         const target = config_plugins_1.IOSConfig.XcodeUtils.getApplicationNativeTarget({
@@ -106,5 +106,4 @@ const withXcodeLinkBinaryWithLibraries = (config, { library, status }) => {
         return config;
     });
 };
-exports.withXcodeLinkBinaryWithLibraries = withXcodeLinkBinaryWithLibraries;
 exports.default = withCallkeep;

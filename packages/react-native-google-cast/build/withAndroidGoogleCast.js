@@ -82,7 +82,7 @@ const withMainActivityLazyLoading = (config) => {
     ]);
 };
 // castFrameworkVersion
-const withAndroidGoogleCast = (config, props) => {
+exports.withAndroidGoogleCast = (config, props) => {
     var _a, _b;
     config = withAndroidManifestCast(config, {
         receiverAppId: props.receiverAppId,
@@ -98,7 +98,6 @@ const withAndroidGoogleCast = (config, props) => {
     });
     return config;
 };
-exports.withAndroidGoogleCast = withAndroidGoogleCast;
 function addGoogleCastLazyLoadingImport(src) {
     const newSrc = [];
     newSrc.push("    CastContext.getSharedInstance(this);");
