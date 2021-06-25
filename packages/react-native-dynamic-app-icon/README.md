@@ -13,5 +13,30 @@ yarn add react-native-dynamic-app-icon @config-plugins/react-native-dynamic-app-
 In your app.json `plugins` array:
 
 ```json
-["@config-plugins/react-native-dynamic-app-icon", {}]
+{
+  "plugins": [
+    "@config-plugins/react-native-dynamic-app-icon",
+    ["./path/to/image.png", "https://mywebsite.com/my-icon.png"]
+  ]
+}
 ```
+
+Or as objects:
+
+```json
+{
+  "plugins": [
+    "@config-plugins/react-native-dynamic-app-icon",
+    {
+      "AppIcon1": {
+        "image": "./path/to/image.png",
+        "prerendered": true
+      }
+    }
+  ]
+}
+```
+
+> Note: Icon URLs will be downloaded and embedded at build time, you cannot push new icons OTA.
+
+<!-- Android support: https://github.com/myinnos/AppIconNameChanger -->
