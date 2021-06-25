@@ -34,7 +34,7 @@ const withStickerPack: ConfigPlugin<Props> = (
   config,
   { stickers, icon, name, columns } = {}
 ) => {
-  const size = sizeColumnMap[columns!];
+  const size = sizeColumnMap[columns ?? 3];
   if (!size) {
     throw new Error(
       `Column size "${columns}" is invalid. Expected one of: ${Object.keys(

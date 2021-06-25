@@ -30,7 +30,7 @@ function normalizeStickersProps(props = []) {
 }
 exports.normalizeStickersProps = normalizeStickersProps;
 const withStickerPack = (config, { stickers, icon, name, columns } = {}) => {
-    const size = sizeColumnMap[columns];
+    const size = sizeColumnMap[columns !== null && columns !== void 0 ? columns : 3];
     if (!size) {
         throw new Error(`Column size "${columns}" is invalid. Expected one of: ${Object.keys(sizeColumnMap).join(", ")}`);
     }
