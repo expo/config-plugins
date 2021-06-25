@@ -1,8 +1,7 @@
 import { ConfigPlugin } from "@expo/config-plugins";
-declare const withDynamicIcon: ConfigPlugin<{
-    icons?: string[] | Record<string, {
-        image: string;
-        prerendered?: boolean;
-    }>;
-} | void>;
+declare type IconSet = Record<string, {
+    image: string;
+    prerendered?: boolean;
+}>;
+declare const withDynamicIcon: ConfigPlugin<string[] | IconSet | void>;
 export default withDynamicIcon;

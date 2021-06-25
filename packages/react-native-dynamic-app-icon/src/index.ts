@@ -5,30 +5,47 @@ import {
   withDangerousMod,
   withInfoPlist,
   withXcodeProject,
-  XcodeProject,
 } from "@expo/config-plugins";
 import { generateImageAsync } from "@expo/image-utils";
 import fs from "fs";
 import path from "path";
 
+const folderName = "DynamicAppIcons";
+const size = 60;
+const scales = [2, 3];
+
+type IconSet = Record<string, { image: string; prerendered?: boolean }>;
+
 type Props = {
   icons: Record<string, { image: string; prerendered?: boolean }>;
 };
 
-const withDynamicIcon: ConfigPlugin<{
-  icons?: string[] | Record<string, { image: string; prerendered?: boolean }>;
-} | void> = (config, { icons } = {}) => {
-  const prepped = Array.isArray(icons)
-    ? icons.reduce((prev, curr, i) => ({ ...prev, [i]: { image: curr } }), {})
-    : icons || {};
+function arrayToImages(images: string[]) {
+  return images.reduce(
+    (prev, curr, i) => ({ ...prev, [i]: { image: curr } }),
+    {}
+  );
+}
+
+const withDynamicIcon: ConfigPlugin<string[] | IconSet | void> = (
+  config,
+  props = {}
+) => {
+  const _props = props || {};
+
+  let prepped: Props["icons"] = {};
+
+  if (Array.isArray(_props)) {
+    prepped = arrayToImages(_props);
+  } else if (_props) {
+    prepped = _props;
+  }
 
   config = withIconXcodeProject(config, { icons: prepped });
   config = withIconInfoPlist(config, { icons: prepped });
   config = withIconImages(config, { icons: prepped });
   return config;
 };
-
-const folderName = "dynamic-app-icons";
 
 function getIconName(name: string, size: number, scale?: number) {
   const fileName = `${name}-Icon-${size}x${size}`;
@@ -101,8 +118,8 @@ const withIconXcodeProject: ConfigPlugin<Props> = (config, { icons }) => {
         ) {
           // Only write the file if it doesn't already exist.
           config.modResults = IOSConfig.XcodeUtils.addResourceFileToGroup({
-            filepath: path.join(folderName, iconFileName),
-            groupName: path.join(groupPath, iconFileName),
+            filepath: path.join(groupPath, iconFileName),
+            groupName: groupPath,
             project: config.modResults,
             isBuildFile: true,
             verbose: true,
@@ -116,6 +133,7 @@ const withIconXcodeProject: ConfigPlugin<Props> = (config, { icons }) => {
     return config;
   });
 };
+
 const withIconInfoPlist: ConfigPlugin<Props> = (config, { icons }) => {
   return withInfoPlist(config, async (config) => {
     const altIcons: Record<
@@ -123,34 +141,38 @@ const withIconInfoPlist: ConfigPlugin<Props> = (config, { icons }) => {
       { CFBundleIconFiles: string[]; UIPrerenderedIcon: boolean }
     > = {};
 
-    // 'CFBundleIcons~ipad'
-
     await iterateIconsAsync({ icons }, async (key, icon) => {
-      const refFileName = `${folderName}/${getIconName(key, size)}`;
-
       altIcons[key] = {
         CFBundleIconFiles: [
           // Must be a file path relative to the source root (not a icon set it seems).
-          // i.e. `appIcons/Bacon-Icon-60x60` when the image is `ios/somn/appIcons/Bacon-Icon-60x60@2x.png`
-          refFileName,
+          // i.e. `Bacon-Icon-60x60` when the image is `ios/somn/appIcons/Bacon-Icon-60x60@2x.png`
+          getIconName(key, size),
         ],
         UIPrerenderedIcon: !!icon.prerendered,
       };
     });
 
-    if (
-      typeof config.modResults.CFBundleIcons !== "object" ||
-      Array.isArray(config.modResults.CFBundleIcons) ||
-      !config.modResults.CFBundleIcons
-    ) {
-      config.modResults.CFBundleIcons = {};
+    function applyToPlist(key: string) {
+      if (
+        typeof config.modResults[key] !== "object" ||
+        Array.isArray(config.modResults[key]) ||
+        !config.modResults[key]
+      ) {
+        config.modResults[key] = {};
+      }
+
+      // @ts-expect-error
+      config.modResults[key].CFBundleAlternateIcons = altIcons;
+
+      // @ts-expect-error
+      config.modResults[key].CFBundlePrimaryIcon = {
+        CFBundleIconFiles: ["AppIcon"],
+      };
     }
 
-    config.modResults.CFBundleIcons.CFBundleAlternateIcons = altIcons;
-
-    config.modResults.CFBundleIcons.CFBundlePrimaryIcon = {
-      CFBundleIconFiles: ["AppIcon"],
-    };
+    // Apply for both tablet and phone support
+    applyToPlist("CFBundleIcons");
+    applyToPlist("CFBundleIcons~ipad");
 
     return config;
   });
@@ -166,9 +188,6 @@ const withIconImages: ConfigPlugin<Props> = (config, props) => {
   ]);
 };
 
-const size = 60;
-const scales = [2, 3];
-
 async function createIconsAsync(
   config: ExportedConfigWithProps,
   { icons }: Props
@@ -178,10 +197,11 @@ async function createIconsAsync(
     config.modRequest.projectName!
   );
 
-  // Delete all existing assets...
+  // Delete all existing assets
   await fs.promises.rmdir(path.join(iosRoot, folderName), { recursive: true });
+  // Ensure directory exists
   await fs.promises.mkdir(path.join(iosRoot, folderName), { recursive: true });
-  // Generate new assets...
+  // Generate new assets
   await iterateIconsAsync({ icons }, async (key, icon) => {
     for (const scale of scales) {
       const iconFileName = getIconName(key, size, scale);

@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import { Text, Button, View } from "react-native";
 
 import AppIcon from "react-native-dynamic-app-icon";
@@ -23,13 +24,19 @@ function useIconName() {
 
 export default function App() {
     const [icon, setIcon] = useIconName();
+    const [index, setIndex] = React.useState(0)
+    const icons = [null, '0', '1', '2'];
+
+    React.useEffect(() => {
+        setIcon(icons[index % icons.length]);
+    }, [index]);
 
     return (
         <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
             <Text>Current: {icon}</Text>
             <Button
                 onPress={() => {
-                    setIcon(icon === "main" ? "0" : "main");
+                    setIndex(() => index + 1);
                 }}
                 title="Toggle Icon"
             />
