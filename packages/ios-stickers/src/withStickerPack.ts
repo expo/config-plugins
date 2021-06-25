@@ -32,9 +32,9 @@ export function normalizeStickersProps(
 
 const withStickerPack: ConfigPlugin<Props> = (
   config,
-  { stickers, icon, name, columns } = {}
+  { stickers, icon, name, columns = 3 } = {}
 ) => {
-  const size = sizeColumnMap[columns ?? 3];
+  const size = sizeColumnMap[columns] || "regular";
   if (!size) {
     throw new Error(
       `Column size "${columns}" is invalid. Expected one of: ${Object.keys(
