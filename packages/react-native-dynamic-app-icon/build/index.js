@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.addIconFileToXcode = void 0;
+exports.removeResourceFile = exports.addIconFileToXcode = void 0;
 const config_plugins_1 = require("@expo/config-plugins");
 const image_utils_1 = require("@expo/image-utils");
 const fs_1 = __importDefault(require("fs"));
@@ -44,11 +44,58 @@ function addIconFileToXcode({ projectRoot, project, projectName, fileName, }) {
     return project;
 }
 exports.addIconFileToXcode = addIconFileToXcode;
+/**
+ * Unlinks assets from iOS project. Removes references for fonts from `Info.plist`
+ * fonts provided by application and from `Resources` group
+ */
+function removeResourceFile(project, projectDir, files) {
+    if (!project.pbxGroupByName("Resources")) {
+        console.error('Group "Resources" does not exist in your Xcode project. There is nothing to unlink.');
+        return;
+    }
+    const removeResourceFiles = (f = []) => (f || [])
+        .map((asset) => {
+        console.debug(`Unlinking asset ${asset}`);
+        return project.removeResourceFile(path_1.default.relative(projectDir, asset), {
+            target: project.getFirstTarget().uuid,
+        });
+    })
+        .map((file) => file.basename);
+    removeResourceFiles(files);
+}
+exports.removeResourceFile = removeResourceFile;
+// @ts-ignore
+const pbxFile_1 = __importDefault(require("xcode/lib/pbxFile"));
 const withIconXcodeProject = (config, { icons }) => {
     return config_plugins_1.withXcodeProject(config, async (config) => {
         const groupPath = `${config.modRequest.projectName}/${folderName}`;
         const group = config_plugins_1.IOSConfig.XcodeUtils.ensureGroupRecursively(config.modResults, groupPath);
-        console.log("GROUP:", group);
+        const project = config.modResults;
+        const opt = {};
+        const groupId = Object.keys(project.hash.project.objects["PBXGroup"]).find((id) => {
+            const _group = project.hash.project.objects["PBXGroup"][id];
+            return _group.name === group.name;
+        });
+        const variantGroupId = Object.keys(project.hash.project.objects["PBXVariantGroup"]).find((id) => {
+            const _group = project.hash.project.objects["PBXVariantGroup"][id];
+            return _group.name === group.name;
+        });
+        const children = [...(group.children || [])];
+        for (const child of children) {
+            const file = new pbxFile_1.default(path_1.default.join(group.name, child.comment), opt);
+            file.target = opt ? opt.target : undefined;
+            project.removeFromPbxBuildFileSection(file); // PBXBuildFile
+            project.removeFromPbxFileReferenceSection(file); // PBXFileReference
+            if (group) {
+                if (groupId) {
+                    project.removeFromPbxGroup(file, groupId); //Group other than Resources (i.e. 'splash')
+                }
+                else if (variantGroupId) {
+                    project.removeFromPbxVariantGroup(file, variantGroupId); // PBXVariantGroup
+                }
+            }
+            project.removeFromPbxResourcesBuildPhase(file); // PBXResourcesBuildPhase
+        }
         await iterateIconsAsync({ icons }, async (key, icon, index) => {
             for (const scale of scales) {
                 const iconFileName = getIconName(key, size, scale);
@@ -56,7 +103,9 @@ const withIconXcodeProject = (config, { icons }) => {
                     //  TODO: target membership
                     // Only write the file if it doesn't already exist.
                     config.modResults = config_plugins_1.IOSConfig.XcodeUtils.addResourceFileToGroup({
-                        filepath: path_1.default.join(config.modRequest.platformProjectRoot, groupPath, iconFileName),
+                        filepath: path_1.default.join(
+                        // config.modRequest.platformProjectRoot,
+                        folderName, iconFileName),
                         groupName: path_1.default.join(groupPath, iconFileName),
                         project: config.modResults,
                         isBuildFile: true,

@@ -69,6 +69,38 @@ export function addIconFileToXcode({
   return project;
 }
 
+/**
+ * Unlinks assets from iOS project. Removes references for fonts from `Info.plist`
+ * fonts provided by application and from `Resources` group
+ */
+export function removeResourceFile(
+  project: XcodeProject,
+  projectDir: string,
+  files: any
+) {
+  if (!project.pbxGroupByName("Resources")) {
+    console.error(
+      'Group "Resources" does not exist in your Xcode project. There is nothing to unlink.'
+    );
+    return;
+  }
+
+  const removeResourceFiles = (f: Array<any> = []) =>
+    (f || [])
+      .map((asset) => {
+        console.debug(`Unlinking asset ${asset}`);
+        return project.removeResourceFile(path.relative(projectDir, asset), {
+          target: project.getFirstTarget().uuid,
+        });
+      })
+      .map((file) => file.basename);
+
+  removeResourceFiles(files);
+}
+
+// @ts-ignore
+import pbxFile from "xcode/lib/pbxFile";
+
 const withIconXcodeProject: ConfigPlugin<Props> = (config, { icons }) => {
   return withXcodeProject(config, async (config) => {
     const groupPath = `${config.modRequest.projectName!}/${folderName}`;
@@ -76,8 +108,42 @@ const withIconXcodeProject: ConfigPlugin<Props> = (config, { icons }) => {
       config.modResults,
       groupPath
     );
+    const project = config.modResults;
+    const opt: any = {};
 
-    console.log("GROUP:", group);
+    const groupId = Object.keys(project.hash.project.objects["PBXGroup"]).find(
+      (id) => {
+        const _group = project.hash.project.objects["PBXGroup"][id];
+        return _group.name === group.name;
+      }
+    );
+    const variantGroupId = Object.keys(
+      project.hash.project.objects["PBXVariantGroup"]
+    ).find((id) => {
+      const _group = project.hash.project.objects["PBXVariantGroup"][id];
+      return _group.name === group.name;
+    });
+
+    const children = [...(group.children || [])];
+
+    for (const child of children as {
+      comment: string;
+      value: string;
+    }[]) {
+      const file = new pbxFile(path.join(group.name, child.comment), opt);
+      file.target = opt ? opt.target : undefined;
+
+      project.removeFromPbxBuildFileSection(file); // PBXBuildFile
+      project.removeFromPbxFileReferenceSection(file); // PBXFileReference
+      if (group) {
+        if (groupId) {
+          project.removeFromPbxGroup(file, groupId); //Group other than Resources (i.e. 'splash')
+        } else if (variantGroupId) {
+          project.removeFromPbxVariantGroup(file, variantGroupId); // PBXVariantGroup
+        }
+      }
+      project.removeFromPbxResourcesBuildPhase(file); // PBXResourcesBuildPhase
+    }
 
     await iterateIconsAsync({ icons }, async (key, icon, index) => {
       for (const scale of scales) {
@@ -93,8 +159,8 @@ const withIconXcodeProject: ConfigPlugin<Props> = (config, { icons }) => {
           // Only write the file if it doesn't already exist.
           config.modResults = IOSConfig.XcodeUtils.addResourceFileToGroup({
             filepath: path.join(
-              config.modRequest.platformProjectRoot,
-              groupPath,
+              // config.modRequest.platformProjectRoot,
+              folderName,
               iconFileName
             ),
             groupName: path.join(groupPath, iconFileName),

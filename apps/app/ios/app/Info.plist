@@ -12,11 +12,11 @@
     <dict>
       <key>CFBundleAlternateIcons</key>
       <dict>
-        <key>0_</key>
+        <key>0</key>
         <dict>
           <key>CFBundleIconFiles</key>
           <array>
-            <string>dynamic-app-icons/0_-Icon-60x60</string>
+            <string>dynamic-app-icons/0-Icon-60x60</string>
           </array>
           <key>UIPrerenderedIcon</key>
           <false/>
