@@ -171,6 +171,7 @@ export const withStickerAssets: ConfigPlugin<{
               cacheType: "ios-stickers",
             },
             {
+              resizeMode: "contain",
               src,
             } as any
           );

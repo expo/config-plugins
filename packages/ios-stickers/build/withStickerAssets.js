@@ -44,7 +44,7 @@ function createSticker({ stickerpackPath, name, imageBuffer, extension, accessib
         name: stickerName,
     };
 }
-exports.withStickerAssets = (config, { stickers, icon, size }) => {
+const withStickerAssets = (config, { stickers, icon, size }) => {
     // Default to using the app icon
     if (!icon) {
         icon = (config.ios || {}).icon || config.icon;
@@ -93,6 +93,7 @@ exports.withStickerAssets = (config, { stickers, icon, size }) => {
                         projectRoot: config.modRequest.projectRoot,
                         cacheType: "ios-stickers",
                     }, {
+                        resizeMode: "contain",
                         src,
                     });
                     // let results;
@@ -118,3 +119,4 @@ exports.withStickerAssets = (config, { stickers, icon, size }) => {
         },
     ]);
 };
+exports.withStickerAssets = withStickerAssets;
