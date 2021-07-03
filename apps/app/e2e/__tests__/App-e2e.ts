@@ -6,7 +6,10 @@ import { createCapture } from "../lib";
 const projectRoot = path.resolve(__dirname, "../../");
 
 // https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPInternational/LanguageandLocaleIDs/LanguageandLocaleIDs.html
-const languages = ["en-US", "nl-NL", "zh-CN"];
+const languages = [
+  "en-US",
+  // "nl-NL", "zh-CN"
+];
 
 for (const locale of languages) {
   const { captureAsync, resetAppAsync } = createCapture({
@@ -22,7 +25,7 @@ for (const locale of languages) {
     });
 
     it("should have welcome screen", async () => {
-      await expect(element(by.id("welcome"))).toBeVisible();
+      // await expect(element(by.id("welcome"))).toBeVisible();
       await captureAsync();
     });
 
