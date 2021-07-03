@@ -60,13 +60,13 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-app-pods-
       - run: yarn global add expo-cli
+      - name: 🔨 Prebuild
+        run: expo prebuild -p ios
+        working-directory: apps/app
       - name: 🕵️ Debug CocoaPods lockfiles
         run: git diff Podfile.lock Pods/Manifest.lock
         working-directory: apps/app/ios
         continue-on-error: true
-      - name: 🔨 Prebuild
-        run: expo prebuild -p ios
-        working-directory: apps/app
       - name: ⚛️ Display React Native config
         run: yarn react-native config
         working-directory: apps/app
