@@ -73,3 +73,6 @@ web-build/
 # @end expo-cli
 
 /artifacts
+
+/ios
+/android
