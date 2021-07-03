@@ -31,7 +31,6 @@
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "@react-native-mapbox-gl/maps",
       [
         "@config-plugins/react-native-dynamic-app-icon",
          [
