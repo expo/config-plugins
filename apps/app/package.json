@@ -3,6 +3,7 @@
   "main": "./index.js",
   "version": "1.0.0",
   "scripts": {
+    "detox:clean": "detox clean-framework-cache && detox build-framework-cache",
     "build:ios": "detox build -c ios.sim.debug",
     "test:ios": "detox test -c ios.sim.debug",
     "e2e:ios": "npm run build:ios && npm run test:ios",
