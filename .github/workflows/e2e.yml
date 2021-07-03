@@ -59,6 +59,7 @@ jobs:
           key: ${{ runner.os }}-app-pods-${{ hashFiles('apps/app/ios/Podfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-app-pods-
+      - run: yarn global add expo-cli
       - name: 🕵️ Debug CocoaPods lockfiles
         run: git diff Podfile.lock Pods/Manifest.lock
         working-directory: apps/app/ios
@@ -123,6 +124,7 @@ jobs:
           key: ${{ runner.os }}-gradle-v20210625-${{ hashFiles('android/*.gradle*') }}
           restore-keys: |
             ${{ runner.os }}-gradle-v20210625
+      - run: yarn global add expo-cli
       - name: 🔨 Prebuild
         run: expo prebuild -p android
         working-directory: apps/app
