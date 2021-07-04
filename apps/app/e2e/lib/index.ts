@@ -4,10 +4,19 @@ import * as path from "path";
 import { setStatusBar } from "./setStatusBar";
 
 export function getOutputDir(projectRoot: string, locale: string) {
-  return path.resolve(
-    projectRoot,
-    `meta/screenshots/${device.getPlatform()}/${locale}/`
-  );
+  const store = device.getPlatform() === "ios" ? "apple" : "google";
+  return path.resolve(projectRoot, `merch/${store}/preview/${locale}/`);
+}
+
+function resolveName(str: string) {
+  if (str && device.getPlatform() === "ios" && typeof str === "string") {
+    // Convert a name like: `E9EA2214-6B88-4223-9872-8232168088FB {"type":"iPhone 12 Pro Max"}`
+    // to `iPhone 12 Pro Max`
+    // Name is important for screenshot sorting
+    const match = str.match(/"type"\s?:\s?"(.*)"}/i)?.[1];
+    return match || str;
+  }
+  return str;
 }
 
 export async function takeScreenshotAsync({
@@ -27,8 +36,9 @@ export async function takeScreenshotAsync({
   if (index == null) {
     index = fs.readdirSync(outputDir).length;
   }
+  const deviceName = resolveName(device.name);
 
-  const name = `APP_${device.name}_${index}`.toUpperCase();
+  const name = `APP_${deviceName}-${index}`;
   const imgPath = path.resolve(outputDir, `${name}.png`);
   const imagePath = await device.takeScreenshot(name);
   await fs.promises.copyFile(imagePath, imgPath);
@@ -58,7 +68,7 @@ export function createCapture({
     clearAsync,
     async resetAppAsync() {
       // Clear old screen shots
-      await clearAsync();
+      // await clearAsync();
       // configure status bars
 
       setStatusBar();

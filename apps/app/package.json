@@ -57,7 +57,6 @@
     "@config-plugins/react-native-callkeep": "^0.0.0",
     "@config-plugins/react-native-dynamic-app-icon": "^0.0.0",
     "@config-plugins/react-native-google-cast": "^0.0.0",
-    "@config-plugins/react-native-webrtc": "^0.0.0",
     "expo": "~41.0.0",
     "expo-localization": "~10.1.0",
     "expo-splash-screen": "~0.10.2",
@@ -71,12 +70,10 @@
     "react-native-callkeep": "^4.2.0",
     "react-native-dynamic-app-icon": "^1.1.0",
     "react-native-gesture-handler": "~1.10.2",
-    "react-native-google-cast": "^4.1.2",
     "react-native-reanimated": "~2.1.0",
     "react-native-screens": "~3.0.0",
     "react-native-unimodules": "~0.13.3",
-    "react-native-web": "~0.13.12",
-    "react-native-webrtc": "^1.89.3"
+    "react-native-web": "~0.13.12"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",

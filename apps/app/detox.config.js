@@ -1,4 +1,5 @@
-const iosName = "app";
+const { IOSConfig } = require("@expo/config-plugins");
+const iosName = IOSConfig.XcodeUtils.getHackyProjectName(__dirname, {});
 const emulator = "Pixel_3a_API_30";
 const simulator = "iPhone 11 Pro";
 const derivedDataPath = "ios/build";
