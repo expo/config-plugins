@@ -14,7 +14,7 @@
     "test:android": "detox test -c android.emu.debug",
     "e2e:android": "npm run build:android && npm run test:android",
     "build:android-release": "detox build -c android.emu.release",
-    "test:android-release": "detox test -c android.emu.release",
+    "test:android-release": "detox test -c android.emu.release --headless",
     "e2e:android-release": "npm run build:android-release && npm run test:android-release",
     "clean:android": "pushd android && ./gradlew clean && popd",
     "start": "expo start --dev-client",
