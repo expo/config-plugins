@@ -1,4 +1,4 @@
-import { by, device, element, expect } from "detox";
+import { device } from "detox";
 import * as path from "path";
 
 import { createCapture } from "../lib";
@@ -24,18 +24,8 @@ for (const locale of languages) {
       await device.reloadReactNative();
     });
 
-    it("should have welcome screen", async () => {
+    it("should load app", async () => {
       // await expect(element(by.id("welcome"))).toBeVisible();
-      await captureAsync();
-    });
-
-    xit("should show hello screen after tap", async () => {
-      await element(by.id("hello_button")).tap();
-      await captureAsync();
-    });
-
-    xit("should show world screen after tap", async () => {
-      await element(by.id("world_button")).tap();
       await captureAsync();
     });
   });
