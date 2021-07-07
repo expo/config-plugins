@@ -1,3 +1,8 @@
 import { ConfigPlugin } from "@expo/config-plugins";
-declare const _default: ConfigPlugin<void | {}>;
-export default _default;
+/**
+ * Apply android-jsc-intl configuration for Expo SDK 42 projects.
+ *
+ * This plugin lets you access the `Intl` API in Android apps (without Hermes).
+ */
+declare const withAndroidJscIntl: ConfigPlugin;
+export default withAndroidJscIntl;
