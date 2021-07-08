@@ -27,7 +27,8 @@
       "expo-constants",
       "expo-camera",
       "expo-updates",
-      "react-native-callkeep"
+      "react-native-callkeep",
+      "realm"
     ]
   },
   "react-native-unimodules": {
@@ -75,7 +76,8 @@
     "react-native-screens": "~3.0.0",
     "react-native-unimodules": "~0.13.3",
     "react-native-web": "~0.13.12",
-    "react-native-webrtc": "^1.89.3"
+    "react-native-webrtc": "^1.89.3",
+    "realm": "^10.5.0"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",
