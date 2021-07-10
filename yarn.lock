@@ -1312,7 +1312,7 @@
     xcode "^3.0.1"
     xml2js "^0.4.23"
 
-"@expo/config-plugins@3.0.1", "@expo/config-plugins@^3.0.1":
+"@expo/config-plugins@3.0.1":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@expo/config-plugins/-/config-plugins-3.0.1.tgz#20de49d7ceea0e8318a755159496a89c4b8fcc0d"
   integrity sha512-yWSaRlO6kq7m0XlOmCfZu4gVjfVMAGKvA9TVOreDd3PStJD4jxnguA+dfjjb/whkQygaqGxPg+5xzkeyJKJiCg==
@@ -1330,7 +1330,7 @@
     xcode "^3.0.1"
     xml2js "^0.4.23"
 
-"@expo/config-plugins@^3.0.2":
+"@expo/config-plugins@^3.0.3":
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/@expo/config-plugins/-/config-plugins-3.0.3.tgz#4aff484fd2adedbd12a1cd73daabf07b1a5af0e5"
   integrity sha512-+DWHd/2L3O+njVercxGSzcBUXMm5CSzdvIK+7dU+FRhoiF57y2NzBhfNQcReYx/EY1coBrYOsMtENPhV1tWoWQ==
