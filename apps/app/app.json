@@ -44,6 +44,7 @@
       "@config-plugins/react-native-ble-plx",
       "@config-plugins/react-native-webrtc",
       "@config-plugins/react-native-callkeep",
+      "@config-plugins/android-jsc-intl",
       [
         "@config-plugins/ios-stickers",
         {
