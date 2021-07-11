@@ -25,31 +25,15 @@ function useIconName() {
     return [icon === "default" ? null : icon, setIcon];
 }
 
+
 const icons = [
-    {
-        name: "Automatic",
-        source: require("../../assets/icon.png"),
-        iconId: null,
-        color: "#FFBB8E",
-    },
-    {
-        name: "Spring",
-        source: require("../../assets/stickers/avocool.png"),
-        iconId: "0",
-        color: "#A2A3F1",
-    },
-    {
-        name: "Summer",
-        source: { uri: "https://pbs.twimg.com/profile_images/1308332115919020032/jlqFOD33_400x400.jpg", },
-        color: "#FFDB8A",
-        iconId: "1",
-    },
-    {
-        name: "Autumn",
-        source: { uri: "https://s3.amazonaws.com/assets.materialup.com/users/pictures/000/361/144/preview/open-uri20180613-4-1yz52gq?1528892052" },
-        color: "#FFBB8E",
-        iconId: "2",
-    },
+    { name: "Auto", source: require("../../assets/icons/winter.png"), iconId: null },
+    { name: "Spring", source: require("../../assets/icons/spring.png"), iconId: '0' },
+    { name: "Summer", source: require("../../assets/icons/summer.png"), iconId: '1' },
+    { name: "Autumn", source: require("../../assets/icons/autumn.png"), iconId: '2' },
+    { name: "Fall", source: require("../../assets/icons/fall.png"), iconId: '3' },
+    { name: "Solstice", source: require("../../assets/icons/solstice.png"), iconId: '4' },
+
 ];
 
 export default function App() {
@@ -72,7 +56,6 @@ export default function App() {
                             }}
                             isSelected={icon.iconId === _icon}
                             name={icon.name}
-                            color={icon.color}
                             source={icon.source}
                             key={String(index)}
                         />
