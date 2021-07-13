@@ -1,9 +1,9 @@
 {
-  "name": "@config-plugins/template",
+  "name": "@config-plugins/react-native-quick-actions",
   "version": "0.0.0",
-  "description": "Config plugin to auto configure iOS iMessage stickers",
-  "main": "build/index.js",
-  "types": "build/index.d.ts",
+  "description": "Config plugin for react-native-quick-actions package",
+  "main": "build/withReactNativeQuickActions.js",
+  "types": "build/withReactNativeQuickActions.d.ts",
   "sideEffects": false,
   "scripts": {
     "build": "expo-module build",
@@ -18,7 +18,9 @@
     "react",
     "expo",
     "config-plugins",
-    "prebuild"
+    "prebuild",
+    "react-native-quick-actions",
+    "expo-42"
   ],
   "jest": {
     "preset": "expo-module-scripts"

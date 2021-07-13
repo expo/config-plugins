@@ -27,7 +27,9 @@
       "expo-constants",
       "expo-camera",
       "expo-updates",
-      "react-native-callkeep"
+      "react-native-callkeep",
+      "react-native-webrtc",
+      "react-native-quick-actions"
     ]
   },
   "react-native-unimodules": {
@@ -58,6 +60,7 @@
     "@config-plugins/react-native-dynamic-app-icon": "^0.0.0",
     "@config-plugins/react-native-google-cast": "^0.0.0",
     "@config-plugins/react-native-webrtc": "^0.0.0",
+    "@config-plugins/react-native-quick-actions": "^0.0.0",
     "expo": "~41.0.0",
     "expo-localization": "~10.1.0",
     "expo-splash-screen": "~0.10.2",
@@ -69,6 +72,7 @@
     "react-dom": "16.13.1",
     "react-native": "~0.63.4",
     "react-native-ble-plx": "^2.0.2",
+    "react-native-quick-actions": "^0.3.13",
     "react-native-callkeep": "^4.2.0",
     "react-native-dynamic-app-icon": "^1.1.0",
     "react-native-gesture-handler": "~1.10.2",

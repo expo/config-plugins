@@ -4,7 +4,7 @@
     "slug": "app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/icons/winter.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -33,11 +33,23 @@
     "plugins": [
       [
         "@config-plugins/react-native-dynamic-app-icon",
-         [
-            "./assets/stickers/avocool.png",
-            "https://pbs.twimg.com/profile_images/1308332115919020032/jlqFOD33_400x400.jpg",
-            "https://s3.amazonaws.com/assets.materialup.com/users/pictures/000/361/144/preview/open-uri20180613-4-1yz52gq?1528892052"
-         ]
+        [
+          "./assets/icons/spring.png",
+          "./assets/icons/summer.png",
+          "./assets/icons/autumn.png",
+          "./assets/icons/fall.png",
+          "./assets/icons/solstice.png"
+        ]
+      ],
+      [
+        "@config-plugins/react-native-quick-actions",
+        [
+          {
+            "title": "Take Photo",
+            "type": "photo",
+            "iconType": "UIApplicationShortcutIconTypeCapturePhoto"
+          }
+        ]
       ],
       "@config-plugins/detox",
       "@config-plugins/react-native-google-cast",
