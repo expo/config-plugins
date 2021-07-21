@@ -15,7 +15,8 @@ const withBluetoothPermissions = (c, { bluetoothAlwaysPermission, bluetoothPerip
         }
         if (bluetoothPeripheralPermission !== false) {
             config.modResults.NSBluetoothPeripheralUsageDescription =
-                config.modResults.NSBluetoothPeripheralUsageDescription ||
+                bluetoothPeripheralPermission ||
+                    config.modResults.NSBluetoothPeripheralUsageDescription ||
                     BLUETOOTH_PERIPHERAL_USAGE;
         }
         return config;

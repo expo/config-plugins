@@ -9,7 +9,7 @@ Object.defineProperty(exports, "BackgroundMode", { enumerable: true, get: functi
 const withBluetoothPermissions_1 = require("./withBluetoothPermissions");
 const pkg = { name: "react-native-ble-plx", version: "UNVERSIONED" }; //require('react-native-ble-plx/package.json')
 /**
- * Apply BLE configuration for Expo SDK 41 projects.
+ * Apply BLE configuration for Expo SDK 42 projects.
  */
 const withBLE = (config, props = {}) => {
     var _a;
