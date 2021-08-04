@@ -28,7 +28,7 @@ const plist_1 = __importDefault(require("@expo/plist"));
 const fs = __importStar(require("fs"));
 const path = __importStar(require("path"));
 const withStickerXcodeTarget_1 = require("./withStickerXcodeTarget");
-exports.withStickersPlist = (config, { name }) => {
+const withStickersPlist = (config, { name }) => {
     return config_plugins_1.withDangerousMod(config, [
         "ios",
         async (config) => {
@@ -58,3 +58,4 @@ exports.withStickersPlist = (config, { name }) => {
         },
     ]);
 };
+exports.withStickersPlist = withStickersPlist;

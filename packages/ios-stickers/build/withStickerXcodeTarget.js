@@ -8,7 +8,7 @@ function getProjectStickersName(name) {
     return `${name} Stickers`;
 }
 exports.getProjectStickersName = getProjectStickersName;
-exports.withStickerXcodeTarget = (config) => {
+const withStickerXcodeTarget = (config) => {
     return config_plugins_1.withXcodeProject(config, (config) => {
         const stickerPackName = getProjectStickersName(config.modRequest.projectName);
         xcodeSticker_1.addStickersTarget(config.modResults, stickerPackName, config.ios.bundleIdentifier, stickerPackName);
@@ -22,3 +22,4 @@ exports.withStickerXcodeTarget = (config) => {
         return config;
     });
 };
+exports.withStickerXcodeTarget = withStickerXcodeTarget;
