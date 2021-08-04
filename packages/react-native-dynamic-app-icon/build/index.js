@@ -167,3 +167,4 @@ async function iterateIconsAsync({ icons }, callback) {
     }
 }
 exports.default = withDynamicIcon;
+//# sourceMappingURL=index.js.map
