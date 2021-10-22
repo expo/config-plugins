@@ -3,6 +3,7 @@ import {
   ConfigPlugin,
   createRunOncePlugin,
 } from "@expo/config-plugins";
+import { withBitcodeDisabled } from "./withBitcodeDisabled";
 
 import { withDesugaring } from "./withDesugaring";
 import { IOSPermissionsProps, withPermissions } from "./withPermissions";
@@ -17,6 +18,7 @@ const withWebRTC: ConfigPlugin<IOSPermissionsProps | void> = (
 
   // iOS
   config = withPermissions(config, _props);
+  config = withBitcodeDisabled(config);
 
   // Android
   config = AndroidConfig.Permissions.withPermissions(config, [
