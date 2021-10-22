@@ -1,12 +1,9 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.withAndroidGoogleCast = void 0;
 const config_plugins_1 = require("@expo/config-plugins");
 const generateCode_1 = require("@expo/config-plugins/build/utils/generateCode");
-const fs_1 = __importDefault(require("fs"));
+const codeMod_1 = require("@expo/config-plugins/build/android/codeMod");
 const { addMetaDataItemToMainApplication, getMainApplicationOrThrow } = config_plugins_1.AndroidConfig.Manifest;
 const META_PROVIDER_CLASS = "com.google.android.gms.cast.framework.OPTIONS_PROVIDER_CLASS_NAME";
 const META_RECEIVER_APP_ID = "com.reactnative.googlecast.RECEIVER_APPLICATION_ID";
@@ -65,24 +62,19 @@ const withAppBuildGradleImport = (config, { version }) => {
     });
 };
 const withMainActivityLazyLoading = (config) => {
-    return config_plugins_1.withDangerousMod(config, [
-        "android",
-        async (config) => {
-            const file = await config_plugins_1.AndroidConfig.Paths.getMainActivityAsync(config.modRequest.projectRoot);
-            if (file.language === "java") {
-                let src = config_plugins_1.AndroidConfig.UserInterfaceStyle.addJavaImports(file.contents, ["com.google.android.gms.cast.framework.CastContext"], true);
-                src = addGoogleCastLazyLoadingImport(src).contents;
-                await fs_1.default.promises.writeFile(file.path, src, "utf-8");
-            }
-            else {
-                throw new Error("react-native-google-cast config plugin does not support kotlin MainActivity yet.");
-            }
-            return config;
-        },
-    ]);
+    return config_plugins_1.withMainActivity(config, async (config) => {
+        let src = codeMod_1.addImports(config.modResults.contents, ["com.google.android.gms.cast.framework.CastContext"], config.modResults.language === "java");
+        if (config.modResults.language === "java") {
+            config.modResults.contents = addGoogleCastLazyLoadingImport(src).contents;
+        }
+        else {
+            throw new Error("react-native-google-cast config plugin does not support kotlin MainActivity yet.");
+        }
+        return config;
+    });
 };
 // castFrameworkVersion
-exports.withAndroidGoogleCast = (config, props) => {
+const withAndroidGoogleCast = (config, props) => {
     var _a, _b;
     config = withAndroidManifestCast(config, {
         receiverAppId: props.receiverAppId,
@@ -98,6 +90,7 @@ exports.withAndroidGoogleCast = (config, props) => {
     });
     return config;
 };
+exports.withAndroidGoogleCast = withAndroidGoogleCast;
 function addGoogleCastLazyLoadingImport(src) {
     const newSrc = [];
     newSrc.push("    CastContext.getSharedInstance(this);");
