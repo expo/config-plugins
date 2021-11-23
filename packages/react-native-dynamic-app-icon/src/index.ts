@@ -77,6 +77,9 @@ const withIconXcodeProject: ConfigPlugin<Props> = (config, { icons }) => {
         return _group.name === group.name;
       }
     );
+    if (!project.hash.project.objects["PBXVariantGroup"]) {
+      project.hash.project.objects["PBXVariantGroup"] = {};
+    }
     const variantGroupId = Object.keys(
       project.hash.project.objects["PBXVariantGroup"]
     ).find((id) => {
