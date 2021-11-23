@@ -201,7 +201,9 @@ async function createIconsAsync(
   );
 
   // Delete all existing assets
-  await fs.promises.rmdir(path.join(iosRoot, folderName), { recursive: true });
+  await fs.promises
+    .rmdir(path.join(iosRoot, folderName), { recursive: true })
+    .catch(() => null);
   // Ensure directory exists
   await fs.promises.mkdir(path.join(iosRoot, folderName), { recursive: true });
   // Generate new assets
