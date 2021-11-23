@@ -4,7 +4,7 @@ Config plugin to auto configure `react-native-ble-plx` when the native code is g
 
 ## Expo installation
 
-> Tested against Expo SDK 42
+> Tested against Expo SDK 43
 
 > This package cannot be used in the "Expo Go" app because [it requires custom native code](https://docs.expo.io/workflow/customizing/).
 > First install the package with yarn, npm, or [`expo install`](https://docs.expo.io/workflow/expo-cli/#expo-install).

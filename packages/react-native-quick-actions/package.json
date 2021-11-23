@@ -1,6 +1,6 @@
 {
   "name": "@config-plugins/react-native-quick-actions",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Config plugin for react-native-quick-actions package",
   "main": "build/withReactNativeQuickActions.js",
   "types": "build/withReactNativeQuickActions.d.ts",
@@ -26,7 +26,7 @@
     "preset": "expo-module-scripts"
   },
   "dependencies": {
-    "@expo/config-plugins": "^4.0.4"
+    "@expo/config-plugins": "^4.0.7"
   },
   "devDependencies": {
     "expo-module-scripts": "^2.0.0"

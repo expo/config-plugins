@@ -14,7 +14,7 @@ Ensure you use versions that work together!
 
 ## Expo installation
 
-> Tested against Expo SDK 41
+> Tested against Expo SDK 43
 
 > This package cannot be used in the "Expo Go" app because [it requires custom native code](https://docs.expo.io/workflow/customizing/).
 > First install the package with yarn, npm, or [`expo install`](https://docs.expo.io/workflow/expo-cli/#expo-install).

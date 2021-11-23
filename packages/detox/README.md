@@ -2,9 +2,20 @@
 
 Config plugin to auto configure Detox when the native code is generated (`expo prebuild`).
 
+## Versioning
+
+Ensure you use versions that work together!
+
+| `expo` | `detox` | `@config-plugins/detox` |
+| ------ | ------- | ----------------------- |
+| 43.0.0 | 19.1.0  | 1.0.0                   |
+| 40.0.0 | 18.6.2  | 0.0.0                   |
+
+Most notably, the minimum required Kotlin version changed from `1.3.50` in SDK 40 to `1.4.21` in SDK 43. Failure to use the correct versioning could result in Android build errors like `Execution failed for task ':react-native-screens:compileDebugKotlin'.` or `Execution failed for task ':expo:compileDebugKotlin'.`.
+
 ### Add the package to your npm dependencies
 
-> Tested against Expo SDK 41
+> Tested against Expo SDK 43
 
 ```
 yarn add detox @config-plugins/detox

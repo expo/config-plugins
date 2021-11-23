@@ -1,6 +1,6 @@
 {
   "name": "@config-plugins/react-native-dynamic-app-icon",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Config plugin to auto configure react-native-dynamic-app-icon",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -22,8 +22,8 @@
     "preset": "expo-module-scripts"
   },
   "dependencies": {
-    "@expo/config-plugins": "^3.0.6",
-    "@expo/image-utils": "^0.3.16",
+    "@expo/config-plugins": "^4.0.7",
+    "@expo/image-utils": "^0.3.17",
     "xcode": "^3.0.1"
   },
   "devDependencies": {

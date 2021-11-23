@@ -1,6 +1,6 @@
 {
   "name": "@config-plugins/react-native-webrtc",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Config plugin to setup react-native-webrtc on prebuild",
   "main": "build/withWebRTC.js",
   "types": "build/withWebRTC.d.ts",
@@ -26,7 +26,7 @@
     "preset": "expo-module-scripts"
   },
   "dependencies": {
-    "@expo/config-plugins": "^4.0.4"
+    "@expo/config-plugins": "^4.0.7"
   },
   "devDependencies": {
     "expo-module-scripts": "^2.0.0"
