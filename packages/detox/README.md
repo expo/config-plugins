@@ -4,7 +4,7 @@ Config plugin to auto configure Detox when the native code is generated (`expo p
 
 ### Add the package to your npm dependencies
 
-> Tested against Expo SDK 41
+> Tested against Expo SDK 43
 
 ```
 yarn add detox @config-plugins/detox
