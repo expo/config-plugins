@@ -17,5 +17,4 @@ const withGoogleCast = (config, _props) => {
     });
     return config;
 };
-const pkg = { name: "react-native-google-cast", version: "UNVERSIONED" };
-exports.default = config_plugins_1.createRunOncePlugin(withGoogleCast, pkg.name, pkg.version);
+exports.default = config_plugins_1.createRunOncePlugin(withGoogleCast, "react-native-google-cast");
