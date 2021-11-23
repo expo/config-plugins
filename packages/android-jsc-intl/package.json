@@ -1,6 +1,6 @@
 {
   "name": "@config-plugins/android-jsc-intl",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Config plugin for android-jsc-intl package",
   "main": "build/withAndroidJscIntl.js",
   "types": "build/withAndroidJscIntl.d.ts",
