@@ -1671,6 +1671,66 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
+"@config-plugins/android-jsc-intl@^0.0.0":
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/@config-plugins/android-jsc-intl/-/android-jsc-intl-0.0.0.tgz#96c5640c3232fd9140416d32c5cc8f0ae9c2cabe"
+  integrity sha512-nQgA2wnsiWuu3O+yDy+Kgbf8PpNsZaUo+jOZI4ToFv+hw4caKbSMVN21/ibj4S5ZtGGgrfj+a+3g24qpyLlljw==
+  dependencies:
+    "@expo/config-plugins" "^3.0.3"
+
+"@config-plugins/detox@^0.0.0":
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/@config-plugins/detox/-/detox-0.0.0.tgz#f28432848e7b9d13f40cb4c49e196f710c00f607"
+  integrity sha512-MO43Pcd1Qix3hi5+RRKE3pzpAumpssPOkV4BuYppP9UwZy/HxIAHtNoBm3S77nrzjhuZZuYz9YFv4qQRUP7cIw==
+  dependencies:
+    "@expo/config-plugins" "~2.0.3"
+
+"@config-plugins/ios-stickers@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@config-plugins/ios-stickers/-/ios-stickers-0.0.3.tgz#413474334729de1b9ad727bea6cc9cc4b3342dc3"
+  integrity sha512-z1O0scyiudLB/DjADCDj1tVWYQ8EQgsIIt3cid4GWvY8zWBzM10srIZKYQloOFLLFKbZ2aKd28FSLpKivHHsug==
+  dependencies:
+    "@expo/config-plugins" "^3.0.6"
+    "@expo/image-utils" "^0.3.16"
+    xcode "^3.0.1"
+
+"@config-plugins/react-native-ble-plx@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@config-plugins/react-native-ble-plx/-/react-native-ble-plx-0.0.1.tgz#abfb734b25ee91b2e54e460d3f19121a30a184cf"
+  integrity sha512-j7fApnwMdWCOLB9ykmtj0zHuVmD9gzlUl8PL6R/DAb2DCJwLqoCWrTAzFPzgovK82gbnsyDLrnkQLzSPgB6uOQ==
+  dependencies:
+    "@expo/config-plugins" "^3.0.3"
+
+"@config-plugins/react-native-callkeep@^0.0.0":
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/@config-plugins/react-native-callkeep/-/react-native-callkeep-0.0.0.tgz#1250dc78e0eb67805b321fd61e917d6eb22bcd6c"
+  integrity sha512-i38KCvZSMwcJ952XRX/xQbhvUGARBzEIWL6eW66pb4AIi4Jgsqsi5/z10kPylp3+3DfbcPlHsyaeKY/77kx0Mg==
+  dependencies:
+    "@expo/config-plugins" "^3.0.1"
+
+"@config-plugins/react-native-dynamic-app-icon@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@config-plugins/react-native-dynamic-app-icon/-/react-native-dynamic-app-icon-0.0.1.tgz#7cb0f755679203686afe8daa29c53e856752ab76"
+  integrity sha512-tPNnfN7/QWJ932LDuhp3YtMDD47ZyLk7MMezt0XKHzDraXIgsSSMwKKLpOBEFyB8LpD25GdXLqiLtMH7IP3a6g==
+  dependencies:
+    "@expo/config-plugins" "^3.0.6"
+    "@expo/image-utils" "^0.3.16"
+    xcode "^3.0.1"
+
+"@config-plugins/react-native-google-cast@^0.0.0":
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/@config-plugins/react-native-google-cast/-/react-native-google-cast-0.0.0.tgz#c29fe8fe8da6ee0c1e7ff2fa9a184f8c3ff34a42"
+  integrity sha512-5gnehKFR5ifo/XzVBfHK6pLTiJ7dA+UzjW5DJZCPOmhCjOWevXpp51y08MPwJgxTZ41nI2WvTxy5XipMfPsJDQ==
+  dependencies:
+    "@expo/config-plugins" "^3.0.1"
+
+"@config-plugins/react-native-quick-actions@^0.0.0":
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/@config-plugins/react-native-quick-actions/-/react-native-quick-actions-0.0.0.tgz#735963375834c4b2397e060f361f2e5e6245d3ec"
+  integrity sha512-cZf5IO/N+SBQEXDZXLlUdEjZZN78CWpXYIme4gVVeSrTtjajPxVUZ6e890Ftd4SXOpharkH66E7jJQRcp/6piA==
+  dependencies:
+    "@expo/config-plugins" "^3.0.3"
+
 "@egjs/hammerjs@^2.0.17":
   version "2.0.17"
   resolved "https://registry.yarnpkg.com/@egjs/hammerjs/-/hammerjs-2.0.17.tgz#5dc02af75a6a06e4c2db0202cae38c9263895124"
@@ -1789,7 +1849,7 @@
     xcode "^3.0.1"
     xml2js "^0.4.23"
 
-"@expo/config-plugins@3.1.0":
+"@expo/config-plugins@3.1.0", "@expo/config-plugins@^3.0.1", "@expo/config-plugins@^3.0.3", "@expo/config-plugins@^3.0.6":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@expo/config-plugins/-/config-plugins-3.1.0.tgz#0752ff33c5eab21cf42034a44e79df97f0f867f8"
   integrity sha512-V5qxaxCAExBM0TXmbU1QKiZcAGP3ecu7KXede8vByT15cro5PkcWu2sSdJCYbHQ/gw6Vf/i8sr8gKlN8V8TSLg==
@@ -1850,6 +1910,24 @@
     slash "^3.0.0"
     xcode "^3.0.1"
     xml2js "0.4.23"
+
+"@expo/config-plugins@~2.0.3":
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/@expo/config-plugins/-/config-plugins-2.0.4.tgz#955fd70a2aeefbe99ec71cecb1d7ea7b626dc79e"
+  integrity sha512-JGt/X2tFr7H8KBQrKfbGo9hmCubQraMxq5sj3bqDdKmDOLcE1a/EDCP9g0U4GHsa425J8VDIkQUHYz3h3ndEXQ==
+  dependencies:
+    "@expo/config-types" "^41.0.0"
+    "@expo/json-file" "8.2.30"
+    "@expo/plist" "0.0.13"
+    debug "^4.3.1"
+    find-up "~5.0.0"
+    fs-extra "9.0.0"
+    getenv "^1.0.0"
+    glob "7.1.6"
+    resolve-from "^5.0.0"
+    slash "^3.0.0"
+    xcode "^3.0.1"
+    xml2js "^0.4.23"
 
 "@expo/config-types@^40.0.0-beta.2":
   version "40.0.0-beta.2"
@@ -1995,7 +2073,7 @@
     semver "7.3.2"
     tempy "0.3.0"
 
-"@expo/image-utils@0.3.17", "@expo/image-utils@^0.3.17":
+"@expo/image-utils@0.3.17", "@expo/image-utils@^0.3.16", "@expo/image-utils@^0.3.17":
   version "0.3.17"
   resolved "https://registry.yarnpkg.com/@expo/image-utils/-/image-utils-0.3.17.tgz#75e2606749ffa1284de570245f668503e4a06c3f"
   integrity sha512-zaOj24JK5F+pPGpULP8D9aAbApcR7ixV2GjT43YzZqjHuyxQ5knI+EsbmZ1TNnA1vNJJKMYrigB5+chcUGwkpw==
@@ -2185,10 +2263,10 @@
     workbox-webpack-plugin "^3.6.3"
     worker-loader "^2.0.0"
 
-"@expo/xcpretty@^3.1.4":
-  version "3.1.4"
-  resolved "https://registry.yarnpkg.com/@expo/xcpretty/-/xcpretty-3.1.4.tgz#cbcde61dc8885b0d6d0cbea879240145dc1a56ea"
-  integrity sha512-zjZo89YkDW/C2wh10wAkAHYrdXwLdiMbKrGmADLJvz25yp7QpXgDR8KOaa1FUU/vYqmHZ6lshjrMMJpJWEqTRw==
+"@expo/xcpretty@^4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@expo/xcpretty/-/xcpretty-4.1.0.tgz#63a1b54635f1e67250bfe74d58f25d2b52c5818a"
+  integrity sha512-Q2FCVFpMEeWk2oxEx3nFg2AAwyzPdSAOVWa25f734+qCL9szL7sj20a53q4QH1T52BaGvdLoBaq/cNNCA5SzRg==
   dependencies:
     "@babel/code-frame" "7.10.4"
     chalk "^4.1.0"
