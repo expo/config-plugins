@@ -29,9 +29,9 @@ Next, rebuild your app as described in the ["Adding custom native code"](https:/
 
 The plugin provides props for extra customization. Every time you change the props or plugins, you'll need to rebuild (and `prebuild`) the native app. If no extra properties are added, defaults will be used.
 
-- `iosReceiverAppId` (_string_): TODO. Default `CC1AD845`
-- `androidReceiverAppId` (_string_): TODO.
-- `androidPlayServicesCastFrameworkVersion` (_string_): TODO. Default `+`
+- `iosReceiverAppId` (_string_): unknown. Default `CC1AD845`
+- `androidReceiverAppId` (_string_): unknown.
+- `androidPlayServicesCastFrameworkVersion` (_string_): Version for the gradle package. Default `+`
 
 #### Example
 
