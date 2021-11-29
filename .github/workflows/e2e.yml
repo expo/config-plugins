@@ -95,7 +95,7 @@ jobs:
           path: apps/app/artifacts
 
   android:
-    runs-on: macos-11
+    runs-on: macos-latest
     steps:
       - name: 👀 Checkout
         uses: actions/checkout@v2
