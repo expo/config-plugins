@@ -77,6 +77,9 @@ const withIconXcodeProject: ConfigPlugin<Props> = (config, { icons }) => {
         return _group.name === group.name;
       }
     );
+    if (!project.hash.project.objects["PBXVariantGroup"]) {
+      project.hash.project.objects["PBXVariantGroup"] = {};
+    }
     const variantGroupId = Object.keys(
       project.hash.project.objects["PBXVariantGroup"]
     ).find((id) => {
@@ -198,7 +201,9 @@ async function createIconsAsync(
   );
 
   // Delete all existing assets
-  await fs.promises.rmdir(path.join(iosRoot, folderName), { recursive: true });
+  await fs.promises
+    .rmdir(path.join(iosRoot, folderName), { recursive: true })
+    .catch(() => null);
   // Ensure directory exists
   await fs.promises.mkdir(path.join(iosRoot, folderName), { recursive: true });
   // Generate new assets

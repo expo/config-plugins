@@ -8,6 +8,8 @@ const withGoogleCast = (config, _props) => {
     // TODO: Are the Android and iOS receiverAppId values the same?
     config = withIosGoogleCast_1.withIosGoogleCast(config, {
         receiverAppId: props.iosReceiverAppId,
+        // disableDiscoveryAutostart?: boolean;
+        // startDiscoveryAfterFirstTapOnCastButton?: boolean;
     });
     config = withAndroidGoogleCast_1.withAndroidGoogleCast(config, {
         receiverAppId: props.androidReceiverAppId,
@@ -15,5 +17,4 @@ const withGoogleCast = (config, _props) => {
     });
     return config;
 };
-const pkg = { name: "react-native-google-cast", version: "UNVERSIONED" };
-exports.default = config_plugins_1.createRunOncePlugin(withGoogleCast, pkg.name, pkg.version);
+exports.default = config_plugins_1.createRunOncePlugin(withGoogleCast, "react-native-google-cast");

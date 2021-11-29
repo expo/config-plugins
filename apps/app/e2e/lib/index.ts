@@ -57,10 +57,10 @@ export function createCapture({
       locale,
     });
 
-  const clearAsync = () => {
+  const clearAsync = async () => {
     // Clear old screen shots
     const outputDir = getOutputDir(projectRoot, locale);
-    fs.rmdirSync(outputDir, { recursive: true });
+    await fs.promises.rmdir(outputDir, { recursive: true }).catch(() => null);
   };
 
   return {

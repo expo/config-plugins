@@ -6,7 +6,7 @@ const config_plugins_1 = require("@expo/config-plugins");
  * Set the `android.enableDexingArtifactTransform.desugaring` value in the static `gradle.properties` file.
  * This is used to disable desugaring to fix weird Android bugs. [Learn more](https://github.com/jitsi/jitsi-meet/issues/7911#issuecomment-714323255).
  */
-exports.withDesugaring = (config, isDisabled) => {
+const withDesugaring = (config, isDisabled) => {
     const desugaringKey = "android.enableDexingArtifactTransform.desugaring";
     return config_plugins_1.withGradleProperties(config, (config) => {
         config.modResults = config.modResults.filter((item) => {
@@ -23,3 +23,4 @@ exports.withDesugaring = (config, isDisabled) => {
         return config;
     });
 };
+exports.withDesugaring = withDesugaring;

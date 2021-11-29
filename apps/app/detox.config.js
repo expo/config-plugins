@@ -1,6 +1,6 @@
 const iosName = "app";
 const emulator = process.env.CI ? "app" : "Pixel_3a_API_30";
-const simulator = "iPhone 11 Pro";
+const simulator = "iPhone 13 Pro";
 const derivedDataPath = "ios/build";
 const sdk = "iphonesimulator";
 

@@ -3,13 +3,14 @@ import {
   ConfigPlugin,
   withAndroidManifest,
   withAppBuildGradle,
-  withDangerousMod,
+  withMainActivity,
   withProjectBuildGradle,
 } from "@expo/config-plugins";
 import {
   mergeContents,
   removeContents,
 } from "@expo/config-plugins/build/utils/generateCode";
+import { addImports } from "@expo/config-plugins/build/android/codeMod";
 import fs from "fs";
 
 const { addMetaDataItemToMainApplication, getMainApplicationOrThrow } =
@@ -119,29 +120,21 @@ const withAppBuildGradleImport: ConfigPlugin<{ version?: string }> = (
 };
 
 const withMainActivityLazyLoading: ConfigPlugin = (config) => {
-  return withDangerousMod(config, [
-    "android",
-    async (config) => {
-      const file = await AndroidConfig.Paths.getMainActivityAsync(
-        config.modRequest.projectRoot
+  return withMainActivity(config, async (config) => {
+    let src = addImports(
+      config.modResults.contents,
+      ["com.google.android.gms.cast.framework.CastContext"],
+      config.modResults.language === "java"
+    );
+    if (config.modResults.language === "java") {
+      config.modResults.contents = addGoogleCastLazyLoadingImport(src).contents;
+    } else {
+      throw new Error(
+        "react-native-google-cast config plugin does not support kotlin MainActivity yet."
       );
-      if (file.language === "java") {
-        let src = AndroidConfig.UserInterfaceStyle.addJavaImports(
-          file.contents,
-          ["com.google.android.gms.cast.framework.CastContext"],
-          true
-        );
-
-        src = addGoogleCastLazyLoadingImport(src).contents;
-        await fs.promises.writeFile(file.path, src, "utf-8");
-      } else {
-        throw new Error(
-          "react-native-google-cast config plugin does not support kotlin MainActivity yet."
-        );
-      }
-      return config;
-    },
-  ]);
+    }
+    return config;
+  });
 };
 
 // castFrameworkVersion

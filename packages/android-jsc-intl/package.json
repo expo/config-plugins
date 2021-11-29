@@ -1,0 +1,34 @@
+{
+  "name": "@config-plugins/android-jsc-intl",
+  "version": "0.0.1",
+  "description": "Config plugin for android-jsc-intl package",
+  "main": "build/withAndroidJscIntl.js",
+  "types": "build/withAndroidJscIntl.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "build": "expo-module build",
+    "clean": "expo-module clean",
+    "lint": "expo-module lint",
+    "test": "expo-module test",
+    "prepare": "expo-module prepare",
+    "prepublishOnly": "expo-module prepublishOnly",
+    "expo-module": "expo-module"
+  },
+  "keywords": [
+    "react",
+    "expo",
+    "config-plugins",
+    "prebuild",
+    "android-jsc-intl",
+    "expo-42"
+  ],
+  "jest": {
+    "preset": "expo-module-scripts"
+  },
+  "dependencies": {
+    "@expo/config-plugins": "^4.0.7"
+  },
+  "devDependencies": {
+    "expo-module-scripts": "^2.0.0"
+  }
+}

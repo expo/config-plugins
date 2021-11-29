@@ -70,18 +70,21 @@ const withIosAppDelegateLoaded = (config, props) => {
         return config;
     });
 };
-exports.withIosGoogleCast = (config, props) => {
+const withIosGoogleCast = (config, props) => {
     config = withIosWifiEntitlements(config);
     config = withIosLocalNetworkPermissions(config, {
         receiverAppId: props.receiverAppId,
     });
     config = withIosAppDelegateLoaded(config, {
         receiverAppId: props.receiverAppId,
+        // disableDiscoveryAutostart?: boolean;
+        // startDiscoveryAfterFirstTapOnCastButton?: boolean;
     });
     // TODO
     //   config = withIosGuestMode(config)
     return config;
 };
+exports.withIosGoogleCast = withIosGoogleCast;
 // From expo-cli RNMaps setup
 const MATCH_INIT = /(?:(self\.|_)(\w+)\s?=\s?\[\[UMModuleRegistryAdapter alloc\])|(?:RCTBridge\s?\*\s?(\w+)\s?=\s?\[\[RCTBridge alloc\])/g;
 function addGoogleCastAppDelegateDidFinishLaunchingWithOptions(src, { receiverAppId = null, disableDiscoveryAutostart = false, startDiscoveryAfterFirstTapOnCastButton = true, } = {}) {

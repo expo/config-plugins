@@ -47,6 +47,9 @@ const withIconXcodeProject = (config, { icons }) => {
             const _group = project.hash.project.objects["PBXGroup"][id];
             return _group.name === group.name;
         });
+        if (!project.hash.project.objects["PBXVariantGroup"]) {
+            project.hash.project.objects["PBXVariantGroup"] = {};
+        }
         const variantGroupId = Object.keys(project.hash.project.objects["PBXVariantGroup"]).find((id) => {
             const _group = project.hash.project.objects["PBXVariantGroup"][id];
             return _group.name === group.name;
@@ -133,7 +136,9 @@ const withIconImages = (config, props) => {
 async function createIconsAsync(config, { icons }) {
     const iosRoot = path_1.default.join(config.modRequest.platformProjectRoot, config.modRequest.projectName);
     // Delete all existing assets
-    await fs_1.default.promises.rmdir(path_1.default.join(iosRoot, folderName), { recursive: true });
+    await fs_1.default.promises
+        .rmdir(path_1.default.join(iosRoot, folderName), { recursive: true })
+        .catch(() => null);
     // Ensure directory exists
     await fs_1.default.promises.mkdir(path_1.default.join(iosRoot, folderName), { recursive: true });
     // Generate new assets
@@ -167,3 +172,4 @@ async function iterateIconsAsync({ icons }, callback) {
     }
 }
 exports.default = withDynamicIcon;
+//# sourceMappingURL=index.js.map

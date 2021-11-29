@@ -2,9 +2,19 @@
 
 Config plugin to auto configure `react-native-webrtc` when the native code is generated (`expo prebuild`). [Upstream PR](https://github.com/react-native-webrtc/react-native-webrtc/pull/1013).
 
+## Versioning
+
+Ensure you use versions that work together!
+
+| `expo` | `react-native-webrtc` | `@config-plugins/react-native-webrtc` |
+| ------ | --------------------- | ------------------------------------- |
+| 43.0.0 | 1.92.2                | 1.0.0                                 |
+
+> Expo SDK 42 uses `react-native@0.63` which doesn't work with `react-native-webrtc`, specifically iOS production builds fail. Meaning this package is only supported for Expo SDK +43.
+
 ## Expo installation
 
-> Tested against Expo SDK 41
+> Tested against Expo SDK 43
 
 > This package cannot be used in the "Expo Go" app because [it requires custom native code](https://docs.expo.io/workflow/customizing/).
 > First install the package with yarn, npm, or [`expo install`](https://docs.expo.io/workflow/expo-cli/#expo-install).
@@ -48,7 +58,7 @@ export default {
 };
 ```
 
-This plugin will also disable desugaring in the Android `gradle.properties`: `android.enableDexingArtifactTransform.desugaring=false`
+This plugin will also disable desugaring in the Android `gradle.properties`: `android.enableDexingArtifactTransform.desugaring=false`, and disable iOS Bitcode for "Release" builds (required).
 
 ## Manual Setup
 

@@ -1,0 +1,20 @@
+name: Check Markdown links
+on:
+  workflow_dispatch: {}
+  push:
+    branches: [master]
+    paths:
+      - .github/workflows/lint-md.yml
+      - "**.md"
+  pull_request:
+    paths:
+      - .github/workflows/lint-md.yml
+      - "**.md"
+
+jobs:
+  lint-md:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm install
+      - run: npx remark --use validate-links . .github
