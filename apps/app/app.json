@@ -31,7 +31,53 @@
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "@config-plugins/detox"
+      [
+        "@config-plugins/react-native-dynamic-app-icon",
+        [
+          "./assets/icons/spring.png",
+          "./assets/icons/summer.png",
+          "./assets/icons/autumn.png",
+          "./assets/icons/fall.png",
+          "./assets/icons/solstice.png"
+        ]
+      ],
+      [
+        "@config-plugins/react-native-quick-actions",
+        [
+          {
+            "title": "Take Photo",
+            "type": "photo",
+            "iconType": "UIApplicationShortcutIconTypeCapturePhoto"
+          }
+        ]
+      ],
+      "@config-plugins/detox",
+      "@config-plugins/react-native-google-cast",
+      "@config-plugins/react-native-ble-plx",
+      "@config-plugins/react-native-webrtc",
+      "@config-plugins/react-native-callkeep",
+      "@config-plugins/android-jsc-intl",
+      [
+        "@config-plugins/ios-stickers",
+        {
+          "name": "Stickers",
+          "icon": "./assets/imessage-icon.png",
+          "columns": 4,
+          "stickers": [
+            "./assets/stickers/annoyed.png",
+            "./assets/stickers/cuddle.png",
+            "./assets/stickers/crazy.png",
+            "./assets/stickers/cant.png",
+            "./assets/stickers/donno.png",
+            "./assets/stickers/cozzy.png",
+            "./assets/stickers/dork.png",
+            "./assets/stickers/focus.png",
+            "./assets/stickers/avocool.png",
+            "./assets/stickers/coder-girl.png",
+            "./assets/stickers/teapot.png"
+          ]
+        }
+      ]
     ]
   }
 }
