@@ -22,7 +22,7 @@
     "android": "expo run:android"
   },
   "dependencies": {
-    "@config-plugins/detox": "^1.0.0",  
+    "@config-plugins/detox": "^1.0.0",
     "expo": "^43.0.0",
     "expo-localization": "~11.0.0",
     "expo-splash-screen": "~0.13.5",
@@ -33,7 +33,10 @@
     "react-native": "0.64.3",
     "react-native-reanimated": "~2.2.0",
     "react-native-safe-area-context": "3.3.2",
-    "react-native-screens": "~3.8.0"
+    "react-native-screens": "~3.8.0",
+    "react-dom": "17.0.1",
+    "react-native-gesture-handler": "~1.10.2",
+    "react-native-web": "0.17.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
