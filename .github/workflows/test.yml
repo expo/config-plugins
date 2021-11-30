@@ -37,7 +37,7 @@ jobs:
             # Manually add packages here
             detox,
             react-native-ble-plx,
-            react-native-quick-actions,
+            # react-native-quick-actions,
           ]
     name: Test ${{ matrix.package }} on Node ${{ matrix.node }}
     steps:
