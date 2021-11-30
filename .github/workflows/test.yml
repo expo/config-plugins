@@ -36,7 +36,6 @@ jobs:
         package: [
             # Manually add packages here
             detox,
-            ffmpeg-kit-react-native,
             react-native-ble-plx,
             react-native-blob-util,
             react-native-pdf,
