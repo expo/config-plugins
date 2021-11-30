@@ -31,9 +31,10 @@ export function addDetoxProguardRules(buildGradle: string): string {
   return buildGradle.replace(
     /proguardFiles getDefaultProguardFile\("proguard-android.txt"\),\s?"proguard-rules.pro"/,
     `proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
-    // Detox-specific additions to pro-guard
-    proguardFile "\${rootProject.projectDir}/../node_modules/detox/android/detox/proguard-rules-app.pro"
-    `
+            // Detox-specific additions to pro-guard
+            def detoxProguardRulesPath = new File(["node", "--print", "require.resolve('detox/package.json')"].execute(null, rootDir).text.trim(), "../android/detox/proguard-rules-app.pro")
+            proguardFile(detoxProguardRulesPath)
+            `
   );
 }
 
