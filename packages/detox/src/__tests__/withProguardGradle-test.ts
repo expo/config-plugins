@@ -42,7 +42,7 @@ describe(addDetoxProguardRules, () => {
     const applied = addDetoxProguardRules(buildGradleFixture);
     expect(applied).toMatchSnapshot();
     expect(applied).toMatch(/detox/);
-    expect(applied).toMatch(/proguardFile "\${rootProject.projectDir}\//);
+    expect(applied).toMatch(/proguardFile\(detoxProguardRulesPath\)/);
   });
   it(`doesn't add proguard rules to gradle if proguard is missing from the template`, () => {
     expect(
