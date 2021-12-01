@@ -1,5 +1,7 @@
 {
   "private": true,
+  "name": "config-plugins",
+  "version": "1.0.0",
   "scripts": {
     "postinstall": "expo-yarn-workspaces check-workspace-dependencies",
     "gen": "ts-node ./scripts/generate-plugin.ts",
