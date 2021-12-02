@@ -1,0 +1,3 @@
+packages/*/build/** -diff linguist-generated
+packages/*/plugin/build/** -diff linguist-generated
+packages/@*/*/build/** -diff linguist-generated
