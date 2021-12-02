@@ -51,6 +51,11 @@
           }
         ]
       ],
+      [
+        "@config-plugins/ffmpeg-kit-react-native", {
+          "package": "min",
+        }
+      ],
       "@config-plugins/detox",
       "@config-plugins/react-native-google-cast",
       "@config-plugins/react-native-ble-plx",
