@@ -1,0 +1,35 @@
+{
+  "name": "@config-plugins/react-native-branch",
+  "version": "0.0.1",
+  "description": "Config plugin to auto configure react-native-branch on prebuild",
+  "main": "build/withBranch.js",
+  "types": "build/withBranch.d.ts",
+  "sideEffects": false,
+  "files": [
+    "build",
+    "app.plugin.js"
+  ],
+  "scripts": {
+    "build": "expo-module build",
+    "clean": "expo-module clean",
+    "lint": "expo-module lint",
+    "test": "expo-module test",
+    "prepare": "expo-module prepare",
+    "prepublishOnly": "expo-module prepublishOnly",
+    "expo-module": "expo-module"
+  },
+  "keywords": [
+    "expo",
+    "react-native",
+    "react-native-branch"
+  ],
+  "jest": {
+    "preset": "expo-module-scripts"
+  },
+  "dependencies": {
+    "@expo/config-plugins": "^4.0.7"
+  },
+  "devDependencies": {
+    "expo-module-scripts": "^2.0.0"
+  }
+}

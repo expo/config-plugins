@@ -57,6 +57,10 @@
       ],
       "@config-plugins/detox",
       "@config-plugins/react-native-adjust",
+      ["@config-plugins/react-native-branch", {
+        "apiKey": "key_live_f9f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8",
+        "appDomain": "https://bacon.app.link"
+      }],
       "@config-plugins/react-native-google-cast",
       "@config-plugins/react-native-ble-plx",
       "@config-plugins/react-native-webrtc",
