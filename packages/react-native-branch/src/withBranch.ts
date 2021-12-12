@@ -1,18 +1,14 @@
-import { createRunOncePlugin, withPlugins } from "@expo/config-plugins";
+import { createRunOncePlugin } from "@expo/config-plugins";
 import type { ConfigPlugin } from "@expo/config-plugins";
 
 import { withBranchAndroid } from "./withBranchAndroid";
-import { withBranchIos } from "./withBranchIOS";
+import { withBranchIOS } from "./withBranchIOS";
 import type { ConfigData } from "./types";
 
-const withBranch: ConfigPlugin<ConfigData> = (config, { apiKey, appDomain }) => {
-  return withPlugins(
-    config,
-    [
-      [withBranchIos, { apiKey, appDomain }],
-      [withBranchAndroid, { apiKey }],
-    ]
-  );
+const withBranch: ConfigPlugin<ConfigData> = (config, { apiKey, iosAppDomain } = {}) => {
+  config = withBranchAndroid(config, { apiKey });
+  config = withBranchIOS(config, { apiKey, iosAppDomain });
+  return config;
 };
 
 let pkg: { name: string; version?: string } = {

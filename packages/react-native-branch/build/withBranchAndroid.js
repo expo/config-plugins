@@ -1,19 +1,40 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.withBranchAndroid = exports.setCustomConfigAsync = exports.addBranchOnNewIntent = exports.addBranchInitSession = exports.addBranchMainActivityImport = exports.addBranchGetAutoInstance = exports.addBranchMainApplicationImport = exports.editProguardRules = exports.editMainApplication = void 0;
+exports.withBranchAndroid = exports.setBranchApiKey = exports.getBranchApiKey = exports.addBranchOnNewIntent = exports.addBranchInitSession = exports.addBranchMainActivityImport = exports.addBranchGetAutoInstance = exports.addBranchMainApplicationImport = exports.editProguardRules = exports.editMainApplication = void 0;
 const config_plugins_1 = require("@expo/config-plugins");
 const generateCode_1 = require("@expo/config-plugins/build/utils/generateCode");
-const fs_1 = __importDefault(require("fs"));
-const path_1 = __importDefault(require("path"));
+const fs = __importStar(require("fs"));
+const path = __importStar(require("path"));
 const assert_1 = __importDefault(require("assert"));
+const { addMetaDataItemToMainApplication, getMainApplicationOrThrow, removeMetaDataItemFromMainApplication, } = config_plugins_1.AndroidConfig.Manifest;
+const META_BRANCH_KEY = "io.branch.sdk.BranchKey";
 async function readFileAsync(path) {
-    return fs_1.default.promises.readFile(path, "utf8");
+    return fs.promises.readFile(path, "utf8");
 }
 async function saveFileAsync(path, content) {
-    return fs_1.default.promises.writeFile(path, content, "utf8");
+    return fs.promises.writeFile(path, content, "utf8");
 }
 // Fork of config-plugins mergeContents, but appends the contents to the end of the file.
 function appendContents({ src, newSrc, tag, comment, }) {
@@ -41,7 +62,7 @@ async function editMainApplication(config, action) {
     var _a;
     const packageName = (_a = config.android) === null || _a === void 0 ? void 0 : _a.package;
     assert_1.default(packageName, "android.package must be defined");
-    const mainApplicationPath = path_1.default.join(config.modRequest.platformProjectRoot, "app", "src", "main", "java", ...packageName.split("."), "MainApplication.java");
+    const mainApplicationPath = path.join(config.modRequest.platformProjectRoot, "app", "src", "main", "java", ...packageName.split("."), "MainApplication.java");
     try {
         const mainApplication = action(await readFileAsync(mainApplicationPath));
         return await saveFileAsync(mainApplicationPath, mainApplication);
@@ -52,7 +73,7 @@ async function editMainApplication(config, action) {
 }
 exports.editMainApplication = editMainApplication;
 async function editProguardRules(config, action) {
-    const proguardRulesPath = path_1.default.join(config.modRequest.platformProjectRoot, "app", "proguard-rules.pro");
+    const proguardRulesPath = path.join(config.modRequest.platformProjectRoot, "app", "proguard-rules.pro");
     try {
         const proguardRules = action(await readFileAsync(proguardRulesPath));
         return await saveFileAsync(proguardRulesPath, proguardRules);
@@ -173,24 +194,32 @@ function addBranchOnNewIntent(src) {
     });
 }
 exports.addBranchOnNewIntent = addBranchOnNewIntent;
-const { addMetaDataItemToMainApplication, getMainApplicationOrThrow } = config_plugins_1.AndroidConfig.Manifest;
-// Splitting this function out of the mod makes it easier to test.
-async function setCustomConfigAsync(config, androidManifest, branchApiKey) {
-    // Get the <application /> tag and assert if it doesn't exist.
+function getBranchApiKey(config) {
+    var _a, _b, _c, _d;
+    return (_d = (_c = (_b = (_a = config.android) === null || _a === void 0 ? void 0 : _a.config) === null || _b === void 0 ? void 0 : _b.branch) === null || _c === void 0 ? void 0 : _c.apiKey) !== null && _d !== void 0 ? _d : null;
+}
+exports.getBranchApiKey = getBranchApiKey;
+function setBranchApiKey(apiKey, androidManifest) {
     const mainApplication = getMainApplicationOrThrow(androidManifest);
-    addMetaDataItemToMainApplication(mainApplication, 
-    // value for `android:name`
-    "io.branch.sdk.BranchKey", 
-    // value for `android:value`
-    branchApiKey);
+    if (apiKey) {
+        // If the item exists, add it back
+        addMetaDataItemToMainApplication(mainApplication, META_BRANCH_KEY, apiKey);
+    }
+    else {
+        // Remove any existing item
+        removeMetaDataItemFromMainApplication(mainApplication, META_BRANCH_KEY);
+    }
     return androidManifest;
 }
-exports.setCustomConfigAsync = setCustomConfigAsync;
+exports.setBranchApiKey = setBranchApiKey;
 const withBranchAndroid = (config, data) => {
-    // Insert the branch_key into the AndroidManifest
-    config = config_plugins_1.withAndroidManifest(config, async (config) => {
-        // Modifiers can be async, but try to keep them fast.
-        config.modResults = await setCustomConfigAsync(config, config.modResults, data.apiKey);
+    var _a;
+    const apiKey = (_a = data.apiKey) !== null && _a !== void 0 ? _a : getBranchApiKey(config);
+    if (!apiKey) {
+        throw new Error("Branch API key is required");
+    }
+    config = config_plugins_1.withAndroidManifest(config, (config) => {
+        config.modResults = setBranchApiKey(apiKey, config.modResults);
         return config;
     });
     // Directly edit MainApplication.java

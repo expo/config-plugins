@@ -1,4 +1,4 @@
 export declare type ConfigData = {
-    apiKey: string;
-    appDomain: string;
+    apiKey?: string;
+    iosAppDomain?: string;
 };

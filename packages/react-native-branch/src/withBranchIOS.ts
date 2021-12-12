@@ -1,6 +1,8 @@
 import { withAppDelegate, withInfoPlist } from "@expo/config-plugins";
-import { mergeContents, MergeResults } from "@expo/config-plugins/build/utils/generateCode";
-import type { ConfigPlugin } from "@expo/config-plugins";
+import type { ConfigPlugin, InfoPlist } from "@expo/config-plugins";
+import type { ExpoConfig } from '@expo/config-types';
+import { mergeContents } from "@expo/config-plugins/build/utils/generateCode";
+import type { MergeResults } from "@expo/config-plugins/build/utils/generateCode";
 import type { ConfigData } from "./types";
 
 export function addBranchAppDelegateImport(src: string): MergeResults {
@@ -69,17 +71,39 @@ export function addBranchAppDelegateContinueUserActivity(src: string): MergeResu
   });
 }
 
-export const withBranchIos: ConfigPlugin<ConfigData> = (config, data) =>{
+export function getBranchApiKey(config: Pick<ExpoConfig, 'ios'>) {
+  return config.ios?.config?.branch?.apiKey ?? null;
+}
+
+export function setBranchApiKey(apiKey: string, infoPlist: InfoPlist): InfoPlist {
+  if (apiKey === null) {
+    return infoPlist;
+  }
+
+  return {
+    ...infoPlist,
+    branch_key: {
+      live: apiKey,
+    },
+  };
+}
+
+export const withBranchIOS: ConfigPlugin<ConfigData> = (config, data) =>{
   // Ensure object exist
   if (!config.ios) {
     config.ios = {};
   }
 
+  const apiKey = data.apiKey ?? getBranchApiKey(config);
+  if (!apiKey) {
+    throw new Error("Branch API key is required");
+  }
+
   // Update the infoPlist with the branch key and branch domain
   config = withInfoPlist(config, (config) => {
-    config.modResults.branch_app_domain = data.appDomain;
-    config.modResults.branch_key = {
-      live: data.apiKey,
+    config.modResults = setBranchApiKey(apiKey, config.modResults);
+    if (data.iosAppDomain) {
+      config.modResults.branch_app_domain = data.iosAppDomain;
     }
     return config;
   });

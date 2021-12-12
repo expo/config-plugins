@@ -29,8 +29,8 @@ Next, rebuild your app as described in the ["Adding custom native code"](https:/
 
 The plugin provides props for extra customization. Every time you change the props or plugins, you'll need to rebuild (and `prebuild`) the native app. If no extra properties are added, defaults will be used.
 
-- `apiKey` (_string_): Branch API key. Required.
-- `appDomain` (_string_): App Domain for iOS. Required.
+- `apiKey` (_string_): Branch API key. Optional.
+- `iosAppDomain` (_string_): App Domain for iOS. Optional.
 
 #### Example
 
@@ -41,8 +41,8 @@ The plugin provides props for extra customization. Every time you change the pro
       [
         "@config-plugins/react-native-branch",
         {
-          "apiKey": "xxxxxx",
-          "appDomain": "xxxxxx",
+          "apiKey": "key_live_f9f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8",
+          "iosAppDomain": "awesome-alternate.app.link",
         }
       ]
     ]

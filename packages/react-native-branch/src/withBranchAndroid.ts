@@ -9,15 +9,24 @@ import type {
   ConfigPlugin,
   ExportedConfigWithProps,
 } from "@expo/config-plugins";
+import type { ExpoConfig } from "@expo/config-types";
 import {
   createGeneratedHeaderComment,
   mergeContents,
   removeGeneratedContents,
 } from "@expo/config-plugins/build/utils/generateCode";
 import type { MergeResults } from "@expo/config-plugins/build/utils/generateCode";
-import fs from "fs";
-import path from "path";
+import * as fs from "fs";
+import * as path from "path";
 import assert from "assert";
+
+const {
+  addMetaDataItemToMainApplication,
+  getMainApplicationOrThrow,
+  removeMetaDataItemFromMainApplication,
+} = AndroidConfig.Manifest;
+
+const META_BRANCH_KEY = "io.branch.sdk.BranchKey";
 
 async function readFileAsync(path: string) {
   return fs.promises.readFile(path, "utf8");
@@ -175,7 +184,7 @@ export function addBranchInitSession(src: string): MergeResults {
       comment: "//",
     });
   } catch (err) {
-    if (err.code !== "ERR_NO_MATCH") {
+    if ((err as any).code !== "ERR_NO_MATCH") {
       throw err;
     }
   }
@@ -212,7 +221,7 @@ export function addBranchOnNewIntent(src: string): MergeResults {
       comment: "//",
     });
   } catch (err) {
-    if (err.code !== "ERR_NO_MATCH") {
+    if ((err as any).code !== "ERR_NO_MATCH") {
       throw err;
     }
   }
@@ -234,40 +243,41 @@ export function addBranchOnNewIntent(src: string): MergeResults {
   });
 }
 
-const { addMetaDataItemToMainApplication, getMainApplicationOrThrow } =
-  AndroidConfig.Manifest;
 
-// Splitting this function out of the mod makes it easier to test.
-export async function setCustomConfigAsync(
-  config: ExportedConfigWithProps<AndroidConfig.Manifest.AndroidManifest>,
+export function getBranchApiKey(config: ExpoConfig) {
+  return config.android?.config?.branch?.apiKey ?? null;
+}
+
+export function setBranchApiKey(
+  apiKey: string,
   androidManifest: AndroidConfig.Manifest.AndroidManifest,
-  branchApiKey: string
 ) {
-  // Get the <application /> tag and assert if it doesn't exist.
   const mainApplication = getMainApplicationOrThrow(androidManifest);
 
-  addMetaDataItemToMainApplication(
-    mainApplication,
-    // value for `android:name`
-    "io.branch.sdk.BranchKey",
-    // value for `android:value`
-    branchApiKey
-  );
+  if (apiKey) {
+    // If the item exists, add it back
+    addMetaDataItemToMainApplication(mainApplication, META_BRANCH_KEY, apiKey);
+  } else {
+    // Remove any existing item
+    removeMetaDataItemFromMainApplication(mainApplication, META_BRANCH_KEY);
+  }
 
   return androidManifest;
 }
 
-export const withBranchAndroid: ConfigPlugin<{ apiKey: string }> = (
+export const withBranchAndroid: ConfigPlugin<{ apiKey?: string }> = (
   config,
   data
 ) => {
-  // Insert the branch_key into the AndroidManifest
-  config = withAndroidManifest(config, async (config) => {
-    // Modifiers can be async, but try to keep them fast.
-    config.modResults = await setCustomConfigAsync(
-      config,
+  const apiKey = data.apiKey ?? getBranchApiKey(config);
+  if (!apiKey) {
+    throw new Error("Branch API key is required");
+  }
+
+  config = withAndroidManifest(config, (config) => {
+    config.modResults = setBranchApiKey(
+      apiKey,
       config.modResults,
-      data.apiKey
     );
     return config;
   });
