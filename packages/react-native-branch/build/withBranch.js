@@ -13,7 +13,7 @@ const withBranch = (config, { apiKey, iosAppDomain, iosUniversalLinkDomains } = 
     return config;
 };
 let pkg = {
-    name: "branch",
+    name: "react-native-branch",
 };
 try {
     const branchPkg = require("react-native-branch/package.json");

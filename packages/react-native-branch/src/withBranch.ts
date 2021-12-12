@@ -19,7 +19,7 @@ const withBranch: ConfigPlugin<ConfigData> = (
 };
 
 let pkg: { name: string; version?: string } = {
-  name: "branch",
+  name: "react-native-branch",
 };
 try {
   const branchPkg = require("react-native-branch/package.json");
