@@ -68,7 +68,7 @@ async function editMainApplication(config, action) {
         return await saveFileAsync(mainApplicationPath, mainApplication);
     }
     catch (e) {
-        config_plugins_1.WarningAggregator.addWarningAndroid("rn-branch-plugin", `Couldn't modify MainApplication.java - ${e}.`);
+        config_plugins_1.WarningAggregator.addWarningAndroid("@config-plugins/react-native-branch", `Couldn't modify MainApplication.java - ${e}.`);
     }
 }
 exports.editMainApplication = editMainApplication;
@@ -79,7 +79,7 @@ async function editProguardRules(config, action) {
         return await saveFileAsync(proguardRulesPath, proguardRules);
     }
     catch (e) {
-        config_plugins_1.WarningAggregator.addWarningAndroid("rn-branch-plugin", `Couldn't modify proguard-rules.pro - ${e}.`);
+        config_plugins_1.WarningAggregator.addWarningAndroid("@config-plugins/react-native-branch", `Couldn't modify proguard-rules.pro - ${e}.`);
     }
 }
 exports.editProguardRules = editProguardRules;

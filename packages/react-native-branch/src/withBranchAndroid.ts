@@ -93,7 +93,7 @@ export async function editMainApplication(
     return await saveFileAsync(mainApplicationPath, mainApplication);
   } catch (e) {
     WarningAggregator.addWarningAndroid(
-      "rn-branch-plugin",
+      "@config-plugins/react-native-branch",
       `Couldn't modify MainApplication.java - ${e}.`
     );
   }
@@ -113,7 +113,7 @@ export async function editProguardRules(
     return await saveFileAsync(proguardRulesPath, proguardRules);
   } catch (e) {
     WarningAggregator.addWarningAndroid(
-      "rn-branch-plugin",
+      "@config-plugins/react-native-branch",
       `Couldn't modify proguard-rules.pro - ${e}.`
     );
   }
