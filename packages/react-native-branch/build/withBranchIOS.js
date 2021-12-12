@@ -16,7 +16,7 @@ function addBranchAppDelegateImport(src) {
 }
 exports.addBranchAppDelegateImport = addBranchAppDelegateImport;
 // Match against `UMModuleRegistryAdapter` (unimodules), and React Native without unimodules (Expo Modules).
-const MATCH_INIT = /(?:(self\.|_)(\w+)\s?=\s?\[\[UMModuleRegistryAdapter alloc\])|(?:RCTBridge\s?\*\s?(\w+)\s?=\s?\[\[RCTBridge alloc\])/g;
+const MATCH_INIT = /(?:(self\.|_)(\w+)\s?=\s?\[\[UMModuleRegistryAdapter alloc\])|(?:RCTBridge\s?\*\s?(\w+)\s?=\s?\[\[RCTBridge alloc\])|(?:RCTBridge\s?\*\s?(\w+)\s?=\s?\[self\.(\w+))/g;
 function addBranchAppDelegateInit(src) {
     const newSrc = [];
     newSrc.push("  [RNBranch initSessionWithLaunchOptions:launchOptions isReferrable:YES];");

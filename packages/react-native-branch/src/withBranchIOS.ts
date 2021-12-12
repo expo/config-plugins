@@ -1,4 +1,4 @@
-import { withAppDelegate, withInfoPlist } from "@expo/config-plugins";
+import { withAppDelegate, withInfoPlist, IOSConfig } from "@expo/config-plugins";
 import type { ConfigPlugin, InfoPlist } from "@expo/config-plugins";
 import type { ExpoConfig } from '@expo/config-types';
 import { mergeContents } from "@expo/config-plugins/build/utils/generateCode";
@@ -18,8 +18,7 @@ export function addBranchAppDelegateImport(src: string): MergeResults {
 }
 
 // Match against `UMModuleRegistryAdapter` (unimodules), and React Native without unimodules (Expo Modules).
-const MATCH_INIT =
-  /(?:(self\.|_)(\w+)\s?=\s?\[\[UMModuleRegistryAdapter alloc\])|(?:RCTBridge\s?\*\s?(\w+)\s?=\s?\[\[RCTBridge alloc\])/g;
+const MATCH_INIT = /(?:(self\.|_)(\w+)\s?=\s?\[\[UMModuleRegistryAdapter alloc\])|(?:RCTBridge\s?\*\s?(\w+)\s?=\s?\[\[RCTBridge alloc\])|(?:RCTBridge\s?\*\s?(\w+)\s?=\s?\[self\.(\w+))/g;
 
 export function addBranchAppDelegateInit(src: string): MergeResults {
   const newSrc = [];
