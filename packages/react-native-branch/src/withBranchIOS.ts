@@ -1,6 +1,10 @@
-import { withAppDelegate, withInfoPlist, IOSConfig } from "@expo/config-plugins";
+import {
+  withAppDelegate,
+  withInfoPlist,
+  IOSConfig,
+} from "@expo/config-plugins";
 import type { ConfigPlugin, InfoPlist } from "@expo/config-plugins";
-import type { ExpoConfig } from '@expo/config-types';
+import type { ExpoConfig } from "@expo/config-types";
 import { mergeContents } from "@expo/config-plugins/build/utils/generateCode";
 import type { MergeResults } from "@expo/config-plugins/build/utils/generateCode";
 import type { ConfigData } from "./types";
@@ -8,7 +12,7 @@ import type { ConfigData } from "./types";
 export function addBranchAppDelegateImport(src: string): MergeResults {
   const newSrc = ["#import <RNBranch/RNBranch.h>"];
   return mergeContents({
-    tag: "rn-branch-import",
+    tag: "react-native-branch-import",
     src,
     newSrc: newSrc.join("\n"),
     anchor: /#import "AppDelegate\.h"/,
@@ -18,7 +22,8 @@ export function addBranchAppDelegateImport(src: string): MergeResults {
 }
 
 // Match against `UMModuleRegistryAdapter` (unimodules), and React Native without unimodules (Expo Modules).
-const MATCH_INIT = /(?:(self\.|_)(\w+)\s?=\s?\[\[UMModuleRegistryAdapter alloc\])|(?:RCTBridge\s?\*\s?(\w+)\s?=\s?\[\[RCTBridge alloc\])|(?:RCTBridge\s?\*\s?(\w+)\s?=\s?\[self\.(\w+))/g;
+const MATCH_INIT =
+  /(?:(self\.|_)(\w+)\s?=\s?\[\[UMModuleRegistryAdapter alloc\])|(?:RCTBridge\s?\*\s?(\w+)\s?=\s?\[\[RCTBridge alloc\])|(?:RCTBridge\s?\*\s?(\w+)\s?=\s?\[self\.(\w+))/g;
 
 export function addBranchAppDelegateInit(src: string): MergeResults {
   const newSrc = [];
@@ -27,7 +32,7 @@ export function addBranchAppDelegateInit(src: string): MergeResults {
   );
 
   return mergeContents({
-    tag: "rn-branch-init",
+    tag: "react-native-branch-init",
     src,
     newSrc: newSrc.join("\n"),
     anchor: MATCH_INIT,
@@ -44,7 +49,7 @@ export function addBranchAppDelegateOpenURL(src: string): MergeResults {
   ];
 
   return mergeContents({
-    tag: "rn-branch-open-url",
+    tag: "react-native-branch-open-url",
     src,
     newSrc: newSrc.join("\n"),
     anchor: /\(UIApplication \*\)application openURL:/,
@@ -53,7 +58,9 @@ export function addBranchAppDelegateOpenURL(src: string): MergeResults {
   });
 }
 
-export function addBranchAppDelegateContinueUserActivity(src: string): MergeResults {
+export function addBranchAppDelegateContinueUserActivity(
+  src: string
+): MergeResults {
   const newSrc = [
     "  if ([RNBranch continueUserActivity:userActivity])  {",
     "    return YES;",
@@ -61,7 +68,7 @@ export function addBranchAppDelegateContinueUserActivity(src: string): MergeResu
   ];
 
   return mergeContents({
-    tag: "rn-branch-continue-user-activity",
+    tag: "react-native-branch-continue-user-activity",
     src,
     newSrc: newSrc.join("\n"),
     anchor: /\(UIApplication \*\)application continueUserActivity:/,
@@ -70,11 +77,14 @@ export function addBranchAppDelegateContinueUserActivity(src: string): MergeResu
   });
 }
 
-export function getBranchApiKey(config: Pick<ExpoConfig, 'ios'>) {
+export function getBranchApiKey(config: Pick<ExpoConfig, "ios">) {
   return config.ios?.config?.branch?.apiKey ?? null;
 }
 
-export function setBranchApiKey(apiKey: string, infoPlist: InfoPlist): InfoPlist {
+export function setBranchApiKey(
+  apiKey: string,
+  infoPlist: InfoPlist
+): InfoPlist {
   if (apiKey === null) {
     return infoPlist;
   }
@@ -87,7 +97,7 @@ export function setBranchApiKey(apiKey: string, infoPlist: InfoPlist): InfoPlist
   };
 }
 
-export const withBranchIOS: ConfigPlugin<ConfigData> = (config, data) =>{
+export const withBranchIOS: ConfigPlugin<ConfigData> = (config, data) => {
   // Ensure object exist
   if (!config.ios) {
     config.ios = {};
@@ -107,7 +117,8 @@ export const withBranchIOS: ConfigPlugin<ConfigData> = (config, data) =>{
       delete config.modResults.branch_app_domain;
     }
     if (data.iosUniversalLinkDomains) {
-      config.modResults.branch_universal_link_domains = data.iosUniversalLinkDomains;
+      config.modResults.branch_universal_link_domains =
+        data.iosUniversalLinkDomains;
     } else {
       delete config.modResults.branch_universal_link_domains;
     }
@@ -133,4 +144,4 @@ export const withBranchIOS: ConfigPlugin<ConfigData> = (config, data) =>{
   });
 
   return config;
-}
+};

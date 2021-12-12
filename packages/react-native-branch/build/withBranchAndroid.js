@@ -86,7 +86,7 @@ exports.editProguardRules = editProguardRules;
 function addBranchMainApplicationImport(src, packageId) {
     const newSrc = ["import io.branch.rnbranch.RNBranchModule;"];
     return generateCode_1.mergeContents({
-        tag: "rn-branch-import",
+        tag: "react-native-branch-import",
         src,
         newSrc: newSrc.join("\n"),
         anchor: `package ${packageId};`,
@@ -98,7 +98,7 @@ exports.addBranchMainApplicationImport = addBranchMainApplicationImport;
 function addBranchGetAutoInstance(src) {
     const newSrc = ["    RNBranchModule.getAutoInstance(this);"];
     return generateCode_1.mergeContents({
-        tag: "rn-branch-auto-instance",
+        tag: "react-native-branch-auto-instance",
         src,
         newSrc: newSrc.join("\n"),
         anchor: /super\.onCreate\(\);/,
@@ -113,7 +113,7 @@ function addBranchMainActivityImport(src, packageId) {
         "import io.branch.rnbranch.*;",
     ];
     return generateCode_1.mergeContents({
-        tag: "rn-branch-import",
+        tag: "react-native-branch-import",
         src,
         newSrc: newSrc.join("\n"),
         anchor: `package ${packageId};`,
@@ -123,7 +123,7 @@ function addBranchMainActivityImport(src, packageId) {
 }
 exports.addBranchMainActivityImport = addBranchMainActivityImport;
 function addBranchInitSession(src) {
-    const tag = "rn-branch-init-session";
+    const tag = "react-native-branch-init-session";
     try {
         const newSrc = [
             "    RNBranchModule.initSession(getIntent().getData(), this);",
@@ -160,7 +160,7 @@ function addBranchInitSession(src) {
 }
 exports.addBranchInitSession = addBranchInitSession;
 function addBranchOnNewIntent(src) {
-    const tag = "rn-branch-on-new-intent";
+    const tag = "react-native-branch-on-new-intent";
     try {
         const newSrc = ["    RNBranchModule.onNewIntent(intent);"];
         return generateCode_1.mergeContents({
@@ -243,7 +243,7 @@ const withBranchAndroid = (config, data) => {
         async (config) => {
             await editProguardRules(config, (proguardRules) => {
                 return appendContents({
-                    tag: "rn-branch-dont-warn",
+                    tag: "react-native-branch-dont-warn",
                     src: proguardRules,
                     newSrc: ["-dontwarn io.branch.**"].join("\n"),
                     comment: "#",

@@ -5,9 +5,16 @@ import { withBranchAndroid } from "./withBranchAndroid";
 import { withBranchIOS } from "./withBranchIOS";
 import type { ConfigData } from "./types";
 
-const withBranch: ConfigPlugin<ConfigData> = (config, { apiKey, iosAppDomain } = {}) => {
+const withBranch: ConfigPlugin<ConfigData> = (
+  config,
+  { apiKey, iosAppDomain, iosUniversalLinkDomains } = {}
+) => {
   config = withBranchAndroid(config, { apiKey });
-  config = withBranchIOS(config, { apiKey, iosAppDomain });
+  config = withBranchIOS(config, {
+    apiKey,
+    iosAppDomain,
+    iosUniversalLinkDomains,
+  });
   return config;
 };
 

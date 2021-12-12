@@ -6,7 +6,7 @@ const generateCode_1 = require("@expo/config-plugins/build/utils/generateCode");
 function addBranchAppDelegateImport(src) {
     const newSrc = ["#import <RNBranch/RNBranch.h>"];
     return generateCode_1.mergeContents({
-        tag: "rn-branch-import",
+        tag: "react-native-branch-import",
         src,
         newSrc: newSrc.join("\n"),
         anchor: /#import "AppDelegate\.h"/,
@@ -21,7 +21,7 @@ function addBranchAppDelegateInit(src) {
     const newSrc = [];
     newSrc.push("  [RNBranch initSessionWithLaunchOptions:launchOptions isReferrable:YES];");
     return generateCode_1.mergeContents({
-        tag: "rn-branch-init",
+        tag: "react-native-branch-init",
         src,
         newSrc: newSrc.join("\n"),
         anchor: MATCH_INIT,
@@ -37,7 +37,7 @@ function addBranchAppDelegateOpenURL(src) {
         "  }",
     ];
     return generateCode_1.mergeContents({
-        tag: "rn-branch-open-url",
+        tag: "react-native-branch-open-url",
         src,
         newSrc: newSrc.join("\n"),
         anchor: /\(UIApplication \*\)application openURL:/,
@@ -53,7 +53,7 @@ function addBranchAppDelegateContinueUserActivity(src) {
         "  }",
     ];
     return generateCode_1.mergeContents({
-        tag: "rn-branch-continue-user-activity",
+        tag: "react-native-branch-continue-user-activity",
         src,
         newSrc: newSrc.join("\n"),
         anchor: /\(UIApplication \*\)application continueUserActivity:/,
@@ -99,7 +99,8 @@ const withBranchIOS = (config, data) => {
             delete config.modResults.branch_app_domain;
         }
         if (data.iosUniversalLinkDomains) {
-            config.modResults.branch_universal_link_domains = data.iosUniversalLinkDomains;
+            config.modResults.branch_universal_link_domains =
+                data.iosUniversalLinkDomains;
         }
         else {
             delete config.modResults.branch_universal_link_domains;

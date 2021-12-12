@@ -3,9 +3,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const config_plugins_1 = require("@expo/config-plugins");
 const withBranchAndroid_1 = require("./withBranchAndroid");
 const withBranchIOS_1 = require("./withBranchIOS");
-const withBranch = (config, { apiKey, iosAppDomain } = {}) => {
+const withBranch = (config, { apiKey, iosAppDomain, iosUniversalLinkDomains } = {}) => {
     config = withBranchAndroid_1.withBranchAndroid(config, { apiKey });
-    config = withBranchIOS_1.withBranchIOS(config, { apiKey, iosAppDomain });
+    config = withBranchIOS_1.withBranchIOS(config, {
+        apiKey,
+        iosAppDomain,
+        iosUniversalLinkDomains,
+    });
     return config;
 };
 let pkg = {

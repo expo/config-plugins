@@ -126,7 +126,7 @@ export function addBranchMainApplicationImport(
   const newSrc = ["import io.branch.rnbranch.RNBranchModule;"];
 
   return mergeContents({
-    tag: "rn-branch-import",
+    tag: "react-native-branch-import",
     src,
     newSrc: newSrc.join("\n"),
     anchor: `package ${packageId};`,
@@ -139,7 +139,7 @@ export function addBranchGetAutoInstance(src: string): MergeResults {
   const newSrc = ["    RNBranchModule.getAutoInstance(this);"];
 
   return mergeContents({
-    tag: "rn-branch-auto-instance",
+    tag: "react-native-branch-auto-instance",
     src,
     newSrc: newSrc.join("\n"),
     anchor: /super\.onCreate\(\);/,
@@ -158,7 +158,7 @@ export function addBranchMainActivityImport(
   ];
 
   return mergeContents({
-    tag: "rn-branch-import",
+    tag: "react-native-branch-import",
     src,
     newSrc: newSrc.join("\n"),
     anchor: `package ${packageId};`,
@@ -168,7 +168,7 @@ export function addBranchMainActivityImport(
 }
 
 export function addBranchInitSession(src: string): MergeResults {
-  const tag = "rn-branch-init-session";
+  const tag = "react-native-branch-init-session";
 
   try {
     const newSrc = [
@@ -207,7 +207,7 @@ export function addBranchInitSession(src: string): MergeResults {
 }
 
 export function addBranchOnNewIntent(src: string): MergeResults {
-  const tag = "rn-branch-on-new-intent";
+  const tag = "react-native-branch-on-new-intent";
 
   try {
     const newSrc = ["    RNBranchModule.onNewIntent(intent);"];
@@ -243,14 +243,13 @@ export function addBranchOnNewIntent(src: string): MergeResults {
   });
 }
 
-
 export function getBranchApiKey(config: ExpoConfig) {
   return config.android?.config?.branch?.apiKey ?? null;
 }
 
 export function setBranchApiKey(
   apiKey: string,
-  androidManifest: AndroidConfig.Manifest.AndroidManifest,
+  androidManifest: AndroidConfig.Manifest.AndroidManifest
 ) {
   const mainApplication = getMainApplicationOrThrow(androidManifest);
 
@@ -275,10 +274,7 @@ export const withBranchAndroid: ConfigPlugin<{ apiKey?: string }> = (
   }
 
   config = withAndroidManifest(config, (config) => {
-    config.modResults = setBranchApiKey(
-      apiKey,
-      config.modResults,
-    );
+    config.modResults = setBranchApiKey(apiKey, config.modResults);
     return config;
   });
 
@@ -309,7 +305,7 @@ export const withBranchAndroid: ConfigPlugin<{ apiKey?: string }> = (
     async (config) => {
       await editProguardRules(config, (proguardRules) => {
         return appendContents({
-          tag: "rn-branch-dont-warn",
+          tag: "react-native-branch-dont-warn",
           src: proguardRules,
           newSrc: ["-dontwarn io.branch.**"].join("\n"),
           comment: "#",
