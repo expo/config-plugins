@@ -104,6 +104,13 @@ export const withBranchIOS: ConfigPlugin<ConfigData> = (config, data) =>{
     config.modResults = setBranchApiKey(apiKey, config.modResults);
     if (data.iosAppDomain) {
       config.modResults.branch_app_domain = data.iosAppDomain;
+    } else {
+      delete config.modResults.branch_app_domain;
+    }
+    if (data.iosUniversalLinkDomains) {
+      config.modResults.branch_universal_link_domains = data.iosUniversalLinkDomains;
+    } else {
+      delete config.modResults.branch_universal_link_domains;
     }
     return config;
   });
