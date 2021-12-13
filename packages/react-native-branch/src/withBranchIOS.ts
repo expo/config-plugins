@@ -1,81 +1,11 @@
-import {
-  withAppDelegate,
-  withInfoPlist,
-  IOSConfig,
-} from "@expo/config-plugins";
+import { withAppDelegate, withInfoPlist } from "@expo/config-plugins";
 import type { ConfigPlugin, InfoPlist } from "@expo/config-plugins";
 import type { ExpoConfig } from "@expo/config-types";
-import { mergeContents } from "@expo/config-plugins/build/utils/generateCode";
-import type { MergeResults } from "@expo/config-plugins/build/utils/generateCode";
 import type { ConfigData } from "./types";
-
-export function addBranchAppDelegateImport(src: string): MergeResults {
-  const newSrc = ["#import <RNBranch/RNBranch.h>"];
-  return mergeContents({
-    tag: "react-native-branch-import",
-    src,
-    newSrc: newSrc.join("\n"),
-    anchor: /#import "AppDelegate\.h"/,
-    offset: 1,
-    comment: "//",
-  });
-}
-
-// Match against `UMModuleRegistryAdapter` (unimodules), and React Native without unimodules (Expo Modules).
-const MATCH_INIT =
-  /(?:(self\.|_)(\w+)\s?=\s?\[\[UMModuleRegistryAdapter alloc\])|(?:RCTBridge\s?\*\s?(\w+)\s?=\s?\[\[RCTBridge alloc\])|(?:RCTBridge\s?\*\s?(\w+)\s?=\s?\[self\.(\w+))/g;
-
-export function addBranchAppDelegateInit(src: string): MergeResults {
-  const newSrc = [];
-  newSrc.push(
-    "  [RNBranch initSessionWithLaunchOptions:launchOptions isReferrable:YES];"
-  );
-
-  return mergeContents({
-    tag: "react-native-branch-init",
-    src,
-    newSrc: newSrc.join("\n"),
-    anchor: MATCH_INIT,
-    offset: 0,
-    comment: "//",
-  });
-}
-
-export function addBranchAppDelegateOpenURL(src: string): MergeResults {
-  const newSrc = [
-    "  if ([RNBranch application:application openURL:url options:options]) {",
-    "    // do other deep link routing for the Facebook SDK, Pinterest SDK, etc",
-    "  }",
-  ];
-
-  return mergeContents({
-    tag: "react-native-branch-open-url",
-    src,
-    newSrc: newSrc.join("\n"),
-    anchor: /\(UIApplication \*\)application openURL:/,
-    offset: 1,
-    comment: "//",
-  });
-}
-
-export function addBranchAppDelegateContinueUserActivity(
-  src: string
-): MergeResults {
-  const newSrc = [
-    "  if ([RNBranch continueUserActivity:userActivity])  {",
-    "    return YES;",
-    "  }",
-  ];
-
-  return mergeContents({
-    tag: "react-native-branch-continue-user-activity",
-    src,
-    newSrc: newSrc.join("\n"),
-    anchor: /\(UIApplication \*\)application continueUserActivity:/,
-    offset: 1,
-    comment: "//",
-  });
-}
+import {
+  addObjcImports,
+  insertContentsInsideObjcFunctionBlock,
+} from "@expo/config-plugins/build/ios/codeMod";
 
 export function getBranchApiKey(config: Pick<ExpoConfig, "ios">) {
   return config.ios?.config?.branch?.apiKey ?? null;
@@ -96,6 +26,71 @@ export function setBranchApiKey(
     },
   };
 }
+
+export function updateApplicationDidFinishLaunchingWithOptions(
+  contents: string
+): string {
+  // application:didFinishLaunchingWithOptions:
+  const initSessionWithLaunchOptions =
+    "[RNBranch initSessionWithLaunchOptions:launchOptions isReferrable:YES];";
+  if (!contents.includes(` ${initSessionWithLaunchOptions}`)) {
+    contents = insertContentsInsideObjcFunctionBlock(
+      contents,
+      "application:didFinishLaunchingWithOptions:",
+      initSessionWithLaunchOptions,
+      { position: "head", indent: 2 }
+    );
+  }
+
+  return contents;
+}
+
+export function updateApplicationOpenURLWithOptions(contents: string): string {
+  // application:openURL:options:
+  const branchOpenURLWithOptions =
+    "[RNBranch application:application openURL:url options:options];";
+  if (!contents.includes(` ${branchOpenURLWithOptions}`)) {
+    contents = insertContentsInsideObjcFunctionBlock(
+      contents,
+      "application:openURL:options:",
+      branchOpenURLWithOptions,
+      { position: "tailBeforeLastReturn", indent: 2 }
+    );
+  }
+
+  return contents;
+}
+
+export function updateApplicationContinueUserActivity(
+  contents: string
+): string {
+  // application:continueUserActivity:restorationHandler:
+  const branchContinueUserActivity =
+    "if ([RNBranch continueUserActivity:userActivity]) { return YES; }";
+  if (!contents.includes(`  ${branchContinueUserActivity}`)) {
+    contents = insertContentsInsideObjcFunctionBlock(
+      contents,
+      "application:continueUserActivity:restorationHandler:",
+      branchContinueUserActivity,
+      { position: "tailBeforeLastReturn", indent: 2 }
+    );
+  }
+
+  return contents;
+}
+
+export const modifyAppDelegateObjc = (contents: string): string => {
+  // Add imports if needed
+  if (!contents.match(/^#import\s+<RNBranch\/RNBranch\.h>\s*$/m)) {
+    contents = addObjcImports(contents, ["<RNBranch/RNBranch.h>"]);
+  }
+
+  contents = updateApplicationDidFinishLaunchingWithOptions(contents);
+  contents = updateApplicationOpenURLWithOptions(contents);
+  contents = updateApplicationContinueUserActivity(contents);
+
+  return contents;
+};
 
 export const withBranchIOS: ConfigPlugin<ConfigData> = (config, data) => {
   // Ensure object exist
@@ -125,20 +120,14 @@ export const withBranchIOS: ConfigPlugin<ConfigData> = (config, data) => {
     return config;
   });
 
-  // Update the AppDelegate.m
   config = withAppDelegate(config, (config) => {
-    config.modResults.contents = addBranchAppDelegateImport(
+    if (config.modResults.language === "swift") {
+      throw new Error("Branch is not supported in Swift");
+    }
+
+    config.modResults.contents = modifyAppDelegateObjc(
       config.modResults.contents
-    ).contents;
-    config.modResults.contents = addBranchAppDelegateInit(
-      config.modResults.contents
-    ).contents;
-    config.modResults.contents = addBranchAppDelegateOpenURL(
-      config.modResults.contents
-    ).contents;
-    config.modResults.contents = addBranchAppDelegateContinueUserActivity(
-      config.modResults.contents
-    ).contents;
+    );
 
     return config;
   });

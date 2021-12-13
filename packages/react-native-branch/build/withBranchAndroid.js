@@ -18,16 +18,13 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.withBranchAndroid = exports.setBranchApiKey = exports.getBranchApiKey = exports.addBranchOnNewIntent = exports.addBranchInitSession = exports.addBranchMainActivityImport = exports.addBranchGetAutoInstance = exports.addBranchMainApplicationImport = exports.editProguardRules = exports.editMainApplication = void 0;
+exports.withBranchAndroid = exports.modifyMainActivity = exports.setBranchApiKey = exports.getBranchApiKey = exports.addBranchOnNewIntent = exports.addBranchInitSession = exports.modifyMainApplication = exports.editProguardRules = void 0;
 const config_plugins_1 = require("@expo/config-plugins");
+const codeMod_1 = require("@expo/config-plugins/build/android/codeMod");
 const generateCode_1 = require("@expo/config-plugins/build/utils/generateCode");
 const fs = __importStar(require("fs"));
 const path = __importStar(require("path"));
-const assert_1 = __importDefault(require("assert"));
 const { addMetaDataItemToMainApplication, getMainApplicationOrThrow, removeMetaDataItemFromMainApplication, } = config_plugins_1.AndroidConfig.Manifest;
 const META_BRANCH_KEY = "io.branch.sdk.BranchKey";
 async function readFileAsync(path) {
@@ -58,20 +55,6 @@ function appendContents({ src, newSrc, tag, comment, }) {
     }
     return { contents: src, didClear: false, didMerge: false };
 }
-async function editMainApplication(config, action) {
-    var _a;
-    const packageName = (_a = config.android) === null || _a === void 0 ? void 0 : _a.package;
-    assert_1.default(packageName, "android.package must be defined");
-    const mainApplicationPath = path.join(config.modRequest.platformProjectRoot, "app", "src", "main", "java", ...packageName.split("."), "MainApplication.java");
-    try {
-        const mainApplication = action(await readFileAsync(mainApplicationPath));
-        return await saveFileAsync(mainApplicationPath, mainApplication);
-    }
-    catch (e) {
-        config_plugins_1.WarningAggregator.addWarningAndroid("@config-plugins/react-native-branch", `Couldn't modify MainApplication.java - ${e}.`);
-    }
-}
-exports.editMainApplication = editMainApplication;
 async function editProguardRules(config, action) {
     const proguardRulesPath = path.join(config.modRequest.platformProjectRoot, "app", "proguard-rules.pro");
     try {
@@ -83,45 +66,20 @@ async function editProguardRules(config, action) {
     }
 }
 exports.editProguardRules = editProguardRules;
-function addBranchMainApplicationImport(src, packageId) {
-    const newSrc = ["import io.branch.rnbranch.RNBranchModule;"];
-    return generateCode_1.mergeContents({
-        tag: "react-native-branch-import",
-        src,
-        newSrc: newSrc.join("\n"),
-        anchor: `package ${packageId};`,
-        offset: 1,
-        comment: "//",
-    });
+function addGetAutoInstanceIfNeeded(mainApplication, isJava) {
+    if (mainApplication.match(/\s+RNBranchModule\.getAutoInstance\(/m)) {
+        return mainApplication;
+    }
+    const semicolon = isJava ? ";" : "";
+    return codeMod_1.appendContentsInsideDeclarationBlock(mainApplication, "onCreate", `  RNBranchModule.getAutoInstance(this)${semicolon}\n  `);
 }
-exports.addBranchMainApplicationImport = addBranchMainApplicationImport;
-function addBranchGetAutoInstance(src) {
-    const newSrc = ["    RNBranchModule.getAutoInstance(this);"];
-    return generateCode_1.mergeContents({
-        tag: "react-native-branch-auto-instance",
-        src,
-        newSrc: newSrc.join("\n"),
-        anchor: /super\.onCreate\(\);/,
-        offset: 1,
-        comment: "//",
-    });
+function modifyMainApplication(mainApplication, language) {
+    const isJava = language === "java";
+    mainApplication = codeMod_1.addImports(mainApplication, ["io.branch.rnbranch.RNBranchModule"], isJava);
+    mainApplication = addGetAutoInstanceIfNeeded(mainApplication, isJava);
+    return mainApplication;
 }
-exports.addBranchGetAutoInstance = addBranchGetAutoInstance;
-function addBranchMainActivityImport(src, packageId) {
-    const newSrc = [
-        "import android.content.Intent;",
-        "import io.branch.rnbranch.*;",
-    ];
-    return generateCode_1.mergeContents({
-        tag: "react-native-branch-import",
-        src,
-        newSrc: newSrc.join("\n"),
-        anchor: `package ${packageId};`,
-        offset: 1,
-        comment: "//",
-    });
-}
-exports.addBranchMainActivityImport = addBranchMainActivityImport;
+exports.modifyMainApplication = modifyMainApplication;
 function addBranchInitSession(src) {
     const tag = "react-native-branch-init-session";
     try {
@@ -212,6 +170,14 @@ function setBranchApiKey(apiKey, androidManifest) {
     return androidManifest;
 }
 exports.setBranchApiKey = setBranchApiKey;
+const modifyMainActivity = (mainActivity, language) => {
+    const isJava = language === "java";
+    mainActivity = codeMod_1.addImports(mainActivity, ["android.content.Intent", "io.branch.rnbranch.*"], isJava);
+    mainActivity = addBranchInitSession(mainActivity).contents;
+    mainActivity = addBranchOnNewIntent(mainActivity).contents;
+    return mainActivity;
+};
+exports.modifyMainActivity = modifyMainActivity;
 const withBranchAndroid = (config, data) => {
     var _a;
     const apiKey = (_a = data.apiKey) !== null && _a !== void 0 ? _a : getBranchApiKey(config);
@@ -222,21 +188,14 @@ const withBranchAndroid = (config, data) => {
         config.modResults = setBranchApiKey(apiKey, config.modResults);
         return config;
     });
-    // Directly edit MainApplication.java
-    config = config_plugins_1.withDangerousMod(config, [
-        "android",
-        async (config) => {
-            var _a;
-            const packageName = (_a = config.android) === null || _a === void 0 ? void 0 : _a.package;
-            assert_1.default(packageName, "android.package must be defined");
-            await editMainApplication(config, (mainApplication) => {
-                mainApplication = addBranchMainApplicationImport(mainApplication, packageName).contents;
-                mainApplication = addBranchGetAutoInstance(mainApplication).contents;
-                return mainApplication;
-            });
-            return config;
-        },
-    ]);
+    config = config_plugins_1.withMainApplication(config, (config) => {
+        config.modResults.contents = modifyMainApplication(config.modResults.contents, config.modResults.language);
+        return config;
+    });
+    config = config_plugins_1.withMainActivity(config, (config) => {
+        config.modResults.contents = exports.modifyMainActivity(config.modResults.contents, config.modResults.language);
+        return config;
+    });
     // Update proguard rules directly
     config = config_plugins_1.withDangerousMod(config, [
         "android",
@@ -252,16 +211,6 @@ const withBranchAndroid = (config, data) => {
             return config;
         },
     ]);
-    // Insert the required Branch code into MainActivity.java
-    config = config_plugins_1.withMainActivity(config, (config) => {
-        var _a;
-        const packageName = (_a = config.android) === null || _a === void 0 ? void 0 : _a.package;
-        assert_1.default(packageName, "android.package must be defined");
-        config.modResults.contents = addBranchMainActivityImport(config.modResults.contents, packageName).contents;
-        config.modResults.contents = addBranchInitSession(config.modResults.contents).contents;
-        config.modResults.contents = addBranchOnNewIntent(config.modResults.contents).contents;
-        return config;
-    });
     return config;
 };
 exports.withBranchAndroid = withBranchAndroid;

@@ -4,7 +4,12 @@ import {
   withAndroidManifest,
   withDangerousMod,
   withMainActivity,
+  withMainApplication,
 } from "@expo/config-plugins";
+import {
+  addImports,
+  appendContentsInsideDeclarationBlock,
+} from "@expo/config-plugins/build/android/codeMod";
 import type {
   ConfigPlugin,
   ExportedConfigWithProps,
@@ -18,7 +23,6 @@ import {
 import type { MergeResults } from "@expo/config-plugins/build/utils/generateCode";
 import * as fs from "fs";
 import * as path from "path";
-import assert from "assert";
 
 const {
   addMetaDataItemToMainApplication,
@@ -71,34 +75,6 @@ function appendContents({
   return { contents: src, didClear: false, didMerge: false };
 }
 
-export async function editMainApplication(
-  config: ExportedConfigWithProps,
-  action: (mainApplication: string) => string
-) {
-  const packageName = config.android?.package;
-  assert(packageName, "android.package must be defined");
-
-  const mainApplicationPath = path.join(
-    config.modRequest.platformProjectRoot,
-    "app",
-    "src",
-    "main",
-    "java",
-    ...packageName.split("."),
-    "MainApplication.java"
-  );
-
-  try {
-    const mainApplication = action(await readFileAsync(mainApplicationPath));
-    return await saveFileAsync(mainApplicationPath, mainApplication);
-  } catch (e) {
-    WarningAggregator.addWarningAndroid(
-      "@config-plugins/react-native-branch",
-      `Couldn't modify MainApplication.java - ${e}.`
-    );
-  }
-}
-
 export async function editProguardRules(
   config: ExportedConfigWithProps,
   action: (mainApplication: string) => string
@@ -119,52 +95,36 @@ export async function editProguardRules(
   }
 }
 
-export function addBranchMainApplicationImport(
-  src: string,
-  packageId: string
-): MergeResults {
-  const newSrc = ["import io.branch.rnbranch.RNBranchModule;"];
+function addGetAutoInstanceIfNeeded(
+  mainApplication: string,
+  isJava: boolean
+): string {
+  if (mainApplication.match(/\s+RNBranchModule\.getAutoInstance\(/m)) {
+    return mainApplication;
+  }
 
-  return mergeContents({
-    tag: "react-native-branch-import",
-    src,
-    newSrc: newSrc.join("\n"),
-    anchor: `package ${packageId};`,
-    offset: 1,
-    comment: "//",
-  });
+  const semicolon = isJava ? ";" : "";
+  return appendContentsInsideDeclarationBlock(
+    mainApplication,
+    "onCreate",
+    `  RNBranchModule.getAutoInstance(this)${semicolon}\n  `
+  );
 }
 
-export function addBranchGetAutoInstance(src: string): MergeResults {
-  const newSrc = ["    RNBranchModule.getAutoInstance(this);"];
+export function modifyMainApplication(
+  mainApplication: string,
+  language: "java" | "kt"
+): string {
+  const isJava = language === "java";
 
-  return mergeContents({
-    tag: "react-native-branch-auto-instance",
-    src,
-    newSrc: newSrc.join("\n"),
-    anchor: /super\.onCreate\(\);/,
-    offset: 1,
-    comment: "//",
-  });
-}
+  mainApplication = addImports(
+    mainApplication,
+    ["io.branch.rnbranch.RNBranchModule"],
+    isJava
+  );
+  mainApplication = addGetAutoInstanceIfNeeded(mainApplication, isJava);
 
-export function addBranchMainActivityImport(
-  src: string,
-  packageId: string
-): MergeResults {
-  const newSrc = [
-    "import android.content.Intent;",
-    "import io.branch.rnbranch.*;",
-  ];
-
-  return mergeContents({
-    tag: "react-native-branch-import",
-    src,
-    newSrc: newSrc.join("\n"),
-    anchor: `package ${packageId};`,
-    offset: 1,
-    comment: "//",
-  });
+  return mainApplication;
 }
 
 export function addBranchInitSession(src: string): MergeResults {
@@ -264,6 +224,23 @@ export function setBranchApiKey(
   return androidManifest;
 }
 
+export const modifyMainActivity = (
+  mainActivity: string,
+  language: "java" | "kt"
+): string => {
+  const isJava = language === "java";
+
+  mainActivity = addImports(
+    mainActivity,
+    ["android.content.Intent", "io.branch.rnbranch.*"],
+    isJava
+  );
+  mainActivity = addBranchInitSession(mainActivity).contents;
+  mainActivity = addBranchOnNewIntent(mainActivity).contents;
+
+  return mainActivity;
+};
+
 export const withBranchAndroid: ConfigPlugin<{ apiKey?: string }> = (
   config,
   data
@@ -278,26 +255,23 @@ export const withBranchAndroid: ConfigPlugin<{ apiKey?: string }> = (
     return config;
   });
 
-  // Directly edit MainApplication.java
-  config = withDangerousMod(config, [
-    "android",
-    async (config) => {
-      const packageName = config.android?.package;
-      assert(packageName, "android.package must be defined");
+  config = withMainApplication(config, (config) => {
+    config.modResults.contents = modifyMainApplication(
+      config.modResults.contents,
+      config.modResults.language
+    );
 
-      await editMainApplication(config, (mainApplication) => {
-        mainApplication = addBranchMainApplicationImport(
-          mainApplication,
-          packageName
-        ).contents;
-        mainApplication = addBranchGetAutoInstance(mainApplication).contents;
+    return config;
+  });
 
-        return mainApplication;
-      });
+  config = withMainActivity(config, (config) => {
+    config.modResults.contents = modifyMainActivity(
+      config.modResults.contents,
+      config.modResults.language
+    );
 
-      return config;
-    },
-  ]);
+    return config;
+  });
 
   // Update proguard rules directly
   config = withDangerousMod(config, [
@@ -315,25 +289,6 @@ export const withBranchAndroid: ConfigPlugin<{ apiKey?: string }> = (
       return config;
     },
   ]);
-
-  // Insert the required Branch code into MainActivity.java
-  config = withMainActivity(config, (config) => {
-    const packageName = config.android?.package;
-    assert(packageName, "android.package must be defined");
-
-    config.modResults.contents = addBranchMainActivityImport(
-      config.modResults.contents,
-      packageName
-    ).contents;
-    config.modResults.contents = addBranchInitSession(
-      config.modResults.contents
-    ).contents;
-    config.modResults.contents = addBranchOnNewIntent(
-      config.modResults.contents
-    ).contents;
-
-    return config;
-  });
 
   return config;
 };

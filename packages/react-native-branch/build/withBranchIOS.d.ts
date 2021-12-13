@@ -1,11 +1,10 @@
 import type { ConfigPlugin, InfoPlist } from "@expo/config-plugins";
 import type { ExpoConfig } from "@expo/config-types";
-import type { MergeResults } from "@expo/config-plugins/build/utils/generateCode";
 import type { ConfigData } from "./types";
-export declare function addBranchAppDelegateImport(src: string): MergeResults;
-export declare function addBranchAppDelegateInit(src: string): MergeResults;
-export declare function addBranchAppDelegateOpenURL(src: string): MergeResults;
-export declare function addBranchAppDelegateContinueUserActivity(src: string): MergeResults;
 export declare function getBranchApiKey(config: Pick<ExpoConfig, "ios">): string | null;
 export declare function setBranchApiKey(apiKey: string, infoPlist: InfoPlist): InfoPlist;
+export declare function updateApplicationDidFinishLaunchingWithOptions(contents: string): string;
+export declare function updateApplicationOpenURLWithOptions(contents: string): string;
+export declare function updateApplicationContinueUserActivity(contents: string): string;
+export declare const modifyAppDelegateObjc: (contents: string) => string;
 export declare const withBranchIOS: ConfigPlugin<ConfigData>;
