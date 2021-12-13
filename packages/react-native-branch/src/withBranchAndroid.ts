@@ -1,8 +1,6 @@
 import {
   AndroidConfig,
-  WarningAggregator,
   withAndroidManifest,
-  withDangerousMod,
   withMainActivity,
   withMainApplication,
 } from "@expo/config-plugins";
@@ -10,19 +8,10 @@ import {
   addImports,
   appendContentsInsideDeclarationBlock,
 } from "@expo/config-plugins/build/android/codeMod";
-import type {
-  ConfigPlugin,
-  ExportedConfigWithProps,
-} from "@expo/config-plugins";
+import type { ConfigPlugin } from "@expo/config-plugins";
 import type { ExpoConfig } from "@expo/config-types";
-import {
-  createGeneratedHeaderComment,
-  mergeContents,
-  removeGeneratedContents,
-} from "@expo/config-plugins/build/utils/generateCode";
+import { mergeContents } from "@expo/config-plugins/build/utils/generateCode";
 import type { MergeResults } from "@expo/config-plugins/build/utils/generateCode";
-import * as fs from "fs";
-import * as path from "path";
 
 const {
   addMetaDataItemToMainApplication,
@@ -31,69 +20,6 @@ const {
 } = AndroidConfig.Manifest;
 
 const META_BRANCH_KEY = "io.branch.sdk.BranchKey";
-
-async function readFileAsync(path: string) {
-  return fs.promises.readFile(path, "utf8");
-}
-
-async function saveFileAsync(path: string, content: string) {
-  return fs.promises.writeFile(path, content, "utf8");
-}
-
-// Fork of config-plugins mergeContents, but appends the contents to the end of the file.
-function appendContents({
-  src,
-  newSrc,
-  tag,
-  comment,
-}: {
-  src: string;
-  newSrc: string;
-  tag: string;
-  comment: string;
-}): MergeResults {
-  const header = createGeneratedHeaderComment(newSrc, tag, comment);
-  if (!src.includes(header)) {
-    // Ensure the old generated contents are removed.
-    const sanitizedTarget = removeGeneratedContents(src, tag);
-    const contentsToAdd = [
-      // @something
-      header,
-      // contents
-      newSrc,
-      // @end
-      `${comment} @generated end ${tag}`,
-    ].join("\n");
-
-    return {
-      contents: (sanitizedTarget ?? src) + contentsToAdd,
-      didMerge: true,
-      didClear: !!sanitizedTarget,
-    };
-  }
-
-  return { contents: src, didClear: false, didMerge: false };
-}
-
-export async function editProguardRules(
-  config: ExportedConfigWithProps,
-  action: (mainApplication: string) => string
-) {
-  const proguardRulesPath = path.join(
-    config.modRequest.platformProjectRoot,
-    "app",
-    "proguard-rules.pro"
-  );
-  try {
-    const proguardRules = action(await readFileAsync(proguardRulesPath));
-    return await saveFileAsync(proguardRulesPath, proguardRules);
-  } catch (e) {
-    WarningAggregator.addWarningAndroid(
-      "@config-plugins/react-native-branch",
-      `Couldn't modify proguard-rules.pro - ${e}.`
-    );
-  }
-}
 
 function addGetAutoInstanceIfNeeded(
   mainApplication: string,
@@ -272,23 +198,6 @@ export const withBranchAndroid: ConfigPlugin<{ apiKey?: string }> = (
 
     return config;
   });
-
-  // Update proguard rules directly
-  config = withDangerousMod(config, [
-    "android",
-    async (config) => {
-      await editProguardRules(config, (proguardRules) => {
-        return appendContents({
-          tag: "react-native-branch-dont-warn",
-          src: proguardRules,
-          newSrc: ["-dontwarn io.branch.**"].join("\n"),
-          comment: "#",
-        }).contents;
-      });
-
-      return config;
-    },
-  ]);
 
   return config;
 };
