@@ -28,7 +28,7 @@
     "@config-plugins/react-native-ble-plx": "^0.0.2",
     "@config-plugins/react-native-callkeep": "^0.0.1",
     "@config-plugins/react-native-dynamic-app-icon": "^0.0.2",
-    "@config-plugins/react-native-google-cast": "^0.0.1",
+    "@config-plugins/react-native-google-cast": "^0.1.0",
     "@config-plugins/react-native-quick-actions": "^0.0.1",
     "@config-plugins/react-native-webrtc": "^1.0.1",
     "@config-plugins/react-native-pdf": "^0.0.0",
