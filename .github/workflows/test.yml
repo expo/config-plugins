@@ -39,6 +39,7 @@ jobs:
             ffmpeg-kit-react-native,
             react-native-ble-plx,
             react-native-blob-util,
+            react-native-google-cast,
             react-native-pdf,
             # react-native-quick-actions,
           ]
