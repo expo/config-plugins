@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.withIosGoogleCast = void 0;
+exports.addGoogleCastAppDelegateDidFinishLaunchingWithOptions = exports.MATCH_INIT = exports.withIosGoogleCast = void 0;
 const config_plugins_1 = require("@expo/config-plugins");
 const generateCode_1 = require("@expo/config-plugins/build/utils/generateCode");
 /**
@@ -86,7 +86,7 @@ const withIosGoogleCast = (config, props) => {
 };
 exports.withIosGoogleCast = withIosGoogleCast;
 // From expo-cli RNMaps setup
-const MATCH_INIT = /(?:(self\.|_)(\w+)\s?=\s?\[\[UMModuleRegistryAdapter alloc\])|(?:RCTBridge\s?\*\s?(\w+)\s?=\s?\[\[RCTBridge alloc\])/g;
+exports.MATCH_INIT = /(?:(self\.|_)(\w+)\s?=\s?\[\[UMModuleRegistryAdapter alloc\])|(?:RCTBridge\s?\*\s?(\w+)\s?=\s?\[\[RCTBridge alloc\])|(\[self\.reactDelegate createBridgeWithDelegate:self launchOptions:launchOptions\])/g;
 function addGoogleCastAppDelegateDidFinishLaunchingWithOptions(src, { receiverAppId = null, disableDiscoveryAutostart = false, startDiscoveryAfterFirstTapOnCastButton = true, } = {}) {
     let newSrc = [];
     newSrc.push(
@@ -104,11 +104,12 @@ function addGoogleCastAppDelegateDidFinishLaunchingWithOptions(src, { receiverAp
         tag: "react-native-google-cast-didFinishLaunchingWithOptions",
         src,
         newSrc: newSrc.join("\n"),
-        anchor: MATCH_INIT,
+        anchor: exports.MATCH_INIT,
         offset: 0,
         comment: "//",
     });
 }
+exports.addGoogleCastAppDelegateDidFinishLaunchingWithOptions = addGoogleCastAppDelegateDidFinishLaunchingWithOptions;
 function addGoogleCastAppDelegateImport(src) {
     const newSrc = [];
     newSrc.push("#if __has_include(<GoogleCast/GoogleCast.h>)", "#import <GoogleCast/GoogleCast.h>", "#endif");
