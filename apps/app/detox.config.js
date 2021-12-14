@@ -22,7 +22,7 @@ module.exports = {
     "ios.debug": {
       type: "ios.app",
       binaryPath: `${derivedDataPath}/Build/Products/Debug-${sdk}/${iosName}.app`,
-      build: `./scripts/start-metro.sh && xcodebuild -workspace ios/${iosName}.xcworkspace -scheme ${iosName} -configuration Debug -sdk ${sdk} -derivedDataPath ${derivedDataPath} | npx excpretty ./`,
+      build: `./scripts/start-metro.sh && ./scripts/build-detox-ios.sh ${iosName} Debug`,
     },
     "android.debug": {
       type: "android.apk",
