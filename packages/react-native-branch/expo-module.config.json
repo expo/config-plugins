@@ -1,5 +1,9 @@
 {
   "platforms": [
-    "android"
-  ]
+    "android",
+    "ios"
+  ],
+  "ios": {
+    "appDelegateSubscribers": ["AppLifecycleDelegate"]
+  }
 }
