@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`addAndroidPackagingOptions adds packaging options to the app build.gradle 1`] = `
+"
+      android {
+// @generated begin react-native-pdf-packaging-options - expo prebuild (DO NOT MODIFY) sync-e288c3c5efbb1ef5e1a1959a848260c36558a381
+
+    packagingOptions {
+        pickFirst 'lib/x86/libc++_shared.so'
+        pickFirst 'lib/x86_64/libjsc.so'
+        pickFirst 'lib/arm64-v8a/libjsc.so'
+        pickFirst 'lib/arm64-v8a/libc++_shared.so'
+        pickFirst 'lib/x86_64/libc++_shared.so'
+        pickFirst 'lib/armeabi-v7a/libc++_shared.so'
+    }
+
+// @generated end react-native-pdf-packaging-options
+          defaultConfig {
+              applicationId 'com.example.app'
+          }
+      }
+  "
+`;

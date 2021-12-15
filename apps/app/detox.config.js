@@ -17,18 +17,18 @@ module.exports = {
     "ios.release": {
       type: "ios.app",
       binaryPath: `${derivedDataPath}/Build/Products/Release-${sdk}/${iosName}.app`,
-      build: `export RCT_NO_LAUNCH_PACKAGER=true && xcodebuild -workspace ios/${iosName}.xcworkspace -scheme ${iosName} -configuration Release -sdk ${sdk} -derivedDataPath ${derivedDataPath} | npx excpretty ./`,
+      build: `./scripts/build-detox-ios.sh ${iosName} Release YES`,
     },
     "ios.debug": {
       type: "ios.app",
       binaryPath: `${derivedDataPath}/Build/Products/Debug-${sdk}/${iosName}.app`,
-      build: `xcodebuild -workspace ios/${iosName}.xcworkspace -scheme ${iosName} -configuration Debug -sdk ${sdk} -derivedDataPath ${derivedDataPath} | npx excpretty ./`,
+      build: `./scripts/start-metro.sh && ./scripts/build-detox-ios.sh ${iosName} Debug`,
     },
     "android.debug": {
       type: "android.apk",
       binaryPath: "android/app/build/outputs/apk/debug/app-debug.apk",
       build:
-        "pushd android; ./gradlew app:assembleDebug app:assembleAndroidTest -DtestBuildType=debug; popd",
+        "./scripts/start-metro.sh && pushd android; ./gradlew app:assembleDebug app:assembleAndroidTest -DtestBuildType=debug; popd",
     },
     "android.release": {
       type: "android.apk",

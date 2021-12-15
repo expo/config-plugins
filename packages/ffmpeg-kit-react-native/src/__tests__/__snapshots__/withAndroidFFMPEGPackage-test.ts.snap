@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`addPackageName adds undefined package 1`] = `
+"
+buildscript {
+    ext {
+        buildToolsVersion = \\"29.0.2\\"
+        minSdkVersion = 21
+        compileSdkVersion = 29
+        targetSdkVersion = 29
+    }
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath(\\"com.android.tools.build:gradle:3.5.3\\")
+    }
+}
+
+allprojects {
+    repositories {
+        mavenLocal()
+        maven {
+            url(\\"$rootDir/../node_modules/react-native/android\\")
+        }
+        maven {
+            url(\\"$rootDir/../node_modules/jsc-android/dist\\")
+        }
+        google()
+        jcenter()
+        maven { url 'https://www.jitpack.io' }
+    }
+}
+// @generated begin ffmpeg-kit-react-native-package - expo prebuild (DO NOT MODIFY) sync-da39a3ee5e6b4b0d3255bfef95601890afd80709
+
+// @generated end ffmpeg-kit-react-native-package"
+`;
+
+exports[`addPackageName redefines the package 1`] = `
+"
+buildscript {
+    ext {
+        buildToolsVersion = \\"29.0.2\\"
+        minSdkVersion = 21
+        compileSdkVersion = 29
+        targetSdkVersion = 29
+    }
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath(\\"com.android.tools.build:gradle:3.5.3\\")
+    }
+}
+
+allprojects {
+    repositories {
+        mavenLocal()
+        maven {
+            url(\\"$rootDir/../node_modules/react-native/android\\")
+        }
+        maven {
+            url(\\"$rootDir/../node_modules/jsc-android/dist\\")
+        }
+        google()
+        jcenter()
+        maven { url 'https://www.jitpack.io' }
+    }
+}
+// @generated begin ffmpeg-kit-react-native-package - expo prebuild (DO NOT MODIFY) sync-3d2afee3bf3e62c8e7e2f5faaff1396dc491d7de
+ext { ffmpegKitPackage = \\"min\\" }
+// @generated end ffmpeg-kit-react-native-package"
+`;

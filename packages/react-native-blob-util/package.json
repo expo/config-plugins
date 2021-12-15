@@ -1,9 +1,9 @@
 {
-  "name": "@config-plugins/react-native-google-cast",
-  "version": "0.1.0",
-  "description": "Config plugin to auto configure Google Cast on prebuild",
-  "main": "build/withGoogleCast.js",
-  "types": "build/withGoogleCast.d.ts",
+  "name": "@config-plugins/react-native-blob-util",
+  "version": "0.0.0",
+  "description": "Config plugin to auto configure react-native-blob-util on prebuild",
+  "main": "build/withReactNativeBlobUtil.js",
+  "types": "build/withReactNativeBlobUtil.d.ts",
   "sideEffects": false,
   "files": [
     "build",
@@ -19,6 +19,7 @@
     "expo-module": "expo-module"
   },
   "keywords": [
+    "react-native-blob-util",
     "react-native",
     "expo"
   ],
