@@ -1,4 +1,3 @@
-import "react-native-gesture-handler";
 import { registerRootComponent } from "expo";
 
 import Constants from "expo-constants";
