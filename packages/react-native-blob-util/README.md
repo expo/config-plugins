@@ -4,7 +4,7 @@ Config plugin to auto configure [`react-native-blob-util`][lib] when the native 
 
 ### Add the package to your npm dependencies
 
-> Tested against Expo SDK 43
+> Tested against Expo SDK 44
 
 ```
 yarn add react-native-blob-util @config-plugins/react-native-blob-util
