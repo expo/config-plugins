@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateDeploymentTargetXcodeProject = exports.updateDeploymentTargetPodfile = exports.withIosDeploymentTarget = void 0;
+// Copied from https://github.com/expo/expo-cli/blob/main/packages/install-expo-modules/src/plugins/ios/withIosDeploymentTarget.ts
 const config_plugins_1 = require("@expo/config-plugins");
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
