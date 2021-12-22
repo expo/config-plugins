@@ -4,6 +4,6 @@
     "ios"
   ],
   "ios": {
-    "appDelegateSubscribers": ["AppLifecycleDelegate"]
+    "appDelegateSubscribers": ["BranchAppDelegate"]
   }
 }

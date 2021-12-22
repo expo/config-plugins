@@ -1,7 +1,7 @@
 import ExpoModulesCore
 import RNBranch
 
-public class AppLifecycleDelegate: ExpoAppDelegateSubscriber {
+public class BranchAppDelegate: ExpoAppDelegateSubscriber {
   public func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
     RNBranch.initSession(launchOptions: launchOptions, isReferrable: true)
     return true
