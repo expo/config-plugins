@@ -12,6 +12,7 @@
     "android",
     "app.plugin.js",
     "build",
+    "expo-module.config.json",
     "ios"
   ],
   "scripts": {
