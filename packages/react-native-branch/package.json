@@ -9,8 +9,10 @@
   "types": "build/withBranch.d.ts",
   "sideEffects": false,
   "files": [
+    "android",
+    "app.plugin.js",
     "build",
-    "app.plugin.js"
+    "ios"
   ],
   "scripts": {
     "build": "expo-module build",
