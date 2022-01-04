@@ -17,6 +17,6 @@ class BranchReactActivityLifecycleListener(activityContext: Context) : ReactActi
         if (intent != null) {
             RNBranchModule.onNewIntent(intent);
         }
-        return false
+        return super.onNewIntent(intent)
     }
 }
