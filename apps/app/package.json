@@ -25,6 +25,7 @@
     "@config-plugins/detox": "^1.1.0",
     "@config-plugins/ffmpeg-kit-react-native": "^0.0.1",
     "@config-plugins/ios-stickers": "^0.0.4",
+    "@config-plugins/react-native-adjust": "file:../../packages/react-native-adjust",
     "@config-plugins/react-native-ble-plx": "^0.0.2",
     "@config-plugins/react-native-blob-util": "^0.0.0",
     "@config-plugins/react-native-callkeep": "^0.0.1",
@@ -43,7 +44,9 @@
     "i18n-js": "^3.8.0",
     "luxon": "^1.27.0",
     "react": "17.0.1",
+    "react-dom": "17.0.1",
     "react-native": "0.64.3",
+    "react-native-adjust": "^4.29.5",
     "react-native-blob-util": "^0.13.17",
     "react-native-callkeep": "^4.2.0",
     "react-native-dynamic-app-icon": "^1.1.0",
@@ -51,9 +54,8 @@
     "react-native-pdf": "^6.4.0",
     "react-native-quick-actions": "^0.3.13",
     "react-native-safe-area-context": "3.3.2",
-    "react-native-webrtc": "^1.89.3",
-    "react-dom": "17.0.1",
-    "react-native-web": "0.17.1"
+    "react-native-web": "0.17.1",
+    "react-native-webrtc": "^1.89.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
