@@ -60,7 +60,7 @@ const withGradle: ConfigPlugin = (config) => {
 };
 
 /**
- * Apply react-native-adjust configuration for Expo SDK 42 projects.
+ * Apply react-native-adjust configuration for Expo SDK +44 projects.
  */
 const withAdjustPlugin: ConfigPlugin = (config) => {
   config = withXcodeLinkBinaryWithLibraries(config, {
