@@ -1671,11 +1671,6 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@config-plugins/react-native-adjust@file:packages/react-native-adjust":
-  version "0.0.1"
-  dependencies:
-    "@expo/config-plugins" "^4.0.4"
-
 "@evocateur/libnpmaccess@^3.1.2":
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/@evocateur/libnpmaccess/-/libnpmaccess-3.1.2.tgz#ecf7f6ce6b004e9f942b098d92200be4a4b1c845"

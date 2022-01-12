@@ -25,7 +25,7 @@
     "@config-plugins/detox": "^1.1.0",
     "@config-plugins/ffmpeg-kit-react-native": "^0.0.1",
     "@config-plugins/ios-stickers": "^0.0.4",
-    "@config-plugins/react-native-adjust": "file:../../packages/react-native-adjust",
+    "@config-plugins/react-native-adjust": "^0.0.1",
     "@config-plugins/react-native-ble-plx": "^0.0.2",
     "@config-plugins/react-native-blob-util": "^0.0.0",
     "@config-plugins/react-native-callkeep": "^0.0.1",
