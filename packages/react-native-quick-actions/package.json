@@ -5,6 +5,11 @@
   "main": "build/withReactNativeQuickActions.js",
   "types": "build/withReactNativeQuickActions.d.ts",
   "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/expo/config-plugins.git",
+    "directory": "packages/react-native-quick-actions"
+  },
   "scripts": {
     "build": "expo-module build",
     "clean": "expo-module clean",

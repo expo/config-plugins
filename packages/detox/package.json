@@ -5,6 +5,11 @@
   "main": "build/withDetox.js",
   "types": "build/withDetox.d.ts",
   "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/expo/config-plugins.git",
+    "directory": "packages/detox"
+  },
   "files": [
     "build",
     "app.plugin.js"

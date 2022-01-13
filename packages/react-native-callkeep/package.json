@@ -5,6 +5,11 @@
   "main": "build/withCallkeep.js",
   "types": "build/withCallkeep.d.ts",
   "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/expo/config-plugins.git",
+    "directory": "packages/react-native-callkeep"
+  },
   "files": [
     "build",
     "app.plugin.js"
