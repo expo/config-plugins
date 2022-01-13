@@ -7,35 +7,35 @@ contact_links:
       forums, discord, Twitter, or Stack Overflow.
     url: https://forums.expo.io/
   - about: E2E tests and automation for mobile
-    name: 📦 `detox` issues
+    name: 📦 detox issues
     url: https://github.com/wix/Detox/issues
   - about: FFmpeg Kit for React Native
-    name: 📦 `ffmpeg-kit-react-native` issues
+    name: 📦 ffmpeg-kit-react-native issues
     url: https://github.com/tanersener/ffmpeg-kit/issues
   - about: React Native Bluetooth Low Energy library
-    name: 📦 `react-native-ble-plx` issues
+    name: 📦 react-native-ble-plx issues
     url: https://github.com/Polidea/react-native-ble-plx/issues
   - about: >-
       A module provides upload, download, and files access API. Supports file
       stream read/write for process large files.
-    name: 📦 `react-native-blob-util` issues
+    name: 📦 react-native-blob-util issues
     url: https://github.com/RonRadtke/react-native-blob-util/issues
   - about: iOS 10 CallKit and Android ConnectionService Framework For React Native
-    name: 📦 `react-native-callkeep` issues
+    name: 📦 react-native-callkeep issues
     url: https://github.com/react-native-webrtc/react-native-callkeep/issues
   - about: Programmatically change the app icon in React Native.
-    name: 📦 `react-native-dynamic-app-icon` issues
+    name: 📦 react-native-dynamic-app-icon issues
     url: https://github.com/idearockers/react-native-dynamic-app-icon/issues
   - about: React Native wrapper for the Google Cast SDK for iOS and Android
-    name: 📦 `react-native-google-cast` issues
+    name: 📦 react-native-google-cast issues
     url: >-
       https://github.com/react-native-google-cast/react-native-google-cast/issues
   - about: A react native PDF view component, support ios and android platform
-    name: 📦 `react-native-pdf` issues
+    name: 📦 react-native-pdf issues
     url: https://github.com/wonday/react-native-pdf/issues
   - about: A react-native interface for Touch 3D home screen quick actions
-    name: 📦 `react-native-quick-actions` issues
+    name: 📦 react-native-quick-actions issues
     url: https://github.com/jordanbyron/react-native-quick-actions/issues
   - about: WebRTC for React Native
-    name: 📦 `react-native-webrtc` issues
+    name: 📦 react-native-webrtc issues
     url: https://github.com/react-native-webrtc/react-native-webrtc/issues

@@ -127,7 +127,7 @@ async function updateBugReportTemplateAsync(
 
     config.contact_links.push({
       about: `${pkg.description}`,
-      name: `📦 \`${pkg.name}\` issues`,
+      name: `📦 ${pkg.name} issues`,
       url: redirect,
     });
   }
