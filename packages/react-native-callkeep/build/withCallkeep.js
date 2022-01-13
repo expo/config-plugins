@@ -94,7 +94,7 @@ const withCallkeep = (config) => {
 };
 const withXcodeLinkBinaryWithLibraries = (config, { library, status }) => {
     return config_plugins_1.withXcodeProject(config, (config) => {
-        const options = status === "optional" ? { settings: { ATTRIBUTES: ["Weak"] } } : {};
+        const options = status === "optional" ? { weak: true } : {};
         const target = config_plugins_1.IOSConfig.XcodeUtils.getApplicationNativeTarget({
             project: config.modResults,
             projectName: config.modRequest.projectName,
