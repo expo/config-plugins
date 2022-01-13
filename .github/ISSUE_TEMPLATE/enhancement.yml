@@ -1,5 +1,5 @@
 name: "⭐️ Config Plugin Request"
-description: "Suggest an idea for a new Expo Config Plugin"
+description: "Suggest an idea for a new Expo Config Plugin."
 labels: enhancement
 body:
   - type: markdown
@@ -8,7 +8,7 @@ body:
   - type: input
     attributes:
       label: Library
-      description: What package does this Config Plugin configure
+      description: What package does this Config Plugin configure.
     validations:
       required: true
   - type: textarea
