@@ -54,7 +54,7 @@ body:
       required: true
   - type: input
     attributes:
-      label: SDK Version (managed workflow only)
+      label: SDK Version
       description: What version of the Expo SDK are you using?
   - type: textarea
     attributes:
