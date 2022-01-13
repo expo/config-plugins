@@ -33,5 +33,6 @@
   "devDependencies": {
     "@types/semver": "^7.3.9",
     "expo-module-scripts": "^2.0.0"
-  }
+  },
+  "upstreamPackage": "ffmpeg-kit-react-native"
 }
