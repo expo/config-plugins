@@ -1,0 +1,22 @@
+name: "Config Plugin Request"
+about: "Suggest an idea for a new Expo Config Plugin"
+issue_body: true
+inputs:
+  - type: description
+    attributes:
+      value: "This repo is used for publishing out-of-tree plugins that should eventually be upstreamed in a particular package. If the plugin is a utility or used to improve some particular workflow i.e. updates version numbers, than it's probably better suited for a personal repo or utility package."
+  - type: input
+    attributes:
+      label: Library
+      description: What package does this Config Plugin configure
+    validations:
+      required: true.
+  - type: textarea
+    attributes:
+      label: Summary
+      description: Add some info on why this integration is important.
+  - type: textarea
+    attributes:
+      label: Any existing examples?
+      required: false
+      placeholder: Have you already created a local plugin for the requested library?

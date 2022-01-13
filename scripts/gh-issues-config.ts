@@ -98,7 +98,15 @@ async function updateBugReportTemplateAsync(
     contact_links: { about: string; name: string; url: string }[];
   } = {
     blank_issues_enabled: false,
-    contact_links: [],
+    contact_links: [
+      // Add the Q&A link first.
+      {
+        name: "🤔 Question about an Expo Config Plugin",
+        about:
+          "If you have a question about an Expo Config Plugin, please ask it on the forums, discord, Twitter, or Stack Overflow.",
+        url: "https://forums.expo.io/",
+      },
+    ],
   };
 
   for (const pkg of upstreamInfos.sort((a, b) => {
