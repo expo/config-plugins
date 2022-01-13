@@ -5,6 +5,11 @@
   "main": "build/withStickerPack.js",
   "types": "build/withStickerPack.d.ts",
   "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/expo/config-plugins.git",
+    "directory": "packages/ios-stickers"
+  },
   "scripts": {
     "build": "expo-module build",
     "clean": "expo-module clean",

@@ -164,6 +164,7 @@ function getPackageJson({
   );
 
   templatePackageJson.name = `@config-plugins/${CONFIG_PLUGIN}`;
+  templatePackageJson.repository.directory = `packages/${CONFIG_PLUGIN}`;
   templatePackageJson.description = `Config plugin for ${NPM_MODULE} package`;
   templatePackageJson.main = `build/${MODULE_NAME}.js`;
   templatePackageJson.types = `build/${MODULE_NAME}.d.ts`;

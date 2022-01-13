@@ -5,6 +5,11 @@
   "main": "build/withFFMPEG.js",
   "types": "build/withFFMPEG.d.ts",
   "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/expo/config-plugins.git",
+    "directory": "packages/ffmpeg-kit-react-native"
+  },
   "files": [
     "build",
     "app.plugin.js"

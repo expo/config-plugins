@@ -5,6 +5,11 @@
   "main": "build/withAndroidJscIntl.js",
   "types": "build/withAndroidJscIntl.d.ts",
   "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/expo/config-plugins.git",
+    "directory": "packages/android-jsc-intl"
+  },
   "scripts": {
     "build": "expo-module build",
     "clean": "expo-module clean",

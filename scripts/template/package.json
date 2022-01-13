@@ -5,6 +5,11 @@
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/expo/config-plugins.git",
+    "directory": "packages/template"
+  },
   "scripts": {
     "build": "expo-module build",
     "clean": "expo-module clean",

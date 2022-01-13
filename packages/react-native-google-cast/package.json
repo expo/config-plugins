@@ -5,6 +5,11 @@
   "main": "build/withGoogleCast.js",
   "types": "build/withGoogleCast.d.ts",
   "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/expo/config-plugins.git",
+    "directory": "packages/react-native-google-cast"
+  },
   "files": [
     "build",
     "app.plugin.js"
