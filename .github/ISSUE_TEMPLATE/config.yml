@@ -1,6 +1,11 @@
 ---
 blank_issues_enabled: false
 contact_links:
+  - name: 🤔 Question about an Expo Config Plugin
+    about: >-
+      If you have a question about an Expo Config Plugin, please ask it on the
+      forums, discord, Twitter, or Stack Overflow.
+    url: https://forums.expo.io/
   - about: Issues with detox -- E2E tests and automation for mobile
     name: 📦 detox
     url: https://github.com/wix/Detox/issues
