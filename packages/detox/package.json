@@ -29,5 +29,6 @@
   },
   "devDependencies": {
     "expo-module-scripts": "^2.0.0"
-  }
+  },
+  "upstreamPackage": "detox"
 }
