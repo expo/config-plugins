@@ -3,6 +3,7 @@
   "scripts": {
     "postinstall": "expo-yarn-workspaces check-workspace-dependencies",
     "gen": "ts-node ./scripts/generate-plugin.ts",
+    "update-issue-template": "ts-node ./scripts/gh-issues-config.ts",
     "start": "lerna run build --parallel -- --watch",
     "prepare": "lerna run prepare --parallel"
   },

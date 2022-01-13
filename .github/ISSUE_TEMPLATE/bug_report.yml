@@ -1,0 +1,80 @@
+name: 🐛 Expo Config Plugin Bug Report
+description: Report a reproducible bug with one of the Expo Config Plugins
+labels: needs review
+body:
+  - type: markdown
+    attributes:
+      value: >-
+        Thanks for taking the time to file a bug report! Please fill out this
+        form as completely as possible.
+  - type: markdown
+    attributes:
+      value: >-
+        If you leave out sections there is a high likelihood your issue will be
+        closed. If you have a question, not a bug report, please post it on our
+        [forums](https://forums.expo.dev/) instead.
+  - type: textarea
+    attributes:
+      label: Summary
+      description: Describe the issue in 1 or 2 sentences
+      placeholder: >-
+        Clearly describe what the expected behavior is vs. what is actually
+        happening. This should be as short as possible, while still
+        communicating all the necessary information. If your summary is just 'X
+        library/method isn't working', then you need to continue debugging
+        yourself and provide more information.
+    validations:
+      required: true
+  - type: dropdown
+    attributes:
+      label: Config Plugin
+      options:
+        - "@config-plugins/android-jsc-intl"
+        - "@config-plugins/detox"
+        - "@config-plugins/ffmpeg-kit-react-native"
+        - "@config-plugins/ios-stickers"
+        - "@config-plugins/react-native-ble-plx"
+        - "@config-plugins/react-native-blob-util"
+        - "@config-plugins/react-native-callkeep"
+        - "@config-plugins/react-native-dynamic-app-icon"
+        - "@config-plugins/react-native-google-cast"
+        - "@config-plugins/react-native-pdf"
+        - "@config-plugins/react-native-quick-actions"
+        - "@config-plugins/react-native-webrtc"
+    validations:
+      required: true
+  - type: dropdown
+    attributes:
+      label: What platform(s) does this occur on?
+      multiple: true
+      options:
+        - Android
+        - iOS
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: SDK Version (managed workflow only)
+      description: What version of the Expo SDK are you using?
+  - type: textarea
+    attributes:
+      label: Reproducible demo
+      description: >-
+        This should include as little code as possible, do not simply link your
+        entire project. If a reproducible demo is not provided, it is very 
+        likely your issue will be closed. Read [here
+        more guidance](https://stackoverflow.com/help/mcve).
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: >-
+        Please make sure contributors can run your code and follow the steps
+        your provided in order to reproduce the bug.
+  - type: markdown
+    attributes:
+      value: >-
+        **Realize that it is up to you to debug your code and be as certain as
+        possible that the bug is with Expo, not with your own app.** [Here's an
+        excellent guide to debugging you can
+        follow](https://gist.github.com/brentvatne/5ac00cba0c70b7a06b89a56787d6bc4a).

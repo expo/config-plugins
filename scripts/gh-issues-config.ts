@@ -1,18 +1,10 @@
 #!/usr/bin/env ts-node
-
-import assert from "assert";
-import * as fs from "fs";
-import * as path from "path";
-import prompts from "prompts";
-// @ts-ignore
-import replaceAll from "string.prototype.replaceall";
-import * as PackageManager from "@expo/package-manager";
-const packagesDir = path.join(__dirname, "../packages");
-const templateDir = path.join(__dirname, "./template");
-import { sync as globSync } from "glob";
-
+import JsonFile, { JSONObject, JSONValue } from "@expo/json-file";
 import spawnAsync from "@expo/spawn-async";
-import JsonFile, { JSONValue, JSONObject } from "@expo/json-file";
+import * as fs from "fs/promises";
+import { sync as globSync } from "glob";
+import * as yaml from "js-yaml";
+import * as path from "path";
 
 async function npmViewAsync(...props: string[]): Promise<JSONValue> {
   const cmd = ["view", ...props, "--json"];
@@ -33,7 +25,7 @@ async function npmViewAsync(...props: string[]): Promise<JSONValue> {
 
 async function getAllPackageJsonFiles(root: string): Promise<JSONObject[]> {
   // "upstreamPackage": "react-native-webrtc"
-  const packageJsonFiles = globSync("packages/**/package.json", {
+  const packageJsonFiles = globSync("packages/*/package.json", {
     absolute: true,
     cwd: root,
   });
@@ -43,9 +35,42 @@ async function getAllPackageJsonFiles(root: string): Promise<JSONObject[]> {
   );
 }
 
+async function updateBugReportTemplateAsync(
+  root: string,
+  configPluginNames: string[]
+) {
+  const bugReportFilePath = path.resolve(
+    root,
+    ".github/ISSUE_TEMPLATE/bug_report.yml"
+  );
+
+  const data = await fs.readFile(bugReportFilePath, "utf-8");
+
+  const input = yaml.load(data) as {
+    body: {
+      type: string;
+      attributes: { label?: string; options?: string[] };
+    }[];
+  };
+
+  input.body.forEach((element) => {
+    if (element.attributes.label === "Config Plugin") {
+      element.attributes.options = configPluginNames;
+    }
+    console.log(element.attributes);
+  });
+
+  await fs.writeFile(bugReportFilePath, yaml.dump(input));
+}
+
 (async () => {
   const root = path.join(__dirname, "../");
   const packageJsons = await getAllPackageJsonFiles(root);
+
+  await updateBugReportTemplateAsync(
+    root,
+    packageJsons.map((value) => value.name) as string[]
+  );
 
   // Only get the packages that reference an upstream package.
   const pkgWithUpstream = packageJsons.filter((pkg) => pkg.upstreamPackage);
@@ -97,15 +122,7 @@ async function getAllPackageJsonFiles(root: string): Promise<JSONObject[]> {
       name: `📦 ${pkg.name}`,
       url: redirect,
     });
-    // console.log(pkg.name + " -- " + redirect);
   }
-
-  // Add the issues for the actual repo
-  //   config.contact_links.push({
-  //     about: `Issues with a particular config plugin`,
-  //     name: `Other...`,
-  //     url: redirect,
-  //   });
 
   const issuesConfigFilePath = path.join(
     root,
@@ -117,7 +134,5 @@ async function getAllPackageJsonFiles(root: string): Promise<JSONObject[]> {
   console.log("Results:\n", results);
   console.log("");
   console.log("Writing to:", issuesConfigFilePath);
-  fs.writeFileSync(issuesConfigFilePath, "---\n" + results);
+  await fs.writeFile(issuesConfigFilePath, "---\n" + results);
 })();
-
-import * as yaml from "js-yaml";
