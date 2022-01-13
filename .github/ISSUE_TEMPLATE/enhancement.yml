@@ -9,6 +9,7 @@ body:
     attributes:
       label: Library
       description: What package does this Config Plugin configure.
+      placeholder: URL to a React Native package.
     validations:
       required: true
   - type: textarea
