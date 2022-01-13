@@ -19,5 +19,3 @@ body:
     attributes:
       label: Any existing examples?
       placeholder: Have you already created a local plugin for the requested library?
-    validations:
-      required: true
