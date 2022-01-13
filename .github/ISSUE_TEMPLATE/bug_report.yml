@@ -1,6 +1,6 @@
 name: 🐛 Expo Config Plugin Bug Report
 description: Report a reproducible bug with one of the Expo Config Plugins.
-labels: needs review
+labels: bug
 body:
   - type: markdown
     attributes:
