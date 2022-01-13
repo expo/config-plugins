@@ -1,5 +1,6 @@
 name: "Config Plugin Request"
-about: "Suggest an idea for a new Expo Config Plugin"
+description: "Suggest an idea for a new Expo Config Plugin"
+labels: enhancement
 body:
   - type: markdown
     attributes:
@@ -8,9 +9,8 @@ body:
     attributes:
       label: Library
       description: What package does this Config Plugin configure
-      required: true
     validations:
-      required: true.
+      required: true
   - type: textarea
     attributes:
       label: Summary
@@ -18,5 +18,6 @@ body:
   - type: textarea
     attributes:
       label: Any existing examples?
-      required: false
       placeholder: Have you already created a local plugin for the requested library?
+    validations:
+      required: true
