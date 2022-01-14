@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.addAndroidPackagingOptions = void 0;
 const config_plugins_1 = require("@expo/config-plugins");
 const generateCode_1 = require("@expo/config-plugins/build/utils/generateCode");
 const withXcodeLinkBinaryWithLibraries = (config, { library, status }) => {
@@ -31,11 +30,10 @@ const addAndroidPackagingOptions = (src) => {
         comment: "//",
     });
 };
-exports.addAndroidPackagingOptions = addAndroidPackagingOptions;
 const withGradle = (config) => {
     return config_plugins_1.withAppBuildGradle(config, (config) => {
         if (config.modResults.language === "groovy") {
-            config.modResults.contents = exports.addAndroidPackagingOptions(config.modResults.contents).contents;
+            config.modResults.contents = addAndroidPackagingOptions(config.modResults.contents).contents;
         }
         else {
             throw new Error("Cannot add Play Services maven gradle because the project build.gradle is not groovy");
@@ -46,7 +44,8 @@ const withGradle = (config) => {
 /**
  * Apply react-native-adjust configuration for Expo SDK +44 projects.
  */
-const withAdjustPlugin = (config) => {
+const withAdjustPlugin = (config, _props) => {
+    const props = _props || {};
     config = withXcodeLinkBinaryWithLibraries(config, {
         library: "iAd.framework",
         status: "optional",
@@ -67,9 +66,15 @@ const withAdjustPlugin = (config) => {
         library: "AppTrackingTransparency.framework",
         status: "optional",
     });
-    config = config_plugins_1.AndroidConfig.Permissions.withPermissions(config, [
-        "com.google.android.gms.permission.AD_ID",
-    ]);
+    if (props.targetAndroid12) {
+        config = config_plugins_1.AndroidConfig.Version.withBuildScriptExtMinimumVersion(config, {
+            name: "compileSdkVersion",
+            minVersion: 31,
+        });
+        config = config_plugins_1.AndroidConfig.Permissions.withPermissions(config, [
+            "com.google.android.gms.permission.AD_ID",
+        ]);
+    }
     config = withGradle(config);
     // Return the modified config.
     return config;
@@ -84,4 +89,4 @@ const pkg = {
     // and might not work with the latest version of that module.
     version: "UNVERSIONED",
 };
-module.exports = config_plugins_1.createRunOncePlugin(withAdjustPlugin, pkg.name, pkg.version);
+exports.default = config_plugins_1.createRunOncePlugin(withAdjustPlugin, pkg.name, pkg.version);

@@ -29,7 +29,7 @@ const withXcodeLinkBinaryWithLibraries: ConfigPlugin<{
   });
 };
 
-export const addAndroidPackagingOptions = (src: string) => {
+const addAndroidPackagingOptions = (src: string) => {
   return mergeContents({
     tag: "react-native-play-services-analytics",
     src,
@@ -62,7 +62,12 @@ const withGradle: ConfigPlugin = (config) => {
 /**
  * Apply react-native-adjust configuration for Expo SDK +44 projects.
  */
-const withAdjustPlugin: ConfigPlugin = (config) => {
+const withAdjustPlugin: ConfigPlugin<void | { targetAndroid12?: boolean }> = (
+  config,
+  _props
+) => {
+  const props = _props || {};
+
   config = withXcodeLinkBinaryWithLibraries(config, {
     library: "iAd.framework",
     status: "optional",
@@ -88,9 +93,16 @@ const withAdjustPlugin: ConfigPlugin = (config) => {
     status: "optional",
   });
 
-  config = AndroidConfig.Permissions.withPermissions(config, [
-    "com.google.android.gms.permission.AD_ID",
-  ]);
+  if (props.targetAndroid12) {
+    config = AndroidConfig.Version.withBuildScriptExtMinimumVersion(config, {
+      name: "compileSdkVersion",
+      minVersion: 31,
+    });
+
+    config = AndroidConfig.Permissions.withPermissions(config, [
+      "com.google.android.gms.permission.AD_ID",
+    ]);
+  }
 
   config = withGradle(config);
 
@@ -109,4 +121,4 @@ const pkg = {
   version: "UNVERSIONED",
 };
 
-module.exports = createRunOncePlugin(withAdjustPlugin, pkg.name, pkg.version);
+export default createRunOncePlugin(withAdjustPlugin, pkg.name, pkg.version);

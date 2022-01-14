@@ -24,4 +24,19 @@ After installing this npm package, add the [config plugin](https://docs.expo.io/
 }
 ```
 
+If you are targeting Android 12 and above (API level 31), you need to add it in the options of the plugin:
+
+```json
+{
+  "expo": {
+    "plugins": [
+      "@config-plugins/react-native-adjust",
+      { "targetAndroid12": true }
+    ]
+  }
+}
+```
+
+This will add the [appropriate permission](https://github.com/adjust/react_native_sdk#add-permission-to-gather-google-advertising-id) for you.
+
 Next, rebuild your app as described in the ["Adding custom native code"](https://docs.expo.io/workflow/customizing/) guide.
