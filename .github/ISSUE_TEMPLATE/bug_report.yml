@@ -1,4 +1,4 @@
-name: 🐛 Expo Config Plugin Bug Report
+name: "\U0001F41B Expo Config Plugin Bug Report"
 description: Report a reproducible bug with one of the Expo Config Plugins.
 labels: bug
 body:
@@ -29,18 +29,19 @@ body:
     attributes:
       label: Config Plugin
       options:
-        - "@config-plugins/android-jsc-intl"
-        - "@config-plugins/detox"
-        - "@config-plugins/ffmpeg-kit-react-native"
-        - "@config-plugins/ios-stickers"
-        - "@config-plugins/react-native-ble-plx"
-        - "@config-plugins/react-native-blob-util"
-        - "@config-plugins/react-native-callkeep"
-        - "@config-plugins/react-native-dynamic-app-icon"
-        - "@config-plugins/react-native-google-cast"
-        - "@config-plugins/react-native-pdf"
-        - "@config-plugins/react-native-quick-actions"
-        - "@config-plugins/react-native-webrtc"
+        - '@config-plugins/android-jsc-intl'
+        - '@config-plugins/detox'
+        - '@config-plugins/ffmpeg-kit-react-native'
+        - '@config-plugins/ios-stickers'
+        - '@config-plugins/react-native-adjust'
+        - '@config-plugins/react-native-ble-plx'
+        - '@config-plugins/react-native-blob-util'
+        - '@config-plugins/react-native-callkeep'
+        - '@config-plugins/react-native-dynamic-app-icon'
+        - '@config-plugins/react-native-google-cast'
+        - '@config-plugins/react-native-pdf'
+        - '@config-plugins/react-native-quick-actions'
+        - '@config-plugins/react-native-webrtc'
     validations:
       required: true
   - type: dropdown
