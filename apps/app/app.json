@@ -13,9 +13,7 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "dev.bacon.app"
@@ -52,11 +50,13 @@
         ]
       ],
       [
-        "@config-plugins/ffmpeg-kit-react-native", {
-          "package": "min",
+        "@config-plugins/ffmpeg-kit-react-native",
+        {
+          "package": "min"
         }
       ],
       "@config-plugins/detox",
+      "@config-plugins/react-native-adjust",
       "@config-plugins/react-native-google-cast",
       "@config-plugins/react-native-ble-plx",
       "@config-plugins/react-native-webrtc",
