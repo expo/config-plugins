@@ -1,5 +1,6 @@
 import { ConfigPlugin } from "@expo/config-plugins";
-
+import { validate } from "schema-utils";
+import schema from "./options.json";
 import { Props, Sticker, withStickerAssets } from "./withStickerAssets";
 import { withStickersPlist } from "./withStickerInfoPlist";
 import { withStickerXcodeTarget } from "./withStickerXcodeTarget";
@@ -30,10 +31,12 @@ export function normalizeStickersProps(
   });
 }
 
-const withStickerPack: ConfigPlugin<Props> = (
-  config,
-  { stickers, icon, name, columns = 3 } = {}
-) => {
+const withStickerPack: ConfigPlugin<Props> = (config, options = {}) => {
+  // Perform option validation.
+  validate(schema as any, options);
+
+  const { stickers, icon, name, columns = 3 } = options;
+
   const size = sizeColumnMap[columns] || "regular";
   if (!size) {
     throw new Error(

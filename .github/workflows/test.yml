@@ -37,6 +37,7 @@ jobs:
             # Manually add packages here
             detox,
             ffmpeg-kit-react-native,
+            ios-stickers,
             react-native-ble-plx,
             react-native-blob-util,
             react-native-google-cast,
