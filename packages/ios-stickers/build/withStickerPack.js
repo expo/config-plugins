@@ -4,6 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.normalizeStickersProps = void 0;
+const schema_utils_1 = require("schema-utils");
+const options_json_1 = __importDefault(require("./options.json"));
 const withStickerAssets_1 = require("./withStickerAssets");
 const withStickerInfoPlist_1 = require("./withStickerInfoPlist");
 const withStickerXcodeTarget_1 = require("./withStickerXcodeTarget");
@@ -29,7 +31,10 @@ function normalizeStickersProps(props = []) {
     });
 }
 exports.normalizeStickersProps = normalizeStickersProps;
-const withStickerPack = (config, { stickers, icon, name, columns = 3 } = {}) => {
+const withStickerPack = (config, options = {}) => {
+    // Perform option validation.
+    schema_utils_1.validate(options_json_1.default, options);
+    const { stickers, icon, name, columns = 3 } = options;
     const size = sizeColumnMap[columns] || "regular";
     if (!size) {
         throw new Error(`Column size "${columns}" is invalid. Expected one of: ${Object.keys(sizeColumnMap).join(", ")}`);
