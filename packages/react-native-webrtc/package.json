@@ -1,6 +1,6 @@
 {
   "name": "@config-plugins/react-native-webrtc",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Config plugin to setup react-native-webrtc on prebuild",
   "main": "build/withWebRTC.js",
   "types": "build/withWebRTC.d.ts",
