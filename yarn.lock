@@ -14749,10 +14749,10 @@ react-native-blob-util@^0.13.17:
     base-64 "0.1.0"
     glob "^7.1.6"
 
-react-native-branch@^5.2.1:
-  version "5.2.1"
-  resolved "https://registry.yarnpkg.com/react-native-branch/-/react-native-branch-5.2.1.tgz#72329419365822708533ae93b31de0547e301b59"
-  integrity sha512-SDGbIh+axaHscoZ+vXAQQ+POcwf8tF2jQDtdxRE7JHJ/B9pqvChqTicllxwgyrXhZ0cj4TtpvLaD9jQ2ktnNyw==
+react-native-branch@^5.3.0:
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/react-native-branch/-/react-native-branch-5.3.0.tgz#8be8a89e0508595621a70813c21d708b63d64dc5"
+  integrity sha512-/mvpV9/QgkzkhuzMdXOz2OWr49J5Hk+nMRmuIkmi/x8JxT46jM2RcgQBqt5bYkNjrUsGZnjQkUVGnY5IdZL1ug==
 
 react-native-callkeep@^4.2.0:
   version "4.2.0"
