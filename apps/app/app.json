@@ -16,12 +16,22 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "dev.bacon.app"
+      "bundleIdentifier": "dev.bacon.app",
+      "config": {
+        "branch": {
+          "apiKey": "key_live_f9f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8"
+        }
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
+      },
+      "config": {
+        "branch": {
+          "apiKey": "key_live_f9f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8"
+        }
       },
       "package": "com.bacon.app"
     },
@@ -57,6 +67,7 @@
       ],
       "@config-plugins/detox",
       "@config-plugins/react-native-adjust",
+      "@config-plugins/react-native-branch",
       "@config-plugins/react-native-google-cast",
       "@config-plugins/react-native-ble-plx",
       "@config-plugins/react-native-webrtc",
