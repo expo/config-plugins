@@ -103,7 +103,8 @@
         "advertiserIDCollectionEnabled": false,
         "autoLogAppEventsEnabled": true,
         "isAutoInitEnabled": true
-      }]
+      }],
+      "@config-plugins/react-native-fbads"
     ]
   }
 }

@@ -14773,6 +14773,13 @@ react-native-dynamic-app-icon@^1.1.0:
   resolved "https://registry.yarnpkg.com/react-native-dynamic-app-icon/-/react-native-dynamic-app-icon-1.1.0.tgz#c7722289f9705c24fea257c9722f8d976a14cd13"
   integrity sha512-NJFQNelgA/VZfw2ZbMErUrIFv+DxV8lTX7ZEkU8ys+oZE2yA9EDNZp9KmeAufKZ4VvtFlRuyaR6OHAEfM7CNaw==
 
+react-native-fbads@7.0.5:
+  version "7.0.5"
+  resolved "https://registry.yarnpkg.com/react-native-fbads/-/react-native-fbads-7.0.5.tgz#8aecf6fa34d8a4e62f2873c05b3b06638c4dc1cd"
+  integrity sha512-CyhwcllacIwmXyAZNDF0DwTwCNLoR+S9OdAkqzGs3K6ouoMV1ePaZt+J2hAfkEx2Q+e+5P18C/zkhWjmQN3xrQ==
+  dependencies:
+    fbemitter "^2.1.1"
+
 react-native-fbsdk-next@^7.3.1:
   version "7.3.1"
   resolved "https://registry.yarnpkg.com/react-native-fbsdk-next/-/react-native-fbsdk-next-7.3.1.tgz#ab8f2c7d4e7bac1e3d7ce60c737fe9cc95072961"
