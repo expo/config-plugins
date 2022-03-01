@@ -11,14 +11,15 @@ import assert from "assert";
 export function getTemplateFile(subdomains: string[]): string {
   return `<?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
-    <domain-config cleartextTrafficPermitted="true">
-        ${subdomains
-          .map(
-            (subdomain) =>
-              `<domain includeSubdomains="true">${subdomain}</domain>`
-          )
+    ${subdomains.length ? `
+      <domain-config cleartextTrafficPermitted="true">
+          ${subdomains
+          .map((subdomain) => `<domain includeSubdomains="true">${subdomain}</domain>`)
           .join("")}
-    </domain-config>
+      </domain-config>
+      ` : 
+      '<base-config cleartextTrafficPermitted="true" />'
+    }
 </network-security-config>
 `;
 }
