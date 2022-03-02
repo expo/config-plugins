@@ -26,7 +26,7 @@ describe(withNetworkSecurityConfigManifest, () => {
       subdomains: [],
     });
     expect(applied).toMatchSnapshot();
-    expect(applied).toMatchObject(exp);
+    expect(applied).toStrictEqual(exp);
   });
   it(`modifies config if subdomains is not empty`, () => {
     const applied = withNetworkSecurityConfigManifest(exp, {
