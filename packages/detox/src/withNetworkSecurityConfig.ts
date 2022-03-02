@@ -8,29 +8,41 @@ import * as path from "path";
 import * as fs from "fs";
 import assert from "assert";
 
-export function getTemplateFile(subdomains: string[]): string {
-  return `<?xml version="1.0" encoding="utf-8"?>
-<network-security-config>
-    ${subdomains.length ? `
-      <domain-config cleartextTrafficPermitted="true">
-          ${subdomains
-          .map((subdomain) => `<domain includeSubdomains="true">${subdomain}</domain>`)
-          .join("")}
-      </domain-config>
-      ` : 
-      '<base-config cleartextTrafficPermitted="true" />'
-    }
-</network-security-config>
-`;
+export type SubdomainsType = string[] | "*";
+
+function getTemplateConfigContent(subdomains: SubdomainsType) {
+  if (subdomains === "*") {
+    // allow all domains
+    return '<base-config cleartextTrafficPermitted="true" />';
+  }
+  return `
+    <domain-config cleartextTrafficPermitted="true">
+      ${subdomains
+        .map(
+          (subdomain) =>
+            `<domain includeSubdomains="true">${subdomain}</domain>`
+        )
+        .join("")}
+    </domain-config>
+  `;
+}
+
+export function getTemplateFile(subdomains: SubdomainsType): string {
+  const content = getTemplateConfigContent(subdomains);
+  return `
+    <?xml version="1.0" encoding="utf-8"?>
+    <network-security-config>
+      ${content}
+    </network-security-config>
+  `;
 }
 
 /**
  * Create `network_security_config.xml` resource file.
  */
-const withNetworkSecurityConfigFile: ConfigPlugin<{ subdomains: string[] }> = (
-  config,
-  { subdomains }
-) => {
+const withNetworkSecurityConfigFile: ConfigPlugin<{
+  subdomains: SubdomainsType;
+}> = (config, { subdomains }) => {
   return withDangerousMod(config, [
     "android",
     async (config) => {
@@ -54,14 +66,22 @@ const withNetworkSecurityConfigFile: ConfigPlugin<{ subdomains: string[] }> = (
 /**
  * [Step 6](https://github.com/wix/Detox/blob/master/docs/Introduction.Android.md#6-enable-clear-text-unencrypted-traffic-for-detox). Link the `network_security_config.xml` file to the `AndroidManifest.xml`.
  */
-export const withNetworkSecurityConfigManifest: ConfigPlugin<{
-  subdomains: string[];
-} | void> = (config, props) => {
+export const withNetworkSecurityConfigManifest: ConfigPlugin<
+  {
+    subdomains: string[];
+  } | void
+> = (config, props) => {
   if (!props || !props.subdomains) {
     // (*) 10.0.2.2 for Google emulators, 10.0.3.2 for Genymotion emulators.
     // https://developer.android.com/training/articles/security-config
     props = { subdomains: ["10.0.2.2", "localhost"] };
   }
+
+  if (typeof props.subdomains === "object" && !props.subdomains.length) {
+    // if subdomains is an empty array, skip network config mod
+    return config;
+  }
+
   config = withNetworkSecurityConfigFile(config, props);
   return withAndroidManifest(config, (config) => {
     const application = AndroidConfig.Manifest.getMainApplicationOrThrow(
