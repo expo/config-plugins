@@ -68,7 +68,7 @@ const withNetworkSecurityConfigFile: ConfigPlugin<{
  */
 export const withNetworkSecurityConfigManifest: ConfigPlugin<
   {
-    subdomains: string[];
+    subdomains: SubdomainsType;
   } | void
 > = (config, props) => {
   if (!props || !props.subdomains) {
