@@ -58,7 +58,7 @@ Detox is an end-to-end (e2e) testing library for iOS and Android. You can use it
 The plugin provides props for extra customization. Every time you change the props or plugins, you'll need to rebuild (and `prebuild`) the native app. If no extra properties are added, defaults will be used.
 
 - `skipProguard` (_boolean_): Disable adding proguard minification to the `app/build.gradle`. Defaults to `false`.
-- `subdomains` (_string[] | '*'_): Subdomains to add to the network security config. Pass `'*'` to allow all domans. Defaults to `['10.0.2.2', 'localhost']`.
+- `subdomains` (_string[] | '*'_): Hostnames to add to the network security config. Pass `'*'` to allow all domains. Defaults to `['10.0.2.2', 'localhost']`.
 
 `app.config.js`
 
