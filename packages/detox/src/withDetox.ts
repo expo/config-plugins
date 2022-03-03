@@ -8,7 +8,7 @@ import withDetoxProjectGradle from "./withDetoxProjectGradle";
 import withDetoxTestAppGradle from "./withDetoxTestAppGradle";
 import { withDetoxTestClass } from "./withDetoxTestClass";
 import withKotlinGradle from "./withKotlinGradle";
-import { withNetworkSecurityConfigManifest } from "./withNetworkSecurityConfig";
+import { withNetworkSecurityConfigManifest, SubdomainsType } from "./withNetworkSecurityConfig";
 import withProguardGradle from "./withProguardGradle";
 
 const withDetox: ConfigPlugin<{
@@ -21,10 +21,11 @@ const withDetox: ConfigPlugin<{
   /**
    * Subdomains to add to the network security config.
    * Pass `['10.0.3.2', 'localhost']` to use Genymotion emulators instead of Google emulators.
+   * Pass `*` to allow all domains.
    *
    * @default ['10.0.2.2', 'localhost'] // (Google emulators)
    */
-  subdomains?: string[];
+  subdomains?: SubdomainsType;
 } | void> = (config, { skipProguard, subdomains } = {}) => {
   return withPlugins(
     config,

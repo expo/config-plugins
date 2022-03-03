@@ -27,16 +27,27 @@ const config_plugins_1 = require("@expo/config-plugins");
 const path = __importStar(require("path"));
 const fs = __importStar(require("fs"));
 const assert_1 = __importDefault(require("assert"));
-function getTemplateFile(subdomains) {
-    return `<?xml version="1.0" encoding="utf-8"?>
-<network-security-config>
+function getTemplateConfigContent(subdomains) {
+    if (subdomains === "*") {
+        // allow all domains
+        return '<base-config cleartextTrafficPermitted="true" />';
+    }
+    return `
     <domain-config cleartextTrafficPermitted="true">
-        ${subdomains
+      ${subdomains
         .map((subdomain) => `<domain includeSubdomains="true">${subdomain}</domain>`)
         .join("")}
     </domain-config>
-</network-security-config>
-`;
+  `;
+}
+function getTemplateFile(subdomains) {
+    const content = getTemplateConfigContent(subdomains);
+    return `
+    <?xml version="1.0" encoding="utf-8"?>
+    <network-security-config>
+      ${content}
+    </network-security-config>
+  `;
 }
 exports.getTemplateFile = getTemplateFile;
 /**
@@ -64,6 +75,10 @@ const withNetworkSecurityConfigManifest = (config, props) => {
         // (*) 10.0.2.2 for Google emulators, 10.0.3.2 for Genymotion emulators.
         // https://developer.android.com/training/articles/security-config
         props = { subdomains: ["10.0.2.2", "localhost"] };
+    }
+    if (typeof props.subdomains === "object" && !props.subdomains.length) {
+        // if subdomains is an empty array, skip network config mod
+        return config;
     }
     config = withNetworkSecurityConfigFile(config, props);
     return config_plugins_1.withAndroidManifest(config, (config) => {

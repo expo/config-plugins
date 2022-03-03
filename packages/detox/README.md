@@ -53,6 +53,29 @@ Detox is an end-to-end (e2e) testing library for iOS and Android. You can use it
 - Generate the native code `expo prebuild`
 - Run `yarn detox init -r jest`
 
+## API
+
+The plugin provides props for extra customization. Every time you change the props or plugins, you'll need to rebuild (and `prebuild`) the native app. If no extra properties are added, defaults will be used.
+
+- `skipProguard` (_boolean_): Disable adding proguard minification to the `app/build.gradle`. Defaults to `false`.
+- `subdomains` (_string[] | '*'_): Hostnames to add to the network security config. Pass `'*'` to allow all domains. Defaults to `['10.0.2.2', 'localhost']`.
+
+`app.config.js`
+
+```ts
+export default {
+  plugins: [
+    [
+      "@config-plugins/detox",
+      {
+        skipProguard: false,
+        subdomains: ["10.0.2.2", "localhost"],
+      },
+    ],
+  ],
+};
+```
+
 ## FAQ
 
 If the following commands fail, you can get better debug info by running a subset command:
