@@ -8,9 +8,9 @@ Ensure you use versions that work together!
 
 | `expo` | `detox` | `@config-plugins/detox` |
 | ------ | ------- | ----------------------- |
-| 44.0.0 | 19.1.0  | 1.1.0                   |
-| 43.0.0 | 19.1.0  | 1.0.0                   |
-| 40.0.0 | 18.6.2  | 0.0.0                   |
+| 44.0.0 | 19.1.0  | ^1.1.0                  |
+| 43.0.0 | 19.1.0  | ~1.0.0                  |
+| 40.0.0 | 18.6.2  | ~0.0.0                  |
 
 Most notably, the minimum required Kotlin version changed from `1.3.50` in SDK 40 to `1.4.21` in SDK 43. Failure to use the correct versioning could result in Android build errors like `Execution failed for task ':react-native-screens:compileDebugKotlin'.` or `Execution failed for task ':expo:compileDebugKotlin'.`.
 
@@ -58,7 +58,7 @@ Detox is an end-to-end (e2e) testing library for iOS and Android. You can use it
 The plugin provides props for extra customization. Every time you change the props or plugins, you'll need to rebuild (and `prebuild`) the native app. If no extra properties are added, defaults will be used.
 
 - `skipProguard` (_boolean_): Disable adding proguard minification to the `app/build.gradle`. Defaults to `false`.
-- `subdomains` (_string[] | '*'_): Hostnames to add to the network security config. Pass `'*'` to allow all domains. Defaults to `['10.0.2.2', 'localhost']`.
+- `subdomains` (_string[] | '\*'_): Hostnames to add to the network security config. Pass `'*'` to allow all domains. Defaults to `['10.0.2.2', 'localhost']`.
 
 `app.config.js`
 
