@@ -1,0 +1,38 @@
+name: Release
+# https://github.com/bent10/monorepo-starter/blob/main/docs/recipes/release-automation.md
+
+on:
+  push:
+    branches:
+      - main
+      - next
+      - next-major
+      - beta
+      - alpha
+      - "*.x"
+
+jobs:
+  release:
+    name: Releasing
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+
+      - uses: actions/cache@v2
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - run: yarn install --frozen-lockfile --check-files
+      - run: yarn lerna run prepare --stream
+
+      # https://github.com/dhoulb/multi-semantic-release
+      - name: Semantic release
+        # use `--ignore-packages` to ignore packages on bumping process
+        # npx multi-semantic-release --ignore-packages=packages/a/**,packages/b/**
+        run: npx multi-semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
