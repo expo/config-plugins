@@ -15,7 +15,6 @@ jobs:
   release:
     name: Releasing
     runs-on: ubuntu-latest
-    if: "!contains(github.event.head_commit.message, '[skip ci]')"
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
