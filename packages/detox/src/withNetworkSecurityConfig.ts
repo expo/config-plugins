@@ -35,9 +35,9 @@ export function getTemplateFile(subdomains: SubdomainsType): string {
    * "AAPT: error: XML or text declaration not at start of entity"
    */
   return `<?xml version="1.0" encoding="utf-8"?>
-      <network-security-config>
-        ${content}
-      </network-security-config>`;
+<network-security-config>
+${content}
+</network-security-config>`;
 }
 
 /**
