@@ -15,20 +15,7 @@ const sortMap = Object.fromEntries(
 );
 
 module.exports = {
-  branches: [
-    "+([0-9])?(.{+([0-9]),x}).x",
-    "main",
-    "next",
-    "next-major",
-    {
-      name: "beta",
-      prerelease: true,
-    },
-    {
-      name: "alpha",
-      prerelease: true,
-    },
-  ],
+  branches: ["main"],
   tagFormat: "${version}",
   repositoryUrl: "https://github.com/expo/config-plugins.git",
   plugins: [
