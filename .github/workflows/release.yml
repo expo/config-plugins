@@ -24,14 +24,14 @@ jobs:
 
       # If the dry run fails then it will prevent us from automatically breaking the repo.
       - name: Semantic release (dry run)
-        run: npx multi-semantic-release --dry-run
+        run: npx multi-semantic-release --dry-run --ignore-private-packages
         env:
           GITHUB_TOKEN: ${{ github.token }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Semantic release
         # use `--ignore-packages` to ignore packages on bumping process
         # npx multi-semantic-release --ignore-packages=packages/a/**,packages/b/**
-        run: npx multi-semantic-release
+        run: npx multi-semantic-release --ignore-private-packages
         env:
           GITHUB_TOKEN: ${{ github.token }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
