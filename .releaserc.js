@@ -1,10 +1,11 @@
 // From @byCedric https://github.com/expo/expo-github-action/blob/main/.releaserc.js
 
 const rules = [
-  { type: "feat", release: "minor", title: "New features" },
-  { type: "feature", release: "minor", title: "New features" },
-  { type: "fix", release: "patch", title: "Bug fixes" },
-  { type: "refactor", release: "patch", title: "Code changes" },
+  { type: "feat", release: "minor", title: "Features" },
+  { type: "fix", release: "patch", title: "Bug Fixes" },
+  { type: "test", release: "patch", title: "Tests" },
+  { type: "ci", release: "patch", title: "Continuous Integration" },
+  { type: "refactor", release: "patch", title: "Code Refactoring" },
   { type: "chore", release: "patch", title: "Other chores" },
   { type: "docs", release: "patch", title: "Documentation changes" },
 ];
