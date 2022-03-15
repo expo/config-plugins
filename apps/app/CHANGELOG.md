@@ -1,3 +1,27 @@
+### @expo/app [1.0.1](https://github.com/expo/config-plugins/compare/@expo/app@1.0.0...@expo/app@1.0.1) (2022-03-15)
+
+
+### Bug Fixes
+
+* **ci:** use correct internal versions ([ab8076a](https://github.com/expo/config-plugins/commit/ab8076adf51e9ba0439eba60b153d729a0996b8d))
+
+
+
+### Dependencies
+
+* **@config-plugins/android-jsc-intl:** upgraded to 1.0.1
+* **@config-plugins/detox:** upgraded to 1.0.1
+* **@config-plugins/react-native-adjust:** upgraded to 1.0.0
+* **@config-plugins/react-native-ble-plx:** upgraded to 1.0.0
+* **@config-plugins/react-native-blob-util:** upgraded to 1.0.1
+* **@config-plugins/react-native-branch:** upgraded to 1.0.0
+* **@config-plugins/react-native-callkeep:** upgraded to 1.0.0
+* **@config-plugins/react-native-dynamic-app-icon:** upgraded to 1.0.0
+* **@config-plugins/react-native-google-cast:** upgraded to 1.0.0
+* **@config-plugins/react-native-pdf:** upgraded to 1.0.0
+* **@config-plugins/react-native-quick-actions:** upgraded to 1.0.0
+* **@config-plugins/react-native-webrtc:** upgraded to 1.0.0
+
 ## @expo/app 1.0.0 (2022-03-15)
 
 
