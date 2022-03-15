@@ -22,7 +22,12 @@ jobs:
       - run: yarn install --frozen-lockfile --check-files
       - run: yarn lerna run prepare --stream
 
-      # https://github.com/dhoulb/multi-semantic-release
+      # If the dry run fails then it will prevent us from automatically breaking the repo.
+      - name: Semantic release (dry run)
+        run: npx multi-semantic-release --dry-run
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Semantic release
         # use `--ignore-packages` to ignore packages on bumping process
         # npx multi-semantic-release --ignore-packages=packages/a/**,packages/b/**
