@@ -12,9 +12,7 @@ on:
 jobs:
   main:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
+    permissions: read-all
     steps:
       - uses: aslafy-z/conventional-pr-title-action@v2.2.5
         # continue-on-error: true
