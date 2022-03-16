@@ -12,8 +12,6 @@ on:
 jobs:
   main:
     runs-on: ubuntu-latest
-    permissions:
-      statuses: write
     steps:
       - uses: aslafy-z/conventional-pr-title-action@v2.2.5
         # continue-on-error: true
