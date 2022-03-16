@@ -29,12 +29,15 @@ function getTemplateConfigContent(subdomains: SubdomainsType) {
 
 export function getTemplateFile(subdomains: SubdomainsType): string {
   const content = getTemplateConfigContent(subdomains);
-  return `
-    <?xml version="1.0" encoding="utf-8"?>
-    <network-security-config>
-      ${content}
-    </network-security-config>
-  `;
+  /**
+   * May not have new lines or spaces in the beginning.
+   * Otherwise build fails with: 
+   * "AAPT: error: XML or text declaration not at start of entity"
+   */
+  return `<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+${content}
+</network-security-config>`;
 }
 
 /**
