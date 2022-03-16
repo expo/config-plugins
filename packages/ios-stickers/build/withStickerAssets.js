@@ -44,6 +44,7 @@ function createSticker({ stickerpackPath, name, imageBuffer, extension, accessib
         name: stickerName,
     };
 }
+/** Dangerously applies sticker assets to the iOS project. */
 const withStickerAssets = (config, { stickers, icon, size }) => {
     // Default to using the app icon
     if (!icon) {

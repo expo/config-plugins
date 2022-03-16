@@ -68,6 +68,7 @@ function createSticker({
   };
 }
 
+/** Dangerously applies sticker assets to the iOS project. */
 export const withStickerAssets: ConfigPlugin<{
   icon?: string;
   size: string;
