@@ -1,3 +1,10 @@
+### @config-plugins/react-native-google-cast [1.0.1](https://github.com/expo/config-plugins/compare/@config-plugins/react-native-google-cast@1.0.0...@config-plugins/react-native-google-cast@1.0.1) (2022-03-16)
+
+
+### Continuous Integration
+
+* fix versions [skip ci] ([#53](https://github.com/expo/config-plugins/issues/53)) ([5de4ae3](https://github.com/expo/config-plugins/commit/5de4ae3e6182c32b7aa24d70ccd23a11663bb089))
+
 ## @config-plugins/react-native-google-cast 1.0.0 (2022-03-15)
 
 
