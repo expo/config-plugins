@@ -9,7 +9,7 @@ export function getBranchApiKey(config: Pick<ExpoConfig, "ios">) {
 }
 
 export function setBranchApiKey(
-  apiKey: string,
+  apiKey: string | null,
   infoPlist: InfoPlist
 ): InfoPlist {
   if (apiKey === null) {

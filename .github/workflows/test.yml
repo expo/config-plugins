@@ -40,6 +40,7 @@ jobs:
             ios-stickers,
             react-native-ble-plx,
             react-native-blob-util,
+            react-native-branch,
             react-native-google-cast,
             react-native-pdf,
             # react-native-quick-actions,
@@ -58,7 +59,8 @@ jobs:
         run: yarn lint --max-warnings 0
         working-directory: packages/${{ matrix.package }}
       - name: Test ${{ matrix.package }}
-        run: cd packages/${{ matrix.package }} && yarn test
+        run: yarn test
+        working-directory: packages/${{ matrix.package }}
         env:
           CI: true
           EXPO_DEBUG: true
