@@ -6,12 +6,11 @@ import {
   withMainActivity,
   withProjectBuildGradle,
 } from "@expo/config-plugins";
+import { addImports } from "@expo/config-plugins/build/android/codeMod";
 import {
   mergeContents,
   removeContents,
 } from "@expo/config-plugins/build/utils/generateCode";
-import { addImports } from "@expo/config-plugins/build/android/codeMod";
-import fs from "fs";
 
 const { addMetaDataItemToMainApplication, getMainApplicationOrThrow } =
   AndroidConfig.Manifest;
@@ -121,7 +120,7 @@ const withAppBuildGradleImport: ConfigPlugin<{ version?: string }> = (
 
 const withMainActivityLazyLoading: ConfigPlugin = (config) => {
   return withMainActivity(config, async (config) => {
-    let src = addImports(
+    const src = addImports(
       config.modResults.contents,
       ["com.google.android.gms.cast.framework.CastContext"],
       config.modResults.language === "java"
