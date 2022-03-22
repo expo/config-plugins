@@ -1,6 +1,6 @@
 {
   "name": "@config-plugins/detox",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Config plugin to auto configure detox on prebuild",
   "main": "build/withDetox.js",
   "types": "build/withDetox.d.ts",
