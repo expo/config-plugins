@@ -1,4 +1,5 @@
-import { AndroidConfig, XML } from "@expo/config-plugins";
+import { XML } from "@expo/config-plugins";
+
 import { appendDownloadCompleteAction } from "../withReactNativeBlobUtil";
 
 const fixture = `
