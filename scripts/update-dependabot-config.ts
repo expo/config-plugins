@@ -39,7 +39,7 @@ function getAllPackageJsonFiles(root: string): string[] {
 
   for (const filePath of filePaths.sort()) {
     config.updates.push({
-      "package-ecosystem": "yarn",
+      "package-ecosystem": "npm",
       directory: filePath,
       // Default for every package is to run at the beginning of every Expo work day.
       schedule: {
