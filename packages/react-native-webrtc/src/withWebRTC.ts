@@ -3,8 +3,8 @@ import {
   ConfigPlugin,
   createRunOncePlugin,
 } from "@expo/config-plugins";
-import { withBitcodeDisabled } from "./withBitcodeDisabled";
 
+import { withBitcodeDisabled } from "./withBitcodeDisabled";
 import { withDesugaring } from "./withDesugaring";
 import { IOSPermissionsProps, withPermissions } from "./withPermissions";
 
@@ -31,12 +31,10 @@ const withWebRTC: ConfigPlugin<IOSPermissionsProps | void> = (
     "android.permission.SYSTEM_ALERT_WINDOW",
     "android.permission.WAKE_LOCK",
   ]);
-  config = AndroidConfig.Version.withBuildScriptExtMinimumVersion(config,
-    {
-      name: "minSdkVersion",
-      minVersion: 24,
-    }
-  )
+  config = AndroidConfig.Version.withBuildScriptExtMinimumVersion(config, {
+    name: "minSdkVersion",
+    minVersion: 24,
+  });
   config = withDesugaring(config, true);
 
   return config;
