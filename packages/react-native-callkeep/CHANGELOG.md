@@ -1,3 +1,10 @@
+### @config-plugins/react-native-callkeep [1.0.3](https://github.com/expo/config-plugins/compare/@config-plugins/react-native-callkeep@1.0.2...@config-plugins/react-native-callkeep@1.0.3) (2022-03-22)
+
+
+### Other chores
+
+* **react-native-callkeep:** lint fix ([241d378](https://github.com/expo/config-plugins/commit/241d378a54327340df3663ef8f66cb8663e1e359))
+
 ### @config-plugins/react-native-callkeep [1.0.2](https://github.com/expo/config-plugins/compare/@config-plugins/react-native-callkeep@1.0.1...@config-plugins/react-native-callkeep@1.0.2) (2022-03-22)
 
 

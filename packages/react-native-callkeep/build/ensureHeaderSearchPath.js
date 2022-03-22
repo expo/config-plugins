@@ -7,8 +7,9 @@ function unquote(str) {
         return str.replace(/^"(.*)"$/, "$1");
 }
 function nonComments(obj) {
-    var keys = Object.keys(obj), newObj = {}, i = 0;
-    for (i; i < keys.length; i++) {
+    const keys = Object.keys(obj);
+    const newObj = {};
+    for (let i = 0; i < keys.length; i++) {
         if (!COMMENT_KEY.test(keys[i])) {
             newObj[keys[i]] = obj[keys[i]];
         }
@@ -20,7 +21,7 @@ function ensureHeaderSearchPath(project, file) {
     const INHERITED = '"$(inherited)"';
     for (const config in configurations) {
         const buildSettings = configurations[config].buildSettings;
-        if (unquote(buildSettings["PRODUCT_NAME"]) != project.productName)
+        if (unquote(buildSettings["PRODUCT_NAME"]) !== project.productName)
             continue;
         if (!buildSettings["HEADER_SEARCH_PATHS"]) {
             buildSettings["HEADER_SEARCH_PATHS"] = [INHERITED];
