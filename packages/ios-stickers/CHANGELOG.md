@@ -1,3 +1,10 @@
+### @config-plugins/ios-stickers [1.0.3](https://github.com/expo/config-plugins/compare/@config-plugins/ios-stickers@1.0.2...@config-plugins/ios-stickers@1.0.3) (2022-03-22)
+
+
+### Other chores
+
+* **ios-stickers:** lint fix ([331ecb1](https://github.com/expo/config-plugins/commit/331ecb163f000578bc519ebe94f90d62374095d1))
+
 ### @config-plugins/ios-stickers [1.0.2](https://github.com/expo/config-plugins/compare/@config-plugins/ios-stickers@1.0.1...@config-plugins/ios-stickers@1.0.2) (2022-03-22)
 
 

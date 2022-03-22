@@ -4,12 +4,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.normalizeStickersProps = void 0;
+const path_1 = __importDefault(require("path"));
 const schema_utils_1 = require("schema-utils");
 const options_json_1 = __importDefault(require("./options.json"));
 const withStickerAssets_1 = require("./withStickerAssets");
 const withStickerInfoPlist_1 = require("./withStickerInfoPlist");
 const withStickerXcodeTarget_1 = require("./withStickerXcodeTarget");
-const path_1 = __importDefault(require("path"));
 // TODO: Maybe the name is better to use as a prop...
 const sizeColumnMap = {
     4: "small",
