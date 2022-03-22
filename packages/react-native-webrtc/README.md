@@ -59,7 +59,10 @@ export default {
 };
 ```
 
-This plugin will also disable desugaring in the Android `gradle.properties`: `android.enableDexingArtifactTransform.desugaring=false`, and disable iOS Bitcode for "Release" builds (required).
+## Important Notes
+
+- For iOS, this plugin disables Bitcodes for all builds (required).
+- For Android, this plugin disables desugaring in `gradle.properties`: `android.enableDexingArtifactTransform.desugaring=false` and the [minimum deployment target is changed to `24`](https://github.com/react-native-webrtc/react-native-webrtc/issues/720#issuecomment-552374206) (from `21`) which may break other packages in your app!
 
 ## Manual Setup
 

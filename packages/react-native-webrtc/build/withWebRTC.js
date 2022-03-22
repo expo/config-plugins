@@ -21,6 +21,10 @@ const withWebRTC = (config, props = {}) => {
         "android.permission.SYSTEM_ALERT_WINDOW",
         "android.permission.WAKE_LOCK",
     ]);
+    config = config_plugins_1.AndroidConfig.Version.withBuildScriptExtMinimumVersion(config, {
+        name: "minSdkVersion",
+        minVersion: 24,
+    });
     config = withDesugaring_1.withDesugaring(config, true);
     return config;
 };
