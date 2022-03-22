@@ -28,7 +28,7 @@ const withDetoxTestAppGradle: ConfigPlugin = (config) => {
 export function setGradleAndroidTestImplementation(
   buildGradle: string
 ): string {
-  const pattern = /androidTestImplementation\(\'com.wix:detox:\+\'\)/g;
+  const pattern = /androidTestImplementation\('com.wix:detox:\+'\)/g;
   if (buildGradle.match(pattern)) {
     return buildGradle;
   }

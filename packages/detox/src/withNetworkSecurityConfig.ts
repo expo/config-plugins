@@ -4,9 +4,9 @@ import {
   withAndroidManifest,
   withDangerousMod,
 } from "@expo/config-plugins";
-import * as path from "path";
-import * as fs from "fs";
 import assert from "assert";
+import fs from "fs";
+import path from "path";
 
 export type SubdomainsType = string[] | "*";
 
@@ -31,7 +31,7 @@ export function getTemplateFile(subdomains: SubdomainsType): string {
   const content = getTemplateConfigContent(subdomains);
   /**
    * May not have new lines or spaces in the beginning.
-   * Otherwise build fails with: 
+   * Otherwise build fails with:
    * "AAPT: error: XML or text declaration not at start of entity"
    */
   return `<?xml version="1.0" encoding="utf-8"?>
@@ -69,11 +69,9 @@ const withNetworkSecurityConfigFile: ConfigPlugin<{
 /**
  * [Step 6](https://github.com/wix/Detox/blob/master/docs/Introduction.Android.md#6-enable-clear-text-unencrypted-traffic-for-detox). Link the `network_security_config.xml` file to the `AndroidManifest.xml`.
  */
-export const withNetworkSecurityConfigManifest: ConfigPlugin<
-  {
-    subdomains: SubdomainsType;
-  } | void
-> = (config, props) => {
+export const withNetworkSecurityConfigManifest: ConfigPlugin<{
+  subdomains: SubdomainsType;
+} | void> = (config, props) => {
   if (!props || !props.subdomains) {
     // (*) 10.0.2.2 for Google emulators, 10.0.3.2 for Genymotion emulators.
     // https://developer.android.com/training/articles/security-config

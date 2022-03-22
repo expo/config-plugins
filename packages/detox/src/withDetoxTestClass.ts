@@ -1,7 +1,7 @@
 import { ConfigPlugin, withDangerousMod } from "@expo/config-plugins";
-import * as path from "path";
-import * as fs from "fs";
 import assert from "assert";
+import fs from "fs";
+import path from "path";
 
 /**
  * Copied from the [official template file](https://github.com/wix/Detox/blob/master/examples/demo-react-native/android/app/src/androidTest/java/com/example/DetoxTest.java).
