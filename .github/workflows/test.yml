@@ -54,6 +54,9 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node }}
+      - name: Lint ${{ matrix.package }}
+        run: yarn lint --max-warnings 0
+        working-directory: packages/${{ matrix.package }}
       - name: Test ${{ matrix.package }}
         run: cd packages/${{ matrix.package }} && yarn test
         env:
