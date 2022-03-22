@@ -1,11 +1,11 @@
 import {
+  AndroidConfig,
   ConfigPlugin,
   createRunOncePlugin,
   withPlugins,
 } from "@expo/config-plugins";
 
 import { withAndroidFFMPEGPackage } from "./withAndroidFFMPEGPackage";
-import { withBuildScriptExtMinimumVersion } from "./withBuildScriptExtMinimumVersion";
 import {
   withCocoaPodsImport,
   withPodfilePropertiesPackage,
@@ -56,7 +56,7 @@ const withFFMPEG: ConfigPlugin<void | Props> = (config, _props) => {
 
     // Set min SDK Version to 24.
     [
-      withBuildScriptExtMinimumVersion,
+      AndroidConfig.Version.withBuildScriptExtMinimumVersion,
       {
         name: "minSdkVersion",
         minVersion: 24,
