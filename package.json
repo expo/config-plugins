@@ -29,6 +29,7 @@
     "semantic-release": "^19.0.2",
     "@types/js-yaml": "^4.0.5",
     "@types/prompts": "^2.0.13",
+    "eslint": "^7.25.0",
     "expo-yarn-workspaces": "^1.5.1",
     "js-yaml": "^4.1.0",
     "lerna": "3.4.1",
