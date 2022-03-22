@@ -23,7 +23,7 @@ const withProguardGradle: ConfigPlugin = (config) => {
 };
 
 export function addDetoxProguardRules(buildGradle: string): string {
-  const pattern = /detox\/proguard\-rules\-app\.pro/g;
+  const pattern = /detox\/proguard-rules-app\.pro/g;
   if (buildGradle.match(pattern)) {
     return buildGradle;
   }

@@ -8,7 +8,10 @@ import withDetoxProjectGradle from "./withDetoxProjectGradle";
 import withDetoxTestAppGradle from "./withDetoxTestAppGradle";
 import { withDetoxTestClass } from "./withDetoxTestClass";
 import withKotlinGradle from "./withKotlinGradle";
-import { withNetworkSecurityConfigManifest, SubdomainsType } from "./withNetworkSecurityConfig";
+import {
+  withNetworkSecurityConfigManifest,
+  SubdomainsType,
+} from "./withNetworkSecurityConfig";
 import withProguardGradle from "./withProguardGradle";
 
 const withDetox: ConfigPlugin<{
