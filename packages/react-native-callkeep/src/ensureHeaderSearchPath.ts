@@ -6,11 +6,10 @@ function unquote(str: string) {
   if (str) return str.replace(/^"(.*)"$/, "$1");
 }
 function nonComments(obj: Record<string, any>) {
-  var keys = Object.keys(obj),
-    newObj: Record<string, any> = {},
-    i = 0;
+  const keys = Object.keys(obj);
+  const newObj: Record<string, any> = {};
 
-  for (i; i < keys.length; i++) {
+  for (let i = 0; i < keys.length; i++) {
     if (!COMMENT_KEY.test(keys[i])) {
       newObj[keys[i]] = obj[keys[i]];
     }
@@ -26,7 +25,8 @@ export function ensureHeaderSearchPath(project: XcodeProject, file: string) {
   for (const config in configurations) {
     const buildSettings = configurations[config].buildSettings;
 
-    if (unquote(buildSettings["PRODUCT_NAME"]) != project.productName) continue;
+    if (unquote(buildSettings["PRODUCT_NAME"]) !== project.productName)
+      continue;
 
     if (!buildSettings["HEADER_SEARCH_PATHS"]) {
       buildSettings["HEADER_SEARCH_PATHS"] = [INHERITED];
