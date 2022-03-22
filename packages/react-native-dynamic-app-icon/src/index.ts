@@ -9,6 +9,8 @@ import {
 import { generateImageAsync } from "@expo/image-utils";
 import fs from "fs";
 import path from "path";
+// @ts-ignore
+import pbxFile from "xcode/lib/pbxFile";
 
 const folderName = "DynamicAppIcons";
 const size = 60;
@@ -55,9 +57,6 @@ function getIconName(name: string, size: number, scale?: number) {
   }
   return fileName;
 }
-
-// @ts-ignore
-import pbxFile from "xcode/lib/pbxFile";
 
 const withIconXcodeProject: ConfigPlugin<Props> = (config, { icons }) => {
   return withXcodeProject(config, async (config) => {
