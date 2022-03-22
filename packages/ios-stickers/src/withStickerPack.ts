@@ -1,10 +1,11 @@
 import { ConfigPlugin } from "@expo/config-plugins";
+import path from "path";
 import { validate } from "schema-utils";
+
 import schema from "./options.json";
 import { Props, Sticker, withStickerAssets } from "./withStickerAssets";
 import { withStickersPlist } from "./withStickerInfoPlist";
 import { withStickerXcodeTarget } from "./withStickerXcodeTarget";
-import path from "path";
 
 // TODO: Maybe the name is better to use as a prop...
 const sizeColumnMap: Record<number, string> = {

@@ -91,9 +91,9 @@ export function addStickersTarget(
   subfolder: string
 ) {
   // Setup uuid and name of new target
-  let targetUuid = proj.generateUuid();
-  let targetType = "app_extension_messages_sticker_pack";
-  let targetName = name.trim();
+  const targetUuid = proj.generateUuid();
+  const targetType = "app_extension_messages_sticker_pack";
+  const targetName = name.trim();
   const bundleName = subfolder.trim().split(" ").join("-");
 
   // Check type against list of allowed target types
