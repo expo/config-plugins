@@ -1,3 +1,10 @@
+### @config-plugins/ffmpeg-kit-react-native [1.0.2](https://github.com/expo/config-plugins/compare/@config-plugins/ffmpeg-kit-react-native@1.0.1...@config-plugins/ffmpeg-kit-react-native@1.0.2) (2022-03-22)
+
+
+### Other chores
+
+* **ffmpeg-kit-react-native:** update plugin to use `AndroidConfig.Version.withBuildScriptExtMinimumVersion` ([#60](https://github.com/expo/config-plugins/issues/60)) ([c3a375b](https://github.com/expo/config-plugins/commit/c3a375b292d6405be7b3277d10ab4f8dbb006047))
+
 ### @config-plugins/ffmpeg-kit-react-native [1.0.1](https://github.com/expo/config-plugins/compare/@config-plugins/ffmpeg-kit-react-native@1.0.0...@config-plugins/ffmpeg-kit-react-native@1.0.1) (2022-03-16)
 
 
