@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const config_plugins_1 = require("@expo/config-plugins");
 const withAndroidFFMPEGPackage_1 = require("./withAndroidFFMPEGPackage");
-const withBuildScriptExtMinimumVersion_1 = require("./withBuildScriptExtMinimumVersion");
 const withCocoaPodsImport_1 = require("./withCocoaPodsImport");
 const withIosDeploymentTarget_1 = require("./withIosDeploymentTarget");
 let pkg = {
@@ -31,7 +30,7 @@ const withFFMPEG = (config, _props) => {
         // Android
         // Set min SDK Version to 24.
         [
-            withBuildScriptExtMinimumVersion_1.withBuildScriptExtMinimumVersion,
+            config_plugins_1.AndroidConfig.Version.withBuildScriptExtMinimumVersion,
             {
                 name: "minSdkVersion",
                 minVersion: 24,
