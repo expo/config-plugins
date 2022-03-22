@@ -51,4 +51,8 @@ xcuserdata
 # VSCode
 .history/
 
-# packages/*/build/
+# Ignore build folders
+
+packages/*/build/**
+packages/*/plugin/build/**
+packages/@*/*/build/**
