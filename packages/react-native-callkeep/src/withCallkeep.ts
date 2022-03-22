@@ -129,8 +129,7 @@ export const withXcodeLinkBinaryWithLibraries: ConfigPlugin<{
   status?: string;
 }> = (config, { library, status }) => {
   return withXcodeProject(config, (config) => {
-    const options =
-      status === "optional" ? { weak: true } : {};
+    const options = status === "optional" ? { weak: true } : {};
 
     const target = IOSConfig.XcodeUtils.getApplicationNativeTarget({
       project: config.modResults,
