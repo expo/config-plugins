@@ -1,4 +1,3 @@
-/* eslint-disable flowtype/no-types-missing-file-annotation */
 import { ConfigPlugin, withInfoPlist } from "@expo/config-plugins";
 
 const BLUETOOTH_ALWAYS =

@@ -1,12 +1,10 @@
-/* eslint-disable flowtype/no-types-missing-file-annotation */
-
 import {
   ConfigPlugin,
   withAndroidManifest,
   AndroidConfig,
 } from "@expo/config-plugins";
 
-type InnerManifest = AndroidConfig.Manifest.AndroidManifest['manifest'];
+type InnerManifest = AndroidConfig.Manifest.AndroidManifest["manifest"];
 
 type ManifestPermission = InnerManifest["permission"];
 
