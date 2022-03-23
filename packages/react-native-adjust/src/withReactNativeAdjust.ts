@@ -34,7 +34,7 @@ const addAndroidPackagingOptions = (src: string) => {
     tag: "react-native-play-services-analytics",
     src,
     newSrc: `
-      implementation 'com.google.android.gms:play-services-analytics:18.0.0'
+      implementation 'com.google.android.gms:play-services-analytics:18.0.1'
       implementation 'com.android.installreferrer:installreferrer:2.2'
     `,
     anchor: /dependencies(?:\s+)?\{/,
