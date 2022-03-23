@@ -1,3 +1,10 @@
+### @config-plugins/react-native-adjust [1.0.3](https://github.com/expo/config-plugins/compare/@config-plugins/react-native-adjust@1.0.2...@config-plugins/react-native-adjust@1.0.3) (2022-03-23)
+
+
+### Bug Fixes
+
+* upgrade google play-services-analytics to v18.0.1 ([a24ea1d](https://github.com/expo/config-plugins/commit/a24ea1df58e9d0639dc4fa016aae8a4e15d53529))
+
 ### @config-plugins/react-native-adjust [1.0.2](https://github.com/expo/config-plugins/compare/@config-plugins/react-native-adjust@1.0.1...@config-plugins/react-native-adjust@1.0.2) (2022-03-22)
 
 
