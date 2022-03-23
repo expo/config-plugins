@@ -17,9 +17,12 @@ const withIosWifiEntitlements = (config) => {
     });
 };
 const LOCAL_NETWORK_USAGE = "${PRODUCT_NAME} uses the local network to discover Cast-enabled devices on your WiFi network";
-const BLUETOOTH_ALWAYS_USAGE = "${PRODUCT_NAME} uses Bluetooth to discover nearby Cast devices";
-const BLUETOOTH_PERIPHERAL_USAGE = "${PRODUCT_NAME} uses Bluetooth to discover nearby Cast devices";
-const MICROPHONE_USAGE = "${PRODUCT_NAME} uses microphone access to listen for ultrasonic tokens when pairing with nearby Cast devices";
+// const BLUETOOTH_ALWAYS_USAGE =
+//   "${PRODUCT_NAME} uses Bluetooth to discover nearby Cast devices";
+// const BLUETOOTH_PERIPHERAL_USAGE =
+//   "${PRODUCT_NAME} uses Bluetooth to discover nearby Cast devices";
+// const MICROPHONE_USAGE =
+//   "${PRODUCT_NAME} uses microphone access to listen for ultrasonic tokens when pairing with nearby Cast devices";
 /**
  * On iOS, a dialog asking the user for the local network permission will now be displayed immediately when the app is opened.
  *
@@ -45,19 +48,19 @@ const withIosLocalNetworkPermissions = (config, { receiverAppId = "CC1AD845" } =
         return config;
     });
 };
-const withIosGuestMode = (config) => {
-    return config_plugins_1.withInfoPlist(config, (config) => {
-        config.modResults.NSBluetoothAlwaysUsageDescription =
-            config.modResults.NSBluetoothAlwaysUsageDescription ||
-                BLUETOOTH_ALWAYS_USAGE;
-        config.modResults.NSBluetoothPeripheralUsageDescription =
-            config.modResults.NSBluetoothPeripheralUsageDescription ||
-                BLUETOOTH_PERIPHERAL_USAGE;
-        config.modResults.NSMicrophoneUsageDescription =
-            config.modResults.NSMicrophoneUsageDescription || MICROPHONE_USAGE;
-        return config;
-    });
-};
+// const withIosGuestMode: ConfigPlugin = (config) => {
+//   return withInfoPlist(config, (config) => {
+//     config.modResults.NSBluetoothAlwaysUsageDescription =
+//       config.modResults.NSBluetoothAlwaysUsageDescription ||
+//       BLUETOOTH_ALWAYS_USAGE;
+//     config.modResults.NSBluetoothPeripheralUsageDescription =
+//       config.modResults.NSBluetoothPeripheralUsageDescription ||
+//       BLUETOOTH_PERIPHERAL_USAGE;
+//     config.modResults.NSMicrophoneUsageDescription =
+//       config.modResults.NSMicrophoneUsageDescription || MICROPHONE_USAGE;
+//     return config;
+//   });
+// };
 // TODO: Use AppDelegate swizzling
 const withIosAppDelegateLoaded = (config, props) => {
     return config_plugins_1.withAppDelegate(config, (config) => {

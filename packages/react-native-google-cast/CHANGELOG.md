@@ -1,3 +1,10 @@
+### @config-plugins/react-native-google-cast [1.0.3](https://github.com/expo/config-plugins/compare/@config-plugins/react-native-google-cast@1.0.2...@config-plugins/react-native-google-cast@1.0.3) (2022-03-23)
+
+
+### Other chores
+
+* **react-native-google-cast:** lint fix ([21c4928](https://github.com/expo/config-plugins/commit/21c49280d49a3584863d8338e4b34c508249a595))
+
 ### @config-plugins/react-native-google-cast [1.0.2](https://github.com/expo/config-plugins/compare/@config-plugins/react-native-google-cast@1.0.1...@config-plugins/react-native-google-cast@1.0.2) (2022-03-22)
 
 

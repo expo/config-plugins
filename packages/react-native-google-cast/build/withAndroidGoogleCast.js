@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.withAndroidGoogleCast = void 0;
 const config_plugins_1 = require("@expo/config-plugins");
-const generateCode_1 = require("@expo/config-plugins/build/utils/generateCode");
 const codeMod_1 = require("@expo/config-plugins/build/android/codeMod");
+const generateCode_1 = require("@expo/config-plugins/build/utils/generateCode");
 const { addMetaDataItemToMainApplication, getMainApplicationOrThrow } = config_plugins_1.AndroidConfig.Manifest;
 const META_PROVIDER_CLASS = "com.google.android.gms.cast.framework.OPTIONS_PROVIDER_CLASS_NAME";
 const META_RECEIVER_APP_ID = "com.reactnative.googlecast.RECEIVER_APPLICATION_ID";
@@ -63,7 +63,7 @@ const withAppBuildGradleImport = (config, { version }) => {
 };
 const withMainActivityLazyLoading = (config) => {
     return config_plugins_1.withMainActivity(config, async (config) => {
-        let src = codeMod_1.addImports(config.modResults.contents, ["com.google.android.gms.cast.framework.CastContext"], config.modResults.language === "java");
+        const src = codeMod_1.addImports(config.modResults.contents, ["com.google.android.gms.cast.framework.CastContext"], config.modResults.language === "java");
         if (config.modResults.language === "java") {
             config.modResults.contents = addGoogleCastLazyLoadingImport(src).contents;
         }
