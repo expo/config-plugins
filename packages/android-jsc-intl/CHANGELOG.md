@@ -1,3 +1,10 @@
+### @config-plugins/android-jsc-intl [1.0.4](https://github.com/expo/config-plugins/compare/@config-plugins/android-jsc-intl@1.0.3...@config-plugins/android-jsc-intl@1.0.4) (2022-03-23)
+
+
+### Other chores
+
+* **android-jsc-intl:** lint fix ([5ca4e44](https://github.com/expo/config-plugins/commit/5ca4e44a49ad5c3153b4a2b15acf69db594d76b8))
+
 ### @config-plugins/android-jsc-intl [1.0.3](https://github.com/expo/config-plugins/compare/@config-plugins/android-jsc-intl@1.0.2...@config-plugins/android-jsc-intl@1.0.3) (2022-03-22)
 
 
