@@ -1,6 +1,6 @@
 {
   "name": "@config-plugins/react-native-ble-plx",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Config plugin to auto configure react-native-ble-plx on prebuild",
   "main": "build/withBLE.js",
   "types": "build/withBLE.d.ts",

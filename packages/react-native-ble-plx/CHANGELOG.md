@@ -1,3 +1,10 @@
+### @config-plugins/react-native-ble-plx [1.0.3](https://github.com/expo/config-plugins/compare/@config-plugins/react-native-ble-plx@1.0.2...@config-plugins/react-native-ble-plx@1.0.3) (2022-05-09)
+
+
+### Other chores
+
+* **react-native-ble-plx:** lint fix ([a99c60e](https://github.com/expo/config-plugins/commit/a99c60efd5fe53d369551c9a1323701ab14e935b))
+
 ### @config-plugins/react-native-ble-plx [1.0.2](https://github.com/expo/config-plugins/compare/@config-plugins/react-native-ble-plx@1.0.1...@config-plugins/react-native-ble-plx@1.0.2) (2022-03-22)
 
 

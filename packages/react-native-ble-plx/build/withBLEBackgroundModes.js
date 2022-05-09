@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.withBLEBackgroundModes = exports.BackgroundMode = void 0;
-/* eslint-disable flowtype/no-types-missing-file-annotation */
 const config_plugins_1 = require("@expo/config-plugins");
 var BackgroundMode;
 (function (BackgroundMode) {
@@ -9,18 +8,18 @@ var BackgroundMode;
     BackgroundMode["Peripheral"] = "peripheral";
 })(BackgroundMode = exports.BackgroundMode || (exports.BackgroundMode = {}));
 function ensureKey(arr, key) {
-    if (!arr.find(mode => mode === key)) {
+    if (!arr.find((mode) => mode === key)) {
         arr.push(key);
     }
     return arr;
 }
-const centralKey = 'bluetooth-central';
-const peripheralKey = 'bluetooth-peripheral';
+const centralKey = "bluetooth-central";
+const peripheralKey = "bluetooth-peripheral";
 /**
  * Append `UIBackgroundModes` to the `Info.plist`.
  */
 const withBLEBackgroundModes = (c, modes) => {
-    return config_plugins_1.withInfoPlist(c, config => {
+    return config_plugins_1.withInfoPlist(c, (config) => {
         if (!Array.isArray(config.modResults.UIBackgroundModes)) {
             config.modResults.UIBackgroundModes = [];
         }

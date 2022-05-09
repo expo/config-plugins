@@ -1,5 +1,4 @@
 "use strict";
-/* eslint-disable flowtype/no-types-missing-file-annotation */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.addBLEHardwareFeatureToManifest = exports.addFineControlPermissionToManifest = exports.withBLEAndroidManifest = void 0;
 const config_plugins_1 = require("@expo/config-plugins");

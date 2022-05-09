@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.withBluetoothPermissions = void 0;
-/* eslint-disable flowtype/no-types-missing-file-annotation */
 const config_plugins_1 = require("@expo/config-plugins");
 const BLUETOOTH_ALWAYS = "Allow $(PRODUCT_NAME) to connect to bluetooth devices";
 const BLUETOOTH_PERIPHERAL_USAGE = "Allow $(PRODUCT_NAME) to connect to bluetooth devices";
