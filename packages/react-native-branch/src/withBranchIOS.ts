@@ -32,7 +32,9 @@ export const withBranchIOS: ConfigPlugin<ConfigData> = (config, data) => {
 
   const apiKey = data.apiKey ?? getBranchApiKey(config);
   if (!apiKey) {
-    throw new Error("Branch API key is required");
+    throw new Error(
+      "Branch API key is required: expo.ios.config.branch.apiKey"
+    );
   }
 
   // Update the infoPlist with the branch key and branch domain

@@ -10,7 +10,7 @@ const withDesugaring = (config, isDisabled) => {
     const desugaringKey = "android.enableDexingArtifactTransform.desugaring";
     return config_plugins_1.withGradleProperties(config, (config) => {
         config.modResults = config.modResults.filter((item) => {
-            if (item.type == "property" && item.key === desugaringKey) {
+            if (item.type === "property" && item.key === desugaringKey) {
                 return false;
             }
             return true;

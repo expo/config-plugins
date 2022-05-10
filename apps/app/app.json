@@ -4,7 +4,7 @@
     "slug": "app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icons/winter.png",
+    "icon": "https://icogen.vercel.app/api/icon",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -16,22 +16,12 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "dev.bacon.app",
-      "config": {
-        "branch": {
-          "apiKey": "key_live_f9f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8"
-        }
-      }
+      "bundleIdentifier": "dev.bacon.app"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      },
-      "config": {
-        "branch": {
-          "apiKey": "key_live_f9f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8"
-        }
       },
       "package": "com.bacon.app"
     },
@@ -39,63 +29,12 @@
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      [
-        "@config-plugins/react-native-dynamic-app-icon",
-        [
-          "./assets/icons/spring.png",
-          "./assets/icons/summer.png",
-          "./assets/icons/autumn.png",
-          "./assets/icons/fall.png",
-          "./assets/icons/solstice.png"
-        ]
-      ],
-      [
-        "@config-plugins/react-native-quick-actions",
-        [
-          {
-            "title": "Take Photo",
-            "type": "photo",
-            "iconType": "UIApplicationShortcutIconTypeCapturePhoto"
-          }
-        ]
-      ],
-      [
-        "@config-plugins/ffmpeg-kit-react-native",
-        {
-          "package": "min"
-        }
-      ],
-      "@config-plugins/detox",
+     
       "@config-plugins/react-native-adjust",
-      "@config-plugins/react-native-branch",
-      "@config-plugins/react-native-google-cast",
-      "@config-plugins/react-native-ble-plx",
-      "@config-plugins/react-native-webrtc",
       "@config-plugins/react-native-callkeep",
       "@config-plugins/react-native-blob-util",
       "@config-plugins/react-native-pdf",
-      "@config-plugins/android-jsc-intl",
-      [
-        "@config-plugins/ios-stickers",
-        {
-          "name": "Stickers",
-          "icon": "./assets/imessage-icon.png",
-          "columns": 4,
-          "stickers": [
-            "./assets/stickers/annoyed.png",
-            "./assets/stickers/cuddle.png",
-            "./assets/stickers/crazy.png",
-            "./assets/stickers/cant.png",
-            "./assets/stickers/donno.png",
-            "./assets/stickers/cozzy.png",
-            "./assets/stickers/dork.png",
-            "./assets/stickers/focus.png",
-            "./assets/stickers/avocool.png",
-            "./assets/stickers/coder-girl.png",
-            "./assets/stickers/teapot.png"
-          ]
-        }
-      ]
+      "@config-plugins/android-jsc-intl"
     ]
   }
 }

@@ -1,12 +1,10 @@
 // Copied from https://github.com/expo/expo-cli/blob/main/packages/install-expo-modules/src/plugins/ios/withIosDeploymentTarget.ts
 import {
   ConfigPlugin,
-  withDangerousMod,
+  withPodfileProperties,
   withXcodeProject,
   XcodeProject,
 } from "@expo/config-plugins";
-import fs from "fs";
-import path from "path";
 import semver from "semver";
 
 type IosDeploymentTargetConfigPlugin = ConfigPlugin<{
@@ -26,39 +24,17 @@ const withIosDeploymentTargetPodfile: IosDeploymentTargetConfigPlugin = (
   config,
   props
 ) => {
-  return withDangerousMod(config, [
-    "ios",
-    async (config) => {
-      const podfile = path.join(
-        config.modRequest.platformProjectRoot,
-        "Podfile"
-      );
-      let contents = await fs.promises.readFile(podfile, "utf8");
-      contents = updateDeploymentTargetPodfile(
-        contents,
-        props.deploymentTarget
-      );
-
-      await fs.promises.writeFile(podfile, contents);
-      return config;
-    },
-  ]);
-};
-
-export function updateDeploymentTargetPodfile(
-  contents: string,
-  deploymentTarget: string
-): string {
-  return contents.replace(
-    /^(\s*platform :ios, ['"])([\d.]+)(['"])/gm,
-    (match, prefix, version, suffix) => {
-      if (semver.lt(toSemVer(version), toSemVer(deploymentTarget))) {
-        return `${prefix}${deploymentTarget}${suffix}`;
-      }
-      return match;
+  return withPodfileProperties(config, async (config) => {
+    const existing = config.modResults["ios.deploymentTarget"];
+    if (
+      typeof existing !== "string" ||
+      semver.lt(toSemVer(existing), toSemVer(props.deploymentTarget))
+    ) {
+      config.modResults["ios.deploymentTarget"] = props.deploymentTarget;
     }
-  );
-}
+    return config;
+  });
+};
 
 const withIosDeploymentTargetXcodeProject: IosDeploymentTargetConfigPlugin = (
   config,

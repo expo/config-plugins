@@ -56,3 +56,10 @@ xcuserdata
 packages/*/build/**
 packages/*/plugin/build/**
 packages/@*/*/build/**
+
+
+# App native folders
+
+apps/*/ios/*
+apps/*/android/*
+apps/*/web-build/*

@@ -1,0 +1,28 @@
+{
+  "expo": {
+    "icon": "https://icogen.vercel.app/api/icon",
+    "plugins": [
+      [
+        "@config-plugins/ios-stickers",
+        {
+          "name": "Stickers",
+          "icon": "./assets/imessage-icon.png",
+          "columns": 4,
+          "stickers": [
+            "./assets/stickers/annoyed.png",
+            "./assets/stickers/cuddle.png",
+            "./assets/stickers/crazy.png",
+            "./assets/stickers/cant.png",
+            "./assets/stickers/donno.png",
+            "./assets/stickers/cozzy.png",
+            "./assets/stickers/dork.png",
+            "./assets/stickers/focus.png",
+            "./assets/stickers/avocool.png",
+            "./assets/stickers/coder-girl.png",
+            "./assets/stickers/teapot.png"
+          ]
+        }
+      ]
+    ]
+  }
+}

@@ -1,32 +1,13 @@
 "use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.withDetoxTestClass = void 0;
 const config_plugins_1 = require("@expo/config-plugins");
-const path = __importStar(require("path"));
-const fs = __importStar(require("fs"));
 const assert_1 = __importDefault(require("assert"));
+const fs_1 = __importDefault(require("fs"));
+const path_1 = __importDefault(require("path"));
 /**
  * Copied from the [official template file](https://github.com/wix/Detox/blob/master/examples/demo-react-native/android/app/src/androidTest/java/com/example/DetoxTest.java).
  *
@@ -78,9 +59,9 @@ const withDetoxTestClass = (config) => {
             var _a;
             const packageName = (_a = config.android) === null || _a === void 0 ? void 0 : _a.package;
             assert_1.default(packageName, "android.package must be defined");
-            const folder = path.join(config.modRequest.platformProjectRoot, `app/src/androidTest/java/${packageName.split(".").join("/")}`);
-            fs.mkdirSync(folder, { recursive: true });
-            fs.writeFileSync(path.join(folder, "DetoxTest.java"), getTemplateFile(packageName), { encoding: "utf8" });
+            const folder = path_1.default.join(config.modRequest.platformProjectRoot, `app/src/androidTest/java/${packageName.split(".").join("/")}`);
+            fs_1.default.mkdirSync(folder, { recursive: true });
+            fs_1.default.writeFileSync(path_1.default.join(folder, "DetoxTest.java"), getTemplateFile(packageName), { encoding: "utf8" });
             return config;
         },
     ]);

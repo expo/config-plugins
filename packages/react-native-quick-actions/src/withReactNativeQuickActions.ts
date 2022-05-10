@@ -118,7 +118,7 @@ export function addQuickActionsAppDelegateInit(src: string): MergeResults {
 
 const withQuickActionsAppDelegate: ConfigPlugin = (config) => {
   return withAppDelegate(config, (config) => {
-    if (config.modResults.language === "objc") {
+    if (["objc", "objcpp"].includes(config.modResults.language)) {
       try {
         config.modResults.contents = addQuickActionsAppDelegateImport(
           config.modResults.contents
@@ -126,7 +126,7 @@ const withQuickActionsAppDelegate: ConfigPlugin = (config) => {
         config.modResults.contents = addQuickActionsAppDelegateInit(
           config.modResults.contents
         ).contents;
-      } catch (error) {
+      } catch (error: any) {
         if (error.code === "ERR_NO_MATCH") {
           throw new Error(
             `Cannot add QuickActions to the project's AppDelegate because it's malformed. Please report this with a copy of your project AppDelegate.`

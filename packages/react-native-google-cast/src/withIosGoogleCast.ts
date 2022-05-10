@@ -78,9 +78,9 @@ const withIosLocalNetworkPermissions: ConfigPlugin<{ receiverAppId?: string }> =
 // TODO: Use AppDelegate swizzling
 const withIosAppDelegateLoaded: ConfigPlugin<IosProps> = (config, props) => {
   return withAppDelegate(config, (config) => {
-    if (config.modResults.language !== "objc") {
+    if (!["objc", "objcpp"].includes(config.modResults.language)) {
       throw new Error(
-        "react-native-google-cast config plugin does not support Swift AppDelegate yet."
+        "react-native-google-cast config plugin does not support AppDelegate' that aren't Objective-C(++) yet."
       );
     }
     config.modResults.contents =

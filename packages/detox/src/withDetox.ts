@@ -40,8 +40,8 @@ const withDetox: ConfigPlugin<{
       // 4.
       [
         withKotlinGradle,
-        // Minimum version of Kotlin required to work with expo packages in SDK 43
-        "1.4.21",
+        // Minimum version of Kotlin required to work with expo packages in SDK 45
+        "1.6.10",
       ],
       // 5.
       withDetoxTestClass,

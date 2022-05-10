@@ -7,6 +7,8 @@ const config_plugins_1 = require("@expo/config-plugins");
 const image_utils_1 = require("@expo/image-utils");
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
+// @ts-ignore
+const pbxFile_1 = __importDefault(require("xcode/lib/pbxFile"));
 const folderName = "DynamicAppIcons";
 const size = 60;
 const scales = [2, 3];
@@ -34,8 +36,6 @@ function getIconName(name, size, scale) {
     }
     return fileName;
 }
-// @ts-ignore
-const pbxFile_1 = __importDefault(require("xcode/lib/pbxFile"));
 const withIconXcodeProject = (config, { icons }) => {
     return config_plugins_1.withXcodeProject(config, async (config) => {
         const groupPath = `${config.modRequest.projectName}/${folderName}`;
@@ -137,7 +137,7 @@ async function createIconsAsync(config, { icons }) {
     const iosRoot = path_1.default.join(config.modRequest.platformProjectRoot, config.modRequest.projectName);
     // Delete all existing assets
     await fs_1.default.promises
-        .rmdir(path_1.default.join(iosRoot, folderName), { recursive: true })
+        .rm(path_1.default.join(iosRoot, folderName), { recursive: true, force: true })
         .catch(() => null);
     // Ensure directory exists
     await fs_1.default.promises.mkdir(path_1.default.join(iosRoot, folderName), { recursive: true });
