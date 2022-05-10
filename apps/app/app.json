@@ -95,7 +95,15 @@
             "./assets/stickers/teapot.png"
           ]
         }
-      ]
+      ],
+      ["react-native-fbsdk-next", {
+        "appID": "4812712715480611",
+        "clientToken": "c5078631e4065b60d7544a9533eb33f3",
+        "displayName": "RN SDK Demo",
+        "advertiserIDCollectionEnabled": false,
+        "autoLogAppEventsEnabled": true,
+        "isAutoInitEnabled": true
+      }]
     ]
   }
 }
