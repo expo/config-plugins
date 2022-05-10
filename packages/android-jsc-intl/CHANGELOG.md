@@ -1,3 +1,14 @@
+## @config-plugins/android-jsc-intl [2.0.0](https://github.com/expo/config-plugins/compare/@config-plugins/android-jsc-intl@1.0.4...@config-plugins/android-jsc-intl@2.0.0) (2022-05-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* **android-jsc-intl:** add SDK 45 support (#77)
+
+### Features
+
+* **android-jsc-intl:** add SDK 45 support ([#77](https://github.com/expo/config-plugins/issues/77)) ([aed0904](https://github.com/expo/config-plugins/commit/aed09045d61bc67b375a277b96bdc90ed5245d0f))
+
 ### @config-plugins/android-jsc-intl [1.0.4](https://github.com/expo/config-plugins/compare/@config-plugins/android-jsc-intl@1.0.3...@config-plugins/android-jsc-intl@1.0.4) (2022-03-23)
 
 
