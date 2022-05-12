@@ -1,3 +1,14 @@
+## @config-plugins/ios-stickers [2.0.0](https://github.com/expo/config-plugins/compare/@config-plugins/ios-stickers@1.0.3...@config-plugins/ios-stickers@2.0.0) (2022-05-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* add SDK 45 support (#79)
+
+### Features
+
+* add SDK 45 support ([#79](https://github.com/expo/config-plugins/issues/79)) ([96c72dd](https://github.com/expo/config-plugins/commit/96c72dda469ace2b9eafd38ba4d21f1bcd2e3cdf))
+
 ### @config-plugins/ios-stickers [1.0.3](https://github.com/expo/config-plugins/compare/@config-plugins/ios-stickers@1.0.2...@config-plugins/ios-stickers@1.0.3) (2022-03-22)
 
 
