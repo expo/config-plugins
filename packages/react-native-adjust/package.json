@@ -24,14 +24,13 @@
     "expo",
     "config-plugins",
     "prebuild",
-    "react-native-adjust",
-    "expo-44"
+    "react-native-adjust"
   ],
   "jest": {
     "preset": "expo-module-scripts"
   },
   "dependencies": {
-    "@expo/config-plugins": "^4.1.0"
+    "@expo/config-plugins": "~4.1.4"
   },
   "devDependencies": {
     "expo-module-scripts": "^2.0.0"
