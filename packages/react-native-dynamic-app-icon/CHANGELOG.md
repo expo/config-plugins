@@ -1,3 +1,10 @@
+### @config-plugins/react-native-dynamic-app-icon [1.0.3](https://github.com/expo/config-plugins/compare/@config-plugins/react-native-dynamic-app-icon@1.0.2...@config-plugins/react-native-dynamic-app-icon@1.0.3) (2022-05-12)
+
+
+### Other chores
+
+* **react-native-dynamic-app-icon:** lint fix ([ce1a818](https://github.com/expo/config-plugins/commit/ce1a818564b30ea2adb057d8f64960da52d026ed))
+
 ### @config-plugins/react-native-dynamic-app-icon [1.0.2](https://github.com/expo/config-plugins/compare/@config-plugins/react-native-dynamic-app-icon@1.0.1...@config-plugins/react-native-dynamic-app-icon@1.0.2) (2022-03-22)
 
 
