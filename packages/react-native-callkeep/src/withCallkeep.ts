@@ -50,6 +50,7 @@ const withAndroidManifestService: ConfigPlugin = (config) => {
         $: {
           "android:name":
             "io.wazo.callkeep.RNCallKeepBackgroundMessagingService",
+          "android:exported": "true",
         },
       });
     }
@@ -63,6 +64,7 @@ const withAndroidManifestService: ConfigPlugin = (config) => {
       app.service.push({
         $: {
           "android:name": "io.wazo.callkeep.VoiceConnectionService",
+          "android:exported": "true",
           // @ts-ignore
           "android:label": "Wazo",
           "android:permission":

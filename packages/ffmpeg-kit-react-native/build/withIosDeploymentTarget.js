@@ -3,11 +3,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateDeploymentTargetXcodeProject = exports.updateDeploymentTargetPodfile = exports.withIosDeploymentTarget = void 0;
+exports.updateDeploymentTargetXcodeProject = exports.withIosDeploymentTarget = void 0;
 // Copied from https://github.com/expo/expo-cli/blob/main/packages/install-expo-modules/src/plugins/ios/withIosDeploymentTarget.ts
 const config_plugins_1 = require("@expo/config-plugins");
-const fs_1 = __importDefault(require("fs"));
-const path_1 = __importDefault(require("path"));
 const semver_1 = __importDefault(require("semver"));
 const withIosDeploymentTarget = (config, props) => {
     config = withIosDeploymentTargetPodfile(config, props);
@@ -16,26 +14,15 @@ const withIosDeploymentTarget = (config, props) => {
 };
 exports.withIosDeploymentTarget = withIosDeploymentTarget;
 const withIosDeploymentTargetPodfile = (config, props) => {
-    return config_plugins_1.withDangerousMod(config, [
-        "ios",
-        async (config) => {
-            const podfile = path_1.default.join(config.modRequest.platformProjectRoot, "Podfile");
-            let contents = await fs_1.default.promises.readFile(podfile, "utf8");
-            contents = updateDeploymentTargetPodfile(contents, props.deploymentTarget);
-            await fs_1.default.promises.writeFile(podfile, contents);
-            return config;
-        },
-    ]);
-};
-function updateDeploymentTargetPodfile(contents, deploymentTarget) {
-    return contents.replace(/^(\s*platform :ios, ['"])([\d.]+)(['"])/gm, (match, prefix, version, suffix) => {
-        if (semver_1.default.lt(toSemVer(version), toSemVer(deploymentTarget))) {
-            return `${prefix}${deploymentTarget}${suffix}`;
+    return config_plugins_1.withPodfileProperties(config, async (config) => {
+        const existing = config.modResults["ios.deploymentTarget"];
+        if (typeof existing !== "string" ||
+            semver_1.default.lt(toSemVer(existing), toSemVer(props.deploymentTarget))) {
+            config.modResults["ios.deploymentTarget"] = props.deploymentTarget;
         }
-        return match;
+        return config;
     });
-}
-exports.updateDeploymentTargetPodfile = updateDeploymentTargetPodfile;
+};
 const withIosDeploymentTargetXcodeProject = (config, props) => {
     return config_plugins_1.withXcodeProject(config, (config) => {
         config.modResults = updateDeploymentTargetXcodeProject(config.modResults, props.deploymentTarget);

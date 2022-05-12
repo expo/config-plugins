@@ -137,7 +137,7 @@ async function createIconsAsync(config, { icons }) {
     const iosRoot = path_1.default.join(config.modRequest.platformProjectRoot, config.modRequest.projectName);
     // Delete all existing assets
     await fs_1.default.promises
-        .rmdir(path_1.default.join(iosRoot, folderName), { recursive: true })
+        .rm(path_1.default.join(iosRoot, folderName), { recursive: true, force: true })
         .catch(() => null);
     // Ensure directory exists
     await fs_1.default.promises.mkdir(path_1.default.join(iosRoot, folderName), { recursive: true });

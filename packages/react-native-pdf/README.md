@@ -4,7 +4,7 @@ Config plugin to auto configure [`react-native-pdf`][lib] when the native code i
 
 ### Add the package to your npm dependencies
 
-> Tested against Expo SDK 44
+> Tested against Expo SDK 45
 
 ```
 yarn add react-native-pdf react-native-blob-util fbjs @config-plugins/react-native-pdf @config-plugins/react-native-blob-util
@@ -24,7 +24,5 @@ After installing this npm package, add the [config plugin](https://docs.expo.io/
 ```
 
 Next, rebuild your app as described in the ["Adding custom native code"](https://docs.expo.io/workflow/customizing/) guide.
-
-This plugin is Android-only, and adds packaging options to the `android/app/build.gradle` dangerously.
 
 [lib]: https://www.npmjs.com/package/react-native-pdf

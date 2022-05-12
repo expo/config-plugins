@@ -95,7 +95,7 @@ export const withStickerAssets: ConfigPlugin<{
 
       // Delete all assets...
       await fs.promises
-        .rmdir(stickersAssetsPath, { recursive: true })
+        .rm(stickersAssetsPath, { recursive: true, force: true })
         .catch(() => null);
 
       const stickersRootContentsJsonPath = path.join(

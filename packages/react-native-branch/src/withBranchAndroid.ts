@@ -37,7 +37,9 @@ export const withBranchAndroid: ConfigPlugin<{ apiKey?: string }> = (
 ) => {
   const apiKey = data.apiKey ?? getBranchApiKey(config);
   if (!apiKey) {
-    throw new Error("Branch API key is required");
+    throw new Error(
+      "Branch API key is required: expo.android.config.branch.apiKey"
+    );
   }
 
   config = withAndroidManifest(config, (config) => {

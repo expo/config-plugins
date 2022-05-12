@@ -1,0 +1,9 @@
+{
+  "expo": {
+    "icon": "https://icogen.vercel.app/api/icon?icon=🎆",
+    "plugins": [
+      "@config-plugins/react-native-blob-util",
+      "@config-plugins/react-native-pdf"
+    ]
+  }
+}

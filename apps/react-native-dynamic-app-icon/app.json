@@ -1,0 +1,17 @@
+{
+  "expo": {
+    "icon": "./assets/icons/winter.png",
+    "plugins": [
+      [
+        "@config-plugins/react-native-dynamic-app-icon",
+        [
+          "./assets/icons/spring.png",
+          "./assets/icons/summer.png",
+          "./assets/icons/autumn.png",
+          "./assets/icons/fall.png",
+          "./assets/icons/solstice.png"
+        ]
+      ]
+    ]
+  }
+}

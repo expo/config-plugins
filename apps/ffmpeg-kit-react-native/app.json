@@ -1,0 +1,13 @@
+{
+  "expo": {
+    "icon": "https://icogen.vercel.app/api/icon",
+    "plugins": [
+      [
+        "@config-plugins/ffmpeg-kit-react-native",
+        {
+          "package": "min"
+        }
+      ]
+    ]
+  }
+}

@@ -22,7 +22,7 @@ const withDetoxTestAppGradle = (config) => {
     });
 };
 function setGradleAndroidTestImplementation(buildGradle) {
-    const pattern = /androidTestImplementation\(\'com.wix:detox:\+\'\)/g;
+    const pattern = /androidTestImplementation\('com.wix:detox:\+'\)/g;
     if (buildGradle.match(pattern)) {
         return buildGradle;
     }

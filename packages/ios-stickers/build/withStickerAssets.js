@@ -58,7 +58,7 @@ const withStickerAssets = (config, { stickers, icon, size }) => {
             const stickersAssetsPath = path_1.default.join(stickerRootPath, STICKERS_ROOT_PATH);
             // Delete all assets...
             await fs_1.default.promises
-                .rmdir(stickersAssetsPath, { recursive: true })
+                .rm(stickersAssetsPath, { recursive: true, force: true })
                 .catch(() => null);
             const stickersRootContentsJsonPath = path_1.default.join(stickersAssetsPath, "Contents.json");
             fs_1.default.mkdirSync(stickersAssetsPath, {

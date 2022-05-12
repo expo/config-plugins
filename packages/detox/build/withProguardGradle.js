@@ -21,7 +21,7 @@ const withProguardGradle = (config) => {
     });
 };
 function addDetoxProguardRules(buildGradle) {
-    const pattern = /detox\/proguard\-rules\-app\.pro/g;
+    const pattern = /detox\/proguard-rules-app\.pro/g;
     if (buildGradle.match(pattern)) {
         return buildGradle;
     }

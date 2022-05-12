@@ -1,0 +1,8 @@
+{
+  "expo": {
+    "icon": "https://icogen.vercel.app/api/icon",
+    "plugins": [
+      "@config-plugins/react-native-google-cast"
+    ]
+  }
+}

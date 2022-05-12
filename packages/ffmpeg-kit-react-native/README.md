@@ -4,7 +4,7 @@ Config plugin to auto configure ffmpeg-kit-react-native when the native code is 
 
 ## Expo installation
 
-> Tested against Expo SDK 44. Most packages worked on iOS. Not all packages have been tested on Android.
+> Tested against Expo SDK 45. Most packages worked on iOS. Not all packages have been tested on Android.
 
 > This package cannot be used in the "Expo Go" app because [it requires custom native code](https://docs.expo.io/workflow/customizing/).
 > First install the package with yarn, npm, or [`expo install`](https://docs.expo.io/workflow/expo-cli/#expo-install).

@@ -1,0 +1,17 @@
+{
+  "expo": {
+    "icon": "https://icogen.vercel.app/api/icon",
+    "plugins": [
+      [
+        "@config-plugins/react-native-quick-actions",
+        [
+          {
+            "title": "Take Photo",
+            "type": "photo",
+            "iconType": "UIApplicationShortcutIconTypeCapturePhoto"
+          }
+        ]
+      ]
+    ]
+  }
+}

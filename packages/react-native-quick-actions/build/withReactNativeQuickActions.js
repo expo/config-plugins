@@ -75,7 +75,7 @@ function addQuickActionsAppDelegateInit(src) {
 exports.addQuickActionsAppDelegateInit = addQuickActionsAppDelegateInit;
 const withQuickActionsAppDelegate = (config) => {
     return config_plugins_1.withAppDelegate(config, (config) => {
-        if (config.modResults.language === "objc") {
+        if (["objc", "objcpp"].includes(config.modResults.language)) {
             try {
                 config.modResults.contents = addQuickActionsAppDelegateImport(config.modResults.contents).contents;
                 config.modResults.contents = addQuickActionsAppDelegateInit(config.modResults.contents).contents;
