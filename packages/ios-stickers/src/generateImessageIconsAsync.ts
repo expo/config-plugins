@@ -86,12 +86,11 @@ const ICON_CONTENTS: {
     idiom: "ios-marketing",
     sizes: [
       {
-        platform: "ios",
-
         size: 1024,
         scales: [1],
       },
       {
+        platform: "ios",
         size: [1024, 768],
         scales: [1],
       },
@@ -148,15 +147,16 @@ export async function generateImessageIconsAsync(
           // Save a reference to the generated image so we don't create a duplicate.
           generatedIcons[filename] = true;
         }
-        imagesJson.push({
-          idiom: platform.idiom as ContentsJsonImageIdiom,
-          size: `${width}x${height}`,
-          // @ts-ignore: template types not supported in TS yet
-          scale: `${scale}x`,
+        const imgJson: ContentsJsonImage = {
           filename,
-        });
+          idiom: platform.idiom as ContentsJsonImageIdiom,
+          scale: `${scale}x`,
+          size: `${width}x${height}`,
+        };
+        // This order closely matches Xcode formatting.
+        imagesJson.push(imgJson);
         if (rest.platform) {
-          imagesJson[imagesJson.length - 1].platform = rest.platform;
+          imgJson.platform = rest.platform;
         }
       }
     }
