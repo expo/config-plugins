@@ -3,7 +3,7 @@ import { generateImageAsync } from "@expo/image-utils";
 import fs from "fs";
 import path from "path";
 
-import { generateImessageIconsAsync } from "./withStickerIcon";
+import { generateImessageIconsAsync } from "./generateImessageIconsAsync";
 import { getProjectStickersName } from "./withStickerXcodeTarget";
 
 const STICKERS_ROOT_PATH = "Stickers.xcassets";
@@ -136,7 +136,7 @@ export const withStickerAssets: ConfigPlugin<{
       fs.writeFileSync(
         iMessageAppIconContentsJsonPath,
         JSON.stringify(
-          { info: defaultInfo, images: imessageIconContents },
+          { images: imessageIconContents, info: defaultInfo },
           null,
           2
         )

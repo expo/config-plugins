@@ -8,7 +8,7 @@ const config_plugins_1 = require("@expo/config-plugins");
 const image_utils_1 = require("@expo/image-utils");
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
-const withStickerIcon_1 = require("./withStickerIcon");
+const generateImessageIconsAsync_1 = require("./generateImessageIconsAsync");
 const withStickerXcodeTarget_1 = require("./withStickerXcodeTarget");
 const STICKERS_ROOT_PATH = "Stickers.xcassets";
 const IMESSAGE_APP_ICON_PATH = "Stickers.xcassets/iMessage App Icon.stickersiconset";
@@ -70,13 +70,13 @@ const withStickerAssets = (config, { stickers, icon, size }) => {
             const iMessageAppIconsPath = path_1.default.join(stickerRootPath, IMESSAGE_APP_ICON_PATH);
             // Only generate icons if an icon is defined
             const imessageIconContents = icon
-                ? await withStickerIcon_1.generateImessageIconsAsync(config.modRequest.projectRoot, icon, iMessageAppIconsPath)
+                ? await generateImessageIconsAsync_1.generateImessageIconsAsync(config.modRequest.projectRoot, icon, iMessageAppIconsPath)
                 : [];
             const iMessageAppIconContentsJsonPath = path_1.default.join(iMessageAppIconsPath, "Contents.json");
             fs_1.default.mkdirSync(iMessageAppIconsPath, {
                 recursive: true,
             });
-            fs_1.default.writeFileSync(iMessageAppIconContentsJsonPath, JSON.stringify({ info: defaultInfo, images: imessageIconContents }, null, 2));
+            fs_1.default.writeFileSync(iMessageAppIconContentsJsonPath, JSON.stringify({ images: imessageIconContents, info: defaultInfo }, null, 2));
             const stickerPackContentsPath = path_1.default.join(stickerRootPath, STICKER_PACK_PATH);
             const stickersContents = {
                 info: defaultInfo,
