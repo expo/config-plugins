@@ -1,4 +1,4 @@
-name: "\U0001F41B Expo Config Plugin Bug Report"
+name: 🐛 Expo Config Plugin Bug Report
 description: Report a reproducible bug with one of the Expo Config Plugins.
 labels: bug
 body:
@@ -36,6 +36,7 @@ body:
         - '@config-plugins/react-native-adjust'
         - '@config-plugins/react-native-ble-plx'
         - '@config-plugins/react-native-blob-util'
+        - '@config-plugins/react-native-branch'
         - '@config-plugins/react-native-callkeep'
         - '@config-plugins/react-native-dynamic-app-icon'
         - '@config-plugins/react-native-google-cast'
