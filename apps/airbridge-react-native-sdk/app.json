@@ -1,0 +1,22 @@
+{
+  "expo": {
+    "icon": "https://icogen.vercel.app/api/icon?icon=1f334",
+    "ios": {
+      "config": {
+        "branch": {
+          "apiKey": "key_live_f9f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8"
+        }
+      }
+    },
+    "android": {
+      "config": {
+        "branch": {
+          "apiKey": "key_live_f9f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8"
+        }
+      }
+    },
+    "plugins": [
+      "@config-plugins/airbridge-react-native-sdk"
+    ]
+  }
+}

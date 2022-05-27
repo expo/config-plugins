@@ -1402,7 +1402,7 @@
     node-forge "^1.2.1"
     nullthrows "^1.1.1"
 
-"@expo/config-plugins@1.0.33", "@expo/config-plugins@3.0.1", "@expo/config-plugins@4.0.18", "@expo/config-plugins@4.1.4", "@expo/config-plugins@^4.0.14", "@expo/config-plugins@~4.1.4":
+"@expo/config-plugins@1.0.33", "@expo/config-plugins@3.0.1", "@expo/config-plugins@4.0.18", "@expo/config-plugins@4.1.4", "@expo/config-plugins@^4.0.14", "@expo/config-plugins@^4.1.0", "@expo/config-plugins@~4.1.4":
   version "4.1.4"
   resolved "https://registry.yarnpkg.com/@expo/config-plugins/-/config-plugins-4.1.4.tgz#08e1a6314dc0f96cd165a748b5997b5ec75a84d0"
   integrity sha512-fkOjXnSieQfVSWVLKhst0DnCAyeHksvWky1CldFCQllhDB1HHBiP09Z8pamVB783n3qr/1HNZiSp6k2iUcaSoA==
@@ -4975,6 +4975,15 @@ airbnb-prop-types@^2.16.0:
     prop-types "^15.7.2"
     prop-types-exact "^1.2.0"
     react-is "^16.13.1"
+
+airbridge-react-native-sdk@^1.4.5:
+  version "1.4.5"
+  resolved "https://registry.yarnpkg.com/airbridge-react-native-sdk/-/airbridge-react-native-sdk-1.4.5.tgz#281d370b4ff3f4491b80d8a0d6d771de5024c4b9"
+  integrity sha512-gdpm+p5m6pk5CPQ/hrW+ll5qs3xFunwMDZR3A4v8oRpGSoqDQrelBflWwf3B/ay9dSFwBARfdOsj4H+Mho/LpQ==
+  dependencies:
+    lodash.isfunction "^3.0.9"
+    lodash.isplainobject "^4.0.6"
+    lodash.isstring "^4.0.1"
 
 ajv-errors@^1.0.0:
   version "1.0.1"
@@ -13133,6 +13142,11 @@ lodash.isequal@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
   integrity sha1-QVxEePK8wwEgwizhDtMib30+GOA=
+
+lodash.isfunction@^3.0.9:
+  version "3.0.9"
+  resolved "https://registry.yarnpkg.com/lodash.isfunction/-/lodash.isfunction-3.0.9.tgz#06de25df4db327ac931981d1bdb067e5af68d051"
+  integrity sha512-AirXNj15uRIMMPihnkInB4i3NHeb4iBtNg9WRWuK2o31S+ePwwNmDPaTL3o7dTJ+VXNZim7rFs4rxN4YU1oUJw==
 
 lodash.ismatch@^4.4.0:
   version "4.4.0"
