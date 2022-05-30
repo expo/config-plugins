@@ -1,3 +1,10 @@
+### @config-plugins/ios-stickers [2.0.1](https://github.com/expo/config-plugins/compare/@config-plugins/ios-stickers@2.0.0...@config-plugins/ios-stickers@2.0.1) (2022-05-30)
+
+
+### Bug Fixes
+
+* **ios-stickers:** fix app icon generation ([#82](https://github.com/expo/config-plugins/issues/82)) ([190c489](https://github.com/expo/config-plugins/commit/190c489b764f285dbbecfa42fd7ee953fc849dcb))
+
 ## @config-plugins/ios-stickers [2.0.0](https://github.com/expo/config-plugins/compare/@config-plugins/ios-stickers@1.0.3...@config-plugins/ios-stickers@2.0.0) (2022-05-12)
 
 
