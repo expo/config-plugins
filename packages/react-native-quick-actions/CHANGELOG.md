@@ -1,3 +1,19 @@
+## @config-plugins/react-native-quick-actions [2.0.0](https://github.com/expo/config-plugins/compare/@config-plugins/react-native-quick-actions@1.0.2...@config-plugins/react-native-quick-actions@2.0.0) (2022-06-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* add SDK 45 support (#79)
+
+### Features
+
+* add SDK 45 support ([#79](https://github.com/expo/config-plugins/issues/79)) ([96c72dd](https://github.com/expo/config-plugins/commit/96c72dda469ace2b9eafd38ba4d21f1bcd2e3cdf))
+
+
+### Other chores
+
+* publish packages [no-ci] ([0c7b413](https://github.com/expo/config-plugins/commit/0c7b413a765e4b1ff92b9e3edc2b62077c41ce46))
+
 ### @config-plugins/react-native-quick-actions [1.0.2](https://github.com/expo/config-plugins/compare/@config-plugins/react-native-quick-actions@1.0.1...@config-plugins/react-native-quick-actions@1.0.2) (2022-03-22)
 
 
