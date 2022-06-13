@@ -39,6 +39,9 @@ contact_links:
   - about: A react-native interface for Touch 3D home screen quick actions
     name: 📦 react-native-quick-actions issues
     url: https://github.com/jordanbyron/react-native-quick-actions/issues
+  - about: A React Native library that enables you to use iOS 12+ Siri Shortcuts.
+    name: 📦 react-native-siri-shortcut issues
+    url: https://github.com/Gustash/react-native-siri-shortcut/issues
   - about: WebRTC for React Native
     name: 📦 react-native-webrtc issues
     url: https://github.com/react-native-webrtc/react-native-webrtc/issues
