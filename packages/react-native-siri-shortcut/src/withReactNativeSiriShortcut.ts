@@ -17,16 +17,23 @@ const withReactNativeSiriShortcut: ConfigPlugin<void | string[]> = (
   config,
   activityTypes
 ) => {
-  config = withSiriShortcutAppDelegate(config);
+  withSiriShortcutAppDelegate(config);
+  withSiriEntitlements(config);
 
   const items = activityTypes || [];
 
   if (!Array.isArray(items) || !items.length) {
     return config;
   }
+  return withReactNativeSiriShortcutInfoPlist(config, items);
+};
 
+const withReactNativeSiriShortcutInfoPlist: ConfigPlugin<string[]> = (
+  config,
+  activityTypes
+) => {
   return withInfoPlist(config, (config) => {
-    config.modResults.NSUserActivityTypes = items;
+    config.modResults.NSUserActivityTypes = activityTypes;
     return config;
   });
 };
@@ -43,24 +50,23 @@ export function addSiriShortcutAppDelegateImport(src: string): MergeResults {
 }
 
 export function addSiriShortcutAppDelegateInit(src: string): MergeResults {
-  const newSrc = [];
-  newSrc.push(
-    "  BOOL shortcutResult = [RNSSSiriShortcuts application:application continueUserActivity:userActivity restorationHandler:restorationHandler];",
-    "  if (shortcutResult) {",
-    "    return [super application:application continueUserActivity:userActivity restorationHandler:restorationHandler] || shortcutResult;",
-    "  }"
-  );
-
   return mergeContents({
     tag: "react-native-siri-shortcut-delegate",
     src,
-    newSrc: newSrc.join("\n"),
+    newSrc: [
+      "  BOOL shortcutResult = [RNSSSiriShortcuts application:application continueUserActivity:userActivity restorationHandler:restorationHandler];",
+      "  if (shortcutResult) {",
+      "    return [super application:application continueUserActivity:userActivity restorationHandler:restorationHandler] || shortcutResult;",
+      "  }",
+    ].join("\n"),
     anchor:
       /  return \[super application:application continueUserActivity:userActivity restorationHandler:restorationHandler\] \|\| result;/,
     offset: -1,
     comment: "//",
   });
 }
+
+/** Append the siri entitlement on iOS */
 const withSiriEntitlements: ConfigPlugin = (config) => {
   return withEntitlementsPlist(config, (config) => {
     config.modResults["com.apple.developer.siri"] = true;
@@ -93,7 +99,6 @@ const withSiriShortcutAppDelegate: ConfigPlugin = (config) => {
     }
     return config;
   });
-  cfg = withSiriEntitlements(cfg);
 
   return cfg;
 };
