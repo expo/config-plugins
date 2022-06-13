@@ -1,0 +1,14 @@
+{
+  "expo": {
+    "icon": "https://icogen.vercel.app/api/icon",
+    "plugins": [
+      [
+        "@config-plugins/react-native-siri-shortcut",
+        [
+          "com.example.InitiateWorkout",
+          "com.example.FinishWorkout"
+        ]
+      ]
+    ]
+  }
+}

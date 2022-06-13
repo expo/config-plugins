@@ -51,7 +51,6 @@ export function addSiriShortcutAppDelegateInit(src: string): MergeResults {
     "  }"
   );
 
-  console.log(src);
   return mergeContents({
     tag: "react-native-siri-shortcut-delegate",
     src,
