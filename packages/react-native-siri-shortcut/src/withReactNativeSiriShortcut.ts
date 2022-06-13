@@ -75,7 +75,7 @@ const withSiriEntitlements: ConfigPlugin = (config) => {
 };
 
 const withSiriShortcutAppDelegate: ConfigPlugin = (config) => {
-  let cfg = withAppDelegate(config, (config) => {
+  return withAppDelegate(config, (config) => {
     if (["objc", "objcpp"].includes(config.modResults.language)) {
       try {
         config.modResults.contents = addSiriShortcutAppDelegateImport(
@@ -99,8 +99,6 @@ const withSiriShortcutAppDelegate: ConfigPlugin = (config) => {
     }
     return config;
   });
-
-  return cfg;
 };
 
 const pkg = {
