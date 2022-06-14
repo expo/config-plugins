@@ -84,6 +84,12 @@ updates:
       time: '09:00'
       timezone: America/Los_Angeles
   - package-ecosystem: npm
+    directory: packages/react-native-siri-shortcut
+    schedule:
+      interval: daily
+      time: '09:00'
+      timezone: America/Los_Angeles
+  - package-ecosystem: npm
     directory: packages/react-native-webrtc
     schedule:
       interval: daily
