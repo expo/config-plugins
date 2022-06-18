@@ -28,6 +28,7 @@ Here is a list of known packages that have a built-in Config Plugin.
 - [react-native-spotlight-search](https://www.npmjs.com/package/react-native-spotlight-search)
 - [newrelic-react-native-agent](https://www.npmjs.com/package/newrelic-react-native-agent)
 - [react-native-videoeditorsdk](https://www.npmjs.com/package/react-native-videoeditorsdk)
+- [notifee](https://notifee.app/)
 
 ### Complementary
 
@@ -39,7 +40,6 @@ More out-of-tree plugins which can be used to configure more packages.
 - [config-plugin-react-native-intercom](https://www.npmjs.com/package/config-plugin-react-native-intercom) (for use with `intercom-react-native`)
 - [@allboatsrise/expo-marketingcloudsdk](https://www.npmjs.com/package/@allboatsrise/expo-marketingcloudsdk) (for use with `react-native-marketingcloudsdk`)
 - [@ouvio/react-native-background-location-plugin](https://www.npmjs.com/package/@ouvio/react-native-background-location-plugin) (for use with `react-native-background-location-plugin`)
-- [with-notifee](https://www.npmjs.com/package/with-notifee) (for use with [notifee](https://notifee.app/))
 - [expo-community-flipper](https://www.npmjs.com/package/expo-community-flipper) (for use with Flipper)
 
 
