@@ -2,31 +2,96 @@ import { AndroidConfig, XML } from "@expo/config-plugins";
 import { resolve } from "path";
 
 import {
+  addLocationPermissionToManifest,
+  addScanPermissionToManifest,
   addBLEHardwareFeatureToManifest,
-  addFineControlPermissionToManifest,
 } from "../withBLEAndroidManifest";
 
 const { readAndroidManifestAsync } = AndroidConfig.Manifest;
 
 const sampleManifestPath = resolve(__dirname, "fixtures/AndroidManifest.xml");
 
-describe("addFineControlPermissionToManifest", () => {
-  it(`adds element`, async () => {
+describe("addLocationPermissionToManifest", () => {
+  it(`adds elements`, async () => {
     let androidManifest = await readAndroidManifestAsync(sampleManifestPath);
-    androidManifest = await addFineControlPermissionToManifest(androidManifest);
-    expect(androidManifest.manifest["uses-permission-sdk-23"]).toStrictEqual([
-      { $: { "android:name": "android.permission.ACCESS_FINE_LOCATION" } },
-    ]);
+    androidManifest = addLocationPermissionToManifest(androidManifest, false);
+    expect(androidManifest.manifest["uses-permission-sdk-23"]).toContainEqual({
+      $: {
+        "android:name": "android.permission.ACCESS_COARSE_LOCATION",
+      },
+    });
+    expect(androidManifest.manifest["uses-permission-sdk-23"]).toContainEqual({
+      $: {
+        "android:name": "android.permission.ACCESS_FINE_LOCATION",
+      },
+    });
     // Sanity
+    expect(XML.format(androidManifest)).toMatch(
+      /<uses-permission-sdk-23 android:name="android\.permission\.ACCESS_COARSE_LOCATION"\/>/
+    );
     expect(XML.format(androidManifest)).toMatch(
       /<uses-permission-sdk-23 android:name="android\.permission\.ACCESS_FINE_LOCATION"\/>/
     );
   });
+  it(`adds elements with SDK limit`, async () => {
+    let androidManifest = await readAndroidManifestAsync(sampleManifestPath);
+    androidManifest = addLocationPermissionToManifest(androidManifest, true);
+    expect(androidManifest.manifest["uses-permission-sdk-23"]).toContainEqual({
+      $: {
+        "android:name": "android.permission.ACCESS_COARSE_LOCATION",
+        "android:maxSdkVersion": "30",
+      },
+    });
+    expect(androidManifest.manifest["uses-permission-sdk-23"]).toContainEqual({
+      $: {
+        "android:name": "android.permission.ACCESS_FINE_LOCATION",
+        "android:maxSdkVersion": "30",
+      },
+    });
+    // Sanity
+    expect(XML.format(androidManifest)).toMatch(
+      /<uses-permission-sdk-23 android:name="android\.permission\.ACCESS_COARSE_LOCATION" android:maxSdkVersion="30"\/>/
+    );
+    expect(XML.format(androidManifest)).toMatch(
+      /<uses-permission-sdk-23 android:name="android\.permission\.ACCESS_FINE_LOCATION" android:maxSdkVersion="30"\/>/
+    );
+  });
 });
+
+describe("addScanPermissionToManifest", () => {
+  it(`adds element`, async () => {
+    let androidManifest = await readAndroidManifestAsync(sampleManifestPath);
+    androidManifest = addScanPermissionToManifest(androidManifest, false);
+    expect(androidManifest.manifest["uses-permission"]).toContainEqual({
+      $: {
+        "android:name": "android.permission.BLUETOOTH_SCAN",
+      },
+    });
+    // Sanity
+    expect(XML.format(androidManifest)).toMatch(
+      /<uses-permission android:name="android\.permission\.BLUETOOTH_SCAN"\/>/
+    );
+  });
+  it(`adds element with 'neverForLocation' attribute`, async () => {
+    let androidManifest = await readAndroidManifestAsync(sampleManifestPath);
+    androidManifest = addScanPermissionToManifest(androidManifest, true);
+    expect(androidManifest.manifest["uses-permission"]).toContainEqual({
+      $: {
+        "android:name": "android.permission.BLUETOOTH_SCAN",
+        "android:usesPermissionFlags": "neverForLocation",
+      },
+    });
+    // Sanity
+    expect(XML.format(androidManifest)).toMatch(
+      /<uses-permission android:name="android\.permission\.BLUETOOTH_SCAN" android:usesPermissionFlags="neverForLocation"\/>/
+    );
+  });
+});
+
 describe("addBLEHardwareFeatureToManifest", () => {
   it(`adds element`, async () => {
     let androidManifest = await readAndroidManifestAsync(sampleManifestPath);
-    androidManifest = await addBLEHardwareFeatureToManifest(androidManifest);
+    androidManifest = addBLEHardwareFeatureToManifest(androidManifest);
 
     expect(androidManifest.manifest["uses-feature"]).toStrictEqual([
       {

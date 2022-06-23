@@ -19,9 +19,17 @@ type AndroidManifest = {
 
 export const withBLEAndroidManifest: ConfigPlugin<{
   isBackgroundEnabled: boolean;
-}> = (config, { isBackgroundEnabled }) => {
+  neverForLocation: boolean;
+}> = (config, { isBackgroundEnabled, neverForLocation }) => {
   return withAndroidManifest(config, (config) => {
-    config.modResults = addFineControlPermissionToManifest(config.modResults);
+    config.modResults = addLocationPermissionToManifest(
+      config.modResults,
+      neverForLocation
+    );
+    config.modResults = addScanPermissionToManifest(
+      config.modResults,
+      neverForLocation
+    );
     if (isBackgroundEnabled) {
       config.modResults = addBLEHardwareFeatureToManifest(config.modResults);
     }
@@ -29,12 +37,38 @@ export const withBLEAndroidManifest: ConfigPlugin<{
   });
 };
 
-export function addFineControlPermissionToManifest(
-  androidManifest: AndroidManifest
+/**
+ * Add location permissions
+ *  - 'android.permission.ACCESS_COARSE_LOCATION' for Android SDK 28 (Android 9) and lower
+ *  - 'android.permission.ACCESS_FINE_LOCATION' for Android SDK 29 (Android 10) and higher.
+ *    From Android SDK 31 (Android 12) it might not be required if BLE is not used for location.
+ */
+export function addLocationPermissionToManifest(
+  androidManifest: AndroidManifest,
+  neverForLocationSinceSdk31: boolean
 ) {
-  // Add `<uses-permission-sdk-23 android:name="android.permission.ACCESS_FINE_LOCATION"/>` to the AndroidManifest.xml
   if (!Array.isArray(androidManifest.manifest["uses-permission-sdk-23"])) {
     androidManifest.manifest["uses-permission-sdk-23"] = [];
+  }
+
+  const optMaxSdkVersion = neverForLocationSinceSdk31
+    ? {
+        "android:maxSdkVersion": "30",
+      }
+    : {};
+
+  if (
+    !androidManifest.manifest["uses-permission-sdk-23"].find(
+      (item) =>
+        item.$["android:name"] === "android.permission.ACCESS_COARSE_LOCATION"
+    )
+  ) {
+    androidManifest.manifest["uses-permission-sdk-23"].push({
+      $: {
+        "android:name": "android.permission.ACCESS_COARSE_LOCATION",
+        ...optMaxSdkVersion,
+      },
+    });
   }
 
   if (
@@ -43,9 +77,42 @@ export function addFineControlPermissionToManifest(
         item.$["android:name"] === "android.permission.ACCESS_FINE_LOCATION"
     )
   ) {
-    androidManifest.manifest["uses-permission-sdk-23"]?.push({
+    androidManifest.manifest["uses-permission-sdk-23"].push({
       $: {
         "android:name": "android.permission.ACCESS_FINE_LOCATION",
+        ...optMaxSdkVersion,
+      },
+    });
+  }
+
+  return androidManifest;
+}
+
+/**
+ * Add 'android.permission.BLUETOOTH_SCAN'.
+ * Required since Android SDK 31 (Android 12).
+ */
+export function addScanPermissionToManifest(
+  androidManifest: AndroidManifest,
+  neverForLocation: boolean
+) {
+  if (!Array.isArray(androidManifest.manifest["uses-permission"])) {
+    androidManifest.manifest["uses-permission"] = [];
+  }
+
+  if (
+    !androidManifest.manifest["uses-permission"].find(
+      (item) => item.$["android:name"] === "android.permission.BLUETOOTH_SCAN"
+    )
+  ) {
+    androidManifest.manifest["uses-permission"]?.push({
+      $: {
+        "android:name": "android.permission.BLUETOOTH_SCAN",
+        ...(neverForLocation
+          ? {
+              "android:usesPermissionFlags": "neverForLocation",
+            }
+          : {}),
       },
     });
   }
