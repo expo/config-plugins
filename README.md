@@ -29,6 +29,8 @@ Here is a list of known packages that have a built-in Config Plugin.
 - [newrelic-react-native-agent](https://www.npmjs.com/package/newrelic-react-native-agent)
 - [react-native-videoeditorsdk](https://www.npmjs.com/package/react-native-videoeditorsdk)
 - [notifee](https://notifee.app/)
+- [App Clips](https://github.com/bndkt/react-native-app-clip/)
+- [iOS Safari Extensions](https://github.com/andrew-levy/react-native-safari-extension/)
 
 ### Complementary
 
