@@ -1,3 +1,10 @@
+### @config-plugins/ios-stickers [2.0.2](https://github.com/expo/config-plugins/compare/@config-plugins/ios-stickers@2.0.1...@config-plugins/ios-stickers@2.0.2) (2022-06-30)
+
+
+### Other chores
+
+* **deps-dev:** bump memfs in /packages/ios-stickers ([#83](https://github.com/expo/config-plugins/issues/83)) ([764a047](https://github.com/expo/config-plugins/commit/764a04710bea6e66dbc6d0065812acb1591435fb))
+
 ### @config-plugins/ios-stickers [2.0.1](https://github.com/expo/config-plugins/compare/@config-plugins/ios-stickers@2.0.0...@config-plugins/ios-stickers@2.0.1) (2022-05-30)
 
 
