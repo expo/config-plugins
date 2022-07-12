@@ -1,0 +1,50 @@
+{
+  "name": "@config-plugins/react-native-flyy",
+  "version": "2.0.0",
+  "description": "Config plugin to auto configure Flyy SDK on prebuild",
+  "main": "build/withReactNativeFlyy.js",
+  "types": "build/withReactNativeFlyy.d.ts",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/expo/config-plugins.git",
+    "directory": "packages/react-native-flyy"
+  },
+  "scripts": {
+    "build": "expo-module build",
+    "clean": "expo-module clean",
+    "lint": "expo-module lint",
+    "test": "expo-module test",
+    "prepare": "expo-module prepare",
+    "prepublishOnly": "expo-module prepublishOnly",
+    "expo-module": "expo-module",
+    "start": "expo start --dev-client",
+    "android": "expo run:android",
+    "ios": "expo run:ios"
+  },
+  "keywords": [
+    "react",
+    "expo",
+    "config-plugins",
+    "prebuild",
+    "react-native-flyy"
+  ],
+  "jest": {
+    "preset": "expo-module-scripts"
+  },
+  "dependencies": {
+    "@expo/config-plugins": "~4.1.4",
+    "expo": "~45.0.0",
+    "expo-splash-screen": "~0.15.1",
+    "expo-status-bar": "~1.3.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-native": "0.68.2",
+    "react-native-web": "0.17.7"
+  },
+  "devDependencies": {
+    "expo-module-scripts": "^2.0.0",
+    "@babel/core": "^7.12.9"
+  },
+  "upstreamPackage": "react-native-flyy"
+}
