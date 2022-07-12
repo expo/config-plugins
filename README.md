@@ -23,7 +23,7 @@ Here is a list of known packages that have a built-in Config Plugin.
 - [@stripe/stripe-react-native](https://www.npmjs.com/package/@stripe/stripe-react-native)
 - [@react-native-voice/voice](https://www.npmjs.com/package/@react-native-voice/voice)
 - [react-native-imglysdk](https://www.npmjs.com/package/react-native-imglysdk)
-- [@viro-community/react-viro](https://github.com/virocommunity/viro)
+- [@viro-community/react-viro](https://github.com/virocommunity/viro) -- [Guide](https://viro-community.readme.io/docs/integrating-with-expo)
 - [react-native-msal](https://www.npmjs.com/package/react-native-msal)
 - [react-native-spotlight-search](https://www.npmjs.com/package/react-native-spotlight-search)
 - [newrelic-react-native-agent](https://www.npmjs.com/package/newrelic-react-native-agent)
