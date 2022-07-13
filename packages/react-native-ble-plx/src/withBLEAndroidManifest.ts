@@ -8,11 +8,21 @@ type InnerManifest = AndroidConfig.Manifest.AndroidManifest["manifest"];
 
 type ManifestPermission = InnerManifest["permission"];
 
+// TODO: add to `AndroidManifestAttributes` in @expo/config-plugins
+type ExtraTools = {
+  // https://developer.android.com/studio/write/tool-attributes#toolstargetapi
+  "tools:targetApi"?: string;
+};
+
+type ManifestUsesPermissionWithExtraTools = {
+  $: AndroidConfig.Manifest.ManifestUsesPermission["$"] & ExtraTools;
+};
+
 type AndroidManifest = {
   manifest: InnerManifest & {
     permission?: ManifestPermission;
-    "uses-permission"?: InnerManifest["uses-permission"];
-    "uses-permission-sdk-23"?: InnerManifest["uses-permission"];
+    "uses-permission"?: ManifestUsesPermissionWithExtraTools[];
+    "uses-permission-sdk-23"?: ManifestUsesPermissionWithExtraTools[];
     "uses-feature"?: InnerManifest["uses-feature"];
   };
 };
@@ -105,6 +115,7 @@ export function addScanPermissionToManifest(
       (item) => item.$["android:name"] === "android.permission.BLUETOOTH_SCAN"
     )
   ) {
+    AndroidConfig.Manifest.ensureToolsAvailable(androidManifest);
     androidManifest.manifest["uses-permission"]?.push({
       $: {
         "android:name": "android.permission.BLUETOOTH_SCAN",
@@ -113,6 +124,7 @@ export function addScanPermissionToManifest(
               "android:usesPermissionFlags": "neverForLocation",
             }
           : {}),
+        "tools:targetApi": "31",
       },
     });
   }

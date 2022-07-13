@@ -53,11 +53,11 @@ exports.addLocationPermissionToManifest = addLocationPermissionToManifest;
  */
 function addScanPermissionToManifest(androidManifest, neverForLocation) {
     var _a;
-    // Add `<uses-permission android:name="android.permission.BLUETOOTH_SCAN"/>` to the AndroidManifest.xml
     if (!Array.isArray(androidManifest.manifest["uses-permission"])) {
         androidManifest.manifest["uses-permission"] = [];
     }
     if (!androidManifest.manifest["uses-permission"].find((item) => item.$["android:name"] === "android.permission.BLUETOOTH_SCAN")) {
+        config_plugins_1.AndroidConfig.Manifest.ensureToolsAvailable(androidManifest);
         (_a = androidManifest.manifest["uses-permission"]) === null || _a === void 0 ? void 0 : _a.push({
             $: {
                 "android:name": "android.permission.BLUETOOTH_SCAN",
@@ -66,6 +66,7 @@ function addScanPermissionToManifest(androidManifest, neverForLocation) {
                         "android:usesPermissionFlags": "neverForLocation",
                     }
                     : {}),
+                "tools:targetApi": "31",
             },
         });
     }

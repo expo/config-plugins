@@ -65,11 +65,12 @@ describe("addScanPermissionToManifest", () => {
     expect(androidManifest.manifest["uses-permission"]).toContainEqual({
       $: {
         "android:name": "android.permission.BLUETOOTH_SCAN",
+        "tools:targetApi": "31",
       },
     });
     // Sanity
     expect(XML.format(androidManifest)).toMatch(
-      /<uses-permission android:name="android\.permission\.BLUETOOTH_SCAN"\/>/
+      /<uses-permission android:name="android\.permission\.BLUETOOTH_SCAN" tools:targetApi="31"\/>/
     );
   });
   it(`adds element with 'neverForLocation' attribute`, async () => {
@@ -79,11 +80,12 @@ describe("addScanPermissionToManifest", () => {
       $: {
         "android:name": "android.permission.BLUETOOTH_SCAN",
         "android:usesPermissionFlags": "neverForLocation",
+        "tools:targetApi": "31",
       },
     });
     // Sanity
     expect(XML.format(androidManifest)).toMatch(
-      /<uses-permission android:name="android\.permission\.BLUETOOTH_SCAN" android:usesPermissionFlags="neverForLocation"\/>/
+      /<uses-permission android:name="android\.permission\.BLUETOOTH_SCAN" android:usesPermissionFlags="neverForLocation" tools:targetApi="31"\/>/
     );
   });
 });
