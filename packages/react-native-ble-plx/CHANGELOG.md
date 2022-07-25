@@ -1,3 +1,10 @@
+### @config-plugins/react-native-ble-plx [2.0.1](https://github.com/expo/config-plugins/compare/@config-plugins/react-native-ble-plx@2.0.0...@config-plugins/react-native-ble-plx@2.0.1) (2022-07-25)
+
+
+### Bug Fixes
+
+* **react-native-ble-plx:** Added new Bluetooth specific permission for Android 12 (SDK 31). ([#91](https://github.com/expo/config-plugins/issues/91)) ([d3df63f](https://github.com/expo/config-plugins/commit/d3df63fbb2344251b9b371959de3ce6e4b9ab0cd))
+
 ## @config-plugins/react-native-ble-plx [2.0.0](https://github.com/expo/config-plugins/compare/@config-plugins/react-native-ble-plx@1.0.3...@config-plugins/react-native-ble-plx@2.0.0) (2022-05-27)
 
 
