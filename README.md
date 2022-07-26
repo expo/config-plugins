@@ -48,7 +48,6 @@ More out-of-tree plugins which can be used to configure more packages.
 
 Just install and rebuild! If a package doesn't require any futher setup then it most likely doesn't need an Expo config plugin. Most packages work without a config plugin (including packages not listed below):
 
-- [react-native-share](https://github.com/react-native-share/react-native-share)
 - [@react-native-menu/menu](https://github.com/react-native-menu/menu)
 - [react-native-blurhash](https://github.com/mrousavy/react-native-blurhash)
 - [react-native-app-shortcuts](https://github.com/lokyoung/react-native-app-shortcuts)
