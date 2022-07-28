@@ -43,6 +43,7 @@ More out-of-tree plugins which can be used to configure more packages.
 - [@allboatsrise/expo-marketingcloudsdk](https://www.npmjs.com/package/@allboatsrise/expo-marketingcloudsdk) (for use with `react-native-marketingcloudsdk`)
 - [@ouvio/react-native-background-location-plugin](https://www.npmjs.com/package/@ouvio/react-native-background-location-plugin) (for use with `react-native-background-location-plugin`)
 - [expo-community-flipper](https://www.npmjs.com/package/expo-community-flipper) (for use with Flipper)
+- [expo-appcenter](https://www.npmjs.com/package/expo-appcenter) (for use with `appcenter`)
 
 ### No Plugin Required
 
