@@ -3,6 +3,7 @@ import {
   ConfigPlugin,
   createRunOncePlugin,
   withAndroidManifest,
+  withStringsXml,
 } from "@expo/config-plugins";
 
 let pkg: { name: string; version?: string } = {
@@ -53,6 +54,43 @@ export function appendDownloadCompleteAction(
   return androidManifest;
 }
 
+// com.facebook.react.modules.blob.BlobProvider
+const withBlobProvider: ConfigPlugin = (config) => {
+  withAndroidManifest(config, (config) => {
+    ensureBlobProviderManifest(config.modResults);
+    return config;
+  });
+  return config;
+};
+
+export function ensureBlobProviderManifest(
+  androidManifest: AndroidConfig.Manifest.AndroidManifest
+) {
+  const app = AndroidConfig.Manifest.getMainApplicationOrThrow(
+    androidManifest
+  ) as AndroidConfig.Manifest.ManifestApplication & { provider?: any[] };
+
+  if (!app.provider) {
+    app.provider = [];
+  }
+  if (
+    !app.provider.some(
+      (p) =>
+        p.$["android:name"] === "com.facebook.react.modules.blob.BlobProvider"
+    )
+  ) {
+    // <provider android:name="com.facebook.react.modules.blob.BlobProvider" android:authorities="@string/blob_provider_authority" android:exported="false" />
+    app.provider.push({
+      $: {
+        "android:name": "com.facebook.react.modules.blob.BlobProvider",
+        "android:authorities": "@string/blob_provider_authority",
+        "android:exported": "false",
+      },
+    });
+  }
+  return androidManifest;
+}
+
 const withReactNativeBlobUtil: ConfigPlugin = (config) => {
   config = AndroidConfig.Permissions.withPermissions(config, [
     "android.permission.READ_EXTERNAL_STORAGE",
@@ -67,8 +105,43 @@ const withReactNativeBlobUtil: ConfigPlugin = (config) => {
     return config;
   });
 
+  withBlobProvider(config);
+
+  config = withStringsXml(config, (config) => {
+    ensureBlobProviderAuthorityString(
+      config.modResults,
+      config.android?.package + ".blobs"
+    );
+    return config;
+  });
+
   return config;
 };
+
+export function ensureBlobProviderAuthorityString(
+  res: AndroidConfig.Resources.ResourceXML,
+  authority: string
+) {
+  if (!res.resources.string) {
+    res.resources.string = [];
+  }
+  if (
+    !res.resources.string.some((s) => s.$["name"] === "blob_provider_authority")
+  ) {
+    res.resources.string.push({
+      _: "invalid",
+      $: {
+        name: "blob_provider_authority",
+      },
+    });
+  }
+
+  const item = res.resources.string.find(
+    (s) => s.$["name"] === "blob_provider_authority"
+  );
+  item!._ = authority;
+  return res;
+}
 
 export default createRunOncePlugin(
   withReactNativeBlobUtil,

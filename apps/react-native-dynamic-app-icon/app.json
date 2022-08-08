@@ -1,5 +1,6 @@
 {
   "expo": {
+    "name": "app-icon",
     "icon": "./assets/icons/winter.png",
     "plugins": [
       [

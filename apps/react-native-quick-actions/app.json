@@ -1,6 +1,7 @@
 {
   "expo": {
-    "icon": "https://icogen.vercel.app/api/icon",
+    "name": "quick-actions",
+    "icon": "https://icogen.vercel.app/api/icon?icon=🔌&color_hex=3F97EF",
     "plugins": [
       [
         "@config-plugins/react-native-quick-actions",

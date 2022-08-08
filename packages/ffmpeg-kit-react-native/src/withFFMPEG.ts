@@ -45,11 +45,6 @@ const withFFMPEG: ConfigPlugin<void | Props> = (config, _props) => {
     // iOS
 
     [withPodfilePropertiesPackage, iosPackage],
-    [
-      withIosDeploymentTarget,
-      // https://github.com/tanersener/ffmpeg-kit/tree/main/react-native#211-package-names
-      { deploymentTarget: "12.1" },
-    ],
     withCocoaPodsImport,
 
     // Android

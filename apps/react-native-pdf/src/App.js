@@ -3,7 +3,7 @@ import { SafeAreaView, StyleSheet, useWindowDimensions } from "react-native";
 import Pdf from "react-native-pdf";
 
 const source = {
-  uri: "https://samples.leanpub.com/thereactnativebook-sample.pdf",
+  uri: "http://samples.leanpub.com/thereactnativebook-sample.pdf",
   cache: true,
 };
 export default function App() {
@@ -12,6 +12,7 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <Pdf
+        trustAllCerts={false}
         source={source}
         onLoadComplete={(numberOfPages, filePath) => {
           console.log(`Number of pages: ${numberOfPages}`);

@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "app",
+    "name": "detox",
     "slug": "app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "https://icogen.vercel.app/api/icon",
+    "icon": "https://icogen.vercel.app/api/icon?icon=🔌&color_hex=ffffff",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",

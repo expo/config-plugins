@@ -15,7 +15,8 @@
     "packages/*"
   ],
   "resolutions": {
-    "expo": "^46.0.2"
+    "expo": "~46.0.2",
+    "fs-extra": "^9.1.0"
   },
   "devDependencies": {
     "@expo/package-manager": "^0.0.43",

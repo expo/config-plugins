@@ -9,10 +9,10 @@
   },
   "dependencies": {
     "@config-plugins/ffmpeg-kit-react-native": "*",
-    "expo": "^46.0.2",
+    "expo": "~46.0.2",
     "expo-splash-screen": "~0.16.1",
     "expo-status-bar": "~1.4.0",
-    "ffmpeg-kit-react-native": "^4.5.1",
+    "ffmpeg-kit-react-native": "^4.5.2",
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "react-native": "0.69.3",

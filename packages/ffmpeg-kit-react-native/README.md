@@ -2,6 +2,13 @@
 
 Config plugin to auto configure ffmpeg-kit-react-native when the native code is generated (`expo prebuild`).
 
+## Versioning
+
+| `expo` | `ffmpeg-kit-react-native` | `@config-plugins/ffmpeg-kit-react-native` |
+| ------ | ------------------------- | ----------------------------------------- |
+| 46.0.0 | 4.5.2                     | ^3.0.0                                    |
+| 45.0.0 | 4.5.1                     | ^2.0.0                                    |
+
 ## Expo installation
 
 > Tested against Expo SDK 46. Most packages worked on iOS. Not all packages have been tested on Android.
@@ -55,6 +62,6 @@ The plugin provides props for extra customization. Every time you change the pro
 
 ## Important Notes
 
-- This plugin changes the minimum deployment target on iOS to `12.1` (from `12`) and Android to `24` (from `21`) which may break other packages in your app!
+- This plugin changes the minimum deployment target on Android to `24` (from `21`) which may break other packages in your app!
 - Changing the "package" field on iOS will require re-running `pod install` after updating with `expo prebuild -p ios --no-install`.
 - Most of the modifications in this plugin are dangerous meaning it's highly likely that something may break over time. The plugin is heavily unit-tested to attempt to prevent breaking though.
