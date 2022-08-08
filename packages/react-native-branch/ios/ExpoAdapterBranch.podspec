@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.source         = { git: 'https://github.com/expo/config-plugins.git' }
   s.static_framework = true
 
-  s.compiler_flags = %[-DRNBRANCH_VERSION=@\\"#{package["dependencies"]["react-native-branch"]}\\"]
+  s.compiler_flags = %[-DRNBRANCH_VERSION=@\\"#{package.has_key?("dependencies") ? package["dependencies"]["react-native-branch"] || "5.4.0" : "5.4.0"}\\"]
 
   s.dependency 'ExpoModulesCore'
   s.dependency 'React-Core'

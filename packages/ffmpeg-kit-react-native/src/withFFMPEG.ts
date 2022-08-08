@@ -1,16 +1,15 @@
 import {
-  AndroidConfig,
   ConfigPlugin,
   createRunOncePlugin,
   withPlugins,
 } from "@expo/config-plugins";
+import { withBuildProperties } from "expo-build-properties";
 
 import { withAndroidFFMPEGPackage } from "./withAndroidFFMPEGPackage";
 import {
   withCocoaPodsImport,
   withPodfilePropertiesPackage,
 } from "./withCocoaPodsImport";
-import { withIosDeploymentTarget } from "./withIosDeploymentTarget";
 
 let pkg: { name: string; version?: string } = {
   name: "ffmpeg-kit-react-native",
@@ -45,21 +44,18 @@ const withFFMPEG: ConfigPlugin<void | Props> = (config, _props) => {
     // iOS
 
     [withPodfilePropertiesPackage, iosPackage],
-    [
-      withIosDeploymentTarget,
-      // https://github.com/tanersener/ffmpeg-kit/tree/main/react-native#211-package-names
-      { deploymentTarget: "12.1" },
-    ],
     withCocoaPodsImport,
 
     // Android
 
     // Set min SDK Version to 24.
     [
-      AndroidConfig.Version.withBuildScriptExtMinimumVersion,
+      withBuildProperties,
       {
-        name: "minSdkVersion",
-        minVersion: 24,
+        android: {
+          // https://github.com/expo/expo/blob/sdk-46/templates/expo-template-bare-minimum/android/build.gradle#L8
+          minSdkVersion: 24,
+        },
       },
     ],
     [withAndroidFFMPEGPackage, androidPackage],

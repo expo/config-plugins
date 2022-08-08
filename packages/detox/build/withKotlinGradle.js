@@ -11,7 +11,7 @@ const kotlinClassPath = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersio
  * @param version Kotlin version to use
  */
 const withKotlinGradle = (config, version) => {
-    return config_plugins_1.withProjectBuildGradle(config, (config) => {
+    return (0, config_plugins_1.withProjectBuildGradle)(config, (config) => {
         console.log(`[config-plugins/detox] Setting Kotlin version to: ${version}. This could lead to Android build issues.`);
         if (config.modResults.language === "groovy") {
             config.modResults.contents = setKotlinVersion(config.modResults.contents, version);

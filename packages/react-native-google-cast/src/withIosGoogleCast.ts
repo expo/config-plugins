@@ -36,30 +36,31 @@ const LOCAL_NETWORK_USAGE =
  * @param {*} props.receiverAppId If using a custom receiver, make sure to replace `CC1AD845` with your custom receiver app id.
  * @returns
  */
-const withIosLocalNetworkPermissions: ConfigPlugin<{ receiverAppId?: string }> =
-  (config, { receiverAppId = "CC1AD845" } = {}) => {
-    return withInfoPlist(config, (config) => {
-      if (!Array.isArray(config.modResults.NSBonjourServices)) {
-        config.modResults.NSBonjourServices = [];
-      }
-      // Add required values
-      config.modResults.NSBonjourServices.push(
-        "_googlecast._tcp",
-        `_${receiverAppId}._googlecast._tcp`
-      );
+const withIosLocalNetworkPermissions: ConfigPlugin<{
+  receiverAppId?: string;
+}> = (config, { receiverAppId = "CC1AD845" } = {}) => {
+  return withInfoPlist(config, (config) => {
+    if (!Array.isArray(config.modResults.NSBonjourServices)) {
+      config.modResults.NSBonjourServices = [];
+    }
+    // Add required values
+    config.modResults.NSBonjourServices.push(
+      "_googlecast._tcp",
+      `_${receiverAppId}._googlecast._tcp`
+    );
 
-      // Remove duplicates
-      config.modResults.NSBonjourServices = [
-        ...new Set(config.modResults.NSBonjourServices),
-      ];
+    // Remove duplicates
+    config.modResults.NSBonjourServices = [
+      ...new Set(config.modResults.NSBonjourServices),
+    ];
 
-      // For iOS 14+, you need to add local network permissions to Info.plist:
-      // https://developers.google.com/cast/docs/ios_sender/ios_permissions_changes#updating_your_app_on_ios_14
-      config.modResults.NSLocalNetworkUsageDescription =
-        config.modResults.NSLocalNetworkUsageDescription || LOCAL_NETWORK_USAGE;
-      return config;
-    });
-  };
+    // For iOS 14+, you need to add local network permissions to Info.plist:
+    // https://developers.google.com/cast/docs/ios_sender/ios_permissions_changes#updating_your_app_on_ios_14
+    config.modResults.NSLocalNetworkUsageDescription =
+      config.modResults.NSLocalNetworkUsageDescription || LOCAL_NETWORK_USAGE;
+    return config;
+  });
+};
 
 // const withIosGuestMode: ConfigPlugin = (config) => {
 //   return withInfoPlist(config, (config) => {

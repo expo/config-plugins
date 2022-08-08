@@ -1,10 +1,10 @@
 # config-plugins/react-native-branch
 
-Config plugin to auto configure `react-native-branch` when the native code is generated (`expo prebuild`).
+Config plugin to auto-configure `react-native-branch` when the native code is generated (`expo prebuild`).
 
 ## Expo installation
 
-> Tested against Expo SDK 45
+> Tested against Expo SDK 46
 
 > This package cannot be used in the "Expo Go" app because [it requires custom native code](https://docs.expo.io/workflow/customizing/).
 > First install the package with yarn, npm, or [`expo install`](https://docs.expo.io/workflow/expo-cli/#expo-install).

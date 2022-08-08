@@ -1,6 +1,7 @@
 {
   "expo": {
-    "icon": "https://icogen.vercel.app/api/icon",
+    "name": "google-cast",
+    "icon": "https://icogen.vercel.app/api/icon?icon=🔌&color_hex=85C1F6",
     "plugins": [
       "@config-plugins/react-native-google-cast"
     ]

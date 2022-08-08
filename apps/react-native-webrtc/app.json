@@ -1,6 +1,7 @@
 {
   "expo": {
-    "icon": "https://icogen.vercel.app/api/icon?icon=1f3a5",
+    "name": "webrtc",
+    "icon": "https://icogen.vercel.app/api/icon?icon=🔌&color_hex=519CB2",
     "plugins": [
       "@config-plugins/react-native-webrtc"
     ]

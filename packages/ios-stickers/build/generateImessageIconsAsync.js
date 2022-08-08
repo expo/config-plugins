@@ -90,7 +90,7 @@ async function generateImessageIconsAsync(projectRoot, icon, iconsPath) {
                     const iconHSizePx = height * scale;
                     // Using this method will cache the images in `.expo` based on the properties used to generate them.
                     // this method also supports remote URLs and using the global sharp instance.
-                    const { source } = await image_utils_1.generateImageAsync({ projectRoot, cacheType: IMAGE_CACHE_NAME }, {
+                    const { source } = await (0, image_utils_1.generateImageAsync)({ projectRoot, cacheType: IMAGE_CACHE_NAME }, {
                         src: icon,
                         name: filename,
                         width: iconWSizePx,
@@ -103,7 +103,7 @@ async function generateImessageIconsAsync(projectRoot, icon, iconsPath) {
                         backgroundColor: "#ffffff",
                     });
                     // Write image buffer to the file system.
-                    const assetPath = path_1.join(iconsPath, filename);
+                    const assetPath = (0, path_1.join)(iconsPath, filename);
                     await fs_1.default.promises.writeFile(assetPath, source);
                     // Save a reference to the generated image so we don't create a duplicate.
                     generatedIcons[filename] = true;

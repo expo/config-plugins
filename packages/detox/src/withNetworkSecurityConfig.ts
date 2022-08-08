@@ -69,9 +69,11 @@ const withNetworkSecurityConfigFile: ConfigPlugin<{
 /**
  * [Step 6](https://github.com/wix/Detox/blob/master/docs/Introduction.Android.md#6-enable-clear-text-unencrypted-traffic-for-detox). Link the `network_security_config.xml` file to the `AndroidManifest.xml`.
  */
-export const withNetworkSecurityConfigManifest: ConfigPlugin<{
-  subdomains: SubdomainsType;
-} | void> = (config, props) => {
+export const withNetworkSecurityConfigManifest: ConfigPlugin<
+  {
+    subdomains: SubdomainsType;
+  } | void
+> = (config, props) => {
   if (!props || !props.subdomains) {
     // (*) 10.0.2.2 for Google emulators, 10.0.3.2 for Genymotion emulators.
     // https://developer.android.com/training/articles/security-config

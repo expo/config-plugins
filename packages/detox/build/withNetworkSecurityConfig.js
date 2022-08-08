@@ -38,12 +38,12 @@ exports.getTemplateFile = getTemplateFile;
  * Create `network_security_config.xml` resource file.
  */
 const withNetworkSecurityConfigFile = (config, { subdomains }) => {
-    return config_plugins_1.withDangerousMod(config, [
+    return (0, config_plugins_1.withDangerousMod)(config, [
         "android",
         async (config) => {
             var _a;
             const packageName = (_a = config.android) === null || _a === void 0 ? void 0 : _a.package;
-            assert_1.default(packageName, "android.package must be defined");
+            (0, assert_1.default)(packageName, "android.package must be defined");
             const folder = path_1.default.join(config.modRequest.platformProjectRoot, `app/src/main/res/xml`);
             fs_1.default.mkdirSync(folder, { recursive: true });
             fs_1.default.writeFileSync(path_1.default.join(folder, "network_security_config.xml"), getTemplateFile(subdomains), { encoding: "utf8" });
@@ -65,7 +65,7 @@ const withNetworkSecurityConfigManifest = (config, props) => {
         return config;
     }
     config = withNetworkSecurityConfigFile(config, props);
-    return config_plugins_1.withAndroidManifest(config, (config) => {
+    return (0, config_plugins_1.withAndroidManifest)(config, (config) => {
         const application = config_plugins_1.AndroidConfig.Manifest.getMainApplicationOrThrow(config.modResults);
         application.$["android:networkSecurityConfig"] =
             "@xml/network_security_config";

@@ -10,7 +10,7 @@ const config_plugins_1 = require("@expo/config-plugins");
  * @param config
  */
 const withProguardGradle = (config) => {
-    return config_plugins_1.withAppBuildGradle(config, (config) => {
+    return (0, config_plugins_1.withAppBuildGradle)(config, (config) => {
         if (config.modResults.language === "groovy") {
             config.modResults.contents = addDetoxProguardRules(config.modResults.contents);
         }

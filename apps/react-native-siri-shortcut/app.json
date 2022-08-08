@@ -1,6 +1,7 @@
 {
   "expo": {
-    "icon": "https://icogen.vercel.app/api/icon",
+    "name": "siri xcut",
+    "icon": "https://icogen.vercel.app/api/icon?icon=🔌&color_hex=82FAD4",
     "plugins": [
       [
         "@config-plugins/react-native-siri-shortcut",

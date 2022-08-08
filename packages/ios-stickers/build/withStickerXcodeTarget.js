@@ -9,12 +9,12 @@ function getProjectStickersName(name) {
 }
 exports.getProjectStickersName = getProjectStickersName;
 const withStickerXcodeTarget = (config) => {
-    return config_plugins_1.withXcodeProject(config, (config) => {
+    return (0, config_plugins_1.withXcodeProject)(config, (config) => {
         const stickerPackName = getProjectStickersName(config.modRequest.projectName);
-        xcodeSticker_1.addStickersTarget(config.modResults, stickerPackName, config.ios.bundleIdentifier, stickerPackName);
-        const stickersKey = xcodeSticker_1.addStickerResourceFile(config.modResults, STICKERS_ROOT_PATH, stickerPackName);
+        (0, xcodeSticker_1.addStickersTarget)(config.modResults, stickerPackName, config.ios.bundleIdentifier, stickerPackName);
+        const stickersKey = (0, xcodeSticker_1.addStickerResourceFile)(config.modResults, STICKERS_ROOT_PATH, stickerPackName);
         if (stickersKey) {
-            const mainGroup = xcodeSticker_1.getMainPBXGroup(config.modResults);
+            const mainGroup = (0, xcodeSticker_1.getMainPBXGroup)(config.modResults);
             if (mainGroup) {
                 config.modResults.addToPbxGroup(stickersKey, mainGroup.id);
             }

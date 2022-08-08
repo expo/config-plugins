@@ -14,22 +14,24 @@ import {
 } from "./withNetworkSecurityConfig";
 import withProguardGradle from "./withProguardGradle";
 
-const withDetox: ConfigPlugin<{
-  /**
-   * Disable adding proguard minification to the `app/build.gradle`.
-   *
-   * @default false
-   */
-  skipProguard?: boolean;
-  /**
-   * Subdomains to add to the network security config.
-   * Pass `['10.0.3.2', 'localhost']` to use Genymotion emulators instead of Google emulators.
-   * Pass `*` to allow all domains.
-   *
-   * @default ['10.0.2.2', 'localhost'] // (Google emulators)
-   */
-  subdomains?: SubdomainsType;
-} | void> = (config, { skipProguard, subdomains } = {}) => {
+const withDetox: ConfigPlugin<
+  {
+    /**
+     * Disable adding proguard minification to the `app/build.gradle`.
+     *
+     * @default false
+     */
+    skipProguard?: boolean;
+    /**
+     * Subdomains to add to the network security config.
+     * Pass `['10.0.3.2', 'localhost']` to use Genymotion emulators instead of Google emulators.
+     * Pass `*` to allow all domains.
+     *
+     * @default ['10.0.2.2', 'localhost'] // (Google emulators)
+     */
+    subdomains?: SubdomainsType;
+  } | void
+> = (config, { skipProguard, subdomains } = {}) => {
   return withPlugins(
     config,
     [

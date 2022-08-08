@@ -10,7 +10,7 @@ const config_plugins_1 = require("@expo/config-plugins");
  * @param config
  */
 const withDetoxTestAppGradle = (config) => {
-    return config_plugins_1.withAppBuildGradle(config, (config) => {
+    return (0, config_plugins_1.withAppBuildGradle)(config, (config) => {
         if (config.modResults.language === "groovy") {
             config.modResults.contents = setGradleAndroidTestImplementation(config.modResults.contents);
             config.modResults.contents = addDetoxDefaultConfigBlock(config.modResults.contents);

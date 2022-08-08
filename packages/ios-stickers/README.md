@@ -1,10 +1,10 @@
 # @config-plugins/ios-stickers
 
-Config plugin to auto configure iOS iMessage stickers
+Config plugin to auto-configure iOS iMessage stickers
 
 ## Install
 
-> Tested against Expo SDK 45
+> Tested against Expo SDK 46
 
 ```
 yarn add @config-plugins/ios-stickers

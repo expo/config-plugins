@@ -8,7 +8,7 @@ const config_plugins_1 = require("@expo/config-plugins");
  */
 const withAndroidJscIntl = (config) => {
     // Return the modified config.
-    return config_plugins_1.withAppBuildGradle(config, (config) => {
+    return (0, config_plugins_1.withAppBuildGradle)(config, (config) => {
         if (config.modResults.language !== "groovy") {
             throw new Error("[@expo/config-plugins][withAndroidJscIntl] Cannot enable Intl in Android JSC app gradle because the build.gradle is not groovy.");
         }

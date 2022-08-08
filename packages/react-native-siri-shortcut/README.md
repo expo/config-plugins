@@ -1,10 +1,10 @@
 # @config-plugins/react-native-siri-shortcut
 
-Expo Config Plugin to auto configure [`react-native-siri-shortcut`](https://www.npmjs.com/package/react-native-siri-shortcut) when the native code is generated (`expo prebuild`).
+Expo Config Plugin to auto-configure [`react-native-siri-shortcut`](https://www.npmjs.com/package/react-native-siri-shortcut) when the native code is generated (`expo prebuild`).
 
 ## Expo installation
 
-> Tested against Expo SDK 42
+> Tested against Expo SDK 46
 
 This package cannot be used in the "Expo Go" app because [it requires custom native code](https://docs.expo.io/workflow/customizing/).
 
@@ -28,7 +28,7 @@ Next, rebuild your app as described in the ["Adding custom native code"](https:/
 
 ## API
 
-When working with Siri Shorcuts, you need to defined their identifiers on the Xcode project. To achieve the same result using this plugin, just pass an array of strings with the identifiers of your shortcuts, and they will be added automatically during the build cycle:
+When working with Siri Shorcuts, you need to define their identifiers on the Xcode project. To achieve the same result using this plugin, just pass an array of strings with the identifiers of your shortcuts, and they will be added automatically during the build cycle:
 
 #### Example
 
@@ -38,10 +38,7 @@ When working with Siri Shorcuts, you need to defined their identifiers on the Xc
     "plugins": [
       [
         "@config-plugins/react-native-siri-shortcut",
-        [
-          "com.example.InitiateWorkout",
-          "com.example.FinishWorkout",
-        ],
+        ["com.example.InitiateWorkout", "com.example.FinishWorkout"]
       ]
     ]
   }

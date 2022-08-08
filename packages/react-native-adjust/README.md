@@ -1,10 +1,10 @@
 # @config-plugins/react-native-adjust
 
-Expo Config Plugin to auto configure [`react-native-adjust`](https://www.npmjs.com/package/react-native-adjust) when the native code is generated (`expo prebuild`).
+Expo Config Plugin to auto-configure [`react-native-adjust`](https://www.npmjs.com/package/react-native-adjust) when the native code is generated (`expo prebuild`).
 
 ## Expo installation
 
-> Tested against Expo SDK 45
+> Tested against Expo SDK 46
 
 This package cannot be used in the "Expo Go" app because [it requires custom native code](https://docs.expo.io/workflow/customizing/).
 

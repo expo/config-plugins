@@ -1,6 +1,7 @@
 {
   "expo": {
-    "icon": "https://icogen.vercel.app/api/icon?icon=1f334",
+    "name": "branch",
+    "icon": "https://icogen.vercel.app/api/icon?icon=🔌&color_hex=1749A5",
     "ios": {
       "config": {
         "branch": {

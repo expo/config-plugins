@@ -5,7 +5,7 @@ const config_plugins_1 = require("@expo/config-plugins");
 const CAMERA_USAGE = "Allow $(PRODUCT_NAME) to access your camera";
 const MICROPHONE_USAGE = "Allow $(PRODUCT_NAME) to access your microphone";
 const withPermissions = (config, props) => {
-    return config_plugins_1.withInfoPlist(config, (config) => {
+    return (0, config_plugins_1.withInfoPlist)(config, (config) => {
         const { cameraPermission, microphonePermission } = props || {};
         config.modResults.NSCameraUsageDescription =
             cameraPermission ||

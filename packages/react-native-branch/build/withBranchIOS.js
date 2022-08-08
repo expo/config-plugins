@@ -30,7 +30,7 @@ const withBranchIOS = (config, data) => {
         throw new Error("Branch API key is required: expo.ios.config.branch.apiKey");
     }
     // Update the infoPlist with the branch key and branch domain
-    config = config_plugins_1.withInfoPlist(config, (config) => {
+    config = (0, config_plugins_1.withInfoPlist)(config, (config) => {
         config.modResults = setBranchApiKey(apiKey, config.modResults);
         if (data.iosAppDomain) {
             config.modResults.branch_app_domain = data.iosAppDomain;

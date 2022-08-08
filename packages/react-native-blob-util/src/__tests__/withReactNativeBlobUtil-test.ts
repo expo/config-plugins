@@ -1,6 +1,10 @@
 import { XML } from "@expo/config-plugins";
 
-import { appendDownloadCompleteAction } from "../withReactNativeBlobUtil";
+import {
+  ensureBlobProviderAuthorityString,
+  appendDownloadCompleteAction,
+  ensureBlobProviderManifest,
+} from "../withReactNativeBlobUtil";
 
 const fixture = `
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.bacon.yolo68">
@@ -35,5 +39,48 @@ describe(appendDownloadCompleteAction, () => {
     appendDownloadCompleteAction(manifest);
     const secondResults = XML.format(manifest);
     expect(secondResults).toMatch(firstResults);
+  });
+});
+
+describe(ensureBlobProviderManifest, () => {
+  it("should ensure the provider is added", async () => {
+    const manifest = (await XML.parseXMLAsync(fixture)) as any;
+
+    const first = XML.format(ensureBlobProviderManifest(manifest));
+    expect(first).toContain(
+      '<provider android:name="com.facebook.react.modules.blob.BlobProvider" android:authorities="@string/blob_provider_authority" android:exported="false"/>'
+    );
+
+    // Doesn't add duplicates
+    expect(
+      XML.format(
+        ensureBlobProviderManifest(ensureBlobProviderManifest(manifest))
+      )
+    ).toEqual(first);
+  });
+});
+
+describe(ensureBlobProviderAuthorityString, () => {
+  it("should ensure provider", async () => {
+    const res = ensureBlobProviderAuthorityString(
+      { resources: {} },
+      "app.bacon"
+    );
+    const result = XML.format(res);
+    expect(result).toMatchInlineSnapshot(`
+      "<resources>
+        <string name=\\"blob_provider_authority\\">app.bacon</string>
+      </resources>"
+    `);
+
+    const next = ensureBlobProviderAuthorityString(res, "app.bacon");
+    expect(XML.format(next)).toBe(result);
+
+    expect(XML.format(ensureBlobProviderAuthorityString(next, "com.other")))
+      .toMatchInlineSnapshot(`
+      "<resources>
+        <string name=\\"blob_provider_authority\\">com.other</string>
+      </resources>"
+    `);
   });
 });

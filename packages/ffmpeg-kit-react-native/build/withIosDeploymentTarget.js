@@ -14,7 +14,7 @@ const withIosDeploymentTarget = (config, props) => {
 };
 exports.withIosDeploymentTarget = withIosDeploymentTarget;
 const withIosDeploymentTargetPodfile = (config, props) => {
-    return config_plugins_1.withPodfileProperties(config, async (config) => {
+    return (0, config_plugins_1.withPodfileProperties)(config, async (config) => {
         const existing = config.modResults["ios.deploymentTarget"];
         if (typeof existing !== "string" ||
             semver_1.default.lt(toSemVer(existing), toSemVer(props.deploymentTarget))) {
@@ -24,7 +24,7 @@ const withIosDeploymentTargetPodfile = (config, props) => {
     });
 };
 const withIosDeploymentTargetXcodeProject = (config, props) => {
-    return config_plugins_1.withXcodeProject(config, (config) => {
+    return (0, config_plugins_1.withXcodeProject)(config, (config) => {
         config.modResults = updateDeploymentTargetXcodeProject(config.modResults, props.deploymentTarget);
         return config;
     });
