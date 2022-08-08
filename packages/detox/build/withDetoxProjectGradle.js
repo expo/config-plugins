@@ -15,7 +15,7 @@ const gradleMaven = [
  * @param config
  */
 const withDetoxProjectGradle = (config) => {
-    return config_plugins_1.withProjectBuildGradle(config, (config) => {
+    return (0, config_plugins_1.withProjectBuildGradle)(config, (config) => {
         if (config.modResults.language === "groovy") {
             config.modResults.contents = addDetoxImport(config.modResults.contents).contents;
         }
@@ -36,10 +36,10 @@ function addDetoxImport(src) {
 exports.addDetoxImport = addDetoxImport;
 // Fork of config-plugins mergeContents, but appends the contents to the end of the file.
 function appendContents({ src, newSrc, tag, comment, }) {
-    const header = generateCode_1.createGeneratedHeaderComment(newSrc, tag, comment);
+    const header = (0, generateCode_1.createGeneratedHeaderComment)(newSrc, tag, comment);
     if (!src.includes(header)) {
         // Ensure the old generated contents are removed.
-        const sanitizedTarget = generateCode_1.removeGeneratedContents(src, tag);
+        const sanitizedTarget = (0, generateCode_1.removeGeneratedContents)(src, tag);
         const contentsToAdd = [
             // @something
             header,

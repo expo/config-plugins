@@ -11,7 +11,7 @@ const generateCode_1 = require("@expo/config-plugins/build/utils/generateCode");
  * @returns
  */
 const withIosWifiEntitlements = (config) => {
-    return config_plugins_1.withEntitlementsPlist(config, (config) => {
+    return (0, config_plugins_1.withEntitlementsPlist)(config, (config) => {
         config.modResults["com.apple.developer.networking.wifi-info"] = true;
         return config;
     });
@@ -31,7 +31,7 @@ const LOCAL_NETWORK_USAGE = "${PRODUCT_NAME} uses the local network to discover 
  * @returns
  */
 const withIosLocalNetworkPermissions = (config, { receiverAppId = "CC1AD845" } = {}) => {
-    return config_plugins_1.withInfoPlist(config, (config) => {
+    return (0, config_plugins_1.withInfoPlist)(config, (config) => {
         if (!Array.isArray(config.modResults.NSBonjourServices)) {
             config.modResults.NSBonjourServices = [];
         }
@@ -63,7 +63,7 @@ const withIosLocalNetworkPermissions = (config, { receiverAppId = "CC1AD845" } =
 // };
 // TODO: Use AppDelegate swizzling
 const withIosAppDelegateLoaded = (config, props) => {
-    return config_plugins_1.withAppDelegate(config, (config) => {
+    return (0, config_plugins_1.withAppDelegate)(config, (config) => {
         if (!["objc", "objcpp"].includes(config.modResults.language)) {
             throw new Error("react-native-google-cast config plugin does not support AppDelegate' that aren't Objective-C(++) yet.");
         }
@@ -103,7 +103,7 @@ function addGoogleCastAppDelegateDidFinishLaunchingWithOptions(src, { receiverAp
     // `  options.disableDiscoveryAutostart = ${String(!!disableDiscoveryAutostart)};`,
     `  options.startDiscoveryAfterFirstTapOnCastButton = ${String(!!startDiscoveryAfterFirstTapOnCastButton)};`, "  [GCKCastContext setSharedInstanceWithOptions:options];", "#endif");
     newSrc = newSrc.filter(Boolean);
-    return generateCode_1.mergeContents({
+    return (0, generateCode_1.mergeContents)({
         tag: "react-native-google-cast-didFinishLaunchingWithOptions",
         src,
         newSrc: newSrc.join("\n"),
@@ -116,7 +116,7 @@ exports.addGoogleCastAppDelegateDidFinishLaunchingWithOptions = addGoogleCastApp
 function addGoogleCastAppDelegateImport(src) {
     const newSrc = [];
     newSrc.push("#if __has_include(<GoogleCast/GoogleCast.h>)", "#import <GoogleCast/GoogleCast.h>", "#endif");
-    return generateCode_1.mergeContents({
+    return (0, generateCode_1.mergeContents)({
         tag: "react-native-google-cast-import",
         src,
         newSrc: newSrc.join("\n"),

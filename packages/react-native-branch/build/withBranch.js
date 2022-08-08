@@ -4,8 +4,8 @@ const config_plugins_1 = require("@expo/config-plugins");
 const withBranchAndroid_1 = require("./withBranchAndroid");
 const withBranchIOS_1 = require("./withBranchIOS");
 const withBranch = (config, { apiKey, iosAppDomain, iosUniversalLinkDomains } = {}) => {
-    config = withBranchAndroid_1.withBranchAndroid(config, { apiKey });
-    config = withBranchIOS_1.withBranchIOS(config, {
+    config = (0, withBranchAndroid_1.withBranchAndroid)(config, { apiKey });
+    config = (0, withBranchIOS_1.withBranchIOS)(config, {
         apiKey,
         iosAppDomain,
         iosUniversalLinkDomains,
@@ -20,4 +20,4 @@ try {
     pkg = branchPkg;
 }
 catch (_a) { }
-exports.default = config_plugins_1.createRunOncePlugin(withBranch, pkg.name, pkg.version);
+exports.default = (0, config_plugins_1.createRunOncePlugin)(withBranch, pkg.name, pkg.version);

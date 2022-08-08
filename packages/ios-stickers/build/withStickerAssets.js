@@ -50,10 +50,10 @@ const withStickerAssets = (config, { stickers, icon, size }) => {
     if (!icon) {
         icon = (config.ios || {}).icon || config.icon;
     }
-    return config_plugins_1.withDangerousMod(config, [
+    return (0, config_plugins_1.withDangerousMod)(config, [
         "ios",
         async (config) => {
-            const stickerPackName = withStickerXcodeTarget_1.getProjectStickersName(config.modRequest.projectName);
+            const stickerPackName = (0, withStickerXcodeTarget_1.getProjectStickersName)(config.modRequest.projectName);
             const stickerRootPath = path_1.default.join(config.modRequest.platformProjectRoot, stickerPackName);
             const stickersAssetsPath = path_1.default.join(stickerRootPath, STICKERS_ROOT_PATH);
             // Delete all assets...
@@ -70,7 +70,7 @@ const withStickerAssets = (config, { stickers, icon, size }) => {
             const iMessageAppIconsPath = path_1.default.join(stickerRootPath, IMESSAGE_APP_ICON_PATH);
             // Only generate icons if an icon is defined
             const imessageIconContents = icon
-                ? await generateImessageIconsAsync_1.generateImessageIconsAsync(config.modRequest.projectRoot, icon, iMessageAppIconsPath)
+                ? await (0, generateImessageIconsAsync_1.generateImessageIconsAsync)(config.modRequest.projectRoot, icon, iMessageAppIconsPath)
                 : [];
             const iMessageAppIconContentsJsonPath = path_1.default.join(iMessageAppIconsPath, "Contents.json");
             fs_1.default.mkdirSync(iMessageAppIconsPath, {
@@ -92,7 +92,7 @@ const withStickerAssets = (config, { stickers, icon, size }) => {
                     // Using this method will cache the images in `.expo` based on the properties used to generate them.
                     // this method also supports remote URLs and using the global sharp instance.
                     // TODO: Support GIFs
-                    const { source, name: _name } = await image_utils_1.generateImageAsync({
+                    const { source, name: _name } = await (0, image_utils_1.generateImageAsync)({
                         projectRoot: config.modRequest.projectRoot,
                         cacheType: "ios-stickers",
                     }, {

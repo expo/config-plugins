@@ -25,7 +25,7 @@ const withReactNativeQuickActions = (config, _items) => {
     if (!Array.isArray(items) || !items.length) {
         return config;
     }
-    return config_plugins_1.withInfoPlist(config, (config) => {
+    return (0, config_plugins_1.withInfoPlist)(config, (config) => {
         config.modResults.UIApplicationShortcutItems = items.map((item) => {
             const result = {};
             for (const [key, value] of Object.entries(remapping)) {
@@ -50,7 +50,7 @@ const withReactNativeQuickActions = (config, _items) => {
     });
 };
 function addQuickActionsAppDelegateImport(src) {
-    return generateCode_1.mergeContents({
+    return (0, generateCode_1.mergeContents)({
         tag: "react-native-quick-actions-import",
         src,
         newSrc: '#import "RNQuickActionManager.h"',
@@ -63,7 +63,7 @@ exports.addQuickActionsAppDelegateImport = addQuickActionsAppDelegateImport;
 function addQuickActionsAppDelegateInit(src) {
     const newSrc = [];
     newSrc.push("- (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL succeeded)) completionHandler {", "  [RNQuickActionManager onQuickActionPress:shortcutItem completionHandler:completionHandler];", "}");
-    return generateCode_1.mergeContents({
+    return (0, generateCode_1.mergeContents)({
         tag: "react-native-quick-actions-delegate",
         src,
         newSrc: newSrc.join("\n"),
@@ -74,7 +74,7 @@ function addQuickActionsAppDelegateInit(src) {
 }
 exports.addQuickActionsAppDelegateInit = addQuickActionsAppDelegateInit;
 const withQuickActionsAppDelegate = (config) => {
-    return config_plugins_1.withAppDelegate(config, (config) => {
+    return (0, config_plugins_1.withAppDelegate)(config, (config) => {
         if (["objc", "objcpp"].includes(config.modResults.language)) {
             try {
                 config.modResults.contents = addQuickActionsAppDelegateImport(config.modResults.contents).contents;
@@ -103,4 +103,4 @@ const pkg = {
     // and might not work with the latest version of that module.
     version: "UNVERSIONED",
 };
-exports.default = config_plugins_1.createRunOncePlugin(withReactNativeQuickActions, pkg.name, pkg.version);
+exports.default = (0, config_plugins_1.createRunOncePlugin)(withReactNativeQuickActions, pkg.name, pkg.version);

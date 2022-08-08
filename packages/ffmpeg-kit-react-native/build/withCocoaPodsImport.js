@@ -10,7 +10,7 @@ const generateCode_1 = require("@expo/config-plugins/build/utils/generateCode");
 const fs_1 = require("fs");
 const path_1 = __importDefault(require("path"));
 const withPodfilePropertiesPackage = (config, packageName) => {
-    return ios_plugins_1.withPodfileProperties(config, (config) => {
+    return (0, ios_plugins_1.withPodfileProperties)(config, (config) => {
         // @ts-ignore: wrong type
         config.modResults["ffmpeg-kit-react-native.subspecs"] = [
             packageName,
@@ -21,7 +21,7 @@ const withPodfilePropertiesPackage = (config, packageName) => {
 exports.withPodfilePropertiesPackage = withPodfilePropertiesPackage;
 /** Dangerously adds the custom import to the CocoaPods. */
 const withCocoaPodsImport = (c) => {
-    return config_plugins_1.withDangerousMod(c, [
+    return (0, config_plugins_1.withDangerousMod)(c, [
         "ios",
         // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
         async (config) => {
@@ -34,7 +34,7 @@ const withCocoaPodsImport = (c) => {
 };
 exports.withCocoaPodsImport = withCocoaPodsImport;
 function addCocoaPodsImport(src) {
-    return generateCode_1.mergeContents({
+    return (0, generateCode_1.mergeContents)({
         tag: `ffmpeg-kit-react-native-import`,
         src,
         newSrc: `  pod 'ffmpeg-kit-react-native', :subspecs => podfile_properties['ffmpeg-kit-react-native.subspecs'] || [], :podspec => File.join(File.dirname(\`node --print "require.resolve('ffmpeg-kit-react-native/package.json')"\`), "ffmpeg-kit-react-native.podspec")`,

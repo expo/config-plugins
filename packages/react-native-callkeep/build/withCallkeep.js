@@ -5,13 +5,13 @@ const config_plugins_1 = require("@expo/config-plugins");
 const ensureHeaderSearchPath_1 = require("./ensureHeaderSearchPath");
 const withCallkeepHeaderSearchPath = (config) => {
     const headerSearchPath = `"$(SRCROOT)/../node_modules/react-native-callkeep/ios/RNCallKeep"`;
-    return config_plugins_1.withXcodeProject(config, (config) => {
-        ensureHeaderSearchPath_1.ensureHeaderSearchPath(config.modResults, headerSearchPath);
+    return (0, config_plugins_1.withXcodeProject)(config, (config) => {
+        (0, ensureHeaderSearchPath_1.ensureHeaderSearchPath)(config.modResults, headerSearchPath);
         return config;
     });
 };
 const withAndroidManifestService = (config) => {
-    return config_plugins_1.withAndroidManifest(config, (config) => {
+    return (0, config_plugins_1.withAndroidManifest)(config, (config) => {
         // <service
         //   android:name="io.wazo.callkeep.VoiceConnectionService"
         //   android:label="Wazo"
@@ -68,7 +68,7 @@ const withAndroidManifestService = (config) => {
     });
 };
 const withCallkeep = (config) => {
-    config = config_plugins_1.withInfoPlist(config, (config) => {
+    config = (0, config_plugins_1.withInfoPlist)(config, (config) => {
         if (!Array.isArray(config.modResults.UIBackgroundModes)) {
             config.modResults.UIBackgroundModes = [];
         }
@@ -78,11 +78,11 @@ const withCallkeep = (config) => {
         return config;
     });
     config = withCallkeepHeaderSearchPath(config);
-    config = exports.withXcodeLinkBinaryWithLibraries(config, {
+    config = (0, exports.withXcodeLinkBinaryWithLibraries)(config, {
         library: "Intents.framework",
         status: "optional",
     });
-    config = exports.withXcodeLinkBinaryWithLibraries(config, {
+    config = (0, exports.withXcodeLinkBinaryWithLibraries)(config, {
         library: "CallKit.framework",
     });
     config = config_plugins_1.AndroidConfig.Permissions.withPermissions(config, [
@@ -95,7 +95,7 @@ const withCallkeep = (config) => {
     return config;
 };
 const withXcodeLinkBinaryWithLibraries = (config, { library, status }) => {
-    return config_plugins_1.withXcodeProject(config, (config) => {
+    return (0, config_plugins_1.withXcodeProject)(config, (config) => {
         const options = status === "optional" ? { weak: true } : {};
         const target = config_plugins_1.IOSConfig.XcodeUtils.getApplicationNativeTarget({
             project: config.modResults,

@@ -4,7 +4,7 @@ exports.addPackageName = exports.withAndroidFFMPEGPackage = void 0;
 const config_plugins_1 = require("@expo/config-plugins");
 const generateCode_1 = require("@expo/config-plugins/build/utils/generateCode");
 const withAndroidFFMPEGPackage = (config, packageName) => {
-    return config_plugins_1.withProjectBuildGradle(config, (config) => {
+    return (0, config_plugins_1.withProjectBuildGradle)(config, (config) => {
         if (config.modResults.language === "groovy") {
             config.modResults.contents = addPackageName(config.modResults.contents, packageName);
         }
@@ -30,10 +30,10 @@ function addPackageName(src, packageName) {
 exports.addPackageName = addPackageName;
 // Fork of config-plugins mergeContents, but appends the contents to the end of the file.
 function appendContents({ src, newSrc, tag, comment, }) {
-    const header = generateCode_1.createGeneratedHeaderComment(newSrc, tag, comment);
+    const header = (0, generateCode_1.createGeneratedHeaderComment)(newSrc, tag, comment);
     if (!src.includes(header)) {
         // Ensure the old generated contents are removed.
-        let sanitizedTarget = generateCode_1.removeGeneratedContents(src, tag);
+        let sanitizedTarget = (0, generateCode_1.removeGeneratedContents)(src, tag);
         if (sanitizedTarget)
             sanitizedTarget += "\n";
         const contentsToAdd = [

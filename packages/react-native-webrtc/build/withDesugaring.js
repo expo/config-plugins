@@ -8,7 +8,7 @@ const config_plugins_1 = require("@expo/config-plugins");
  */
 const withDesugaring = (config, isDisabled) => {
     const desugaringKey = "android.enableDexingArtifactTransform.desugaring";
-    return config_plugins_1.withGradleProperties(config, (config) => {
+    return (0, config_plugins_1.withGradleProperties)(config, (config) => {
         config.modResults = config.modResults.filter((item) => {
             if (item.type === "property" && item.key === desugaringKey) {
                 return false;

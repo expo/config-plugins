@@ -19,7 +19,7 @@ const peripheralKey = "bluetooth-peripheral";
  * Append `UIBackgroundModes` to the `Info.plist`.
  */
 const withBLEBackgroundModes = (c, modes) => {
-    return config_plugins_1.withInfoPlist(c, (config) => {
+    return (0, config_plugins_1.withInfoPlist)(c, (config) => {
         if (!Array.isArray(config.modResults.UIBackgroundModes)) {
             config.modResults.UIBackgroundModes = [];
         }

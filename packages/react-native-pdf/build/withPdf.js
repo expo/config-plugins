@@ -13,7 +13,7 @@ catch (_a) {
     // empty catch block
 }
 const withAndroidPackagingOptions = (config) => {
-    return config_plugins_1.withAppBuildGradle(config, (config) => {
+    return (0, config_plugins_1.withAppBuildGradle)(config, (config) => {
         if (config.modResults.language === "groovy") {
             config.modResults.contents = addAndroidPackagingOptions(config.modResults.contents).contents;
         }
@@ -25,7 +25,7 @@ const withAndroidPackagingOptions = (config) => {
 };
 exports.withAndroidPackagingOptions = withAndroidPackagingOptions;
 function addAndroidPackagingOptions(src) {
-    return generateCode_1.mergeContents({
+    return (0, generateCode_1.mergeContents)({
         tag: "react-native-pdf-packaging-options",
         src,
         newSrc: packagingOptionsContents,
@@ -47,6 +47,6 @@ const packagingOptionsContents = `
     }
 `;
 const withReactNativePdf = (config) => {
-    return exports.withAndroidPackagingOptions(config);
+    return (0, exports.withAndroidPackagingOptions)(config);
 };
-exports.default = config_plugins_1.createRunOncePlugin(withReactNativePdf, pkg.name, pkg.version);
+exports.default = (0, config_plugins_1.createRunOncePlugin)(withReactNativePdf, pkg.name, pkg.version);

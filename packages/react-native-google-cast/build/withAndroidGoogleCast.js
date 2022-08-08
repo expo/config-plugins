@@ -28,7 +28,7 @@ async function ensureCustomActivityAsync({ mainApplication, }) {
     return mainApplication;
 }
 const withAndroidManifestCast = (config, { receiverAppId } = {}) => {
-    return config_plugins_1.withAndroidManifest(config, async (config) => {
+    return (0, config_plugins_1.withAndroidManifest)(config, async (config) => {
         const mainApplication = getMainApplicationOrThrow(config.modResults);
         ensureCustomActivityAsync({ mainApplication });
         addMetaDataItemToMainApplication(mainApplication, META_PROVIDER_CLASS, 
@@ -41,7 +41,7 @@ const withAndroidManifestCast = (config, { receiverAppId } = {}) => {
     });
 };
 const withProjectBuildGradleVersion = (config, { version }) => {
-    return config_plugins_1.withProjectBuildGradle(config, (config) => {
+    return (0, config_plugins_1.withProjectBuildGradle)(config, (config) => {
         if (config.modResults.language !== "groovy")
             throw new Error("react-native-google-cast config plugin does not support Kotlin /build.gradle yet.");
         config.modResults.contents = addGoogleCastVersionImport(config.modResults.contents, {
@@ -51,7 +51,7 @@ const withProjectBuildGradleVersion = (config, { version }) => {
     });
 };
 const withAppBuildGradleImport = (config, { version }) => {
-    return config_plugins_1.withAppBuildGradle(config, (config) => {
+    return (0, config_plugins_1.withAppBuildGradle)(config, (config) => {
         if (config.modResults.language !== "groovy")
             throw new Error("react-native-google-cast config plugin does not support Kotlin app/build.gradle yet.");
         config.modResults.contents = addSafeExtGet(config.modResults.contents);
@@ -62,8 +62,8 @@ const withAppBuildGradleImport = (config, { version }) => {
     });
 };
 const withMainActivityLazyLoading = (config) => {
-    return config_plugins_1.withMainActivity(config, async (config) => {
-        const src = codeMod_1.addImports(config.modResults.contents, ["com.google.android.gms.cast.framework.CastContext"], config.modResults.language === "java");
+    return (0, config_plugins_1.withMainActivity)(config, async (config) => {
+        const src = (0, codeMod_1.addImports)(config.modResults.contents, ["com.google.android.gms.cast.framework.CastContext"], config.modResults.language === "java");
         if (config.modResults.language === "java") {
             config.modResults.contents = addGoogleCastLazyLoadingImport(src).contents;
         }
@@ -94,7 +94,7 @@ exports.withAndroidGoogleCast = withAndroidGoogleCast;
 function addGoogleCastLazyLoadingImport(src) {
     const newSrc = [];
     newSrc.push("    CastContext.getSharedInstance(this);");
-    return generateCode_1.mergeContents({
+    return (0, generateCode_1.mergeContents)({
         tag: "react-native-google-cast-onCreate",
         src,
         newSrc: newSrc.join("\n"),
@@ -108,7 +108,7 @@ function addGoogleCastLazyLoadingImport(src) {
 function addGoogleCastImport(src, { version } = {}) {
     const newSrc = [];
     newSrc.push(`    implementation "com.google.android.gms:play-services-cast-framework:\${safeExtGet('castFrameworkVersion', '${version}')}"`);
-    return generateCode_1.mergeContents({
+    return (0, generateCode_1.mergeContents)({
         tag: "react-native-google-cast-dependencies",
         src,
         newSrc: newSrc.join("\n"),
@@ -119,7 +119,7 @@ function addGoogleCastImport(src, { version } = {}) {
 }
 function addSafeExtGet(src) {
     const tag = "safeExtGet";
-    src = generateCode_1.removeContents({ src, tag }).contents;
+    src = (0, generateCode_1.removeContents)({ src, tag }).contents;
     // If the source already has a safeExtGet method after removing this one, then go with the existing one.
     if (src.match(/def(?:\s+)?safeExtGet\(/)) {
         return src;
@@ -127,7 +127,7 @@ function addSafeExtGet(src) {
     // Otherwise add a new one
     const newSrc = [];
     newSrc.push("def safeExtGet(prop, fallback) {", "  rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback", "}");
-    return generateCode_1.mergeContents({
+    return (0, generateCode_1.mergeContents)({
         tag: "safeExtGet",
         src,
         newSrc: newSrc.join("\n"),
@@ -140,7 +140,7 @@ function addSafeExtGet(src) {
 function addGoogleCastVersionImport(src, { version } = {}) {
     const newSrc = [];
     newSrc.push(`        castFrameworkVersion = "${version}"`);
-    return generateCode_1.mergeContents({
+    return (0, generateCode_1.mergeContents)({
         tag: "react-native-google-cast-version",
         src,
         newSrc: newSrc.join("\n"),

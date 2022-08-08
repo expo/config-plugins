@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.addBLEHardwareFeatureToManifest = exports.addScanPermissionToManifest = exports.addLocationPermissionToManifest = exports.withBLEAndroidManifest = void 0;
 const config_plugins_1 = require("@expo/config-plugins");
 const withBLEAndroidManifest = (config, { isBackgroundEnabled, neverForLocation }) => {
-    return config_plugins_1.withAndroidManifest(config, (config) => {
+    return (0, config_plugins_1.withAndroidManifest)(config, (config) => {
         config.modResults = addLocationPermissionToManifest(config.modResults, neverForLocation);
         config.modResults = addScanPermissionToManifest(config.modResults, neverForLocation);
         if (isBackgroundEnabled) {

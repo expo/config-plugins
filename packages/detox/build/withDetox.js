@@ -11,7 +11,7 @@ const withKotlinGradle_1 = __importDefault(require("./withKotlinGradle"));
 const withNetworkSecurityConfig_1 = require("./withNetworkSecurityConfig");
 const withProguardGradle_1 = __importDefault(require("./withProguardGradle"));
 const withDetox = (config, { skipProguard, subdomains } = {}) => {
-    return config_plugins_1.withPlugins(config, [
+    return (0, config_plugins_1.withPlugins)(config, [
         // 3.
         withDetoxProjectGradle_1.default,
         // 3.
@@ -39,4 +39,4 @@ try {
     pkg = detoxPkg;
 }
 catch (_a) { }
-exports.default = config_plugins_1.createRunOncePlugin(withDetox, pkg.name, pkg.version);
+exports.default = (0, config_plugins_1.createRunOncePlugin)(withDetox, pkg.name, pkg.version);

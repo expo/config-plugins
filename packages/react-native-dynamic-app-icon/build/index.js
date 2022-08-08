@@ -37,7 +37,7 @@ function getIconName(name, size, scale) {
     return fileName;
 }
 const withIconXcodeProject = (config, { icons }) => {
-    return config_plugins_1.withXcodeProject(config, async (config) => {
+    return (0, config_plugins_1.withXcodeProject)(config, async (config) => {
         const groupPath = `${config.modRequest.projectName}/${folderName}`;
         const group = config_plugins_1.IOSConfig.XcodeUtils.ensureGroupRecursively(config.modResults, groupPath);
         const project = config.modResults;
@@ -93,7 +93,7 @@ const withIconXcodeProject = (config, { icons }) => {
     });
 };
 const withIconInfoPlist = (config, { icons }) => {
-    return config_plugins_1.withInfoPlist(config, async (config) => {
+    return (0, config_plugins_1.withInfoPlist)(config, async (config) => {
         const altIcons = {};
         await iterateIconsAsync({ icons }, async (key, icon) => {
             altIcons[key] = {
@@ -125,7 +125,7 @@ const withIconInfoPlist = (config, { icons }) => {
     });
 };
 const withIconImages = (config, props) => {
-    return config_plugins_1.withDangerousMod(config, [
+    return (0, config_plugins_1.withDangerousMod)(config, [
         "ios",
         async (config) => {
             await createIconsAsync(config, props);
@@ -148,7 +148,7 @@ async function createIconsAsync(config, { icons }) {
             const fileName = path_1.default.join(folderName, iconFileName);
             const outputPath = path_1.default.join(iosRoot, fileName);
             const scaledSize = scale * size;
-            const { source } = await image_utils_1.generateImageAsync({
+            const { source } = await (0, image_utils_1.generateImageAsync)({
                 projectRoot: config.modRequest.projectRoot,
                 cacheType: "react-native-dynamic-app-icon",
             }, {

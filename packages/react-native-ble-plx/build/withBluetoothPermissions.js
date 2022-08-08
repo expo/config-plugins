@@ -5,7 +5,7 @@ const config_plugins_1 = require("@expo/config-plugins");
 const BLUETOOTH_ALWAYS = "Allow $(PRODUCT_NAME) to connect to bluetooth devices";
 const BLUETOOTH_PERIPHERAL_USAGE = "Allow $(PRODUCT_NAME) to connect to bluetooth devices";
 const withBluetoothPermissions = (c, { bluetoothAlwaysPermission, bluetoothPeripheralPermission } = {}) => {
-    return config_plugins_1.withInfoPlist(c, (config) => {
+    return (0, config_plugins_1.withInfoPlist)(c, (config) => {
         if (bluetoothAlwaysPermission !== false) {
             config.modResults.NSBluetoothAlwaysUsageDescription =
                 bluetoothAlwaysPermission ||

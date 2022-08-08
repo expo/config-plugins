@@ -50,10 +50,10 @@ const withReactNativeBlobUtil = (config) => {
         // Wifi-only mode.
         "android.permission.ACCESS_NETWORK_STATE",
     ]);
-    config = config_plugins_1.withAndroidManifest(config, (config) => {
+    config = (0, config_plugins_1.withAndroidManifest)(config, (config) => {
         config.modResults = appendDownloadCompleteAction(config.modResults);
         return config;
     });
     return config;
 };
-exports.default = config_plugins_1.createRunOncePlugin(withReactNativeBlobUtil, pkg.name, pkg.version);
+exports.default = (0, config_plugins_1.createRunOncePlugin)(withReactNativeBlobUtil, pkg.name, pkg.version);
