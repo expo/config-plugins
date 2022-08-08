@@ -1,6 +1,6 @@
 # @config-plugins/react-native-adjust
 
-Expo Config Plugin to auto configure [`react-native-adjust`](https://www.npmjs.com/package/react-native-adjust) when the native code is generated (`expo prebuild`).
+Expo Config Plugin to auto-configure [`react-native-adjust`](https://www.npmjs.com/package/react-native-adjust) when the native code is generated (`expo prebuild`).
 
 ## Expo installation
 

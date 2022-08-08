@@ -1,6 +1,6 @@
 # @config-plugins/android-jsc-intl
 
-Expo Config Plugin to auto configure [`android-jsc-intl`](https://www.npmjs.com/package/android-jsc-intl) when the native code is generated (`expo prebuild`).
+Expo Config Plugin to auto-configure [`android-jsc-intl`](https://www.npmjs.com/package/android-jsc-intl) when the native code is generated (`expo prebuild`).
 
 Adding this plugin lets you use `Intl` in your Android app, without using Hermes.
 

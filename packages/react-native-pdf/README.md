@@ -1,6 +1,6 @@
 # config-plugins/react-native-pdf
 
-Config plugin to auto configure [`react-native-pdf`][lib] when the native code is generated (`expo prebuild`).
+Config plugin to auto-configure [`react-native-pdf`][lib] when the native code is generated (`expo prebuild`).
 
 ### Add the package to your npm dependencies
 

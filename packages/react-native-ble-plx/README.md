@@ -1,6 +1,6 @@
 # config-plugins/react-native-ble-plx
 
-Config plugin to auto configure `react-native-ble-plx` when the native code is generated (`expo prebuild`). [Upstream PR](https://github.com/Polidea/react-native-ble-plx/pull/842).
+Config plugin to auto-configure `react-native-ble-plx` when the native code is generated (`expo prebuild`). [Upstream PR](https://github.com/Polidea/react-native-ble-plx/pull/842).
 
 ## Expo installation
 

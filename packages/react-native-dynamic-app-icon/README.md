@@ -1,6 +1,6 @@
 # @config-plugins/react-native-dynamic-app-icon
 
-Config plugin to auto configure `react-native-dynamic-app-icon`
+Config plugin to auto-configure `react-native-dynamic-app-icon`
 
 ## Install
 

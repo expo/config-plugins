@@ -1,6 +1,6 @@
 # config-plugins/react-native-google-cast
 
-Config plugin to auto configure react-native-google-cast when the native code is generated (`expo prebuild`).
+Config plugin to auto-configure react-native-google-cast when the native code is generated (`expo prebuild`).
 
 ## Expo installation
 

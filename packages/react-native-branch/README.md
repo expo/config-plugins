@@ -1,6 +1,6 @@
 # config-plugins/react-native-branch
 
-Config plugin to auto configure `react-native-branch` when the native code is generated (`expo prebuild`).
+Config plugin to auto-configure `react-native-branch` when the native code is generated (`expo prebuild`).
 
 ## Expo installation
 

@@ -1,6 +1,6 @@
 # @config-plugins/ios-stickers
 
-Config plugin to auto configure iOS iMessage stickers
+Config plugin to auto-configure iOS iMessage stickers
 
 ## Install
 

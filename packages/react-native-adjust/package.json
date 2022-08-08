@@ -1,6 +1,6 @@
 {
   "name": "@config-plugins/react-native-adjust",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Config plugin to auto configure Adjust SDK on prebuild",
   "main": "build/withReactNativeAdjust.js",
   "types": "build/withReactNativeAdjust.d.ts",

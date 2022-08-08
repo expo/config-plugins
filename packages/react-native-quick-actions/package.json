@@ -1,6 +1,6 @@
 {
   "name": "@config-plugins/react-native-quick-actions",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Config plugin for react-native-quick-actions package",
   "main": "build/withReactNativeQuickActions.js",
   "types": "build/withReactNativeQuickActions.d.ts",

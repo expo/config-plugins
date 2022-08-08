@@ -1,6 +1,6 @@
 # config-plugins/detox
 
-Config plugin to auto configure Detox when the native code is generated (`expo prebuild`).
+Config plugin to auto-configure Detox when the native code is generated (`expo prebuild`).
 
 ## Versioning
 
