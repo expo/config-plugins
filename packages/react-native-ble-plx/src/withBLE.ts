@@ -16,13 +16,15 @@ const pkg = { name: "react-native-ble-plx", version: "UNVERSIONED" }; //require(
 /**
  * Apply BLE configuration for Expo SDK 42 projects.
  */
-const withBLE: ConfigPlugin<{
-  isBackgroundEnabled?: boolean;
-  neverForLocation?: boolean;
-  modes?: BackgroundMode[];
-  bluetoothAlwaysPermission?: string | false;
-  bluetoothPeripheralPermission?: string | false;
-} | void> = (config, props = {}) => {
+const withBLE: ConfigPlugin<
+  {
+    isBackgroundEnabled?: boolean;
+    neverForLocation?: boolean;
+    modes?: BackgroundMode[];
+    bluetoothAlwaysPermission?: string | false;
+    bluetoothPeripheralPermission?: string | false;
+  } | void
+> = (config, props = {}) => {
   const _props = props || {};
   const isBackgroundEnabled = _props.isBackgroundEnabled ?? false;
   const neverForLocation = _props.neverForLocation ?? false;

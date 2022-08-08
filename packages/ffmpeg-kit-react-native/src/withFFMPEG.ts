@@ -10,7 +10,6 @@ import {
   withCocoaPodsImport,
   withPodfilePropertiesPackage,
 } from "./withCocoaPodsImport";
-import { withIosDeploymentTarget } from "./withIosDeploymentTarget";
 
 let pkg: { name: string; version?: string } = {
   name: "ffmpeg-kit-react-native",

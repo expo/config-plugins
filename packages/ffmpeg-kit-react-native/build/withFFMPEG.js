@@ -21,11 +21,6 @@ const withFFMPEG = (config, _props) => {
     return (0, config_plugins_1.withPlugins)(config, [
         // iOS
         [withCocoaPodsImport_1.withPodfilePropertiesPackage, iosPackage],
-        // [
-        //   withIosDeploymentTarget,
-        //   // https://github.com/tanersener/ffmpeg-kit/tree/main/react-native#211-package-names
-        //   { deploymentTarget: "12.1" },
-        // ],
         withCocoaPodsImport_1.withCocoaPodsImport,
         // Android
         // Set min SDK Version to 24.
