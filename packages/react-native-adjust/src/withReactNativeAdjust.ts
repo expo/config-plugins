@@ -94,11 +94,6 @@ const withAdjustPlugin: ConfigPlugin<void | { targetAndroid12?: boolean }> = (
   });
 
   if (props.targetAndroid12) {
-    config = AndroidConfig.Version.withBuildScriptExtMinimumVersion(config, {
-      name: "compileSdkVersion",
-      minVersion: 31,
-    });
-
     config = AndroidConfig.Permissions.withPermissions(config, [
       "com.google.android.gms.permission.AD_ID",
     ]);

@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`addSiriShortcutAppDelegateImport adds import to Expo Modules AppDelegate 1`] = `
+exports[`addQuickActionsAppDelegateImport adds import to Expo Modules AppDelegate 1`] = `
 "#import \\"AppDelegate.h\\"
-// @generated begin react-native-siri-shortcut - expo prebuild (DO NOT MODIFY) sync-34828decdfd158f5b96fe11a1e590a684e296e0e
-#import <RNSiriShortcuts/RNSiriShortcuts.h>
-// @generated end react-native-siri-shortcut
+// @generated begin react-native-quick-actions-import - expo prebuild (DO NOT MODIFY) sync-6ea4aa8a461f1aab4f2c38893cd59140deb974e4
+#import \\"RNQuickActionManager.h\\"
+// @generated end react-native-quick-actions-import
 
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
@@ -172,7 +172,7 @@ static NSString *const kRNConcurrentRoot = @\\"concurrentRoot\\";
 @end"
 `;
 
-exports[`addSiriShortcutAppDelegateInit adds init to Expo Modules AppDelegate 1`] = `
+exports[`addQuickActionsAppDelegateInit adds init to Expo Modules AppDelegate 1`] = `
 "#import \\"AppDelegate.h\\"
 
 #import <React/RCTBridge.h>
@@ -206,6 +206,11 @@ static NSString *const kRNConcurrentRoot = @\\"concurrentRoot\\";
 
 @implementation AppDelegate
 
+// @generated begin react-native-quick-actions-delegate - expo prebuild (DO NOT MODIFY) sync-c20e1981d7932e1a91e1d34dbf5c36e3ff230412
+- (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL succeeded)) completionHandler {
+  [RNQuickActionManager onQuickActionPress:shortcutItem completionHandler:completionHandler];
+}
+// @generated end react-native-quick-actions-delegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   RCTAppSetupPrepareApp(application);
@@ -277,12 +282,6 @@ static NSString *const kRNConcurrentRoot = @\\"concurrentRoot\\";
 
 // Universal Links
 - (BOOL)application:(UIApplication *)application continueUserActivity:(nonnull NSUserActivity *)userActivity restorationHandler:(nonnull void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler {
-// @generated begin react-native-siri-shortcut-delegate - expo prebuild (DO NOT MODIFY) sync-291450a04ff243636b0bd0aef4a614f7218690b5
-  BOOL shortcutResult = [RNSSSiriShortcuts application:application continueUserActivity:userActivity restorationHandler:restorationHandler];
-  if (shortcutResult) {
-    return [super application:application continueUserActivity:userActivity restorationHandler:restorationHandler] || shortcutResult;
-  }
-// @generated end react-native-siri-shortcut-delegate
   BOOL result = [RCTLinkingManager application:application continueUserActivity:userActivity restorationHandler:restorationHandler];
   return [super application:application continueUserActivity:userActivity restorationHandler:restorationHandler] || result;
 }

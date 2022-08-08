@@ -27,9 +27,10 @@
     "preset": "expo-module-scripts"
   },
   "dependencies": {
-    "@expo/config-plugins": "~4.1.4",
-    "@expo/image-utils": "^0.3.17",
     "xcode": "^3.0.1"
+  },
+  "peerDependencies": {
+    "expo": "^46.0.2"
   },
   "devDependencies": {
     "expo-module-scripts": "^2.0.0"

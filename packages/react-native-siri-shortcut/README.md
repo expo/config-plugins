@@ -4,7 +4,7 @@ Expo Config Plugin to auto configure [`react-native-siri-shortcut`](https://www.
 
 ## Expo installation
 
-> Tested against Expo SDK 42
+> Tested against Expo SDK 46
 
 This package cannot be used in the "Expo Go" app because [it requires custom native code](https://docs.expo.io/workflow/customizing/).
 
@@ -38,10 +38,7 @@ When working with Siri Shorcuts, you need to defined their identifiers on the Xc
     "plugins": [
       [
         "@config-plugins/react-native-siri-shortcut",
-        [
-          "com.example.InitiateWorkout",
-          "com.example.FinishWorkout",
-        ],
+        ["com.example.InitiateWorkout", "com.example.FinishWorkout"]
       ]
     ]
   }

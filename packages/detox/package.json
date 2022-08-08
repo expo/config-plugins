@@ -29,8 +29,8 @@
     "detox",
     "e2e"
   ],
-  "dependencies": {
-    "@expo/config-plugins": "~4.1.4"
+  "peerDependencies": {
+    "expo": "^46.0.2"
   },
   "devDependencies": {
     "expo-module-scripts": "^2.0.0"

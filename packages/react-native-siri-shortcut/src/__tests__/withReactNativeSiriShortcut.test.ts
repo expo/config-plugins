@@ -1,8 +1,10 @@
+import { getFixture } from "../../../../fixtures/getFixtures";
 import {
   addSiriShortcutAppDelegateImport,
   addSiriShortcutAppDelegateInit,
 } from "../withReactNativeSiriShortcut";
-import { ExpoModulesAppDelegate } from "./fixtures/AppDelegate";
+
+const ExpoModulesAppDelegate = getFixture("AppDelegate.mm");
 
 describe(addSiriShortcutAppDelegateImport, () => {
   it(`adds import to Expo Modules AppDelegate`, () => {

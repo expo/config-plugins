@@ -8,6 +8,7 @@ Ensure you use versions that work together!
 
 | `expo` | `react-native-webrtc` | `@config-plugins/react-native-webrtc` |
 | ------ | --------------------- | ------------------------------------- |
+| 46.0.0 | 1.100.1               | 4.0.0                                 |
 | 45.0.0 | 1.100.0               | 3.0.0                                 |
 | 44.0.0 | 1.92.2                | 2.0.0                                 |
 | 43.0.0 | 1.92.2                | 1.0.0                                 |
@@ -16,7 +17,7 @@ Ensure you use versions that work together!
 
 ## Expo installation
 
-> Tested against Expo SDK 45
+> Tested against Expo SDK 46
 
 > This package cannot be used in the "Expo Go" app because [it requires custom native code](https://docs.expo.io/workflow/customizing/).
 > First install the package with yarn, npm, or [`expo install`](https://docs.expo.io/workflow/expo-cli/#expo-install).

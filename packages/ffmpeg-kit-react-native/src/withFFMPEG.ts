@@ -1,9 +1,9 @@
 import {
-  AndroidConfig,
   ConfigPlugin,
   createRunOncePlugin,
   withPlugins,
 } from "@expo/config-plugins";
+import { withBuildProperties } from "expo-build-properties";
 
 import { withAndroidFFMPEGPackage } from "./withAndroidFFMPEGPackage";
 import {
@@ -56,10 +56,12 @@ const withFFMPEG: ConfigPlugin<void | Props> = (config, _props) => {
 
     // Set min SDK Version to 24.
     [
-      AndroidConfig.Version.withBuildScriptExtMinimumVersion,
+      withBuildProperties,
       {
-        name: "minSdkVersion",
-        minVersion: 24,
+        android: {
+          // https://github.com/expo/expo/blob/sdk-46/templates/expo-template-bare-minimum/android/build.gradle#L8
+          minSdkVersion: 24,
+        },
       },
     ],
     [withAndroidFFMPEGPackage, androidPackage],

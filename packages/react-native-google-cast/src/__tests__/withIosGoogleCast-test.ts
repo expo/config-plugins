@@ -1,12 +1,8 @@
+import { getFixture } from "../../../../fixtures/getFixtures";
 import {
   addGoogleCastAppDelegateDidFinishLaunchingWithOptions,
   MATCH_INIT,
 } from "../withIosGoogleCast";
-import {
-  ExpoModulesAppDelegate,
-  ExpoReactAppDelegate,
-  UnimodulesAppDelegate,
-} from "./fixtures/AppDelegate";
 
 describe("MATCH_INIT", () => {
   it(`matches unimodules projects`, () => {
@@ -39,39 +35,9 @@ describe("MATCH_INIT", () => {
 });
 
 describe(addGoogleCastAppDelegateDidFinishLaunchingWithOptions, () => {
-  it(`adds maps import to Unimodules AppDelegate`, () => {
-    const results = addGoogleCastAppDelegateDidFinishLaunchingWithOptions(
-      UnimodulesAppDelegate,
-      {
-        receiverAppId: "foobar-bacon",
-      }
-    );
-    // matches a static snapshot
-    expect(results.contents).toMatchSnapshot();
-    expect(results.contents).toMatch(/foobar-bacon/);
-    // did add new content
-    expect(results.didMerge).toBe(true);
-    // didn't remove old content
-    expect(results.didClear).toBe(false);
-  });
-  it(`adds maps import to Expo Modules AppDelegate`, () => {
-    const results = addGoogleCastAppDelegateDidFinishLaunchingWithOptions(
-      ExpoModulesAppDelegate,
-      {
-        receiverAppId: "foobar-bacon",
-      }
-    );
-    // matches a static snapshot
-    expect(results.contents).toMatchSnapshot();
-    expect(results.contents).toMatch(/foobar-bacon/);
-    // did add new content
-    expect(results.didMerge).toBe(true);
-    // didn't remove old content
-    expect(results.didClear).toBe(false);
-  });
   it(`adds maps import to Expo Modules SDK 44 AppDelegate`, () => {
     const results = addGoogleCastAppDelegateDidFinishLaunchingWithOptions(
-      ExpoReactAppDelegate,
+      getFixture("AppDelegate.mm"),
       {
         receiverAppId: "foobar-bacon",
       }
