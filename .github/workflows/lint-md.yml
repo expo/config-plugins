@@ -16,5 +16,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: npm install
+      - run: yarn install --frozen-lockfile --check-files
       - run: npx remark --use validate-links . .github
