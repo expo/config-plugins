@@ -44,6 +44,7 @@ More out-of-tree plugins which can be used to configure more packages.
 - [@ouvio/react-native-background-location-plugin](https://www.npmjs.com/package/@ouvio/react-native-background-location-plugin) (for use with `react-native-background-location-plugin`)
 - [expo-community-flipper](https://www.npmjs.com/package/expo-community-flipper) (for use with Flipper)
 - [expo-appcenter](https://www.npmjs.com/package/expo-appcenter) (for use with `appcenter`)
+- [react-native-keyevent-expo-config-plugin](https://github.com/chronsyn/react-native-keyevent-expo-config-plugin) (for use with `react-native-keyevent`)
 
 ### No Plugin Required
 
