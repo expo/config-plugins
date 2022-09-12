@@ -30,7 +30,7 @@ Next, rebuild your app as described in the ["Adding custom native code"](https:/
 
 The plugin provides props for extra customization. Every time you change the props or plugins, you'll need to rebuild (and `prebuild`) the native app. If no extra properties are added, defaults will be used.
 
-- `foobar` (_boolean_): Does XYZ. Default `false`.
+- `paymentApps` (_string[]_): Adds specified app URL (`tez`, `phonepe` or `paytmmp`). Default value is `[]`.
 
 #### Example
 
@@ -41,7 +41,7 @@ The plugin provides props for extra customization. Every time you change the pro
       [
         "@config-plugins/react-native-razorpay",
         {
-          // props ...
+            paymentApps: ["tez", "phonepe", "paytmmp"]
         }
       ]
     ]
