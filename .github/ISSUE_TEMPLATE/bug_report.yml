@@ -42,6 +42,7 @@ body:
         - '@config-plugins/react-native-google-cast'
         - '@config-plugins/react-native-pdf'
         - '@config-plugins/react-native-quick-actions'
+        - '@config-plugins/react-native-razorpay'
         - '@config-plugins/react-native-siri-shortcut'
         - '@config-plugins/react-native-webrtc'
     validations:
