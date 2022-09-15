@@ -53,7 +53,8 @@ export function addSiriShortcutAppDelegateInit(src: string): MergeResults {
   return mergeContents({
     tag: "react-native-siri-shortcut-delegate",
     src,
-    newSrc: "  [RNSSSiriShortcuts application:application continueUserActivity:userActivity restorationHandler:restorationHandler];",
+    newSrc:
+      "  [RNSSSiriShortcuts application:application continueUserActivity:userActivity restorationHandler:restorationHandler];",
     anchor:
       /  return \[super application:application continueUserActivity:userActivity restorationHandler:restorationHandler\] \|\| result;/,
     offset: -1,
