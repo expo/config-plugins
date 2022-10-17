@@ -117,6 +117,29 @@ PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderExce
 
 Be sure to disable any proxies running on your computer that may be blocking requests (i.e. Charles Proxy). You may need to run `yarn clean:android` before attempting to build again.
 
+---
+
+If you get the error:
+
+```sh
+CLEARTEXT communication to [some host] not permitted by network security policy
+```
+
+This means you're attempting to connecting over plain HTTP (not HTTPS) to a host that _isn't_ in your `subdomains` settings (defaults to `['10.0.2.2', 'localhost']`). Set your subdomain settings appropriately. For example, if you're building Detox into a dev-client, you'll want to make sure you can connect to your Metro server:
+
+```javascript
+export default {
+  plugins: [
+    [
+      "@config-plugins/detox",
+      {
+        subdomains: process.env.EAS_BUILD_PROFILE === "development" ? "*" : ["10.0.2.2", "localhost"],
+      },
+    ],
+  ],
+};
+```
+
 ## 📝 Notes
 
 - [Detox docs](https://github.com/wix/Detox/blob/master/docs/Introduction.GettingStarted.md)
