@@ -128,7 +128,7 @@ CLEARTEXT communication to [some host] not permitted by network security policy
 This means you're attempting to connecting over plain HTTP (not HTTPS) to a host that _isn't_ in your `subdomains` settings (defaults to `['10.0.2.2', 'localhost']`). Set your subdomain settings appropriately. For example, if you're building Detox into a dev-client, you'll want to make sure you can connect to your Metro server:
 
 ```javascript
-export default {
+module.exports = {
   plugins: [
     [
       "@config-plugins/detox",
