@@ -6,7 +6,7 @@ To submit a pull request:
 
 1. Fork the [repository](https://github.com/expo/config-plugins) and create a feature branch. (Existing contributors can create feature branches without forking. Prefix the branch name with `@your-github-username/`.)
 2. Run `yarn` in the root directory to generate the build files.
-3. Use [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) including in the PR tile.
+3. Use [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) including in the PR title.
 4. Fill out the entire PR template. Ensure your code is tested locally and has continuous tests in CI.
 5. Make sure all tests pass on GitHub Actions.
 6. Wait for a review and adjust the code if necessary.
