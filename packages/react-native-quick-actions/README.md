@@ -1,19 +1,19 @@
 # @config-plugins/react-native-quick-actions
 
-Expo Config Plugin to auto-configure [`react-native-quick-actions`](https://www.npmjs.com/package/react-native-quick-actions) when the native code is generated (`expo prebuild`).
+Expo Config Plugin to auto-configure [`react-native-quick-actions`](https://www.npmjs.com/package/react-native-quick-actions) when the native code is generated (`npx expo prebuild`).
 
 ![demo-ios](https://user-images.githubusercontent.com/9664363/125181024-15295c00-e1be-11eb-8479-80535922ad22.png)
 
 ## Expo installation
 
-> Tested against Expo SDK 46
+> Tested against Expo SDK 47
 
 This package cannot be used in the "Expo Go" app because [it requires custom native code](https://docs.expo.io/workflow/customizing/).
 
-- First install the package with yarn, npm, or [`expo install`](https://docs.expo.io/workflow/expo-cli/#expo-install).
+- First install the package with yarn, npm, or [`npx expo install`](https://docs.expo.io/workflow/expo-cli/#expo-install).
 
 ```sh
-expo install react-native-quick-actions @config-plugins/react-native-quick-actions
+npx expo install react-native-quick-actions @config-plugins/react-native-quick-actions
 ```
 
 After installing this npm package, add the [config plugin](https://docs.expo.io/guides/config-plugins/) to the [`plugins`](https://docs.expo.io/versions/latest/config/app/#plugins) array of your `app.json` or `app.config.js`:

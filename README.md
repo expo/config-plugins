@@ -1,6 +1,6 @@
 # Expo Config Plugins
 
-- A collection of [Expo config plugins](https://docs.expo.dev/guides/config-plugins/) for configuring the `expo prebuild` command.
+- A collection of [Expo config plugins](https://docs.expo.dev/guides/config-plugins/) for configuring the `npx expo prebuild` command.
 - This repo is to Expo config plugins as [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped) is to TypeScript.
 - We prefer packages ship their own Expo config plugin (to ensure versioning is aligned), but if they haven't adopted the system yet, the community can add a package here.
 - All packages here are community maintained. Feel free to improve docs, packages, tests, etc.
@@ -8,7 +8,7 @@
 
 ## Awesome
 
-Here is a list of known packages that have a built-in Config Plugin. 
+Here is a list of known packages that have a built-in Config Plugin.
 
 > Not all packages need a config plugin, packages that don't appear here might still work with managed EAS.
 

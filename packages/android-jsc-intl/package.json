@@ -24,8 +24,7 @@
     "expo",
     "config-plugins",
     "prebuild",
-    "android-jsc-intl",
-    "expo-42"
+    "android-jsc-intl"
   ],
   "jest": {
     "preset": "expo-module-scripts"

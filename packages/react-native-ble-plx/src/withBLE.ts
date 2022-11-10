@@ -14,7 +14,7 @@ import { withBluetoothPermissions } from "./withBluetoothPermissions";
 const pkg = { name: "react-native-ble-plx", version: "UNVERSIONED" }; //require('react-native-ble-plx/package.json')
 
 /**
- * Apply BLE configuration for Expo SDK 42 projects.
+ * Apply BLE native configuration.
  */
 const withBLE: ConfigPlugin<
   {

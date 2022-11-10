@@ -1,10 +1,10 @@
 # config-plugins/react-native-blob-util
 
-Config plugin to auto-configure [`react-native-blob-util`][lib] when the native code is generated (`expo prebuild`).
+Config plugin to auto-configure [`react-native-blob-util`][lib] when the native code is generated (`npx expo prebuild`).
 
 ### Add the package to your npm dependencies
 
-> Tested against Expo SDK 46
+> Tested against Expo SDK 47
 
 ```
 yarn add react-native-blob-util @config-plugins/react-native-blob-util
