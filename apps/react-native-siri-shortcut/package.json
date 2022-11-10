@@ -9,14 +9,14 @@
   },
   "dependencies": {
     "@config-plugins/react-native-siri-shortcut": "*",
-    "expo": "^47.0.3",
-    "expo-splash-screen": "~0.17.4",
-    "expo-status-bar": "~1.4.2",
-    "react": "18.1.0",
-    "react-dom": "18.1.0",
-    "react-native": "0.70.5",
+    "expo": "~46.0.2",
+    "expo-splash-screen": "~0.16.1",
+    "expo-status-bar": "~1.4.0",
+    "react": "18.0.0",
+    "react-dom": "18.0.0",
+    "react-native": "0.69.3",
     "react-native-siri-shortcut": "^3.1.0",
-    "react-native-web": "~0.18.9"
+    "react-native-web": "~0.18.7"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

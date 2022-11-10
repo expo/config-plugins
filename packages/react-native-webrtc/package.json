@@ -31,13 +31,13 @@
     "preset": "expo-module-scripts"
   },
   "peerDependencies": {
-    "expo": "^47.0.3"
+    "expo": "^46.0.2"
   },
   "devDependencies": {
     "expo-module-scripts": "^2.0.0"
   },
   "upstreamPackage": "react-native-webrtc",
   "dependencies": {
-    "expo-build-properties": "~0.4.0"
+    "expo-build-properties": "^0.3.0"
   }
 }
