@@ -6,6 +6,7 @@ Config plugin to auto-configure `ffmpeg-kit-react-native` when the native code i
 
 | `expo` | `ffmpeg-kit-react-native` | `@config-plugins/ffmpeg-kit-react-native` |
 | ------ | ------------------------- | ----------------------------------------- |
+| 47.0.0 | 5.1.0                     | ^4.0.0                                    |
 | 46.0.0 | 4.5.2                     | ^3.0.0                                    |
 | 45.0.0 | 4.5.1                     | ^2.0.0                                    |
 

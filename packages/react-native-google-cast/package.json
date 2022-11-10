@@ -1,6 +1,6 @@
 {
   "name": "@config-plugins/react-native-google-cast",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "Config plugin to auto configure Google Cast on prebuild",
   "main": "build/withGoogleCast.js",
   "types": "build/withGoogleCast.d.ts",

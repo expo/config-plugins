@@ -4602,6 +4602,11 @@ address@^1.0.1:
   resolved "https://registry.yarnpkg.com/address/-/address-1.2.0.tgz#d352a62c92fee90f89a693eccd2a8b2139ab02d9"
   integrity sha512-tNEZYz5G/zYunxFm7sfhAxkXEuLj3K6BKwv6ZURlsF6yiUQ65z0Q2wZW9L5cPUl9ocofGvXOdFYbFHp0+6MOig==
 
+adm-zip@0.5.9:
+  version "0.5.9"
+  resolved "https://registry.yarnpkg.com/adm-zip/-/adm-zip-0.5.9.tgz#b33691028333821c0cf95c31374c5462f2905a83"
+  integrity sha512-s+3fXLkeeLjZ2kLjCBwQufpI5fuN+kIGBxu6530nVQZGVol0d7Y/M88/xw9HGGUcJjKf8LutN3VPRUBq6N7Ajg==
+
 agent-base@4, agent-base@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/agent-base/-/agent-base-4.3.0.tgz#8165f01c436009bccad0b1d122f05ed770efc6ee"
@@ -7320,10 +7325,10 @@ detect-port-alt@1.1.6:
     address "^1.0.1"
     debug "^2.6.0"
 
-detox@^19.6.9:
-  version "19.9.1"
-  resolved "https://registry.yarnpkg.com/detox/-/detox-19.9.1.tgz#5f357b5e6bc6a4249e01ce9e0dc6cbca956b3241"
-  integrity sha512-SNhmS6VMycYVF/FHNfPR7rhpc/G/ft4c/Pqv6qt3TasBBjfdw5uI7SBAmIPMkPRkWtmAGdRycrFeJGFtBzpriA==
+detox@^19.13.0:
+  version "19.13.0"
+  resolved "https://registry.yarnpkg.com/detox/-/detox-19.13.0.tgz#6eae8b4e5ef5ca913d465ddc5bd7855fe8834c5c"
+  integrity sha512-tKg0m5wlb4r1MISFtqPFXwdLncXWQhWaoAV6nuC3MmBGcJnTSrSa7wNZG26HhfEeR8c6eRUqMFHKefiZnWoO1Q==
   dependencies:
     ajv "^8.6.3"
     bunyan "^1.8.12"
@@ -8723,10 +8728,10 @@ fetch-retry@^4.1.1:
   resolved "https://registry.yarnpkg.com/fetch-retry/-/fetch-retry-4.1.1.tgz#fafe0bb22b54f4d0a9c788dff6dd7f8673ca63f3"
   integrity sha512-e6eB7zN6UBSwGVwrbWVH+gdLnkW9WwHhmq2YDK1Sh30pzx1onRVGBvogTlUeWxwTa+L86NYdo4hFkh7O8ZjSnA==
 
-ffmpeg-kit-react-native@^4.5.2:
-  version "4.5.2"
-  resolved "https://registry.yarnpkg.com/ffmpeg-kit-react-native/-/ffmpeg-kit-react-native-4.5.2.tgz#bc99ffb0a3c3d075cad10978e1e65bb856776083"
-  integrity sha512-eB0rvBtkSnwpCL9wh/gzv2HU/RA1SKsBQn8gwnWEuVPLiPxFayTI72n7apKeTyvM+OpNnIERhmhqzZxEq9ulCg==
+ffmpeg-kit-react-native@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/ffmpeg-kit-react-native/-/ffmpeg-kit-react-native-5.1.0.tgz#7aea05ee642b0b204777ba36994f41ed192ec4ca"
+  integrity sha512-WGuF7wm18vvhr1oCMLRfHIDCwKrmBezWgVtzim6Z3cbDiHeYvDjpm7KJwrvBMwOgekQtP4R4zI9W0ZByoXjMnQ==
 
 figgy-pudding@^3.4.1, figgy-pudding@^3.5.1:
   version "3.5.2"
@@ -9327,7 +9332,7 @@ glob@^6.0.1:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
-glob@^7.0.3, glob@^7.1.1, glob@^7.1.2, glob@^7.1.3, glob@^7.1.4, glob@^7.1.6, glob@^7.1.7, glob@^7.2.0:
+glob@^7.0.3, glob@^7.1.1, glob@^7.1.2, glob@^7.1.3, glob@^7.1.4, glob@^7.1.6, glob@^7.1.7, glob@^7.2.0, glob@^7.2.3:
   version "7.2.3"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.2.3.tgz#b8df0fb802bbfa8e89bd1d938b4e16578ed44f2b"
   integrity sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==
@@ -15487,28 +15492,28 @@ react-is@^17.0.0, react-is@^17.0.1, react-is@^17.0.2:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
-react-native-adjust@^4.29.6:
-  version "4.29.6"
-  resolved "https://registry.yarnpkg.com/react-native-adjust/-/react-native-adjust-4.29.6.tgz#cf7cc4fdfe516f10a4f42b9df73826c0898fd0c3"
-  integrity sha512-6XShRFrqx/kif0iPutaS4gj6LhZtzPIpH3MAxxKOoqwWWX0UPVQ9boQC4j2BtFjmerVQG1p2LGwsdylsGOiJ2g==
+react-native-adjust@^4.32.0:
+  version "4.32.0"
+  resolved "https://registry.yarnpkg.com/react-native-adjust/-/react-native-adjust-4.32.0.tgz#8bbcd350862f2925da416cccd5f03810cb4698cd"
+  integrity sha512-Ipd56bMzvdWPLXPsac19bkA/2Y4uJTa4+/I3dGbKVWKkP4gPUR2oZlT04bWz9B1HWmKeoyrSqGdEdIyKVtyvlw==
 
 react-native-ble-plx@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/react-native-ble-plx/-/react-native-ble-plx-2.0.3.tgz#b0a746f33389dbf7fd7b158513330d487d5d0fbb"
   integrity sha512-62LRDBPf/03K7sge+qq2ZuF8PWCGB782G+SBrpgNm5fA5Hs3FCY1ExTJZ1G0tB5ZhBPYEXcKRxPLuFegcDFrqA==
 
-react-native-blob-util@^0.16.0:
-  version "0.16.2"
-  resolved "https://registry.yarnpkg.com/react-native-blob-util/-/react-native-blob-util-0.16.2.tgz#d7ad25675b33908884a95159280abd11ca2b109f"
-  integrity sha512-eC7lps4dyTICYVLqn86PDlo/2OdQw7rcOD2ViD69BAfdWgcEqslci8IjbUCvbSZM+cRbMskuRuLSfcoNi+ILqQ==
+react-native-blob-util@^0.16.4:
+  version "0.16.4"
+  resolved "https://registry.yarnpkg.com/react-native-blob-util/-/react-native-blob-util-0.16.4.tgz#eeb0e28f6fa6ecb357c10f154be3d2e66c010f62"
+  integrity sha512-rNKMcVsrVn+l6PQVrCIJy3N2t9zEpXP1yrP3CdnWNHh9Dsup7tJMcoun4S1Cz869L0acx4LiM40XdqqfLyqrDw==
   dependencies:
     base-64 "0.1.0"
-    glob "^7.1.6"
+    glob "^7.2.3"
 
-react-native-branch@5.4.0:
-  version "5.4.0"
-  resolved "https://registry.yarnpkg.com/react-native-branch/-/react-native-branch-5.4.0.tgz#ba71422e38047b744ae5d88a834e7a7cb5185d68"
-  integrity sha512-KuYpFPm6cKzUSTMOpI216w4BYP/5E4g8MH5a/4/xaWPqVqZmeoQS89/GqDxg7YwOG70YMtwdSobulh/wrv2tMw==
+react-native-branch@^5.6.2:
+  version "5.6.2"
+  resolved "https://registry.yarnpkg.com/react-native-branch/-/react-native-branch-5.6.2.tgz#c3ec137a5427a21fcd6559b83f02e6162ea627f6"
+  integrity sha512-plYpedNI1SSquD7bDOJ4UptkPIrGtz4O1NXfFA5tBshGb0AhuUSYS13dNZuHa+Ug+7YaqBcc0SF02vIB0ktZKw==
 
 react-native-callkeep@^4.3.3:
   version "4.3.3"
@@ -15530,17 +15535,17 @@ react-native-dynamic-app-icon@^1.1.0:
   resolved "https://registry.yarnpkg.com/react-native-dynamic-app-icon/-/react-native-dynamic-app-icon-1.1.0.tgz#c7722289f9705c24fea257c9722f8d976a14cd13"
   integrity sha512-NJFQNelgA/VZfw2ZbMErUrIFv+DxV8lTX7ZEkU8ys+oZE2yA9EDNZp9KmeAufKZ4VvtFlRuyaR6OHAEfM7CNaw==
 
-react-native-google-cast@^4.1.2:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/react-native-google-cast/-/react-native-google-cast-4.3.0.tgz#ef46920fc0c2c6291478ab5b2f4b4637ad65bcf2"
-  integrity sha512-xrRqqA4NQoRzP23dxpSzsSkFkQZyHjEf/3H0e5+Yt5UrVVb8PY94v3/7C8TGSSmJ2hQLcqu7RZ0qHpr+XZloqg==
+react-native-google-cast@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/react-native-google-cast/-/react-native-google-cast-4.5.0.tgz#e5eeeb8a9303dbe36d673d44d4c568496fa0062a"
+  integrity sha512-xMGLmUDc/WPDtOm6oGIUC6VVaFmiiUUMDV8cUM8gxYAkxi+I9edTjFLoBJqOjC/iwURiyvonrAjnJYToEux87w==
 
 react-native-gradle-plugin@^0.70.3:
   version "0.70.3"
   resolved "https://registry.yarnpkg.com/react-native-gradle-plugin/-/react-native-gradle-plugin-0.70.3.tgz#cbcf0619cbfbddaa9128701aa2d7b4145f9c4fc8"
   integrity sha512-oOanj84fJEXUg9FoEAQomA8ISG+DVIrTZ3qF7m69VQUJyOGYyDZmPqKcjvRku4KXlEH6hWO9i4ACLzNBh8gC0A==
 
-react-native-pdf@^6.5.0:
+react-native-pdf@^6.6.2:
   version "6.6.2"
   resolved "https://registry.yarnpkg.com/react-native-pdf/-/react-native-pdf-6.6.2.tgz#a119aa3fd908c2c0a92102a78562530a35b9154b"
   integrity sha512-gqxNPSzL0lNN1dGYAz9ObSLb0shUTB8x1u69qKLMSmwuxFTpGui5PNNgpH8q/nlpL9zBzMVVc/AXEuDCwRyxEQ==
@@ -15558,10 +15563,10 @@ react-native-safe-area-context@4.4.1:
   resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-4.4.1.tgz#239c60b8a9a80eac70a38a822b04c0f1d15ffc01"
   integrity sha512-N9XTjiuD73ZpVlejHrUWIFZc+6Z14co1K/p1IFMkImU7+avD69F3y+lhkqA2hN/+vljdZrBSiOwXPkuo43nFQA==
 
-react-native-siri-shortcut@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/react-native-siri-shortcut/-/react-native-siri-shortcut-3.1.0.tgz#920adf41eb6c72c93ef8571259c8d35358e50e71"
-  integrity sha512-MM0f7HS3ADU2gUh0Q6n935uhdfA3KgjpN8hEEhf2RSf4azcRNh8zNMwZD08pGSrP9/JYj1kYndQ0oytpwPyk/A==
+react-native-siri-shortcut@^3.2.2:
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/react-native-siri-shortcut/-/react-native-siri-shortcut-3.2.2.tgz#0e99c46c3524cbc940be2b3fcc4563ac911b5255"
+  integrity sha512-os1LOvUkoVamghshTp0QrL40mZdJWRDLg1kGcpNG9a1H5vauoF0O/ji0Y9U5DkEkkp2r3Afupp5F9L7NTy+jlQ==
 
 react-native-web@~0.18.9:
   version "0.18.10"
@@ -15576,11 +15581,12 @@ react-native-web@~0.18.9:
     postcss-value-parser "^4.2.0"
     styleq "^0.1.2"
 
-react-native-webrtc@1.100.0:
-  version "1.100.0"
-  resolved "https://registry.yarnpkg.com/react-native-webrtc/-/react-native-webrtc-1.100.0.tgz#f81562dc46467fe75f9f96e98dbe311222e83abd"
-  integrity sha512-sBLl8Ihj3xfYn0NZJdDxelB/dZ422FWg/kcLdSw6Wk4eM3MeNW3iFwVsqg2dLzeDnuoQ06i7hOdtP7pGAiKsug==
+react-native-webrtc@1.106.1:
+  version "1.106.1"
+  resolved "https://registry.yarnpkg.com/react-native-webrtc/-/react-native-webrtc-1.106.1.tgz#31b18e8780bb927934ebddb5e03a8168cc6edf3c"
+  integrity sha512-955gqWFdISARz9D4hmnPzKQwpaU+AGqUbU+vBjzLCozUseSJ69tTQg2cShyPCBH6A1rwJQE+mrdjcpkeGbx3pQ==
   dependencies:
+    adm-zip "0.5.9"
     base64-js "1.5.1"
     event-target-shim "6.0.2"
     tar "6.1.11"
