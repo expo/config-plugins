@@ -1,6 +1,6 @@
 import { ConfigPlugin } from "@expo/config-plugins";
 /**
- * Apply android-jsc-intl configuration for Expo SDK 42 projects.
+ * Apply android-jsc-intl native configuration.
  *
  * This plugin lets you access the `Intl` API in Android apps (without Hermes).
  */
