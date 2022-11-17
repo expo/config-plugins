@@ -52,13 +52,12 @@ exports.addLocationPermissionToManifest = addLocationPermissionToManifest;
  * Required since Android SDK 31 (Android 12).
  */
 function addScanPermissionToManifest(androidManifest, neverForLocation) {
-    var _a;
     if (!Array.isArray(androidManifest.manifest["uses-permission"])) {
         androidManifest.manifest["uses-permission"] = [];
     }
     if (!androidManifest.manifest["uses-permission"].find((item) => item.$["android:name"] === "android.permission.BLUETOOTH_SCAN")) {
         config_plugins_1.AndroidConfig.Manifest.ensureToolsAvailable(androidManifest);
-        (_a = androidManifest.manifest["uses-permission"]) === null || _a === void 0 ? void 0 : _a.push({
+        androidManifest.manifest["uses-permission"]?.push({
             $: {
                 "android:name": "android.permission.BLUETOOTH_SCAN",
                 ...(neverForLocation
@@ -75,13 +74,12 @@ function addScanPermissionToManifest(androidManifest, neverForLocation) {
 exports.addScanPermissionToManifest = addScanPermissionToManifest;
 // Add this line if your application always requires BLE. More info can be found on: https://developer.android.com/guide/topics/connectivity/bluetooth-le.html#permissions
 function addBLEHardwareFeatureToManifest(androidManifest) {
-    var _a;
     // Add `<uses-feature android:name="android.hardware.bluetooth_le" android:required="true"/>` to the AndroidManifest.xml
     if (!Array.isArray(androidManifest.manifest["uses-feature"])) {
         androidManifest.manifest["uses-feature"] = [];
     }
     if (!androidManifest.manifest["uses-feature"].find((item) => item.$["android:name"] === "android.hardware.bluetooth_le")) {
-        (_a = androidManifest.manifest["uses-feature"]) === null || _a === void 0 ? void 0 : _a.push({
+        androidManifest.manifest["uses-feature"]?.push({
             $: {
                 "android:name": "android.hardware.bluetooth_le",
                 "android:required": "true",

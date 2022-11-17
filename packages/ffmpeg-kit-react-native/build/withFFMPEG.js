@@ -10,14 +10,13 @@ let pkg = {
 try {
     pkg = require("ffmpeg-kit-react-native/package.json");
 }
-catch (_a) {
+catch {
     // empty catch block
 }
 const withFFMPEG = (config, _props) => {
-    var _a, _b;
     const props = _props || {};
-    const iosPackage = ((_a = props.ios) === null || _a === void 0 ? void 0 : _a.package) || props.package;
-    const androidPackage = ((_b = props.android) === null || _b === void 0 ? void 0 : _b.package) || props.package;
+    const iosPackage = props.ios?.package || props.package;
+    const androidPackage = props.android?.package || props.package;
     return (0, config_plugins_1.withPlugins)(config, [
         // iOS
         [withCocoaPodsImport_1.withPodfilePropertiesPackage, iosPackage],

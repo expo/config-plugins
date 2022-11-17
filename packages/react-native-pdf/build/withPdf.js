@@ -9,7 +9,7 @@ let pkg = {
 try {
     pkg = require("react-native-pdf/package.json");
 }
-catch (_a) {
+catch {
     // empty catch block
 }
 const withAndroidPackagingOptions = (config) => {

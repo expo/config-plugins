@@ -38,5 +38,5 @@ try {
     const detoxPkg = require("detox/package.json");
     pkg = detoxPkg;
 }
-catch (_a) { }
+catch { }
 exports.default = (0, config_plugins_1.createRunOncePlugin)(withDetox, pkg.name, pkg.version);

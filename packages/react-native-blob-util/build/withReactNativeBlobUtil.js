@@ -8,19 +8,18 @@ let pkg = {
 try {
     pkg = require("react-native-blob-util/package.json");
 }
-catch (_a) {
+catch {
     // empty catch block
 }
 function appendDownloadCompleteAction(androidManifest) {
-    var _a, _b;
     if (!Array.isArray(androidManifest.manifest.application)) {
         return androidManifest;
     }
     for (const application of androidManifest.manifest.application) {
         for (const activity of application.activity || []) {
-            if (((_a = activity === null || activity === void 0 ? void 0 : activity.$) === null || _a === void 0 ? void 0 : _a["android:launchMode"]) === "singleTask") {
+            if (activity?.$?.["android:launchMode"] === "singleTask") {
                 for (const intentFilter of activity["intent-filter"] || []) {
-                    const isLauncher = (_b = intentFilter.category) === null || _b === void 0 ? void 0 : _b.some((action) => action.$["android:name"] === "android.intent.category.LAUNCHER");
+                    const isLauncher = intentFilter.category?.some((action) => action.$["android:name"] === "android.intent.category.LAUNCHER");
                     if (!isLauncher)
                         continue;
                     intentFilter.action = intentFilter.action || [];
@@ -82,8 +81,7 @@ const withReactNativeBlobUtil = (config) => {
     });
     withBlobProvider(config);
     config = (0, config_plugins_1.withStringsXml)(config, (config) => {
-        var _a;
-        ensureBlobProviderAuthorityString(config.modResults, ((_a = config.android) === null || _a === void 0 ? void 0 : _a.package) + ".blobs");
+        ensureBlobProviderAuthorityString(config.modResults, config.android?.package + ".blobs");
         return config;
     });
     return config;

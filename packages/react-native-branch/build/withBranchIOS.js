@@ -3,8 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.withBranchIOS = exports.setBranchApiKey = exports.getBranchApiKey = void 0;
 const config_plugins_1 = require("@expo/config-plugins");
 function getBranchApiKey(config) {
-    var _a, _b, _c, _d;
-    return (_d = (_c = (_b = (_a = config.ios) === null || _a === void 0 ? void 0 : _a.config) === null || _b === void 0 ? void 0 : _b.branch) === null || _c === void 0 ? void 0 : _c.apiKey) !== null && _d !== void 0 ? _d : null;
+    return config.ios?.config?.branch?.apiKey ?? null;
 }
 exports.getBranchApiKey = getBranchApiKey;
 function setBranchApiKey(apiKey, infoPlist) {
@@ -20,12 +19,11 @@ function setBranchApiKey(apiKey, infoPlist) {
 }
 exports.setBranchApiKey = setBranchApiKey;
 const withBranchIOS = (config, data) => {
-    var _a;
     // Ensure object exist
     if (!config.ios) {
         config.ios = {};
     }
-    const apiKey = (_a = data.apiKey) !== null && _a !== void 0 ? _a : getBranchApiKey(config);
+    const apiKey = data.apiKey ?? getBranchApiKey(config);
     if (!apiKey) {
         throw new Error("Branch API key is required: expo.ios.config.branch.apiKey");
     }

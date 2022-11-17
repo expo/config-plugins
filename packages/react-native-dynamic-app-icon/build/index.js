@@ -74,7 +74,7 @@ const withIconXcodeProject = (config, { icons }) => {
         await iterateIconsAsync({ icons }, async (key, icon, index) => {
             for (const scale of scales) {
                 const iconFileName = getIconName(key, size, scale);
-                if (!(group === null || group === void 0 ? void 0 : group.children.some(({ comment }) => comment === iconFileName))) {
+                if (!group?.children.some(({ comment }) => comment === iconFileName)) {
                     // Only write the file if it doesn't already exist.
                     config.modResults = config_plugins_1.IOSConfig.XcodeUtils.addResourceFileToGroup({
                         filepath: path_1.default.join(groupPath, iconFileName),

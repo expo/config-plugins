@@ -32,8 +32,8 @@ const withIosDeploymentTargetXcodeProject = (config, props) => {
 function updateDeploymentTargetXcodeProject(project, deploymentTarget) {
     const configurations = project.pbxXCBuildConfigurationSection();
     // @ts-ignore
-    for (const { buildSettings } of Object.values(configurations !== null && configurations !== void 0 ? configurations : {})) {
-        const currDeploymentTarget = buildSettings === null || buildSettings === void 0 ? void 0 : buildSettings.IPHONEOS_DEPLOYMENT_TARGET;
+    for (const { buildSettings } of Object.values(configurations ?? {})) {
+        const currDeploymentTarget = buildSettings?.IPHONEOS_DEPLOYMENT_TARGET;
         if (currDeploymentTarget &&
             semver_1.default.lt(toSemVer(currDeploymentTarget), toSemVer(deploymentTarget))) {
             buildSettings.IPHONEOS_DEPLOYMENT_TARGET = deploymentTarget;
@@ -43,6 +43,5 @@ function updateDeploymentTargetXcodeProject(project, deploymentTarget) {
 }
 exports.updateDeploymentTargetXcodeProject = updateDeploymentTargetXcodeProject;
 function toSemVer(version) {
-    var _a;
-    return (_a = semver_1.default.coerce(version)) !== null && _a !== void 0 ? _a : new semver_1.default.SemVer("0.0.0");
+    return semver_1.default.coerce(version) ?? new semver_1.default.SemVer("0.0.0");
 }

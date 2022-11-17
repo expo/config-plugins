@@ -56,8 +56,7 @@ const withDetoxTestClass = (config) => {
     return (0, config_plugins_1.withDangerousMod)(config, [
         "android",
         async (config) => {
-            var _a;
-            const packageName = (_a = config.android) === null || _a === void 0 ? void 0 : _a.package;
+            const packageName = config.android?.package;
             (0, assert_1.default)(packageName, "android.package must be defined");
             const folder = path_1.default.join(config.modRequest.platformProjectRoot, `app/src/androidTest/java/${packageName.split(".").join("/")}`);
             fs_1.default.mkdirSync(folder, { recursive: true });

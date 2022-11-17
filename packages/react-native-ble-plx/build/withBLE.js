@@ -11,10 +11,9 @@ const pkg = { name: "react-native-ble-plx", version: "UNVERSIONED" }; //require(
  * Apply BLE native configuration.
  */
 const withBLE = (config, props = {}) => {
-    var _a, _b;
     const _props = props || {};
-    const isBackgroundEnabled = (_a = _props.isBackgroundEnabled) !== null && _a !== void 0 ? _a : false;
-    const neverForLocation = (_b = _props.neverForLocation) !== null && _b !== void 0 ? _b : false;
+    const isBackgroundEnabled = _props.isBackgroundEnabled ?? false;
+    const neverForLocation = _props.neverForLocation ?? false;
     // iOS
     config = (0, withBluetoothPermissions_1.withBluetoothPermissions)(config, _props);
     config = (0, withBLEBackgroundModes_1.withBLEBackgroundModes)(config, _props.modes || []);

@@ -19,5 +19,5 @@ try {
     const branchPkg = require("react-native-branch/package.json");
     pkg = branchPkg;
 }
-catch (_a) { }
+catch { }
 exports.default = (0, config_plugins_1.createRunOncePlugin)(withBranch, pkg.name, pkg.version);

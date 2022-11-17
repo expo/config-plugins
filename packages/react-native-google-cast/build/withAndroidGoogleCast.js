@@ -12,8 +12,7 @@ async function ensureCustomActivityAsync({ mainApplication, }) {
     if (Array.isArray(mainApplication.activity)) {
         // Remove all activities matching the custom name
         mainApplication.activity = mainApplication.activity.filter((activity) => {
-            var _a;
-            return ((_a = activity.$) === null || _a === void 0 ? void 0 : _a["android:name"]) !== CUSTOM_ACTIVITY;
+            return activity.$?.["android:name"] !== CUSTOM_ACTIVITY;
         });
     }
     else {
@@ -75,18 +74,17 @@ const withMainActivityLazyLoading = (config) => {
 };
 // castFrameworkVersion
 const withAndroidGoogleCast = (config, props) => {
-    var _a, _b;
     config = withAndroidManifestCast(config, {
         receiverAppId: props.receiverAppId,
     });
     config = withMainActivityLazyLoading(config);
     config = withProjectBuildGradleVersion(config, {
         // gradle dep version
-        version: (_a = props.androidPlayServicesCastFrameworkVersion) !== null && _a !== void 0 ? _a : "+",
+        version: props.androidPlayServicesCastFrameworkVersion ?? "+",
     });
     config = withAppBuildGradleImport(config, {
         // gradle dep version
-        version: (_b = props.androidPlayServicesCastFrameworkVersion) !== null && _b !== void 0 ? _b : "+",
+        version: props.androidPlayServicesCastFrameworkVersion ?? "+",
     });
     return config;
 };
