@@ -1,13 +1,13 @@
 # config-plugins/react-native-google-cast
 
-Config plugin to auto-configure react-native-google-cast when the native code is generated (`expo prebuild`).
+Config plugin to auto-configure react-native-google-cast when the native code is generated (`npx expo prebuild`).
 
 ## Expo installation
 
-> Tested against Expo SDK 46
+> Tested against Expo SDK 47
 
 > This package cannot be used in the "Expo Go" app because [it requires custom native code](https://docs.expo.io/workflow/customizing/).
-> First install the package with yarn, npm, or [`expo install`](https://docs.expo.io/workflow/expo-cli/#expo-install).
+> First install the package with yarn, npm, or [`npx expo install`](https://docs.expo.io/workflow/expo-cli/#expo-install).
 
 ```sh
 yarn add react-native-google-cast @config-plugins/react-native-google-cast

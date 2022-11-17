@@ -1,6 +1,6 @@
 {
   "name": "@config-plugins/android-jsc-intl",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "Config plugin for android-jsc-intl package",
   "main": "build/withAndroidJscIntl.js",
   "types": "build/withAndroidJscIntl.d.ts",
@@ -24,14 +24,13 @@
     "expo",
     "config-plugins",
     "prebuild",
-    "android-jsc-intl",
-    "expo-42"
+    "android-jsc-intl"
   ],
   "jest": {
     "preset": "expo-module-scripts"
   },
   "peerDependencies": {
-    "expo": "^46.0.2"
+    "expo": "^47.0.3"
   },
   "devDependencies": {
     "expo-module-scripts": "^2.0.0"

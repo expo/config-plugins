@@ -17,7 +17,7 @@ const remapping = {
 // https://developer.apple.com/documentation/uikit/menus_and_shortcuts/add_home_screen_quick_actions
 // TODO: Auto generate images in asset catalogues
 /**
- * Apply react-native-quick-actions configuration for Expo SDK 42 projects.
+ * Apply react-native-quick-actions native configuration.
  */
 const withReactNativeQuickActions = (config, _items) => {
     config = withQuickActionsAppDelegate(config);

@@ -10,15 +10,15 @@
   "dependencies": {
     "@config-plugins/react-native-blob-util": "*",
     "@config-plugins/react-native-pdf": "*",
-    "expo": "~46.0.2",
-    "expo-splash-screen": "~0.16.1",
-    "expo-status-bar": "~1.4.0",
-    "react": "18.0.0",
-    "react-dom": "18.0.0",
-    "react-native": "0.69.3",
-    "react-native-blob-util": "^0.16.0",
-    "react-native-pdf": "^6.5.0",
-    "react-native-web": "~0.18.7"
+    "expo": "~47.0.3",
+    "expo-splash-screen": "~0.17.4",
+    "expo-status-bar": "~1.4.2",
+    "react": "18.1.0",
+    "react-dom": "18.1.0",
+    "react-native": "0.70.5",
+    "react-native-blob-util": "^0.16.4",
+    "react-native-pdf": "^6.6.2",
+    "react-native-web": "~0.18.9"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

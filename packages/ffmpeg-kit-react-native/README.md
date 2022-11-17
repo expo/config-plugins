@@ -1,20 +1,21 @@
 # config-plugins/ffmpeg-kit-react-native
 
-Config plugin to auto-configure `ffmpeg-kit-react-native` when the native code is generated (`expo prebuild`).
+Config plugin to auto-configure `ffmpeg-kit-react-native` when the native code is generated (`npx expo prebuild`).
 
 ## Versioning
 
 | `expo` | `ffmpeg-kit-react-native` | `@config-plugins/ffmpeg-kit-react-native` |
 | ------ | ------------------------- | ----------------------------------------- |
+| 47.0.0 | 5.1.0                     | ^4.0.0                                    |
 | 46.0.0 | 4.5.2                     | ^3.0.0                                    |
 | 45.0.0 | 4.5.1                     | ^2.0.0                                    |
 
 ## Expo installation
 
-> Tested against Expo SDK 46. Most packages worked on iOS. Not all packages have been tested on Android.
+> Tested against Expo SDK 47. Most packages worked on iOS. Not all packages have been tested on Android.
 
 > This package cannot be used in the "Expo Go" app because [it requires custom native code](https://docs.expo.io/workflow/customizing/).
-> First install the package with yarn, npm, or [`expo install`](https://docs.expo.io/workflow/expo-cli/#expo-install).
+> First install the package with yarn, npm, or [`npx expo install`](https://docs.expo.io/workflow/expo-cli/#expo-install).
 
 ```sh
 yarn add ffmpeg-kit-react-native @config-plugins/ffmpeg-kit-react-native
@@ -63,5 +64,5 @@ The plugin provides props for extra customization. Every time you change the pro
 ## Important Notes
 
 - This plugin changes the minimum deployment target on Android to `24` (from `21`) which may break other packages in your app!
-- Changing the "package" field on iOS will require re-running `pod install` after updating with `expo prebuild -p ios --no-install`.
+- Changing the "package" field on iOS will require re-running `pod install` after updating with `npx expo prebuild -p ios --no-install`.
 - Most of the modifications in this plugin are dangerous meaning it's highly likely that something may break over time. The plugin is heavily unit-tested to attempt to prevent breaking.

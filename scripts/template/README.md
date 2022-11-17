@@ -1,6 +1,6 @@
 # @config-plugins/%CONFIG_PLUGIN%
 
-Expo Config Plugin to auto configure [`%NPM_MODULE%`](https://www.npmjs.com/package/%NPM_MODULE%) when the native code is generated (`expo prebuild`).
+Expo Config Plugin to auto configure [`%NPM_MODULE%`](https://www.npmjs.com/package/%NPM_MODULE%) when the native code is generated (`npx expo prebuild`).
 
 ## Expo installation
 
@@ -8,10 +8,10 @@ Expo Config Plugin to auto configure [`%NPM_MODULE%`](https://www.npmjs.com/pack
 
 This package cannot be used in the "Expo Go" app because [it requires custom native code](https://docs.expo.io/workflow/customizing/).
 
-- First install the package with yarn, npm, or [`expo install`](https://docs.expo.io/workflow/expo-cli/#expo-install).
+- First install the package with yarn, npm, or [`npx expo install`](https://docs.expo.io/workflow/expo-cli/#expo-install).
 
 ```sh
-expo install %NPM_MODULE% @config-plugins/%CONFIG_PLUGIN%
+npx expo install %NPM_MODULE% @config-plugins/%CONFIG_PLUGIN%
 ```
 
 After installing this npm package, add the [config plugin](https://docs.expo.io/guides/config-plugins/) to the [`plugins`](https://docs.expo.io/versions/latest/config/app/#plugins) array of your `app.json` or `app.config.js`:

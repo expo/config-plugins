@@ -1,6 +1,6 @@
 # config-plugins/detox
 
-Config plugin to auto-configure Detox when the native code is generated (`expo prebuild`).
+Config plugin to auto-configure Detox when the native code is generated (`npx expo prebuild`).
 
 ## Versioning
 
@@ -8,6 +8,7 @@ Ensure you use versions that work together!
 
 | `expo` | `detox` | `@config-plugins/detox` |
 | ------ | ------- | ----------------------- |
+| 47.0.0 | 19.13.0 | ^4.0.0                  |
 | 46.0.0 | 19.9.0  | ^3.0.0                  |
 | 45.0.0 | 19.6.9  | ^2.0.0                  |
 | 44.0.0 | 19.1.0  | ^1.1.0                  |
@@ -18,7 +19,7 @@ Most notably, the minimum required Kotlin version changed from `1.3.50` in SDK 4
 
 ### Add the package to your npm dependencies
 
-> Tested against Expo SDK 46
+> Tested against Expo SDK 47
 
 ```
 yarn add detox @config-plugins/detox
@@ -52,7 +53,7 @@ Detox is an end-to-end (e2e) testing library for iOS and Android. You can use it
     "plugins": ["@config-plugins/detox"]
   }
   ```
-- Generate the native code `expo prebuild`
+- Generate the native code `npx expo prebuild`
 - Run `yarn detox init -r jest`
 
 ## API
@@ -133,7 +134,10 @@ module.exports = {
     [
       "@config-plugins/detox",
       {
-        subdomains: process.env.EAS_BUILD_PROFILE === "development" ? "*" : ["10.0.2.2", "localhost"],
+        subdomains:
+          process.env.EAS_BUILD_PROFILE === "development"
+            ? "*"
+            : ["10.0.2.2", "localhost"],
       },
     ],
   ],

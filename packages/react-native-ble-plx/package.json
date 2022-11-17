@@ -1,6 +1,6 @@
 {
   "name": "@config-plugins/react-native-ble-plx",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "Config plugin to auto configure react-native-ble-plx on prebuild",
   "main": "build/withBLE.js",
   "types": "build/withBLE.d.ts",
@@ -31,7 +31,7 @@
     "preset": "expo-module-scripts"
   },
   "peerDependencies": {
-    "expo": "^46.0.2"
+    "expo": "^47.0.3"
   },
   "devDependencies": {
     "expo-module-scripts": "^2.0.0"

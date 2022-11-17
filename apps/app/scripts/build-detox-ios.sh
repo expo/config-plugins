@@ -9,7 +9,7 @@ set -eu
 
 iosName=$1
 # Debug or Release
-configuration=$2
+configuration=${3:-"Debug"}
 # YES or NO
 UseModernBuildSystem=${3:-"NO"}
 
