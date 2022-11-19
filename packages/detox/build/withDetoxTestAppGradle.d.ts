@@ -6,7 +6,8 @@ import { ConfigPlugin } from "@expo/config-plugins";
  * 2. Add `testInstrumentationRunner` to the app/build.gradle
  * @param config
  */
-declare const withDetoxTestAppGradle: ConfigPlugin;
+declare const withDetoxTestAppGradle: (includeTestButler?: boolean) => ConfigPlugin;
 export declare function setGradleAndroidTestImplementation(buildGradle: string): string;
-export declare function addDetoxDefaultConfigBlock(buildGradle: string): string;
+export declare function setGradleAndroidTestImplementationForTestButler(buildGradle: string): string;
+export declare function addDetoxDefaultConfigBlock(buildGradle: string, testRunnerClass: string): string;
 export default withDetoxTestAppGradle;

@@ -6,13 +6,15 @@ import {
 
 import withDetoxProjectGradle from "./withDetoxProjectGradle";
 import withDetoxTestAppGradle from "./withDetoxTestAppGradle";
-import { withDetoxTestClass } from "./withDetoxTestClass";
+import withDetoxTestClass from "./withDetoxTestClass";
+import withJUnitRunnerClass from "./withJUnitRunnerClass";
 import withKotlinGradle from "./withKotlinGradle";
 import {
   withNetworkSecurityConfigManifest,
   SubdomainsType,
 } from "./withNetworkSecurityConfig";
 import withProguardGradle from "./withProguardGradle";
+import withTestButlerProbe from "./withTestButlerProbe";
 
 const withDetox: ConfigPlugin<
   {
@@ -30,15 +32,21 @@ const withDetox: ConfigPlugin<
      * @default ['10.0.2.2', 'localhost'] // (Google emulators)
      */
     subdomains?: SubdomainsType;
+    /**
+     * Enable Test Butler library injection in `app/build.grade` and modifications to JUnit test runner
+     *
+     * @default false
+     */
+    includeTestButler?: boolean;
   } | void
-> = (config, { skipProguard, subdomains } = {}) => {
+> = (config, { skipProguard, subdomains, includeTestButler } = {}) => {
   return withPlugins(
     config,
     [
       // 3.
       withDetoxProjectGradle,
       // 3.
-      withDetoxTestAppGradle,
+      withDetoxTestAppGradle(includeTestButler),
       // 4.
       [
         withKotlinGradle,
@@ -46,11 +54,13 @@ const withDetox: ConfigPlugin<
         "1.6.10",
       ],
       // 5.
-      withDetoxTestClass,
+      withDetoxTestClass(includeTestButler),
       // 6.
       [withNetworkSecurityConfigManifest, { subdomains }],
       // 7.
       !skipProguard && withProguardGradle,
+      includeTestButler && withTestButlerProbe,
+      includeTestButler && withJUnitRunnerClass,
     ].filter(Boolean) as ([ConfigPlugin, any] | ConfigPlugin)[]
   );
 };

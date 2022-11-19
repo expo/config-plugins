@@ -15,5 +15,11 @@ declare const _default: ConfigPlugin<void | {
      * @default ['10.0.2.2', 'localhost'] // (Google emulators)
      */
     subdomains?: SubdomainsType | undefined;
+    /**
+     * Enable Test Butler library injection in `app/build.grade` and modifications to JUnit test runner
+     *
+     * @default false
+     */
+    includeTestButler?: boolean | undefined;
 }>;
 export default _default;

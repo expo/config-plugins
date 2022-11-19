@@ -6,16 +6,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const config_plugins_1 = require("@expo/config-plugins");
 const withDetoxProjectGradle_1 = __importDefault(require("./withDetoxProjectGradle"));
 const withDetoxTestAppGradle_1 = __importDefault(require("./withDetoxTestAppGradle"));
-const withDetoxTestClass_1 = require("./withDetoxTestClass");
+const withDetoxTestClass_1 = __importDefault(require("./withDetoxTestClass"));
+const withJUnitRunnerClass_1 = __importDefault(require("./withJUnitRunnerClass"));
 const withKotlinGradle_1 = __importDefault(require("./withKotlinGradle"));
 const withNetworkSecurityConfig_1 = require("./withNetworkSecurityConfig");
 const withProguardGradle_1 = __importDefault(require("./withProguardGradle"));
-const withDetox = (config, { skipProguard, subdomains } = {}) => {
+const withTestButlerProbe_1 = __importDefault(require("./withTestButlerProbe"));
+const withDetox = (config, { skipProguard, subdomains, includeTestButler } = {}) => {
     return (0, config_plugins_1.withPlugins)(config, [
         // 3.
         withDetoxProjectGradle_1.default,
         // 3.
-        withDetoxTestAppGradle_1.default,
+        (0, withDetoxTestAppGradle_1.default)(includeTestButler),
         // 4.
         [
             withKotlinGradle_1.default,
@@ -23,11 +25,13 @@ const withDetox = (config, { skipProguard, subdomains } = {}) => {
             "1.6.10",
         ],
         // 5.
-        withDetoxTestClass_1.withDetoxTestClass,
+        (0, withDetoxTestClass_1.default)(includeTestButler),
         // 6.
         [withNetworkSecurityConfig_1.withNetworkSecurityConfigManifest, { subdomains }],
         // 7.
         !skipProguard && withProguardGradle_1.default,
+        includeTestButler && withTestButlerProbe_1.default,
+        includeTestButler && withJUnitRunnerClass_1.default,
     ].filter(Boolean));
 };
 let pkg = {

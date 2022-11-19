@@ -62,6 +62,7 @@ The plugin provides props for extra customization. Every time you change the pro
 
 - `skipProguard` (_boolean_): Disable adding proguard minification to the `app/build.gradle`. Defaults to `false`.
 - `subdomains` (_string[] | '\*'_): Hostnames to add to the network security config. Pass `'*'` to allow all domains. Defaults to `['10.0.2.2', 'localhost']`.
+- `includeTestButler` (_boolean_): Enable [Test Butler](https://github.com/linkedin/test-butler) library injection in `app/build.grade` and modifications to JUnit test runner. Defaults to `false`
 
 `app.config.js`
 
@@ -73,6 +74,7 @@ export default {
       {
         skipProguard: false,
         subdomains: ["10.0.2.2", "localhost"],
+        includeTestButler: false
       },
     ],
   ],
