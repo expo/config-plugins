@@ -88,7 +88,8 @@ export function addStickersTarget(
   proj: XcodeProject,
   name: string,
   bundleId: string,
-  subfolder: string
+  subfolder: string,
+  stickerBundleId?: string
 ) {
   // Setup uuid and name of new target
   const targetUuid = proj.generateUuid();
@@ -111,7 +112,10 @@ export function addStickersTarget(
     throw new Error("Target type invalid: " + targetType);
   }
 
-  const PRODUCT_BUNDLE_IDENTIFIER = `"${bundleId}.${bundleName}"`;
+  // Either use the given bundleId for the stickers or
+  // generate one from the app bundleId and stickers project folder
+  const PRODUCT_BUNDLE_IDENTIFIER =
+    stickerBundleId ?? `"${bundleId}.${bundleName}"`;
   const INFOPLIST_FILE = `"${subfolder}/Info.plist"`;
 
   const commonBuildSettings = {

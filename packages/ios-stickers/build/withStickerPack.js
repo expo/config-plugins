@@ -34,7 +34,7 @@ exports.normalizeStickersProps = normalizeStickersProps;
 const withStickerPack = (config, options = {}) => {
     // Perform option validation.
     (0, schema_utils_1.validate)(options_json_1.default, options);
-    const { stickers, icon, name, columns = 3 } = options;
+    const { stickers, icon, name, stickerBundleId, columns = 3 } = options;
     const size = sizeColumnMap[columns] || "regular";
     if (!size) {
         throw new Error(`Column size "${columns}" is invalid. Expected one of: ${Object.keys(sizeColumnMap).join(", ")}`);
@@ -42,7 +42,7 @@ const withStickerPack = (config, options = {}) => {
     const _stickers = normalizeStickersProps(stickers);
     config = (0, withStickerInfoPlist_1.withStickersPlist)(config, { name });
     config = (0, withStickerAssets_1.withStickerAssets)(config, { stickers: _stickers, icon, size });
-    config = (0, withStickerXcodeTarget_1.withStickerXcodeTarget)(config);
+    config = (0, withStickerXcodeTarget_1.withStickerXcodeTarget)(config, { stickerBundleId });
     return config;
 };
 exports.default = withStickerPack;

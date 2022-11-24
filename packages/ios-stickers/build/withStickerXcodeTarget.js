@@ -8,10 +8,10 @@ function getProjectStickersName(name) {
     return `${name} Stickers`;
 }
 exports.getProjectStickersName = getProjectStickersName;
-const withStickerXcodeTarget = (config) => {
+const withStickerXcodeTarget = (config, { stickerBundleId }) => {
     return (0, config_plugins_1.withXcodeProject)(config, (config) => {
         const stickerPackName = getProjectStickersName(config.modRequest.projectName);
-        (0, xcodeSticker_1.addStickersTarget)(config.modResults, stickerPackName, config.ios.bundleIdentifier, stickerPackName);
+        (0, xcodeSticker_1.addStickersTarget)(config.modResults, stickerPackName, config.ios.bundleIdentifier, stickerPackName, stickerBundleId);
         const stickersKey = (0, xcodeSticker_1.addStickerResourceFile)(config.modResults, STICKERS_ROOT_PATH, stickerPackName);
         if (stickersKey) {
             const mainGroup = (0, xcodeSticker_1.getMainPBXGroup)(config.modResults);

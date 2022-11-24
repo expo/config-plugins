@@ -14,5 +14,6 @@ export declare type Props = {
     stickers?: (string | Sticker)[];
     icon?: string;
     name?: string;
+    stickerBundleId?: string;
     columns?: 2 | 3 | 4;
 };

@@ -25,6 +25,9 @@
                 "name": {
                     "type": "string"
                 },
+                "stickerBundleId": {
+                    "type": "string"
+                },
                 "columns": {
                     "type": "number",
                     "enum": [

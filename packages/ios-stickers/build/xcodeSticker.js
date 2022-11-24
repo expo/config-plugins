@@ -68,7 +68,7 @@ exports.addStickerResourceFile = addStickerResourceFile;
 const isaXCBuildConfiguration = "XCBuildConfiguration";
 const pbxTargetDependency = "PBXTargetDependency";
 const pbxContainerItemProxy = "PBXContainerItemProxy";
-function addStickersTarget(proj, name, bundleId, subfolder) {
+function addStickersTarget(proj, name, bundleId, subfolder, stickerBundleId) {
     // Setup uuid and name of new target
     const targetUuid = proj.generateUuid();
     const targetType = "app_extension_messages_sticker_pack";
@@ -86,7 +86,9 @@ function addStickersTarget(proj, name, bundleId, subfolder) {
     if (!producttypeForTargettype(targetType)) {
         throw new Error("Target type invalid: " + targetType);
     }
-    const PRODUCT_BUNDLE_IDENTIFIER = `"${bundleId}.${bundleName}"`;
+    // Either use the given bundleId for the stickers or
+    // generate one from the app bundleId and stickers project folder
+    const PRODUCT_BUNDLE_IDENTIFIER = stickerBundleId ?? `"${bundleId}.${bundleName}"`;
     const INFOPLIST_FILE = `"${subfolder}/Info.plist"`;
     const commonBuildSettings = {
         ASSETCATALOG_COMPILER_APPICON_NAME: '"iMessage App Icon"',

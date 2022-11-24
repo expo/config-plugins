@@ -22,7 +22,7 @@
     "@expo/package-manager": "^0.0.43",
     "@types/js-yaml": "^4.0.5",
     "@types/prompts": "^2.0.13",
-    "eslint": "^7.25.0",
+    "eslint": "^8.10.0",
     "expo-yarn-workspaces": "^2.0.2",
     "js-yaml": "^4.1.0",
     "lerna": "3.4.1",
