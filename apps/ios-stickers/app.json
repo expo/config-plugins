@@ -7,6 +7,7 @@
         "@config-plugins/ios-stickers",
         {
           "name": "Stickers",
+          "stickerBundleId": "dev.bacon.iosstickers.stickers",
           "icon": "./assets/imessage-icon.png",
           "columns": 4,
           "stickers": [

@@ -20,6 +20,7 @@ In your app.json `plugins` array:
   {
     "name": "Stickers!",
     "icon": "./assets/imessage-icon.png",
+    "stickerBundleId": "dev.bacon.iosstickers.stickers",
     "columns": 4,
     "stickers": [
       "./assets/stickers/annoyed.png",
@@ -39,6 +40,7 @@ In your app.json `plugins` array:
 ```
 
 - `name`: defaults to the iOS app name
+- `stickerBundleId`: custom bundle identifier for the stickers project, if not provided, it will defaults to `${ios.bundleIdentifier}.${name}-Stickers` given your expo config values.
 - `icon`: defaults to the iOS app icon
 - `columns`: number of stickers to render, defaults to `3`. Can be one of `2`, `3`, `4`.
 - `stickers`: local file paths or remote URLs, or `{ image: "...", name: "...", accessibilityLabel: "..." }`. Order is preserved.

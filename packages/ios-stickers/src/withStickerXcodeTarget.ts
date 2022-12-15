@@ -1,5 +1,6 @@
 import { ConfigPlugin, withXcodeProject } from "@expo/config-plugins";
 
+import { Props } from "./withStickerAssets";
 import {
   addStickerResourceFile,
   addStickersTarget,
@@ -12,7 +13,9 @@ export function getProjectStickersName(name: string) {
   return `${name} Stickers`;
 }
 
-export const withStickerXcodeTarget: ConfigPlugin = (config) => {
+export const withStickerXcodeTarget: ConfigPlugin<
+  Pick<Props, "stickerBundleId">
+> = (config, { stickerBundleId }) => {
   return withXcodeProject(config, (config) => {
     const stickerPackName = getProjectStickersName(
       config.modRequest.projectName!
@@ -22,7 +25,8 @@ export const withStickerXcodeTarget: ConfigPlugin = (config) => {
       config.modResults,
       stickerPackName,
       config.ios!.bundleIdentifier!,
-      stickerPackName
+      stickerPackName,
+      stickerBundleId
     );
 
     const stickersKey = addStickerResourceFile(

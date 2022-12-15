@@ -4,7 +4,7 @@ export declare function getMainPBXGroup(proj: XcodeProject): {
     obj: any;
 } | null;
 export declare function addStickerResourceFile(proj: XcodeProject, path: string, rootFolderName: string): any;
-export declare function addStickersTarget(proj: XcodeProject, name: string, bundleId: string, subfolder: string): false | {
+export declare function addStickersTarget(proj: XcodeProject, name: string, bundleId: string, subfolder: string, stickerBundleId?: string): false | {
     uuid: any;
     pbxNativeTarget: {
         isa: string;

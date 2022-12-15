@@ -6,6 +6,7 @@ describe(withStickerPack, () => {
     expect(() =>
       withStickerPack(exp, {
         name: "test",
+        stickerBundleId: "test",
         stickers: [{ image: "test.png" }],
         columns: 2,
         icon: "test.png",

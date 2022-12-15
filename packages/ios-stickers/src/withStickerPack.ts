@@ -36,7 +36,7 @@ const withStickerPack: ConfigPlugin<Props> = (config, options = {}) => {
   // Perform option validation.
   validate(schema as any, options);
 
-  const { stickers, icon, name, columns = 3 } = options;
+  const { stickers, icon, name, stickerBundleId, columns = 3 } = options;
 
   const size = sizeColumnMap[columns] || "regular";
   if (!size) {
@@ -50,7 +50,7 @@ const withStickerPack: ConfigPlugin<Props> = (config, options = {}) => {
 
   config = withStickersPlist(config, { name });
   config = withStickerAssets(config, { stickers: _stickers, icon, size });
-  config = withStickerXcodeTarget(config);
+  config = withStickerXcodeTarget(config, { stickerBundleId });
   return config;
 };
 
