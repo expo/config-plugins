@@ -6,6 +6,5 @@ declare const _default: ConfigPlugin<void | {
     neverForLocation?: boolean | undefined;
     modes?: BackgroundMode[] | undefined;
     bluetoothAlwaysPermission?: string | false | undefined;
-    bluetoothPeripheralPermission?: string | false | undefined;
 }>;
 export default _default;
