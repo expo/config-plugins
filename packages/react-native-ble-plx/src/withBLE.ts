@@ -2,6 +2,7 @@ import {
   AndroidConfig,
   ConfigPlugin,
   createRunOncePlugin,
+  WarningAggregator,
 } from "@expo/config-plugins";
 
 import { withBLEAndroidManifest } from "./withBLEAndroidManifest";
@@ -22,12 +23,18 @@ const withBLE: ConfigPlugin<
     neverForLocation?: boolean;
     modes?: BackgroundMode[];
     bluetoothAlwaysPermission?: string | false;
-    bluetoothPeripheralPermission?: string | false;
   } | void
 > = (config, props = {}) => {
   const _props = props || {};
   const isBackgroundEnabled = _props.isBackgroundEnabled ?? false;
   const neverForLocation = _props.neverForLocation ?? false;
+
+  if ("bluetoothPeripheralPermission" in _props) {
+    WarningAggregator.addWarningIOS(
+      "bluetoothPeripheralPermission",
+      `The iOS permission \`NSBluetoothPeripheralUsageDescription\` is fully deprecated as of iOS 13 (lowest iOS version in Expo SDK 47+). Remove the \`bluetoothPeripheralPermission\` property from the \`@config-plugins/react-native-ble-plx\` config plugin.`
+    );
+  }
 
   // iOS
   config = withBluetoothPermissions(config, _props);
