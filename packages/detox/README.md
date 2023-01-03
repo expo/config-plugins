@@ -146,4 +146,4 @@ module.exports = {
 
 ## 📝 Notes
 
-- [Detox docs](https://github.com/wix/Detox/blob/master/docs/Introduction.GettingStarted.md)
+- [Detox docs](https://wix.github.io/Detox/docs/introduction/getting-started/)
