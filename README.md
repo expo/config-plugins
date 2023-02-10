@@ -45,6 +45,7 @@ More out-of-tree plugins which can be used to configure more packages.
 - [expo-community-flipper](https://www.npmjs.com/package/expo-community-flipper) (for use with Flipper)
 - [expo-appcenter](https://www.npmjs.com/package/expo-appcenter) (for use with `appcenter`)
 - [react-native-keyevent-expo-config-plugin](https://github.com/chronsyn/react-native-keyevent-expo-config-plugin) (for use with `react-native-keyevent`)
+- [watermelondb-expo-plugin](https://github.com/morrowdigital/watermelondb-expo-plugin) (for use with `@nozbe/watermelondb`)
 
 ### No Plugin Required
 
