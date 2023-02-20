@@ -8,7 +8,10 @@ import path from "path";
  *
  * @param androidPackage
  */
-function getTemplateFile(androidPackage: string): string {
+function getTemplateFile(
+  androidPackage: string,
+  includeTestButler?: boolean
+): string {
   // This shouldn't change in standard Expo apps.
   // Replace 'MainActivity' with the value of android:name entry in
   // <activity> in AndroidManifest.xml
@@ -33,7 +36,13 @@ public class DetoxTest {
     public ActivityTestRule<${mainApplicationClassName}> mActivityRule = new ActivityTestRule<>(${mainApplicationClassName}.class, false, false);
 
     @Test
-    public void runDetoxTests() {
+    public void runDetoxTests() {${
+      includeTestButler
+        ? `
+        TestButlerProbe.assertReadyIfInstalled();
+    `
+        : ""
+    }
         DetoxConfig detoxConfig = new DetoxConfig();
         detoxConfig.idlePolicyConfig.masterTimeoutSec = 90;
         detoxConfig.idlePolicyConfig.idleResourceTimeoutSec = 60;
@@ -48,23 +57,29 @@ public class DetoxTest {
 /**
  * [Step 5](https://github.com/wix/Detox/blob/master/docs/Introduction.Android.md#5-create-a-detox-test-class). Create `DetoxTest.java`
  */
-export const withDetoxTestClass: ConfigPlugin = (config) => {
-  return withDangerousMod(config, [
-    "android",
-    async (config) => {
-      const packageName = config.android?.package;
-      assert(packageName, "android.package must be defined");
-      const folder = path.join(
-        config.modRequest.platformProjectRoot,
-        `app/src/androidTest/java/${packageName.split(".").join("/")}`
-      );
-      fs.mkdirSync(folder, { recursive: true });
-      fs.writeFileSync(
-        path.join(folder, "DetoxTest.java"),
-        getTemplateFile(packageName),
-        { encoding: "utf8" }
-      );
-      return config;
-    },
-  ]);
+const withDetoxTestClass: (
+  includeTestButler?: boolean
+) => ConfigPlugin = (includeTestButler) => {
+  return (config) => {
+    return withDangerousMod(config, [
+      "android",
+      async (config) => {
+        const packageName = config.android?.package;
+        assert(packageName, "android.package must be defined");
+        const folder = path.join(
+          config.modRequest.platformProjectRoot,
+          `app/src/androidTest/java/${packageName.split(".").join("/")}`
+        );
+        fs.mkdirSync(folder, { recursive: true });
+        fs.writeFileSync(
+          path.join(folder, "DetoxTest.java"),
+          getTemplateFile(packageName, includeTestButler),
+          { encoding: "utf8" }
+        );
+        return config;
+      },
+    ]);
+  };
 };
+
+export default withDetoxTestClass;
