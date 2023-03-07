@@ -7,7 +7,6 @@
     "ios": "expo run:ios",
     "android": "expo run:android"
   },
- 
   "dependencies": {
     "@config-plugins/react-native-quick-actions": "*",
     "expo": "~48.0.5",

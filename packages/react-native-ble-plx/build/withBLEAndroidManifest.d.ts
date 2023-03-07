@@ -1,13 +1,13 @@
 import { ConfigPlugin, AndroidConfig } from "expo/config-plugins";
-declare type InnerManifest = AndroidConfig.Manifest.AndroidManifest["manifest"];
-declare type ManifestPermission = InnerManifest["permission"];
-declare type ExtraTools = {
+type InnerManifest = AndroidConfig.Manifest.AndroidManifest["manifest"];
+type ManifestPermission = InnerManifest["permission"];
+type ExtraTools = {
     "tools:targetApi"?: string;
 };
-declare type ManifestUsesPermissionWithExtraTools = {
+type ManifestUsesPermissionWithExtraTools = {
     $: AndroidConfig.Manifest.ManifestUsesPermission["$"] & ExtraTools;
 };
-declare type AndroidManifest = {
+type AndroidManifest = {
     manifest: InnerManifest & {
         permission?: ManifestPermission;
         "uses-permission"?: ManifestUsesPermissionWithExtraTools[];

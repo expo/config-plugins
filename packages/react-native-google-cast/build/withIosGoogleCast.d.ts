@@ -6,7 +6,7 @@ export declare const withIosGoogleCast: ConfigPlugin<{
     receiverAppId?: string;
 }>;
 export declare const MATCH_INIT: RegExp;
-declare type IosProps = {
+type IosProps = {
     receiverAppId?: string | null;
     disableDiscoveryAutostart?: boolean;
     startDiscoveryAfterFirstTapOnCastButton?: boolean;
