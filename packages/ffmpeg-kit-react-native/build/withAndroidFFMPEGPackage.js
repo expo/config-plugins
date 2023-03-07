@@ -4,7 +4,7 @@ exports.addPackageName = exports.withAndroidFFMPEGPackage = void 0;
 const config_plugins_1 = require("@expo/config-plugins");
 const generateCode_1 = require("@expo/config-plugins/build/utils/generateCode");
 const withAndroidFFMPEGPackage = (config, packageName) => {
-    return (0, config_plugins_1.withProjectBuildGradle)(config, (config) => {
+    config = (0, config_plugins_1.withProjectBuildGradle)(config, (config) => {
         if (config.modResults.language === "groovy") {
             config.modResults.contents = addPackageName(config.modResults.contents, packageName);
         }
@@ -13,6 +13,8 @@ const withAndroidFFMPEGPackage = (config, packageName) => {
         }
         return config;
     });
+    config = withLibCppSharedSo(config);
+    return config;
 };
 exports.withAndroidFFMPEGPackage = withAndroidFFMPEGPackage;
 function addPackageName(src, packageName) {
@@ -51,4 +53,16 @@ function appendContents({ src, newSrc, tag, comment, }) {
         };
     }
     return { contents: src, didClear: false, didMerge: false };
+}
+// This is required if you have several libraries which include libc++_shared.so as a dependency.
+// See https://github.com/tanersener/ffmpeg-kit/wiki/Tips#2-depending-another-android-library-containing-libc_sharedso
+function withLibCppSharedSo(config) {
+    return (0, config_plugins_1.withGradleProperties)(config, (config) => {
+        config.modResults.push({
+            type: "property",
+            key: "android.packagingOptions.pickFirsts",
+            value: "lib/x86/libc++_shared.so,lib/x86_64/libc++_shared.so,lib/armeabi-v7a/libc++_shared.so,lib/arm64-v8a/libc++_shared.so",
+        });
+        return config;
+    });
 }

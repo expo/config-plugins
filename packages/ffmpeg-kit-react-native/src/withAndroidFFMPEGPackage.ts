@@ -1,15 +1,20 @@
-import { ConfigPlugin, withProjectBuildGradle } from "@expo/config-plugins";
+import {
+  ConfigPlugin,
+  withGradleProperties,
+  withProjectBuildGradle,
+} from "@expo/config-plugins";
 import {
   createGeneratedHeaderComment,
   MergeResults,
   removeGeneratedContents,
 } from "@expo/config-plugins/build/utils/generateCode";
+import { ExpoConfig } from "@expo/config-types";
 
 export const withAndroidFFMPEGPackage: ConfigPlugin<string | undefined> = (
   config,
   packageName
 ) => {
-  return withProjectBuildGradle(config, (config) => {
+  config = withProjectBuildGradle(config, (config) => {
     if (config.modResults.language === "groovy") {
       config.modResults.contents = addPackageName(
         config.modResults.contents,
@@ -22,6 +27,10 @@ export const withAndroidFFMPEGPackage: ConfigPlugin<string | undefined> = (
     }
     return config;
   });
+
+  config = withLibCppSharedSo(config);
+
+  return config;
 };
 
 export function addPackageName(src: string, packageName?: string): string {
@@ -71,4 +80,18 @@ function appendContents({
     };
   }
   return { contents: src, didClear: false, didMerge: false };
+}
+
+// This is required if you have several libraries which include libc++_shared.so as a dependency.
+// See https://github.com/tanersener/ffmpeg-kit/wiki/Tips#2-depending-another-android-library-containing-libc_sharedso
+function withLibCppSharedSo(config: ExpoConfig): ExpoConfig {
+  return withGradleProperties(config, (config) => {
+    config.modResults.push({
+      type: "property",
+      key: "android.packagingOptions.pickFirsts",
+      value:
+        "lib/x86/libc++_shared.so,lib/x86_64/libc++_shared.so,lib/armeabi-v7a/libc++_shared.so,lib/arm64-v8a/libc++_shared.so",
+    });
+    return config;
+  });
 }
