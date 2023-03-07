@@ -1,9 +1,9 @@
+import { withBuildProperties } from "expo-build-properties";
 import {
   AndroidConfig,
   ConfigPlugin,
   createRunOncePlugin,
-} from "@expo/config-plugins";
-import { withBuildProperties } from "expo-build-properties";
+} from "expo/config-plugins";
 
 import { withBitcodeDisabled } from "./withBitcodeDisabled";
 import { withDesugaring } from "./withDesugaring";

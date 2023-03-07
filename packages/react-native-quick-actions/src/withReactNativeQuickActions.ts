@@ -1,14 +1,14 @@
 import {
+  mergeContents,
+  MergeResults,
+} from "@expo/config-plugins/build/utils/generateCode";
+import {
   ConfigPlugin,
   createRunOncePlugin,
   withAppDelegate,
   withInfoPlist,
   XML,
-} from "@expo/config-plugins";
-import {
-  mergeContents,
-  MergeResults,
-} from "@expo/config-plugins/build/utils/generateCode";
+} from "expo/config-plugins";
 
 const remapping = {
   iconType: "UIApplicationShortcutItemIconType",

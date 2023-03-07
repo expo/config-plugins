@@ -5,7 +5,7 @@ import {
   withXcodeProject,
   withAppBuildGradle,
   ConfigPlugin,
-} from "@expo/config-plugins";
+} from "expo/config-plugins";
 import { mergeContents } from "@expo/config-plugins/build/utils/generateCode";
 
 const withXcodeLinkBinaryWithLibraries: ConfigPlugin<{

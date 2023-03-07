@@ -3,7 +3,7 @@ import {
   InfoPlist,
   IOSConfig,
   withDangerousMod,
-} from "@expo/config-plugins";
+} from "expo/config-plugins";
 import plist from "@expo/plist";
 import * as fs from "fs";
 import * as path from "path";

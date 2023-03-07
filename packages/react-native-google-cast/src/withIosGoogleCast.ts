@@ -1,10 +1,10 @@
+import { mergeContents } from "@expo/config-plugins/build/utils/generateCode";
 import {
   ConfigPlugin,
   withAppDelegate,
   withEntitlementsPlist,
   withInfoPlist,
-} from "@expo/config-plugins";
-import { mergeContents } from "@expo/config-plugins/build/utils/generateCode";
+} from "expo/config-plugins";
 
 /**
  * In Xcode, go to Signing & Capabilities, click + Capability and select Access WiFi Information. (This is required since iOS 12.)

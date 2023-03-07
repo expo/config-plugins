@@ -1,4 +1,4 @@
-import { ConfigPlugin, withInfoPlist } from "@expo/config-plugins";
+import { ConfigPlugin, withInfoPlist } from "expo/config-plugins";
 
 const CAMERA_USAGE = "Allow $(PRODUCT_NAME) to access your camera";
 const MICROPHONE_USAGE = "Allow $(PRODUCT_NAME) to access your microphone";

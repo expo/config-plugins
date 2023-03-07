@@ -1,3 +1,4 @@
+import { generateImageAsync } from "@expo/image-utils";
 import {
   ConfigPlugin,
   ExportedConfigWithProps,
@@ -5,8 +6,7 @@ import {
   withDangerousMod,
   withInfoPlist,
   withXcodeProject,
-} from "@expo/config-plugins";
-import { generateImageAsync } from "@expo/image-utils";
+} from "expo/config-plugins";
 import fs from "fs";
 import path from "path";
 // @ts-ignore

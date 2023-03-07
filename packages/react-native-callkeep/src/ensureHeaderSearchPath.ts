@@ -1,4 +1,4 @@
-import { XcodeProject } from "@expo/config-plugins";
+import { XcodeProject } from "expo/config-plugins";
 
 const COMMENT_KEY = /_comment$/;
 

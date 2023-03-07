@@ -4,7 +4,7 @@ import {
   createRunOncePlugin,
   withAndroidManifest,
   withStringsXml,
-} from "@expo/config-plugins";
+} from "expo/config-plugins";
 
 let pkg: { name: string; version?: string } = {
   name: "react-native-blob-util",

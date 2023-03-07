@@ -5,7 +5,7 @@ import {
   withAndroidManifest,
   withInfoPlist,
   withXcodeProject,
-} from "@expo/config-plugins";
+} from "expo/config-plugins";
 
 import { ensureHeaderSearchPath } from "./ensureHeaderSearchPath";
 

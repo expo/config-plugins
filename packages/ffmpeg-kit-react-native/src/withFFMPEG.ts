@@ -2,7 +2,7 @@ import {
   ConfigPlugin,
   createRunOncePlugin,
   withPlugins,
-} from "@expo/config-plugins";
+} from "expo/config-plugins";
 import { withBuildProperties } from "expo-build-properties";
 
 import { withAndroidFFMPEGPackage } from "./withAndroidFFMPEGPackage";
