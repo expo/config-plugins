@@ -1,6 +1,6 @@
 {
   "name": "@config-plugins/ffmpeg-kit-react-native",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "description": "Config plugin to auto configure FFMPEG on prebuild",
   "main": "build/withFFMPEG.js",
   "types": "build/withFFMPEG.d.ts",

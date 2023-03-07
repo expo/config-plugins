@@ -1,12 +1,12 @@
+import { mergeContents } from "@expo/config-plugins/build/utils/generateCode";
 import {
   AndroidConfig,
+  ConfigPlugin,
   createRunOncePlugin,
   IOSConfig,
-  withXcodeProject,
   withAppBuildGradle,
-  ConfigPlugin,
+  withXcodeProject,
 } from "expo/config-plugins";
-import { mergeContents } from "@expo/config-plugins/build/utils/generateCode";
 
 const withXcodeLinkBinaryWithLibraries: ConfigPlugin<{
   library: string;

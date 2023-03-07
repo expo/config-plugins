@@ -1,6 +1,6 @@
 {
   "name": "@config-plugins/ios-stickers",
-  "version": "4.1.0",
+  "version": "5.0.0",
   "description": "Config plugin to auto configure iOS iMessage stickers",
   "main": "build/withStickerPack.js",
   "types": "build/withStickerPack.d.ts",
