@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.addBLEHardwareFeatureToManifest = exports.addScanPermissionToManifest = exports.addLocationPermissionToManifest = exports.withBLEAndroidManifest = void 0;
-const config_plugins_1 = require("@expo/config-plugins");
+const config_plugins_1 = require("expo/config-plugins");
 const withBLEAndroidManifest = (config, { isBackgroundEnabled, neverForLocation }) => {
     return (0, config_plugins_1.withAndroidManifest)(config, (config) => {
         config.modResults = addLocationPermissionToManifest(config.modResults, neverForLocation);

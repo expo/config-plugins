@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const config_plugins_1 = require("@expo/config-plugins");
+const config_plugins_1 = require("expo/config-plugins");
 const withAndroidGoogleCast_1 = require("./withAndroidGoogleCast");
 const withIosGoogleCast_1 = require("./withIosGoogleCast");
 const withGoogleCast = (config, _props) => {

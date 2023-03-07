@@ -1,4 +1,4 @@
-import { ConfigPlugin } from "@expo/config-plugins";
+import { ConfigPlugin } from "expo/config-plugins";
 export declare enum BackgroundMode {
     Central = "central",
     Peripheral = "peripheral"

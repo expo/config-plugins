@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.withBLEBackgroundModes = exports.BackgroundMode = void 0;
-const config_plugins_1 = require("@expo/config-plugins");
+const config_plugins_1 = require("expo/config-plugins");
 var BackgroundMode;
 (function (BackgroundMode) {
     BackgroundMode["Central"] = "central";

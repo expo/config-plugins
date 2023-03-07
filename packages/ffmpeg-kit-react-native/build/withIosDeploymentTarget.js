@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateDeploymentTargetXcodeProject = exports.withIosDeploymentTarget = void 0;
 // Copied from https://github.com/expo/expo-cli/blob/main/packages/install-expo-modules/src/plugins/ios/withIosDeploymentTarget.ts
-const config_plugins_1 = require("@expo/config-plugins");
+const config_plugins_1 = require("expo/config-plugins");
 const semver_1 = __importDefault(require("semver"));
 const withIosDeploymentTarget = (config, props) => {
     config = withIosDeploymentTargetPodfile(config, props);

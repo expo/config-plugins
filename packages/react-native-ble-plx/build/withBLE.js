@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BackgroundMode = void 0;
-const config_plugins_1 = require("@expo/config-plugins");
+const config_plugins_1 = require("expo/config-plugins");
 const withBLEAndroidManifest_1 = require("./withBLEAndroidManifest");
 const withBLEBackgroundModes_1 = require("./withBLEBackgroundModes");
 Object.defineProperty(exports, "BackgroundMode", { enumerable: true, get: function () { return withBLEBackgroundModes_1.BackgroundMode; } });

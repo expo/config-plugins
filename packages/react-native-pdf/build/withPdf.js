@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.addAndroidPackagingOptions = exports.withAndroidPackagingOptions = void 0;
-const config_plugins_1 = require("@expo/config-plugins");
 const generateCode_1 = require("@expo/config-plugins/build/utils/generateCode");
+const config_plugins_1 = require("expo/config-plugins");
 let pkg = {
     name: "react-native-pdf",
 };

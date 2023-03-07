@@ -4,13 +4,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.addCocoaPodsImport = exports.withCocoaPodsImport = exports.withPodfilePropertiesPackage = void 0;
-const config_plugins_1 = require("@expo/config-plugins");
-const ios_plugins_1 = require("@expo/config-plugins/build/plugins/ios-plugins");
 const generateCode_1 = require("@expo/config-plugins/build/utils/generateCode");
+const config_plugins_1 = require("expo/config-plugins");
 const fs_1 = require("fs");
 const path_1 = __importDefault(require("path"));
 const withPodfilePropertiesPackage = (config, packageName) => {
-    return (0, ios_plugins_1.withPodfileProperties)(config, (config) => {
+    return (0, config_plugins_1.withPodfileProperties)(config, (config) => {
         // @ts-ignore: wrong type
         config.modResults["ffmpeg-kit-react-native.subspecs"] = [
             packageName,

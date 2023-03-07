@@ -1,4 +1,4 @@
-import { XcodeProject } from "@expo/config-plugins";
+import { XcodeProject } from "expo/config-plugins";
 export declare function getMainPBXGroup(proj: XcodeProject): {
     id: any;
     obj: any;

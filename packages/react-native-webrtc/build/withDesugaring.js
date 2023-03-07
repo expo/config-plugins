@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.withDesugaring = void 0;
-const config_plugins_1 = require("@expo/config-plugins");
+const config_plugins_1 = require("expo/config-plugins");
 /**
  * Set the `android.enableDexingArtifactTransform.desugaring` value in the static `gradle.properties` file.
  * This is used to disable desugaring to fix weird Android bugs. [Learn more](https://github.com/jitsi/jitsi-meet/issues/7911#issuecomment-714323255).

@@ -1,4 +1,4 @@
-import { ConfigPlugin, AndroidConfig } from "@expo/config-plugins";
+import { ConfigPlugin, AndroidConfig } from "expo/config-plugins";
 declare type InnerManifest = AndroidConfig.Manifest.AndroidManifest["manifest"];
 declare type ManifestPermission = InnerManifest["permission"];
 declare type ExtraTools = {

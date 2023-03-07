@@ -121,7 +121,7 @@ export const withIosGoogleCast: ConfigPlugin<{
 
 // From expo-cli RNMaps setup
 export const MATCH_INIT =
-  /(?:(self\.|_)(\w+)\s?=\s?\[\[UMModuleRegistryAdapter alloc\])|(?:RCTBridge\s?\*\s?(\w+)\s?=\s?\[\[RCTBridge alloc\])|(\[self\.reactDelegate createBridgeWithDelegate:self launchOptions:launchOptions\])/g;
+  /-\s*\(BOOL\)\s*application:\s*\(UIApplication\s*\*\s*\)\s*\w+\s+didFinishLaunchingWithOptions:/g;
 
 type IosProps = {
   receiverAppId?: string | null;
@@ -165,7 +165,7 @@ export function addGoogleCastAppDelegateDidFinishLaunchingWithOptions(
     src,
     newSrc: newSrc.join("\n"),
     anchor: MATCH_INIT,
-    offset: 0,
+    offset: 2,
     comment: "//",
   });
 }

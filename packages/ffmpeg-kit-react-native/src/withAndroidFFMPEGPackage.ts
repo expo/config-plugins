@@ -8,7 +8,7 @@ import {
   MergeResults,
   removeGeneratedContents,
 } from "@expo/config-plugins/build/utils/generateCode";
-import { ExpoConfig } from "expo/config-types";
+import { ExpoConfig } from "expo/config";
 
 export const withAndroidFFMPEGPackage: ConfigPlugin<string | undefined> = (
   config,

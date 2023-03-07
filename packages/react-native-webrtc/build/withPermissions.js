@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.withPermissions = void 0;
-const config_plugins_1 = require("@expo/config-plugins");
+const config_plugins_1 = require("expo/config-plugins");
 const CAMERA_USAGE = "Allow $(PRODUCT_NAME) to access your camera";
 const MICROPHONE_USAGE = "Allow $(PRODUCT_NAME) to access your microphone";
 const withPermissions = (config, props) => {

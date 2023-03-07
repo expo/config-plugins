@@ -1,4 +1,4 @@
-import { ConfigPlugin, XcodeProject } from "@expo/config-plugins";
+import { ConfigPlugin, XcodeProject } from "expo/config-plugins";
 declare type IosDeploymentTargetConfigPlugin = ConfigPlugin<{
     deploymentTarget: string;
 }>;

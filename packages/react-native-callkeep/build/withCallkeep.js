@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.withXcodeLinkBinaryWithLibraries = void 0;
-const config_plugins_1 = require("@expo/config-plugins");
+const config_plugins_1 = require("expo/config-plugins");
 const ensureHeaderSearchPath_1 = require("./ensureHeaderSearchPath");
 const withCallkeepHeaderSearchPath = (config) => {
     const headerSearchPath = `"$(SRCROOT)/../node_modules/react-native-callkeep/ios/RNCallKeep"`;

@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.addGoogleCastAppDelegateDidFinishLaunchingWithOptions = exports.MATCH_INIT = exports.withIosGoogleCast = void 0;
-const config_plugins_1 = require("@expo/config-plugins");
 const generateCode_1 = require("@expo/config-plugins/build/utils/generateCode");
+const config_plugins_1 = require("expo/config-plugins");
 /**
  * In Xcode, go to Signing & Capabilities, click + Capability and select Access WiFi Information. (This is required since iOS 12.)
  * Note that "Wireless Accessory Configuration" is unrelated.
@@ -89,7 +89,7 @@ const withIosGoogleCast = (config, props) => {
 };
 exports.withIosGoogleCast = withIosGoogleCast;
 // From expo-cli RNMaps setup
-exports.MATCH_INIT = /(?:(self\.|_)(\w+)\s?=\s?\[\[UMModuleRegistryAdapter alloc\])|(?:RCTBridge\s?\*\s?(\w+)\s?=\s?\[\[RCTBridge alloc\])|(\[self\.reactDelegate createBridgeWithDelegate:self launchOptions:launchOptions\])/g;
+exports.MATCH_INIT = /-\s*\(BOOL\)\s*application:\s*\(UIApplication\s*\*\s*\)\s*\w+\s+didFinishLaunchingWithOptions:/g;
 function addGoogleCastAppDelegateDidFinishLaunchingWithOptions(src, { receiverAppId = null, disableDiscoveryAutostart = false, startDiscoveryAfterFirstTapOnCastButton = true, } = {}) {
     let newSrc = [];
     newSrc.push(
@@ -108,7 +108,7 @@ function addGoogleCastAppDelegateDidFinishLaunchingWithOptions(src, { receiverAp
         src,
         newSrc: newSrc.join("\n"),
         anchor: exports.MATCH_INIT,
-        offset: 0,
+        offset: 2,
         comment: "//",
     });
 }
