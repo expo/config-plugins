@@ -1,22 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`appendDownloadCompleteAction should return manifest 1`] = `
-"<manifest xmlns:android=\\"http://schemas.android.com/apk/res/android\\" package=\\"com.bacon.yolo68\\">
-  <application android:name=\\".MainApplication\\" android:label=\\"@string/app_name\\" android:icon=\\"@mipmap/ic_launcher\\" android:roundIcon=\\"@mipmap/ic_launcher_round\\" android:allowBackup=\\"true\\" android:theme=\\"@style/AppTheme\\" android:usesCleartextTraffic=\\"true\\">
-    <activity android:name=\\".MainActivity\\" android:label=\\"@string/app_name\\" android:configChanges=\\"keyboard|keyboardHidden|orientation|screenSize|uiMode\\" android:launchMode=\\"singleTask\\" android:windowSoftInputMode=\\"adjustResize\\" android:theme=\\"@style/Theme.App.SplashScreen\\" android:screenOrientation=\\"portrait\\">
+"<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.bacon.yolo68">
+  <application android:name=".MainApplication" android:label="@string/app_name" android:icon="@mipmap/ic_launcher" android:roundIcon="@mipmap/ic_launcher_round" android:allowBackup="true" android:theme="@style/AppTheme" android:usesCleartextTraffic="true">
+    <activity android:name=".MainActivity" android:label="@string/app_name" android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode" android:launchMode="singleTask" android:windowSoftInputMode="adjustResize" android:theme="@style/Theme.App.SplashScreen" android:screenOrientation="portrait">
       <intent-filter>
-        <action android:name=\\"android.intent.action.MAIN\\"/>
-        <action android:name=\\"android.intent.action.DOWNLOAD_COMPLETE\\"/>
-        <category android:name=\\"android.intent.category.LAUNCHER\\"/>
+        <action android:name="android.intent.action.MAIN"/>
+        <action android:name="android.intent.action.DOWNLOAD_COMPLETE"/>
+        <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
       <intent-filter>
-        <action android:name=\\"android.intent.action.VIEW\\"/>
-        <category android:name=\\"android.intent.category.DEFAULT\\"/>
-        <category android:name=\\"android.intent.category.BROWSABLE\\"/>
-        <data android:scheme=\\"com.bacon.yolo68\\"/>
+        <action android:name="android.intent.action.VIEW"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="android.intent.category.BROWSABLE"/>
+        <data android:scheme="com.bacon.yolo68"/>
       </intent-filter>
     </activity>
-    <activity android:name=\\"com.facebook.react.devsupport.DevSettingsActivity\\"/>
+    <activity android:name="com.facebook.react.devsupport.DevSettingsActivity"/>
   </application>
 </manifest>"
 `;

@@ -23,9 +23,6 @@
     "react",
     "expo"
   ],
-  "jest": {
-    "preset": "expo-module-scripts"
-  },
   "dependencies": {
     "xcode": "^3.0.1"
   },

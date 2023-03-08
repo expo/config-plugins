@@ -27,9 +27,6 @@
     "react-native",
     "expo"
   ],
-  "jest": {
-    "preset": "expo-module-scripts"
-  },
   "peerDependencies": {
     "expo": "^48"
   },

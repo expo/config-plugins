@@ -26,9 +26,6 @@
     "prebuild",
     "react-native-adjust"
   ],
-  "jest": {
-    "preset": "expo-module-scripts"
-  },
   "peerDependencies": {
     "expo": "^48"
   },

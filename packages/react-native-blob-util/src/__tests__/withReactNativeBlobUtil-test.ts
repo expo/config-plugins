@@ -69,7 +69,7 @@ describe(ensureBlobProviderAuthorityString, () => {
     const result = XML.format(res);
     expect(result).toMatchInlineSnapshot(`
       "<resources>
-        <string name=\\"blob_provider_authority\\">app.bacon</string>
+        <string name="blob_provider_authority">app.bacon</string>
       </resources>"
     `);
 
@@ -79,7 +79,7 @@ describe(ensureBlobProviderAuthorityString, () => {
     expect(XML.format(ensureBlobProviderAuthorityString(next, "com.other")))
       .toMatchInlineSnapshot(`
       "<resources>
-        <string name=\\"blob_provider_authority\\">com.other</string>
+        <string name="blob_provider_authority">com.other</string>
       </resources>"
     `);
   });

@@ -26,9 +26,6 @@
     "prebuild",
     "react-native-siri-shortcut"
   ],
-  "jest": {
-    "preset": "expo-module-scripts"
-  },
   "peerDependencies": {
     "expo": "^48"
   },

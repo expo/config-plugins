@@ -26,9 +26,6 @@
     "prebuild",
     "react-native-quick-actions"
   ],
-  "jest": {
-    "preset": "expo-module-scripts"
-  },
   "peerDependencies": {
     "expo": "^48"
   },

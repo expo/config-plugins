@@ -28,9 +28,6 @@
     "react-native",
     "expo"
   ],
-  "jest": {
-    "preset": "expo-module-scripts"
-  },
   "dependencies": {
     "semver": "^7.3.5"
   },
