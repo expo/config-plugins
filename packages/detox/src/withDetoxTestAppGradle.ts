@@ -28,14 +28,33 @@ const withDetoxTestAppGradle: ConfigPlugin = (config) => {
 export function setGradleAndroidTestImplementation(
   buildGradle: string
 ): string {
-  const pattern = /androidTestImplementation\('com.wix:detox:\+'\)/g;
+  buildGradle = pushGradleDependency(
+    buildGradle,
+    "implementation 'androidx.appcompat:appcompat:1.1.0'"
+  );
+  buildGradle = pushGradleDependency(
+    buildGradle,
+    "androidTestImplementation('com.wix:detox:+')"
+  );
+  return buildGradle;
+}
+
+function escapeStringRegexp(str: string) {
+  return str.replace(/[|\\{}()[\]^$+*?.]/g, "\\$&");
+}
+
+export function pushGradleDependency(
+  buildGradle: string,
+  dependency: string
+): string {
+  const pattern = new RegExp(escapeStringRegexp(dependency), "g");
   if (buildGradle.match(pattern)) {
     return buildGradle;
   }
   return buildGradle.replace(
     /dependencies\s?{/,
     `dependencies {
-    androidTestImplementation('com.wix:detox:+')`
+    ${dependency}`
   );
 }
 

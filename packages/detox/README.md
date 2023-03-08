@@ -94,10 +94,10 @@ If you get the error:
 ```sh
 detox[98696] ERROR: DetoxRuntimeError: Cannot boot Android Emulator with the name: 'Pixel_API_28'
 
-HINT: Make sure you choose one of the available emulators: Pixel_3_API_30,Pixel_3a_API_30,Pixel_C_API_30
+HINT: Make sure you choose one of the available emulators: Pixel_3_API_30,Pixel_6_Pro_API_33,Pixel_C_API_30
 ```
 
-Be sure to change the first emulator name (in my case "Pixel_API_28") with one of the suggested emulators (in my case Pixel_3_API_30, Pixel_3a_API_30, Pixel_C_API_30), in the `detox.config.js` file under `devices.emulator.device.avdName`. More emulators can be created in Android Studio.
+Be sure to change the first emulator name (in my case "Pixel_API_28") with one of the suggested emulators (in my case Pixel_3_API_30, Pixel_6_Pro_API_33, Pixel_C_API_30), in the `detox.config.js` file under `devices.emulator.device.avdName`. More emulators can be created in Android Studio.
 
 ---
 
