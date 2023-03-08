@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const config_plugins_1 = require("@expo/config-plugins");
 const expo_build_properties_1 = require("expo-build-properties");
+const config_plugins_1 = require("expo/config-plugins");
 const withBitcodeDisabled_1 = require("./withBitcodeDisabled");
 const withDesugaring_1 = require("./withDesugaring");
 const withPermissions_1 = require("./withPermissions");

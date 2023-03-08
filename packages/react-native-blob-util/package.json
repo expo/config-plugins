@@ -1,6 +1,6 @@
 {
   "name": "@config-plugins/react-native-blob-util",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "description": "Config plugin to auto configure react-native-blob-util on prebuild",
   "main": "build/withReactNativeBlobUtil.js",
   "types": "build/withReactNativeBlobUtil.d.ts",
@@ -28,11 +28,8 @@
     "react-native",
     "expo"
   ],
-  "jest": {
-    "preset": "expo-module-scripts"
-  },
   "peerDependencies": {
-    "expo": "^47.0.3"
+    "expo": "^48"
   },
   "devDependencies": {
     "expo-module-scripts": "^3.0.3"

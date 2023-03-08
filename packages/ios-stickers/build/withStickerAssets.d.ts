@@ -1,16 +1,16 @@
-import { ConfigPlugin } from "@expo/config-plugins";
+import { ConfigPlugin } from "expo/config-plugins";
 /** Dangerously applies sticker assets to the iOS project. */
 export declare const withStickerAssets: ConfigPlugin<{
     icon?: string;
     size: string;
     stickers: Sticker[];
 }>;
-export declare type Sticker = {
+export type Sticker = {
     image: string;
     name?: string;
     accessibilityLabel?: string;
 };
-export declare type Props = {
+export type Props = {
     stickers?: (string | Sticker)[];
     icon?: string;
     name?: string;

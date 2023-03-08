@@ -10,7 +10,7 @@ podfile_properties = JSON.parse(File.read('./Podfile.properties.json')) rescue {
 target 'yolo68' do
   use_expo_modules!
 # @generated begin ffmpeg-kit-react-native-import - expo prebuild (DO NOT MODIFY) sync-a79a962553e9fe0961383adf881bd0dada86e29b
-  pod 'ffmpeg-kit-react-native', :subspecs => podfile_properties['ffmpeg-kit-react-native.subspecs'] || [], :podspec => File.join(File.dirname(\`node --print \\"require.resolve('ffmpeg-kit-react-native/package.json')\\"\`), \\"ffmpeg-kit-react-native.podspec\\")
+  pod 'ffmpeg-kit-react-native', :subspecs => podfile_properties['ffmpeg-kit-react-native.subspecs'] || [], :podspec => File.join(File.dirname(\`node --print "require.resolve('ffmpeg-kit-react-native/package.json')"\`), "ffmpeg-kit-react-native.podspec")
 # @generated end ffmpeg-kit-react-native-import
   config = use_native_modules!
 

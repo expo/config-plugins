@@ -1,10 +1,10 @@
+import plist from "@expo/plist";
 import {
   ConfigPlugin,
   InfoPlist,
   IOSConfig,
   withDangerousMod,
-} from "@expo/config-plugins";
-import plist from "@expo/plist";
+} from "expo/config-plugins";
 import * as fs from "fs";
 import * as path from "path";
 

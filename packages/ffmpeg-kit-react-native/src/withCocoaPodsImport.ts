@@ -1,6 +1,9 @@
-import { ConfigPlugin, withDangerousMod } from "@expo/config-plugins";
-import { withPodfileProperties } from "@expo/config-plugins/build/plugins/ios-plugins";
 import { mergeContents } from "@expo/config-plugins/build/utils/generateCode";
+import {
+  ConfigPlugin,
+  withDangerousMod,
+  withPodfileProperties,
+} from "expo/config-plugins";
 import { promises } from "fs";
 import path from "path";
 

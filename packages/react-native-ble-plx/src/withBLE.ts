@@ -3,7 +3,7 @@ import {
   ConfigPlugin,
   createRunOncePlugin,
   WarningAggregator,
-} from "@expo/config-plugins";
+} from "expo/config-plugins";
 
 import { withBLEAndroidManifest } from "./withBLEAndroidManifest";
 import {

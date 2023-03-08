@@ -1,6 +1,6 @@
 {
   "name": "@config-plugins/ffmpeg-kit-react-native",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "description": "Config plugin to auto configure FFMPEG on prebuild",
   "main": "build/withFFMPEG.js",
   "types": "build/withFFMPEG.d.ts",
@@ -28,14 +28,11 @@
     "react-native",
     "expo"
   ],
-  "jest": {
-    "preset": "expo-module-scripts"
-  },
   "dependencies": {
     "semver": "^7.3.5"
   },
   "peerDependencies": {
-    "expo": "^47.0.3"
+    "expo": "^48"
   },
   "devDependencies": {
     "@types/semver": "^7.3.9",

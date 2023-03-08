@@ -1,5 +1,5 @@
-import { ConfigPlugin } from "@expo/config-plugins";
-declare type IconSet = Record<string, {
+import { ConfigPlugin } from "expo/config-plugins";
+type IconSet = Record<string, {
     image: string;
     prerendered?: boolean;
 }>;

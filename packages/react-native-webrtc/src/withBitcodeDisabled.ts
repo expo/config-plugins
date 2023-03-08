@@ -1,4 +1,4 @@
-import { ConfigPlugin, WarningAggregator } from "@expo/config-plugins";
+import { ConfigPlugin, WarningAggregator } from "expo/config-plugins";
 
 export const withBitcodeDisabled: ConfigPlugin = (config) => {
   if (!config.ios) {

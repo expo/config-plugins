@@ -1,8 +1,7 @@
-import { withInfoPlist } from "@expo/config-plugins";
-import type { ConfigPlugin, InfoPlist } from "@expo/config-plugins";
-import type { ExpoConfig } from "@expo/config-types";
+import { ExpoConfig } from "expo/config";
+import { ConfigPlugin, InfoPlist, withInfoPlist } from "expo/config-plugins";
 
-import type { ConfigData } from "./types";
+import { ConfigData } from "./types";
 
 export function getBranchApiKey(config: Pick<ExpoConfig, "ios">) {
   return config.ios?.config?.branch?.apiKey ?? null;

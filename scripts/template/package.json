@@ -25,11 +25,8 @@
     "config-plugins",
     "prebuild"
   ],
-  "jest": {
-    "preset": "expo-module-scripts"
-  },
   "peerDependencies": {
-    "expo": "^46.0.2"
+    "expo": "^48"
   },
   "devDependencies": {
     "expo-module-scripts": "^3.0.3"

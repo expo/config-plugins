@@ -1,5 +1,5 @@
-import { ConfigPlugin } from "@expo/config-plugins";
-export declare type IOSPermissionsProps = {
+import { ConfigPlugin } from "expo/config-plugins";
+export type IOSPermissionsProps = {
     cameraPermission?: string;
     microphonePermission?: string;
 };

@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.addSiriShortcutAppDelegateInit = exports.addSiriShortcutAppDelegateImport = void 0;
-const config_plugins_1 = require("@expo/config-plugins");
 const generateCode_1 = require("@expo/config-plugins/build/utils/generateCode");
+const config_plugins_1 = require("expo/config-plugins");
 /**
  * Apply react-native-siri-shortcut configuration for Expo SDK 44 projects.
  */

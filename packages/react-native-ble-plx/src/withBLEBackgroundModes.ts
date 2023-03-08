@@ -1,4 +1,4 @@
-import { ConfigPlugin, withInfoPlist } from "@expo/config-plugins";
+import { ConfigPlugin, withInfoPlist } from "expo/config-plugins";
 
 export enum BackgroundMode {
   Central = "central",

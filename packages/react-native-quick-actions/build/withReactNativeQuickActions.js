@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.addQuickActionsAppDelegateInit = exports.addQuickActionsAppDelegateImport = void 0;
-const config_plugins_1 = require("@expo/config-plugins");
 const generateCode_1 = require("@expo/config-plugins/build/utils/generateCode");
+const config_plugins_1 = require("expo/config-plugins");
 const remapping = {
     iconType: "UIApplicationShortcutItemIconType",
     iconFile: "UIApplicationShortcutItemIconFile",

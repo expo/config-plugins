@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.withBranchIOS = exports.setBranchApiKey = exports.getBranchApiKey = void 0;
-const config_plugins_1 = require("@expo/config-plugins");
+const config_plugins_1 = require("expo/config-plugins");
 function getBranchApiKey(config) {
     return config.ios?.config?.branch?.apiKey ?? null;
 }

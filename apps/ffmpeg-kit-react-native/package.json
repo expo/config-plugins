@@ -9,17 +9,17 @@
   },
   "dependencies": {
     "@config-plugins/ffmpeg-kit-react-native": "*",
-    "expo": "~47.0.3",
-    "expo-splash-screen": "~0.17.4",
-    "expo-status-bar": "~1.4.2",
+    "expo": "~48.0.5",
+    "expo-splash-screen": "~0.18.1",
+    "expo-status-bar": "~1.4.4",
     "ffmpeg-kit-react-native": "^5.1.0",
-    "react": "18.1.0",
-    "react-dom": "18.1.0",
-    "react-native": "0.70.5",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-native": "0.71.3",
     "react-native-web": "~0.18.9"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9"
+    "@babel/core": "^7.20.0"
   },
   "private": true
 }

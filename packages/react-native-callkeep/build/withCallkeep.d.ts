@@ -1,4 +1,4 @@
-import { ConfigPlugin } from "@expo/config-plugins";
+import { ConfigPlugin } from "expo/config-plugins";
 declare const withCallkeep: ConfigPlugin;
 export declare const withXcodeLinkBinaryWithLibraries: ConfigPlugin<{
     library: string;

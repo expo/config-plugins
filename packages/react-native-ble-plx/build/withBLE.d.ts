@@ -1,4 +1,4 @@
-import { ConfigPlugin } from "@expo/config-plugins";
+import { ConfigPlugin } from "expo/config-plugins";
 import { BackgroundMode } from "./withBLEBackgroundModes";
 export { BackgroundMode };
 declare const _default: ConfigPlugin<void | {

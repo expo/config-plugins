@@ -1,10 +1,10 @@
+import { mergeContents } from "@expo/config-plugins/build/utils/generateCode";
 import {
   ConfigPlugin,
   createRunOncePlugin,
   WarningAggregator,
   withAppBuildGradle,
-} from "@expo/config-plugins";
-import { mergeContents } from "@expo/config-plugins/build/utils/generateCode";
+} from "expo/config-plugins";
 
 let pkg: { name: string; version?: string } = {
   name: "react-native-pdf",

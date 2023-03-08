@@ -1,3 +1,8 @@
+import { addImports } from "@expo/config-plugins/build/android/codeMod";
+import {
+  mergeContents,
+  removeContents,
+} from "@expo/config-plugins/build/utils/generateCode";
 import {
   AndroidConfig,
   ConfigPlugin,
@@ -5,12 +10,7 @@ import {
   withAppBuildGradle,
   withMainActivity,
   withProjectBuildGradle,
-} from "@expo/config-plugins";
-import { addImports } from "@expo/config-plugins/build/android/codeMod";
-import {
-  mergeContents,
-  removeContents,
-} from "@expo/config-plugins/build/utils/generateCode";
+} from "expo/config-plugins";
 
 const { addMetaDataItemToMainApplication, getMainApplicationOrThrow } =
   AndroidConfig.Manifest;

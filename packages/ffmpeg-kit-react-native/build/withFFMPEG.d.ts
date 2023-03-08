@@ -1,5 +1,5 @@
-declare type Package = "min" | "min-gpl" | "https" | "https-gpl" | "audio" | "video" | "full" | "full-gpl";
-export declare type Props = {
+type Package = "min" | "min-gpl" | "https" | "https-gpl" | "audio" | "video" | "full" | "full-gpl";
+export type Props = {
     package?: Package;
     ios?: {
         package?: Package;

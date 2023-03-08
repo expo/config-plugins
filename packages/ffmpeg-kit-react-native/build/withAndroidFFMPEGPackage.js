@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.addPackageName = exports.withAndroidFFMPEGPackage = void 0;
-const config_plugins_1 = require("@expo/config-plugins");
 const generateCode_1 = require("@expo/config-plugins/build/utils/generateCode");
+const config_plugins_1 = require("expo/config-plugins");
 const withAndroidFFMPEGPackage = (config, packageName) => {
     config = (0, config_plugins_1.withProjectBuildGradle)(config, (config) => {
         if (config.modResults.language === "groovy") {

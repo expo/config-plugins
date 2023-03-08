@@ -1,14 +1,14 @@
 import {
+  mergeContents,
+  MergeResults,
+} from "@expo/config-plugins/build/utils/generateCode";
+import {
   ConfigPlugin,
   createRunOncePlugin,
   withAppDelegate,
   withInfoPlist,
   withEntitlementsPlist,
-} from "@expo/config-plugins";
-import {
-  mergeContents,
-  MergeResults,
-} from "@expo/config-plugins/build/utils/generateCode";
+} from "expo/config-plugins";
 
 /**
  * Apply react-native-siri-shortcut configuration for Expo SDK 44 projects.

@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ensureBlobProviderAuthorityString = exports.ensureBlobProviderManifest = exports.appendDownloadCompleteAction = void 0;
-const config_plugins_1 = require("@expo/config-plugins");
+const config_plugins_1 = require("expo/config-plugins");
 let pkg = {
     name: "react-native-blob-util",
 };

@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.withStickerXcodeTarget = exports.getProjectStickersName = void 0;
-const config_plugins_1 = require("@expo/config-plugins");
+const config_plugins_1 = require("expo/config-plugins");
 const xcodeSticker_1 = require("./xcodeSticker");
 const STICKERS_ROOT_PATH = "Stickers.xcassets";
 function getProjectStickersName(name) {

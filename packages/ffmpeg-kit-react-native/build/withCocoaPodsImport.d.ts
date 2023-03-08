@@ -1,4 +1,4 @@
-import { ConfigPlugin } from "@expo/config-plugins";
+import { ConfigPlugin } from "expo/config-plugins";
 export declare const withPodfilePropertiesPackage: ConfigPlugin<string>;
 /** Dangerously adds the custom import to the CocoaPods. */
 export declare const withCocoaPodsImport: ConfigPlugin;

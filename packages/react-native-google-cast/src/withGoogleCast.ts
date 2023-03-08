@@ -1,4 +1,4 @@
-import { ConfigPlugin, createRunOncePlugin } from "@expo/config-plugins";
+import { ConfigPlugin, createRunOncePlugin } from "expo/config-plugins";
 
 import { withAndroidGoogleCast } from "./withAndroidGoogleCast";
 import { withIosGoogleCast } from "./withIosGoogleCast";

@@ -4,7 +4,7 @@ import {
   withPodfileProperties,
   withXcodeProject,
   XcodeProject,
-} from "@expo/config-plugins";
+} from "expo/config-plugins";
 import semver from "semver";
 
 type IosDeploymentTargetConfigPlugin = ConfigPlugin<{

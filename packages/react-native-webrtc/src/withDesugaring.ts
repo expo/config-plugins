@@ -1,4 +1,4 @@
-import { ConfigPlugin, withGradleProperties } from "@expo/config-plugins";
+import { ConfigPlugin, withGradleProperties } from "expo/config-plugins";
 
 /**
  * Set the `android.enableDexingArtifactTransform.desugaring` value in the static `gradle.properties` file.
