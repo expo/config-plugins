@@ -1,9 +1,9 @@
-import { ConfigPlugin, withProjectBuildGradle } from "expo/config-plugins";
 import {
   createGeneratedHeaderComment,
   MergeResults,
   removeGeneratedContents,
 } from "@expo/config-plugins/build/utils/generateCode";
+import { ConfigPlugin, withProjectBuildGradle } from "expo/config-plugins";
 
 // Because we need the package to be added AFTER the React and Google maven packages, we create a new allprojects.
 // It's ok to have multiple allprojects.repositories, so we create a new one since it's cheaper than tokenizing

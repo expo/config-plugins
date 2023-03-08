@@ -1,4 +1,4 @@
-import { ConfigPlugin } from "@expo/config-plugins";
+import { ConfigPlugin } from "expo/config-plugins";
 export type SubdomainsType = string[] | "*";
 export declare function getTemplateFile(subdomains: SubdomainsType): string;
 /**
