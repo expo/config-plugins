@@ -27,8 +27,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.withStickersPlist = void 0;
-const config_plugins_1 = require("expo/config-plugins");
 const plist_1 = __importDefault(require("@expo/plist"));
+const config_plugins_1 = require("expo/config-plugins");
 const fs = __importStar(require("fs"));
 const path = __importStar(require("path"));
 const withStickerXcodeTarget_1 = require("./withStickerXcodeTarget");

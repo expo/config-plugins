@@ -1,5 +1,5 @@
-import { ConfigPlugin, withDangerousMod } from "expo/config-plugins";
 import { generateImageAsync } from "@expo/image-utils";
+import { ConfigPlugin, withDangerousMod } from "expo/config-plugins";
 import fs from "fs";
 import path from "path";
 

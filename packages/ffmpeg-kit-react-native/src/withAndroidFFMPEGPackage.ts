@@ -1,14 +1,14 @@
 import {
-  ConfigPlugin,
-  withGradleProperties,
-  withProjectBuildGradle,
-} from "expo/config-plugins";
-import {
   createGeneratedHeaderComment,
   MergeResults,
   removeGeneratedContents,
 } from "@expo/config-plugins/build/utils/generateCode";
 import { ExpoConfig } from "expo/config";
+import {
+  ConfigPlugin,
+  withGradleProperties,
+  withProjectBuildGradle,
+} from "expo/config-plugins";
 
 export const withAndroidFFMPEGPackage: ConfigPlugin<string | undefined> = (
   config,
