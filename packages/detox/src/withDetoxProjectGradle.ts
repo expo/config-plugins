@@ -1,4 +1,4 @@
-import { ConfigPlugin, withProjectBuildGradle } from "@expo/config-plugins";
+import { ConfigPlugin, withProjectBuildGradle } from "expo/config-plugins";
 import {
   createGeneratedHeaderComment,
   MergeResults,

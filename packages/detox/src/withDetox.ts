@@ -2,7 +2,7 @@ import {
   ConfigPlugin,
   createRunOncePlugin,
   withPlugins,
-} from "@expo/config-plugins";
+} from "expo/config-plugins";
 
 import withDetoxProjectGradle from "./withDetoxProjectGradle";
 import withDetoxTestAppGradle from "./withDetoxTestAppGradle";
@@ -42,7 +42,8 @@ const withDetox: ConfigPlugin<
       // 4.
       [
         withKotlinGradle,
-        // Minimum version of Kotlin required to work with expo packages in SDK 45
+        // Minimum version of Kotlin required to work with expo packages in SDK 45-48
+        // React Native 69 https://github.com/wix/Detox/blob/d9014dacb1fbf8451cdc0b9d8e9ae19897f0a019/detox/android/build.gradle#L4
         "1.6.10",
       ],
       // 5.

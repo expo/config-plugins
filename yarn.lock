@@ -7243,7 +7243,7 @@ expo-asset@~8.9.0:
     path-browserify "^1.0.0"
     url-parse "^1.5.9"
 
-expo-build-properties@~0.5.1:
+expo-build-properties@^0.5.1, expo-build-properties@~0.5.1:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/expo-build-properties/-/expo-build-properties-0.5.1.tgz#6221f6b93f4d21c16c94cb781da1ec5ba21d00ea"
   integrity sha512-wa02F4dmQTCxZ7rEBtaZCU0rCzpoUYSKF51cKCRT8ECEEkHe/k78VN8wI9fj03L7cIqJA5CJb2ZYydxKTbRHxA==
@@ -7405,7 +7405,7 @@ expo-yarn-workspaces@^2.0.2:
     minimist "^1.2.6"
     mkdirp "^0.5.1"
 
-expo@^48.0.0, expo@~48.0.5:
+expo@^48.0.0, expo@~48.0.5, expo@~48.0.6:
   version "48.0.5"
   resolved "https://registry.yarnpkg.com/expo/-/expo-48.0.5.tgz#350a12458cc38b9a37d24940f0b1833c12cb35e7"
   integrity sha512-4sd0y8DX2GXbVWBS+UTKqcm60KeZxh7+EvGUi9jbJJAJkbCyt3smu4L0WGCaq/8+ki44H9G/pjM0B7VcZZjAiQ==

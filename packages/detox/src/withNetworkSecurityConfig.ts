@@ -3,7 +3,7 @@ import {
   ConfigPlugin,
   withAndroidManifest,
   withDangerousMod,
-} from "@expo/config-plugins";
+} from "expo/config-plugins";
 import assert from "assert";
 import fs from "fs";
 import path from "path";
