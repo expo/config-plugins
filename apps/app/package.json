@@ -26,7 +26,7 @@
     "@config-plugins/react-native-adjust": "*",
     "@config-plugins/react-native-callkeep": "*",
     "detox": "^20.5.0",
-    "expo": "~48.0.5",
+    "expo": "~48.0.6",
     "expo-localization": "~14.1.1",
     "expo-splash-screen": "~0.18.1",
     "expo-status-bar": "~1.4.4",
