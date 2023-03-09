@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.addDetoxDefaultConfigBlock = exports.setGradleAndroidTestImplementation = void 0;
-const config_plugins_1 = require("@expo/config-plugins");
+exports.addDetoxDefaultConfigBlock = exports.pushGradleDependency = exports.setGradleAndroidTestImplementation = void 0;
+const config_plugins_1 = require("expo/config-plugins");
 /**
  * [Step 3](https://github.com/wix/Detox/blob/master/docs/Introduction.Android.md#3-add-the-native-detox-dependency). Add the Native Detox dependency.
  *
@@ -22,14 +22,23 @@ const withDetoxTestAppGradle = (config) => {
     });
 };
 function setGradleAndroidTestImplementation(buildGradle) {
-    const pattern = /androidTestImplementation\('com.wix:detox:\+'\)/g;
+    buildGradle = pushGradleDependency(buildGradle, "implementation 'androidx.appcompat:appcompat:1.1.0'");
+    buildGradle = pushGradleDependency(buildGradle, "androidTestImplementation('com.wix:detox:+')");
+    return buildGradle;
+}
+exports.setGradleAndroidTestImplementation = setGradleAndroidTestImplementation;
+function escapeStringRegexp(str) {
+    return str.replace(/[|\\{}()[\]^$+*?.]/g, "\\$&");
+}
+function pushGradleDependency(buildGradle, dependency) {
+    const pattern = new RegExp(escapeStringRegexp(dependency), "g");
     if (buildGradle.match(pattern)) {
         return buildGradle;
     }
     return buildGradle.replace(/dependencies\s?{/, `dependencies {
-    androidTestImplementation('com.wix:detox:+')`);
+    ${dependency}`);
 }
-exports.setGradleAndroidTestImplementation = setGradleAndroidTestImplementation;
+exports.pushGradleDependency = pushGradleDependency;
 function addDetoxDefaultConfigBlock(buildGradle) {
     const pattern = /detox-plugin-default-config/g;
     if (buildGradle.match(pattern)) {

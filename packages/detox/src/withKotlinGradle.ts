@@ -1,26 +1,25 @@
-import { ConfigPlugin, withProjectBuildGradle } from "@expo/config-plugins";
+import { withBuildProperties } from "expo-build-properties";
+import { ConfigPlugin, withProjectBuildGradle } from "expo/config-plugins";
 
 const kotlinClassPath =
   "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion";
 
 /**
- * [Step 4](https://github.com/wix/Detox/blob/master/docs/Introduction.Android.md#4-add-kotlin). Add Kotlin.
- *
  * Lifted from [unimodules-test-core](https://github.com/expo/expo/blob/master/packages/unimodules-test-core/app.plugin.js).
  *
  * @param config Expo config
  * @param version Kotlin version to use
  */
 const withKotlinGradle: ConfigPlugin<string> = (config, version) => {
+  config = withBuildProperties(config, {
+    android: {
+      kotlinVersion: version,
+    },
+  });
+
   return withProjectBuildGradle(config, (config) => {
-    console.log(
-      `[config-plugins/detox] Setting Kotlin version to: ${version}. This could lead to Android build issues.`
-    );
+    // Add the classpath to the project build.gradle
     if (config.modResults.language === "groovy") {
-      config.modResults.contents = setKotlinVersion(
-        config.modResults.contents,
-        version
-      );
       config.modResults.contents = setKotlinClassPath(
         config.modResults.contents
       );
@@ -32,20 +31,6 @@ const withKotlinGradle: ConfigPlugin<string> = (config, version) => {
     return config;
   });
 };
-
-function setKotlinVersion(buildGradle: string, version: string): string {
-  const pattern = /kotlinVersion\s?=\s?(["'])(?:(?=(\\?))\2.)*?\1/g;
-  const replacement = `kotlinVersion = "${version}"`;
-  if (buildGradle.match(pattern)) {
-    // Select kotlinVersion = '***' and replace the contents between the quotes.
-    return buildGradle.replace(pattern, replacement);
-  }
-  return buildGradle.replace(
-    /ext\s?{/,
-    `ext {
-        ${replacement}`
-  );
-}
 
 function setKotlinClassPath(buildGradle: string): string {
   if (buildGradle.includes(kotlinClassPath)) {

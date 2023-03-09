@@ -1,4 +1,4 @@
-import { ConfigPlugin } from "@expo/config-plugins";
+import { ConfigPlugin } from "expo/config-plugins";
 /**
  * [Step 3](https://github.com/wix/Detox/blob/master/docs/Introduction.Android.md#3-add-the-native-detox-dependency). Add the Native Detox dependency.
  *
@@ -8,5 +8,6 @@ import { ConfigPlugin } from "@expo/config-plugins";
  */
 declare const withDetoxTestAppGradle: ConfigPlugin;
 export declare function setGradleAndroidTestImplementation(buildGradle: string): string;
+export declare function pushGradleDependency(buildGradle: string, dependency: string): string;
 export declare function addDetoxDefaultConfigBlock(buildGradle: string): string;
 export default withDetoxTestAppGradle;

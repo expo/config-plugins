@@ -1,13 +1,22 @@
 const iosName = "app";
-const emulator = "Pixel_3a_API_30";
-const simulator = "iPhone 13 Pro";
+const emulator = "Pixel_6_Pro_API_33";
+const simulator = "iPhone 14 Pro";
 const derivedDataPath = "ios/build";
 const sdk = "iphonesimulator";
 
 module.exports = {
-  testRunner: "jest",
-  runnerConfig: require.resolve("./e2e/jest.config.js"),
-  specs: "e2e",
+  testRunner: {
+    $0: "jest",
+    args: {
+      config: require.resolve("./e2e/jest.config.js"),
+      _: ["e2e"],
+    },
+    jest: {
+      setupTimeout: 300000,
+      reportSpecs: true,
+      reportWorkerAssign: true,
+    },
+  },
   behavior: {
     init: {
       exposeGlobals: false,

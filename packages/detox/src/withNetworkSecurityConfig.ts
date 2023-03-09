@@ -1,10 +1,10 @@
+import assert from "assert";
 import {
   AndroidConfig,
   ConfigPlugin,
   withAndroidManifest,
   withDangerousMod,
-} from "@expo/config-plugins";
-import assert from "assert";
+} from "expo/config-plugins";
 import fs from "fs";
 import path from "path";
 

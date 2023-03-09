@@ -1,4 +1,4 @@
-import { ConfigPlugin } from "@expo/config-plugins";
+import { ConfigPlugin } from "expo/config-plugins";
 import { SubdomainsType } from "./withNetworkSecurityConfig";
 declare const _default: ConfigPlugin<void | {
     /**
