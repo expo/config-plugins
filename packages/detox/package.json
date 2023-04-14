@@ -33,7 +33,7 @@
     "expo": "^48"
   },
   "dependencies": {
-    "expo-build-properties": "^0.5.1"
+    "expo-build-properties": "^0.6.0"
   },
   "devDependencies": {
     "expo-module-scripts": "^3.0.3"
