@@ -35,6 +35,6 @@
   },
   "devDependencies": {
     "expo-module-scripts": "^3.0.3",
-    "memfs": "^3.4.4"
+    "memfs": "^4.2.0"
   }
 }
