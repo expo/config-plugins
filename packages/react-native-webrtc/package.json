@@ -35,6 +35,6 @@
   },
   "upstreamPackage": "react-native-webrtc",
   "dependencies": {
-    "expo-build-properties": "~0.5.1"
+    "expo-build-properties": "~0.8.3"
   }
 }
