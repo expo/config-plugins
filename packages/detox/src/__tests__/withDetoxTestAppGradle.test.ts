@@ -8,7 +8,7 @@ describe(setGradleAndroidTestImplementation, () => {
     );
     expect(result).toContain("androidTestImplementation('com.wix:detox:+')");
     expect(result).toContain(
-      "implementation 'androidx.appcompat:appcompat:1.1.0'"
+      "implementation 'androidx.appcompat:appcompat:1.6.1'"
     );
     expect(result).toMatchSnapshot();
   });
