@@ -1,4 +1,4 @@
-const iosName = "app";
+const iosName = "detox";
 const emulator = "Pixel_6_Pro_API_33";
 const simulator = "iPhone 14 Pro";
 const derivedDataPath = "ios/build";

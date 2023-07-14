@@ -30,7 +30,6 @@
     "expo-localization": "~14.3.0",
     "expo-splash-screen": "~0.20.4",
     "expo-status-bar": "~1.6.0",
-    "expo-updates": "~0.18.10",
     "fbjs": "^0.8.18",
     "i18n-js": "^3.8.0",
     "luxon": "^1.27.0",
