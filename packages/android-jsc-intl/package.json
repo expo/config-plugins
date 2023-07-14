@@ -27,7 +27,7 @@
     "android-jsc-intl"
   ],
   "peerDependencies": {
-    "expo": "^48"
+    "expo": "^49"
   },
   "devDependencies": {
     "expo-module-scripts": "^3.0.3"

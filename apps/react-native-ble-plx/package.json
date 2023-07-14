@@ -9,19 +9,19 @@
   },
   "dependencies": {
     "@config-plugins/react-native-ble-plx": "*",
-    "expo": "~48.0.5",
-    "expo-splash-screen": "~0.18.1",
-    "expo-status-bar": "~1.4.4",
+    "expo": "^49.0.3",
+    "expo-splash-screen": "~0.20.4",
+    "expo-status-bar": "~1.6.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-native": "0.71.3",
+    "react-native": "0.72.3",
     "react-native-ble-plx": "^2.0.3",
-    "react-native-web": "~0.18.9"
+    "react-native-web": "~0.19.6"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
-    "@types/react": "~18.0.27",
-    "typescript": "^4.9.4"
+    "@types/react": "~18.2.14",
+    "typescript": "^5.1.3"
   },
   "private": true
 }
