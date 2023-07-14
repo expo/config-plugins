@@ -1,4 +1,3 @@
-import React from "react";
 import { SafeAreaView, StyleSheet, useWindowDimensions } from "react-native";
 import Pdf from "react-native-pdf";
 
