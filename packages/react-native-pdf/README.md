@@ -2,6 +2,15 @@
 
 Config plugin to auto-configure [`react-native-pdf`][lib] when the native code is generated (`npx expo prebuild`).
 
+## Versioning
+
+Ensure you use versions that work together!
+
+| `expo` | `react-native-pdf` | `@config-plugins/react-native-pdf` |
+| ------ | ------------------ | ---------------------------------- |
+| 49.0.0 | 6.7.1              | 6.0.0                              |
+| 48.0.0 | 6.6.2              | 5.0.0                              |
+
 ### Add the package to your npm dependencies
 
 > Tested against Expo SDK 49

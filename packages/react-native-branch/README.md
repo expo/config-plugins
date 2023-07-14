@@ -2,6 +2,15 @@
 
 Config plugin to auto-configure `react-native-branch` when the native code is generated (`npx expo prebuild`).
 
+## Versioning
+
+Ensure you use versions that work together!
+
+| `expo` | `react-native-branch` | `@config-plugins/react-native-branch` |
+| ------ | --------------------- | ------------------------------------- |
+| 49.0.0 | 5.9.0                 | 6.0.0                                 |
+| 48.0.0 | 5.7.0                 | 5.0.0                                 |
+
 ## Expo installation
 
 > Tested against Expo SDK 49

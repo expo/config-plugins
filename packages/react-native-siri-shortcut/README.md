@@ -2,6 +2,15 @@
 
 Expo Config Plugin to auto-configure [`react-native-siri-shortcut`](https://www.npmjs.com/package/react-native-siri-shortcut) when the native code is generated (`npx expo prebuild`).
 
+## Versioning
+
+Ensure you use versions that work together!
+
+| `expo` | `react-native-siri-shortcut` | `@config-plugins/react-native-siri-shortcut` |
+| ------ | ---------------------------- | -------------------------------------------- |
+| 49.0.0 | 3.2.3                        | 5.0.0                                        |
+| 48.0.0 | 3.2.2                        | 4.0.0                                        |
+
 ## Expo installation
 
 > Tested against Expo SDK 49
