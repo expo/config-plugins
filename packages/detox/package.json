@@ -1,6 +1,6 @@
 {
   "name": "@config-plugins/detox",
-  "version": "5.0.1",
+  "version": "6.0.0",
   "description": "Config plugin to auto configure detox on prebuild",
   "main": "build/withDetox.js",
   "types": "build/withDetox.d.ts",
@@ -30,10 +30,10 @@
     "e2e"
   ],
   "peerDependencies": {
-    "expo": "^48"
+    "expo": "^49"
   },
   "dependencies": {
-    "expo-build-properties": "^0.5.1"
+    "expo-build-properties": "~0.8.3"
   },
   "devDependencies": {
     "expo-module-scripts": "^3.0.3"

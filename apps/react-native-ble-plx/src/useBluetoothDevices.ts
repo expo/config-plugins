@@ -1,6 +1,16 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { BleManager, State, Device } from "react-native-ble-plx";
-import { uniqBy } from "lodash";
+
+function uniqBy<T>(arr: T[], key: keyof T) {
+  return Object.values(
+    arr.reduce((acc, item) => {
+      const id = item[key];
+      // @ts-ignore
+      acc[id] = item;
+      return acc;
+    }, {} as Record<string, T>)
+  );
+}
 
 export function useManager() {
   return useMemo(() => new BleManager(), []);

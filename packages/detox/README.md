@@ -8,6 +8,7 @@ Ensure you use versions that work together!
 
 | `expo` | `detox` | `@config-plugins/detox` |
 | ------ | ------- | ----------------------- |
+| 49.0.0 | 20.11.0 | ^6.0.0                  |
 | 48.0.0 | 20.5.0  | ^5.0.0                  |
 | 47.0.0 | 19.13.0 | ^4.0.0                  |
 | 46.0.0 | 19.9.0  | ^3.0.0                  |
@@ -20,7 +21,7 @@ Most notably, the minimum required Kotlin version changed from `1.3.50` in SDK 4
 
 ### Add the package to your npm dependencies
 
-> Tested against Expo SDK 48
+> Tested against Expo SDK 49
 
 ```
 yarn add detox @config-plugins/detox

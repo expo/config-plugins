@@ -32,9 +32,8 @@
       "@config-plugins/detox",
       "@config-plugins/react-native-adjust",
       "@config-plugins/react-native-callkeep",
-      "@config-plugins/react-native-blob-util",
-      "@config-plugins/react-native-pdf",
-      "@config-plugins/android-jsc-intl"
+      "@config-plugins/android-jsc-intl",
+      "expo-localization"
     ]
   }
 }
