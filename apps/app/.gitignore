@@ -1,12 +1,2 @@
-.expo/*
-npm-debug.*
-dist/
-
-# macOS
-.DS_Store
-
-/ios
-/android
-
 /scripts/start.command
 /artifacts

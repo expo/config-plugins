@@ -63,3 +63,4 @@ packages/@*/*/build/**
 apps/*/ios/*
 apps/*/android/*
 apps/*/web-build/*
+apps/*/dist/*
