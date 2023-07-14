@@ -22,7 +22,9 @@ const withDetoxTestAppGradle = (config) => {
     });
 };
 function setGradleAndroidTestImplementation(buildGradle) {
-    buildGradle = pushGradleDependency(buildGradle, "implementation 'androidx.appcompat:appcompat:1.1.0'");
+    buildGradle = pushGradleDependency(buildGradle, 
+    // SDK 49 https://github.com/wix/Detox/blob/f26b13ebacdbb9ca2beafbc2c8b4c8ea1bbb3139/examples/demo-react-native/android/app/build.gradle#L61
+    "implementation 'androidx.appcompat:appcompat:1.6.1'");
     buildGradle = pushGradleDependency(buildGradle, "androidTestImplementation('com.wix:detox:+')");
     return buildGradle;
 }

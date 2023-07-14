@@ -19,9 +19,9 @@ const withDetox = (config, { skipProguard, subdomains } = {}) => {
         // 4.
         [
             withKotlinGradle_1.default,
-            // Minimum version of Kotlin required to work with expo packages in SDK 45-48
-            // React Native 69 https://github.com/wix/Detox/blob/d9014dacb1fbf8451cdc0b9d8e9ae19897f0a019/detox/android/build.gradle#L4
-            "1.6.10",
+            // Minimum version of Kotlin required to work with expo packages in SDK 49
+            // React Native 72 https://github.com/wix/Detox/blob/f26b13ebacdbb9ca2beafbc2c8b4c8ea1bbb3139/detox/android/build.gradle#L6C26-L6C32
+            "1.8.22",
         ],
         // 5.
         withDetoxTestClass_1.withDetoxTestClass,
