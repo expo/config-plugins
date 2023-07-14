@@ -20,7 +20,7 @@ Most notably, the minimum required Kotlin version changed from `1.3.50` in SDK 4
 
 ### Add the package to your npm dependencies
 
-> Tested against Expo SDK 48
+> Tested against Expo SDK 49
 
 ```
 yarn add detox @config-plugins/detox

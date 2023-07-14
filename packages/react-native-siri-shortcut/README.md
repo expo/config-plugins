@@ -4,7 +4,7 @@ Expo Config Plugin to auto-configure [`react-native-siri-shortcut`](https://www.
 
 ## Expo installation
 
-> Tested against Expo SDK 48
+> Tested against Expo SDK 49
 
 This package cannot be used in the "Expo Go" app because [it requires custom native code](https://docs.expo.io/workflow/customizing/).
 

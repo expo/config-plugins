@@ -6,7 +6,7 @@ Adding this plugin lets you use `Intl` in your Android app, without using Hermes
 
 ## Expo installation
 
-> Tested against Expo SDK 48
+> Tested against Expo SDK 49
 
 This package cannot be used in the "Expo Go" app because [it requires custom native code](https://docs.expo.io/workflow/customizing/).
 
