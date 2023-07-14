@@ -16,7 +16,7 @@ Ensure you use versions that work together!
 > Tested against Expo SDK 49
 
 ```
-yarn add react-native-pdf react-native-blob-util fbjs @config-plugins/react-native-pdf @config-plugins/react-native-blob-util
+yarn add react-native-pdf react-native-blob-util @config-plugins/react-native-pdf @config-plugins/react-native-blob-util
 ```
 
 After installing this npm package, add the [config plugin](https://docs.expo.io/guides/config-plugins/) to the [`plugins`](https://docs.expo.io/versions/latest/config/app/#plugins) array of your `app.json` or `app.config.js`:
