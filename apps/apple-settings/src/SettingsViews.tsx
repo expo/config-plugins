@@ -33,7 +33,7 @@ export function SettingsSwitch({
   "value" | "onValueChange"
 >) {
   const [value, setValue] = useSetting<boolean>(settingsKey);
-  return <Switch {...props} value={value} onValueChange={setValue} />;
+  return <Switch {...props} value={!!value} onValueChange={setValue} />;
 }
 
 export function SettingsTextInput({

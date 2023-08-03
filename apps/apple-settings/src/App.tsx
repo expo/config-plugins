@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { Button, Linking, StyleSheet, View } from "react-native";
 
 import { SettingsSwitch, SettingsTextInput } from "./SettingsViews";
 
@@ -17,6 +17,12 @@ const App = () => {
         }}
         settingsKey="name_preference"
       />
+      <Button
+        title="Launch Settings"
+        onPress={() => {
+          Linking.openSettings();
+        }}
+      />
     </View>
   );
 };
@@ -26,6 +32,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    gap: 12,
   },
   value: {
     fontSize: 24,
