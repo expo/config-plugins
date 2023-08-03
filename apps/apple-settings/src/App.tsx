@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Settings, StyleSheet, Text, View } from "react-native";
+import { Button, Settings, StyleSheet, Text, View, Switch } from "react-native";
 
 function useSetting(key: string) {
   const [value, setValue] = React.useState(() => Settings.get(key));
@@ -26,12 +26,13 @@ function useSetting(key: string) {
 }
 
 const App = () => {
-  const [data, setData] = useSetting("enabled_preference");
+  const [data, setData] = useSetting("name_preference");
 
   return (
     <View style={styles.container}>
       <Text>Stored value:</Text>
       <Text style={styles.value}>{data}</Text>
+      {/* <Switch value={data} onValueChange={setData} /> */}
       <Button
         onPress={() => {
           setData("Updated: " + Date.now());
