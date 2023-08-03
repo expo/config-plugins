@@ -1,43 +1,21 @@
 import React from "react";
-import { Button, Settings, StyleSheet, Text, View, Switch } from "react-native";
+import { StyleSheet, View } from "react-native";
 
-function useSetting(key: string) {
-  const [value, setValue] = React.useState(() => Settings.get(key));
-  React.useEffect(() => {
-    let isMounted = true;
-    const callback = Settings.watchKeys(key, () => {
-      if (isMounted) {
-        setValue(Settings.get(key));
-      }
-    });
-    return () => {
-      Settings.clearWatch(callback);
-      isMounted = false;
-    };
-  }, [key]);
-
-  return [
-    value,
-    (value) => {
-      Settings.set({ [key]: value });
-      setValue(value);
-    },
-  ];
-}
+import { SettingsSwitch, SettingsTextInput } from "./SettingsViews";
 
 const App = () => {
-  const [data, setData] = useSetting("name_preference");
-
   return (
     <View style={styles.container}>
-      <Text>Stored value:</Text>
-      <Text style={styles.value}>{data}</Text>
-      {/* <Switch value={data} onValueChange={setData} /> */}
-      <Button
-        onPress={() => {
-          setData("Updated: " + Date.now());
+      <SettingsSwitch settingsKey="enabled_preference" />
+      <SettingsTextInput
+        style={{
+          width: 200,
+          height: 40,
+          borderColor: "gray",
+          borderWidth: 1,
+          padding: 8,
         }}
-        title="Update Setting"
+        settingsKey="name_preference"
       />
     </View>
   );
