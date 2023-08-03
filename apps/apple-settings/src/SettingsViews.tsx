@@ -1,6 +1,7 @@
+import Slider from "@react-native-community/slider";
+import { Picker } from "@react-native-picker/picker";
 import React from "react";
 import { Settings, Switch, Text, TextInput } from "react-native";
-import { Picker } from "@react-native-picker/picker";
 
 export function useSetting<T = string>(key: string): [T, (value: T) => void] {
   const [value, setValue] = React.useState<T>(() => Settings.get(key));
@@ -24,6 +25,17 @@ export function useSetting<T = string>(key: string): [T, (value: T) => void] {
       setValue(value);
     },
   ];
+}
+
+export function SettingsSlider({
+  settingsKey,
+  ...props
+}: { settingsKey: string } & Omit<
+  React.ComponentProps<typeof Slider>,
+  "selectedValue" | "onValueChange"
+>) {
+  const [value, setValue] = useSetting<number>(settingsKey);
+  return <Slider {...props} value={value ?? 0} onValueChange={setValue} />;
 }
 
 export function SettingsRadioGroup({

@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@config-plugins/ios-stickers": "*",
+    "@react-native-community/slider": "^4.4.2",
     "@react-native-picker/picker": "2.4.10",
     "expo": "^49.0.3",
     "expo-splash-screen": "~0.20.4",

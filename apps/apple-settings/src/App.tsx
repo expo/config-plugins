@@ -3,6 +3,7 @@ import { Button, Linking, StyleSheet, View } from "react-native";
 
 import {
   SettingsRadioGroup,
+  SettingsSlider,
   SettingsSwitch,
   SettingsTextInput,
   SettingsTitle,
@@ -12,14 +13,8 @@ const App = () => {
   return (
     <View style={styles.container}>
       {/* <SettingsTitle settingsKey="title_preference" /> */}
-      <SettingsRadioGroup style={{ width: 200 }} settingsKey="radio_preference">
-        <SettingsRadioGroup.Item label="Option 1" value="option1" />
-        <SettingsRadioGroup.Item label="Option 2" value="option2" />
-      </SettingsRadioGroup>
-      <SettingsSwitch settingsKey="enabled_preference" />
       <SettingsTextInput
         style={{
-          width: 200,
           height: 40,
           borderColor: "gray",
           borderWidth: 1,
@@ -27,6 +22,14 @@ const App = () => {
         }}
         settingsKey="name_preference"
       />
+      <SettingsSwitch settingsKey="enabled_preference" />
+      <SettingsSlider settingsKey="slider_preference" />
+      <View />
+      <SettingsRadioGroup settingsKey="radio_preference">
+        <SettingsRadioGroup.Item label="Option 1" value="option1" />
+        <SettingsRadioGroup.Item label="Option 2" value="option2" />
+      </SettingsRadioGroup>
+      <View />
       <Button
         title="Launch Settings"
         onPress={() => {
@@ -41,7 +44,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "stretch",
+    paddingHorizontal: 56,
     gap: 12,
   },
   value: {
