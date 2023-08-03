@@ -5,6 +5,8 @@ const {
   Slider,
   ChildPane,
   Group,
+  Title,
+  RadioGroup,
 } = require("@config-plugins/apple-settings");
 
 module.exports = (config) => {
@@ -24,6 +26,11 @@ module.exports = (config) => {
       page: {
         // The `PreferenceSpecifiers` defines the UI elements to generate.
         PreferenceSpecifiers: [
+          Title({
+            title: "Title",
+            value: "Default Title",
+            key: "title_preference",
+          }),
           // Helper models can be used to generate the UI elements using a syntax that's
           // similar to React Native.
           TextField({
@@ -42,6 +49,21 @@ module.exports = (config) => {
           Slider({
             key: "slider_preference",
             value: 0.5,
+          }),
+          RadioGroup({
+            value: "option1",
+            key: "radio_preference",
+            items: [
+              {
+                title: "Option 1",
+                value: "option1",
+              },
+
+              {
+                title: "Option 2",
+                value: "option2",
+              },
+            ],
           }),
           // Child panes can be used to create nested pages.
           ChildPane({

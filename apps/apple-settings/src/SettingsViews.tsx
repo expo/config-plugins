@@ -1,5 +1,6 @@
 import React from "react";
-import { Settings, Switch, TextInput } from "react-native";
+import { Settings, Switch, Text, TextInput } from "react-native";
+import { Picker } from "@react-native-picker/picker";
 
 export function useSetting<T = string>(key: string): [T, (value: T) => void] {
   const [value, setValue] = React.useState<T>(() => Settings.get(key));
@@ -25,6 +26,25 @@ export function useSetting<T = string>(key: string): [T, (value: T) => void] {
   ];
 }
 
+export function SettingsRadioGroup({
+  settingsKey,
+  ...props
+}: { settingsKey: string } & Omit<
+  React.ComponentProps<typeof Picker>,
+  "selectedValue" | "onValueChange"
+>) {
+  const [value, setValue] = useSetting<string>(settingsKey);
+  return (
+    <Picker
+      {...props}
+      selectedValue={value ?? "option1"}
+      onValueChange={setValue}
+    />
+  );
+}
+
+SettingsRadioGroup.Item = Picker.Item;
+
 export function SettingsSwitch({
   settingsKey,
   ...props
@@ -34,6 +54,17 @@ export function SettingsSwitch({
 >) {
   const [value, setValue] = useSetting<boolean>(settingsKey);
   return <Switch {...props} value={!!value} onValueChange={setValue} />;
+}
+
+export function SettingsTitle({
+  settingsKey,
+  ...props
+}: { settingsKey: string } & Omit<
+  React.ComponentProps<typeof Text>,
+  "children"
+>) {
+  const [value] = useSetting<string>(settingsKey);
+  return <Text {...props} children={value} />;
 }
 
 export function SettingsTextInput({

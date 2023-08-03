@@ -1,11 +1,21 @@
 import React from "react";
 import { Button, Linking, StyleSheet, View } from "react-native";
 
-import { SettingsSwitch, SettingsTextInput } from "./SettingsViews";
+import {
+  SettingsRadioGroup,
+  SettingsSwitch,
+  SettingsTextInput,
+  SettingsTitle,
+} from "./SettingsViews";
 
 const App = () => {
   return (
     <View style={styles.container}>
+      {/* <SettingsTitle settingsKey="title_preference" /> */}
+      <SettingsRadioGroup style={{ width: 200 }} settingsKey="radio_preference">
+        <SettingsRadioGroup.Item label="Option 1" value="option1" />
+        <SettingsRadioGroup.Item label="Option 2" value="option2" />
+      </SettingsRadioGroup>
       <SettingsSwitch settingsKey="enabled_preference" />
       <SettingsTextInput
         style={{
