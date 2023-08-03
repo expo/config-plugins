@@ -12,6 +12,12 @@ updates:
       time: '09:00'
       timezone: America/Los_Angeles
   - package-ecosystem: npm
+    directory: packages/apple-settings
+    schedule:
+      interval: daily
+      time: '09:00'
+      timezone: America/Los_Angeles
+  - package-ecosystem: npm
     directory: packages/detox
     schedule:
       interval: daily
