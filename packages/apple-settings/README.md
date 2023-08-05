@@ -2,6 +2,8 @@
 
 Config plugin to generate custom [Apple settings UI](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/UserDefaults/Preferences/Preferences.html).
 
+https://github.com/expo/config-plugins/assets/9664363/8be449b3-9aab-440c-b736-b43b22155e82
+
 ## Install
 
 > Tested against Expo SDK 49
