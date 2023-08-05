@@ -7,6 +7,7 @@ import withAppleSettings, {
   TextField,
   Title,
 } from "@config-plugins/apple-settings";
+import { MultiValue } from "@config-plugins/apple-settings/build/models";
 import { ConfigContext, ExpoConfig } from "expo/config";
 import path from "node:path";
 
@@ -85,6 +86,34 @@ module.exports = ({ config }: ConfigContext): Partial<ExpoConfig> => {
               },
             ],
           }),
+          MultiValue({
+            title: "Multi Value",
+            key: "multi_value_preference",
+            value: "alpha",
+            items: [
+              {
+                title: "Alpha",
+                value: "alpha",
+                short: "α",
+              },
+              {
+                title: "Beta",
+                value: "beta",
+                short: "β",
+              },
+              {
+                title: "Delta",
+                value: "delta",
+                short: "Δ",
+              },
+              {
+                title: "Omega",
+                value: "omega",
+                short: "Ω",
+              },
+            ],
+          }),
+
           // Child panes can be used to create nested pages.
           ChildPane({
             title: "About",
