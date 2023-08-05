@@ -23,15 +23,17 @@ export function page(specs: AnyPreferenceSpecifier[]): { page: SettingsPlist } {
 
 export function ChildPane({
   title,
+  file,
   idioms,
 }: {
   title: string;
+  file?: string;
   idioms?: UserInterfaceIdiom[];
 }): PSChildPaneSpecifier {
   const obj: PSChildPaneSpecifier = {
     Type: "PSChildPaneSpecifier",
     Title: title,
-    File: title,
+    File: file ?? title,
   };
 
   if (idioms) {
