@@ -52,8 +52,8 @@ module.exports = ({ config }: ConfigContext): Partial<ExpoConfig> => {
             value: "Default Title",
             key: "title_preference",
           }),
-          // Helper models can be used to generate the UI elements using a syntax that's
-          // similar to React Native.
+          // Helper models can be used to generate the UI elements using
+          // an API that's similar to React Native.
           TextField({
             title: "Name",
             key: "name_preference",
