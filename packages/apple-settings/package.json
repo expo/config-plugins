@@ -1,6 +1,6 @@
 {
   "name": "@config-plugins/apple-settings",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Config plugin to generate custom Apple settings UI",
   "main": "build/index.js",
   "types": "build/index.d.ts",

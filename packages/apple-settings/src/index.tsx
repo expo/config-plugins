@@ -8,6 +8,7 @@ export {
   Switch,
   TextField,
   Title,
+  MultiValue,
 } from "./models";
 
 export { StaticSettings, AppleLocale };
