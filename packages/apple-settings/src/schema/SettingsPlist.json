@@ -1,0 +1,373 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "UserInterfaceIdiom": {
+      "type": "string",
+      "enum": ["Pad", "Phone"]
+    },
+    "ScalarType": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "number" },
+        { "type": "boolean" }
+      ]
+    },
+    "PSGroupSpecifier": {
+      "type": "object",
+      "description": "This type defines a group element, which is a way to visually group preferences on a page. This element should be placed in front of the preferences associated with the group. You can assign a title to the group or omit the key to display a gap between preferences. https://developer.apple.com/library/archive/documentation/PreferenceSettings/Conceptual/SettingsApplicationSchemaReference/Articles/PSGroupSpecifier.html#//apple_ref/doc/uid/TP40007009-SW1",
+      "required": ["Type"],
+      "additionalProperties": false,
+      "properties": {
+        "Type": { "type": "string", "enum": ["PSGroupSpecifier"] },
+        "Title": {
+          "description": "The title of the group. If you do not specify this key, a gap is inserted between preferences. The value of this key is localizable.",
+          "type": "string"
+        },
+        "FooterText": {
+          "description": "Additional text to display below the group box. Providing a footer is optional. The value of this key is localizable. On tvOS, the additional text is limited to 5 lines.",
+          "type": "string"
+        },
+        "SupportedUserInterfaceIdioms": {
+          "type": "array",
+          "description": "Indicates that the element is displayed only on specific types of devices. The value of this key is an array of strings with the supported idioms. Include the string “Phone” to display the element on iPhone and iPod touch. Include the string to “Pad” to display it on iPad.",
+          "items": { "$ref": "#/definitions/UserInterfaceIdiom" }
+        }
+      }
+    },
+    "PSTextFieldSpecifier": {
+      "type": "object",
+      "description": "https://developer.apple.com/library/archive/documentation/PreferenceSettings/Conceptual/SettingsApplicationSchemaReference/Articles/PSTextFieldSpecifier.html#//apple_ref/doc/uid/TP40007011-SW1",
+      "required": ["Type", "Key"],
+      "additionalProperties": false,
+      "properties": {
+        "Type": { "type": "string", "enum": ["PSTextFieldSpecifier"] },
+        "Title": {
+          "description": "The string displayed to the left of the text field's value. This string is drawn left aligned and in bold face. If you omit this key, the editable text field spans the width of the row.",
+          "type": "string"
+        },
+        "Key": {
+          "description": "The preference key with which to associate the value. This is the string you use this to retrieve the preference value in your code.",
+          "type": "string"
+        },
+        "DefaultValue": {
+          "description": "The default value for the preference key. This value is returned when the specified preferences key (represented by the `Key` entry) is not present in the preferences database. If this key is not present, an empty string is associated with the key.",
+          "type": "string"
+        },
+        "IsSecure": {
+          "description": "If `true`, the text field is a password-entry text field, which replaces the typed text with bullet characters. If `false`, the text field is a standard text field that displays the typed text. If this key is not present, the default is `false`.",
+          "type": "boolean"
+        },
+        "KeyboardType": {
+          "description": "The type of keyboard to display to the user.",
+          "default": "Alphabet",
+          "type": "string",
+          "enum": [
+            "Alphabet",
+            "NumbersAndPunctuation",
+            "NumberPad",
+            "URL",
+            "EmailAddress"
+          ]
+        },
+        "AutocapitalizationType": {
+          "description": "The auto-capitalization style to apply to typed text.",
+          "default": "None",
+          "type": "string",
+          "enum": ["None", "Sentences", "Words", "AllCharacters"]
+        },
+        "AutocorrectionType": {
+          "description": "The auto-correction style to apply when typing.",
+          "type": "string",
+          "default": "Default",
+          "enum": ["Default", "No", "Yes"]
+        },
+        "SupportedUserInterfaceIdioms": {
+          "type": "array",
+          "description": "Indicates that the element is displayed only on specific types of devices. The value of this key is an array of strings with the supported idioms. Include the string “Phone” to display the element on iPhone and iPod touch. Include the string to “Pad” to display it on iPad.",
+          "items": { "$ref": "#/definitions/UserInterfaceIdiom" }
+        }
+      }
+    },
+    "PSToggleSwitchSpecifier": {
+      "type": "object",
+      "description": "This element displays an ON/OFF button that can be toggled by the user. https://developer.apple.com/library/archive/documentation/PreferenceSettings/Conceptual/SettingsApplicationSchemaReference/Articles/PSToggleSwitchSpecifier.html#//apple_ref/doc/uid/TP40007012-SW1",
+      "required": ["Type", "Title", "Key", "DefaultValue"],
+      "additionalProperties": false,
+      "properties": {
+        "Type": { "type": "string", "enum": ["PSToggleSwitchSpecifier"] },
+        "Title": {
+          "description": "The string displayed to the left of the switch.",
+          "type": "string"
+        },
+        "Key": {
+          "description": "The preference key identifying the value. This is the string you use this to retrieve the preference value from the defaults database.",
+          "type": "string"
+        },
+        "DefaultValue": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ScalarType"
+            }
+          ],
+          "description": "The default value for the preference key. This value is returned when the specified preferences key (represented by the `Key` entry) is not present in the defaults database."
+        },
+        "TrueValue": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ScalarType"
+            }
+          ],
+          "description": "The value associated with the preference when the toggle switch is in the ON position. The value type for this key can be any scalar type, including `boolean`, `string`, `number`, `Date`, or Data. If this key is not present, the default value type is a `boolean` with the value `true`."
+        },
+        "FalseValue": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ScalarType"
+            }
+          ],
+          "description": "The value associated with the preference when the toggle switch is in the OFF position. The value type for this key can be any scalar type, including `boolean`, `string`, `number`, `Date`, or Data. If this key is not present, the default value type is a `boolean` with the value `false`."
+        },
+        "SupportedUserInterfaceIdioms": {
+          "type": "array",
+          "description": "Indicates that the element is displayed only on specific types of devices. The value of this key is an array of strings with the supported idioms. Include the string “Phone” to display the element on iPhone and iPod touch. Include the string to “Pad” to display it on iPad.",
+          "items": { "$ref": "#/definitions/UserInterfaceIdiom" }
+        }
+      }
+    },
+    "PSSliderSpecifier": {
+      "type": "object",
+      "required": [
+        "Type",
+        "Key",
+        "DefaultValue",
+        "MinimumValue",
+        "MaximumValue"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "Type": { "type": "string", "enum": ["PSSliderSpecifier"] },
+        "Key": {
+          "description": "The preference key identifying the value. This is the string you use this to retrieve the preference value from the defaults database.",
+          "type": "string"
+        },
+        "DefaultValue": {
+          "description": "The default value for the preference key. This value is returned when the specified preferences key (represented by the `Key` entry) is not present in the preferences database.",
+          "type": "number"
+        },
+        "MinimumValue": {
+          "description": "The minimum value for the slider.",
+          "type": "number"
+        },
+        "MaximumValue": {
+          "description": "The maximum value for the slider.",
+          "type": "number"
+        },
+        "MinimumValueImage": {
+          "description": "The image to display on the side of the slider representing the minimum value. This image should be 21 by 21 pixels.",
+          "type": "string"
+        },
+        "MaximumValueImage": {
+          "description": "The image to display on the side of the slider representing the maximum value. This image should be 21 by 21 pixels.",
+          "type": "string"
+        },
+        "SupportedUserInterfaceIdioms": {
+          "type": "array",
+          "description": "Indicates that the element is displayed only on specific types of devices. The value of this key is an array of strings with the supported idioms. Include the string “Phone” to display the element on iPhone and iPod touch. Include the string to “Pad” to display it on iPad.",
+          "items": { "$ref": "#/definitions/UserInterfaceIdiom" }
+        }
+      }
+    },
+    "PSChildPaneSpecifier": {
+      "type": "object",
+      "description": "This element displays a preferences row, that when tapped loads a new page of preferences. You can use this element type to build hierarchical pages of preferences. https://developer.apple.com/library/archive/documentation/PreferenceSettings/Conceptual/SettingsApplicationSchemaReference/Articles/PSChildPaneSpecifier.html#//apple_ref/doc/uid/TP40007017-SW1",
+      "required": ["Type", "Title", "File"],
+      "additionalProperties": false,
+      "properties": {
+        "Type": { "type": "string", "enum": ["PSChildPaneSpecifier"] },
+        "Title": {
+          "description": "The title string displayed in the preference row. This is the string the user taps to display the next page. This string is also used as the title of the screen that is subsequently displayed.",
+          "type": "string"
+        },
+        "File": {
+          "description": "The name of the schema file to load. (This file must be a property list file.) The string you specify for this key should not contain path information or the .plist filename extension of your schema file. The Settings app looks in the top-level of your settings bundle for a .plist file with the specified name. For example, if you had a MyPrefs.plist file, you would assign the value MyPrefs to this key.",
+          "type": "string"
+        },
+        "SupportedUserInterfaceIdioms": {
+          "type": "array",
+          "description": "Indicates that the element is displayed only on specific types of devices. The value of this key is an array of strings with the supported idioms. Include the string “Phone” to display the element on iPhone and iPod touch. Include the string to “Pad” to display it on iPad.",
+          "items": { "$ref": "#/definitions/UserInterfaceIdiom" }
+        }
+      }
+    },
+    "PSTitleValueSpecifier": {
+      "type": "object",
+      "required": ["Type", "Title", "Key", "DefaultValue"],
+      "additionalProperties": false,
+      "properties": {
+        "Type": { "type": "string", "enum": ["PSTitleValueSpecifier"] },
+        "Title": {
+          "description": "The string displayed to the left of the value.",
+          "type": "string"
+        },
+        "Key": {
+          "description": "The preference key identifying the value. This is the string you use this to retrieve the preference value from the defaults database.",
+          "type": "string"
+        },
+        "DefaultValue": {
+          "description": "The default value for the preference key. This value is returned when the specified preferences key (represented by the `Key` entry) is not present in the preferences database.",
+          "type": "string"
+        },
+        "Values": {
+          "description": "An array of the values that could be associated with the preference key (`Key` entry) in the defaults database. These values can be of any type. Each value should have a corresponding value in the `Titles` array.",
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "Titles": {
+          "description": "An array of strings that represent user-readable versions of the values in the `Values` array. The values in this array are localizable.",
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "SupportedUserInterfaceIdioms": {
+          "type": "array",
+          "description": "Indicates that the element is displayed only on specific types of devices. The value of this key is an array of strings with the supported idioms. Include the string “Phone” to display the element on iPhone and iPod touch. Include the string to “Pad” to display it on iPad.",
+          "items": { "$ref": "#/definitions/UserInterfaceIdiom" }
+        }
+      }
+    },
+    "PSMultiValueSpecifier": {
+      "type": "object",
+      "description": "When the user taps a preference containing a multi-value element, the Settings app displays a new page with the possible values to choose from. Upon selecting a value, the user is returned to the previous page, and the selected value is displayed in the preference row. https://developer.apple.com/library/archive/documentation/PreferenceSettings/Conceptual/SettingsApplicationSchemaReference/Articles/PSMultiValueSpecifier.html#//apple_ref/doc/uid/TP40007016-SW1",
+      "required": ["Type", "Title", "Key", "DefaultValue", "Values", "Titles"],
+      "additionalProperties": false,
+      "properties": {
+        "Type": { "type": "string", "enum": ["PSMultiValueSpecifier"] },
+        "Title": {
+          "description": "The user-readable string identifying the preference.",
+          "type": "string"
+        },
+        "Key": {
+          "description": "The preference key with which to associate the value. This is the string you use this to retrieve the preference value in your code.",
+          "type": "string"
+        },
+        "DefaultValue": {
+          "description": "The default value for the preference key. This value is returned when the specified preferences key (represented by the `Key` entry) is not present in the preferences database.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ScalarType"
+            }
+          ]
+        },
+        "Values": {
+          "description": "An array of the values that could be associated with the preference key (`Key` entry) in the defaults database. These values can be of any type. Each value should have a corresponding value in the `Titles` array.",
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/definitions/ScalarType"
+              }
+            ]
+          }
+        },
+        "Titles": {
+          "description": "An array of strings that represent user-readable versions of the values in the `Values` array. These are the strings that are actually displayed on the selection page. When a string is selected, the value at the matching index is stored in the defaults database.",
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "ShortTitles": {
+          "description": "An array of strings that are abbreviated versions of the strings in the `Titles` array. When this key is included, the preference row uses the strings in the corresponding array instead of the strings in the `Titles` array. (The preference row shows the title of the preference and the currently selected value.) The longer strings in the `Titles` array are still displayed in the new page presented to the user.",
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "DisplaySortedByTitle": {
+          "description": "If `true`, the values are displayed in the localized sort order of the `Titles` array.",
+          "type": "boolean"
+        },
+        "SupportedUserInterfaceIdioms": {
+          "type": "array",
+          "description": "Indicates that the element is displayed only on specific types of devices. The value of this key is an array of strings with the supported idioms. Include the string “Phone” to display the element on iPhone and iPod touch. Include the string to “Pad” to display it on iPad.",
+          "items": { "$ref": "#/definitions/UserInterfaceIdiom" }
+        }
+      }
+    },
+    "PSRadioGroupSpecifier": {
+      "type": "object",
+      "description": "This type defines a radio group element, which provides two or more choices of which only one at a time can be selected. https://developer.apple.com/library/archive/documentation/PreferenceSettings/Conceptual/SettingsApplicationSchemaReference/Articles/RadioGroupElement.html#//apple_ref/doc/uid/TP30915196-SW2",
+      "required": ["Type", "Key", "DefaultValue", "Values", "Titles"],
+      "additionalProperties": false,
+      "properties": {
+        "Type": { "type": "string", "enum": ["PSRadioGroupSpecifier"] },
+        "Title": {
+          "description": "The title of the group. If you do not specify this key, a gap is inserted between preferences.",
+          "type": "string"
+        },
+        "Key": {
+          "description": "The preference key with which to associate the value. This is the string you use to retrieve the preference value in your code.",
+          "type": "string"
+        },
+        "FooterText": {
+          "description": "Additional text to display below the group box. Providing a footer is optional. The value of this key is localizable.",
+          "type": "string"
+        },
+        "DefaultValue": {
+          "description": "The default value for the preference key. This value is returned when the specified preferences key (represented by the `Key` entry) is not present in the preferences database.",
+          "type": "string"
+        },
+        "Values": {
+          "description": "An array of the values that could be associated with the preference key (`Key` entry) in the defaults database. These values can be of any type. Each value should have a corresponding value in the `Titles` array.",
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "Titles": {
+          "description": "An array of strings that represent user-readable versions of the values in the `Values` array. These are the strings that are actually displayed on the selection page. When a string is selected, the value at the matching index is stored in the defaults database.",
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "DisplaySortedByTitle": {
+          "description": "If `true`, the values are displayed in the localized sort order of the `Titles` array.",
+          "type": "boolean"
+        },
+        "SupportedUserInterfaceIdioms": {
+          "type": "array",
+          "description": "Indicates that the element is displayed only on specific types of devices. The value of this key is an array of strings with the supported idioms. Include the string “Phone” to display the element on iPhone and iPod touch. Include the string to “Pad” to display it on iPad.",
+          "items": { "$ref": "#/definitions/UserInterfaceIdiom" }
+        }
+      }
+    },
+    "AnyPreferenceSpecifier": {
+      "oneOf": [
+        { "$ref": "#/definitions/PSGroupSpecifier" },
+        { "$ref": "#/definitions/PSTextFieldSpecifier" },
+        { "$ref": "#/definitions/PSToggleSwitchSpecifier" },
+        { "$ref": "#/definitions/PSSliderSpecifier" },
+        { "$ref": "#/definitions/PSChildPaneSpecifier" },
+        { "$ref": "#/definitions/PSTitleValueSpecifier" },
+        { "$ref": "#/definitions/PSMultiValueSpecifier" },
+        { "$ref": "#/definitions/PSRadioGroupSpecifier" }
+      ]
+    }
+  },
+  "title": "SettingsPlist",
+  "type": "object",
+  "required": ["PreferenceSpecifiers"],
+  "additionalProperties": false,
+  "description": "https://developer.apple.com/library/archive/documentation/PreferenceSettings/Conceptual/SettingsApplicationSchemaReference/RevisionHistory.html#//apple_ref/doc/uid/TP40007071-CH2-SW1",
+  "properties": {
+    "StringsTable": {
+      "description": "The name of the strings file associated with this schema file. A copy of this file (with appropriate localized strings) should be located in each of your bundle’s language-specific project directories. If you do not include this key, the strings in this schema file are not localized. For information on creating strings files, see Internationalization and Localization Guide.",
+      "type": "string"
+    },
+    "ApplicationGroupContainerIdentifier": {
+      "description": "The app group identifier to use for storing preference values. Specify this key when you want preferences to be stored in a container other than the one used by your iOS app. For example, specify this key when creating a WatchKit settings bundle so that the WatchKit extension can access the preferences. Enable the App Groups capability for each executable that needs to access the shared preferences. The group you select should match the value of this key. To access preferences stored in the group, pass the value of this key to the initWithSuiteName: method of your NSUserDefaults object. This key is supported in iOS 8.2 and later.",
+      "type": "string"
+    },
+    "PreferenceSpecifiers": {
+      "description": "An array of dictionaries, each of which contains the data for a single preference element. The order of the elements in the array defines the order that they are displayed on the screen.",
+      "type": "array",
+      "items": {
+        "oneOf": [
+          { "$ref": "#/definitions/AnyPreferenceSpecifier" }
+        ]
+      }
+    }
+  }
+}

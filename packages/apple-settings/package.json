@@ -1,0 +1,44 @@
+{
+  "name": "@config-plugins/apple-settings",
+  "version": "0.0.0",
+  "description": "Config plugin to generate custom Apple settings UI",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "build"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/expo/config-plugins.git",
+    "directory": "packages/apple-settings"
+  },
+  "scripts": {
+    "build": "expo-module build",
+    "clean": "expo-module clean",
+    "lint": "expo-module lint",
+    "test": "expo-module test",
+    "generate-types": "json2ts -i ./src/schema/SettingsPlist.json -o ./src/schema/SettingsPlist.ts --additionalProperties=false --unknownAny=false",
+    "prepare": "expo-module prepare && yarn generate-types",
+    "prepublishOnly": "expo-module prepublishOnly",
+    "expo-module": "expo-module"
+  },
+  "keywords": [
+    "react",
+    "expo"
+  ],
+  "dependencies": {
+    "@bacons/xcode": "^1.0.0-alpha.5",
+    "@expo/plist": "^0.0.20",
+    "iconv-lite": "^0.6.3",
+    "schema-utils": "^4.2.0"
+  },
+  "peerDependencies": {
+    "expo": "^49"
+  },
+  "devDependencies": {
+    "expo-module-scripts": "^3.0.3",
+    "json-schema-to-typescript": "^13.0.2",
+    "memfs": "^3.4.4"
+  }
+}
