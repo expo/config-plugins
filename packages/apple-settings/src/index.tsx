@@ -1,4 +1,4 @@
-import { withStaticSettings } from "./static";
+import { withStaticSettings, StaticSettings, AppleLocale } from "./static";
 
 export {
   ChildPane,
@@ -9,6 +9,8 @@ export {
   TextField,
   Title,
 } from "./models";
+
+export { StaticSettings, AppleLocale };
 
 export * from "./schema/SettingsPlist";
 

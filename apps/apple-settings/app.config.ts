@@ -1,16 +1,36 @@
-const {
-  default: withAppleSettings,
-  TextField,
-  Switch,
-  Slider,
+import withAppleSettings, {
   ChildPane,
   Group,
-  Title,
   RadioGroup,
-} = require("@config-plugins/apple-settings");
+  Slider,
+  Switch,
+  TextField,
+  Title,
+} from "@config-plugins/apple-settings";
+import { ConfigContext, ExpoConfig } from "expo/config";
+import path from "node:path";
 
-module.exports = (config) => {
-  return withAppleSettings(config, {
+const folderName = path.basename(__dirname);
+const cleanName = folderName.replace(/[_\s-]/g, "");
+const appId = "dev.bacon." + cleanName;
+
+function withWhiteLabel(config: Partial<ExpoConfig>) {
+  if (!config.extra) config.extra = {};
+  // Expose CI env variables to the app
+  config.extra.CI = process.env.CI;
+
+  if (!config.ios) config.ios = {};
+  config.ios.bundleIdentifier = appId;
+  if (!config.android) config.android = {};
+  config.android.package = appId;
+
+  return config;
+}
+
+module.exports = ({ config }: ConfigContext): Partial<ExpoConfig> => {
+  config = withWhiteLabel(config);
+
+  config = withAppleSettings(config as ExpoConfig, {
     // The name of the .plist file to generate. Root is the default and must be provided.
     Root: {
       // The locales object is optional. If provided, it will be used to generate the localized .strings files.
@@ -72,6 +92,7 @@ module.exports = (config) => {
         ],
       },
     },
+    // About page
     About: {
       page: {
         PreferenceSpecifiers: [
@@ -82,4 +103,6 @@ module.exports = (config) => {
       },
     },
   });
+
+  return config;
 };

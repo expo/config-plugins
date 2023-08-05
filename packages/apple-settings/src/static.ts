@@ -6,6 +6,76 @@ import { withXcodeProjectBetaBaseMod } from "./base-mods/withXcparse";
 import { SettingsPlist } from "./schema/SettingsPlist";
 import { withLinkedSettingsBundle } from "./withLinkedSettingsBundle";
 
+/**
+ * Locale codes used in `lproj` directories for Apple software.
+ * **Related:**
+ * - [Swift locale interpretation routine](https://github.com/apple/swift-corelibs-foundation/blob/main/CoreFoundation/PlugIn.subproj/CFBundle_Locale.c)
+ * - [Preferences doc](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/UserDefaults/Preferences/Preferences.html#//apple_ref/doc/uid/10000059i-CH6-SW9)
+ */
+export type AppleLocale =
+  | "ar"
+  | "ca"
+  | "zh_Hans"
+  | "zh_Hant"
+  | "zh_HK"
+  | "hr"
+  | "cs"
+  | "da"
+  | "nl"
+  | "en"
+  | "en_GB"
+  | "en_AU"
+  | "en_CA"
+  | "en_IN"
+  | "en_IE"
+  | "en_NZ"
+  | "en_SG"
+  | "en_ZA"
+  | "fi"
+  | "fr"
+  | "fr_CA"
+  | "de"
+  | "el"
+  | "he"
+  | "hi"
+  | "hu"
+  | "id"
+  | "it"
+  | "ja"
+  | "ko"
+  | "ms"
+  | "nb"
+  | "pl"
+  | "pt"
+  | "pt_BR"
+  | "ro"
+  | "ru"
+  | "sk"
+  | "es"
+  | "es_419"
+  | "es_MX"
+  | "sv"
+  | "th"
+  | "tr"
+  | "uk"
+  | "vi";
+
+export type StaticSettings = Record<
+  /** Name of the file / bundle. */
+  string,
+  {
+    /** Plist contents */
+    page: SettingsPlist;
+    /** Linked locales that will be written as a `*.strings` file (without comments). */
+    locales?: Record<
+      /** Apple locale code. */
+      AppleLocale,
+      /** Strings content with key/value. */
+      Record<string, string>
+    >;
+  }
+>;
+
 export const withStaticSettings: ConfigPlugin<
   Record<
     string,
@@ -16,7 +86,7 @@ export const withStaticSettings: ConfigPlugin<
     throw new Error("Panes must include a 'Root' pane");
   }
 
-  let postMods: any[] = [];
+  const postMods: any[] = [];
 
   Object.entries(panes).map(([key, pane]) => {
     const mods = createModSetForSettingsPage({
