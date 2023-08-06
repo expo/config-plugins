@@ -5,6 +5,7 @@
   "main": "build/withReactNativeBlobUtil.js",
   "types": "build/withReactNativeBlobUtil.d.ts",
   "sideEffects": false,
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/expo/config-plugins.git",

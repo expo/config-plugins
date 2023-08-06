@@ -4,6 +4,7 @@
   "description": "Config plugin to auto configure detox on prebuild",
   "main": "build/withDetox.js",
   "types": "build/withDetox.d.ts",
+  "license": "MIT",
   "sideEffects": false,
   "repository": {
     "type": "git",

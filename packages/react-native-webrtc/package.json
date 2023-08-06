@@ -5,6 +5,7 @@
   "main": "build/withWebRTC.js",
   "types": "build/withWebRTC.d.ts",
   "sideEffects": false,
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/expo/config-plugins.git",

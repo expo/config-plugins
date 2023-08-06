@@ -5,6 +5,7 @@
   "main": "build/withReactNativeAdjust.js",
   "types": "build/withReactNativeAdjust.d.ts",
   "sideEffects": false,
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/expo/config-plugins.git",

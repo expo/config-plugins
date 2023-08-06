@@ -5,6 +5,7 @@
   "main": "build/withStickerPack.js",
   "types": "build/withStickerPack.d.ts",
   "sideEffects": false,
+  "license": "MIT",
   "files": [
     "build"
   ],

@@ -5,6 +5,7 @@
   "main": "build/withReactNativeSiriShortcut.js",
   "types": "build/withReactNativeSiriShortcut.d.ts",
   "sideEffects": false,
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/expo/config-plugins.git",
