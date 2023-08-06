@@ -138,7 +138,6 @@ export function Slider({
   minimumTrackImage,
   idioms,
 }: {
-  secure?: boolean;
   key: string;
   value?: number;
   maximumValue?: number;
@@ -169,7 +168,6 @@ export function Switch({
   value = false,
   idioms,
 }: {
-  secure?: boolean;
   title: string;
   key: string;
   value?: boolean;
