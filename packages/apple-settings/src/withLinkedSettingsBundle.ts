@@ -57,7 +57,6 @@ async function applyXcodeChanges(
   props: { projectName: string }
 ) {
   const mainAppTarget = getMainAppTarget(project);
-
   const mainResourceBuildPhase = mainAppTarget.getBuildPhase(
     PBXResourcesBuildPhase
   );
