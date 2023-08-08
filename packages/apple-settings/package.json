@@ -40,6 +40,6 @@
   "devDependencies": {
     "expo-module-scripts": "^3.0.3",
     "json-schema-to-typescript": "^13.0.2",
-    "memfs": "^3.4.4"
+    "memfs": "^4.2.1"
   }
 }
