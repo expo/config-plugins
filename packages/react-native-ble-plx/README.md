@@ -34,19 +34,19 @@ The plugin provides props for extra customization. Every time you change the pro
 - `modes` (_string[]_): Adds iOS `UIBackgroundModes` to the `Info.plist`. Options are: `peripheral`, and `central`. Defaults to undefined.
 - `bluetoothAlwaysPermission` (_string | false_): Sets the iOS `NSBluetoothAlwaysUsageDescription` permission message to the `Info.plist`. Setting `false` will skip adding the permission. Defaults to `Allow $(PRODUCT_NAME) to connect to bluetooth devices`.
 
+> Expo SDK 48 supports iOS 13+ which means `NSBluetoothPeripheralUsageDescription` is fully deprecated. It is no longer setup in `@config-plugins/react-native-ble-plx@5.0.0` and greater.
+
 ### Android options
 
-- `neverForLocation` (_boolean_): default:`false` - A flag you can set to `true` to assert that your app doesn't use BLE scan results to derive physical location. If `true`, `"android:usesPermissionFlags": "neverForLocation"` will be added to your `"android.permission.BLUETOOTH_SCAN"` declaration. Android SDK 31+. Default `false`. _WARNING: This parameter is experimental and BLE might not work. Make sure to test before releasing to production._
-
-- `isRequired` (_boolean_): default:`false` - Determines whether or not your app requires Bluetooth to function. If set to `true`, `<uses-feature android:name="android.hardware.bluetooth" android:required="true"/>` will be added to the `AndroidManifest.xml`.
-
-- `canDiscover` (_boolean_): default:`true` - Indicates whether your app should have the permission to discover other Bluetooth devices. If set to `true`, `android.permission.BLUETOOTH_ADMIN` and `android.permission.BLUETOOTH` are added with specific `android:maxSdkVersion` conditionally based on your settings.
-
-- `isDiscoverable` (_boolean_): default:`false` - Dictates whether or not your app is discoverable to other Bluetooth devices. If set to `true`, `android.permission.BLUETOOTH_ADVERTISE` will be added to `AndroidManifest.xml`.
+- `canDiscover` (_boolean_): default:`true` - Indicates whether your app should have the permission to discover other Bluetooth devices. If set to `true`, `android.permission.BLUETOOTH_ADMIN` and `android:maxSdkVersion` is added conditioanlly based on legacy Android support. conditionally based on your settings.
 
 - `canConnect` (_boolean_): default:`true` - Specifies if your app requires the permission to connect to already-paired Bluetooth devices. If set to `true`, `android.permission.BLUETOOTH_CONNECT` will be added to `AndroidManifest.xml`.
 
-> Expo SDK 48 supports iOS 13+ which means `NSBluetoothPeripheralUsageDescription` is fully deprecated. It is no longer setup in `@config-plugins/react-native-ble-plx@5.0.0` and greater.
+- `neverForLocation` (_boolean_): default:`false` - A flag you can set to `true` to assert that your app doesn't use BLE scan results to derive physical location. If `true`, `"android:usesPermissionFlags": "neverForLocation"` will be added to your `"android.permission.BLUETOOTH_SCAN"` declaration. Android SDK 31+. Default `false`. _WARNING: This parameter is experimental and BLE might not work. Make sure to test before releasing to production._
+
+- `isDiscoverable` (_boolean_): default:`false` - Dictates whether or not your app is discoverable to other Bluetooth devices. If set to `true`, `android.permission.BLUETOOTH_ADVERTISE` will be added to `AndroidManifest.xml`.
+
+- `isRequired` (_boolean_): default:`false` - Determines whether or not your app requires Bluetooth to function. If set to `true`, `<uses-feature android:name="android.hardware.bluetooth_le" android:required="true"/>` will be added to the `AndroidManifest.xml`.
 
 #### Example
 

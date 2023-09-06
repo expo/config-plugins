@@ -2,25 +2,25 @@ import { AndroidConfig, ConfigPlugin } from "expo/config-plugins";
 type InnerManifest = AndroidConfig.Manifest.AndroidManifest["manifest"];
 type ManifestPermission = InnerManifest["permission"];
 type ExtraTools = {
-  "tools:targetApi"?: string;
+    "tools:targetApi"?: string;
 };
 type ManifestUsesPermissionWithExtraTools = {
-  $: AndroidConfig.Manifest.ManifestUsesPermission["$"] & ExtraTools;
+    $: AndroidConfig.Manifest.ManifestUsesPermission["$"] & ExtraTools;
 };
 type AndroidManifest = {
-  manifest: InnerManifest & {
-    permission?: ManifestPermission;
-    "uses-permission"?: ManifestUsesPermissionWithExtraTools[];
-    "uses-permission-sdk-23"?: ManifestUsesPermissionWithExtraTools[];
-    "uses-feature"?: InnerManifest["uses-feature"];
-  };
+    manifest: InnerManifest & {
+        permission?: ManifestPermission;
+        "uses-permission"?: ManifestUsesPermissionWithExtraTools[];
+        "uses-permission-sdk-23"?: ManifestUsesPermissionWithExtraTools[];
+        "uses-feature"?: InnerManifest["uses-feature"];
+    };
 };
 export declare const withBLEAndroidManifest: ConfigPlugin<{
-  neverForLocation: boolean;
-  isRequired: boolean;
-  canDiscover: boolean;
-  isDiscoverable: boolean;
-  canConnect: boolean;
+    neverForLocation: boolean;
+    isRequired: boolean;
+    canDiscover: boolean;
+    isDiscoverable: boolean;
+    canConnect: boolean;
 }>;
 /**
  * Mutates the given AndroidManifest to add necessary location permissions.
@@ -35,18 +35,9 @@ export declare const withBLEAndroidManifest: ConfigPlugin<{
  *
  * @returns {AndroidManifest} - The updated AndroidManifest with the necessary location permissions added.
  */
-export declare function addLocationPermissionToManifest(
-  androidManifest: AndroidManifest,
-  neverForLocationSinceSdk31: boolean
-): AndroidManifest;
-export declare function addAdminBluetoothPermissionToManifest(
-  androidManifest: AndroidManifest,
-  canDiscover: boolean
-): AndroidManifest;
-export declare function addScanBluetoothPermissionToManifest(
-  androidManifest: AndroidManifest,
-  neverForLocation: boolean
-): AndroidManifest;
+export declare function addLocationPermissionToManifest(androidManifest: AndroidManifest, neverForLocationSinceSdk31: boolean): AndroidManifest;
+export declare function addAdminBluetoothPermissionToManifest(androidManifest: AndroidManifest, canDiscover: boolean): AndroidManifest;
+export declare function addScanBluetoothPermissionToManifest(androidManifest: AndroidManifest, neverForLocation: boolean): AndroidManifest;
 /**
  * Mutates the given AndroidManifest to add the Bluetooth Low Energy (BLE) feature.
  * This is needed if the application always requires BLE.
@@ -55,12 +46,8 @@ export declare function addScanBluetoothPermissionToManifest(
  * @param {AndroidConfig.Manifest.AndroidManifest} androidManifest - The manifest of the Android project.
  * @returns {AndroidConfig.Manifest.AndroidManifest} - The updated AndroidManifest with required BLE feature added.
  */
-export declare function addBLEHardwareFeatureToManifest(
-  androidManifest: AndroidConfig.Manifest.AndroidManifest
-): AndroidConfig.Manifest.AndroidManifest;
-export declare function addConnectBluetoothPermissionToManifest(
-  androidManifest: AndroidConfig.Manifest.AndroidManifest
-): AndroidConfig.Manifest.AndroidManifest;
+export declare function addBLEHardwareFeatureToManifest(androidManifest: AndroidConfig.Manifest.AndroidManifest): AndroidConfig.Manifest.AndroidManifest;
+export declare function addConnectBluetoothPermissionToManifest(androidManifest: AndroidConfig.Manifest.AndroidManifest): AndroidConfig.Manifest.AndroidManifest;
 /**
  * Mutates the given AndroidManifest to add the 'BLUETOOTH_ADVERTISE' permission.
  *
@@ -72,7 +59,5 @@ export declare function addConnectBluetoothPermissionToManifest(
  *
  * @returns {AndroidConfig.Manifest.AndroidManifest} - The updated AndroidManifest with the Bluetooth advertise permissions added.
  */
-export declare function addBluetoothDiscoverablePermissionToManifest(
-  androidManifest: AndroidManifest
-): AndroidConfig.Manifest.AndroidManifest;
+export declare function addBluetoothDiscoverablePermissionToManifest(androidManifest: AndroidManifest): AndroidConfig.Manifest.AndroidManifest;
 export {};
