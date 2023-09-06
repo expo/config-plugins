@@ -12,7 +12,7 @@ const pkg = { name: "react-native-ble-plx", version: "UNVERSIONED" }; //require(
  */
 const withBLE = (config, props = {}) => {
     const _props = props || {};
-    const neverForLocation = _props.neverForLocation ?? false;
+    const neverForLocation = _props.neverForLocation ?? true;
     const isRequired = _props.isRequired ?? false;
     const canDiscover = _props.canDiscover ?? true;
     const isDiscoverable = _props.isDiscoverable ?? false;

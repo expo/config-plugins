@@ -42,7 +42,7 @@ The plugin provides props for extra customization. Every time you change the pro
 
 - `canConnect` (_boolean_): default:`true` - Specifies if your app requires the permission to connect to already-paired Bluetooth devices. If set to `true`, `android.permission.BLUETOOTH_CONNECT` will be added to `AndroidManifest.xml`.
 
-- `neverForLocation` (_boolean_): default:`false` - A flag you can set to `true` to assert that your app doesn't use BLE scan results to derive physical location. If `true`, `"android:usesPermissionFlags": "neverForLocation"` will be added to your `"android.permission.BLUETOOTH_SCAN"` declaration. Android SDK 31+. Default `false`. _WARNING: This parameter is experimental and BLE might not work. Make sure to test before releasing to production._
+- `neverForLocation` (_boolean_): default:`true` - A flag you can set to `true` to assert that your app doesn't use BLE scan results to derive physical location. If `true`, `"android:usesPermissionFlags": "neverForLocation"` will be added to your `"android.permission.BLUETOOTH_SCAN"` declaration. Android SDK 31+. Default `false`. _WARNING: This parameter is experimental and BLE might not work. Make sure to test before releasing to production._
 
 - `isDiscoverable` (_boolean_): default:`false` - Dictates whether or not your app is discoverable to other Bluetooth devices. If set to `true`, `android.permission.BLUETOOTH_ADVERTISE` will be added to `AndroidManifest.xml`.
 
