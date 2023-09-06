@@ -2,9 +2,11 @@ import { AndroidConfig, XML } from "@expo/config-plugins";
 import { resolve } from "path";
 
 import {
-  addLocationPermissionToManifest,
-  addScanPermissionToManifest,
+  addAdminBluetoothPermissionToManifest,
   addBLEHardwareFeatureToManifest,
+  addConnectBluetoothPermissionToManifest,
+  addLocationPermissionToManifest,
+  addScanBluetoothPermissionToManifest,
 } from "../withBLEAndroidManifest";
 
 const { readAndroidManifestAsync } = AndroidConfig.Manifest;
@@ -15,45 +17,49 @@ describe("addLocationPermissionToManifest", () => {
   it(`adds elements`, async () => {
     let androidManifest = await readAndroidManifestAsync(sampleManifestPath);
     androidManifest = addLocationPermissionToManifest(androidManifest, false);
-    expect(androidManifest.manifest["uses-permission-sdk-23"]).toContainEqual({
-      $: {
-        "android:name": "android.permission.ACCESS_COARSE_LOCATION",
-      },
-    });
-    expect(androidManifest.manifest["uses-permission-sdk-23"]).toContainEqual({
+
+    expect(androidManifest.manifest["uses-permission"]).toContainEqual({
       $: {
         "android:name": "android.permission.ACCESS_FINE_LOCATION",
       },
     });
-    // Sanity
+
     expect(XML.format(androidManifest)).toMatch(
-      /<uses-permission-sdk-23 android:name="android\.permission\.ACCESS_COARSE_LOCATION"\/>/
-    );
-    expect(XML.format(androidManifest)).toMatch(
-      /<uses-permission-sdk-23 android:name="android\.permission\.ACCESS_FINE_LOCATION"\/>/
+      /<uses-permission android:name="android\.permission\.ACCESS_FINE_LOCATION"\/>/
     );
   });
+
   it(`adds elements with SDK limit`, async () => {
     let androidManifest = await readAndroidManifestAsync(sampleManifestPath);
     androidManifest = addLocationPermissionToManifest(androidManifest, true);
-    expect(androidManifest.manifest["uses-permission-sdk-23"]).toContainEqual({
-      $: {
-        "android:name": "android.permission.ACCESS_COARSE_LOCATION",
-        "android:maxSdkVersion": "30",
-      },
-    });
-    expect(androidManifest.manifest["uses-permission-sdk-23"]).toContainEqual({
+
+    expect(androidManifest.manifest["uses-permission"]).toContainEqual({
       $: {
         "android:name": "android.permission.ACCESS_FINE_LOCATION",
         "android:maxSdkVersion": "30",
       },
     });
+
+    expect(XML.format(androidManifest)).toMatch(
+      /<uses-permission android:name="android\.permission\.ACCESS_FINE_LOCATION" android:maxSdkVersion="30"\/>/
+    );
+  });
+});
+
+describe("addConnectionPermissionToManifest", () => {
+  it(`adds element`, async () => {
+    let androidManifest = await readAndroidManifestAsync(sampleManifestPath);
+    androidManifest = addConnectBluetoothPermissionToManifest(androidManifest);
+
+    expect(androidManifest.manifest["uses-permission"]).toContainEqual({
+      $: {
+        "android:name": "android.permission.BLUETOOTH_CONNECT",
+      },
+    });
+
     // Sanity
     expect(XML.format(androidManifest)).toMatch(
-      /<uses-permission-sdk-23 android:name="android\.permission\.ACCESS_COARSE_LOCATION" android:maxSdkVersion="30"\/>/
-    );
-    expect(XML.format(androidManifest)).toMatch(
-      /<uses-permission-sdk-23 android:name="android\.permission\.ACCESS_FINE_LOCATION" android:maxSdkVersion="30"\/>/
+      /<uses-permission android:name="android\.permission\.BLUETOOTH_CONNECT"\/>/
     );
   });
 });
@@ -61,21 +67,31 @@ describe("addLocationPermissionToManifest", () => {
 describe("addScanPermissionToManifest", () => {
   it(`adds element`, async () => {
     let androidManifest = await readAndroidManifestAsync(sampleManifestPath);
-    androidManifest = addScanPermissionToManifest(androidManifest, false);
+    androidManifest = addScanBluetoothPermissionToManifest(
+      androidManifest,
+      false
+    );
+
     expect(androidManifest.manifest["uses-permission"]).toContainEqual({
       $: {
         "android:name": "android.permission.BLUETOOTH_SCAN",
         "tools:targetApi": "31",
       },
     });
+
     // Sanity
     expect(XML.format(androidManifest)).toMatch(
       /<uses-permission android:name="android\.permission\.BLUETOOTH_SCAN" tools:targetApi="31"\/>/
     );
   });
-  it(`adds element with 'neverForLocation' attribute`, async () => {
+
+  it(`adds element neverForLocation`, async () => {
     let androidManifest = await readAndroidManifestAsync(sampleManifestPath);
-    androidManifest = addScanPermissionToManifest(androidManifest, true);
+    androidManifest = addScanBluetoothPermissionToManifest(
+      androidManifest,
+      true
+    );
+
     expect(androidManifest.manifest["uses-permission"]).toContainEqual({
       $: {
         "android:name": "android.permission.BLUETOOTH_SCAN",
@@ -83,9 +99,49 @@ describe("addScanPermissionToManifest", () => {
         "tools:targetApi": "31",
       },
     });
+
     // Sanity
     expect(XML.format(androidManifest)).toMatch(
       /<uses-permission android:name="android\.permission\.BLUETOOTH_SCAN" android:usesPermissionFlags="neverForLocation" tools:targetApi="31"\/>/
+    );
+  });
+});
+
+describe("addAdminPermissionToManifest", () => {
+  it(`adds element`, async () => {
+    let androidManifest = await readAndroidManifestAsync(sampleManifestPath);
+    androidManifest = addAdminBluetoothPermissionToManifest(
+      androidManifest,
+      false
+    );
+
+    expect(androidManifest.manifest["uses-permission"]).toContainEqual({
+      $: {
+        "android:name": "android.permission.BLUETOOTH_ADMIN",
+        "android:maxSdkVersion": "30",
+      },
+    });
+
+    expect(XML.format(androidManifest)).toMatch(
+      /<uses-permission android:name="android\.permission\.BLUETOOTH_ADMIN" android:maxSdkVersion="30"\/>/
+    );
+  });
+
+  it("adds elmeent with canDiscover = true", async () => {
+    let androidManifest = await readAndroidManifestAsync(sampleManifestPath);
+    androidManifest = addAdminBluetoothPermissionToManifest(
+      androidManifest,
+      true
+    );
+
+    expect(androidManifest.manifest["uses-permission"]).toContainEqual({
+      $: {
+        "android:name": "android.permission.BLUETOOTH_ADMIN",
+      },
+    });
+
+    expect(XML.format(androidManifest)).toMatch(
+      /<uses-permission android:name="android\.permission\.BLUETOOTH_ADMIN"\/>/
     );
   });
 });

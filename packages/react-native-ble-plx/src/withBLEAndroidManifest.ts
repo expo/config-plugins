@@ -1,7 +1,7 @@
 import {
+  AndroidConfig,
   ConfigPlugin,
   withAndroidManifest,
-  AndroidConfig,
 } from "expo/config-plugins";
 
 type InnerManifest = AndroidConfig.Manifest.AndroidManifest["manifest"];
@@ -27,130 +27,255 @@ type AndroidManifest = {
   };
 };
 
+/**
+ * Check if a certain permission exists on the manifest
+ * @param {AndroidManifest} androidManifest - The AndroidManifest object
+ * @param {string} permissionName - The permission to look for
+ * @return {boolean}
+ */
+function isPermissionInManifest(
+  androidManifest: AndroidManifest,
+  permissionName: string
+): boolean {
+  if (Array.isArray(androidManifest.manifest["uses-permission"])) {
+    const foundInUsesPermission = androidManifest.manifest[
+      "uses-permission"
+    ].find((item) => item.$["android:name"] === permissionName);
+
+    if (foundInUsesPermission) {
+      return true;
+    }
+  }
+
+  if (Array.isArray(androidManifest.manifest["uses-permission-sdk-23"])) {
+    const foundInUsesPermissionSDK23 = androidManifest.manifest[
+      "uses-permission-sdk-23"
+    ].find((item) => item.$["android:name"] === permissionName);
+
+    if (foundInUsesPermissionSDK23) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+/**
+ * Check if a certain permission exists on the manifest, add if not
+ * @param {AndroidManifest} androidManifest - The AndroidManifest object
+ * @param {string} permissionName - The permission to look for
+ * @param {ManifestUsesPermissionWithExtraTools} permissions - Permissions details
+ * @return {AndroidManifest}
+ */
+function addPermissionToManifestIfNotExists(
+  androidManifest: AndroidManifest,
+  permissionName: string,
+  permissions: AndroidConfig.Manifest.ManifestUsesPermission["$"] & ExtraTools
+): AndroidManifest {
+  const doesPermissionExist = isPermissionInManifest(
+    androidManifest,
+    permissionName
+  );
+
+  if (!doesPermissionExist) {
+    androidManifest.manifest["uses-permission"] =
+      androidManifest.manifest["uses-permission"] || [];
+    androidManifest.manifest["uses-permission"].push({ $: permissions });
+  }
+
+  return androidManifest;
+}
+
 export const withBLEAndroidManifest: ConfigPlugin<{
-  isBackgroundEnabled: boolean;
   neverForLocation: boolean;
-}> = (config, { isBackgroundEnabled, neverForLocation }) => {
+  isRequired: boolean;
+  canDiscover: boolean;
+  isDiscoverable: boolean;
+  canConnect: boolean;
+}> = (
+  config,
+  { neverForLocation, canDiscover, isRequired, isDiscoverable, canConnect }
+) => {
   return withAndroidManifest(config, (config) => {
     config.modResults = addLocationPermissionToManifest(
       config.modResults,
       neverForLocation
     );
-    config.modResults = addScanPermissionToManifest(
+    config.modResults = addScanBluetoothPermissionToManifest(
       config.modResults,
       neverForLocation
     );
-    if (isBackgroundEnabled) {
+
+    config.modResults = addAdminBluetoothPermissionToManifest(
+      config.modResults,
+      canDiscover
+    );
+    if (isRequired) {
       config.modResults = addBLEHardwareFeatureToManifest(config.modResults);
     }
+
+    if (canConnect) {
+      config.modResults = addConnectBluetoothPermissionToManifest(
+        config.modResults
+      );
+    }
+
+    if (isDiscoverable) {
+      config.modResults = addBluetoothDiscoverablePermissionToManifest(
+        config.modResults
+      );
+    }
+
+    // Add 'android.permission.BLUETOOTH' to the AndroidManifest if it doesn't exist
+    // This permission is required for compatibility with older Android devices
+    config.modResults = addPermissionToManifestIfNotExists(
+      config.modResults,
+      "android.permission.BLUETOOTH",
+      {
+        "android:name": "android.permission.BLUETOOTH",
+        ...{ "android:maxSdkVersion": "30" },
+      }
+    );
+
     return config;
   });
 };
 
 /**
- * Add location permissions
- *  - 'android.permission.ACCESS_COARSE_LOCATION' for Android SDK 28 (Android 9) and lower
- *  - 'android.permission.ACCESS_FINE_LOCATION' for Android SDK 29 (Android 10) and higher.
- *    From Android SDK 31 (Android 12) it might not be required if BLE is not used for location.
+ * Mutates the given AndroidManifest to add necessary location permissions.
+ *
+ * @param {AndroidManifest} androidManifest - The manifest of the Android project.
+ * @param {boolean} neverForLocationSinceSdk31 - Flag to control if location permission is required for Android SDK 31 and higher.
+ *                                               If flag is set, 'ACCESS_FINE_LOCATION' only applies to SDK 30 and lower, else it applies to all.
+ *
+ * 'android.permission.ACCESS_FINE_LOCATION' is included for Android SDK 29 (Android 10) and higher.
+ * However, from Android SDK 31 (Android 12) onwards, it might not be necessary if BLE is not used for location.
+ * More details can be found on: https://developer.android.com/guide/topics/connectivity/bluetooth/permissions#declare-android11-or-lower
+ *
+ * @returns {AndroidManifest} - The updated AndroidManifest with the necessary location permissions added.
  */
 export function addLocationPermissionToManifest(
   androidManifest: AndroidManifest,
   neverForLocationSinceSdk31: boolean
-) {
-  if (!Array.isArray(androidManifest.manifest["uses-permission-sdk-23"])) {
-    androidManifest.manifest["uses-permission-sdk-23"] = [];
-  }
-
-  const optMaxSdkVersion = neverForLocationSinceSdk31
-    ? {
-        "android:maxSdkVersion": "30",
-      }
+): AndroidManifest {
+  // The 'ACCESS_FINE_LOCATION' permission is optional from Android SDK 31 (Android 12) onwards when BLE is not used for location
+  const optionalMaxVersion = neverForLocationSinceSdk31
+    ? { "android:maxSdkVersion": "30" }
     : {};
 
-  if (
-    !androidManifest.manifest["uses-permission-sdk-23"].find(
-      (item) =>
-        item.$["android:name"] === "android.permission.ACCESS_COARSE_LOCATION"
-    )
-  ) {
-    androidManifest.manifest["uses-permission-sdk-23"].push({
-      $: {
-        "android:name": "android.permission.ACCESS_COARSE_LOCATION",
-        ...optMaxSdkVersion,
-      },
-    });
-  }
+  // Add 'android.permission.ACCESS_FINE_LOCATION' to the AndroidManifest if it doesn't exist
+  return addPermissionToManifestIfNotExists(
+    androidManifest,
+    "android.permission.ACCESS_FINE_LOCATION",
+    {
+      "android:name": "android.permission.ACCESS_FINE_LOCATION",
+      ...optionalMaxVersion,
+    }
+  );
+}
 
-  if (
-    !androidManifest.manifest["uses-permission-sdk-23"].find(
-      (item) =>
-        item.$["android:name"] === "android.permission.ACCESS_FINE_LOCATION"
-    )
-  ) {
-    androidManifest.manifest["uses-permission-sdk-23"].push({
-      $: {
-        "android:name": "android.permission.ACCESS_FINE_LOCATION",
-        ...optMaxSdkVersion,
-      },
-    });
-  }
+export function addAdminBluetoothPermissionToManifest(
+  androidManifest: AndroidManifest,
+  canDiscover: boolean
+) {
+  // Add 'android.permission.BLUETOOTH_ADMIN' to the manifest.
+  // If 'canDiscover' is true, this permission is not restricted to older devices
+  // Need to add permission to support older devices
+  return addPermissionToManifestIfNotExists(
+    androidManifest,
+    "android.permission.BLUETOOTH_ADMIN",
+    {
+      "android:name": "android.permission.BLUETOOTH_ADMIN",
+      ...(canDiscover ? {} : { "android:maxSdkVersion": "30" }),
+    }
+  );
+}
 
-  return androidManifest;
+export function addScanBluetoothPermissionToManifest(
+  androidManifest: AndroidManifest,
+  neverForLocation: boolean
+): AndroidManifest {
+  // Add 'android.permission.BLUETOOTH_SCAN' to the AndroidManifest if it doesn't exist
+  return addPermissionToManifestIfNotExists(
+    androidManifest,
+    "android.permission.BLUETOOTH_SCAN",
+    {
+      "android:name": "android.permission.BLUETOOTH_SCAN",
+      ...(neverForLocation
+        ? { "android:usesPermissionFlags": "neverForLocation" }
+        : {}),
+      "tools:targetApi": "31",
+    }
+  );
 }
 
 /**
- * Add 'android.permission.BLUETOOTH_SCAN'.
- * Required since Android SDK 31 (Android 12).
+ * Mutates the given AndroidManifest to add the Bluetooth Low Energy (BLE) feature.
+ * This is needed if the application always requires BLE.
+ * More info on permissions involving BLE can be found here: https://developer.android.com/guide/topics/connectivity/bluetooth-le.html#permissions
+ *
+ * @param {AndroidConfig.Manifest.AndroidManifest} androidManifest - The manifest of the Android project.
+ * @returns {AndroidConfig.Manifest.AndroidManifest} - The updated AndroidManifest with required BLE feature added.
  */
-export function addScanPermissionToManifest(
-  androidManifest: AndroidManifest,
-  neverForLocation: boolean
-) {
-  if (!Array.isArray(androidManifest.manifest["uses-permission"])) {
-    androidManifest.manifest["uses-permission"] = [];
-  }
-
-  if (
-    !androidManifest.manifest["uses-permission"].find(
-      (item) => item.$["android:name"] === "android.permission.BLUETOOTH_SCAN"
-    )
-  ) {
-    AndroidConfig.Manifest.ensureToolsAvailable(androidManifest);
-    androidManifest.manifest["uses-permission"]?.push({
-      $: {
-        "android:name": "android.permission.BLUETOOTH_SCAN",
-        ...(neverForLocation
-          ? {
-              "android:usesPermissionFlags": "neverForLocation",
-            }
-          : {}),
-        "tools:targetApi": "31",
-      },
-    });
-  }
-  return androidManifest;
-}
-
-// Add this line if your application always requires BLE. More info can be found on: https://developer.android.com/guide/topics/connectivity/bluetooth-le.html#permissions
 export function addBLEHardwareFeatureToManifest(
   androidManifest: AndroidConfig.Manifest.AndroidManifest
-) {
-  // Add `<uses-feature android:name="android.hardware.bluetooth_le" android:required="true"/>` to the AndroidManifest.xml
+): AndroidConfig.Manifest.AndroidManifest {
+  // Check if 'uses-feature' array exists in the AndroidManifest, if not, initialize it
   if (!Array.isArray(androidManifest.manifest["uses-feature"])) {
     androidManifest.manifest["uses-feature"] = [];
   }
 
-  if (
-    !androidManifest.manifest["uses-feature"].find(
-      (item) => item.$["android:name"] === "android.hardware.bluetooth_le"
-    )
-  ) {
-    androidManifest.manifest["uses-feature"]?.push({
+  // Check if the 'uses-feature' for "android.hardware.bluetooth_le" has already been declared, if not, declare it
+  const isBleFeatureDeclared = androidManifest.manifest["uses-feature"].find(
+    (item) => item.$["android:name"] === "android.hardware.bluetooth_le"
+  );
+
+  // If 'android.hardware.bluetooth_le' feature is not declared, we add it into the AndroidManifest
+  if (!isBleFeatureDeclared) {
+    androidManifest.manifest["uses-feature"].push({
       $: {
         "android:name": "android.hardware.bluetooth_le",
-        "android:required": "true",
+        "android:required": "true", // Set as a required feature
       },
     });
   }
+
+  // Return the updated AndroidManifest
   return androidManifest;
+}
+
+export function addConnectBluetoothPermissionToManifest(
+  androidManifest: AndroidConfig.Manifest.AndroidManifest
+): AndroidConfig.Manifest.AndroidManifest {
+  return addPermissionToManifestIfNotExists(
+    androidManifest,
+    "android.permission.BLUETOOTH_CONNECT",
+    {
+      "android:name": "android.permission.BLUETOOTH_CONNECT",
+    }
+  );
+}
+
+/**
+ * Mutates the given AndroidManifest to add the 'BLUETOOTH_ADVERTISE' permission.
+ *
+ * @param {AndroidManifest} androidManifest - The manifest of the Android project.
+ *
+ * This function adds 'android.permission.BLUETOOTH_ADVERTISE' to the AndroidManifest if it doesn't exist.
+ * This permission is needed if your app makes the device discoverable to other Bluetooth devices. It allows the app
+ * to broadcast that it's open for connections to other devices that are scanning for advertisements.
+ *
+ * @returns {AndroidConfig.Manifest.AndroidManifest} - The updated AndroidManifest with the Bluetooth advertise permissions added.
+ */
+export function addBluetoothDiscoverablePermissionToManifest(
+  androidManifest: AndroidManifest
+): AndroidConfig.Manifest.AndroidManifest {
+  // Add 'android.permission.BLUETOOTH_ADVERTISE' to the AndroidManifest if it doesn't exist
+  return addPermissionToManifestIfNotExists(
+    androidManifest,
+    "android.permission.BLUETOOTH_ADVERTISE",
+    {
+      "android:name": "android.permission.BLUETOOTH_ADVERTISE",
+    }
+  );
 }

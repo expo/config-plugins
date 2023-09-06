@@ -1,5 +1,4 @@
 import {
-  AndroidConfig,
   ConfigPlugin,
   createRunOncePlugin,
   WarningAggregator,
@@ -19,15 +18,23 @@ const pkg = { name: "react-native-ble-plx", version: "UNVERSIONED" }; //require(
  */
 const withBLE: ConfigPlugin<
   {
-    isBackgroundEnabled?: boolean;
     neverForLocation?: boolean;
     modes?: BackgroundMode[];
     bluetoothAlwaysPermission?: string | false;
+
+    isRequired?: boolean;
+    canDiscover?: boolean;
+    isDiscoverable?: boolean;
+    canConnect?: boolean;
   } | void
 > = (config, props = {}) => {
   const _props = props || {};
-  const isBackgroundEnabled = _props.isBackgroundEnabled ?? false;
+
   const neverForLocation = _props.neverForLocation ?? false;
+  const isRequired = _props.isRequired ?? false;
+  const canDiscover = _props.canDiscover ?? true;
+  const isDiscoverable = _props.isDiscoverable ?? false;
+  const canConnect = _props.canConnect ?? true;
 
   if ("bluetoothPeripheralPermission" in _props) {
     WarningAggregator.addWarningIOS(
@@ -36,19 +43,23 @@ const withBLE: ConfigPlugin<
     );
   }
 
+  if ("isBackgroundEnabled" in _props) {
+    WarningAggregator.addWarningAndroid(
+      "isBackgroundEnabled",
+      "This propery name has changed. You should use isRequired, as better matches the behavior."
+    );
+  }
+
   // iOS
   config = withBluetoothPermissions(config, _props);
   config = withBLEBackgroundModes(config, _props.modes || []);
 
-  // Android
-  config = AndroidConfig.Permissions.withPermissions(config, [
-    "android.permission.BLUETOOTH",
-    "android.permission.BLUETOOTH_ADMIN",
-    "android.permission.BLUETOOTH_CONNECT", // since Android SDK 31
-  ]);
   config = withBLEAndroidManifest(config, {
-    isBackgroundEnabled,
     neverForLocation,
+    isRequired,
+    canDiscover,
+    isDiscoverable,
+    canConnect,
   });
 
   return config;

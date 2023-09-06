@@ -12,23 +12,26 @@ const pkg = { name: "react-native-ble-plx", version: "UNVERSIONED" }; //require(
  */
 const withBLE = (config, props = {}) => {
     const _props = props || {};
-    const isBackgroundEnabled = _props.isBackgroundEnabled ?? false;
     const neverForLocation = _props.neverForLocation ?? false;
+    const isRequired = _props.isRequired ?? false;
+    const canDiscover = _props.canDiscover ?? true;
+    const isDiscoverable = _props.isDiscoverable ?? false;
+    const canConnect = _props.canConnect ?? true;
     if ("bluetoothPeripheralPermission" in _props) {
         config_plugins_1.WarningAggregator.addWarningIOS("bluetoothPeripheralPermission", `The iOS permission \`NSBluetoothPeripheralUsageDescription\` is fully deprecated as of iOS 13 (lowest iOS version in Expo SDK 47+). Remove the \`bluetoothPeripheralPermission\` property from the \`@config-plugins/react-native-ble-plx\` config plugin.`);
+    }
+    if ("isBackgroundEnabled" in _props) {
+        config_plugins_1.WarningAggregator.addWarningAndroid("isBackgroundEnabled", "This propery name has changed. You should use isRequired, as better matches the behavior.");
     }
     // iOS
     config = (0, withBluetoothPermissions_1.withBluetoothPermissions)(config, _props);
     config = (0, withBLEBackgroundModes_1.withBLEBackgroundModes)(config, _props.modes || []);
-    // Android
-    config = config_plugins_1.AndroidConfig.Permissions.withPermissions(config, [
-        "android.permission.BLUETOOTH",
-        "android.permission.BLUETOOTH_ADMIN",
-        "android.permission.BLUETOOTH_CONNECT", // since Android SDK 31
-    ]);
     config = (0, withBLEAndroidManifest_1.withBLEAndroidManifest)(config, {
-        isBackgroundEnabled,
         neverForLocation,
+        isRequired,
+        canDiscover,
+        isDiscoverable,
+        canConnect,
     });
     return config;
 };

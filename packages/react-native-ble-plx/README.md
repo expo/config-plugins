@@ -27,12 +27,24 @@ Next, rebuild your app as described in the ["Adding custom native code"](https:/
 
 ## API
 
+### iOS options
+
 The plugin provides props for extra customization. Every time you change the props or plugins, you'll need to rebuild (and `prebuild`) the native app. If no extra properties are added, defaults will be used.
 
-- `isBackgroundEnabled` (_boolean_): Enable background BLE support on Android. Adds `<uses-feature android:name="android.hardware.bluetooth_le" android:required="true"/>` to the `AndroidManifest.xml`. Default `false`.
-- `neverForLocation` (_boolean_): Set to true only if you can strongly assert that your app never derives physical location from Bluetooth scan results. The location permission will be still required on older Android devices. Note, that some BLE beacons are filtered from the scan results. Android SDK 31+. Default `false`. _WARNING: This parameter is experimental and BLE might not work. Make sure to test before releasing to production._
 - `modes` (_string[]_): Adds iOS `UIBackgroundModes` to the `Info.plist`. Options are: `peripheral`, and `central`. Defaults to undefined.
 - `bluetoothAlwaysPermission` (_string | false_): Sets the iOS `NSBluetoothAlwaysUsageDescription` permission message to the `Info.plist`. Setting `false` will skip adding the permission. Defaults to `Allow $(PRODUCT_NAME) to connect to bluetooth devices`.
+
+### Android options
+
+- `neverForLocation` (_boolean_): default:`false` - A flag you can set to `true` to assert that your app doesn't use BLE scan results to derive physical location. If `true`, `"android:usesPermissionFlags": "neverForLocation"` will be added to your `"android.permission.BLUETOOTH_SCAN"` declaration. Android SDK 31+. Default `false`. _WARNING: This parameter is experimental and BLE might not work. Make sure to test before releasing to production._
+
+- `isRequired` (_boolean_): default:`false` - Determines whether or not your app requires Bluetooth to function. If set to `true`, `<uses-feature android:name="android.hardware.bluetooth" android:required="true"/>` will be added to the `AndroidManifest.xml`.
+
+- `canDiscover` (_boolean_): default:`true` - Indicates whether your app should have the permission to discover other Bluetooth devices. If set to `true`, `android.permission.BLUETOOTH_ADMIN` and `android.permission.BLUETOOTH` are added with specific `android:maxSdkVersion` conditionally based on your settings.
+
+- `isDiscoverable` (_boolean_): default:`false` - Dictates whether or not your app is discoverable to other Bluetooth devices. If set to `true`, `android.permission.BLUETOOTH_ADVERTISE` will be added to `AndroidManifest.xml`.
+
+- `canConnect` (_boolean_): default:`true` - Specifies if your app requires the permission to connect to already-paired Bluetooth devices. If set to `true`, `android.permission.BLUETOOTH_CONNECT` will be added to `AndroidManifest.xml`.
 
 > Expo SDK 48 supports iOS 13+ which means `NSBluetoothPeripheralUsageDescription` is fully deprecated. It is no longer setup in `@config-plugins/react-native-ble-plx@5.0.0` and greater.
 
@@ -45,9 +57,11 @@ The plugin provides props for extra customization. Every time you change the pro
       [
         "@config-plugins/react-native-ble-plx",
         {
-          "isBackgroundEnabled": true,
+          
           "modes": ["peripheral", "central"],
-          "bluetoothAlwaysPermission": "Allow $(PRODUCT_NAME) to connect to bluetooth devices"
+          "bluetoothAlwaysPermission": "Allow $(PRODUCT_NAME) to connect to bluetooth devices",
+          "neverForLocation": false,
+          "isRequired": true,
         }
       ]
     ]
