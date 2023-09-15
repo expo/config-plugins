@@ -9,7 +9,7 @@ import io.branch.rnbranch.RNBranchModule
 
 
 class BranchReactActivityLifecycleListener(activityContext: Context) : ReactActivityLifecycleListener {
-    override fun onCreate(activity: Activity, savedInstanceState: Bundle?) {
+    override fun onResume(activity: Activity) {
         RNBranchModule.initSession(activity.getIntent().getData(), activity);
     }
 
