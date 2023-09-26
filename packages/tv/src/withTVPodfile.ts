@@ -42,7 +42,7 @@ export const withTVPodfile: ConfigPlugin<ConfigData> = (c, params = {}) => {
 
 const MOD_TAG = "react-native-tvos-import";
 
-function removeTVPodfileModifications(src: string): string {
+export function removeTVPodfileModifications(src: string): string {
   if (src.indexOf("platform :tvos") === -1) {
     return src;
   }
@@ -57,7 +57,7 @@ function removeTVPodfileModifications(src: string): string {
   return newSrc;
 }
 
-function addTVPodfileModifications(src: string): string {
+export function addTVPodfileModifications(src: string): string {
   if (src.indexOf("platform :tvos") !== -1) {
     return src;
   }
@@ -66,7 +66,7 @@ function addTVPodfileModifications(src: string): string {
     src,
     newSrc:
       "source 'https://github.com/react-native-tvos/react-native-tvos-podspecs.git'\nsource 'https://cdn.cocoapods.org/'\n",
-    anchor: "require File.join",
+    anchor: /^/,
     offset: 0,
     comment: "#",
   }).contents;

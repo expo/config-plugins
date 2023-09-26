@@ -77,7 +77,7 @@ function modifySource(
   return modifiedSource;
 }
 
-function addTVSplashScreenModifications(src: string): string {
+export function addTVSplashScreenModifications(src: string): string {
   return modifySource(
     src,
     splashScreenStringsForPhone,
@@ -85,7 +85,7 @@ function addTVSplashScreenModifications(src: string): string {
   );
 }
 
-function removeTVSplashScreenModifications(src: string): string {
+export function removeTVSplashScreenModifications(src: string): string {
   return modifySource(
     src,
     splashScreenStringsForTV,
