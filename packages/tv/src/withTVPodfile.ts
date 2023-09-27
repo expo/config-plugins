@@ -13,15 +13,13 @@ import path from "path";
 import { ConfigData } from "./types";
 import { isTVEnabled, showVerboseWarnings } from "./utils";
 
+const pkg = require("../package.json");
+
 /** Dangerously makes or reverts TV changes in the project Podfile. */
 export const withTVPodfile: ConfigPlugin<ConfigData> = (c, params = {}) => {
   const isTV = isTVEnabled(params);
-  if (showVerboseWarnings(params)) {
-    WarningAggregator.addWarningIOS(
-      "ios.podfile",
-      `@config-plugins/tv: modifying Podfile for ${isTV ? "tvOS" : "iOS"}`
-    );
-  }
+  const verbose = showVerboseWarnings(params);
+
   return withDangerousMod(c, [
     "ios",
     // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
@@ -34,7 +32,17 @@ export const withTVPodfile: ConfigPlugin<ConfigData> = (c, params = {}) => {
         ? addTVPodfileModifications(contents)
         : removeTVPodfileModifications(contents);
 
-      await promises.writeFile(file, modifiedContents, "utf-8");
+      if (modifiedContents !== contents) {
+        if (verbose) {
+          WarningAggregator.addWarningIOS(
+            "podfile",
+            `${pkg.name}@${pkg.version}: modifying Podfile for ${
+              isTV ? "tvOS" : "iOS"
+            }`
+          );
+        }
+        await promises.writeFile(file, modifiedContents, "utf-8");
+      }
       return config;
     },
   ]);

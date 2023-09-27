@@ -9,21 +9,19 @@ import {
 import { ConfigData } from "./types";
 import { isTVEnabled, showVerboseWarnings } from "./utils";
 
+const pkg = require("../package.json");
+
 export const withTVXcodeProject: ConfigPlugin<ConfigData> = (
   config,
   params
 ) => {
   const isTV = isTVEnabled(params);
-  if (showVerboseWarnings(params)) {
-    WarningAggregator.addWarningIOS(
-      "ios.xcodeproject",
-      `@config-plugins/tv: modifying Xcode project for ${isTV ? "tvOS" : "iOS"}`
-    );
-  }
+  const verbose = showVerboseWarnings(params);
   return withXcodeProject(config, async (config) => {
     config.modResults = await setXcodeProjectBuildSettings(config, {
       project: config.modResults,
       isTV,
+      verbose,
     });
     return config;
   });
@@ -31,7 +29,11 @@ export const withTVXcodeProject: ConfigPlugin<ConfigData> = (
 
 export function setXcodeProjectBuildSettings(
   config: Pick<ExpoConfig, "ios">,
-  { project, isTV }: { project: XcodeProject; isTV: boolean }
+  {
+    project,
+    isTV,
+    verbose,
+  }: { project: XcodeProject; isTV: boolean; verbose: boolean }
 ): XcodeProject {
   const deviceFamilies = formatDeviceFamilies(getDeviceFamilies(config));
   const configurations = project.pbxXCBuildConfigurationSection();
@@ -40,14 +42,28 @@ export function setXcodeProjectBuildSettings(
     // Guessing that this is the best way to emulate Xcode.
     // Using `project.addToBuildSettings` modifies too many targets.
     if (typeof buildSettings?.PRODUCT_NAME !== "undefined") {
-      if (isTV) {
+      if (isTV && buildSettings.TARGETED_DEVICE_FAMILY !== "3") {
+        if (verbose) {
+          WarningAggregator.addWarningIOS(
+            "xcodeproject",
+            `${pkg.name}@${pkg.version}: modifying target ${
+              buildSettings?.PRODUCT_NAME
+            } for ${isTV ? "tvOS" : "iOS"}`
+          );
+        }
         buildSettings.TARGETED_DEVICE_FAMILY = "3";
         buildSettings.TVOS_DEPLOYMENT_TARGET = "13.0";
         buildSettings.SDKROOT = "appletvos";
         if (typeof buildSettings?.IOS_DEPLOYMENT_TARGET !== "undefined") {
           delete buildSettings?.IOS_DEPLOYMENT_TARGET;
         }
-      } else {
+      } else if (!isTV && buildSettings.TARGETED_DEVICE_FAMILY === "3") {
+        WarningAggregator.addWarningIOS(
+          "xcodeproject",
+          `${pkg.name}@${pkg.version}: modifying target ${
+            buildSettings?.PRODUCT_NAME
+          } for ${isTV ? "tvOS" : "iOS"}`
+        );
         buildSettings.TARGETED_DEVICE_FAMILY = deviceFamilies;
         buildSettings.IOS_DEPLOYMENT_TARGET = "13.0";
         buildSettings.SDKROOT = "iphoneos";

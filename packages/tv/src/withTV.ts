@@ -13,9 +13,6 @@ const withTVPlugin: ConfigPlugin<ConfigData> = (config, params = {}) => {
   return config;
 };
 
-const pkg = {
-  name: "tv",
-  version: "UNVERSIONED",
-};
+const pkg = require("../package.json");
 
 export default createRunOncePlugin(withTVPlugin, pkg.name, pkg.version);

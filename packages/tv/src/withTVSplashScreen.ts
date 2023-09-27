@@ -9,20 +9,15 @@ import path from "path";
 import { ConfigData } from "./types";
 import { isTVEnabled, showVerboseWarnings } from "./utils";
 
+const pkg = require("../package.json");
+
 /** Dangerously modifies or reverts changes needed for TV in SplashScreen.storyboard. */
 export const withTVSplashScreen: ConfigPlugin<ConfigData> = (
   config,
   params = {}
 ) => {
   const isTV = isTVEnabled(params);
-  if (showVerboseWarnings(params)) {
-    WarningAggregator.addWarningIOS(
-      "ios.splashscreen",
-      `@config-plugins/tv: modifying SplashScreen.storyboard for ${
-        isTV ? "tvOS" : "iOS"
-      }`
-    );
-  }
+  const verbose = showVerboseWarnings(params);
 
   return withDangerousMod(config, [
     "ios",
@@ -43,7 +38,17 @@ export const withTVSplashScreen: ConfigPlugin<ConfigData> = (
         ? addTVSplashScreenModifications(contents)
         : removeTVSplashScreenModifications(contents);
 
-      await promises.writeFile(file, modifiedContents, "utf-8");
+      if (modifiedContents !== contents) {
+        if (verbose) {
+          WarningAggregator.addWarningIOS(
+            "splashscreen",
+            `${pkg.name}@${
+              pkg.version
+            }:: modifying SplashScreen.storyboard for ${isTV ? "tvOS" : "iOS"}`
+          );
+        }
+        await promises.writeFile(file, modifiedContents, "utf-8");
+      }
       return config;
     },
   ]);
