@@ -60,7 +60,9 @@ export function removeTVPodfileModifications(src: string): string {
     tag: MOD_TAG,
   }).contents;
   if (!newSrc) {
-    throw new Error();
+    throw new Error(
+      `${pkg.name}@${pkg.version}: Error in removing TV modifications from Podfile. Recommend running "npx expo prebuild --clean"`
+    );
   }
   return newSrc;
 }

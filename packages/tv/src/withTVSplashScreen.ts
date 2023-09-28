@@ -24,7 +24,9 @@ export const withTVSplashScreen: ConfigPlugin<ConfigData> = (
     // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
     async (config) => {
       if (!config.modRequest.projectName) {
-        throw new Error("No project name");
+        throw new Error(
+          `The ${pkg.name}@${pkg.version} plugin requires a configured project name.`
+        );
       }
       const file = path.join(
         config.modRequest.platformProjectRoot,
