@@ -1250,10 +1250,10 @@
     "@babel/helper-validator-identifier" "^7.22.5"
     to-fast-properties "^2.0.0"
 
-"@bacons/xcode@^1.0.0-alpha.5":
-  version "1.0.0-alpha.5"
-  resolved "https://registry.yarnpkg.com/@bacons/xcode/-/xcode-1.0.0-alpha.5.tgz#18247f4e402071a8a320d914df3a329cf2b1363c"
-  integrity sha512-YgK5a83iCV37OK8GLac3Z0Ibwv61/RSmB9CYVGe5Z6d/g8ayC8wQrxe/XDT448fiGxLNcY3p48R1NdNbtwbrzQ==
+"@bacons/xcode@^1.0.0-alpha.6":
+  version "1.0.0-alpha.6"
+  resolved "https://registry.yarnpkg.com/@bacons/xcode/-/xcode-1.0.0-alpha.6.tgz#a4c2d1ef7894e452d25328a10432ee7052593b53"
+  integrity sha512-PRZS5gABunNJJvaxtHkOQvW63zS2zcZNWDxpsO4zRPR65usEWl2D1SPZ/3LZUuBmvcbQUOoCQjAw7hC3/kufWQ==
   dependencies:
     "@expo/plist" "^0.0.18"
     debug "^4.3.4"
@@ -3493,6 +3493,13 @@
   integrity sha512-v4Vwdko+pgymgS+A2UIaJru93zQd85vIGWObM5ekZNdXCKtDYqATlEYnWgfo86Q6I1Lh0oXnksDnMU1cwmlPDw==
   dependencies:
     "@babel/types" "^7.3.0"
+
+"@types/getenv@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@types/getenv/-/getenv-1.0.1.tgz#8af7875951d0c7371579dbb6df58228cf8695f36"
+  integrity sha512-wEibX1AwJNToJm0sSEXbkpngDYrOaS0F1MkfwNJhHR8tIVrRAIah1+PzYRtNae5Ci9jAijrbJfKC6QEbtIVMag==
+  dependencies:
+    "@types/node" "*"
 
 "@types/glob@^7.1.1", "@types/glob@^7.1.3":
   version "7.2.0"

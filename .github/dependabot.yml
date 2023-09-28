@@ -101,3 +101,9 @@ updates:
       interval: daily
       time: '09:00'
       timezone: America/Los_Angeles
+  - package-ecosystem: npm
+    directory: packages/tv
+    schedule:
+      interval: daily
+      time: '09:00'
+      timezone: America/Los_Angeles
