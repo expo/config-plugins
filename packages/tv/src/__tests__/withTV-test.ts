@@ -58,21 +58,21 @@ const originalSplashScreen = `
 `;
 
 describe("withTV tests", () => {
-  test("Test add TV Podfile changes", () => {
+  test("Add TV Podfile changes", () => {
     const modifiedPodfile = addTVPodfileModifications(originalPodfile);
     expect(modifiedPodfile).toMatchSnapshot();
   });
-  test("Test revert TV podfile changes", () => {
+  test("Revert TV podfile changes", () => {
     const modifiedPodfile = addTVPodfileModifications(originalPodfile);
     const revertedPodfile = removeTVPodfileModifications(modifiedPodfile);
     expect(revertedPodfile).toEqual(originalPodfile);
   });
-  test("Test add TV splash screen changes", () => {
+  test("Add TV splash screen changes", () => {
     const modifiedSplashScreen =
       addTVSplashScreenModifications(originalSplashScreen);
     expect(modifiedSplashScreen).toMatchSnapshot();
   });
-  test("Test revert TV splash screen changes", () => {
+  test("Revert TV splash screen changes", () => {
     const modifiedSplashScreen =
       addTVSplashScreenModifications(originalSplashScreen);
     const revertedSplashScreen =
