@@ -6,6 +6,10 @@
   "types": "build/withTV.d.ts",
   "sideEffects": false,
   "license": "MIT",
+  "files": [
+    "build",
+    "app.plugin.js"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/expo/config-plugins.git",
@@ -32,7 +36,6 @@
     "expo": "^50"
   },
   "devDependencies": {
-    "@types/getenv": "^1.0.1",
     "expo-module-scripts": "^3.0.3"
   },
   "upstreamPackage": "tv",

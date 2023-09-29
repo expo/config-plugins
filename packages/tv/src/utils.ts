@@ -1,3 +1,4 @@
+// @ts-expect-error
 import { boolish } from "getenv";
 
 import { ConfigData } from "./types";
