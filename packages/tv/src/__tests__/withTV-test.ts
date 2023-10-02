@@ -1,3 +1,10 @@
+import { AndroidConfig } from "@expo/config-plugins";
+import { resolve } from "path";
+
+import {
+  removePortraitOrientation,
+  setLeanBackLauncherIntent,
+} from "../withTVAndroidManifest";
 import {
   addTVPodfileModifications,
   removeTVPodfileModifications,
@@ -6,6 +13,20 @@ import {
   addTVSplashScreenModifications,
   removeTVSplashScreenModifications,
 } from "../withTVSplashScreen";
+
+const { readAndroidManifestAsync } = AndroidConfig.Manifest;
+
+const sampleManifestPath = resolve(
+  __dirname,
+  "./fixtures",
+  "react-native-AndroidManifest.xml"
+);
+
+const sampleManifestWithNoMainIntentPath = resolve(
+  __dirname,
+  "./fixtures",
+  "react-native-AndroidManifestWithNoMainIntent.xml"
+);
 
 const originalPodfile = `
 require 'json'
@@ -57,7 +78,7 @@ const originalSplashScreen = `
 </document>
 `;
 
-describe("withTV tests", () => {
+describe("withTV iOS/tvOS tests", () => {
   test("Add TV Podfile changes", () => {
     const modifiedPodfile = addTVPodfileModifications(originalPodfile);
     expect(modifiedPodfile).toMatchSnapshot();
@@ -78,5 +99,60 @@ describe("withTV tests", () => {
     const revertedSplashScreen =
       removeTVSplashScreenModifications(modifiedSplashScreen);
     expect(revertedSplashScreen).toEqual(originalSplashScreen);
+  });
+});
+
+describe("with TV Android tests", () => {
+  test("Adds leanback launcher intent category for TV builds", async () => {
+    const originalManifest = await readAndroidManifestAsync(sampleManifestPath);
+    const modifiedManifest = setLeanBackLauncherIntent({}, originalManifest, {
+      isTV: true,
+    });
+    expect(JSON.stringify(modifiedManifest).indexOf("LEANBACK")).not.toEqual(
+      -1
+    );
+  });
+  test("Does not add leanback launcher category for phone builds", async () => {
+    const originalManifest = await readAndroidManifestAsync(sampleManifestPath);
+    const modifiedManifest = setLeanBackLauncherIntent({}, originalManifest, {
+      isTV: false,
+    });
+    expect(JSON.stringify(modifiedManifest).indexOf("LEANBACK")).toEqual(-1);
+  });
+  test("Throws if manifest has no main intent", async () => {
+    const originalManifest = await readAndroidManifestAsync(
+      sampleManifestWithNoMainIntentPath
+    );
+    try {
+      setLeanBackLauncherIntent({}, originalManifest, { isTV: true });
+      // Should not reach this line
+      expect(true).toBe(false);
+    } catch (e) {
+      expect(e.message).toContain(
+        "no main intent in main activity of Android manifest"
+      );
+    }
+  });
+  test("Removes orientation from activity metadata if TV enabled", async () => {
+    const originalManifest = await readAndroidManifestAsync(sampleManifestPath);
+    const modifiedManifest = await removePortraitOrientation(
+      {},
+      originalManifest,
+      { isTV: true }
+    );
+    expect(
+      JSON.stringify(modifiedManifest).indexOf("screenOrientation")
+    ).toEqual(-1);
+  });
+  test("Does not remove orientation from activity metadata if TV disabled", async () => {
+    const originalManifest = await readAndroidManifestAsync(sampleManifestPath);
+    const modifiedManifest = await removePortraitOrientation(
+      {},
+      originalManifest,
+      { isTV: false }
+    );
+    expect(
+      JSON.stringify(modifiedManifest).indexOf("screenOrientation")
+    ).not.toEqual(-1);
   });
 });

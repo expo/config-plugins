@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`withTV tests Add TV Podfile changes 1`] = `
+exports[`withTV iOS/tvOS tests Add TV Podfile changes 1`] = `
 "# @generated begin react-native-tvos-import - expo prebuild (DO NOT MODIFY) sync-45ad7228312d07c1751c6969560a210e8ec46f80
 source 'https://github.com/react-native-tvos/react-native-tvos-podspecs.git'
 source 'https://cdn.cocoapods.org/'
@@ -17,7 +17,7 @@ end
 "
 `;
 
-exports[`withTV tests Add TV splash screen changes 1`] = `
+exports[`withTV iOS/tvOS tests Add TV splash screen changes 1`] = `
 "
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="16096" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EXPO-VIEWCONTROLLER-1">
