@@ -21,24 +21,20 @@ export const withTVAndroidManifest: ConfigPlugin<ConfigData> = (
   const verbose = showVerboseWarnings(params);
 
   return withAndroidManifest(config, async (config) => {
-    if (isTV) {
-      if (verbose) {
-        WarningAggregator.addWarningAndroid(
-          "manifest",
-          `${pkg.name}@${pkg.version}: modifying AndroidManifest.xml for TV`
-        );
-      }
-      config.modResults = await setLeanBackLauncherIntent(
-        config,
-        config.modResults,
-        params
-      );
-      config.modResults = await removePortraitOrientation(
-        config,
-        config.modResults,
-        params
-      );
+    if (!isTV) {
+      // nothing to do
+      return config;
     }
+    config.modResults = await setLeanBackLauncherIntent(
+      config,
+      config.modResults,
+      verbose
+    );
+    config.modResults = await removePortraitOrientation(
+      config,
+      config.modResults,
+      verbose
+    );
     return config;
   });
 };
@@ -74,33 +70,29 @@ function leanbackLauncherCategoryExistsInMainLaunchIntent(
 export function setLeanBackLauncherIntent(
   _config: Pick<ExpoConfig, "android">,
   androidManifest: AndroidConfig.Manifest.AndroidManifest,
-  params: ConfigData
+  verbose: boolean
 ): AndroidConfig.Manifest.AndroidManifest {
-  const isTV = isTVEnabled(params);
-  const verbose = showVerboseWarnings(params);
-  if (isTV) {
-    const mainLaunchIntent = getMainLaunchIntent(androidManifest);
-    if (!mainLaunchIntent) {
-      throw new Error(
-        `${pkg.name}@${pkg.version}: no main intent in main activity of Android manifest`
+  const mainLaunchIntent = getMainLaunchIntent(androidManifest);
+  if (!mainLaunchIntent) {
+    throw new Error(
+      `${pkg.name}@${pkg.version}: no main intent in main activity of Android manifest`
+    );
+  }
+  if (!leanbackLauncherCategoryExistsInMainLaunchIntent(mainLaunchIntent)) {
+    // Leanback needs to be added
+    if (verbose) {
+      WarningAggregator.addWarningAndroid(
+        "manifest",
+        `${pkg.name}@${pkg.version}: adding TV leanback launcher category to main intent in AndroidManifest.xml`
       );
     }
-    if (!leanbackLauncherCategoryExistsInMainLaunchIntent(mainLaunchIntent)) {
-      // Leanback needs to be added
-      if (verbose) {
-        WarningAggregator.addWarningAndroid(
-          "manifest",
-          `${pkg.name}@${pkg.version}: adding TV leanback launcher category to main intent in AndroidManifest.xml`
-        );
-      }
-      const mainLaunchCategories = mainLaunchIntent.category ?? [];
-      mainLaunchCategories.push({
-        $: {
-          "android:name": LEANBACK_LAUNCHER_CATEGORY,
-        },
-      });
-      mainLaunchIntent.category = mainLaunchCategories;
-    }
+    const mainLaunchCategories = mainLaunchIntent.category ?? [];
+    mainLaunchCategories.push({
+      $: {
+        "android:name": LEANBACK_LAUNCHER_CATEGORY,
+      },
+    });
+    mainLaunchIntent.category = mainLaunchCategories;
   }
   return androidManifest;
 }
@@ -108,15 +100,12 @@ export function setLeanBackLauncherIntent(
 export async function removePortraitOrientation(
   _config: Pick<ExpoConfig, "android">,
   androidManifest: AndroidConfig.Manifest.AndroidManifest,
-  params: ConfigData
+  verbose: boolean
 ): Promise<AndroidConfig.Manifest.AndroidManifest> {
-  const isTV = isTVEnabled(params);
-  const verbose = showVerboseWarnings(params);
-
   const mainActivity = getMainActivity(androidManifest);
   if (mainActivity?.$) {
     const metadata: typeof mainActivity.$ = mainActivity?.$ ?? {};
-    if (metadata["android:screenOrientation"] && isTV) {
+    if (metadata["android:screenOrientation"]) {
       if (verbose) {
         WarningAggregator.addWarningAndroid(
           "manifest",

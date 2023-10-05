@@ -105,26 +105,21 @@ describe("withTV iOS/tvOS tests", () => {
 describe("with TV Android tests", () => {
   test("Adds leanback launcher intent category for TV builds", async () => {
     const originalManifest = await readAndroidManifestAsync(sampleManifestPath);
-    const modifiedManifest = setLeanBackLauncherIntent({}, originalManifest, {
-      isTV: true,
-    });
+    const modifiedManifest = setLeanBackLauncherIntent(
+      {},
+      originalManifest,
+      false
+    );
     expect(JSON.stringify(modifiedManifest).indexOf("LEANBACK")).not.toEqual(
       -1
     );
-  });
-  test("Does not add leanback launcher category for phone builds", async () => {
-    const originalManifest = await readAndroidManifestAsync(sampleManifestPath);
-    const modifiedManifest = setLeanBackLauncherIntent({}, originalManifest, {
-      isTV: false,
-    });
-    expect(JSON.stringify(modifiedManifest).indexOf("LEANBACK")).toEqual(-1);
   });
   test("Throws if manifest has no main intent", async () => {
     const originalManifest = await readAndroidManifestAsync(
       sampleManifestWithNoMainIntentPath
     );
     try {
-      setLeanBackLauncherIntent({}, originalManifest, { isTV: true });
+      setLeanBackLauncherIntent({}, originalManifest, false);
       // Should not reach this line
       expect(true).toBe(false);
     } catch (e) {
@@ -133,26 +128,15 @@ describe("with TV Android tests", () => {
       );
     }
   });
-  test("Removes orientation from activity metadata if TV enabled", async () => {
+  test("Removes orientation from activity metadata for TV builds", async () => {
     const originalManifest = await readAndroidManifestAsync(sampleManifestPath);
     const modifiedManifest = await removePortraitOrientation(
       {},
       originalManifest,
-      { isTV: true }
+      false
     );
     expect(
       JSON.stringify(modifiedManifest).indexOf("screenOrientation")
     ).toEqual(-1);
-  });
-  test("Does not remove orientation from activity metadata if TV disabled", async () => {
-    const originalManifest = await readAndroidManifestAsync(sampleManifestPath);
-    const modifiedManifest = await removePortraitOrientation(
-      {},
-      originalManifest,
-      { isTV: false }
-    );
-    expect(
-      JSON.stringify(modifiedManifest).indexOf("screenOrientation")
-    ).not.toEqual(-1);
   });
 });
