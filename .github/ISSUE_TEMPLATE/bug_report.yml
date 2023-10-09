@@ -45,7 +45,6 @@ body:
         - '@config-plugins/react-native-quick-actions'
         - '@config-plugins/react-native-siri-shortcut'
         - '@config-plugins/react-native-webrtc'
-        - '@config-plugins/tv'
     validations:
       required: true
   - type: dropdown
