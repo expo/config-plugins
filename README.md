@@ -31,6 +31,7 @@ Here is a list of known packages that have a built-in Config Plugin.
 - [notifee](https://notifee.app/)
 - [App Clips](https://github.com/bndkt/react-native-app-clip/)
 - [iOS Safari Extensions](https://github.com/andrew-levy/react-native-safari-extension/)
+- [react-native-ble-plx](https://github.com/dotintent/react-native-ble-plx)
 
 ### Complementary
 
