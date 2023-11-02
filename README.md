@@ -39,7 +39,7 @@ More out-of-tree plugins which can be used to configure more packages.
 
 - [onesignal-expo-plugin](https://github.com/OneSignal/onesignal-expo-plugin) (for use with `react-native-onesignal`)
   - Configures **iOS Notification Service Extensions** for rich push notification and custom notification actions.
-- [@lyrahealth-inc/react-native-orientation-plugin](@lyrahealth-inc/react-native-orientation-plugin) (for use with `react-native-orientation-plugin`)
+- [@lyrahealth-inc/react-native-orientation-plugin](https://www.npmjs.com/package/@lyrahealth-inc/react-native-orientation-plugin) (for use with `react-native-orientation-plugin`)
 - [airship-expo-plugin](https://www.npmjs.com/package/airship-expo-plugin) (for use with `urbanairship-react-native`)
 - [config-plugin-react-native-intercom](https://www.npmjs.com/package/config-plugin-react-native-intercom) (for use with `intercom-react-native`)
 - [@allboatsrise/expo-marketingcloudsdk](https://www.npmjs.com/package/@allboatsrise/expo-marketingcloudsdk) (for use with `react-native-marketingcloudsdk`)
