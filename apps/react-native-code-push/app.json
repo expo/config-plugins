@@ -1,0 +1,19 @@
+{
+  "expo": {
+    "name": "react-native-code-push",
+    "icon": "https://icogen.vercel.app/api/icon?icon=🔌&color_hex=4190F7",
+    "plugins": [
+      [
+        "@config-plugins/react-native-code-push",
+        {
+          "ios": {
+            "CodePushDeploymentKey": "test-key"
+          },
+          "android": {
+            "CodePushDeploymentKey": "test-key"
+          }
+        }
+      ]
+    ]
+  }
+}

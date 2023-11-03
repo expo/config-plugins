@@ -26,6 +26,12 @@ export const withAndroidStringsDependency: ConfigPlugin<PluginConfigType> = (
   config,
   props
 ) => {
+  if (!props?.android?.CodePushDeploymentKey) {
+    throw new Error(
+      "You need to provide the `CodePushDeploymentKey` Android property for the @config-plugins/react-native-code-push plugin to work."
+    );
+  }
+
   return withStringsXml(config, (xmlProps) => {
     xmlProps.modResults = setStrings(
       xmlProps.modResults,
