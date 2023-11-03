@@ -7,10 +7,10 @@
         "@config-plugins/react-native-code-push",
         {
           "ios": {
-            "CodePushDeploymentKey": "test-key"
+            "CodePushDeploymentKey": "test-key-ios"
           },
           "android": {
-            "CodePushDeploymentKey": "test-key"
+            "CodePushDeploymentKey": "test-key-android"
           }
         }
       ]

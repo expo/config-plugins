@@ -9,11 +9,13 @@ import { PluginConfigType } from "../pluginConfig";
 
 /** Helper to add string.xml JSON items or overwrite existing items with the same name. */
 function setStrings(strings: ResourceXML, name: string, value: string) {
+  const xmlProperties = { name, moduleConfig: true };
+
   return AndroidConfig.Strings.setStringItem(
     [
       // XML represented as JSON
       // <string moduleConfig="true" name="">value</string>
-      { $: { name }, _: value },
+      { $: xmlProperties, _: value },
     ],
     strings
   );
