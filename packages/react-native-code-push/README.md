@@ -7,7 +7,7 @@ Config plugin to auto-configure [`react-native-code-push`][lib] when the native 
 > Tested against Expo SDK 49
 
 ```
-yarn add react-native-code-push react-native-blob-util @config-plugins/react-native-code-push @config-plugins/react-native-blob-util
+yarn add react-native-code-push @config-plugins/react-native-code-push
 ```
 
 After installing this npm package, add the [config plugin](https://docs.expo.io/guides/config-plugins/) to the [`plugins`](https://docs.expo.io/versions/latest/config/app/#plugins) array of your `app.json` or `app.config.js`:
