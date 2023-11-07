@@ -12,7 +12,7 @@ Here is a list of known packages that have a built-in Config Plugin.
 
 > Not all packages need a config plugin, packages that don't appear here might still work with managed EAS.
 
-- [React Native Firebase](https://rnfirebase.io/) (`@react-native-firebase/perf`, `@react-native-firebase/app`)
+- [React Native Firebase](https://rnfirebase.io/) (`@react-native-firebase/perf`, `@react-native-firebase/app`, `@react-native-firebase/crashlytics`)
 - [react-native-nfc-manager](https://github.com/revtel/react-native-nfc-manager)
 - [react-native-health](https://github.com/agencyenterprise/react-native-health)
 - [@react-native-mapbox-gl/maps](https://github.com/rnmapbox/maps)
