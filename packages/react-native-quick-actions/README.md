@@ -38,7 +38,7 @@ iOS only; an array of the objects with the following keys:
 - `type`: (_string_): `UIApplicationShortcutItemType`: A unique string that the system passes to your app (required)
 - `subtitle` (_string_): `UIApplicationShortcutItemSubtitle`: Subtitle message
 - `iconType` (_string_): `UIApplicationShortcutItemIconType`: List of [icon types](https://developer.apple.com/design/human-interface-guidelines/ios/icons-and-images/system-icons/#home-screen-quick-action-icons) (ex: "UIApplicationShortcutIconTypeLocation")
-- `iconSymbolName` (_string_): `UIApplicationShortcutItemIconSymbolName`: Name of system icon, here is an [unofficial list]([https://github.com/cyanzhong/sf-symbols-online](https://github.com/NathanE73/Blackboard/blob/576bd088a21a5c8f4f441d4b1da2366b8e9658dc/README/SymbolAvailability.md#symbol-availability)) (ex: "square.stack.3d.up")
+- `iconSymbolName` (_string_): `UIApplicationShortcutItemIconSymbolName`: Name of system icon, here is an [unofficial list](https://github.com/NathanE73/Blackboard/blob/576bd088a21a5c8f4f441d4b1da2366b8e9658dc/README/SymbolAvailability.md#symbol-availability) (ex: "square.stack.3d.up")
 - `iconFile` (_string_): `UIApplicationShortcutItemIconFile`: Name of the resource file (Not supported)
 - `userInfo` (_XML.XMLObject_): `UIApplicationShortcutItemUserInfo`: An optional, app-defined dictionary. One use for this dictionary is to provide app version information, as described in the “App Launch and App Update Considerations for Quick Actions” section of the overview in UIApplicationShortcutItem Class Reference.
 
