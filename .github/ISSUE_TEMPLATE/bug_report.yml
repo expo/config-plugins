@@ -33,6 +33,7 @@ body:
         - '@config-plugins/apple-settings'
         - '@config-plugins/detox'
         - '@config-plugins/ffmpeg-kit-react-native'
+        - '@config-plugins/intercom-react-native'
         - '@config-plugins/ios-stickers'
         - '@config-plugins/react-native-adjust'
         - '@config-plugins/react-native-ble-plx'

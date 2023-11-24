@@ -30,6 +30,12 @@ updates:
       time: '09:00'
       timezone: America/Los_Angeles
   - package-ecosystem: npm
+    directory: packages/intercom-react-native
+    schedule:
+      interval: daily
+      time: '09:00'
+      timezone: America/Los_Angeles
+  - package-ecosystem: npm
     directory: packages/ios-stickers
     schedule:
       interval: daily
