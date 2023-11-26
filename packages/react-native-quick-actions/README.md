@@ -1,5 +1,8 @@
 # @config-plugins/react-native-quick-actions
 
+> [!IMPORTANT]
+> `react-native-quick-actions` is archived. Use [`expo-quick-action`](https://github.com/EvanBacon/expo-quick-actions) instead.
+
 Expo Config Plugin to auto-configure [`react-native-quick-actions`](https://www.npmjs.com/package/react-native-quick-actions) when the native code is generated (`npx expo prebuild`).
 
 ![demo-ios](https://user-images.githubusercontent.com/9664363/125181024-15295c00-e1be-11eb-8479-80535922ad22.png)
