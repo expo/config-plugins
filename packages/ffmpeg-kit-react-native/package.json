@@ -33,7 +33,7 @@
     "semver": "^7.3.5"
   },
   "peerDependencies": {
-    "expo": "^49"
+    "expo": "^50"
   },
   "devDependencies": {
     "@types/semver": "^7.3.9",
