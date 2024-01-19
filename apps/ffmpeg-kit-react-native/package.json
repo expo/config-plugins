@@ -12,7 +12,7 @@
     "expo": "^50.0.2",
     "expo-splash-screen": "~0.26.3",
     "expo-status-bar": "~1.11.1",
-    "ffmpeg-kit-react-native": "^5.1.0",
+    "ffmpeg-kit-react-native": "^6.0.2",
     "react": "18.2.0",
     "react-native": "0.73.2"
   },

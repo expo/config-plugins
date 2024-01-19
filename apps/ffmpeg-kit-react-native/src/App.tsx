@@ -12,7 +12,8 @@ import { useMediaInfo, useResolvedValue } from "./useMediaInfo";
 
 export default function App() {
   const session = useMediaInfo(
-    "http://techslides.com/demos/sample-videos/small.mp4"
+    // See: https://gist.github.com/jsturgis/3b19447b304616f18657
+    "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
   );
 
   if (!session) {
