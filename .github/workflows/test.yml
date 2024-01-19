@@ -38,7 +38,7 @@ jobs:
             detox,
             ffmpeg-kit-react-native,
             ios-stickers,
-            react-native-ble-plx,
+            # react-native-ble-plx, - Config Plugin moved to library itself
             react-native-blob-util,
             react-native-branch,
             react-native-siri-shortcut,
