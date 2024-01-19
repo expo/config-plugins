@@ -52,7 +52,7 @@ const withDetox: ConfigPlugin<
       [withNetworkSecurityConfigManifest, { subdomains }],
       // 7.
       !skipProguard && withProguardGradle,
-    ].filter(Boolean) as ([ConfigPlugin, any] | ConfigPlugin)[]
+    ].filter(Boolean) as ([ConfigPlugin, any] | ConfigPlugin)[],
   );
 };
 

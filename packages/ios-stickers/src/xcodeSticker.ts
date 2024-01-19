@@ -21,7 +21,7 @@ export function getMainPBXGroup(proj: XcodeProject) {
 export function addStickerResourceFile(
   proj: XcodeProject,
   path: string,
-  rootFolderName: string
+  rootFolderName: string,
 ) {
   const opt: Record<string, any> = {};
 
@@ -40,7 +40,7 @@ export function addStickerResourceFile(
   const stickersKey = proj.pbxCreateGroup(
     // Without quotes, this breaks the xcode project
     `"${rootFolderName}"`,
-    `"${rootFolderName}"`
+    `"${rootFolderName}"`,
   );
 
   proj.addToPbxBuildFileSection(file); // PBXBuildFile
@@ -54,7 +54,7 @@ export function addStickerResourceFile(
       // "Resources",
       rootFolderName,
       // Resources,
-      file.target
+      file.target,
     );
     sources.files.push(pbxBuildPhaseObj(file));
   };
@@ -89,7 +89,7 @@ export function addStickersTarget(
   name: string,
   bundleId: string,
   subfolder: string,
-  stickerBundleId?: string
+  stickerBundleId?: string,
 ) {
   // Setup uuid and name of new target
   const targetUuid = proj.generateUuid();
@@ -166,7 +166,7 @@ export function addStickersTarget(
     if (
       (config as any).buildSettings.ASSETCATALOG_COMPILER_APPICON_NAME &&
       (config as any).buildSettings.ASSETCATALOG_COMPILER_APPICON_NAME.match(
-        /iMessage App Icon/
+        /iMessage App Icon/,
       )
     ) {
       // Has existing setup...
@@ -179,7 +179,7 @@ export function addStickersTarget(
   const buildConfigurations = proj.addXCConfigurationList(
     buildConfigurationsList,
     "Release",
-    `Build configuration list for PBXNativeTarget ${quoted(targetName)} `
+    `Build configuration list for PBXNativeTarget ${quoted(targetName)} `,
   );
 
   // Product: Create
@@ -229,7 +229,7 @@ export function addStickersTarget(
     "Embed App Extensions",
     proj.getFirstTarget().uuid,
     // targetType,
-    "app_extension"
+    "app_extension",
   );
 
   // TODO: Add to https://github.com/apache/cordova-node-xcode/blob/8b98cabc5978359db88dc9ff2d4c015cba40f150/lib/pbxProject.js#L1604
@@ -281,7 +281,7 @@ type PBXFile = any;
 function correctForResourcesPath(
   file: PBXFile,
   project: XcodeProject,
-  name: string = "Resources"
+  name: string = "Resources",
 ) {
   return correctForPath(file, project, name);
 }
@@ -300,12 +300,12 @@ function correctForPath(file: PBXFile, project: XcodeProject, group: string) {
 function addToPbxCopyfilesBuildPhase(
   proj: XcodeProject,
   file: PBXFile,
-  name: string
+  name: string,
 ) {
   const sources = proj.buildPhaseObject(
     "PBXCopyFilesBuildPhase",
     name || "Copy Files",
-    file.target
+    file.target,
   );
   sources.files.push(pbxBuildPhaseObj(file));
 }

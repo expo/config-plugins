@@ -13,7 +13,7 @@ type IosDeploymentTargetConfigPlugin = ConfigPlugin<{
 
 export const withIosDeploymentTarget: IosDeploymentTargetConfigPlugin = (
   config,
-  props
+  props,
 ) => {
   config = withIosDeploymentTargetPodfile(config, props);
   config = withIosDeploymentTargetXcodeProject(config, props);
@@ -22,7 +22,7 @@ export const withIosDeploymentTarget: IosDeploymentTargetConfigPlugin = (
 
 const withIosDeploymentTargetPodfile: IosDeploymentTargetConfigPlugin = (
   config,
-  props
+  props,
 ) => {
   return withPodfileProperties(config, async (config) => {
     const existing = config.modResults["ios.deploymentTarget"];
@@ -38,12 +38,12 @@ const withIosDeploymentTargetPodfile: IosDeploymentTargetConfigPlugin = (
 
 const withIosDeploymentTargetXcodeProject: IosDeploymentTargetConfigPlugin = (
   config,
-  props
+  props,
 ) => {
   return withXcodeProject(config, (config) => {
     config.modResults = updateDeploymentTargetXcodeProject(
       config.modResults,
-      props.deploymentTarget
+      props.deploymentTarget,
     );
     return config;
   });
@@ -51,7 +51,7 @@ const withIosDeploymentTargetXcodeProject: IosDeploymentTargetConfigPlugin = (
 
 export function updateDeploymentTargetXcodeProject(
   project: XcodeProject,
-  deploymentTarget: string
+  deploymentTarget: string,
 ): XcodeProject {
   const configurations = project.pbxXCBuildConfigurationSection();
   // @ts-ignore

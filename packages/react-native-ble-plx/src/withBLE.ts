@@ -32,7 +32,7 @@ const withBLE: ConfigPlugin<
   if ("bluetoothPeripheralPermission" in _props) {
     WarningAggregator.addWarningIOS(
       "bluetoothPeripheralPermission",
-      `The iOS permission \`NSBluetoothPeripheralUsageDescription\` is fully deprecated as of iOS 13 (lowest iOS version in Expo SDK 47+). Remove the \`bluetoothPeripheralPermission\` property from the \`@config-plugins/react-native-ble-plx\` config plugin.`
+      `The iOS permission \`NSBluetoothPeripheralUsageDescription\` is fully deprecated as of iOS 13 (lowest iOS version in Expo SDK 47+). Remove the \`bluetoothPeripheralPermission\` property from the \`@config-plugins/react-native-ble-plx\` config plugin.`,
     );
   }
 

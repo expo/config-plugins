@@ -10,7 +10,7 @@ describe(withStickerPack, () => {
         stickers: [{ image: "test.png" }],
         columns: 2,
         icon: "test.png",
-      })
+      }),
     ).not.toThrow();
   });
   it("should not throw when no options are provided", () => {

@@ -20,7 +20,7 @@ const peripheralKey = "bluetooth-peripheral";
  */
 export const withBLEBackgroundModes: ConfigPlugin<BackgroundMode[]> = (
   c,
-  modes
+  modes,
 ) => {
   return withInfoPlist(c, (config) => {
     if (!Array.isArray(config.modResults.UIBackgroundModes)) {
@@ -30,13 +30,13 @@ export const withBLEBackgroundModes: ConfigPlugin<BackgroundMode[]> = (
     if (modes.includes(BackgroundMode.Central)) {
       config.modResults.UIBackgroundModes = ensureKey(
         config.modResults.UIBackgroundModes,
-        centralKey
+        centralKey,
       );
     }
     if (modes.includes(BackgroundMode.Peripheral)) {
       config.modResults.UIBackgroundModes = ensureKey(
         config.modResults.UIBackgroundModes,
-        peripheralKey
+        peripheralKey,
       );
     }
 

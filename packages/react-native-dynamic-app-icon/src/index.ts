@@ -25,13 +25,13 @@ type Props = {
 function arrayToImages(images: string[]) {
   return images.reduce(
     (prev, curr, i) => ({ ...prev, [i]: { image: curr } }),
-    {}
+    {},
   );
 }
 
 const withDynamicIcon: ConfigPlugin<string[] | IconSet | void> = (
   config,
-  props = {}
+  props = {},
 ) => {
   const _props = props || {};
 
@@ -63,7 +63,7 @@ const withIconXcodeProject: ConfigPlugin<Props> = (config, { icons }) => {
     const groupPath = `${config.modRequest.projectName!}/${folderName}`;
     const group = IOSConfig.XcodeUtils.ensureGroupRecursively(
       config.modResults,
-      groupPath
+      groupPath,
     );
     const project = config.modResults;
     const opt: any = {};
@@ -74,13 +74,13 @@ const withIconXcodeProject: ConfigPlugin<Props> = (config, { icons }) => {
       (id) => {
         const _group = project.hash.project.objects["PBXGroup"][id];
         return _group.name === group.name;
-      }
+      },
     );
     if (!project.hash.project.objects["PBXVariantGroup"]) {
       project.hash.project.objects["PBXVariantGroup"] = {};
     }
     const variantGroupId = Object.keys(
-      project.hash.project.objects["PBXVariantGroup"]
+      project.hash.project.objects["PBXVariantGroup"],
     ).find((id) => {
       const _group = project.hash.project.objects["PBXVariantGroup"][id];
       return _group.name === group.name;
@@ -115,7 +115,7 @@ const withIconXcodeProject: ConfigPlugin<Props> = (config, { icons }) => {
 
         if (
           !group?.children.some(
-            ({ comment }: { comment: string }) => comment === iconFileName
+            ({ comment }: { comment: string }) => comment === iconFileName,
           )
         ) {
           // Only write the file if it doesn't already exist.
@@ -192,11 +192,11 @@ const withIconImages: ConfigPlugin<Props> = (config, props) => {
 
 async function createIconsAsync(
   config: ExportedConfigWithProps,
-  { icons }: Props
+  { icons }: Props,
 ) {
   const iosRoot = path.join(
     config.modRequest.platformProjectRoot,
-    config.modRequest.projectName!
+    config.modRequest.projectName!,
   );
 
   // Delete all existing assets
@@ -226,7 +226,7 @@ async function createIconsAsync(
           resizeMode: "cover",
           width: scaledSize,
           height: scaledSize,
-        }
+        },
       );
 
       await fs.promises.writeFile(outputPath, source);
@@ -239,8 +239,8 @@ async function iterateIconsAsync(
   callback: (
     key: string,
     icon: { image: string; prerendered?: boolean },
-    index: number
-  ) => Promise<void>
+    index: number,
+  ) => Promise<void>,
 ) {
   const entries = Object.entries(icons);
   for (let i = 0; i < entries.length; i++) {

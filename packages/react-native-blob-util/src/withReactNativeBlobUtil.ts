@@ -16,7 +16,7 @@ try {
 }
 
 export function appendDownloadCompleteAction(
-  androidManifest: AndroidConfig.Manifest.AndroidManifest
+  androidManifest: AndroidConfig.Manifest.AndroidManifest,
 ): AndroidConfig.Manifest.AndroidManifest {
   if (!Array.isArray(androidManifest.manifest.application)) {
     return androidManifest;
@@ -28,7 +28,7 @@ export function appendDownloadCompleteAction(
         for (const intentFilter of activity["intent-filter"] || []) {
           const isLauncher = intentFilter.category?.some(
             (action) =>
-              action.$["android:name"] === "android.intent.category.LAUNCHER"
+              action.$["android:name"] === "android.intent.category.LAUNCHER",
           );
           if (!isLauncher) continue;
 
@@ -36,7 +36,7 @@ export function appendDownloadCompleteAction(
           const hasDownloadCompleteAction = intentFilter.action.some(
             (action) =>
               action.$["android:name"] ===
-              "android.intent.action.DOWNLOAD_COMPLETE"
+              "android.intent.action.DOWNLOAD_COMPLETE",
           );
           if (!hasDownloadCompleteAction) {
             intentFilter.action.push({
@@ -64,10 +64,10 @@ const withBlobProvider: ConfigPlugin = (config) => {
 };
 
 export function ensureBlobProviderManifest(
-  androidManifest: AndroidConfig.Manifest.AndroidManifest
+  androidManifest: AndroidConfig.Manifest.AndroidManifest,
 ) {
   const app = AndroidConfig.Manifest.getMainApplicationOrThrow(
-    androidManifest
+    androidManifest,
   ) as AndroidConfig.Manifest.ManifestApplication & { provider?: any[] };
 
   if (!app.provider) {
@@ -76,7 +76,7 @@ export function ensureBlobProviderManifest(
   if (
     !app.provider.some(
       (p) =>
-        p.$["android:name"] === "com.facebook.react.modules.blob.BlobProvider"
+        p.$["android:name"] === "com.facebook.react.modules.blob.BlobProvider",
     )
   ) {
     // <provider android:name="com.facebook.react.modules.blob.BlobProvider" android:authorities="@string/blob_provider_authority" android:exported="false" />
@@ -110,7 +110,7 @@ const withReactNativeBlobUtil: ConfigPlugin = (config) => {
   config = withStringsXml(config, (config) => {
     ensureBlobProviderAuthorityString(
       config.modResults,
-      config.android?.package + ".blobs"
+      config.android?.package + ".blobs",
     );
     return config;
   });
@@ -120,7 +120,7 @@ const withReactNativeBlobUtil: ConfigPlugin = (config) => {
 
 export function ensureBlobProviderAuthorityString(
   res: AndroidConfig.Resources.ResourceXML,
-  authority: string
+  authority: string,
 ) {
   if (!res.resources.string) {
     res.resources.string = [];
@@ -137,7 +137,7 @@ export function ensureBlobProviderAuthorityString(
   }
 
   const item = res.resources.string.find(
-    (s) => s.$["name"] === "blob_provider_authority"
+    (s) => s.$["name"] === "blob_provider_authority",
   );
   item!._ = authority;
   return res;
@@ -146,5 +146,5 @@ export function ensureBlobProviderAuthorityString(
 export default createRunOncePlugin(
   withReactNativeBlobUtil,
   pkg.name,
-  pkg.version
+  pkg.version,
 );

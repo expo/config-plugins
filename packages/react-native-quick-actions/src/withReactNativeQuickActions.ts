@@ -103,7 +103,7 @@ export function addQuickActionsAppDelegateInit(src: string): MergeResults {
   newSrc.push(
     "- (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL succeeded)) completionHandler {",
     "  [RNQuickActionManager onQuickActionPress:shortcutItem completionHandler:completionHandler];",
-    "}"
+    "}",
   );
 
   return mergeContents({
@@ -121,22 +121,22 @@ const withQuickActionsAppDelegate: ConfigPlugin = (config) => {
     if (["objc", "objcpp"].includes(config.modResults.language)) {
       try {
         config.modResults.contents = addQuickActionsAppDelegateImport(
-          config.modResults.contents
+          config.modResults.contents,
         ).contents;
         config.modResults.contents = addQuickActionsAppDelegateInit(
-          config.modResults.contents
+          config.modResults.contents,
         ).contents;
       } catch (error: any) {
         if (error.code === "ERR_NO_MATCH") {
           throw new Error(
-            `Cannot add QuickActions to the project's AppDelegate because it's malformed. Please report this with a copy of your project AppDelegate.`
+            `Cannot add QuickActions to the project's AppDelegate because it's malformed. Please report this with a copy of your project AppDelegate.`,
           );
         }
         throw error;
       }
     } else {
       throw new Error(
-        "Cannot setup QuickActions because the AppDelegate is not Objective C"
+        "Cannot setup QuickActions because the AppDelegate is not Objective C",
       );
     }
     return config;
@@ -157,5 +157,5 @@ const pkg = {
 export default createRunOncePlugin(
   withReactNativeQuickActions,
   pkg.name,
-  pkg.version
+  pkg.version,
 );

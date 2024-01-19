@@ -18,7 +18,7 @@ export const withStickerXcodeTarget: ConfigPlugin<
 > = (config, { stickerBundleId }) => {
   return withXcodeProject(config, (config) => {
     const stickerPackName = getProjectStickersName(
-      config.modRequest.projectName!
+      config.modRequest.projectName!,
     );
 
     addStickersTarget(
@@ -26,13 +26,13 @@ export const withStickerXcodeTarget: ConfigPlugin<
       stickerPackName,
       config.ios!.bundleIdentifier!,
       stickerPackName,
-      stickerBundleId
+      stickerBundleId,
     );
 
     const stickersKey = addStickerResourceFile(
       config.modResults,
       STICKERS_ROOT_PATH,
-      stickerPackName
+      stickerPackName,
     );
 
     if (stickersKey) {

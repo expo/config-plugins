@@ -15,7 +15,7 @@ const sizeColumnMap: Record<number, string> = {
 };
 
 export function normalizeStickersProps(
-  props: Props["stickers"] = []
+  props: Props["stickers"] = [],
 ): Sticker[] {
   const imagesObj = props.map((prop) => {
     if (typeof prop === "string") {
@@ -42,8 +42,8 @@ const withStickerPack: ConfigPlugin<Props> = (config, options = {}) => {
   if (!size) {
     throw new Error(
       `Column size "${columns}" is invalid. Expected one of: ${Object.keys(
-        sizeColumnMap
-      ).join(", ")}`
+        sizeColumnMap,
+      ).join(", ")}`,
     );
   }
   const _stickers = normalizeStickersProps(stickers);

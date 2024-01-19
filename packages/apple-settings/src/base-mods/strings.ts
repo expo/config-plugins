@@ -11,7 +11,7 @@ export function parse(data: string, wantComments?: boolean): ParsedStrings {
   if (data.indexOf("\n") === -1) {
     data += "\n";
   }
-  const re = /(?:\/\*(.+)\*\/\n)?(.+)\s*\=\s*\"(.+)\"\;\n/gim;
+  const re = /(?:\/\*(.+)\*\/\n)?(.+)\s*=\s*"(.+)";\n/gim;
   const res: ParsedStrings = {};
   let m: RegExpExecArray | null;
 
@@ -44,7 +44,7 @@ export function build(obj: ParsedStrings): string {
         data += "\n/*" + obj[i]["comment"] + "*/\n";
       }
       // @ts-expect-error
-      data += '"' + i + '" = ' + '"' + escapeString(obj[i]["value"]) + '";\n';
+      data += '"' + i + '" = "' + escapeString(obj[i]["value"]) + '";\n';
     } else if (typeof obj[i] === "string") {
       data +=
         '\n"' +
@@ -53,7 +53,7 @@ export function build(obj: ParsedStrings): string {
         '"' +
         escapeString(
           // @ts-expect-error
-          obj[i]
+          obj[i],
         ) +
         '";\n';
     }
@@ -78,6 +78,6 @@ export function writeAsync(filename: string, data: ParsedStrings) {
   return fs.promises.writeFile(
     filename,
     iconv.encode(build(data), "utf-16"),
-    "binary"
+    "binary",
   );
 }

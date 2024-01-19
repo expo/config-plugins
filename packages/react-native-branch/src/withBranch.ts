@@ -6,7 +6,7 @@ import { withBranchIOS } from "./withBranchIOS";
 
 const withBranch: ConfigPlugin<ConfigData> = (
   config,
-  { apiKey, iosAppDomain, iosUniversalLinkDomains } = {}
+  { apiKey, iosAppDomain, iosUniversalLinkDomains } = {},
 ) => {
   config = withBranchAndroid(config, { apiKey });
   config = withBranchIOS(config, {

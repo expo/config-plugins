@@ -34,11 +34,11 @@ export const withBLEAndroidManifest: ConfigPlugin<{
   return withAndroidManifest(config, (config) => {
     config.modResults = addLocationPermissionToManifest(
       config.modResults,
-      neverForLocation
+      neverForLocation,
     );
     config.modResults = addScanPermissionToManifest(
       config.modResults,
-      neverForLocation
+      neverForLocation,
     );
     if (isBackgroundEnabled) {
       config.modResults = addBLEHardwareFeatureToManifest(config.modResults);
@@ -55,7 +55,7 @@ export const withBLEAndroidManifest: ConfigPlugin<{
  */
 export function addLocationPermissionToManifest(
   androidManifest: AndroidManifest,
-  neverForLocationSinceSdk31: boolean
+  neverForLocationSinceSdk31: boolean,
 ) {
   if (!Array.isArray(androidManifest.manifest["uses-permission-sdk-23"])) {
     androidManifest.manifest["uses-permission-sdk-23"] = [];
@@ -70,7 +70,7 @@ export function addLocationPermissionToManifest(
   if (
     !androidManifest.manifest["uses-permission-sdk-23"].find(
       (item) =>
-        item.$["android:name"] === "android.permission.ACCESS_COARSE_LOCATION"
+        item.$["android:name"] === "android.permission.ACCESS_COARSE_LOCATION",
     )
   ) {
     androidManifest.manifest["uses-permission-sdk-23"].push({
@@ -84,7 +84,7 @@ export function addLocationPermissionToManifest(
   if (
     !androidManifest.manifest["uses-permission-sdk-23"].find(
       (item) =>
-        item.$["android:name"] === "android.permission.ACCESS_FINE_LOCATION"
+        item.$["android:name"] === "android.permission.ACCESS_FINE_LOCATION",
     )
   ) {
     androidManifest.manifest["uses-permission-sdk-23"].push({
@@ -104,7 +104,7 @@ export function addLocationPermissionToManifest(
  */
 export function addScanPermissionToManifest(
   androidManifest: AndroidManifest,
-  neverForLocation: boolean
+  neverForLocation: boolean,
 ) {
   if (!Array.isArray(androidManifest.manifest["uses-permission"])) {
     androidManifest.manifest["uses-permission"] = [];
@@ -112,7 +112,7 @@ export function addScanPermissionToManifest(
 
   if (
     !androidManifest.manifest["uses-permission"].find(
-      (item) => item.$["android:name"] === "android.permission.BLUETOOTH_SCAN"
+      (item) => item.$["android:name"] === "android.permission.BLUETOOTH_SCAN",
     )
   ) {
     AndroidConfig.Manifest.ensureToolsAvailable(androidManifest);
@@ -133,7 +133,7 @@ export function addScanPermissionToManifest(
 
 // Add this line if your application always requires BLE. More info can be found on: https://developer.android.com/guide/topics/connectivity/bluetooth-le.html#permissions
 export function addBLEHardwareFeatureToManifest(
-  androidManifest: AndroidConfig.Manifest.AndroidManifest
+  androidManifest: AndroidConfig.Manifest.AndroidManifest,
 ) {
   // Add `<uses-feature android:name="android.hardware.bluetooth_le" android:required="true"/>` to the AndroidManifest.xml
   if (!Array.isArray(androidManifest.manifest["uses-feature"])) {
@@ -142,7 +142,7 @@ export function addBLEHardwareFeatureToManifest(
 
   if (
     !androidManifest.manifest["uses-feature"].find(
-      (item) => item.$["android:name"] === "android.hardware.bluetooth_le"
+      (item) => item.$["android:name"] === "android.hardware.bluetooth_le",
     )
   ) {
     androidManifest.manifest["uses-feature"]?.push({

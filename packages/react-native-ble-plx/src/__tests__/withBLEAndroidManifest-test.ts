@@ -27,10 +27,10 @@ describe("addLocationPermissionToManifest", () => {
     });
     // Sanity
     expect(XML.format(androidManifest)).toMatch(
-      /<uses-permission-sdk-23 android:name="android\.permission\.ACCESS_COARSE_LOCATION"\/>/
+      /<uses-permission-sdk-23 android:name="android\.permission\.ACCESS_COARSE_LOCATION"\/>/,
     );
     expect(XML.format(androidManifest)).toMatch(
-      /<uses-permission-sdk-23 android:name="android\.permission\.ACCESS_FINE_LOCATION"\/>/
+      /<uses-permission-sdk-23 android:name="android\.permission\.ACCESS_FINE_LOCATION"\/>/,
     );
   });
   it(`adds elements with SDK limit`, async () => {
@@ -50,10 +50,10 @@ describe("addLocationPermissionToManifest", () => {
     });
     // Sanity
     expect(XML.format(androidManifest)).toMatch(
-      /<uses-permission-sdk-23 android:name="android\.permission\.ACCESS_COARSE_LOCATION" android:maxSdkVersion="30"\/>/
+      /<uses-permission-sdk-23 android:name="android\.permission\.ACCESS_COARSE_LOCATION" android:maxSdkVersion="30"\/>/,
     );
     expect(XML.format(androidManifest)).toMatch(
-      /<uses-permission-sdk-23 android:name="android\.permission\.ACCESS_FINE_LOCATION" android:maxSdkVersion="30"\/>/
+      /<uses-permission-sdk-23 android:name="android\.permission\.ACCESS_FINE_LOCATION" android:maxSdkVersion="30"\/>/,
     );
   });
 });
@@ -70,7 +70,7 @@ describe("addScanPermissionToManifest", () => {
     });
     // Sanity
     expect(XML.format(androidManifest)).toMatch(
-      /<uses-permission android:name="android\.permission\.BLUETOOTH_SCAN" tools:targetApi="31"\/>/
+      /<uses-permission android:name="android\.permission\.BLUETOOTH_SCAN" tools:targetApi="31"\/>/,
     );
   });
   it(`adds element with 'neverForLocation' attribute`, async () => {
@@ -85,7 +85,7 @@ describe("addScanPermissionToManifest", () => {
     });
     // Sanity
     expect(XML.format(androidManifest)).toMatch(
-      /<uses-permission android:name="android\.permission\.BLUETOOTH_SCAN" android:usesPermissionFlags="neverForLocation" tools:targetApi="31"\/>/
+      /<uses-permission android:name="android\.permission\.BLUETOOTH_SCAN" android:usesPermissionFlags="neverForLocation" tools:targetApi="31"\/>/,
     );
   });
 });
@@ -105,7 +105,7 @@ describe("addBLEHardwareFeatureToManifest", () => {
     ]);
     // Sanity
     expect(XML.format(androidManifest)).toMatch(
-      /<uses-feature android:name="android\.hardware\.bluetooth_le" android:required="true"\/>/
+      /<uses-feature android:name="android\.hardware\.bluetooth_le" android:required="true"\/>/,
     );
   });
 });
