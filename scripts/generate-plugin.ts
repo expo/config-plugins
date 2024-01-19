@@ -6,7 +6,7 @@ import * as path from "path";
 import prompts from "prompts";
 // @ts-ignore
 import replaceAll from "string.prototype.replaceall";
-import * as PackageManager from "@expo/package-manager";
+import { YarnPackageManager } from "@expo/package-manager";
 const packagesDir = path.join(__dirname, "../packages");
 const templateDir = path.join(__dirname, "./template");
 
@@ -97,7 +97,7 @@ function convertOrgName(name: string) {
     `module.exports = require("./build/${moduleName}");`
   );
 
-  const manager = new PackageManager.YarnPackageManager({
+  const manager = new YarnPackageManager({
     cwd: outputDir,
     silent: false,
   });

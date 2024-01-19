@@ -19,7 +19,7 @@
     "fs-extra": "^9.1.0"
   },
   "devDependencies": {
-    "@expo/package-manager": "^0.0.43",
+    "@expo/package-manager": "^1.4.2",
     "@types/js-yaml": "^4.0.5",
     "@types/prompts": "^2.0.13",
     "eslint": "^8.10.0",
