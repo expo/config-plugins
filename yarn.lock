@@ -14083,10 +14083,10 @@ react-native-siri-shortcut@^3.2.3:
   resolved "https://registry.yarnpkg.com/react-native-siri-shortcut/-/react-native-siri-shortcut-3.2.4.tgz#cdc6e085539a1582b8e74a371595b7d2be4d5fef"
   integrity sha512-+nigNoTAcygti598QePqAOgYBJzvqDHpv1lwat2Mrq0uKQGoYCTVxnf8Hvl8MwLuk9NIcINgDdWGMUjxjhvung==
 
-react-native-webrtc@^111.0.3:
-  version "111.0.6"
-  resolved "https://registry.yarnpkg.com/react-native-webrtc/-/react-native-webrtc-111.0.6.tgz#dc8fdc94b2d42d960182e41d36010033811fb750"
-  integrity sha512-uxaczOCsSOe3Olzg4w9PJpK1T+Kv45aerNlcehWClvTZ3NqSebarPuKKnrd1uuFK5bb8TVvWvq5h5qZMa2pNUw==
+react-native-webrtc@^118.0.0:
+  version "118.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-webrtc/-/react-native-webrtc-118.0.0.tgz#3f9b52de3d12cadd667220e1e931e032f7285ccb"
+  integrity sha512-gYP/0oeoPkaqrq3hYY5I3Cv49fqKGOhXh2A0/WTZMo3Hl/w+qvFAWOCXI0uUcwSA/bmkuzIStGycmW72QU4+tw==
   dependencies:
     base64-js "1.5.1"
     debug "4.3.4"
