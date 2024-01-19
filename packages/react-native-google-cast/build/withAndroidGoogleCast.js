@@ -63,12 +63,7 @@ const withAppBuildGradleImport = (config, { version }) => {
 const withMainActivityLazyLoading = (config) => {
     return (0, config_plugins_1.withMainActivity)(config, async (config) => {
         const src = (0, codeMod_1.addImports)(config.modResults.contents, ["com.google.android.gms.cast.framework.CastContext"], config.modResults.language === "java");
-        if (config.modResults.language === "java") {
-            config.modResults.contents = addGoogleCastLazyLoadingImport(src).contents;
-        }
-        else {
-            throw new Error("react-native-google-cast config plugin does not support kotlin MainActivity yet.");
-        }
+        config.modResults.contents = addGoogleCastLazyLoadingImport(src, config.modResults.language).contents;
         return config;
     });
 };
@@ -89,14 +84,28 @@ const withAndroidGoogleCast = (config, props) => {
     return config;
 };
 exports.withAndroidGoogleCast = withAndroidGoogleCast;
-function addGoogleCastLazyLoadingImport(src) {
+const MAIN_ACTIVITY_LANGUAGES = {
+    java: {
+        code: "CastContext.getSharedInstance(this);",
+        anchor: /super\.onCreate\(\w+\);/,
+    },
+    kt: {
+        code: "CastContext.getSharedInstance(this)",
+        anchor: /super\.onCreate\(\w+\)/,
+    },
+};
+function addGoogleCastLazyLoadingImport(src, language) {
+    const mainActivity = MAIN_ACTIVITY_LANGUAGES[language];
+    if (!mainActivity) {
+        throw new Error(`react-native-google-cast config plugin does not support MainActivity.${language} yet`);
+    }
     const newSrc = [];
-    newSrc.push("    CastContext.getSharedInstance(this);");
+    newSrc.push(`    ${mainActivity.code}`);
     return (0, generateCode_1.mergeContents)({
         tag: "react-native-google-cast-onCreate",
         src,
         newSrc: newSrc.join("\n"),
-        anchor: /super\.onCreate\(\w+\);/,
+        anchor: mainActivity.anchor,
         offset: 1,
         comment: "//",
     });

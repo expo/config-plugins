@@ -44,7 +44,7 @@ export default function HomeScreen() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text>State: {castState}</Text>
-      <CastButton style={{ width: 24, height: 24 }} />
+      <CastButton style={{ width: 24, height: 24, tintColor: 'black' }} />
       <Button
         title="Overlay"
         onPress={() => {
