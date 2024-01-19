@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const expo_build_properties_1 = require("expo-build-properties");
 const config_plugins_1 = require("expo/config-plugins");
+const expo_build_properties_1 = require("expo-build-properties");
 const kotlinClassPath = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion";
 /**
  * Lifted from [unimodules-test-core](https://github.com/expo/expo/blob/master/packages/unimodules-test-core/app.plugin.js).
