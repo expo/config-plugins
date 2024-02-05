@@ -6,7 +6,7 @@ var BackgroundMode;
 (function (BackgroundMode) {
     BackgroundMode["Central"] = "central";
     BackgroundMode["Peripheral"] = "peripheral";
-})(BackgroundMode = exports.BackgroundMode || (exports.BackgroundMode = {}));
+})(BackgroundMode || (exports.BackgroundMode = BackgroundMode = {}));
 function ensureKey(arr, key) {
     if (!arr.find((mode) => mode === key)) {
         arr.push(key);
