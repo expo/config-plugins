@@ -28,7 +28,7 @@
     "xcode": "^3.0.1"
   },
   "peerDependencies": {
-    "expo": "^49"
+    "expo": "^50"
   },
   "devDependencies": {
     "expo-module-scripts": "^3.0.3"

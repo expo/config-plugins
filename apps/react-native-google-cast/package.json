@@ -9,11 +9,11 @@
   },
   "dependencies": {
     "@config-plugins/react-native-google-cast": "*",
-    "expo": "^49.0.3",
-    "expo-splash-screen": "~0.20.4",
-    "expo-status-bar": "~1.6.0",
+    "expo": "~50.0.5",
+    "expo-splash-screen": "~0.26.4",
+    "expo-status-bar": "~1.11.1",
     "react": "18.2.0",
-    "react-native": "0.72.3",
+    "react-native": "0.73.2",
     "react-native-google-cast": "^4.6.2"
   },
   "devDependencies": {
