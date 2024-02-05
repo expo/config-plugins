@@ -14052,11 +14052,6 @@ react-native-pdf@^6.7.1:
     crypto-js "^3.2.0"
     deprecated-react-native-prop-types "^2.3.0"
 
-react-native-quick-actions@^0.3.13:
-  version "0.3.13"
-  resolved "https://registry.yarnpkg.com/react-native-quick-actions/-/react-native-quick-actions-0.3.13.tgz#74431b0b30e98ac896e44cc1024c38864cfe2bbc"
-  integrity sha512-Vz13a0+NV0mzCh/29tNt0qDzWPh8i2srTQW8eCSzGFDArnVm1COTOhTD0FY0hWHlxRY0ahvX+BlezTDvsyAuMA==
-
 react-native-safe-area-context@4.6.3:
   version "4.6.3"
   resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-4.6.3.tgz#f06cfea05b1c4b018aa9758667a109f619c62b55"
