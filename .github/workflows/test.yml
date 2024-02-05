@@ -38,13 +38,11 @@ jobs:
             detox,
             ffmpeg-kit-react-native,
             ios-stickers,
-            react-native-ble-plx,
             react-native-blob-util,
             react-native-branch,
             react-native-siri-shortcut,
             react-native-google-cast,
             react-native-pdf,
-            # react-native-quick-actions,
           ]
     name: Test ${{ matrix.package }} on Node ${{ matrix.node }}
     steps:

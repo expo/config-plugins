@@ -1,9 +1,0 @@
-{
-  "expo": {
-    "name": "ble-plx",
-    "icon": "https://icogen.vercel.app/api/icon?icon=🔌&color_hex=072462",
-    "plugins": [
-      "@config-plugins/react-native-ble-plx"
-    ]
-  }
-}

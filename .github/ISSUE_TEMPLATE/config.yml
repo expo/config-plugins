@@ -15,9 +15,6 @@ contact_links:
   - about: Adjust React Native SDK
     name: 📦 react-native-adjust issues
     url: https://github.com/adjust/react_native_sdk/issues
-  - about: React Native Bluetooth Low Energy library
-    name: 📦 react-native-ble-plx issues
-    url: https://github.com/Polidea/react-native-ble-plx/issues
   - about: >-
       A module provides upload, download, and files access API. Supports file
       stream read/write for process large files.
@@ -36,9 +33,6 @@ contact_links:
   - about: A react native PDF view component, support ios and android platform
     name: 📦 react-native-pdf issues
     url: https://github.com/wonday/react-native-pdf/issues
-  - about: A react-native interface for Touch 3D home screen quick actions
-    name: 📦 react-native-quick-actions issues
-    url: https://github.com/jordanbyron/react-native-quick-actions/issues
   - about: A React Native library that enables you to use iOS 12+ Siri Shortcuts.
     name: 📦 react-native-siri-shortcut issues
     url: https://github.com/Gustash/react-native-siri-shortcut/issues

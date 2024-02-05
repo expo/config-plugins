@@ -42,12 +42,6 @@ updates:
       time: '09:00'
       timezone: America/Los_Angeles
   - package-ecosystem: npm
-    directory: packages/react-native-ble-plx
-    schedule:
-      interval: daily
-      time: '09:00'
-      timezone: America/Los_Angeles
-  - package-ecosystem: npm
     directory: packages/react-native-blob-util
     schedule:
       interval: daily
@@ -79,12 +73,6 @@ updates:
       timezone: America/Los_Angeles
   - package-ecosystem: npm
     directory: packages/react-native-pdf
-    schedule:
-      interval: daily
-      time: '09:00'
-      timezone: America/Los_Angeles
-  - package-ecosystem: npm
-    directory: packages/react-native-quick-actions
     schedule:
       interval: daily
       time: '09:00'

@@ -1,5 +1,7 @@
 # config-plugins/react-native-ble-plx
 
+> [!IMPORTANT] > `react-native-ble-plx` now has upstream support for Expo Config Plugins, this package is no longer necessary. Please remove it from your project and use the latest version of `react-native-ble-plx` instead.
+
 Config plugin to auto-configure `react-native-ble-plx` when the native code is generated (`npx expo prebuild`). [Upstream PR](https://github.com/Polidea/react-native-ble-plx/pull/842).
 
 ## Expo installation

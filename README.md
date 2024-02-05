@@ -6,7 +6,7 @@
 - All packages here are community maintained. Feel free to improve docs, packages, tests, etc.
 - We maintain a 1-1 mapping of **native packages** ⇔ `@config-plugins/*`. This means there should be no general utility packages here -- those are better suited for a different repo / NPM namespace.
 
-## Awesome
+## First-party plugins
 
 Here is a list of known packages that have a built-in Config Plugin.
 
