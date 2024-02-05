@@ -23,7 +23,7 @@
     "@types/js-yaml": "^4.0.5",
     "@types/prompts": "^2.0.13",
     "eslint": "^8.10.0",
-    "expo-yarn-workspaces": "^2.0.2",
+    "expo-yarn-workspaces": "^2.3.2",
     "js-yaml": "^4.1.0",
     "lerna": "3.4.1",
     "prettier": "^2.2.1",
