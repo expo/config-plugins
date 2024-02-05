@@ -15371,11 +15371,6 @@ react-native-adjust@~4.37.1:
   resolved "https://registry.yarnpkg.com/react-native-adjust/-/react-native-adjust-4.37.1.tgz#f0977149d99655e379bb5bdcf1bb3f3ea1f157aa"
   integrity sha512-ukFKdhztgmGgdLsI7WPi11KcJ7gYKLuNbyf5Nxa2N89NI9/xspJuZFcUvLFkqCYaXQB66ssYYfA80wbt/WA/Xw==
 
-react-native-ble-plx@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/react-native-ble-plx/-/react-native-ble-plx-2.0.3.tgz#b0a746f33389dbf7fd7b158513330d487d5d0fbb"
-  integrity sha512-62LRDBPf/03K7sge+qq2ZuF8PWCGB782G+SBrpgNm5fA5Hs3FCY1ExTJZ1G0tB5ZhBPYEXcKRxPLuFegcDFrqA==
-
 react-native-blob-util@^0.19.6:
   version "0.19.6"
   resolved "https://registry.yarnpkg.com/react-native-blob-util/-/react-native-blob-util-0.19.6.tgz#c2bd80887113f91a940d27cd294e76309ede7741"
@@ -15411,11 +15406,6 @@ react-native-pdf@^6.7.4:
   dependencies:
     crypto-js "4.2.0"
     deprecated-react-native-prop-types "^2.3.0"
-
-react-native-quick-actions@^0.3.13:
-  version "0.3.13"
-  resolved "https://registry.yarnpkg.com/react-native-quick-actions/-/react-native-quick-actions-0.3.13.tgz#74431b0b30e98ac896e44cc1024c38864cfe2bbc"
-  integrity sha512-Vz13a0+NV0mzCh/29tNt0qDzWPh8i2srTQW8eCSzGFDArnVm1COTOhTD0FY0hWHlxRY0ahvX+BlezTDvsyAuMA==
 
 react-native-safe-area-context@4.8.2:
   version "4.8.2"
