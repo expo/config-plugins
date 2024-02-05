@@ -2,13 +2,11 @@
   "expo": {
     "name": "siri xcut",
     "icon": "https://icogen.vercel.app/api/icon?icon=🔌&color_hex=82FAD4",
+    "platforms": ["ios"],
     "plugins": [
       [
         "@config-plugins/react-native-siri-shortcut",
-        [
-          "com.example.InitiateWorkout",
-          "com.example.FinishWorkout"
-        ]
+        ["com.example.InitiateWorkout", "com.example.FinishWorkout"]
       ]
     ]
   }
