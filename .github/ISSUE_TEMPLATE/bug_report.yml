@@ -35,7 +35,6 @@ body:
         - '@config-plugins/ffmpeg-kit-react-native'
         - '@config-plugins/ios-stickers'
         - '@config-plugins/react-native-adjust'
-        - '@config-plugins/react-native-ble-plx'
         - '@config-plugins/react-native-blob-util'
         - '@config-plugins/react-native-branch'
         - '@config-plugins/react-native-callkeep'
