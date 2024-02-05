@@ -14,7 +14,7 @@
     "expo-splash-screen": "~0.26.4",
     "expo-status-bar": "~1.11.1",
     "react": "18.2.0",
-    "react-native": "0.73.2",
+    "react-native": "0.73.3",
     "react-native-blob-util": "^0.18.3",
     "react-native-pdf": "^6.7.1"
   },
