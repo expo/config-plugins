@@ -8,15 +8,15 @@ Ensure you use versions that work together!
 
 | `expo` | `react-native-branch` | `@config-plugins/react-native-branch` |
 | ------ | --------------------- | ------------------------------------- |
+| 50.0.0 | 6.0.0                 | 7.0.0                                 |
 | 49.0.0 | 5.9.0                 | 6.0.0                                 |
 | 48.0.0 | 5.7.0                 | 5.0.0                                 |
 
 ## Expo installation
 
-> Tested against Expo SDK 49
-
 > This package cannot be used in the "Expo Go" app because [it requires custom native code](https://docs.expo.io/workflow/customizing/).
-> First install the package with yarn, npm, or [`npx expo install`](https://docs.expo.io/workflow/expo-cli/#expo-install).
+
+First install the package with yarn, npm, or [`npx expo install`](https://docs.expo.io/workflow/expo-cli/#expo-install).
 
 ```sh
 npx expo install react-native-branch @config-plugins/react-native-branch

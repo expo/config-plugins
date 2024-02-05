@@ -1,6 +1,6 @@
 {
   "name": "@config-plugins/ios-stickers",
-  "version": "6.0.0",
+  "version": "7.0.0",
   "description": "Config plugin to auto configure iOS iMessage stickers",
   "main": "build/withStickerPack.js",
   "types": "build/withStickerPack.d.ts",
@@ -35,7 +35,7 @@
     "expo": "^50"
   },
   "devDependencies": {
-    "expo-module-scripts": "^3.0.3",
+    "expo-module-scripts": "^3.4.3",
     "memfs": "^3.4.4"
   }
 }

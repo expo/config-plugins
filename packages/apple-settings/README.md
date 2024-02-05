@@ -4,12 +4,23 @@ Config plugin to generate custom [Apple settings UI](https://developer.apple.com
 
 https://github.com/expo/config-plugins/assets/9664363/8be449b3-9aab-440c-b736-b43b22155e82
 
+## Versioning
+
+Ensure you use versions that work together!
+
+| `expo` | `@config-plugins/apple-settings` |
+| ------ | -------------------------------- |
+| 50.0.0 | ^1.0.0                           |
+| 49.0.0 | ^0.0.5                           |
+
 ## Install
 
-> Tested against Expo SDK 49
+> This package cannot be used in the "Expo Go" app because [it requires custom native code](https://docs.expo.io/workflow/customizing/).
+
+First install the package with yarn, npm, or [`npx expo install`](https://docs.expo.io/workflow/expo-cli/#expo-install).
 
 ```
-yarn add @config-plugins/apple-settings
+npx expo install @config-plugins/apple-settings
 ```
 
 ## Example

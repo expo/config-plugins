@@ -1,6 +1,6 @@
 {
   "name": "@config-plugins/react-native-siri-shortcut",
-  "version": "5.0.0",
+  "version": "6.0.0",
   "description": "Config plugin for react-native-siri-shortcut package",
   "main": "build/withReactNativeSiriShortcut.js",
   "types": "build/withReactNativeSiriShortcut.d.ts",
@@ -31,7 +31,7 @@
     "expo": "^50"
   },
   "devDependencies": {
-    "expo-module-scripts": "^3.0.3"
+    "expo-module-scripts": "^3.4.3"
   },
   "upstreamPackage": "react-native-siri-shortcut"
 }

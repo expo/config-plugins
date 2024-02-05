@@ -1,16 +1,14 @@
 # @config-plugins/android-jsc-intl
 
-Expo Config Plugin to auto-configure [`android-jsc-intl`](https://www.npmjs.com/package/android-jsc-intl) when the native code is generated (`npx expo prebuild`).
+Expo Config Plugin to auto-configure Android JSC Intl when the native code is generated (`npx expo prebuild`).
 
 Adding this plugin lets you use `Intl` in your Android app, without using Hermes.
 
 ## Expo installation
 
-> Tested against Expo SDK 49
+> This package cannot be used in the "Expo Go" app because [it requires custom native code](https://docs.expo.io/workflow/customizing/).
 
-This package cannot be used in the "Expo Go" app because [it requires custom native code](https://docs.expo.io/workflow/customizing/).
-
-- First install the package with yarn, npm, or [`npx expo install`](https://docs.expo.io/workflow/expo-cli/#expo-install).
+First install the package with yarn, npm, or [`npx expo install`](https://docs.expo.io/workflow/expo-cli/#expo-install).
 
 ```sh
 npx expo install @config-plugins/android-jsc-intl

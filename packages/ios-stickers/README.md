@@ -2,12 +2,21 @@
 
 Config plugin to auto-configure iOS iMessage stickers
 
+## Versioning
+
+Ensure you use versions that work together!
+
+| `expo` | `@config-plugins/ios-stickers` |
+| ------ | ------------------------------ |
+| 50.0.0 | 7.0.0                          |
+| 49.0.0 | 6.0.0                          |
+
 ## Install
 
-> Tested against Expo SDK 49
+> This package cannot be used in the "Expo Go" app because [it requires custom native code](https://docs.expo.io/workflow/customizing/).
 
 ```
-yarn add @config-plugins/ios-stickers
+npx expo install @config-plugins/ios-stickers
 ```
 
 ## Example

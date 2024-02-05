@@ -8,14 +8,13 @@ Ensure you use versions that work together!
 
 | `expo` | `react-native-siri-shortcut` | `@config-plugins/react-native-siri-shortcut` |
 | ------ | ---------------------------- | -------------------------------------------- |
+| 50.0.0 | 3.2.4                        | 6.0.0                                        |
 | 49.0.0 | 3.2.3                        | 5.0.0                                        |
 | 48.0.0 | 3.2.2                        | 4.0.0                                        |
 
 ## Expo installation
 
-> Tested against Expo SDK 49
-
-This package cannot be used in the "Expo Go" app because [it requires custom native code](https://docs.expo.io/workflow/customizing/).
+> This package cannot be used in the "Expo Go" app because [it requires custom native code](https://docs.expo.io/workflow/customizing/).
 
 - First install the package with yarn, npm, or [`npx expo install`](https://docs.expo.io/workflow/expo-cli/#expo-install).
 

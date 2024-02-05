@@ -1,6 +1,6 @@
 # config-plugins/react-native-webrtc
 
-Config plugin to auto configure `react-native-webrtc` when the native code is generated (`npx expo prebuild`). [Upstream PR](https://github.com/react-native-webrtc/react-native-webrtc/pull/1013).
+Config plugin to auto-configure `react-native-webrtc` when the native code is generated (`npx expo prebuild`). [Upstream PR](https://github.com/react-native-webrtc/react-native-webrtc/pull/1013).
 
 ## Versioning
 
@@ -8,6 +8,7 @@ Ensure you use versions that work together!
 
 | `expo` | `react-native-webrtc` | `@config-plugins/react-native-webrtc` |
 | ------ | --------------------- | ------------------------------------- |
+| 50.0.0 | 118.0.1               | 8.0.0                                 |
 | 49.0.0 | 111.0.3               | 7.0.0                                 |
 | 48.0.0 | 106.0.6               | 6.0.0                                 |
 | 47.0.0 | 1.106.1               | 5.0.0                                 |
@@ -19,8 +20,6 @@ Ensure you use versions that work together!
 > Expo SDK 42 uses `react-native@0.63` which doesn't work with `react-native-webrtc`, specifically iOS production builds fail. Meaning this package is only supported for Expo SDK +43.
 
 ## Expo installation
-
-> Tested against Expo SDK 49
 
 > This package cannot be used in the "Expo Go" app because [it requires custom native code](https://docs.expo.io/workflow/customizing/).
 > First install the package with yarn, npm, or [`npx expo install`](https://docs.expo.io/workflow/expo-cli/#expo-install).
