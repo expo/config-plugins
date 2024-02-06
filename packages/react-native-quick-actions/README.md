@@ -10,7 +10,7 @@ Expo Config Plugin to auto-configure [`react-native-quick-actions`](https://www.
 
 > This package cannot be used in the "Expo Go" app because [it requires custom native code](https://docs.expo.io/workflow/customizing/).
 
-- First install the package with yarn, npm, or [`npx expo install`](https://docs.expo.io/workflow/expo-cli/#expo-install).
+First install the package with yarn, npm, or [`npx expo install`](https://docs.expo.io/workflow/expo-cli/#expo-install).
 
 ```sh
 npx expo install react-native-quick-actions @config-plugins/react-native-quick-actions
