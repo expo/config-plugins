@@ -28,7 +28,7 @@ function getMainAppTarget(project: XcodeProject): PBXNativeTarget {
     console.warn(
       `Multiple main app targets found, using first one: ${mainAppTarget
         .map((t) => t.getDisplayName())
-        .join(", ")}}`
+        .join(", ")}}`,
     );
   }
 
@@ -39,7 +39,7 @@ function getDefaultBuildConfigurationForTarget(target: PBXNativeTarget) {
   return target.props.buildConfigurationList.props.buildConfigurations.find(
     (config) =>
       config.props.name ===
-      target.props.buildConfigurationList.props.defaultConfigurationName
+      target.props.buildConfigurationList.props.defaultConfigurationName,
   );
 }
 
@@ -54,17 +54,17 @@ export const withLinkedSettingsBundle: ConfigPlugin = (config) => {
 
 async function applyXcodeChanges(
   project: XcodeProject,
-  props: { projectName: string }
+  props: { projectName: string },
 ) {
   const mainAppTarget = getMainAppTarget(project);
   const mainResourceBuildPhase = mainAppTarget.getBuildPhase(
-    PBXResourcesBuildPhase
+    PBXResourcesBuildPhase,
   );
 
   // Prevent duplicate.
   if (
     mainResourceBuildPhase?.props.files.find(
-      (file) => file.props.fileRef.props.name === "Settings.bundle"
+      (file) => file.props.fileRef.props.name === "Settings.bundle",
     )
   ) {
     return project;

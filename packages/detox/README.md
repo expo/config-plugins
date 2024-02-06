@@ -8,6 +8,7 @@ Ensure you use versions that work together!
 
 | `expo` | `detox` | `@config-plugins/detox` |
 | ------ | ------- | ----------------------- |
+| 50.0.0 | 20.17.0 | ^7.0.0                  |
 | 49.0.0 | 20.11.0 | ^6.0.0                  |
 | 48.0.0 | 20.5.0  | ^5.0.0                  |
 | 47.0.0 | 19.13.0 | ^4.0.0                  |
@@ -21,10 +22,10 @@ Most notably, the minimum required Kotlin version changed from `1.3.50` in SDK 4
 
 ### Add the package to your npm dependencies
 
-> Tested against Expo SDK 49
+First install the package with yarn, npm, or [`npx expo install`](https://docs.expo.io/workflow/expo-cli/#expo-install).
 
 ```
-yarn add detox @config-plugins/detox
+npx expo install detox @config-plugins/detox
 ```
 
 Detox is an end-to-end (e2e) testing library for iOS and Android. You can use it to automate usage of your native project. This example demonstrates how to use Detox and Jest in a native project that you build locally.

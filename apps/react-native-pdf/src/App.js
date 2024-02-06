@@ -2,7 +2,7 @@ import { SafeAreaView, StyleSheet, useWindowDimensions } from "react-native";
 import Pdf from "react-native-pdf";
 
 const source = {
-  uri: "http://samples.leanpub.com/thereactnativebook-sample.pdf",
+  uri: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
   cache: true,
 };
 export default function App() {

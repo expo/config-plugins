@@ -6,6 +6,8 @@ Config plugin to auto-configure `ffmpeg-kit-react-native` when the native code i
 
 | `expo` | `ffmpeg-kit-react-native` | `@config-plugins/ffmpeg-kit-react-native` |
 | ------ | ------------------------- | ----------------------------------------- |
+| 50.0.0 | 6.0.2                     | ^7.0.0                                    |
+| 49.0.0 | 5.1.0                     | ^6.0.0                                    |
 | 48.0.0 | 5.1.0                     | ^5.0.0                                    |
 | 47.0.0 | 5.1.0                     | ^4.0.0                                    |
 | 46.0.0 | 4.5.2                     | ^3.0.0                                    |
@@ -13,13 +15,14 @@ Config plugin to auto-configure `ffmpeg-kit-react-native` when the native code i
 
 ## Expo installation
 
-> Tested against Expo SDK 49. Most packages worked on iOS. Not all packages have been tested on Android.
+> Tested against Expo SDK 50. Most packages worked on iOS. Not all packages have been tested on Android.
 
 > This package cannot be used in the "Expo Go" app because [it requires custom native code](https://docs.expo.io/workflow/customizing/).
-> First install the package with yarn, npm, or [`npx expo install`](https://docs.expo.io/workflow/expo-cli/#expo-install).
+
+First install the package with yarn, npm, or [`npx expo install`](https://docs.expo.io/workflow/expo-cli/#expo-install).
 
 ```sh
-yarn add ffmpeg-kit-react-native @config-plugins/ffmpeg-kit-react-native
+npx expo install ffmpeg-kit-react-native @config-plugins/ffmpeg-kit-react-native
 ```
 
 After installing this npm package, add the [config plugin](https://docs.expo.io/guides/config-plugins/) to the [`plugins`](https://docs.expo.io/versions/latest/config/app/#plugins) array of your `app.json` or `app.config.js`:

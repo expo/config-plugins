@@ -12,12 +12,12 @@ describe(generateImessageIconsAsync, () => {
     vol.fromJSON({}, "/");
     await fs.promises.writeFile(
       "/icon.png",
-      await fsReal.promises.readFile(path.join(__dirname, "fixtures/icon.png"))
+      await fsReal.promises.readFile(path.join(__dirname, "fixtures/icon.png")),
     );
     const contents = await generateImessageIconsAsync(
       "/",
       "/icon.png",
-      "/output"
+      "/output",
     );
 
     expect(generateImageAsync).toHaveBeenCalledTimes(13);

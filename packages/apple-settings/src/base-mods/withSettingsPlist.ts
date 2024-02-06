@@ -18,7 +18,7 @@ export function createModSetForSettingsPage({ name }: { name: string }) {
 
   const withSettingsPlist: ConfigPlugin<Mod<SettingsPlist>> = (
     config,
-    action
+    action,
   ) => {
     return withMod(config, {
       platform: "ios",
@@ -40,7 +40,7 @@ export function createModSetForSettingsPage({ name }: { name: string }) {
             return path.join(
               modRequest.platformProjectRoot,
               modRequest.projectName!,
-              `Settings.bundle/${name}.plist`
+              `Settings.bundle/${name}.plist`,
             );
           },
           async read(filePath) {
@@ -51,11 +51,11 @@ export function createModSetForSettingsPage({ name }: { name: string }) {
                 };
               }
               return plist.default.parse(
-                await fs.promises.readFile(filePath, "utf-8")
+                await fs.promises.readFile(filePath, "utf-8"),
               );
             } catch (error: any) {
               throw new Error(
-                `Failed to parse the iOS Settings.bundle/${name}.plist: "${filePath}". ${error.message}}`
+                `Failed to parse the iOS Settings.bundle/${name}.plist: "${filePath}". ${error.message}}`,
               );
             }
           },

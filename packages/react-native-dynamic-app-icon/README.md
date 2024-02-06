@@ -1,13 +1,24 @@
 # @config-plugins/react-native-dynamic-app-icon
 
-Config plugin to auto-configure `react-native-dynamic-app-icon`
+Config plugin to auto-configure `react-native-dynamic-app-icon` when the native code is generated (`npx expo prebuild`).
+
+## Versioning
+
+Ensure you use versions that work together!
+
+| `expo` | `react-native-dynamic-app-icon` | `@config-plugins/react-native-dynamic-app-icon` |
+| ------ | ------------------------------- | ----------------------------------------------- |
+| 50.0.0 | 1.1.0                           | 7.0.0                                           |
+| 49.0.0 | 1.1.0                           | 6.0.0                                           |
 
 ## Install
 
-> Tested against Expo SDK 49
+> This package cannot be used in the "Expo Go" app because [it requires custom native code](https://docs.expo.io/workflow/customizing/).
+
+First install the package with yarn, npm, or [`npx expo install`](https://docs.expo.io/workflow/expo-cli/#expo-install).
 
 ```
-yarn add react-native-dynamic-app-icon @config-plugins/react-native-dynamic-app-icon
+npx expo install react-native-dynamic-app-icon @config-plugins/react-native-dynamic-app-icon
 ```
 
 After installing this npm package, add the [config plugin](https://docs.expo.io/guides/config-plugins/) to the [`plugins`](https://docs.expo.io/versions/latest/config/app/#plugins) array of your `app.json` or `app.config.js`. Then rebuild your app as described in the ["Adding custom native code"](https://docs.expo.io/workflow/customizing/) guide.

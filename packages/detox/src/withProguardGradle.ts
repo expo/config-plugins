@@ -11,11 +11,11 @@ const withProguardGradle: ConfigPlugin = (config) => {
   return withAppBuildGradle(config, (config) => {
     if (config.modResults.language === "groovy") {
       config.modResults.contents = addDetoxProguardRules(
-        config.modResults.contents
+        config.modResults.contents,
       );
     } else {
       throw new Error(
-        "Cannot add Detox maven gradle because the project build.gradle is not groovy"
+        "Cannot add Detox maven gradle because the project build.gradle is not groovy",
       );
     }
     return config;
@@ -34,7 +34,7 @@ export function addDetoxProguardRules(buildGradle: string): string {
             // Detox-specific additions to pro-guard
             def detoxProguardRulesPath = new File(["node", "--print", "require.resolve('detox/package.json')"].execute(null, rootDir).text.trim(), "../android/detox/proguard-rules-app.pro")
             proguardFile(detoxProguardRulesPath)
-            `
+            `,
   );
 }
 

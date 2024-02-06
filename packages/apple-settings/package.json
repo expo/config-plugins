@@ -1,6 +1,6 @@
 {
   "name": "@config-plugins/apple-settings",
-  "version": "0.0.5",
+  "version": "1.0.0",
   "description": "Config plugin to generate custom Apple settings UI",
   "license": "MIT",
   "main": "build/index.js",
@@ -35,10 +35,10 @@
     "schema-utils": "^4.2.0"
   },
   "peerDependencies": {
-    "expo": "^49"
+    "expo": "^50"
   },
   "devDependencies": {
-    "expo-module-scripts": "^3.0.3",
+    "expo-module-scripts": "^3.4.1",
     "json-schema-to-typescript": "^13.0.2",
     "memfs": "^3.4.4"
   }

@@ -2,6 +2,7 @@
   "expo": {
     "name": "app-icon",
     "icon": "./assets/icons/winter.png",
+    "platforms": ["ios"],
     "plugins": [
       [
         "@config-plugins/react-native-dynamic-app-icon",

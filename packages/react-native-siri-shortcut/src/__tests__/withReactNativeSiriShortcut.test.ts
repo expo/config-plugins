@@ -30,7 +30,7 @@ describe(addSiriShortcutAppDelegateInit, () => {
     expect(results.contents).toMatchSnapshot();
     expect(results.contents).toMatch(/react-native-siri-shortcut-delegate/);
     expect(results.contents).toMatch(
-      /RNSSSiriShortcuts application:application/
+      /RNSSSiriShortcuts application:application/,
     );
     // did add new content
     expect(results.didMerge).toBe(true);

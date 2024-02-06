@@ -101,7 +101,7 @@ const ICON_CONTENTS: {
 export async function generateImessageIconsAsync(
   projectRoot: string,
   icon: string,
-  iconsPath: string
+  iconsPath: string,
 ): Promise<ContentsJsonImage[]> {
   // Ensure the Images.xcassets/AppIcon.appiconset path exists
   fs.mkdirSync(iconsPath, { recursive: true });
@@ -139,7 +139,7 @@ export async function generateImessageIconsAsync(
               // Force the background color to solid white to prevent any transparency.
               // TODO: Maybe use a more adaptive option based on the icon color?
               backgroundColor: "#ffffff",
-            }
+            },
           );
           // Write image buffer to the file system.
           const assetPath = join(iconsPath, filename);
@@ -168,7 +168,7 @@ export async function generateImessageIconsAsync(
 function getAppleIconName(
   size: number | [number, number],
   scale: number,
-  idiom: string
+  idiom: string,
 ) {
   const [width, height] = Array.isArray(size) ? size : [size, size];
   return `App-Icon-${idiom}-${width}x${height}@${scale}x.png`;

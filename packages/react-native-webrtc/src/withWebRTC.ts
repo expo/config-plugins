@@ -1,9 +1,9 @@
-import { withBuildProperties } from "expo-build-properties";
 import {
   AndroidConfig,
   ConfigPlugin,
   createRunOncePlugin,
 } from "expo/config-plugins";
+import { withBuildProperties } from "expo-build-properties";
 
 import { withBitcodeDisabled } from "./withBitcodeDisabled";
 import { withDesugaring } from "./withDesugaring";
@@ -13,7 +13,7 @@ const pkg = { name: "react-native-webrtc", version: "UNVERSIONED" }; //require("
 
 const withWebRTC: ConfigPlugin<IOSPermissionsProps | void> = (
   config,
-  props = {}
+  props = {},
 ) => {
   const _props = props || {};
 

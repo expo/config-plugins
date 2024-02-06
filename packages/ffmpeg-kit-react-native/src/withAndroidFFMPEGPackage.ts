@@ -12,17 +12,17 @@ import {
 
 export const withAndroidFFMPEGPackage: ConfigPlugin<string | undefined> = (
   config,
-  packageName
+  packageName,
 ) => {
   config = withProjectBuildGradle(config, (config) => {
     if (config.modResults.language === "groovy") {
       config.modResults.contents = addPackageName(
         config.modResults.contents,
-        packageName
+        packageName,
       );
     } else {
       throw new Error(
-        "Cannot add camera maven gradle because the build.gradle is not groovy"
+        "Cannot add camera maven gradle because the build.gradle is not groovy",
       );
     }
     return config;

@@ -4,16 +4,17 @@
   "version": "1.0.0",
   "scripts": {
     "start": "expo start --dev-client",
+    "prebuild": "expo prebuild -p ios --template ./expo-template-bare-minimum-50.0.17.tgz",
     "ios": "expo run:ios",
     "android": "expo run:android"
   },
   "dependencies": {
     "@config-plugins/ios-stickers": "*",
-    "expo": "^49.0.3",
-    "expo-splash-screen": "~0.20.4",
-    "expo-status-bar": "~1.6.0",
+    "expo": "~50.0.5",
+    "expo-splash-screen": "~0.26.4",
+    "expo-status-bar": "~1.11.1",
     "react": "18.2.0",
-    "react-native": "0.72.3"
+    "react-native": "0.73.3"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

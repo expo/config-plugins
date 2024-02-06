@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "apple-settings",
-    "icon": "https://icogen.vercel.app/api/icon?icon=🔌&color_hex=1832BA"
+    "icon": "https://icogen.vercel.app/api/icon?icon=🔌&color_hex=1832BA",
+    "platforms": ["ios"]
   }
 }

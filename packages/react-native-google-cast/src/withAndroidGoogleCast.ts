@@ -20,6 +20,20 @@ const META_PROVIDER_CLASS =
 const META_RECEIVER_APP_ID =
   "com.reactnative.googlecast.RECEIVER_APPLICATION_ID";
 
+const MAIN_ACTIVITY_LANGUAGES: Record<
+  "java" | "kt",
+  { code: string; anchor: RegExp }
+> = {
+  java: {
+    code: "CastContext.getSharedInstance(this);",
+    anchor: /super\.onCreate\(\w+\);/,
+  },
+  kt: {
+    code: "CastContext.getSharedInstance(this)",
+    anchor: /super\.onCreate\(\w+\)/,
+  },
+};
+
 type Props = {
   receiverAppId?: string;
 };
@@ -52,7 +66,7 @@ async function ensureCustomActivityAsync({
 
 const withAndroidManifestCast: ConfigPlugin<Props> = (
   config,
-  { receiverAppId } = {}
+  { receiverAppId } = {},
 ) => {
   return withAndroidManifest(config, async (config) => {
     const mainApplication = getMainApplicationOrThrow(config.modResults);
@@ -63,13 +77,13 @@ const withAndroidManifestCast: ConfigPlugin<Props> = (
       mainApplication,
       META_PROVIDER_CLASS,
       // This is the native Java class
-      "com.reactnative.googlecast.GoogleCastOptionsProvider"
+      "com.reactnative.googlecast.GoogleCastOptionsProvider",
     );
     if (receiverAppId) {
       addMetaDataItemToMainApplication(
         mainApplication,
         META_RECEIVER_APP_ID,
-        receiverAppId
+        receiverAppId,
       );
     }
     return config;
@@ -78,18 +92,18 @@ const withAndroidManifestCast: ConfigPlugin<Props> = (
 
 const withProjectBuildGradleVersion: ConfigPlugin<{ version?: string }> = (
   config,
-  { version }
+  { version },
 ) => {
   return withProjectBuildGradle(config, (config) => {
     if (config.modResults.language !== "groovy")
       throw new Error(
-        "react-native-google-cast config plugin does not support Kotlin /build.gradle yet."
+        "react-native-google-cast config plugin does not support Kotlin /build.gradle yet.",
       );
     config.modResults.contents = addGoogleCastVersionImport(
       config.modResults.contents,
       {
         version,
-      }
+      },
     ).contents;
 
     return config;
@@ -98,12 +112,12 @@ const withProjectBuildGradleVersion: ConfigPlugin<{ version?: string }> = (
 
 const withAppBuildGradleImport: ConfigPlugin<{ version?: string }> = (
   config,
-  { version }
+  { version },
 ) => {
   return withAppBuildGradle(config, (config) => {
     if (config.modResults.language !== "groovy")
       throw new Error(
-        "react-native-google-cast config plugin does not support Kotlin app/build.gradle yet."
+        "react-native-google-cast config plugin does not support Kotlin app/build.gradle yet.",
       );
     config.modResults.contents = addSafeExtGet(config.modResults.contents);
 
@@ -111,7 +125,7 @@ const withAppBuildGradleImport: ConfigPlugin<{ version?: string }> = (
       config.modResults.contents,
       {
         version,
-      }
+      },
     ).contents;
 
     return config;
@@ -123,15 +137,14 @@ const withMainActivityLazyLoading: ConfigPlugin = (config) => {
     const src = addImports(
       config.modResults.contents,
       ["com.google.android.gms.cast.framework.CastContext"],
-      config.modResults.language === "java"
+      config.modResults.language === "java",
     );
-    if (config.modResults.language === "java") {
-      config.modResults.contents = addGoogleCastLazyLoadingImport(src).contents;
-    } else {
-      throw new Error(
-        "react-native-google-cast config plugin does not support kotlin MainActivity yet."
-      );
-    }
+
+    config.modResults.contents = addGoogleCastLazyLoadingImport(
+      src,
+      config.modResults.language,
+    ).contents;
+
     return config;
   });
 };
@@ -165,15 +178,25 @@ export const withAndroidGoogleCast: ConfigPlugin<{
   return config;
 };
 
-function addGoogleCastLazyLoadingImport(src: string) {
+function addGoogleCastLazyLoadingImport(
+  src: string,
+  language: keyof typeof MAIN_ACTIVITY_LANGUAGES,
+) {
+  const mainActivity = MAIN_ACTIVITY_LANGUAGES[language];
+  if (!mainActivity) {
+    throw new Error(
+      `react-native-google-cast config plugin does not support MainActivity.${language} yet`,
+    );
+  }
+
   const newSrc = [];
-  newSrc.push("    CastContext.getSharedInstance(this);");
+  newSrc.push(`    ${mainActivity.code}`);
 
   return mergeContents({
     tag: "react-native-google-cast-onCreate",
     src,
     newSrc: newSrc.join("\n"),
-    anchor: /super\.onCreate\(\w+\);/,
+    anchor: mainActivity.anchor,
     offset: 1,
     comment: "//",
   });
@@ -183,12 +206,12 @@ function addGoogleCastLazyLoadingImport(src: string) {
 // dependencies { implementation "com.google.android.gms:play-services-cast-framework:+" }
 function addGoogleCastImport(
   src: string,
-  { version }: { version?: string } = {}
+  { version }: { version?: string } = {},
 ) {
   const newSrc = [];
 
   newSrc.push(
-    `    implementation "com.google.android.gms:play-services-cast-framework:\${safeExtGet('castFrameworkVersion', '${version}')}"`
+    `    implementation "com.google.android.gms:play-services-cast-framework:\${safeExtGet('castFrameworkVersion', '${version}')}"`,
   );
 
   return mergeContents({
@@ -215,7 +238,7 @@ function addSafeExtGet(src: string) {
   newSrc.push(
     "def safeExtGet(prop, fallback) {",
     "  rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback",
-    "}"
+    "}",
   );
 
   return mergeContents({
@@ -231,7 +254,7 @@ function addSafeExtGet(src: string) {
 
 function addGoogleCastVersionImport(
   src: string,
-  { version }: { version?: string } = {}
+  { version }: { version?: string } = {},
 ) {
   const newSrc = [];
   newSrc.push(`        castFrameworkVersion = "${version}"`);

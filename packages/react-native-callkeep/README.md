@@ -8,13 +8,16 @@ Ensure you use versions that work together!
 
 | `expo` | `react-native-callkeep` | `@config-plugins/react-native-callkeep` |
 | ------ | ----------------------- | --------------------------------------- |
+| 50.0.0 | 4.3.12                  | 7.0.0                                   |
 | 49.0.0 | 4.3.9                   | 6.0.0                                   |
 | 48.0.0 | 4.3.7                   | 5.0.0                                   |
 
 ### Add the package to your npm dependencies
 
-> Tested against Expo SDK 49
+> This package cannot be used in the "Expo Go" app because [it requires custom native code](https://docs.expo.io/workflow/customizing/).
+
+First install the package with yarn, npm, or [`npx expo install`](https://docs.expo.io/workflow/expo-cli/#expo-install).
 
 ```
-yarn add react-native-callkeep @config-plugins/react-native-callkeep
+npx expo install react-native-callkeep @config-plugins/react-native-callkeep
 ```

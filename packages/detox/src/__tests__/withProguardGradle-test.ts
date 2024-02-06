@@ -46,7 +46,7 @@ describe(addDetoxProguardRules, () => {
   });
   it(`doesn't add proguard rules to gradle if proguard is missing from the template`, () => {
     expect(
-      addDetoxProguardRules(buildGradleWithoutProguardFixture)
+      addDetoxProguardRules(buildGradleWithoutProguardFixture),
     ).not.toMatch(/detox/);
   });
   it(`doesn't duplicate`, () => {

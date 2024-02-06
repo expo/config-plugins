@@ -56,13 +56,13 @@ export const withDetoxTestClass: ConfigPlugin = (config) => {
       assert(packageName, "android.package must be defined");
       const folder = path.join(
         config.modRequest.platformProjectRoot,
-        `app/src/androidTest/java/${packageName.split(".").join("/")}`
+        `app/src/androidTest/java/${packageName.split(".").join("/")}`,
       );
       fs.mkdirSync(folder, { recursive: true });
       fs.writeFileSync(
         path.join(folder, "DetoxTest.java"),
         getTemplateFile(packageName),
-        { encoding: "utf8" }
+        { encoding: "utf8" },
       );
       return config;
     },
