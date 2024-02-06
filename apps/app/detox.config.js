@@ -1,4 +1,4 @@
-const iosName = "detox";
+const iosName = "detoxapp";
 const simulator = "iPhone 14 Pro";
 const derivedDataPath = "ios/build";
 const sdk = "iphonesimulator";
@@ -55,7 +55,7 @@ module.exports = {
     emulator: {
       type: "android.emulator",
       device: {
-        avdName: ".*",
+        avdName: "Pixel_6_Pro_API_33",
       },
     },
   },
