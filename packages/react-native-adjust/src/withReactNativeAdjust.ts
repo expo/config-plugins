@@ -6,7 +6,10 @@ import {
   IOSConfig,
   withAppBuildGradle,
   withXcodeProject,
+  withDangerousMod,
 } from "expo/config-plugins";
+import fs from "fs";
+import path from "path";
 
 const withXcodeLinkBinaryWithLibraries: ConfigPlugin<{
   library: string;
@@ -44,29 +47,153 @@ const addAndroidPackagingOptions = (src: string) => {
   });
 };
 
-const withGradle: ConfigPlugin = (config) => {
+const addSdkSignatureDependency = (src: string) => {
+  return mergeContents({
+    tag: "react-native-adjust arr dependency",
+    src,
+    newSrc: "implementation files('libs/adjust-lib.aar')",
+    anchor: /dependencies(?:\s+)?\{/,
+    // Inside the dependencies block.
+    offset: 1,
+    comment: "//",
+  });
+};
+
+const addNdkAbiFilters = (src: string) => {
+  return mergeContents({
+    tag: "react-native-adjust NDK abi filters",
+    src,
+    newSrc: "ndk.abiFilters 'armeabi-v7a','arm64-v8a','x86','x86_64'",
+    anchor: /defaultConfig(?:\s+)?\{/,
+    // Inside the dependencies block.
+    offset: 1,
+    comment: "//",
+  });
+};
+
+const withGradle: ConfigPlugin<{ isSdkSignatureSupported: boolean }> = (
+  config,
+  { isSdkSignatureSupported }
+) => {
   return withAppBuildGradle(config, (config) => {
-    if (config.modResults.language === "groovy") {
-      config.modResults.contents = addAndroidPackagingOptions(
-        config.modResults.contents
-      ).contents;
-    } else {
+    if (config.modResults.language !== "groovy") {
       throw new Error(
         "Cannot add Play Services maven gradle because the project build.gradle is not groovy"
       );
     }
+
+    if (isSdkSignatureSupported) {
+      config.modResults.contents = addNdkAbiFilters(
+        config.modResults.contents
+      ).contents;
+
+      config.modResults.contents = addSdkSignatureDependency(
+        config.modResults.contents
+      ).contents;
+    }
+
+    config.modResults.contents = addAndroidPackagingOptions(
+      config.modResults.contents
+    ).contents;
+
     return config;
   });
+};
+
+const withAndroidSdkSignature: ConfigPlugin<{ sdkSignaturePath: string }> = (
+  config,
+  props
+) => {
+  return withDangerousMod(config, [
+    "android",
+    async (config) => {
+      const projectRoot = config.modRequest.projectRoot;
+      const libPath = path.join(projectRoot, props.sdkSignaturePath);
+
+      if (!fs.existsSync(libPath)) {
+        throw new Error("Cannot find Adjust Android sdk signature library !");
+      }
+
+      const libsDirectoryPath = path.join(projectRoot, "android/app/libs");
+
+      if (!fs.existsSync(libsDirectoryPath)) {
+        fs.mkdirSync(libsDirectoryPath);
+      }
+
+      fs.cpSync(libPath, path.join(libsDirectoryPath, "adjust-lib.aar"));
+
+      return config;
+    },
+  ]);
+};
+
+const withIosSdkSignature: ConfigPlugin<{ sdkSignaturePath: string }> = (
+  config,
+  props
+) => {
+  return withXcodeProject(config, (config) => {
+    const projectRoot = config.modRequest.projectRoot;
+    const libPath = path.join(projectRoot, props.sdkSignaturePath);
+
+    if (!fs.existsSync(libPath)) {
+      throw new Error("Cannot find Adjust iOS sdk signature library !");
+    }
+
+    const newLibPath = path.join(
+      projectRoot,
+      "ios",
+      config.modRequest.projectName!,
+      path.basename(libPath)
+    );
+    const target = IOSConfig.XcodeUtils.getApplicationNativeTarget({
+      project: config.modResults,
+      projectName: config.modRequest.projectName!,
+    });
+
+    fs.cpSync(libPath, newLibPath, { recursive: true });
+
+    const embedFrameworksBuildPhase =
+      config.modResults.pbxEmbedFrameworksBuildPhaseObj(target.uuid);
+
+    if (!embedFrameworksBuildPhase) {
+      config.modResults.addBuildPhase(
+        [],
+        "PBXCopyFilesBuildPhase",
+        "Embed Frameworks",
+        target.uuid,
+        "frameworks"
+      );
+    }
+
+    config.modResults.addFramework(newLibPath, {
+      target: target.uuid,
+      embed: true,
+      sign: true,
+      customFramework: true,
+    });
+
+    return config;
+  });
+};
+
+type Props = {
+  targetAndroid12?: boolean;
+  sdkSignature?: {
+    ios?: string;
+    android?: string;
+  };
 };
 
 /**
  * Apply react-native-adjust configuration for Expo SDK +44 projects.
  */
-const withAdjustPlugin: ConfigPlugin<void | { targetAndroid12?: boolean }> = (
-  config,
-  _props
-) => {
+const withAdjustPlugin: ConfigPlugin<void | Props> = (config, _props) => {
   const props = _props || {};
+
+  const androidSdkSignaturePath = props.sdkSignature?.android ?? "";
+  const iosSdkSignaturePath = props.sdkSignature?.ios ?? "";
+  const isAndroidSdkSignatureSupported = androidSdkSignaturePath !== "";
+  const isIosSdkSignatureSupported = iosSdkSignaturePath !== "";
 
   config = withXcodeLinkBinaryWithLibraries(config, {
     library: "iAd.framework",
@@ -93,13 +220,27 @@ const withAdjustPlugin: ConfigPlugin<void | { targetAndroid12?: boolean }> = (
     status: "optional",
   });
 
+  if (isIosSdkSignatureSupported) {
+    config = withIosSdkSignature(config, {
+      sdkSignaturePath: iosSdkSignaturePath,
+    });
+  }
+
   if (props.targetAndroid12) {
     config = AndroidConfig.Permissions.withPermissions(config, [
       "com.google.android.gms.permission.AD_ID",
     ]);
   }
 
-  config = withGradle(config);
+  config = withGradle(config, {
+    isSdkSignatureSupported: isAndroidSdkSignatureSupported,
+  });
+
+  if (isAndroidSdkSignatureSupported) {
+    config = withAndroidSdkSignature(config, {
+      sdkSignaturePath: androidSdkSignaturePath,
+    });
+  }
 
   // Return the modified config.
   return config;
