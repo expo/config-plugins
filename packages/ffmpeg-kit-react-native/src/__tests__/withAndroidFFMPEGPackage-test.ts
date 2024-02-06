@@ -4,7 +4,7 @@ import { addPackageName } from "../withAndroidFFMPEGPackage";
 describe(addPackageName, () => {
   it(`adds undefined package`, () => {
     expect(
-      addPackageName(getFixture("build.gradle"), undefined)
+      addPackageName(getFixture("build.gradle"), undefined),
     ).toMatchSnapshot();
   });
   it(`redefines the package`, () => {

@@ -19,7 +19,7 @@ export function getBranchApiKey(config: ExpoConfig) {
 
 export function setBranchApiKey(
   apiKey: string,
-  androidManifest: AndroidConfig.Manifest.AndroidManifest
+  androidManifest: AndroidConfig.Manifest.AndroidManifest,
 ) {
   const mainApplication = getMainApplicationOrThrow(androidManifest);
 
@@ -36,12 +36,12 @@ export function setBranchApiKey(
 
 export const withBranchAndroid: ConfigPlugin<{ apiKey?: string }> = (
   config,
-  data
+  data,
 ) => {
   const apiKey = data.apiKey ?? getBranchApiKey(config);
   if (!apiKey) {
     throw new Error(
-      "Branch API key is required: expo.android.config.branch.apiKey"
+      "Branch API key is required: expo.android.config.branch.apiKey",
     );
   }
 

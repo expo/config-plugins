@@ -35,7 +35,7 @@ export function createModSetForSettingsStrings({
             return path.join(
               modRequest.platformProjectRoot,
               modRequest.projectName!,
-              `Settings.bundle/${lang}.lproj/${name}.strings`
+              `Settings.bundle/${lang}.lproj/${name}.strings`,
             );
           },
           async read(filePath) {
@@ -49,7 +49,7 @@ export function createModSetForSettingsStrings({
               >;
             } catch (error: any) {
               throw new Error(
-                `Failed to parse the Settings.bundle/${lang}.lproj/${name}.strings: "${filePath}". ${error.message}}`
+                `Failed to parse the Settings.bundle/${lang}.lproj/${name}.strings: "${filePath}". ${error.message}}`,
               );
             }
           },

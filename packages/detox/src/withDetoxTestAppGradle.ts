@@ -11,14 +11,14 @@ const withDetoxTestAppGradle: ConfigPlugin = (config) => {
   return withAppBuildGradle(config, (config) => {
     if (config.modResults.language === "groovy") {
       config.modResults.contents = setGradleAndroidTestImplementation(
-        config.modResults.contents
+        config.modResults.contents,
       );
       config.modResults.contents = addDetoxDefaultConfigBlock(
-        config.modResults.contents
+        config.modResults.contents,
       );
     } else {
       throw new Error(
-        "Cannot add Detox maven gradle because the project build.gradle is not groovy"
+        "Cannot add Detox maven gradle because the project build.gradle is not groovy",
       );
     }
     return config;
@@ -26,16 +26,16 @@ const withDetoxTestAppGradle: ConfigPlugin = (config) => {
 };
 
 export function setGradleAndroidTestImplementation(
-  buildGradle: string
+  buildGradle: string,
 ): string {
   buildGradle = pushGradleDependency(
     buildGradle,
     // SDK 50 https://github.com/wix/Detox/blob/700b750e8a09b2eff2d26c0dbf3c50b70130fc9b/examples/demo-react-native/android/app/build.gradle#L61
-    "implementation 'androidx.appcompat:appcompat:1.6.1'"
+    "implementation 'androidx.appcompat:appcompat:1.6.1'",
   );
   buildGradle = pushGradleDependency(
     buildGradle,
-    "androidTestImplementation('com.wix:detox:+')"
+    "androidTestImplementation('com.wix:detox:+')",
   );
   return buildGradle;
 }
@@ -46,7 +46,7 @@ function escapeStringRegexp(str: string) {
 
 export function pushGradleDependency(
   buildGradle: string,
-  dependency: string
+  dependency: string,
 ): string {
   const pattern = new RegExp(escapeStringRegexp(dependency), "g");
   if (buildGradle.match(pattern)) {
@@ -55,7 +55,7 @@ export function pushGradleDependency(
   return buildGradle.replace(
     /dependencies\s?{/,
     `dependencies {
-    ${dependency}`
+    ${dependency}`,
   );
 }
 
@@ -70,7 +70,7 @@ export function addDetoxDefaultConfigBlock(buildGradle: string): string {
     `defaultConfig {
         // detox-plugin-default-config
         testBuildType System.getProperty('testBuildType', 'debug')
-        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'`
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'`,
   );
 }
 

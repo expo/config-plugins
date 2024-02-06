@@ -21,11 +21,11 @@ const withDetoxProjectGradle: ConfigPlugin = (config) => {
   return withProjectBuildGradle(config, (config) => {
     if (config.modResults.language === "groovy") {
       config.modResults.contents = addDetoxImport(
-        config.modResults.contents
+        config.modResults.contents,
       ).contents;
     } else {
       throw new Error(
-        "Cannot add Detox maven gradle because the project build.gradle is not groovy"
+        "Cannot add Detox maven gradle because the project build.gradle is not groovy",
       );
     }
     return config;

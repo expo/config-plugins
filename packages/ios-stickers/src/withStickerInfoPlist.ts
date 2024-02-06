@@ -13,17 +13,17 @@ import { getProjectStickersName } from "./withStickerXcodeTarget";
 
 export const withStickersPlist: ConfigPlugin<Pick<Props, "name">> = (
   config,
-  { name }
+  { name },
 ) => {
   return withDangerousMod(config, [
     "ios",
     async (config) => {
       const stickerPackName = getProjectStickersName(
-        config.modRequest.projectName!
+        config.modRequest.projectName!,
       );
       const stickerRootPath = path.join(
         config.modRequest.platformProjectRoot,
-        stickerPackName
+        stickerPackName,
       );
       const filePath = path.join(stickerRootPath, "Info.plist");
 

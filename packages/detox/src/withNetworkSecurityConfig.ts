@@ -20,7 +20,7 @@ function getTemplateConfigContent(subdomains: SubdomainsType) {
       ${subdomains
         .map(
           (subdomain) =>
-            `<domain includeSubdomains="true">${subdomain}</domain>`
+            `<domain includeSubdomains="true">${subdomain}</domain>`,
         )
         .join("")}
     </domain-config>
@@ -53,13 +53,13 @@ const withNetworkSecurityConfigFile: ConfigPlugin<{
       assert(packageName, "android.package must be defined");
       const folder = path.join(
         config.modRequest.platformProjectRoot,
-        `app/src/main/res/xml`
+        `app/src/main/res/xml`,
       );
       fs.mkdirSync(folder, { recursive: true });
       fs.writeFileSync(
         path.join(folder, "network_security_config.xml"),
         getTemplateFile(subdomains),
-        { encoding: "utf8" }
+        { encoding: "utf8" },
       );
       return config;
     },
@@ -88,7 +88,7 @@ export const withNetworkSecurityConfigManifest: ConfigPlugin<
   config = withNetworkSecurityConfigFile(config, props);
   return withAndroidManifest(config, (config) => {
     const application = AndroidConfig.Manifest.getMainApplicationOrThrow(
-      config.modResults
+      config.modResults,
     );
     application.$["android:networkSecurityConfig"] =
       "@xml/network_security_config";

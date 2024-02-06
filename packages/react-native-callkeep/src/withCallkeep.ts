@@ -34,7 +34,7 @@ const withAndroidManifestService: ConfigPlugin = (config) => {
     // </service>;
 
     const app = AndroidConfig.Manifest.getMainApplicationOrThrow(
-      config.modResults
+      config.modResults,
     );
 
     if (!Array.isArray(app.service)) app.service = [];
@@ -43,7 +43,7 @@ const withAndroidManifestService: ConfigPlugin = (config) => {
       !app.service.find(
         (item) =>
           item.$["android:name"] ===
-          "io.wazo.callkeep.RNCallKeepBackgroundMessagingService"
+          "io.wazo.callkeep.RNCallKeepBackgroundMessagingService",
       )
     ) {
       app.service.push({
@@ -58,7 +58,7 @@ const withAndroidManifestService: ConfigPlugin = (config) => {
     if (
       !app.service.find(
         (item) =>
-          item.$["android:name"] === "io.wazo.callkeep.VoiceConnectionService"
+          item.$["android:name"] === "io.wazo.callkeep.VoiceConnectionService",
       )
     ) {
       app.service.push({

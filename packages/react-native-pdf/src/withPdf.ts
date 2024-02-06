@@ -19,12 +19,12 @@ export const withAndroidPackagingOptions: ConfigPlugin = (config) => {
   return withAppBuildGradle(config, (config) => {
     if (config.modResults.language === "groovy") {
       config.modResults.contents = addAndroidPackagingOptions(
-        config.modResults.contents
+        config.modResults.contents,
       ).contents;
     } else {
       WarningAggregator.addWarningAndroid(
         "@config-plugins/react-native-pdf",
-        `Cannot automatically configure app build.gradle if it's not groovy`
+        `Cannot automatically configure app build.gradle if it's not groovy`,
       );
     }
     return config;

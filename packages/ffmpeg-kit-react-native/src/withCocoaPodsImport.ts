@@ -9,7 +9,7 @@ import path from "path";
 
 export const withPodfilePropertiesPackage: ConfigPlugin<string> = (
   config,
-  packageName
+  packageName,
 ) => {
   return withPodfileProperties(config, (config) => {
     // @ts-ignore: wrong type
