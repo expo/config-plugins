@@ -1,0 +1,39 @@
+{
+  "name": "@config-plugins/react-native-google-signin",
+  "version": "7.0.0",
+  "description": "Config plugin to auto configure react-native-google-signin on prebuild",
+  "main": "build/withPdf.js",
+  "types": "build/withPdf.d.ts",
+  "sideEffects": false,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/expo/config-plugins.git",
+    "directory": "packages/react-native-google-signin"
+  },
+  "files": [
+    "build",
+    "app.plugin.js"
+  ],
+  "scripts": {
+    "build": "expo-module build",
+    "clean": "expo-module clean",
+    "lint": "expo-module lint",
+    "test": "expo-module test",
+    "prepare": "expo-module prepare",
+    "prepublishOnly": "expo-module prepublishOnly",
+    "expo-module": "expo-module"
+  },
+  "keywords": [
+    "react-native-google-signin",
+    "react-native",
+    "expo"
+  ],
+  "peerDependencies": {
+    "expo": "^50"
+  },
+  "devDependencies": {
+    "expo-module-scripts": "^3.4.1"
+  },
+  "upstreamPackage": "react-native-google-signin"
+}
