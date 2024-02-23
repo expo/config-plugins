@@ -2,8 +2,8 @@
   "name": "@config-plugins/react-native-google-signin",
   "version": "7.0.0",
   "description": "Config plugin to auto configure react-native-google-signin on prebuild",
-  "main": "build/withPdf.js",
-  "types": "build/withPdf.d.ts",
+  "main": "build/withGoogleSignin.js",
+  "types": "build/withGoogleSignin.d.ts",
   "sideEffects": false,
   "license": "MIT",
   "repository": {
