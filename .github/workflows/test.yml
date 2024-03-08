@@ -43,6 +43,7 @@ jobs:
             react-native-siri-shortcut,
             react-native-google-cast,
             react-native-pdf,
+            managed-config,
           ]
     name: Test ${{ matrix.package }} on Node ${{ matrix.node }}
     steps:

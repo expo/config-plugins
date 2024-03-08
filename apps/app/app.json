@@ -33,7 +33,21 @@
       "@config-plugins/react-native-adjust",
       "@config-plugins/react-native-callkeep",
       "@config-plugins/android-jsc-intl",
-      "expo-localization"
+      "expo-localization",
+      [
+        "@config-plugins/managed-config",
+        {
+          "restrictions": [
+            {
+              "key": "test_key",
+              "title": "Test Title",
+              "restrictionType": "string",
+              "description": "Testing managed config plugin",
+              "defaultValue": "Hello world"
+            }
+          ]
+        }
+      ]
     ]
   }
 }

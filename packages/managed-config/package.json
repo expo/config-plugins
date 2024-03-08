@@ -1,0 +1,36 @@
+{
+  "name": "@config-plugins/managed-config",
+  "version": "0.0.0",
+  "description": "Config plugin for managed-config package",
+  "main": "build/withManagedConfig.js",
+  "types": "build/withManagedConfig.d.ts",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/expo/config-plugins.git",
+    "directory": "packages/managed-config"
+  },
+  "scripts": {
+    "build": "expo-module build",
+    "clean": "expo-module clean",
+    "lint": "expo-module lint",
+    "test": "expo-module test",
+    "prepare": "expo-module prepare",
+    "prepublishOnly": "expo-module prepublishOnly",
+    "expo-module": "expo-module"
+  },
+  "keywords": [
+    "react",
+    "expo",
+    "config-plugins",
+    "prebuild",
+    "managed-config",
+    "expo-50"
+  ],
+  "peerDependencies": {
+    "expo": "^50"
+  },
+  "devDependencies": {
+    "expo-module-scripts": "^3.4.1"
+  }
+}
