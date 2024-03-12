@@ -1,0 +1,9 @@
+<manifest package="expo.modules.adapters.braze">
+  <service
+    android:name="com.braze.push.BrazeFirebaseMessagingService"
+    android:exported="false">
+    <intent-filter>
+      <action android:name="com.google.firebase.MESSAGING_EVENT" />
+    </intent-filter>
+  </service>
+</manifest>
