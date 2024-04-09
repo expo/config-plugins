@@ -2,7 +2,6 @@ import {
   mergeContents,
   MergeResults,
 } from "@expo/config-plugins/build/utils/generateCode";
-import { type ExpoConfig } from "expo/config";
 import {
   type ConfigPlugin,
   InfoPlist,
@@ -13,24 +12,17 @@ import { globSync } from "glob";
 import * as fs from "node:fs";
 import * as path from "node:path";
 
-import { ConfigData } from "./types";
+import { BranchKeys, ConfigData } from "./types";
 
-export function getBranchApiKey(config: Pick<ExpoConfig, "ios">) {
-  return config.ios?.config?.branch?.apiKey ?? null;
-}
-
-export function setBranchApiKey(
-  apiKey: string | null,
+export function setBranchApiKeys(
+  { apiKey, testApiKey }: BranchKeys,
   infoPlist: InfoPlist,
 ): InfoPlist {
-  if (apiKey === null) {
-    return infoPlist;
-  }
-
   return {
     ...infoPlist,
     branch_key: {
       live: apiKey,
+      ...(testApiKey && { test: testApiKey }),
     },
   };
 }
@@ -46,17 +38,31 @@ export function addBridgingHeaderImport(src: string): MergeResults {
   });
 }
 
+export function enableBranchTestEnvironment(
+  enableTestEnvironment: boolean,
+  infoPlist: InfoPlist,
+) {
+  return {
+    ...infoPlist,
+    branch_test_environment: enableTestEnvironment,
+  };
+}
+
 export const withBranchIOS: ConfigPlugin<ConfigData> = (config, data) => {
   // Ensure object exist
   if (!config.ios) {
     config.ios = {};
   }
 
-  const apiKey = data.apiKey ?? getBranchApiKey(config);
+  // Fall back to the Expo Config `branch.apiKey` if not provided in plugin
+  // config. The `branch` property in the Expo Config is deprecated and will be
+  // removed in SDK 56.
+  // TODO(@hassankhan): Remove fallback when updating for SDK 56
+  const apiKey = data.apiKey ?? config.ios?.config?.branch?.apiKey;
+  const { testApiKey, enableTestEnvironment = false } = data;
+
   if (!apiKey) {
-    throw new Error(
-      "Branch API key is required: expo.ios.config.branch.apiKey",
-    );
+    throw new Error("Branch API key is required: apiKey must be provided");
   }
 
   // Add `React/RCTBridge` to bridging header
@@ -91,18 +97,29 @@ export const withBranchIOS: ConfigPlugin<ConfigData> = (config, data) => {
 
   // Update the infoPlist with the branch key and branch domain
   config = withInfoPlist(config, (config) => {
-    config.modResults = setBranchApiKey(apiKey, config.modResults);
+    config.modResults = setBranchApiKeys(
+      { apiKey, testApiKey },
+      config.modResults,
+    );
+
+    config.modResults = enableBranchTestEnvironment(
+      enableTestEnvironment,
+      config.modResults,
+    );
+
     if (data.iosAppDomain) {
       config.modResults.branch_app_domain = data.iosAppDomain;
     } else {
       delete config.modResults.branch_app_domain;
     }
+
     if (data.iosUniversalLinkDomains) {
       config.modResults.branch_universal_link_domains =
         data.iosUniversalLinkDomains;
     } else {
       delete config.modResults.branch_universal_link_domains;
     }
+
     return config;
   });
 

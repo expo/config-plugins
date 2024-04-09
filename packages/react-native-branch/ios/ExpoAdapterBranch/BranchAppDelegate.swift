@@ -3,6 +3,10 @@ import RNBranch
 
 public class BranchAppDelegate: ExpoAppDelegateSubscriber {
   public func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    if Bundle.main.object(forInfoDictionaryKey: "branch_test_environment") as? Bool ?? false {
+      RNBranch.useTestInstance()
+    }
+    
     RNBranch.initSession(launchOptions: launchOptions, isReferrable: true)
     return true
   }

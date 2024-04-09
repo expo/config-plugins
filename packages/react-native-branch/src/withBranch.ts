@@ -4,22 +4,17 @@ import { ConfigData } from "./types";
 import { withBranchAndroid } from "./withBranchAndroid";
 import { withBranchIOS } from "./withBranchIOS";
 
-const withBranch: ConfigPlugin<ConfigData> = (
-  config,
-  { apiKey, iosAppDomain, iosUniversalLinkDomains } = {},
-) => {
-  config = withBranchAndroid(config, { apiKey });
-  config = withBranchIOS(config, {
-    apiKey,
-    iosAppDomain,
-    iosUniversalLinkDomains,
-  });
+const withBranch: ConfigPlugin<ConfigData> = (config, branchConfig = {}) => {
+  config = withBranchAndroid(config, branchConfig);
+  config = withBranchIOS(config, branchConfig);
+
   return config;
 };
 
 let pkg: { name: string; version?: string } = {
   name: "react-native-branch",
 };
+
 try {
   const branchPkg = require("react-native-branch/package.json");
   pkg = branchPkg;
