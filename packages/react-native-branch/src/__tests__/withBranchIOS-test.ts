@@ -1,27 +1,33 @@
-import { getBranchApiKey, setBranchApiKey } from "../withBranchIOS";
+import { setBranchApiKeys, setBranchTestMode } from "../withBranchIOS";
 
-describe(getBranchApiKey, () => {
-  it(`returns null if no api key is provided`, () => {
-    expect(getBranchApiKey({})).toBe(null);
-  });
-
-  it(`returns the api key if provided`, () => {
-    expect(
-      getBranchApiKey({ ios: { config: { branch: { apiKey: "123" } } } }),
-    ).toBe("123");
-  });
-});
-
-describe(setBranchApiKey, () => {
+describe(setBranchApiKeys, () => {
   it(`sets branch_key.live if the api key is given`, () => {
-    expect(setBranchApiKey("123", {})).toMatchObject({
+    expect(setBranchApiKeys({ apiKey: "LIVE-API-KEY" }, {})).toMatchObject({
       branch_key: {
-        live: "123",
+        live: "LIVE-API-KEY",
       },
     });
   });
 
-  it(`makes no changes to the infoPlist no api key is provided`, () => {
-    expect(setBranchApiKey(null, {})).toMatchObject({});
+  it(`sets branch_key.test if the test api key is given`, () => {
+    expect(
+      setBranchApiKeys(
+        { apiKey: "LIVE-API-KEY", testApiKey: "TEST-API-KEY" },
+        {}
+      )
+    ).toMatchObject({
+      branch_key: {
+        live: "LIVE-API-KEY",
+        test: "TEST-API-KEY",
+      },
+    });
+  });
+});
+
+describe(setBranchTestMode, () => {
+  it(`must assign the passed boolean value into branch_key.branch_test_mode`, () => {
+    expect(setBranchTestMode(true, {})).toMatchObject({
+      branch_test_environment: true,
+    });
   });
 });
