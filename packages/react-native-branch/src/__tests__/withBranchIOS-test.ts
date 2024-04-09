@@ -1,4 +1,7 @@
-import { setBranchApiKeys, setBranchTestMode } from "../withBranchIOS";
+import {
+  setBranchApiKeys,
+  enableBranchTestEnvironment,
+} from "../withBranchIOS";
 
 describe(setBranchApiKeys, () => {
   it(`sets branch_key.live if the api key is given`, () => {
@@ -24,9 +27,9 @@ describe(setBranchApiKeys, () => {
   });
 });
 
-describe(setBranchTestMode, () => {
+describe(enableBranchTestEnvironment, () => {
   it(`must assign the passed boolean value into branch_key.branch_test_mode`, () => {
-    expect(setBranchTestMode(true, {})).toMatchObject({
+    expect(enableBranchTestEnvironment(true, {})).toMatchObject({
       branch_test_environment: true,
     });
   });

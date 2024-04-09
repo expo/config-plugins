@@ -1,7 +1,10 @@
 import { AndroidConfig } from "@expo/config-plugins";
 import { resolve } from "path";
 
-import { setBranchApiKeys, setBranchTestMode } from "../withBranchAndroid";
+import {
+  setBranchApiKeys,
+  enableBranchTestEnvironment,
+} from "../withBranchAndroid";
 
 const { findMetaDataItem, getMainApplication, readAndroidManifestAsync } =
   AndroidConfig.Manifest;
@@ -43,12 +46,15 @@ describe(setBranchApiKeys, () => {
   });
 });
 
-describe(setBranchTestMode, () => {
+describe(enableBranchTestEnvironment, () => {
   it("sets branch test mode meta data item in AndroidManifest.xml", async () => {
     let androidManifestJson =
       await readAndroidManifestAsync(sampleManifestPath);
 
-    androidManifestJson = await setBranchTestMode(true, androidManifestJson);
+    androidManifestJson = await enableBranchTestEnvironment(
+      true,
+      androidManifestJson
+    );
 
     const mainApplication = getMainApplication(androidManifestJson);
 

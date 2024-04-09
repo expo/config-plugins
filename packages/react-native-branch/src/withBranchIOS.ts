@@ -15,7 +15,7 @@ export function setBranchApiKeys(
   };
 }
 
-export function setBranchTestMode(
+export function enableBranchTestEnvironment(
   enableTestEnvironment: boolean,
   infoPlist: InfoPlist
 ) {
@@ -37,7 +37,7 @@ export const withBranchIOS: ConfigPlugin<ConfigData> = (config, data) => {
   const enableTestEnvironment =
     data.enableTestEnvironment ??
     config.android?.config?.branch?.enableTestEnvironment ??
-    null;
+    false;
 
   if (!apiKey) {
     throw new Error(
@@ -52,7 +52,7 @@ export const withBranchIOS: ConfigPlugin<ConfigData> = (config, data) => {
       config.modResults
     );
 
-    config.modResults = setBranchTestMode(
+    config.modResults = enableBranchTestEnvironment(
       enableTestEnvironment,
       config.modResults
     );

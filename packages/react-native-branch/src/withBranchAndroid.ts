@@ -44,7 +44,7 @@ export function setBranchApiKeys(
   return androidManifest;
 }
 
-export function setBranchTestMode(
+export function enableBranchTestEnvironment(
   enableTestEnvironment: boolean,
   androidManifest: AndroidConfig.Manifest.AndroidManifest
 ) {
@@ -80,7 +80,7 @@ export const withBranchAndroid: ConfigPlugin<ConfigData> = (config, data) => {
       config.modResults
     );
 
-    config.modResults = setBranchTestMode(
+    config.modResults = enableBranchTestEnvironment(
       enableTestEnvironment,
       config.modResults
     );
