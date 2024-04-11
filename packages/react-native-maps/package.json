@@ -1,0 +1,36 @@
+{
+  "name": "@config-plugins/react-native-maps",
+  "version": "0.0.0",
+  "description": "Config plugin for react-native-maps package",
+  "main": "build/withReactNativeMaps.js",
+  "types": "build/withReactNativeMaps.d.ts",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/expo/config-plugins.git",
+    "directory": "packages/react-native-maps"
+  },
+  "scripts": {
+    "build": "expo-module build",
+    "clean": "expo-module clean",
+    "lint": "expo-module lint",
+    "test": "expo-module test",
+    "prepare": "expo-module prepare",
+    "prepublishOnly": "expo-module prepublishOnly",
+    "expo-module": "expo-module"
+  },
+  "keywords": [
+    "react",
+    "expo",
+    "config-plugins",
+    "prebuild",
+    "react-native-maps",
+    "expo-50"
+  ],
+  "peerDependencies": {
+    "expo": "^50"
+  },
+  "devDependencies": {
+    "expo-module-scripts": "^3.4.1"
+  }
+}
