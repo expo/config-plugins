@@ -4,9 +4,9 @@ Expo Config Plugin to auto-configure [`react-native-maps`](https://www.npmjs.com
 
 ## Versioning
 
-| `expo`            | `react-native-maps` | `@config-plugins/react-native-maps` |
-| ----------------- | -------------- | --------------------------------- |
-| 50.0.0 | 1.0.0          | ^1.0.0                            |
+| `expo` | `react-native-maps` | `@config-plugins/react-native-maps` |
+| ------ | ------------------- | ----------------------------------- |
+| 50.0.0 | 1.10.0              | ^1.0.0                              |
 
 ## Expo installation
 
@@ -34,7 +34,7 @@ Next, rebuild your app as described in the ["Adding custom native code"](https:/
 
 The plugin provides props for extra customization. Every time you change the props or plugins, you'll need to rebuild (and `prebuild`) the native app. If no extra properties are added, defaults will be used.
 
-- `foobar` (_boolean_): Does XYZ. Default `false`.
+- `googleMapsApiKey` (_string_): Google Maps API key.
 
 #### Example
 
@@ -45,7 +45,7 @@ The plugin provides props for extra customization. Every time you change the pro
       [
         "@config-plugins/react-native-maps",
         {
-          // props ...
+          "googleMapsApiKey": "YOUR_GOOGLE_MAPS_API_KEY"
         }
       ]
     ]
