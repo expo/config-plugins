@@ -69,7 +69,7 @@ const modifyPodfile = (config: ExportedConfigWithProps<unknown>) => {
   const filePath = path.join(config.modRequest.platformProjectRoot, "Podfile");
   const contents = fs.readFileSync(filePath, "utf-8");
   const addGoogleMapsPath = mergeContents({
-    tag: "maps",
+    tag: "react-native-maps-podfile",
     src: contents,
     newSrc: `   rn_maps_path = '../node_modules/react-native-maps'
    pod 'react-native-google-maps', :path => rn_maps_path`,
