@@ -19,20 +19,24 @@ const withGoogleCast: ConfigPlugin<
      * ??
      */
     androidReceiverAppId?: string;
+    /**
+     * @default true
+     */
+    iosSuspendSessionsWhenBackgrounded?: boolean;
   } | void
 > = (config, _props) => {
   const props = _props || {};
   // TODO: Are the Android and iOS receiverAppId values the same?
   config = withIosGoogleCast(config, {
     receiverAppId: props.iosReceiverAppId,
+    suspendSessionsWhenBackgrounded: props.iosSuspendSessionsWhenBackgrounded,
     // disableDiscoveryAutostart?: boolean;
     // startDiscoveryAfterFirstTapOnCastButton?: boolean;
   });
 
   config = withAndroidGoogleCast(config, {
     receiverAppId: props.androidReceiverAppId,
-    androidPlayServicesCastFrameworkVersion:
-      props.androidPlayServicesCastFrameworkVersion,
+    androidPlayServicesCastFrameworkVersion: props.androidPlayServicesCastFrameworkVersion,
   });
 
   return config;

@@ -102,6 +102,10 @@ export const withIosGoogleCast: ConfigPlugin<{
    * @default 'CC1AD845'
    */
   receiverAppId?: string;
+  /**
+   * @default true
+   */
+  suspendSessionsWhenBackgrounded?: boolean;
 }> = (config, props) => {
   config = withIosWifiEntitlements(config);
   config = withIosLocalNetworkPermissions(config, {
@@ -109,6 +113,7 @@ export const withIosGoogleCast: ConfigPlugin<{
   });
   config = withIosAppDelegateLoaded(config, {
     receiverAppId: props.receiverAppId,
+    suspendSessionsWhenBackgrounded: props.suspendSessionsWhenBackgrounded,
     // disableDiscoveryAutostart?: boolean;
     // startDiscoveryAfterFirstTapOnCastButton?: boolean;
   });
@@ -125,6 +130,7 @@ export const MATCH_INIT =
 
 type IosProps = {
   receiverAppId?: string | null;
+  suspendSessionsWhenBackgrounded?: boolean;
   disableDiscoveryAutostart?: boolean;
   startDiscoveryAfterFirstTapOnCastButton?: boolean;
 };
@@ -133,6 +139,7 @@ export function addGoogleCastAppDelegateDidFinishLaunchingWithOptions(
   src: string,
   {
     receiverAppId = null,
+    suspendSessionsWhenBackgrounded = true,
     disableDiscoveryAutostart = false,
     startDiscoveryAfterFirstTapOnCastButton = true,
   }: IosProps = {},
@@ -142,18 +149,13 @@ export function addGoogleCastAppDelegateDidFinishLaunchingWithOptions(
     // For extra safety
     "#if __has_include(<GoogleCast/GoogleCast.h>)",
     // TODO: This should probably read safely from a static file like the Info.plist
-    `  NSString *receiverAppID = ${
-      receiverAppId
-        ? `@"${receiverAppId}"`
-        : "kGCKDefaultMediaReceiverApplicationID"
-    };`,
+    `  NSString *receiverAppID = ${receiverAppId ? `@"${receiverAppId}"` : "kGCKDefaultMediaReceiverApplicationID"};`,
     "  GCKDiscoveryCriteria *criteria = [[GCKDiscoveryCriteria alloc] initWithApplicationID:receiverAppID];",
     "  GCKCastOptions* options = [[GCKCastOptions alloc] initWithDiscoveryCriteria:criteria];",
     // TODO: Same as above, read statically
     // `  options.disableDiscoveryAutostart = ${String(!!disableDiscoveryAutostart)};`,
-    `  options.startDiscoveryAfterFirstTapOnCastButton = ${String(
-      !!startDiscoveryAfterFirstTapOnCastButton,
-    )};`,
+    `  options.startDiscoveryAfterFirstTapOnCastButton = ${String(!!startDiscoveryAfterFirstTapOnCastButton,)};`,
+    `  options.suspendSessionsWhenBackgrounded = ${String(!!suspendSessionsWhenBackgrounded,)};`,
     "  [GCKCastContext setSharedInstanceWithOptions:options];",
     "#endif",
   );
