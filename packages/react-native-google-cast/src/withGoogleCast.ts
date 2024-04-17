@@ -36,7 +36,8 @@ const withGoogleCast: ConfigPlugin<
 
   config = withAndroidGoogleCast(config, {
     receiverAppId: props.androidReceiverAppId,
-    androidPlayServicesCastFrameworkVersion: props.androidPlayServicesCastFrameworkVersion,
+    androidPlayServicesCastFrameworkVersion:
+      props.androidPlayServicesCastFrameworkVersion,
   });
 
   return config;
