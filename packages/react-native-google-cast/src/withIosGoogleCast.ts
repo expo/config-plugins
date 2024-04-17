@@ -154,8 +154,8 @@ export function addGoogleCastAppDelegateDidFinishLaunchingWithOptions(
     "  GCKCastOptions* options = [[GCKCastOptions alloc] initWithDiscoveryCriteria:criteria];",
     // TODO: Same as above, read statically
     // `  options.disableDiscoveryAutostart = ${String(!!disableDiscoveryAutostart)};`,
-    `  options.startDiscoveryAfterFirstTapOnCastButton = ${String(!!startDiscoveryAfterFirstTapOnCastButton,)};`,
-    `  options.suspendSessionsWhenBackgrounded = ${String(!!suspendSessionsWhenBackgrounded,)};`,
+    `  options.startDiscoveryAfterFirstTapOnCastButton = ${String(!!startDiscoveryAfterFirstTapOnCastButton)};`,
+    `  options.suspendSessionsWhenBackgrounded = ${String(!!suspendSessionsWhenBackgrounded)};`,
     "  [GCKCastContext setSharedInstanceWithOptions:options];",
     "#endif",
   );
