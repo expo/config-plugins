@@ -49,11 +49,14 @@ const withDynamicIcon: ConfigPlugin<string[] | IconSet | void> = (
   return config;
 };
 
-function getIconName(name: string, size: number, scale?: number) {
+function getIconName(name: string, size: number, scale?: number, ipad = false) {
   const fileName = `${name}-Icon-${size}x${size}`;
 
   if (scale != null) {
-    return `${fileName}@${scale}x.png`;
+    // TODO(cedric): clean this up and merge into existing scale API
+    return ipad
+      ? `${fileName}@${scale}x~ipad.png`
+      : `${fileName}@${scale}x.png`;
   }
   return fileName;
 }
@@ -231,6 +234,55 @@ async function createIconsAsync(
 
       await fs.promises.writeFile(outputPath, source);
     }
+
+    // Temporary ipad sizes to check if Apple accepts these sizes
+    // TODO(cedric): clean this up and merge into existing scale API
+    const { source: ipadx2 } = await generateImageAsync(
+      {
+        projectRoot: config.modRequest.projectRoot,
+        cacheType: "react-native-dynamic-app-icon",
+      },
+      {
+        name: getIconName(key, size, 2, true),
+        src: icon.image,
+        removeTransparency: true,
+        backgroundColor: "#ffffff",
+        resizeMode: "cover",
+        width: 152, // See: https://developer.apple.com/design/human-interface-guidelines/app-icons#iOS-iPadOS-app-icon-sizes
+        height: 152, // See: https://developer.apple.com/design/human-interface-guidelines/app-icons#iOS-iPadOS-app-icon-sizes
+      },
+    );
+    const { source: ipadx3 } = await generateImageAsync(
+      {
+        projectRoot: config.modRequest.projectRoot,
+        cacheType: "react-native-dynamic-app-icon",
+      },
+      {
+        name: getIconName(key, size, 3, true),
+        src: icon.image,
+        removeTransparency: true,
+        backgroundColor: "#ffffff",
+        resizeMode: "cover",
+        width: 167, // See: https://developer.apple.com/design/human-interface-guidelines/app-icons#iOS-iPadOS-app-icon-sizes
+        height: 167, // See: https://developer.apple.com/design/human-interface-guidelines/app-icons#iOS-iPadOS-app-icon-sizes
+      },
+    );
+    await Promise.all([
+      fs.promises.writeFile(
+        path.join(
+          iosRoot,
+          path.join(folderName, getIconName(key, size, 2, true)),
+        ),
+        ipadx2,
+      ),
+      fs.promises.writeFile(
+        path.join(
+          iosRoot,
+          path.join(folderName, getIconName(key, size, 3, true)),
+        ),
+        ipadx3,
+      ),
+    ]);
   });
 }
 
