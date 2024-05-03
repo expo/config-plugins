@@ -133,6 +133,43 @@ const withIconXcodeProject: ConfigPlugin<Props> = (config, { icons }) => {
           console.log("Skipping duplicate: ", iconFileName);
         }
       }
+
+      // Temporary ipad sizes to check if Apple accepts these sizes
+      // TODO(cedric): clean this up and merge into existing scale API
+      const ipadx2FileName = getIconName(key, size, 2, true);
+      if (
+        !group?.children.some(
+          ({ comment }: { comment: string }) => comment === ipadx2FileName,
+        )
+      ) {
+        // Only write the file if it doesn't already exist.
+        config.modResults = IOSConfig.XcodeUtils.addResourceFileToGroup({
+          filepath: path.join(groupPath, ipadx2FileName),
+          groupName: groupPath,
+          project: config.modResults,
+          isBuildFile: true,
+          verbose: true,
+        });
+      } else {
+        console.log("Skipping duplicate: ", ipadx2FileName);
+      }
+      const ipadx3FileName = getIconName(key, size, 3, true);
+      if (
+        !group?.children.some(
+          ({ comment }: { comment: string }) => comment === ipadx3FileName,
+        )
+      ) {
+        // Only write the file if it doesn't already exist.
+        config.modResults = IOSConfig.XcodeUtils.addResourceFileToGroup({
+          filepath: path.join(groupPath, ipadx3FileName),
+          groupName: groupPath,
+          project: config.modResults,
+          isBuildFile: true,
+          verbose: true,
+        });
+      } else {
+        console.log("Skipping duplicate: ", ipadx3FileName);
+      }
     });
 
     return config;
