@@ -156,21 +156,33 @@ const withIconInfoPlist: ConfigPlugin<Props> = (
       { CFBundleIconFiles: string[]; UIPrerenderedIcon: boolean }
     > = {};
 
+    const altIconsByTarget: Partial<
+      Record<NonNullable<IconDimensions["target"]>, typeof altIcons>
+    > = {};
+
     await iterateIconsAndDimensionsAsync(
       { icons, dimensions },
       async (key, { icon, dimension }) => {
-        altIcons[key] = {
+        const plistItem = {
           CFBundleIconFiles: [
             // Must be a file path relative to the source root (not a icon set it seems).
             // i.e. `Bacon-Icon-60x60` when the image is `ios/somn/appIcons/Bacon-Icon-60x60@2x.png`
-            getIconFileName(key, dimension),
+            getIconName(key, dimension),
           ],
           UIPrerenderedIcon: !!icon.prerendered,
         };
+
+        if (dimension.target) {
+          altIconsByTarget[dimension.target] =
+            altIconsByTarget[dimension.target] || {};
+          altIconsByTarget[dimension.target]![key] = plistItem;
+        } else {
+          altIcons[key] = plistItem;
+        }
       },
     );
 
-    function applyToPlist(key: string) {
+    function applyToPlist(key: string, icons: typeof altIcons) {
       if (
         typeof config.modResults[key] !== "object" ||
         Array.isArray(config.modResults[key]) ||
@@ -180,7 +192,7 @@ const withIconInfoPlist: ConfigPlugin<Props> = (
       }
 
       // @ts-expect-error
-      config.modResults[key].CFBundleAlternateIcons = altIcons;
+      config.modResults[key].CFBundleAlternateIcons = icons;
 
       // @ts-expect-error
       config.modResults[key].CFBundlePrimaryIcon = {
@@ -188,9 +200,15 @@ const withIconInfoPlist: ConfigPlugin<Props> = (
       };
     }
 
-    // Apply for both tablet and phone support
-    applyToPlist("CFBundleIcons");
-    applyToPlist("CFBundleIcons~ipad");
+    // Apply for general phone support
+    applyToPlist("CFBundleIcons", altIcons);
+
+    // Apply for each target, like iPad
+    for (const [target, icons] of Object.entries(altIconsByTarget)) {
+      if (Object.keys(icons).length > 0) {
+        applyToPlist(`CFBundleIcons~${target}`, icons);
+      }
+    }
 
     return config;
   });
@@ -285,12 +303,15 @@ function resolveIconDimensions(config: ExpoConfig): Required<IconDimensions>[] {
   }));
 }
 
-/** Get the icon file name based on name and dimensions  */
-function getIconFileName(name: string, dimension: Props["dimensions"][0]) {
-  const { size, scale } = dimension;
-  const target = dimension.target ? `~${dimension.target}` : "";
+/** Get the icon name, used to refer to the icon from within the plist */
+function getIconName(name: string, dimension: Props["dimensions"][0]) {
+  return `${name}-Icon-${dimension.size}x${dimension.size}`;
+}
 
-  return `${name}-Icon-${size}x${size}@${scale}x${target}.png`;
+/** Get the full icon file name, including scale and possible target, used to write each exported icon to */
+function getIconFileName(name: string, dimension: Props["dimensions"][0]) {
+  const target = dimension.target ? `~${dimension.target}` : "";
+  return `${getIconName(name, dimension)}@${dimension.scale}x${target}.png`;
 }
 
 /** Iterate all combinations of icons and dimensions to export */
