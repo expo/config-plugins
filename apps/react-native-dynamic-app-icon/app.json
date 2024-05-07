@@ -3,6 +3,9 @@
     "name": "app-icon",
     "icon": "./assets/icons/winter.png",
     "platforms": ["ios"],
+    "ios": {
+      "supportsTablet": true
+    },
     "plugins": [
       [
         "@config-plugins/react-native-dynamic-app-icon",
