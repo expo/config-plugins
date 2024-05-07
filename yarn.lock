@@ -8197,10 +8197,10 @@ detect-port-alt@1.1.6:
     address "^1.0.1"
     debug "^2.6.0"
 
-detox@^20.17.0:
-  version "20.17.0"
-  resolved "https://registry.yarnpkg.com/detox/-/detox-20.17.0.tgz#836d2ebb193572e1f4a97e44af343891a5658f7b"
-  integrity sha512-IasYgexfkrCoZuJTaqqKHQ2yflK+tnqifzdLwrp4hdTWlXUlG9j/YcM1Dn3ThSs3b6VNMtbSe6xoPkKD0oNiIQ==
+detox@^20.20.3:
+  version "20.20.3"
+  resolved "https://registry.yarnpkg.com/detox/-/detox-20.20.3.tgz#c39470523b1a75c4dc895666c5d749978978e42e"
+  integrity sha512-sca2z+6SYnA5+9jF1pf/t4RBOcvnBO0vmsTtrmnpej76Q5rhX0acZpFbDgvQQPGKu/TDdH+KFYK0tQ2VrTNY1w==
   dependencies:
     ajv "^8.6.3"
     bunyan "^1.8.12"
@@ -15826,43 +15826,43 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
-react-native-adjust@~4.37.1:
-  version "4.37.1"
-  resolved "https://registry.yarnpkg.com/react-native-adjust/-/react-native-adjust-4.37.1.tgz#f0977149d99655e379bb5bdcf1bb3f3ea1f157aa"
-  integrity sha512-ukFKdhztgmGgdLsI7WPi11KcJ7gYKLuNbyf5Nxa2N89NI9/xspJuZFcUvLFkqCYaXQB66ssYYfA80wbt/WA/Xw==
+react-native-adjust@^4.38.1:
+  version "4.38.1"
+  resolved "https://registry.yarnpkg.com/react-native-adjust/-/react-native-adjust-4.38.1.tgz#93ae5959a624715b5b3d0c48faf8b6c66b75575d"
+  integrity sha512-+FZU0DMPJ9GUcZZNHuhqd2OVQGmfDA+x/HeehFFjshGN+IdJ2hWGaLuMi2uAB2LScLQiBo4GKNLf3NyXb3La3A==
 
-react-native-blob-util@^0.19.6:
-  version "0.19.6"
-  resolved "https://registry.yarnpkg.com/react-native-blob-util/-/react-native-blob-util-0.19.6.tgz#c2bd80887113f91a940d27cd294e76309ede7741"
-  integrity sha512-62yMJdgOMEu2Ir9V177FbvOYZskFu92XkT/hUWMMdu3G7UhqnetwtyVwqo4jfNrr+Y3Lp0gXYx60vxjMaov1pQ==
+react-native-blob-util@^0.19.9:
+  version "0.19.9"
+  resolved "https://registry.yarnpkg.com/react-native-blob-util/-/react-native-blob-util-0.19.9.tgz#6f2c27d77cd36b9e03c967c54930491404d9d780"
+  integrity sha512-gIuErPqGbBIAPWf+K07x/8mRZ80Waz9DWgwMdQ8zWgms8kYfAji0GNk2gvZZ0y9MKe61jme7oOdZ7InWLRy2GA==
   dependencies:
     base-64 "0.1.0"
     glob "^10.3.10"
 
-react-native-branch@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/react-native-branch/-/react-native-branch-6.0.0.tgz#a0919623a6b6ae8cfbb87613060ee1fa3026fcf0"
-  integrity sha512-6OWRgwZJpAMGpmF+rTAlN8VdPz7TJspPaIztqEQAzCOXv/1+NomW2ov81piGfeMj5y5ASM9M3oB1Gp7EqITWGQ==
+react-native-branch@^6.2.1:
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/react-native-branch/-/react-native-branch-6.2.1.tgz#36dec291d975f83afafb6349b0be34fc2ee074a0"
+  integrity sha512-j/qkdYvW8LvVzC3LnLpRaHlUPQFl1K/8+jbOqFMJGMiBYvzy0cjJE9tgDJgY3syTQPgvnPMyrA7+7KjPqPQ1ZQ==
 
-react-native-callkeep@~4.3.12:
-  version "4.3.12"
-  resolved "https://registry.yarnpkg.com/react-native-callkeep/-/react-native-callkeep-4.3.12.tgz#e29b0602f0a2942cfcdabea6d5c6697ee40566f6"
-  integrity sha512-MPgnQkJn4k8rorBCcYYl6FtI0Gp3BHrBKE5RZ6dbyQchddy3xIj8K4BcpCuDOrAaRls1jAXceSeeJVBdw2jDHw==
+react-native-callkeep@^4.3.13:
+  version "4.3.13"
+  resolved "https://registry.yarnpkg.com/react-native-callkeep/-/react-native-callkeep-4.3.13.tgz#9ef823f9fac36d357625bb1b2414bbbe3b73f168"
+  integrity sha512-WOnVxMpyLRrRFId4MSIx6FsKcuCStqqYGkpLdyKhDLJ9t+KmYpkS6pq/3vhaZLYitlzcwtm0vxtPbvuXsblLqQ==
 
 react-native-dynamic-app-icon@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/react-native-dynamic-app-icon/-/react-native-dynamic-app-icon-1.1.0.tgz#c7722289f9705c24fea257c9722f8d976a14cd13"
   integrity sha512-NJFQNelgA/VZfw2ZbMErUrIFv+DxV8lTX7ZEkU8ys+oZE2yA9EDNZp9KmeAufKZ4VvtFlRuyaR6OHAEfM7CNaw==
 
-react-native-google-cast@^4.6.2:
-  version "4.6.2"
-  resolved "https://registry.yarnpkg.com/react-native-google-cast/-/react-native-google-cast-4.6.2.tgz#5cd749c869e79d47aa03ecf466956361479a8473"
-  integrity sha512-sYXFX8U9rMCGhvJ7ayV9hAjR0JghJTzAHsnAbCZhbTNI8Nx6kvSwAifS6MBf+A8bIqBFXZJb2LzMtE/vmyOzPQ==
+react-native-google-cast@^4.8.0:
+  version "4.8.0"
+  resolved "https://registry.yarnpkg.com/react-native-google-cast/-/react-native-google-cast-4.8.0.tgz#7af427bc8a44d1da62e6d2238c3c74136d098297"
+  integrity sha512-1BjHueIWO5NvR9VjJLeB8SvC8cidTJaZopztI8KbBc64GIiF9jWcfoV/MGK+IRsBZ9E8mDJ2syJmS+AAqgWiEA==
 
-react-native-pdf@^6.7.4:
-  version "6.7.4"
-  resolved "https://registry.yarnpkg.com/react-native-pdf/-/react-native-pdf-6.7.4.tgz#f350af350074ee0a93fff578caefec16867781b4"
-  integrity sha512-sBeNcsrTRnLjmiU9Wx7Uk0K2kPSQtKIIG+FECdrEG16TOdtmQ3iqqEwt0dmy0pJegpg07uES5BXqiKsKkRUIFw==
+react-native-pdf@^6.7.5:
+  version "6.7.5"
+  resolved "https://registry.yarnpkg.com/react-native-pdf/-/react-native-pdf-6.7.5.tgz#1bc5479f2161189f938912b4080ea9eef8a9d84d"
+  integrity sha512-d1S76p2Vwax2iG+kTnjINiUMvpjtJJvtMiYwHRbgGczT8GJjtXH49YCWOd+HfnUAU29cB+knzsKGYoZBMQM8Ow==
   dependencies:
     crypto-js "4.2.0"
     deprecated-react-native-prop-types "^2.3.0"
@@ -15877,10 +15877,10 @@ react-native-siri-shortcut@^3.2.4:
   resolved "https://registry.yarnpkg.com/react-native-siri-shortcut/-/react-native-siri-shortcut-3.2.4.tgz#cdc6e085539a1582b8e74a371595b7d2be4d5fef"
   integrity sha512-+nigNoTAcygti598QePqAOgYBJzvqDHpv1lwat2Mrq0uKQGoYCTVxnf8Hvl8MwLuk9NIcINgDdWGMUjxjhvung==
 
-react-native-webrtc@^118.0.1:
-  version "118.0.1"
-  resolved "https://registry.yarnpkg.com/react-native-webrtc/-/react-native-webrtc-118.0.1.tgz#150f74f8b2acf2f528b28e42f58443c6568cfe48"
-  integrity sha512-gjbBIV/0VyplavbOsQw9mpVJ4WHTEYZzi4PN7Oz18p2Ucsc5yEVUhtN5NQep8w6VDH1DNzuXXBPq5uJq9uqbMA==
+react-native-webrtc@^118.0.7:
+  version "118.0.7"
+  resolved "https://registry.yarnpkg.com/react-native-webrtc/-/react-native-webrtc-118.0.7.tgz#8984810f02fff26e2c3784c854e1d4380d092917"
+  integrity sha512-odgd4CNSGQmI8n/pEbxlUtJBTJ8uqE51B1/NUEAvO1AQbeXsyFNHEG0H2T27eMefo5u0GKcRpNkZpXi6fctTkQ==
   dependencies:
     base64-js "1.5.1"
     debug "4.3.4"
