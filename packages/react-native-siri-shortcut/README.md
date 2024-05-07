@@ -8,6 +8,7 @@ Ensure you use versions that work together!
 
 | `expo` | `react-native-siri-shortcut` | `@config-plugins/react-native-siri-shortcut` |
 | ------ | ---------------------------- | -------------------------------------------- |
+| 51.0.0 | 3.2.4                        | 7.0.0                                        |
 | 50.0.0 | 3.2.4                        | 6.0.0                                        |
 | 49.0.0 | 3.2.3                        | 5.0.0                                        |
 | 48.0.0 | 3.2.2                        | 4.0.0                                        |
@@ -26,9 +27,7 @@ After installing this npm package, add the [config plugin](https://docs.expo.io/
 
 ```json
 {
-  "expo": {
-    "plugins": ["@config-plugins/react-native-siri-shortcut"]
-  }
+  "plugins": ["@config-plugins/react-native-siri-shortcut"]
 }
 ```
 
@@ -42,13 +41,11 @@ When working with Siri Shorcuts, you need to define their identifiers on the Xco
 
 ```json
 {
-  "expo": {
-    "plugins": [
-      [
-        "@config-plugins/react-native-siri-shortcut",
-        ["com.example.InitiateWorkout", "com.example.FinishWorkout"]
-      ]
+  "plugins": [
+    [
+      "@config-plugins/react-native-siri-shortcut",
+      ["com.example.InitiateWorkout", "com.example.FinishWorkout"]
     ]
-  }
+  ]
 }
 ```

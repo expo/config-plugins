@@ -8,6 +8,7 @@ Ensure you use versions that work together!
 
 | `expo` | `@config-plugins/ios-stickers` |
 | ------ | ------------------------------ |
+| 51.0.0 | 8.0.0                          |
 | 50.0.0 | 7.0.0                          |
 | 49.0.0 | 6.0.0                          |
 
@@ -24,28 +25,32 @@ npx expo install @config-plugins/ios-stickers
 In your app.json `plugins` array:
 
 ```json
-[
-  "@config-plugins/ios-stickers",
-  {
-    "name": "Stickers!",
-    "icon": "./assets/imessage-icon.png",
-    "stickerBundleId": "dev.bacon.iosstickers.stickers",
-    "columns": 4,
-    "stickers": [
-      "./assets/stickers/annoyed.png",
-      "./assets/stickers/cuddle.png",
-      "./assets/stickers/crazy.png",
-      "./assets/stickers/cant.png",
-      "./assets/stickers/donno.png",
-      "./assets/stickers/cozzy.png",
-      "./assets/stickers/dork.png",
-      "./assets/stickers/focus.png",
-      "./assets/stickers/avocool.png",
-      "./assets/stickers/coder-girl.png",
-      "./assets/stickers/teapot.png"
+{
+  "plugins": [
+    [
+      "@config-plugins/ios-stickers",
+      {
+        "name": "Stickers!",
+        "icon": "./assets/imessage-icon.png",
+        "stickerBundleId": "dev.bacon.iosstickers.stickers",
+        "columns": 4,
+        "stickers": [
+          "./assets/stickers/annoyed.png",
+          "./assets/stickers/cuddle.png",
+          "./assets/stickers/crazy.png",
+          "./assets/stickers/cant.png",
+          "./assets/stickers/donno.png",
+          "./assets/stickers/cozzy.png",
+          "./assets/stickers/dork.png",
+          "./assets/stickers/focus.png",
+          "./assets/stickers/avocool.png",
+          "./assets/stickers/coder-girl.png",
+          "./assets/stickers/teapot.png"
+        ]
+      }
     ]
-  }
-]
+  ]
+}
 ```
 
 - `name`: defaults to the iOS app name

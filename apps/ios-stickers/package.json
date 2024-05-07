@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@config-plugins/ios-stickers": "*",
-    "expo": "~50.0.5",
+    "expo": "~51",
     "expo-splash-screen": "~0.26.4",
     "expo-status-bar": "~1.11.1",
     "react": "18.2.0",

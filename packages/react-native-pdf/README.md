@@ -8,6 +8,7 @@ Ensure you use versions that work together!
 
 | `expo` | `react-native-pdf` | `@config-plugins/react-native-pdf` |
 | ------ | ------------------ | ---------------------------------- |
+| 51.0.0 | 6.7.5              | 8.0.0                              |
 | 50.0.0 | 6.7.4              | 7.0.0                              |
 | 49.0.0 | 6.7.1              | 6.0.0                              |
 | 48.0.0 | 6.6.2              | 5.0.0                              |
@@ -26,12 +27,10 @@ After installing this npm package, add the [config plugin](https://docs.expo.io/
 
 ```json
 {
-  "expo": {
-    "plugins": [
-      "@config-plugins/react-native-blob-util",
-      "@config-plugins/react-native-pdf"
-    ]
-  }
+  "plugins": [
+    "@config-plugins/react-native-blob-util",
+    "@config-plugins/react-native-pdf"
+  ]
 }
 ```
 

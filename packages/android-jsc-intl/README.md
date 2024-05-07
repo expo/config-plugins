@@ -18,9 +18,7 @@ After installing this npm package, add the [config plugin](https://docs.expo.io/
 
 ```json
 {
-  "expo": {
-    "plugins": ["@config-plugins/android-jsc-intl"]
-  }
+  "plugins": ["@config-plugins/android-jsc-intl"]
 }
 ```
 

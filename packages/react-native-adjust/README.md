@@ -8,6 +8,7 @@ Ensure you use versions that work together!
 
 | `expo` | `react-native-adjust` | `@config-plugins/react-native-adjust` |
 | ------ | --------------------- | ------------------------------------- |
+| 51.0.0 | 4.38.1                | 8.0.0                                 |
 | 50.0.0 | 4.37.1                | 7.0.0                                 |
 | 49.0.0 | 4.33.0                | 6.0.0                                 |
 
@@ -25,9 +26,7 @@ After installing this npm package, add the [config plugin](https://docs.expo.io/
 
 ```json
 {
-  "expo": {
-    "plugins": ["@config-plugins/react-native-adjust"]
-  }
+  "plugins": ["@config-plugins/react-native-adjust"]
 }
 ```
 
@@ -35,12 +34,9 @@ If you are targeting Android 12 and above (API level 31), you need to add it in 
 
 ```json
 {
-  "expo": {
-    "plugins": [
-      "@config-plugins/react-native-adjust",
-      { "targetAndroid12": true }
-    ]
-  }
+  "plugins": [
+    ["@config-plugins/react-native-adjust", { "targetAndroid12": true }]
+  ]
 }
 ```
 

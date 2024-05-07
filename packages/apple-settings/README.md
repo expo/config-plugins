@@ -10,6 +10,7 @@ Ensure you use versions that work together!
 
 | `expo` | `@config-plugins/apple-settings` |
 | ------ | -------------------------------- |
+| 51.0.0 | ^2.0.0                           |
 | 50.0.0 | ^1.0.0                           |
 | 49.0.0 | ^0.0.5                           |
 
