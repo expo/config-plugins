@@ -22,20 +22,24 @@ const ICON_FOLDER_NAME = "DynamicAppIcons";
  */
 const ICON_DIMENSIONS: IconDimensions[] = [
   // iPhone, iPad, MacOS, ...
-  { scale: 2, size: 60 * 2 },
-  { scale: 3, size: 60 * 3 },
+  { scale: 2, size: 60 },
+  { scale: 3, size: 60 },
   // iPad only
-  { scale: 2, size: 152, target: "ipad" },
-  { scale: 3, size: 167, target: "ipad" },
+  { scale: 2, size: 60, width: 152, height: 152, target: "ipad" },
+  { scale: 3, size: 60, width: 167, height: 167, target: "ipad" },
 ];
 
 type IconDimensions = {
-  /** The scale of the icon itself, only affects exported file name */
+  /** The scale of the icon itself, affets file name and width/height when omitted. */
   scale: number;
-  /** Both width and height of the icon */
+  /** Both width and height of the icon, affects file name only. */
   size: number;
+  /** The width, in pixels, of the icon. Generated from `size` + `scale` when omitted */
+  width?: number;
+  /** The height, in pixels, of the icon. Generated from `size` + `scale` when omitted */
+  height?: number;
   /** Special target of the icon dimension, if any */
-  target?: "ipad";
+  target?: null | "ipad";
 };
 
 type IconSet = Record<string, IconSetProps>;
@@ -43,7 +47,7 @@ type IconSetProps = { image: string; prerendered?: boolean };
 
 type Props = {
   icons: Record<string, { image: string; prerendered?: boolean }>;
-  dimensions: IconDimensions[];
+  dimensions: Required<IconDimensions>[];
 };
 
 const withDynamicIcon: ConfigPlugin<string[] | IconSet | void> = (
@@ -233,8 +237,8 @@ const withIconImages: ConfigPlugin<Props> = (config, { icons, dimensions }) => {
               removeTransparency: true,
               backgroundColor: "#ffffff",
               resizeMode: "cover",
-              width: dimension.size,
-              height: dimension.size,
+              width: dimension.width,
+              height: dimension.height,
             },
           );
 
@@ -264,7 +268,7 @@ function resolveIcons(props: string[] | IconSet | void): Props["icons"] {
 }
 
 /** Resolve the required icon dimension/target based on the app config. */
-function resolveIconDimensions(config: ExpoConfig) {
+function resolveIconDimensions(config: ExpoConfig): Required<IconDimensions>[] {
   const targets: NonNullable<IconDimensions["target"]>[] = [];
 
   if (config.ios?.supportsTablet) {
@@ -272,12 +276,17 @@ function resolveIconDimensions(config: ExpoConfig) {
   }
 
   return ICON_DIMENSIONS.filter(
-    (dimension) => !dimension.target || targets.includes(dimension.target),
-  );
+    ({ target }) => !target || targets.includes(target),
+  ).map((dimension) => ({
+    ...dimension,
+    target: dimension.target ?? null,
+    width: dimension.width ?? dimension.size * dimension.scale,
+    height: dimension.height ?? dimension.size * dimension.scale,
+  }));
 }
 
 /** Get the icon file name based on name and dimensions  */
-function getIconFileName(name: string, dimension: IconDimensions) {
+function getIconFileName(name: string, dimension: Props["dimensions"][0]) {
   const { size, scale } = dimension;
   const target = dimension.target ? `~${dimension.target}` : "";
 
@@ -289,7 +298,10 @@ async function iterateIconsAndDimensionsAsync(
   { icons, dimensions }: Props,
   callback: (
     iconKey: string,
-    iconAndDimension: { icon: IconSetProps; dimension: IconDimensions },
+    iconAndDimension: {
+      icon: Props["icons"][string];
+      dimension: Props["dimensions"][0];
+    },
   ) => Promise<void>,
 ) {
   for (const [iconKey, icon] of Object.entries(icons)) {
