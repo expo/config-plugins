@@ -12,7 +12,7 @@ import { useMediaInfo, useResolvedValue } from "./useMediaInfo";
 
 export default function App() {
   const session = useMediaInfo(
-    "http://techslides.com/demos/sample-videos/small.mp4"
+    "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
   );
 
   if (!session) {
