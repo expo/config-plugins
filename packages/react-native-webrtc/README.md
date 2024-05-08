@@ -8,6 +8,7 @@ Ensure you use versions that work together!
 
 | `expo` | `react-native-webrtc` | `@config-plugins/react-native-webrtc` |
 | ------ | --------------------- | ------------------------------------- |
+| 51.0.0 | 118.0.7               | 9.0.0                                 |
 | 50.0.0 | 118.0.1               | 8.0.0                                 |
 | 49.0.0 | 111.0.3               | 7.0.0                                 |
 | 48.0.0 | 106.0.6               | 6.0.0                                 |
@@ -32,9 +33,7 @@ After installing this npm package, add the [config plugin](https://docs.expo.io/
 
 ```json
 {
-  "expo": {
-    "plugins": ["@config-plugins/react-native-webrtc"]
-  }
+  "plugins": ["@config-plugins/react-native-webrtc"]
 }
 ```
 

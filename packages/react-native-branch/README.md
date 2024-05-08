@@ -8,6 +8,7 @@ Ensure you use versions that work together!
 
 | `expo` | `react-native-branch` | `@config-plugins/react-native-branch` |
 | ------ | --------------------- | ------------------------------------- |
+| 51.0.0 | 6.2.1                 | 8.0.0                                 |
 | 50.0.0 | 6.0.0                 | 7.0.0                                 |
 | 49.0.0 | 5.9.0                 | 6.0.0                                 |
 | 48.0.0 | 5.7.0                 | 5.0.0                                 |
@@ -26,9 +27,7 @@ After installing this npm package, add the [config plugin](https://docs.expo.io/
 
 ```json
 {
-  "expo": {
-    "plugins": ["@config-plugins/react-native-branch"]
-  }
+  "plugins": ["@config-plugins/react-native-branch"]
 }
 ```
 
@@ -45,16 +44,14 @@ The plugin provides props for extra customization. Every time you change the pro
 
 ```json
 {
-  "expo": {
-    "plugins": [
-      [
-        "@config-plugins/react-native-branch",
-        {
-          "apiKey": "key_live_f9f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8",
-          "iosAppDomain": "awesome-alternate.app.link"
-        }
-      ]
+  "plugins": [
+    [
+      "@config-plugins/react-native-branch",
+      {
+        "apiKey": "key_live_f9f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8",
+        "iosAppDomain": "awesome-alternate.app.link"
+      }
     ]
-  }
+  ]
 }
 ```

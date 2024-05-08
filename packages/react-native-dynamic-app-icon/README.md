@@ -8,6 +8,7 @@ Ensure you use versions that work together!
 
 | `expo` | `react-native-dynamic-app-icon` | `@config-plugins/react-native-dynamic-app-icon` |
 | ------ | ------------------------------- | ----------------------------------------------- |
+| 51.0.0 | 1.1.0                           | 8.0.0                                           |
 | 50.0.0 | 1.1.0                           | 7.0.0                                           |
 | 49.0.0 | 1.1.0                           | 6.0.0                                           |
 
@@ -30,8 +31,10 @@ In your app.json `plugins` array:
 ```json
 {
   "plugins": [
-    "@config-plugins/react-native-dynamic-app-icon",
-    ["./path/to/image.png", "https://mywebsite.com/my-icon.png"]
+    [
+      "@config-plugins/react-native-dynamic-app-icon",
+      ["./path/to/image.png", "https://mywebsite.com/my-icon.png"]
+    ]
   ]
 }
 ```
@@ -41,13 +44,15 @@ Or as objects:
 ```json
 {
   "plugins": [
-    "@config-plugins/react-native-dynamic-app-icon",
-    {
-      "AppIcon1": {
-        "image": "./path/to/image.png",
-        "prerendered": true
+    [
+      "@config-plugins/react-native-dynamic-app-icon",
+      {
+        "AppIcon1": {
+          "image": "./path/to/image.png",
+          "prerendered": true
+        }
       }
-    }
+    ]
   ]
 }
 ```

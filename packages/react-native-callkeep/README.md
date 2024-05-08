@@ -8,6 +8,7 @@ Ensure you use versions that work together!
 
 | `expo` | `react-native-callkeep` | `@config-plugins/react-native-callkeep` |
 | ------ | ----------------------- | --------------------------------------- |
+| 51.0.0 | 4.3.13                  | 8.0.0                                   |
 | 50.0.0 | 4.3.12                  | 7.0.0                                   |
 | 49.0.0 | 4.3.9                   | 6.0.0                                   |
 | 48.0.0 | 4.3.7                   | 5.0.0                                   |

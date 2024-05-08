@@ -1,6 +1,6 @@
 {
   "name": "@config-plugins/react-native-google-cast",
-  "version": "7.0.0",
+  "version": "8.0.0",
   "description": "Config plugin to auto configure Google Cast on prebuild",
   "main": "build/withGoogleCast.js",
   "types": "build/withGoogleCast.d.ts",
@@ -29,10 +29,10 @@
     "expo"
   ],
   "peerDependencies": {
-    "expo": "^50"
+    "expo": "^51"
   },
   "devDependencies": {
-    "expo-module-scripts": "^3.4.1"
+    "expo-module-scripts": "^3.5.1"
   },
   "upstreamPackage": "react-native-google-cast"
 }

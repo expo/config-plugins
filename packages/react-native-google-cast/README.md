@@ -8,6 +8,7 @@ Ensure you use versions that work together!
 
 | `expo` | `react-native-google-cast` | `@config-plugins/react-native-google-cast` |
 | ------ | -------------------------- | ------------------------------------------ |
+| 51.0.0 | 4.8.0                      | 8.0.0                                      |
 | 50.0.0 | 4.6.2                      | 7.0.0                                      |
 | 49.0.0 | 4.6.2                      | 6.0.0                                      |
 
@@ -25,9 +26,7 @@ After installing this npm package, add the [config plugin](https://docs.expo.io/
 
 ```json
 {
-  "expo": {
-    "plugins": ["@config-plugins/react-native-google-cast"]
-  }
+  "plugins": ["@config-plugins/react-native-google-cast"]
 }
 ```
 
@@ -45,17 +44,15 @@ The plugin provides props for extra customization. Every time you change the pro
 
 ```json
 {
-  "expo": {
-    "plugins": [
-      [
-        "@config-plugins/react-native-google-cast",
-        {
-          "iosReceiverAppId": "...",
-          "androidReceiverAppId": "...",
-          "androidPlayServicesCastFrameworkVersion": "..."
-        }
-      ]
+  "plugins": [
+    [
+      "@config-plugins/react-native-google-cast",
+      {
+        "iosReceiverAppId": "...",
+        "androidReceiverAppId": "...",
+        "androidPlayServicesCastFrameworkVersion": "..."
+      }
     ]
-  }
+  ]
 }
 ```

@@ -9,16 +9,16 @@
   },
   "dependencies": {
     "@config-plugins/ios-stickers": "*",
-    "@react-native-community/slider": "~4.5.0",
-    "@react-native-picker/picker": "~2.6.1",
-    "expo": "~50.0.5",
-    "expo-splash-screen": "~0.26.4",
-    "expo-status-bar": "~1.11.1",
+    "@react-native-community/slider": "4.5.2",
+    "@react-native-picker/picker": "2.7.5",
+    "expo": "~51",
+    "expo-splash-screen": "~0.27.4",
+    "expo-status-bar": "~1.12.1",
     "react": "18.2.0",
-    "react-native": "0.73.3"
+    "react-native": "0.74.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0"
+    "@babel/core": "^7.24.0"
   },
   "private": true
 }

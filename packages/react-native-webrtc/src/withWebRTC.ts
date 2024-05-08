@@ -6,7 +6,6 @@ import {
 import { withBuildProperties } from "expo-build-properties";
 
 import { withBitcodeDisabled } from "./withBitcodeDisabled";
-import { withDesugaring } from "./withDesugaring";
 import { IOSPermissionsProps, withPermissions } from "./withPermissions";
 
 const pkg = { name: "react-native-webrtc", version: "UNVERSIONED" }; //require("react-native-webrtc/package.json");
@@ -22,15 +21,17 @@ const withWebRTC: ConfigPlugin<IOSPermissionsProps | void> = (
   config = withBitcodeDisabled(config);
 
   // Android
+  // https://github.com/react-native-webrtc/react-native-webrtc/blob/master/Documentation/AndroidInstallation.md#declaring-permissions
   config = AndroidConfig.Permissions.withPermissions(config, [
     "android.permission.ACCESS_NETWORK_STATE",
-    "android.permission.BLUETOOTH",
     "android.permission.CAMERA",
     "android.permission.INTERNET",
     "android.permission.MODIFY_AUDIO_SETTINGS",
     "android.permission.RECORD_AUDIO",
     "android.permission.SYSTEM_ALERT_WINDOW",
     "android.permission.WAKE_LOCK",
+
+    "android.permission.BLUETOOTH",
   ]);
 
   config = withBuildProperties(config, {
@@ -39,8 +40,6 @@ const withWebRTC: ConfigPlugin<IOSPermissionsProps | void> = (
       minSdkVersion: 24,
     },
   });
-
-  config = withDesugaring(config, true);
 
   return config;
 };

@@ -6,6 +6,7 @@ Config plugin to auto-configure `ffmpeg-kit-react-native` when the native code i
 
 | `expo` | `ffmpeg-kit-react-native` | `@config-plugins/ffmpeg-kit-react-native` |
 | ------ | ------------------------- | ----------------------------------------- |
+| 51.0.0 | 6.0.2                     | ^8.0.0                                    |
 | 50.0.0 | 6.0.2                     | ^7.0.0                                    |
 | 49.0.0 | 5.1.0                     | ^6.0.0                                    |
 | 48.0.0 | 5.1.0                     | ^5.0.0                                    |
@@ -49,19 +50,17 @@ The plugin provides props for extra customization. Every time you change the pro
 
 ```json
 {
-  "expo": {
-    "plugins": [
-      [
-        "@config-plugins/ffmpeg-kit-react-native",
-        {
-          "package": "min",
-          "ios": {
-            "package": "video"
-          }
+  "plugins": [
+    [
+      "@config-plugins/ffmpeg-kit-react-native",
+      {
+        "package": "min",
+        "ios": {
+          "package": "video"
         }
-      ]
+      }
     ]
-  }
+  ]
 }
 ```
 

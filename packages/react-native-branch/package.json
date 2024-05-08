@@ -1,6 +1,6 @@
 {
   "name": "@config-plugins/react-native-branch",
-  "version": "7.0.0",
+  "version": "8.0.0",
   "description": "Config plugin to auto configure react-native-branch on prebuild",
   "author": "650 Industries, Inc.",
   "license": "MIT",
@@ -30,9 +30,9 @@
     "react-native-branch"
   ],
   "peerDependencies": {
-    "expo": "^50"
+    "expo": "^51"
   },
   "devDependencies": {
-    "expo-module-scripts": "^3.4.1"
+    "expo-module-scripts": "^3.5.1"
   }
 }
