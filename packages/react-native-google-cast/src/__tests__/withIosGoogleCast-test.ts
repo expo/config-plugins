@@ -7,6 +7,7 @@ describe(addGoogleCastAppDelegateDidFinishLaunchingWithOptions, () => {
       getFixture("AppDelegate.mm"),
       {
         receiverAppId: "foobar-bacon",
+        suspendSessionsWhenBackgrounded: false,
       },
     );
     // matches a static snapshot

@@ -10,12 +10,13 @@ exports[`addGoogleCastAppDelegateDidFinishLaunchingWithOptions adds maps import 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-// @generated begin react-native-google-cast-didFinishLaunchingWithOptions - expo prebuild (DO NOT MODIFY) sync-daa990ca400f82a13f41d1ebc1f1fe9f511f3d6d
+// @generated begin react-native-google-cast-didFinishLaunchingWithOptions - expo prebuild (DO NOT MODIFY) sync-7c4d7719024c020cbdbdec17652c4a5824b61c18
 #if __has_include(<GoogleCast/GoogleCast.h>)
   NSString *receiverAppID = @"foobar-bacon";
   GCKDiscoveryCriteria *criteria = [[GCKDiscoveryCriteria alloc] initWithApplicationID:receiverAppID];
   GCKCastOptions* options = [[GCKCastOptions alloc] initWithDiscoveryCriteria:criteria];
   options.startDiscoveryAfterFirstTapOnCastButton = true;
+  options.suspendSessionsWhenBackgrounded = false;
   [GCKCastContext setSharedInstanceWithOptions:options];
 #endif
 // @generated end react-native-google-cast-didFinishLaunchingWithOptions
