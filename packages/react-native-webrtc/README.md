@@ -39,48 +39,6 @@ After installing this npm package, add the [config plugin](https://docs.expo.io/
 
 Next, rebuild your app as described in the ["Adding custom native code"](https://docs.expo.io/workflow/customizing/) guide.
 
-### Event Target Shim
-
-> SDK 50 and greater.
-
-React Native uses `event-target-shim@5` which is not compatible with `react-native-webrtc`'s dependency on `event-target-shim@6`. To fix this, you may need to add a redirection in your `metro.config.js` file:
-
-```js
-// metro.config.js
-
-// Learn more https://docs.expo.io/guides/customizing-metro
-const { getDefaultConfig } = require("expo/metro-config");
-const resolveFrom = require("resolve-from");
-
-/** @type {import('expo/metro-config').MetroConfig} */
-const config = getDefaultConfig(__dirname);
-
-config.resolver.resolveRequest = (context, moduleName, platform) => {
-  if (
-    // If the bundle is resolving "event-target-shim" from a module that is part of "react-native-webrtc".
-    moduleName.startsWith("event-target-shim") &&
-    context.originModulePath.includes("react-native-webrtc")
-  ) {
-    // Resolve event-target-shim relative to the react-native-webrtc package to use v6.
-    // React Native requires v5 which is not compatible with react-native-webrtc.
-    const eventTargetShimPath = resolveFrom(
-      context.originModulePath,
-      moduleName
-    );
-
-    return {
-      filePath: eventTargetShimPath,
-      type: "sourceFile",
-    };
-  }
-
-  // Ensure you call the default resolver.
-  return context.resolveRequest(context, moduleName, platform);
-};
-
-module.exports = config;
-```
-
 ## API
 
 The plugin provides props for extra customization. Every time you change the props or plugins, you'll need to rebuild (and `prebuild`) the native app. If no extra properties are added, defaults will be used.
