@@ -23,12 +23,12 @@ const withGoogleCast: ConfigPlugin<
     /**
      * @default true
      */
-    startDiscoveryAfterFirstTapOnCastButton?: boolean;
+    iosStartDiscoveryAfterFirstTapOnCastButton?: boolean;
 
     /**
      * @default false
      */
-    physicalVolumeButtonsWillControlDeviceVolume?: boolean;
+    iosPhysicalVolumeButtonsWillControlDeviceVolume?: boolean;
   } | void
 > = (config, _props) => {
   const props = _props || {};
@@ -37,9 +37,9 @@ const withGoogleCast: ConfigPlugin<
     receiverAppId: props.iosReceiverAppId,
     // disableDiscoveryAutostart?: boolean;
     startDiscoveryAfterFirstTapOnCastButton:
-      props.startDiscoveryAfterFirstTapOnCastButton,
+      props.iosStartDiscoveryAfterFirstTapOnCastButton,
     physicalVolumeButtonsWillControlDeviceVolume:
-      props.physicalVolumeButtonsWillControlDeviceVolume,
+      props.iosPhysicalVolumeButtonsWillControlDeviceVolume,
   });
 
   config = withAndroidGoogleCast(config, {
