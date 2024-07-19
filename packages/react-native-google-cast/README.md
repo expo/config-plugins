@@ -37,6 +37,8 @@ Next, rebuild your app as described in the ["Adding custom native code"](https:/
 The plugin provides props for extra customization. Every time you change the props or plugins, you'll need to rebuild (and `prebuild`) the native app. If no extra properties are added, defaults will be used.
 
 - `iosReceiverAppId` (_string_): unknown. Default `CC1AD845`
+- `iosStartDiscoveryAfterFirstTapOnCastButton` (_boolean_) TODO
+- `iosPhysicalVolumeButtonsWillControlDeviceVolume` (\_boolean) TODO
 - `androidReceiverAppId` (_string_): unknown.
 - `androidPlayServicesCastFrameworkVersion` (_string_): Version for the gradle package. Default `+`
 
@@ -49,6 +51,8 @@ The plugin provides props for extra customization. Every time you change the pro
       "@config-plugins/react-native-google-cast",
       {
         "iosReceiverAppId": "...",
+        "iosStartDiscoveryAfterFirstTapOnCastButton": "...",
+        "iosPhysicalVolumeButtonsWillControlDeviceVolume": "...",
         "androidReceiverAppId": "...",
         "androidPlayServicesCastFrameworkVersion": "..."
       }
