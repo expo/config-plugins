@@ -1,6 +1,6 @@
 {
-  "name": "@julianmx/react-native-google-cast-plugin-updates",
-  "version": "8.0.4",
+  "name": "@config-plugins/react-native-google-cast",
+  "version": "8.0.1",
   "description": "Config plugin to auto configure Google Cast on prebuild",
   "main": "build/withGoogleCast.js",
   "types": "build/withGoogleCast.d.ts",
@@ -8,7 +8,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/expo/config-plugins.git",
+    "url": "https://github.com/expo/config-plugins.git",
     "directory": "packages/react-native-google-cast"
   },
   "files": [
