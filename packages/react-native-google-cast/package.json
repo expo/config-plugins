@@ -1,6 +1,6 @@
 {
   "name": "@config-plugins/react-native-google-cast",
-  "version": "8.0.0",
+  "version": "8.0.1",
   "description": "Config plugin to auto configure Google Cast on prebuild",
   "main": "build/withGoogleCast.js",
   "types": "build/withGoogleCast.d.ts",
@@ -34,5 +34,10 @@
   "devDependencies": {
     "expo-module-scripts": "^3.5.1"
   },
-  "upstreamPackage": "react-native-google-cast"
+  "upstreamPackage": "react-native-google-cast",
+  "bugs": {
+    "url": "https://github.com/expo/config-plugins/issues"
+  },
+  "homepage": "https://github.com/expo/config-plugins#readme",
+  "author": ""
 }

@@ -46,7 +46,7 @@ const withIosLocalNetworkPermissions: ConfigPlugin<{
     // Add required values
     config.modResults.NSBonjourServices.push(
       "_googlecast._tcp",
-      `_${receiverAppId}._googlecast._tcp`,
+      `_${receiverAppId}._googlecast._tcp`
     );
 
     // Remove duplicates
@@ -81,16 +81,16 @@ const withIosAppDelegateLoaded: ConfigPlugin<IosProps> = (config, props) => {
   return withAppDelegate(config, (config) => {
     if (!["objc", "objcpp"].includes(config.modResults.language)) {
       throw new Error(
-        "react-native-google-cast config plugin does not support AppDelegate' that aren't Objective-C(++) yet.",
+        "react-native-google-cast config plugin does not support AppDelegate' that aren't Objective-C(++) yet."
       );
     }
     config.modResults.contents =
       addGoogleCastAppDelegateDidFinishLaunchingWithOptions(
         config.modResults.contents,
-        props,
+        props
       ).contents;
     config.modResults.contents = addGoogleCastAppDelegateImport(
-      config.modResults.contents,
+      config.modResults.contents
     ).contents;
 
     return config;
@@ -102,6 +102,16 @@ export const withIosGoogleCast: ConfigPlugin<{
    * @default 'CC1AD845'
    */
   receiverAppId?: string;
+
+  /**
+   * @default true
+   */
+  startDiscoveryAfterFirstTapOnCastButton?: boolean;
+
+  /**
+   * @default false
+   */
+  physicalVolumeButtonsWillControlDeviceVolume?: boolean;
 }> = (config, props) => {
   config = withIosWifiEntitlements(config);
   config = withIosLocalNetworkPermissions(config, {
@@ -110,7 +120,10 @@ export const withIosGoogleCast: ConfigPlugin<{
   config = withIosAppDelegateLoaded(config, {
     receiverAppId: props.receiverAppId,
     // disableDiscoveryAutostart?: boolean;
-    // startDiscoveryAfterFirstTapOnCastButton?: boolean;
+    startDiscoveryAfterFirstTapOnCastButton:
+      props.startDiscoveryAfterFirstTapOnCastButton,
+    physicalVolumeButtonsWillControlDeviceVolume:
+      props.physicalVolumeButtonsWillControlDeviceVolume,
   });
 
   // TODO
@@ -127,6 +140,7 @@ type IosProps = {
   receiverAppId?: string | null;
   disableDiscoveryAutostart?: boolean;
   startDiscoveryAfterFirstTapOnCastButton?: boolean;
+  physicalVolumeButtonsWillControlDeviceVolume?: boolean;
 };
 
 export function addGoogleCastAppDelegateDidFinishLaunchingWithOptions(
@@ -135,7 +149,8 @@ export function addGoogleCastAppDelegateDidFinishLaunchingWithOptions(
     receiverAppId = null,
     disableDiscoveryAutostart = false,
     startDiscoveryAfterFirstTapOnCastButton = true,
-  }: IosProps = {},
+    physicalVolumeButtonsWillControlDeviceVolume = false,
+  }: IosProps = {}
 ) {
   let newSrc = [];
   newSrc.push(
@@ -152,10 +167,13 @@ export function addGoogleCastAppDelegateDidFinishLaunchingWithOptions(
     // TODO: Same as above, read statically
     // `  options.disableDiscoveryAutostart = ${String(!!disableDiscoveryAutostart)};`,
     `  options.startDiscoveryAfterFirstTapOnCastButton = ${String(
-      !!startDiscoveryAfterFirstTapOnCastButton,
+      !!startDiscoveryAfterFirstTapOnCastButton
+    )};`,
+    `  options.physicalVolumeButtonsWillControlDeviceVolume = ${String(
+      !!physicalVolumeButtonsWillControlDeviceVolume
     )};`,
     "  [GCKCastContext setSharedInstanceWithOptions:options];",
-    "#endif",
+    "#endif"
   );
 
   newSrc = newSrc.filter(Boolean);
@@ -175,7 +193,7 @@ function addGoogleCastAppDelegateImport(src: string) {
   newSrc.push(
     "#if __has_include(<GoogleCast/GoogleCast.h>)",
     "#import <GoogleCast/GoogleCast.h>",
-    "#endif",
+    "#endif"
   );
 
   return mergeContents({
