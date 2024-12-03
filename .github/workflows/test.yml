@@ -41,7 +41,6 @@ jobs:
             react-native-blob-util,
             react-native-branch,
             react-native-siri-shortcut,
-            react-native-google-cast,
             react-native-pdf,
           ]
     name: Test ${{ matrix.package }} on Node ${{ matrix.node }}
