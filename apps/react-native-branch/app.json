@@ -16,6 +16,9 @@
         }
       }
     },
-    "plugins": ["@config-plugins/react-native-branch"]
+    "plugins": [
+      "@config-plugins/react-native-branch",
+      ["expo-build-properties", { "ios": { "ccacheEnabled": true } }]
+    ]
   }
 }

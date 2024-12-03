@@ -4,7 +4,8 @@
     "icon": "https://github.com/expo.png",
     "plugins": [
       "@config-plugins/react-native-blob-util",
-      "@config-plugins/react-native-pdf"
+      "@config-plugins/react-native-pdf",
+      ["expo-build-properties", { "ios": { "ccacheEnabled": true } }]
     ]
   }
 }

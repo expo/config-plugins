@@ -25,7 +25,8 @@
             "./assets/stickers/teapot.png"
           ]
         }
-      ]
+      ],
+      ["expo-build-properties", { "ios": { "ccacheEnabled": true } }]
     ]
   }
 }

@@ -2,6 +2,9 @@
   "expo": {
     "name": "webrtc",
     "icon": "https://github.com/expo.png",
-    "plugins": ["@config-plugins/react-native-webrtc"]
+    "plugins": [
+      "@config-plugins/react-native-webrtc",
+      ["expo-build-properties", { "ios": { "ccacheEnabled": true } }]
+    ]
   }
 }

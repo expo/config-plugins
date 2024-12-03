@@ -2,6 +2,7 @@
   "expo": {
     "name": "apple-settings",
     "icon": "https://github.com/expo.png",
-    "platforms": ["ios"]
+    "platforms": ["ios"],
+    "plugins": [["expo-build-properties", { "ios": { "ccacheEnabled": true } }]]
   }
 }

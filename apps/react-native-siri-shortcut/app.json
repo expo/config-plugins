@@ -7,7 +7,8 @@
       [
         "@config-plugins/react-native-siri-shortcut",
         ["com.example.InitiateWorkout", "com.example.FinishWorkout"]
-      ]
+      ],
+      ["expo-build-properties", { "ios": { "ccacheEnabled": true } }]
     ]
   }
 }
