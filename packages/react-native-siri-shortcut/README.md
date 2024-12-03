@@ -8,6 +8,7 @@ Ensure you use versions that work together!
 
 | `expo` | `react-native-siri-shortcut` | `@config-plugins/react-native-siri-shortcut` |
 | ------ | ---------------------------- | -------------------------------------------- |
+| 52.0.0 | 3.2.4                        | 8.0.0                                        |
 | 51.0.0 | 3.2.4                        | 7.0.0                                        |
 | 50.0.0 | 3.2.4                        | 6.0.0                                        |
 | 49.0.0 | 3.2.3                        | 5.0.0                                        |

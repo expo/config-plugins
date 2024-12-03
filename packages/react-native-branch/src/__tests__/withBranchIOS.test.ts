@@ -7,7 +7,7 @@ describe(getBranchApiKey, () => {
 
   it(`returns the api key if provided`, () => {
     expect(
-      getBranchApiKey({ ios: { config: { branch: { apiKey: "123" } } } }),
+      getBranchApiKey({ ios: { config: { branch: { apiKey: "123" } } } })
     ).toBe("123");
   });
 });

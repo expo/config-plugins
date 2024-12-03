@@ -1,6 +1,6 @@
 import { mergeContents } from "@expo/config-plugins/build/utils/generateCode";
 import {
-  ConfigPlugin,
+  type ConfigPlugin,
   withAppDelegate,
   withEntitlementsPlist,
   withInfoPlist,
@@ -46,7 +46,7 @@ const withIosLocalNetworkPermissions: ConfigPlugin<{
     // Add required values
     config.modResults.NSBonjourServices.push(
       "_googlecast._tcp",
-      `_${receiverAppId}._googlecast._tcp`,
+      `_${receiverAppId}._googlecast._tcp`
     );
 
     // Remove duplicates
@@ -81,16 +81,16 @@ const withIosAppDelegateLoaded: ConfigPlugin<IosProps> = (config, props) => {
   return withAppDelegate(config, (config) => {
     if (!["objc", "objcpp"].includes(config.modResults.language)) {
       throw new Error(
-        "react-native-google-cast config plugin does not support AppDelegate' that aren't Objective-C(++) yet.",
+        "react-native-google-cast config plugin does not support AppDelegate' that aren't Objective-C(++) yet."
       );
     }
     config.modResults.contents =
       addGoogleCastAppDelegateDidFinishLaunchingWithOptions(
         config.modResults.contents,
-        props,
+        props
       ).contents;
     config.modResults.contents = addGoogleCastAppDelegateImport(
-      config.modResults.contents,
+      config.modResults.contents
     ).contents;
 
     return config;
@@ -135,7 +135,7 @@ export function addGoogleCastAppDelegateDidFinishLaunchingWithOptions(
     receiverAppId = null,
     disableDiscoveryAutostart = false,
     startDiscoveryAfterFirstTapOnCastButton = true,
-  }: IosProps = {},
+  }: IosProps = {}
 ) {
   let newSrc = [];
   newSrc.push(
@@ -152,10 +152,10 @@ export function addGoogleCastAppDelegateDidFinishLaunchingWithOptions(
     // TODO: Same as above, read statically
     // `  options.disableDiscoveryAutostart = ${String(!!disableDiscoveryAutostart)};`,
     `  options.startDiscoveryAfterFirstTapOnCastButton = ${String(
-      !!startDiscoveryAfterFirstTapOnCastButton,
+      !!startDiscoveryAfterFirstTapOnCastButton
     )};`,
     "  [GCKCastContext setSharedInstanceWithOptions:options];",
-    "#endif",
+    "#endif"
   );
 
   newSrc = newSrc.filter(Boolean);
@@ -175,7 +175,7 @@ function addGoogleCastAppDelegateImport(src: string) {
   newSrc.push(
     "#if __has_include(<GoogleCast/GoogleCast.h>)",
     "#import <GoogleCast/GoogleCast.h>",
-    "#endif",
+    "#endif"
   );
 
   return mergeContents({

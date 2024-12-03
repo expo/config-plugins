@@ -1,8 +1,8 @@
 import {
+  type ConfigPlugin,
+  type Mod,
   BaseMods,
-  ConfigPlugin,
   createRunOncePlugin,
-  Mod,
   withMod,
 } from "expo/config-plugins";
 import * as fs from "fs";

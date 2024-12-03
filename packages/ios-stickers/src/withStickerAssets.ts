@@ -1,5 +1,5 @@
 import { generateImageAsync } from "@expo/image-utils";
-import { ConfigPlugin, withDangerousMod } from "expo/config-plugins";
+import { type ConfigPlugin, withDangerousMod } from "expo/config-plugins";
 import fs from "fs";
 import path from "path";
 
@@ -76,19 +76,27 @@ export const withStickerAssets: ConfigPlugin<{
 }> = (config, { stickers, icon, size }) => {
   // Default to using the app icon
   if (!icon) {
-    icon = (config.ios || {}).icon || config.icon;
+    if (config.ios?.icon) {
+      icon ??=
+        typeof config.ios.icon === "string"
+          ? config.ios.icon
+          : config.ios.icon.light ??
+            config.ios.icon.dark ??
+            config.ios.icon.tinted;
+    }
+    icon ||= config.icon;
   }
 
   return withDangerousMod(config, [
     "ios",
     async (config) => {
       const stickerPackName = getProjectStickersName(
-        config.modRequest.projectName!,
+        config.modRequest.projectName!
       );
 
       const stickerRootPath = path.join(
         config.modRequest.platformProjectRoot,
-        stickerPackName,
+        stickerPackName
       );
 
       const stickersAssetsPath = path.join(stickerRootPath, STICKERS_ROOT_PATH);
@@ -100,7 +108,7 @@ export const withStickerAssets: ConfigPlugin<{
 
       const stickersRootContentsJsonPath = path.join(
         stickersAssetsPath,
-        "Contents.json",
+        "Contents.json"
       );
       fs.mkdirSync(stickersAssetsPath, {
         recursive: true,
@@ -108,26 +116,26 @@ export const withStickerAssets: ConfigPlugin<{
       // Xcode has trouble with the Contents.json for marketing images
       fs.writeFileSync(
         stickersRootContentsJsonPath,
-        JSON.stringify(stickersRootContents, null, 2),
+        JSON.stringify(stickersRootContents, null, 2)
       );
 
       // iMessage icon
 
       const iMessageAppIconsPath = path.join(
         stickerRootPath,
-        IMESSAGE_APP_ICON_PATH,
+        IMESSAGE_APP_ICON_PATH
       );
       // Only generate icons if an icon is defined
       const imessageIconContents = icon
         ? await generateImessageIconsAsync(
             config.modRequest.projectRoot,
             icon,
-            iMessageAppIconsPath,
+            iMessageAppIconsPath
           )
         : [];
       const iMessageAppIconContentsJsonPath = path.join(
         iMessageAppIconsPath,
-        "Contents.json",
+        "Contents.json"
       );
       fs.mkdirSync(iMessageAppIconsPath, {
         recursive: true,
@@ -138,13 +146,13 @@ export const withStickerAssets: ConfigPlugin<{
         JSON.stringify(
           { images: imessageIconContents, info: defaultInfo },
           null,
-          2,
-        ),
+          2
+        )
       );
 
       const stickerPackContentsPath = path.join(
         stickerRootPath,
-        STICKER_PACK_PATH,
+        STICKER_PACK_PATH
       );
 
       const stickersContents: {
@@ -175,7 +183,7 @@ export const withStickerAssets: ConfigPlugin<{
             },
             {
               src,
-            } as any,
+            } as any
           );
 
           // let results;
@@ -195,7 +203,7 @@ export const withStickerAssets: ConfigPlugin<{
 
       const stickerPackContentsJsonPath = path.join(
         stickerPackContentsPath,
-        "Contents.json",
+        "Contents.json"
       );
       fs.mkdirSync(stickerPackContentsPath, {
         recursive: true,
@@ -203,7 +211,7 @@ export const withStickerAssets: ConfigPlugin<{
       // TODO
       fs.writeFileSync(
         stickerPackContentsJsonPath,
-        JSON.stringify(stickersContents, null, 2),
+        JSON.stringify(stickersContents, null, 2)
       );
 
       return config;

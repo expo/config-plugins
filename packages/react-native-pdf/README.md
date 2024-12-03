@@ -8,6 +8,7 @@ Ensure you use versions that work together!
 
 | `expo` | `react-native-pdf` | `@config-plugins/react-native-pdf` |
 | ------ | ------------------ | ---------------------------------- |
+| 52.0.0 | 6.7.6              | 9.0.0                              |
 | 51.0.0 | 6.7.5              | 8.0.0                              |
 | 50.0.0 | 6.7.4              | 7.0.0                              |
 | 49.0.0 | 6.7.1              | 6.0.0                              |

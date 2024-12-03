@@ -7,7 +7,7 @@ describe(addGoogleCastAppDelegateDidFinishLaunchingWithOptions, () => {
       getFixture("AppDelegate.mm"),
       {
         receiverAppId: "foobar-bacon",
-      },
+      }
     );
     // matches a static snapshot
     expect(results.contents).toMatchSnapshot();
@@ -20,7 +20,7 @@ describe(addGoogleCastAppDelegateDidFinishLaunchingWithOptions, () => {
 
   it(`fails to add to a malformed app delegate`, () => {
     expect(() =>
-      addGoogleCastAppDelegateDidFinishLaunchingWithOptions(`foobar`, {}),
+      addGoogleCastAppDelegateDidFinishLaunchingWithOptions(`foobar`, {})
     ).toThrow(/foobar/);
   });
 });

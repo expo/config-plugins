@@ -1,11 +1,11 @@
 import { XcodeProject } from "@bacons/xcode";
 import * as xcodeParse from "@bacons/xcode/json";
 import {
+  type Mod,
   BaseMods,
   ConfigPlugin,
   createRunOncePlugin,
   IOSConfig,
-  Mod,
   withMod,
 } from "expo/config-plugins";
 import * as fs from "fs";

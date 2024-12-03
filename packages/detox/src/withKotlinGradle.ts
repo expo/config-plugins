@@ -1,4 +1,4 @@
-import { ConfigPlugin, withProjectBuildGradle } from "expo/config-plugins";
+import { type ConfigPlugin, withProjectBuildGradle } from "expo/config-plugins";
 import { withBuildProperties } from "expo-build-properties";
 
 const kotlinClassPath =
@@ -21,11 +21,11 @@ const withKotlinGradle: ConfigPlugin<string> = (config, version) => {
     // Add the classpath to the project build.gradle
     if (config.modResults.language === "groovy") {
       config.modResults.contents = setKotlinClassPath(
-        config.modResults.contents,
+        config.modResults.contents
       );
     } else {
       throw new Error(
-        "Cannot setup kotlin because the build.gradle is not groovy",
+        "Cannot setup kotlin because the build.gradle is not groovy"
       );
     }
     return config;
@@ -40,7 +40,7 @@ function setKotlinClassPath(buildGradle: string): string {
   return buildGradle.replace(
     /dependencies\s?{/,
     `dependencies {
-        classpath "${kotlinClassPath}"`,
+        classpath "${kotlinClassPath}"`
   );
 }
 

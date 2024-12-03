@@ -1,9 +1,9 @@
 import * as plist from "@expo/plist";
 import {
   BaseMods,
-  ConfigPlugin,
+  type ConfigPlugin,
   createRunOncePlugin,
-  Mod,
+  type Mod,
   withMod,
 } from "expo/config-plugins";
 import * as fs from "fs";

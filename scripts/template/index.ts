@@ -1,4 +1,4 @@
-import { ConfigPlugin, createRunOncePlugin } from "@expo/config-plugins";
+import { ConfigPlugin, createRunOncePlugin } from "expo/config-plugins";
 
 /**
  * Apply %NPM_MODULE% configuration for Expo SDK %SDK_VERSION% projects.

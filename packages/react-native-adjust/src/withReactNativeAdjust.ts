@@ -1,7 +1,7 @@
 import { mergeContents } from "@expo/config-plugins/build/utils/generateCode";
 import {
+  type ConfigPlugin,
   AndroidConfig,
-  ConfigPlugin,
   createRunOncePlugin,
   IOSConfig,
   withAppBuildGradle,
@@ -48,11 +48,11 @@ const withGradle: ConfigPlugin = (config) => {
   return withAppBuildGradle(config, (config) => {
     if (config.modResults.language === "groovy") {
       config.modResults.contents = addAndroidPackagingOptions(
-        config.modResults.contents,
+        config.modResults.contents
       ).contents;
     } else {
       throw new Error(
-        "Cannot add Play Services maven gradle because the project build.gradle is not groovy",
+        "Cannot add Play Services maven gradle because the project build.gradle is not groovy"
       );
     }
     return config;
@@ -64,7 +64,7 @@ const withGradle: ConfigPlugin = (config) => {
  */
 const withAdjustPlugin: ConfigPlugin<void | { targetAndroid12?: boolean }> = (
   config,
-  _props,
+  _props
 ) => {
   const props = _props || {};
 

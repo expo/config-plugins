@@ -3,7 +3,7 @@ import {
   MergeResults,
 } from "@expo/config-plugins/build/utils/generateCode";
 import {
-  ConfigPlugin,
+  type ConfigPlugin,
   createRunOncePlugin,
   withAppDelegate,
   withInfoPlist,
@@ -15,7 +15,7 @@ import {
  */
 const withReactNativeSiriShortcut: ConfigPlugin<void | string[]> = (
   config,
-  activityTypes,
+  activityTypes
 ) => {
   withSiriShortcutAppDelegate(config);
   withSiriEntitlements(config);
@@ -25,17 +25,13 @@ const withReactNativeSiriShortcut: ConfigPlugin<void | string[]> = (
   if (!Array.isArray(items) || !items.length) {
     return config;
   }
-  return withReactNativeSiriShortcutInfoPlist(config, items);
-};
 
-const withReactNativeSiriShortcutInfoPlist: ConfigPlugin<string[]> = (
-  config,
-  activityTypes,
-) => {
-  return withInfoPlist(config, (config) => {
-    config.modResults.NSUserActivityTypes = activityTypes;
+  withInfoPlist(config, (config) => {
+    config.modResults.NSUserActivityTypes = items;
     return config;
   });
+
+  return config;
 };
 
 export function addSiriShortcutAppDelegateImport(src: string): MergeResults {
@@ -75,22 +71,22 @@ const withSiriShortcutAppDelegate: ConfigPlugin = (config) => {
     if (["objc", "objcpp"].includes(config.modResults.language)) {
       try {
         config.modResults.contents = addSiriShortcutAppDelegateImport(
-          config.modResults.contents,
+          config.modResults.contents
         ).contents;
         config.modResults.contents = addSiriShortcutAppDelegateInit(
-          config.modResults.contents,
+          config.modResults.contents
         ).contents;
       } catch (error: any) {
         if (error.code === "ERR_NO_MATCH") {
           throw new Error(
-            `Cannot add Siri Shortcut to the project's AppDelegate because it's malformed. Please report this with a copy of your project AppDelegate.`,
+            `Cannot add Siri Shortcut to the project's AppDelegate because it's malformed. Please report this with a copy of your project AppDelegate.`
           );
         }
         throw error;
       }
     } else {
       throw new Error(
-        "Cannot setup Siri Shortcut because the AppDelegate is not Objective C",
+        "Cannot setup Siri Shortcut because the AppDelegate is not Objective C"
       );
     }
     return config;
@@ -111,5 +107,5 @@ const pkg = {
 export default createRunOncePlugin(
   withReactNativeSiriShortcut,
   pkg.name,
-  pkg.version,
+  pkg.version
 );

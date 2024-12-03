@@ -1,6 +1,6 @@
 import { mergeContents } from "@expo/config-plugins/build/utils/generateCode";
 import {
-  ConfigPlugin,
+  type ConfigPlugin,
   withDangerousMod,
   withPodfileProperties,
 } from "expo/config-plugins";

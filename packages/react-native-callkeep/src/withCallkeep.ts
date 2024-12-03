@@ -1,6 +1,6 @@
 import {
+  type ConfigPlugin,
   AndroidConfig,
-  ConfigPlugin,
   IOSConfig,
   withAndroidManifest,
   withInfoPlist,
@@ -34,7 +34,7 @@ const withAndroidManifestService: ConfigPlugin = (config) => {
     // </service>;
 
     const app = AndroidConfig.Manifest.getMainApplicationOrThrow(
-      config.modResults,
+      config.modResults
     );
 
     if (!Array.isArray(app.service)) app.service = [];
@@ -43,7 +43,7 @@ const withAndroidManifestService: ConfigPlugin = (config) => {
       !app.service.find(
         (item) =>
           item.$["android:name"] ===
-          "io.wazo.callkeep.RNCallKeepBackgroundMessagingService",
+          "io.wazo.callkeep.RNCallKeepBackgroundMessagingService"
       )
     ) {
       app.service.push({
@@ -58,7 +58,7 @@ const withAndroidManifestService: ConfigPlugin = (config) => {
     if (
       !app.service.find(
         (item) =>
-          item.$["android:name"] === "io.wazo.callkeep.VoiceConnectionService",
+          item.$["android:name"] === "io.wazo.callkeep.VoiceConnectionService"
       )
     ) {
       app.service.push({
@@ -93,7 +93,7 @@ const withAndroidManifestService: ConfigPlugin = (config) => {
 };
 
 const withCallkeep: ConfigPlugin = (config) => {
-  config = withInfoPlist(config, (config) => {
+  withInfoPlist(config, (config) => {
     if (!Array.isArray(config.modResults.UIBackgroundModes)) {
       config.modResults.UIBackgroundModes = [];
     }
@@ -104,14 +104,14 @@ const withCallkeep: ConfigPlugin = (config) => {
     return config;
   });
 
-  config = withCallkeepHeaderSearchPath(config);
+  withCallkeepHeaderSearchPath(config);
 
-  config = withXcodeLinkBinaryWithLibraries(config, {
+  withXcodeLinkBinaryWithLibraries(config, {
     library: "Intents.framework",
     status: "optional",
   });
 
-  config = withXcodeLinkBinaryWithLibraries(config, {
+  withXcodeLinkBinaryWithLibraries(config, {
     library: "CallKit.framework",
   });
 
@@ -126,7 +126,7 @@ const withCallkeep: ConfigPlugin = (config) => {
   return config;
 };
 
-export const withXcodeLinkBinaryWithLibraries: ConfigPlugin<{
+const withXcodeLinkBinaryWithLibraries: ConfigPlugin<{
   library: string;
   status?: string;
 }> = (config, { library, status }) => {

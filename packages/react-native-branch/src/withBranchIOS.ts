@@ -1,5 +1,9 @@
-import { ExpoConfig } from "expo/config";
-import { ConfigPlugin, InfoPlist, withInfoPlist } from "expo/config-plugins";
+import { type ExpoConfig } from "expo/config";
+import {
+  type ConfigPlugin,
+  InfoPlist,
+  withInfoPlist,
+} from "expo/config-plugins";
 
 import { ConfigData } from "./types";
 
@@ -9,7 +13,7 @@ export function getBranchApiKey(config: Pick<ExpoConfig, "ios">) {
 
 export function setBranchApiKey(
   apiKey: string | null,
-  infoPlist: InfoPlist,
+  infoPlist: InfoPlist
 ): InfoPlist {
   if (apiKey === null) {
     return infoPlist;
@@ -32,7 +36,7 @@ export const withBranchIOS: ConfigPlugin<ConfigData> = (config, data) => {
   const apiKey = data.apiKey ?? getBranchApiKey(config);
   if (!apiKey) {
     throw new Error(
-      "Branch API key is required: expo.ios.config.branch.apiKey",
+      "Branch API key is required: expo.ios.config.branch.apiKey"
     );
   }
 

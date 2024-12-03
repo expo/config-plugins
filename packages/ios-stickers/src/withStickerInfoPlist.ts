@@ -1,7 +1,7 @@
 import plist from "@expo/plist";
 import {
-  ConfigPlugin,
-  InfoPlist,
+  type ConfigPlugin,
+  type InfoPlist,
   IOSConfig,
   withDangerousMod,
 } from "expo/config-plugins";

@@ -1,4 +1,4 @@
-import { ConfigPlugin, withPlugins } from "@expo/config-plugins";
+import { type ConfigPlugin, withPlugins } from "expo/config-plugins";
 
 import { createModSetForSettingsPage } from "./base-mods/withSettingsPlist";
 import { createModSetForSettingsStrings } from "./base-mods/withSettingsStrings";

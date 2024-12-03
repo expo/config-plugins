@@ -1,6 +1,6 @@
 // Copied from https://github.com/expo/expo-cli/blob/main/packages/install-expo-modules/src/plugins/ios/withIosDeploymentTarget.ts
 import {
-  ConfigPlugin,
+  type ConfigPlugin,
   withPodfileProperties,
   withXcodeProject,
   XcodeProject,
