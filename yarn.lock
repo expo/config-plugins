@@ -10257,6 +10257,7 @@ jest-runtime@^29.7.0:
     strip-bom "^4.0.0"
 
 "jest-snapshot-prettier@npm:prettier@^2", prettier@^2.6.2:
+  name jest-snapshot-prettier
   version "2.8.8"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.8.tgz#e8c5d7e98a4305ffe3de2e1fc4aca1a71c28b1da"
   integrity sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==
@@ -13828,11 +13829,6 @@ react-native-dynamic-app-icon@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/react-native-dynamic-app-icon/-/react-native-dynamic-app-icon-1.1.0.tgz#c7722289f9705c24fea257c9722f8d976a14cd13"
   integrity sha512-NJFQNelgA/VZfw2ZbMErUrIFv+DxV8lTX7ZEkU8ys+oZE2yA9EDNZp9KmeAufKZ4VvtFlRuyaR6OHAEfM7CNaw==
-
-react-native-google-cast@^4.8.3:
-  version "4.8.3"
-  resolved "https://registry.yarnpkg.com/react-native-google-cast/-/react-native-google-cast-4.8.3.tgz#b7572972add806f44f44267a5079e343472766bf"
-  integrity sha512-2s/dBr+YYSXYTo7Btx9Az9yOPjnr2GQ8GWU+qDXMsHijrYDafe9uIj7RWFFmx7cL/4RSICx1RwC3vUkHSqaWEA==
 
 react-native-pdf@^6.7.6:
   version "6.7.6"
