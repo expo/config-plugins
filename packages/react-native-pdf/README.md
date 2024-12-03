@@ -1,5 +1,7 @@
 # config-plugins/react-native-pdf
 
+> Consider using a WebView or WebBrowser to quickly display a PDF in your app. Read the alternatives section to learn more.
+
 Config plugin to auto-configure [`react-native-pdf`][lib] when the native code is generated (`npx expo prebuild`).
 
 ## Versioning
@@ -38,3 +40,45 @@ After installing this npm package, add the [config plugin](https://docs.expo.io/
 Next, rebuild your app as described in the ["Adding custom native code"](https://docs.expo.io/workflow/customizing/) guide.
 
 [lib]: https://www.npmjs.com/package/react-native-pdf
+
+### Alternatives
+
+Consider opening a WebBrowser to display a PDF:
+
+```js
+import * as WebBrowser from "expo-web-browser";
+import { Text } from "react-native";
+
+export default function HomeScreen() {
+  return (
+    <Text
+      onPress={() => {
+        WebBrowser.openBrowserAsync(
+          "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+        );
+      }}
+    >
+      Open in-app browser
+    </Text>
+  );
+}
+```
+
+Or inside a `WebView` for a contained view:
+
+```js
+import { WebView } from "react-native-webview";
+
+export default function HomeScreen() {
+  return (
+    <WebView
+      style={{ width: 100, height: 100 }}
+      source={{
+        uri: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      }}
+    />
+  );
+}
+```
+
+Finally, you could use [DOM Components](https://docs.expo.dev/guides/dom-components/) for a custom web experience.

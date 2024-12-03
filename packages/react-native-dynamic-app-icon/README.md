@@ -1,5 +1,7 @@
 # @config-plugins/react-native-dynamic-app-icon
 
+> Consider using [`expo-dynamic-app-icon`](https://github.com/outsung/expo-dynamic-app-icon) instead for both iOS and Android support.
+
 Config plugin to auto-configure `react-native-dynamic-app-icon` when the native code is generated (`npx expo prebuild`).
 
 ## Versioning
