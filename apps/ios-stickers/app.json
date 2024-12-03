@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "stickers",
-    "icon": "https://icogen.vercel.app/api/icon?icon=🔌&color_hex=1832BA",
+    "icon": "https://github.com/expo.png",
     "platforms": ["ios"],
     "plugins": [
       [

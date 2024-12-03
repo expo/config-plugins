@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "branch",
-    "icon": "https://icogen.vercel.app/api/icon?icon=🔌&color_hex=1749A5",
+    "icon": "https://github.com/expo.png",
     "ios": {
       "config": {
         "branch": {
@@ -16,8 +16,6 @@
         }
       }
     },
-    "plugins": [
-      "@config-plugins/react-native-branch"
-    ]
+    "plugins": ["@config-plugins/react-native-branch"]
   }
 }

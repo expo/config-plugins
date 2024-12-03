@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "siri xcut",
-    "icon": "https://icogen.vercel.app/api/icon?icon=🔌&color_hex=82FAD4",
+    "icon": "https://github.com/expo.png",
     "platforms": ["ios"],
     "plugins": [
       [

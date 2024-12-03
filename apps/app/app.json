@@ -4,7 +4,7 @@
     "slug": "app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "https://icogen.vercel.app/api/icon?icon=🔌&color_hex=ffffff",
+    "icon": "https://github.com/expo.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
