@@ -11,6 +11,7 @@
     "@config-plugins/react-native-dynamic-app-icon": "*",
     "expo": "~52",
     "expo-splash-screen": "~0.29.13",
+    "react": "18.3.1",
     "react-native": "0.74.1",
     "react-native-dynamic-app-icon": "^1.1.0"
   },

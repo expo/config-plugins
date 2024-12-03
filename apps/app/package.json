@@ -32,6 +32,7 @@
     "fbjs": "^0.8.18",
     "i18n-js": "^3.8.0",
     "luxon": "^1.27.0",
+    "react": "18.3.1",
     "react-native": "0.76.3",
     "react-native-adjust": "^5.0.2",
     "react-native-callkeep": "^4.3.16",

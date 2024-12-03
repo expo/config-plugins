@@ -38,24 +38,12 @@ export function build(obj: ParsedStrings): string {
   let data = "";
   for (const i in obj) {
     if (typeof obj[i] === "object") {
-      // @ts-expect-error
       if (obj[i]["comment"] && obj[i]["comment"].length > 0) {
-        // @ts-expect-error
         data += "\n/*" + obj[i]["comment"] + "*/\n";
       }
-      // @ts-expect-error
       data += '"' + i + '" = "' + escapeString(obj[i]["value"]) + '";\n';
     } else if (typeof obj[i] === "string") {
-      data +=
-        '\n"' +
-        i +
-        '" = ' +
-        '"' +
-        escapeString(
-          // @ts-expect-error
-          obj[i],
-        ) +
-        '";\n';
+      data += '\n"' + i + '" = ' + '"' + escapeString(obj[i]) + '";\n';
     }
   }
   return data;
@@ -78,6 +66,6 @@ export function writeAsync(filename: string, data: ParsedStrings) {
   return fs.promises.writeFile(
     filename,
     iconv.encode(build(data), "utf-16"),
-    "binary",
+    "binary"
   );
 }
