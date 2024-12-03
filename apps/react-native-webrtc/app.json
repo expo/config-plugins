@@ -1,9 +1,13 @@
 {
   "expo": {
     "name": "webrtc",
-    "icon": "https://icogen.vercel.app/api/icon?icon=🔌&color_hex=519CB2",
+    "icon": "https://github.com/expo.png",
+    "splash": {
+      "image": "https://github.com/expo.png"
+    },
     "plugins": [
-      "@config-plugins/react-native-webrtc"
+      "@config-plugins/react-native-webrtc",
+      ["expo-build-properties", { "ios": { "ccacheEnabled": true } }]
     ]
   }
 }

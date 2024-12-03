@@ -1,7 +1,7 @@
 import assert from "assert";
 import {
+  type ConfigPlugin,
   AndroidConfig,
-  ConfigPlugin,
   withAndroidManifest,
   withDangerousMod,
 } from "expo/config-plugins";

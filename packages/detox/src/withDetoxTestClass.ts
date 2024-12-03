@@ -1,5 +1,5 @@
 import assert from "assert";
-import { ConfigPlugin, withDangerousMod } from "expo/config-plugins";
+import { type ConfigPlugin, withDangerousMod } from "expo/config-plugins";
 import fs from "fs";
 import path from "path";
 

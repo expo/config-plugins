@@ -1,5 +1,7 @@
 # config-plugins/react-native-google-cast
 
+> [!IMPORTANT] > `react-native-google-cast` now has upstream support for Expo Config Plugins, this package is no longer necessary. Please remove it from your project and use the latest version of `react-native-google-cast` instead.
+
 Config plugin to auto-configure `react-native-google-cast` when the native code is generated (`npx expo prebuild`).
 
 ## Versioning

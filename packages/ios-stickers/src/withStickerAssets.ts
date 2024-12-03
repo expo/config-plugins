@@ -1,5 +1,5 @@
 import { generateImageAsync } from "@expo/image-utils";
-import { ConfigPlugin, withDangerousMod } from "expo/config-plugins";
+import { type ConfigPlugin, withDangerousMod } from "expo/config-plugins";
 import fs from "fs";
 import path from "path";
 
@@ -76,7 +76,15 @@ export const withStickerAssets: ConfigPlugin<{
 }> = (config, { stickers, icon, size }) => {
   // Default to using the app icon
   if (!icon) {
-    icon = (config.ios || {}).icon || config.icon;
+    if (config.ios?.icon) {
+      icon ??=
+        typeof config.ios.icon === "string"
+          ? config.ios.icon
+          : (config.ios.icon.light ??
+            config.ios.icon.dark ??
+            config.ios.icon.tinted);
+    }
+    icon ||= config.icon;
   }
 
   return withDangerousMod(config, [

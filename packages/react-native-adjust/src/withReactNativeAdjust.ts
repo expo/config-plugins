@@ -1,7 +1,7 @@
 import { mergeContents } from "@expo/config-plugins/build/utils/generateCode";
 import {
+  type ConfigPlugin,
   AndroidConfig,
-  ConfigPlugin,
   createRunOncePlugin,
   IOSConfig,
   withAppBuildGradle,

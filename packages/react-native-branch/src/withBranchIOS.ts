@@ -1,5 +1,9 @@
-import { ExpoConfig } from "expo/config";
-import { ConfigPlugin, InfoPlist, withInfoPlist } from "expo/config-plugins";
+import { type ExpoConfig } from "expo/config";
+import {
+  type ConfigPlugin,
+  InfoPlist,
+  withInfoPlist,
+} from "expo/config-plugins";
 
 import { ConfigData } from "./types";
 

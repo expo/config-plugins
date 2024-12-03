@@ -8,7 +8,7 @@ export default function App() {
       "APP_TOKEN",
       AdjustConfig.EnvironmentSandbox
     );
-    Adjust.create(adjustConfig);
+    Adjust.enable();
   }, []);
 
   return (

@@ -1,10 +1,14 @@
 {
   "expo": {
     "name": "pdf",
-    "icon": "https://icogen.vercel.app/api/icon?icon=🔌&color_hex=4190F7",
+    "icon": "https://github.com/expo.png",
+    "splash": {
+      "image": "https://github.com/expo.png"
+    },
     "plugins": [
       "@config-plugins/react-native-blob-util",
-      "@config-plugins/react-native-pdf"
+      "@config-plugins/react-native-pdf",
+      ["expo-build-properties", { "ios": { "ccacheEnabled": true } }]
     ]
   }
 }

@@ -3,9 +3,9 @@ import {
   MergeResults,
   removeGeneratedContents,
 } from "@expo/config-plugins/build/utils/generateCode";
-import { ExpoConfig } from "expo/config";
+import { type ExpoConfig } from "expo/config";
 import {
-  ConfigPlugin,
+  type ConfigPlugin,
   withGradleProperties,
   withProjectBuildGradle,
 } from "expo/config-plugins";

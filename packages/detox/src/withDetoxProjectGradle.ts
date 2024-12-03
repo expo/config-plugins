@@ -1,6 +1,6 @@
 import {
+  type MergeResults,
   createGeneratedHeaderComment,
-  MergeResults,
   removeGeneratedContents,
 } from "@expo/config-plugins/build/utils/generateCode";
 import { ConfigPlugin, withProjectBuildGradle } from "expo/config-plugins";

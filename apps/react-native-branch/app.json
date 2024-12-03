@@ -1,7 +1,10 @@
 {
   "expo": {
     "name": "branch",
-    "icon": "https://icogen.vercel.app/api/icon?icon=🔌&color_hex=1749A5",
+    "icon": "https://github.com/expo.png",
+    "splash": {
+      "image": "https://github.com/expo.png"
+    },
     "ios": {
       "config": {
         "branch": {
@@ -17,7 +20,8 @@
       }
     },
     "plugins": [
-      "@config-plugins/react-native-branch"
+      "@config-plugins/react-native-branch",
+      ["expo-build-properties", { "ios": { "ccacheEnabled": true } }]
     ]
   }
 }

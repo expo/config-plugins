@@ -10,6 +10,7 @@ Ensure you use versions that work together!
 
 | `expo` | `@config-plugins/apple-settings` |
 | ------ | -------------------------------- |
+| 52.0.0 | ^3.0.0                           |
 | 51.0.0 | ^2.0.0                           |
 | 50.0.0 | ^1.0.0                           |
 | 49.0.0 | ^0.0.5                           |
@@ -102,18 +103,22 @@ The following helper models are available:
 
 ```js
 const {
-  ChildPane,
   Title,
-  Group,
   TextField,
   Slider,
   Switch,
-  RadioGroup,
-  MultiValue,
+  ChildPane,
+
+  // Avoid using these types as they're broken in iOS 18 on Apple's side.
+  // Group,
+  // MultiValue,
+  // RadioGroup,
 } = require("@config-plugins/apple-settings");
 ```
 
 ## Types
+
+> `PSGroupSpecifier` (`Group`), `PSRadioGroupSpecifier` (`RadioGroup`), and `PSMultiValueSpecifier` (`MultiValue`) is broken in iOS 18 and causes no settings to show up. [Related Apple thread](https://forums.developer.apple.com/forums/thread/764519), [radar](https://feedbackassistant.apple.com/feedback/15267454).
 
 The entire Apple settings spec is typed according to the [official docs](https://developer.apple.com/library/archive/documentation/PreferenceSettings/Conceptual/SettingsApplicationSchemaReference/Introduction/Introduction.html#//apple_ref/doc/uid/TP40007005-SW1) and generated from a strict JSON schema.
 

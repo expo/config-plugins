@@ -1,13 +1,17 @@
 {
   "expo": {
     "name": "siri xcut",
-    "icon": "https://icogen.vercel.app/api/icon?icon=🔌&color_hex=82FAD4",
+    "icon": "https://github.com/expo.png",
     "platforms": ["ios"],
+    "splash": {
+      "image": "https://github.com/expo.png"
+    },
     "plugins": [
       [
         "@config-plugins/react-native-siri-shortcut",
         ["com.example.InitiateWorkout", "com.example.FinishWorkout"]
-      ]
+      ],
+      ["expo-build-properties", { "ios": { "ccacheEnabled": true } }]
     ]
   }
 }

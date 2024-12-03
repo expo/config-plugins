@@ -8,6 +8,7 @@ Ensure you use versions that work together!
 
 | `expo` | `react-native-adjust` | `@config-plugins/react-native-adjust` |
 | ------ | --------------------- | ------------------------------------- |
+| 52.0.0 | 5.0.2                 | 9.0.0                                 |
 | 51.0.0 | 4.38.1                | 8.0.0                                 |
 | 50.0.0 | 4.37.1                | 7.0.0                                 |
 | 49.0.0 | 4.33.0                | 6.0.0                                 |

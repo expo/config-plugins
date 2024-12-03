@@ -1,4 +1,4 @@
-import { ConfigPlugin, withAppBuildGradle } from "expo/config-plugins";
+import { type ConfigPlugin, withAppBuildGradle } from "expo/config-plugins";
 
 /**
  * [Step 3](https://github.com/wix/Detox/blob/master/docs/Introduction.Android.md#3-add-the-native-detox-dependency). Add the Native Detox dependency.

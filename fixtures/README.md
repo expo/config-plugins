@@ -1,1 +1,3 @@
-- AppDelegate: https://github.com/expo/expo/blob/main/templates/expo-template-bare-minimum/ios/HelloWorld/AppDelegate.mm
+- `AppDelegate`: https://github.com/expo/expo/blob/main/templates/expo-template-bare-minimum/ios/HelloWorld/AppDelegate.mm
+- `build.gradle`: https://github.com/expo/expo/blob/main/templates/expo-template-bare-minimum/android/build.gradle
+- `app/build.gradle`: https://github.com/expo/expo/blob/main/templates/expo-template-bare-minimum/android/app/build.gradle

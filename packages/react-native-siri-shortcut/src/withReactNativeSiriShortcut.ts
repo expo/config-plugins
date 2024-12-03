@@ -3,7 +3,7 @@ import {
   MergeResults,
 } from "@expo/config-plugins/build/utils/generateCode";
 import {
-  ConfigPlugin,
+  type ConfigPlugin,
   createRunOncePlugin,
   withAppDelegate,
   withInfoPlist,
@@ -25,17 +25,13 @@ const withReactNativeSiriShortcut: ConfigPlugin<void | string[]> = (
   if (!Array.isArray(items) || !items.length) {
     return config;
   }
-  return withReactNativeSiriShortcutInfoPlist(config, items);
-};
 
-const withReactNativeSiriShortcutInfoPlist: ConfigPlugin<string[]> = (
-  config,
-  activityTypes,
-) => {
-  return withInfoPlist(config, (config) => {
-    config.modResults.NSUserActivityTypes = activityTypes;
+  withInfoPlist(config, (config) => {
+    config.modResults.NSUserActivityTypes = items;
     return config;
   });
+
+  return config;
 };
 
 export function addSiriShortcutAppDelegateImport(src: string): MergeResults {

@@ -4,7 +4,7 @@ import {
   PBXNativeTarget,
   XcodeProject,
 } from "@bacons/xcode";
-import { ConfigPlugin } from "@expo/config-plugins";
+import { type ConfigPlugin } from "expo/config-plugins";
 import path from "path";
 
 import { withXcodeProjectBeta } from "./base-mods/withXcparse";

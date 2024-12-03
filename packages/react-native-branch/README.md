@@ -8,6 +8,7 @@ Ensure you use versions that work together!
 
 | `expo` | `react-native-branch` | `@config-plugins/react-native-branch` |
 | ------ | --------------------- | ------------------------------------- |
+| 52.0.0 | 6.4.0                 | 9.0.0                                 |
 | 51.0.0 | 6.2.1                 | 8.0.0                                 |
 | 50.0.0 | 6.0.0                 | 7.0.0                                 |
 | 49.0.0 | 5.9.0                 | 6.0.0                                 |

@@ -71,63 +71,49 @@ module.exports = ({ config }: ConfigContext): Partial<ExpoConfig> => {
             key: "slider_preference",
             value: 0.5,
           }),
-          RadioGroup({
-            value: "option1",
-            key: "radio_preference",
-            items: [
-              {
-                title: "Option 1",
-                value: "option1",
-              },
+          // Broken https://forums.developer.apple.com/forums/thread/764519
+          // RadioGroup({
+          //   value: "option1",
+          //   key: "radio_preference",
+          //   items: [
+          //     {
+          //       title: "Option 1",
+          //       value: "option1",
+          //     },
 
-              {
-                title: "Option 2",
-                value: "option2",
-              },
-            ],
-          }),
-          MultiValue({
-            title: "Multi Value",
-            key: "multi_value_preference",
-            value: "alpha",
-            items: [
-              {
-                title: "Alpha",
-                value: "alpha",
-                short: "α",
-              },
-              {
-                title: "Beta",
-                value: "beta",
-                short: "β",
-              },
-              {
-                title: "Delta",
-                value: "delta",
-                short: "Δ",
-              },
-              {
-                title: "Omega",
-                value: "omega",
-                short: "Ω",
-              },
-            ],
-          }),
-
-          // Child panes can be used to create nested pages.
-          ChildPane({
-            title: "About",
-          }),
-        ],
-      },
-    },
-    // About page
-    About: {
-      page: {
-        PreferenceSpecifiers: [
-          Group({
-            title: "About Info",
-          }),
+          //     {
+          //       title: "Option 2",
+          //       value: "option2",
+          //     },
+          //   ],
+          // }),
+          // MultiValue({
+          //   title: "Multi Value",
+          //   key: "multi_value_preference",
+          //   value: "alpha",
+          //   items: [
+          //     {
+          //       title: "Alpha",
+          //       value: "alpha",
+          //       short: "α",
+          //     },
+          //     {
+          //       title: "Beta",
+          //       value: "beta",
+          //       short: "β",
+          //     },
+          //     {
+          //       title: "Delta",
+          //       value: "delta",
+          //       short: "Δ",
+          //     },
+          //     {
+          //       title: "Omega",
+          //       value: "omega",
+          //       short: "Ω",
+          //     },
+          //   ],
+          // }),
         ],
       },
     },
