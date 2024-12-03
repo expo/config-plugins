@@ -191,8 +191,10 @@ const withIconInfoPlist: ConfigPlugin<Props> = (
         config.modResults[key] = {};
       }
 
+      // @ts-expect-error
       config.modResults[key].CFBundleAlternateIcons = icons;
 
+      // @ts-expect-error
       config.modResults[key].CFBundlePrimaryIcon = {
         CFBundleIconFiles: ["AppIcon"],
       };
