@@ -11,7 +11,6 @@
     "@config-plugins/react-native-siri-shortcut": "*",
     "expo": "~52",
     "expo-splash-screen": "~0.27.4",
-    "react": "18.2.0",
     "react-native": "0.74.1",
     "react-native-siri-shortcut": "^3.2.4"
   },

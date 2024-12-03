@@ -32,7 +32,6 @@
     "fbjs": "^0.8.18",
     "i18n-js": "^3.8.0",
     "luxon": "^1.27.0",
-    "react": "18.3.1",
     "react-native": "0.76.3",
     "react-native-adjust": "^4.38.1",
     "react-native-callkeep": "^4.3.13",
@@ -42,7 +41,7 @@
     "@babel/plugin-syntax-jsx": "^7.16.0",
     "@types/jest": "^29.4.0",
     "@types/luxon": "^1.27.1",
-    "@types/react": "~18.3.12",
+    
     "babel-jest": "^29.5.0",
     "jest": "~29.7.0",
     "jest-circus": "^29.5.0",
