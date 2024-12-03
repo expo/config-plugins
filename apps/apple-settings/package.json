@@ -8,7 +8,7 @@
     "android": "expo run:android"
   },
   "dependencies": {
-    "@config-plugins/ios-stickers": "*",
+    "@config-plugins/apple-settings": "*",
     "@react-native-community/slider": "4.5.5",
     "@react-native-picker/picker": "2.9.0",
     "expo": "~52",
