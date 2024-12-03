@@ -10,7 +10,9 @@ Pod::Spec.new do |s|
   s.license        = package['license']
   s.author         = package['author']
   s.homepage       = package['homepage']
-  s.platform       = :ios, '13.4'
+  s.platforms       = {
+    :ios => '15.1',
+  }
   s.swift_version  = '5.4'
   s.source         = { git: 'https://github.com/expo/config-plugins.git' }
   s.static_framework = true
@@ -30,6 +32,6 @@ Pod::Spec.new do |s|
     s.source_files = "#{s.name}/**/*.h"
     s.vendored_frameworks = "#{s.name}.xcframework"
   else
-    s.source_files = "#{s.name}/**/*.{h,m,swift}"
+    s.source_files = "**/*.{h,m,swift}"
   end
 end
