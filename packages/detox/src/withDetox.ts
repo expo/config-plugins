@@ -7,7 +7,6 @@ import {
 import withDetoxProjectGradle from "./withDetoxProjectGradle";
 import withDetoxTestAppGradle from "./withDetoxTestAppGradle";
 import { withDetoxTestClass } from "./withDetoxTestClass";
-import withKotlinGradle from "./withKotlinGradle";
 import {
   withNetworkSecurityConfigManifest,
   SubdomainsType,
@@ -39,20 +38,13 @@ const withDetox: ConfigPlugin<
       withDetoxProjectGradle,
       // 3.
       withDetoxTestAppGradle,
-      // 4.
-      [
-        withKotlinGradle,
-        // Minimum version of Kotlin required to work with expo packages in SDK 49
-        // React Native 72 https://github.com/wix/Detox/blob/f26b13ebacdbb9ca2beafbc2c8b4c8ea1bbb3139/detox/android/build.gradle#L6C26-L6C32
-        "1.8.22",
-      ],
       // 5.
       withDetoxTestClass,
       // 6.
       [withNetworkSecurityConfigManifest, { subdomains }],
       // 7.
       !skipProguard && withProguardGradle,
-    ].filter(Boolean) as ([ConfigPlugin, any] | ConfigPlugin)[],
+    ].filter(Boolean) as ([ConfigPlugin, any] | ConfigPlugin)[]
   );
 };
 
