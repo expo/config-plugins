@@ -9,7 +9,7 @@ const { findMetaDataItem, getMainApplication, readAndroidManifestAsync } =
 const sampleManifestPath = resolve(
   __dirname,
   "./fixtures",
-  "react-native-AndroidManifest.xml"
+  "react-native-AndroidManifest.xml",
 );
 
 describe(getBranchApiKey, () => {
@@ -21,7 +21,7 @@ describe(getBranchApiKey, () => {
     expect(
       getBranchApiKey({
         android: { config: { branch: { apiKey: "MY-API-KEY" } } },
-      } as any)
+      } as any),
     ).toBe("MY-API-KEY");
   });
 });
@@ -32,12 +32,12 @@ describe(setBranchApiKey, () => {
       await readAndroidManifestAsync(sampleManifestPath);
     androidManifestJson = await setBranchApiKey(
       "MY-API-KEY",
-      androidManifestJson
+      androidManifestJson,
     );
     let mainApplication = getMainApplication(androidManifestJson);
 
     expect(
-      findMetaDataItem(mainApplication, "io.branch.sdk.BranchKey")
+      findMetaDataItem(mainApplication, "io.branch.sdk.BranchKey"),
     ).toBeGreaterThan(-1);
 
     // Unset the item
@@ -46,7 +46,7 @@ describe(setBranchApiKey, () => {
     mainApplication = getMainApplication(androidManifestJson);
 
     expect(findMetaDataItem(mainApplication, "io.branch.sdk.BranchKey")).toBe(
-      -1
+      -1,
     );
   });
 });

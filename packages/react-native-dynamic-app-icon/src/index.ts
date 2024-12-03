@@ -52,7 +52,7 @@ type Props = {
 
 const withDynamicIcon: ConfigPlugin<string[] | IconSet | void> = (
   config,
-  props = {}
+  props = {},
 ) => {
   const icons = resolveIcons(props);
   const dimensions = resolveIconDimensions(config);
@@ -66,13 +66,13 @@ const withDynamicIcon: ConfigPlugin<string[] | IconSet | void> = (
 
 const withIconXcodeProject: ConfigPlugin<Props> = (
   config,
-  { icons, dimensions }
+  { icons, dimensions },
 ) => {
   return withXcodeProject(config, async (config) => {
     const groupPath = `${config.modRequest.projectName!}/${ICON_FOLDER_NAME}`;
     const group = IOSConfig.XcodeUtils.ensureGroupRecursively(
       config.modResults,
-      groupPath
+      groupPath,
     );
     const project = config.modResults;
     const opt: any = {};
@@ -83,13 +83,13 @@ const withIconXcodeProject: ConfigPlugin<Props> = (
       (id) => {
         const _group = project.hash.project.objects["PBXGroup"][id];
         return _group.name === group.name;
-      }
+      },
     );
     if (!project.hash.project.objects["PBXVariantGroup"]) {
       project.hash.project.objects["PBXVariantGroup"] = {};
     }
     const variantGroupId = Object.keys(
-      project.hash.project.objects["PBXVariantGroup"]
+      project.hash.project.objects["PBXVariantGroup"],
     ).find((id) => {
       const _group = project.hash.project.objects["PBXVariantGroup"][id];
       return _group.name === group.name;
@@ -125,7 +125,7 @@ const withIconXcodeProject: ConfigPlugin<Props> = (
 
         if (
           !group?.children.some(
-            ({ comment }: { comment: string }) => comment === iconFileName
+            ({ comment }: { comment: string }) => comment === iconFileName,
           )
         ) {
           // Only write the file if it doesn't already exist.
@@ -139,7 +139,7 @@ const withIconXcodeProject: ConfigPlugin<Props> = (
         } else {
           console.log("Skipping duplicate: ", iconFileName);
         }
-      }
+      },
     );
 
     return config;
@@ -148,7 +148,7 @@ const withIconXcodeProject: ConfigPlugin<Props> = (
 
 const withIconInfoPlist: ConfigPlugin<Props> = (
   config,
-  { icons, dimensions }
+  { icons, dimensions },
 ) => {
   return withInfoPlist(config, async (config) => {
     const altIcons: Record<
@@ -179,7 +179,7 @@ const withIconInfoPlist: ConfigPlugin<Props> = (
         } else {
           altIcons[key] = plistItem;
         }
-      }
+      },
     );
 
     function applyToPlist(key: string, icons: typeof altIcons) {
@@ -218,7 +218,7 @@ const withIconImages: ConfigPlugin<Props> = (config, { icons, dimensions }) => {
     async (config) => {
       const iosRoot = path.join(
         config.modRequest.platformProjectRoot,
-        config.modRequest.projectName!
+        config.modRequest.projectName!,
       );
 
       // Delete all existing assets
@@ -255,11 +255,11 @@ const withIconImages: ConfigPlugin<Props> = (config, { icons, dimensions }) => {
               resizeMode: "cover",
               width: dimension.width,
               height: dimension.height,
-            }
+            },
           );
 
           await fs.promises.writeFile(outputPath, source);
-        }
+        },
       );
 
       return config;
@@ -274,7 +274,7 @@ function resolveIcons(props: string[] | IconSet | void): Props["icons"] {
   if (Array.isArray(props)) {
     icons = props.reduce(
       (prev, curr, i) => ({ ...prev, [i]: { image: curr } }),
-      {}
+      {},
     );
   } else if (props) {
     icons = props;
@@ -292,7 +292,7 @@ function resolveIconDimensions(config: ExpoConfig): Required<IconDimensions>[] {
   }
 
   return ICON_DIMENSIONS.filter(
-    ({ target }) => !target || targets.includes(target)
+    ({ target }) => !target || targets.includes(target),
   ).map((dimension) => ({
     ...dimension,
     target: dimension.target ?? null,
@@ -320,8 +320,8 @@ async function iterateIconsAndDimensionsAsync(
     iconAndDimension: {
       icon: Props["icons"][string];
       dimension: Props["dimensions"][0];
-    }
-  ) => Promise<void>
+    },
+  ) => Promise<void>,
 ) {
   for (const [iconKey, icon] of Object.entries(icons)) {
     for (const dimension of dimensions) {

@@ -9,13 +9,13 @@ const withAndroidJscIntl: ConfigPlugin = (config) =>
   withAppBuildGradle(config, (config) => {
     if (config.modResults.language !== "groovy") {
       throw new Error(
-        "[@expo/config-plugins][withAndroidJscIntl] Cannot enable Intl in Android JSC app gradle because the build.gradle is not groovy."
+        "[@expo/config-plugins][withAndroidJscIntl] Cannot enable Intl in Android JSC app gradle because the build.gradle is not groovy.",
       );
     }
 
     config.modResults.contents = config.modResults.contents.replace(
       "org.webkit:android-jsc:+",
-      "org.webkit:android-jsc-intl:+"
+      "org.webkit:android-jsc-intl:+",
     );
 
     return config;

@@ -32,7 +32,7 @@ describe(appendDownloadCompleteAction, () => {
     const firstResults = XML.format(manifest);
     expect(firstResults).toMatchSnapshot();
     expect(firstResults).toMatch(
-      /<action android:name="android\.intent\.action\.DOWNLOAD_COMPLETE"\/>/
+      /<action android:name="android\.intent\.action\.DOWNLOAD_COMPLETE"\/>/,
     );
 
     // Doesn't mutate original.
@@ -48,14 +48,14 @@ describe(ensureBlobProviderManifest, () => {
 
     const first = XML.format(ensureBlobProviderManifest(manifest));
     expect(first).toContain(
-      '<provider android:name="com.facebook.react.modules.blob.BlobProvider" android:authorities="@string/blob_provider_authority" android:exported="false"/>'
+      '<provider android:name="com.facebook.react.modules.blob.BlobProvider" android:authorities="@string/blob_provider_authority" android:exported="false"/>',
     );
 
     // Doesn't add duplicates
     expect(
       XML.format(
-        ensureBlobProviderManifest(ensureBlobProviderManifest(manifest))
-      )
+        ensureBlobProviderManifest(ensureBlobProviderManifest(manifest)),
+      ),
     ).toEqual(first);
   });
 });
@@ -64,7 +64,7 @@ describe(ensureBlobProviderAuthorityString, () => {
   it("should ensure provider", async () => {
     const res = ensureBlobProviderAuthorityString(
       { resources: {} },
-      "app.bacon"
+      "app.bacon",
     );
     const result = XML.format(res);
     expect(result).toMatchInlineSnapshot(`

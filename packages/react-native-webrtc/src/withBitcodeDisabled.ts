@@ -8,7 +8,7 @@ export const withBitcodeDisabled: ConfigPlugin = (config) => {
   if (config.ios?.bitcode != null && config.ios?.bitcode !== false) {
     WarningAggregator.addWarningIOS(
       "ios.bitcode",
-      "react-native-webrtc plugin is overwriting project bitcode settings. WebRTC requires bitcode to be disabled for builds, targeting physical iOS devices."
+      "react-native-webrtc plugin is overwriting project bitcode settings. WebRTC requires bitcode to be disabled for builds, targeting physical iOS devices.",
     );
   }
   // WebRTC requires Bitcode be disabled for

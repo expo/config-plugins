@@ -11,7 +11,7 @@ const pkg = { name: "react-native-webrtc", version: "UNVERSIONED" }; //require("
 
 const withWebRTC: ConfigPlugin<IOSPermissionsProps | void> = (
   config,
-  props = {}
+  props = {},
 ) => {
   const _props = props || {};
 

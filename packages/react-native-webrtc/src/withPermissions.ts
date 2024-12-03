@@ -10,7 +10,7 @@ export type IOSPermissionsProps = {
 
 export const withPermissions: ConfigPlugin<IOSPermissionsProps | void> = (
   config,
-  props
+  props,
 ) => {
   return withInfoPlist(config, (config) => {
     const { cameraPermission, microphonePermission } = props || {};
