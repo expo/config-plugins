@@ -81,4 +81,6 @@ export default function HomeScreen() {
 }
 ```
 
+Alternatively, if users have a favorite PDF viewer app than consider using `Share` API to let users open the PDF in their preferred app. This is akin to how `UIDocumentInteractionController` is intended to be used on iOS.
+
 Finally, you could use [DOM Components](https://docs.expo.dev/guides/dom-components/) for a custom web experience.

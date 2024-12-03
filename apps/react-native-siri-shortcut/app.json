@@ -3,6 +3,9 @@
     "name": "siri xcut",
     "icon": "https://github.com/expo.png",
     "platforms": ["ios"],
+    "splash": {
+      "image": "https://github.com/expo.png"
+    },
     "plugins": [
       [
         "@config-plugins/react-native-siri-shortcut",
