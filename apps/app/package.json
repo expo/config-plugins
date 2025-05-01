@@ -25,7 +25,7 @@
     "@config-plugins/detox": "*",
     "@config-plugins/react-native-adjust": "*",
     "@config-plugins/react-native-callkeep": "*",
-    "detox": "^20.28.0",
+    "detox": "^20.37.0",
     "expo": "~53",
     "expo-localization": "~16.1.5",
     "expo-splash-screen": "~0.30.7",
@@ -34,7 +34,7 @@
     "luxon": "^1.27.0",
     "react": "19.0.0",
     "react-native": "0.79.1",
-    "react-native-adjust": "^5.0.2",
+    "react-native-adjust": "^5.1.0",
     "react-native-callkeep": "^4.3.16",
     "react-native-safe-area-context": "5.3.0"
   },
