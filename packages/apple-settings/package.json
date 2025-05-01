@@ -38,8 +38,6 @@
     "expo": "^53"
   },
   "devDependencies": {
-    "expo-module-scripts": "^4.0.2",
-    "json-schema-to-typescript": "^13.0.2",
-    "memfs": "^3.4.4"
+    "json-schema-to-typescript": "^13.0.2"
   }
 }

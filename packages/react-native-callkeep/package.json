@@ -31,8 +31,5 @@
   "peerDependencies": {
     "expo": "^53"
   },
-  "devDependencies": {
-    "expo-module-scripts": "^4.0.2"
-  },
   "upstreamPackage": "react-native-callkeep"
 }
