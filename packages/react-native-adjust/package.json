@@ -28,7 +28,7 @@
     "react-native-adjust"
   ],
   "peerDependencies": {
-    "expo": "^52"
+    "expo": "^53"
   },
   "devDependencies": {
     "expo-module-scripts": "^4.0.2"

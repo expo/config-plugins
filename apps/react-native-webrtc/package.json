@@ -9,10 +9,10 @@
   },
   "dependencies": {
     "@config-plugins/react-native-webrtc": "*",
-    "expo": "~52",
-    "expo-splash-screen": "~0.29.13",
-    "react": "18.3.1",
-    "react-native": "0.76.3",
+    "expo": "~53",
+    "expo-splash-screen": "~0.30.7",
+    "react": "19.0.0",
+    "react-native": "0.79.1",
     "react-native-webrtc": "^124.0.4"
   },
   "private": true
