@@ -22,7 +22,7 @@ jobs:
           node-version: ${{ matrix.node }}
       - run: yarn install --frozen-lockfile --check-files
       - run: yarn lerna run prepare --stream
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         with:
           path: "*"
           key: v2-${{ github.sha }}-${{ matrix.node }}
@@ -45,7 +45,7 @@ jobs:
           ]
     name: Test ${{ matrix.package }} on Node ${{ matrix.node }}
     steps:
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         with:
           path: "*"
           key: v2-${{ github.sha }}-${{ matrix.node }}
