@@ -1,6 +1,6 @@
 {
   "name": "@config-plugins/react-native-callkeep",
-  "version": "9.0.0",
+  "version": "10.0.0",
   "description": "Config plugin to auto configure callkeep on prebuild",
   "main": "build/withCallkeep.js",
   "types": "build/withCallkeep.d.ts",

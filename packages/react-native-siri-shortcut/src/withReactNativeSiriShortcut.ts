@@ -15,7 +15,7 @@ import {
  */
 const withReactNativeSiriShortcut: ConfigPlugin<void | string[]> = (
   config,
-  activityTypes,
+  activityTypes
 ) => {
   withSiriShortcutAppDelegate(config);
   withSiriEntitlements(config);
@@ -34,7 +34,21 @@ const withReactNativeSiriShortcut: ConfigPlugin<void | string[]> = (
   return config;
 };
 
-export function addSiriShortcutAppDelegateImport(src: string): MergeResults {
+export function addSiriShortcutAppDelegateImport(
+  src: string,
+  lang: string
+): MergeResults {
+  if (lang === "swift") {
+    return mergeContents({
+      tag: "react-native-siri-shortcut",
+      src,
+      newSrc: "import RNSiriShortcuts",
+      anchor: /import Expo$/,
+      offset: 1,
+      comment: "//",
+    });
+  }
+  // ObjC
   return mergeContents({
     tag: "react-native-siri-shortcut",
     src,
@@ -45,7 +59,22 @@ export function addSiriShortcutAppDelegateImport(src: string): MergeResults {
   });
 }
 
-export function addSiriShortcutAppDelegateInit(src: string): MergeResults {
+export function addSiriShortcutAppDelegateInit(
+  src: string,
+  lang: string
+): MergeResults {
+  if (lang === "swift") {
+    return mergeContents({
+      tag: "react-native-siri-shortcut-delegate",
+      src,
+      newSrc:
+        "  RNSiriShortcuts.application(application, continue: userActivity, restorationHandler: restorationHandler)",
+      anchor:
+        /return super.application\(application,(\s+)?continue:(\s+)?userActivity,(\s+)?restorationHandler:(\s+)?restorationHandler\)/,
+      offset: -1,
+      comment: "//",
+    });
+  }
   return mergeContents({
     tag: "react-native-siri-shortcut-delegate",
     src,
@@ -68,27 +97,30 @@ const withSiriEntitlements: ConfigPlugin = (config) => {
 
 const withSiriShortcutAppDelegate: ConfigPlugin = (config) => {
   return withAppDelegate(config, (config) => {
-    if (["objc", "objcpp"].includes(config.modResults.language)) {
-      try {
-        config.modResults.contents = addSiriShortcutAppDelegateImport(
-          config.modResults.contents,
-        ).contents;
-        config.modResults.contents = addSiriShortcutAppDelegateInit(
-          config.modResults.contents,
-        ).contents;
-      } catch (error: any) {
-        if (error.code === "ERR_NO_MATCH") {
-          throw new Error(
-            `Cannot add Siri Shortcut to the project's AppDelegate because it's malformed. Please report this with a copy of your project AppDelegate.`,
-          );
-        }
-        throw error;
-      }
-    } else {
+    if (!["objc", "objcpp", "swift"].includes(config.modResults.language)) {
       throw new Error(
-        "Cannot setup Siri Shortcut because the AppDelegate is not Objective C",
+        "Cannot setup Siri Shortcut because the AppDelegate is not in a support language:" +
+          ` ${config.modResults.language}. Only ObjC, ObjCpp and Swift are supported.`
       );
     }
+    try {
+      config.modResults.contents = addSiriShortcutAppDelegateImport(
+        config.modResults.contents,
+        config.modResults.language
+      ).contents;
+      config.modResults.contents = addSiriShortcutAppDelegateInit(
+        config.modResults.contents,
+        config.modResults.language
+      ).contents;
+    } catch (error: any) {
+      if (error.code === "ERR_NO_MATCH") {
+        throw new Error(
+          `Cannot add Siri Shortcut to the project's AppDelegate because it's malformed. Please report this with a copy of your project AppDelegate.`
+        );
+      }
+      throw error;
+    }
+
     return config;
   });
 };
@@ -107,5 +139,5 @@ const pkg = {
 export default createRunOncePlugin(
   withReactNativeSiriShortcut,
   pkg.name,
-  pkg.version,
+  pkg.version
 );
