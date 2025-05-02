@@ -12,7 +12,7 @@
     "expo": "~53",
     "expo-splash-screen": "~0.30.7",
     "react": "19.0.0",
-    "react-native": "0.79.1",
+    "react-native": "0.79.2",
     "react-native-dynamic-app-icon": "^1.1.0"
   },
   "private": true

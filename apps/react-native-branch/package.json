@@ -12,7 +12,7 @@
     "expo": "~53",
     "expo-splash-screen": "~0.30.7",
     "react": "19.0.0",
-    "react-native": "0.79.1",
+    "react-native": "0.79.2",
     "react-native-branch": "^6.6.0"
   },
   "private": true
