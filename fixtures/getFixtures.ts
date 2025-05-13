@@ -8,6 +8,7 @@ export function getFixture(
     | "app-build.gradle"
     | "build.gradle"
     | "Podfile"
+    | "app-Bridging-Header.h"
 ): string {
   const filepath = path.join(__dirname, name);
   return fs.readFileSync(filepath, "utf8");

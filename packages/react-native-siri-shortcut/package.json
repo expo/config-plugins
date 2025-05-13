@@ -27,6 +27,9 @@
     "prebuild",
     "react-native-siri-shortcut"
   ],
+  "dependencies": {
+    "glob": "^10.4.2"
+  },
   "peerDependencies": {
     "expo": "^53"
   },
