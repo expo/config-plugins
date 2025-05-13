@@ -65,7 +65,7 @@ export function addSiriShortcutAppDelegateInit(
       tag: "react-native-siri-shortcut-delegate",
       src,
       newSrc:
-        "  RNSSiriShortcuts.application(application, continue: userActivity, restorationHandler: restorationHandler)",
+        "  RNSSSiriShortcuts.application(application, continue: userActivity, restorationHandler: restorationHandler)",
       anchor:
         /return super.application\(application,(\s+)?continue:(\s+)?userActivity,(\s+)?restorationHandler:(\s+)?restorationHandler\)/,
       offset: -1,

@@ -188,8 +188,8 @@ public class AppDelegate: ExpoAppDelegate {
     continue userActivity: NSUserActivity,
     restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void
   ) -> Bool {
-// @generated begin react-native-siri-shortcut-delegate - expo prebuild (DO NOT MODIFY) sync-1355c673fc112ff1036aea7c7476eb7d796ef31e
-  RNSSiriShortcuts.application(application, continue: userActivity, restorationHandler: restorationHandler)
+// @generated begin react-native-siri-shortcut-delegate - expo prebuild (DO NOT MODIFY) sync-e418a2334d576540726b43fc100494b16e7cff76
+  RNSSSiriShortcuts.application(application, continue: userActivity, restorationHandler: restorationHandler)
 // @generated end react-native-siri-shortcut-delegate
     let result = RCTLinkingManager.application(application, continue: userActivity, restorationHandler: restorationHandler)
     return super.application(application, continue: userActivity, restorationHandler: restorationHandler) || result
