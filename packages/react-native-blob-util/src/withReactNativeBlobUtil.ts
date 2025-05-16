@@ -102,7 +102,6 @@ const withReactNativeBlobUtil: ConfigPlugin = (config) => {
     return config;
   });
 
-
   withStringsXml(config, (config) => {
     ensureBlobProviderAuthorityString(
       config.modResults,
