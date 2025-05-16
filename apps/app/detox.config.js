@@ -1,5 +1,5 @@
 const iosName = "detoxapp";
-const simulator = "iPhone 14 Pro";
+const simulator = "iPhone 16";
 const derivedDataPath = "ios/build";
 const sdk = "iphonesimulator";
 
