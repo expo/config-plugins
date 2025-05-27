@@ -26,14 +26,14 @@ describe(addSiriShortcutBridgingHeaderImport, () => {
 describe(addSiriShortcutAppDelegateImport, () => {
   it(`adds import to swift Expo Modules AppDelegate`, () => {
     expect(
-      addSiriShortcutAppDelegateImport(ExpoModulesSwiftAppDelegate, "swift")
+      addSiriShortcutAppDelegateImport(ExpoModulesSwiftAppDelegate, "swift"),
     ).toBe(null);
   });
 
   it(`adds import to objcpp Expo Modules AppDelegate`, () => {
     const results = addSiriShortcutAppDelegateImport(
       ExpoModulesAppDelegate,
-      "objcpp"
+      "objcpp",
     )!;
     // matches a static snapshot
     expect(results.contents).toMatchSnapshot();
@@ -47,7 +47,7 @@ describe(addSiriShortcutAppDelegateImport, () => {
 
   it(`fails to add to a malformed app delegate`, () => {
     expect(() => addSiriShortcutAppDelegateImport(`foobar`, "objcpp")).toThrow(
-      /foobar/
+      /foobar/,
     );
   });
 });
@@ -55,7 +55,7 @@ describe(addSiriShortcutAppDelegateInit, () => {
   it(`adds init to swift Expo Modules AppDelegate`, () => {
     const results = addSiriShortcutAppDelegateInit(
       ExpoModulesSwiftAppDelegate,
-      "swift"
+      "swift",
     );
     // matches a static snapshot
     expect(results.contents).toMatchSnapshot();
@@ -69,13 +69,13 @@ describe(addSiriShortcutAppDelegateInit, () => {
   it(`adds init to objcpp Expo Modules AppDelegate`, () => {
     const results = addSiriShortcutAppDelegateInit(
       ExpoModulesAppDelegate,
-      "objcpp"
+      "objcpp",
     );
     // matches a static snapshot
     expect(results.contents).toMatchSnapshot();
     expect(results.contents).toMatch(/react-native-siri-shortcut-delegate/);
     expect(results.contents).toMatch(
-      /RNSSSiriShortcuts application:application/
+      /RNSSSiriShortcuts application:application/,
     );
     // did add new content
     expect(results.didMerge).toBe(true);
@@ -85,7 +85,7 @@ describe(addSiriShortcutAppDelegateInit, () => {
 
   it(`fails to add to a malformed app delegate`, () => {
     expect(() => addSiriShortcutAppDelegateInit(`foobar`, "objcpp")).toThrow(
-      /foobar/
+      /foobar/,
     );
   });
 });

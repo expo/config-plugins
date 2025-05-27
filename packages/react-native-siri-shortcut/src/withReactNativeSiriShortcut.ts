@@ -19,7 +19,7 @@ import path from "path";
  */
 const withReactNativeSiriShortcut: ConfigPlugin<void | string[]> = (
   config,
-  activityTypes
+  activityTypes,
 ) => {
   withSiriShortcutAppDelegate(config);
   withSiriEntitlements(config);
@@ -40,7 +40,7 @@ const withReactNativeSiriShortcut: ConfigPlugin<void | string[]> = (
 
 export function addSiriShortcutAppDelegateImport(
   src: string,
-  lang: string
+  lang: string,
 ): MergeResults | null {
   if (lang !== "swift") {
     // ObjC
@@ -58,7 +58,7 @@ export function addSiriShortcutAppDelegateImport(
 
 export function addSiriShortcutAppDelegateInit(
   src: string,
-  lang: string
+  lang: string,
 ): MergeResults {
   if (lang === "swift") {
     return mergeContents({
@@ -112,13 +112,13 @@ const withSiriShortcutAppDelegate: ConfigPlugin = (config) => {
         absolute: true,
         cwd: path.join(
           config.modRequest.platformProjectRoot,
-          config.modRequest.projectName!
+          config.modRequest.projectName!,
         ),
       });
 
       if (!using) {
         throw new Error(
-          "Cannot find bridging header. Please make sure you have a bridging header in your project."
+          "Cannot find bridging header. Please make sure you have a bridging header in your project.",
         );
       }
 
@@ -136,23 +136,23 @@ const withSiriShortcutAppDelegate: ConfigPlugin = (config) => {
     if (!["objc", "objcpp", "swift"].includes(config.modResults.language)) {
       throw new Error(
         "Cannot setup Siri Shortcut because the AppDelegate is not in a support language:" +
-          ` ${config.modResults.language}. Only ObjC, ObjCpp and Swift are supported.`
+          ` ${config.modResults.language}. Only ObjC, ObjCpp and Swift are supported.`,
       );
     }
     try {
       config.modResults.contents =
         addSiriShortcutAppDelegateImport(
           config.modResults.contents,
-          config.modResults.language
+          config.modResults.language,
         )?.contents ?? config.modResults.contents;
       config.modResults.contents = addSiriShortcutAppDelegateInit(
         config.modResults.contents,
-        config.modResults.language
+        config.modResults.language,
       ).contents;
     } catch (error: any) {
       if (error.code === "ERR_NO_MATCH") {
         throw new Error(
-          `Cannot add Siri Shortcut to the project's AppDelegate because it's malformed. Please report this with a copy of your project AppDelegate.`
+          `Cannot add Siri Shortcut to the project's AppDelegate because it's malformed. Please report this with a copy of your project AppDelegate.`,
         );
       }
       throw error;
@@ -176,5 +176,5 @@ const pkg = {
 export default createRunOncePlugin(
   withReactNativeSiriShortcut,
   pkg.name,
-  pkg.version
+  pkg.version,
 );
