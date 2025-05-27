@@ -26,9 +26,6 @@
     "prebuild"
   ],
   "peerDependencies": {
-    "expo": "^52"
-  },
-  "devDependencies": {
-    "expo-module-scripts": "^4.0.2"
+    "expo": "^53"
   }
 }

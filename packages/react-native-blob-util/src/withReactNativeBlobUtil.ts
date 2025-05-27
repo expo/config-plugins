@@ -54,15 +54,6 @@ export function appendDownloadCompleteAction(
   return androidManifest;
 }
 
-// com.facebook.react.modules.blob.BlobProvider
-const withBlobProvider: ConfigPlugin = (config) => {
-  withAndroidManifest(config, (config) => {
-    ensureBlobProviderManifest(config.modResults);
-    return config;
-  });
-  return config;
-};
-
 export function ensureBlobProviderManifest(
   androidManifest: AndroidConfig.Manifest.AndroidManifest,
 ) {
@@ -100,14 +91,18 @@ const withReactNativeBlobUtil: ConfigPlugin = (config) => {
     "android.permission.ACCESS_NETWORK_STATE",
   ]);
 
-  config = withAndroidManifest(config, (config) => {
+  withAndroidManifest(config, (config) => {
     config.modResults = appendDownloadCompleteAction(config.modResults);
     return config;
   });
 
-  withBlobProvider(config);
+  // com.facebook.react.modules.blob.BlobProvider
+  withAndroidManifest(config, (config) => {
+    ensureBlobProviderManifest(config.modResults);
+    return config;
+  });
 
-  config = withStringsXml(config, (config) => {
+  withStringsXml(config, (config) => {
     ensureBlobProviderAuthorityString(
       config.modResults,
       config.android?.package + ".blobs",
