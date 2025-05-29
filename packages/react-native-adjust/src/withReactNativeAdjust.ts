@@ -69,11 +69,6 @@ const withAdjustPlugin: ConfigPlugin<void | { targetAndroid12?: boolean }> = (
   const props = _props || {};
 
   config = withXcodeLinkBinaryWithLibraries(config, {
-    library: "iAd.framework",
-    status: "optional",
-  });
-
-  config = withXcodeLinkBinaryWithLibraries(config, {
     library: "AdServices.framework",
     status: "optional",
   });
