@@ -32,14 +32,22 @@ const withXcodeLinkBinaryWithLibraries: ConfigPlugin<{
   });
 };
 
-const addAndroidPackagingOptions = (src: string) => {
+const addAndroidPackagingOptions = (
+  src: string,
+  includeMetaReferrer?: boolean,
+) => {
+  const baseImplementations = `
+      implementation 'com.google.android.gms:play-services-analytics:18.0.1'
+      implementation 'com.android.installreferrer:installreferrer:2.2'`;
+
+  const metaImplementation = includeMetaReferrer
+    ? `\n      implementation 'com.adjust.sdk:adjust-android-meta-referrer:5.4.0'`
+    : "";
+
   return mergeContents({
     tag: "react-native-play-services-analytics",
     src,
-    newSrc: `
-      implementation 'com.google.android.gms:play-services-ads-identifier:18.0.1'
-      implementation 'com.android.installreferrer:installreferrer:2.2'
-    `,
+    newSrc: baseImplementations + metaImplementation,
     anchor: /dependencies(?:\s+)?\{/,
     // Inside the dependencies block.
     offset: 1,
@@ -71,10 +79,10 @@ const addNdkAbiFilters = (src: string) => {
   });
 };
 
-const withGradle: ConfigPlugin<{ isSdkSignatureSupported: boolean }> = (
-  config,
-  { isSdkSignatureSupported }
-) => {
+const withGradle: ConfigPlugin<{
+  isSdkSignatureSupported: boolean;
+  metaInstallReferrer?: boolean;
+}> = (config, { isSdkSignatureSupported, metaInstallReferrer }) => {
   return withAppBuildGradle(config, (config) => {
     if (config.modResults.language !== "groovy") {
       throw new Error(
@@ -84,16 +92,17 @@ const withGradle: ConfigPlugin<{ isSdkSignatureSupported: boolean }> = (
 
     if (isSdkSignatureSupported) {
       config.modResults.contents = addNdkAbiFilters(
-        config.modResults.contents
+        config.modResults.contents,
       ).contents;
 
       config.modResults.contents = addSdkSignatureDependency(
-        config.modResults.contents
+        config.modResults.contents,
       ).contents;
     }
 
     config.modResults.contents = addAndroidPackagingOptions(
-      config.modResults.contents
+      config.modResults.contents,
+      metaInstallReferrer,
     ).contents;
 
     return config;
@@ -102,7 +111,7 @@ const withGradle: ConfigPlugin<{ isSdkSignatureSupported: boolean }> = (
 
 const withAndroidSdkSignature: ConfigPlugin<{ sdkSignaturePath: string }> = (
   config,
-  props
+  props,
 ) => {
   return withDangerousMod(config, [
     "android",
@@ -129,7 +138,7 @@ const withAndroidSdkSignature: ConfigPlugin<{ sdkSignaturePath: string }> = (
 
 const withIosSdkSignature: ConfigPlugin<{ sdkSignaturePath: string }> = (
   config,
-  props
+  props,
 ) => {
   return withXcodeProject(config, (config) => {
     const projectRoot = config.modRequest.projectRoot;
@@ -143,7 +152,7 @@ const withIosSdkSignature: ConfigPlugin<{ sdkSignaturePath: string }> = (
       projectRoot,
       "ios",
       config.modRequest.projectName!,
-      path.basename(libPath)
+      path.basename(libPath),
     );
     const target = IOSConfig.XcodeUtils.getApplicationNativeTarget({
       project: config.modResults,
@@ -161,7 +170,7 @@ const withIosSdkSignature: ConfigPlugin<{ sdkSignaturePath: string }> = (
         "PBXCopyFilesBuildPhase",
         "Embed Frameworks",
         target.uuid,
-        "frameworks"
+        "frameworks",
       );
     }
 
@@ -177,6 +186,7 @@ const withIosSdkSignature: ConfigPlugin<{ sdkSignaturePath: string }> = (
 };
 
 type Props = {
+  metaInstallReferrer?: boolean;
   targetAndroid12?: boolean;
   sdkSignature?: {
     ios?: string;
@@ -194,6 +204,7 @@ const withAdjustPlugin: ConfigPlugin<void | Props> = (config, _props) => {
   const iosSdkSignaturePath = props.sdkSignature?.ios ?? "";
   const isAndroidSdkSignatureSupported = androidSdkSignaturePath !== "";
   const isIosSdkSignatureSupported = iosSdkSignaturePath !== "";
+  const metaInstallReferrer = props.metaInstallReferrer ?? false;
 
   config = withXcodeLinkBinaryWithLibraries(config, {
     library: "AdServices.framework",
@@ -229,6 +240,7 @@ const withAdjustPlugin: ConfigPlugin<void | Props> = (config, _props) => {
 
   config = withGradle(config, {
     isSdkSignatureSupported: isAndroidSdkSignatureSupported,
+    metaInstallReferrer,
   });
 
   if (isAndroidSdkSignatureSupported) {
