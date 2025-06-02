@@ -1,7 +1,7 @@
 {
   "name": "@expo/app",
   "main": "./index.js",
-  "version": "1.0.0",
+  "private": true,
   "scripts": {
     "build:ios": "detox build -c ios.sim.debug",
     "test:ios": "detox test -c ios.sim.debug",
@@ -47,6 +47,5 @@
     "jest-circus": "^29.5.0",
     "ts-jest": "^29.0.5",
     "typescript": "~5.8.3"
-  },
-  "private": true
+  }
 }

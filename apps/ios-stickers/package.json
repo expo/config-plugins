@@ -1,7 +1,6 @@
 {
   "name": "@config-plugins-app/ios-stickers",
   "main": "./index.js",
-  "version": "1.0.0",
   "scripts": {
     "start": "expo start --dev-client",
     "prebuild": "expo prebuild -p ios --template ./expo-template-bare-minimum-50.0.17.tgz",

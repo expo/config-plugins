@@ -1,7 +1,6 @@
 {
   "name": "@config-plugins-app/ffmpeg-kit-react-native",
   "main": "./index.js",
-  "version": "1.0.0",
   "scripts": {
     "start": "expo start --dev-client",
     "ios": "expo run:ios",
