@@ -1,6 +1,6 @@
 {
   "name": "@config-plugins/react-native-pdf",
-  "version": "10.0.0",
+  "version": "11.0.0",
   "description": "Config plugin to auto configure react-native-pdf on prebuild",
   "main": "build/withPdf.js",
   "types": "build/withPdf.d.ts",

@@ -1,6 +1,6 @@
 {
   "name": "@config-plugins/react-native-branch",
-  "version": "9.0.1",
+  "version": "10.0.0",
   "description": "Config plugin to auto configure react-native-branch on prebuild",
   "author": "650 Industries, Inc.",
   "license": "MIT",
@@ -33,5 +33,4 @@
     "expo": "^53"
   },
   "upstreamPackage": "react-native-branch"
-
 }
