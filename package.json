@@ -8,6 +8,7 @@
     "update-issue-template": "ts-node ./scripts/gh-issues-config.ts",
     "update-dependabot-config": "ts-node ./scripts/update-dependabot-config.ts",
     "start": "lerna run build --parallel -- --watch",
+    "publish": "lerna publish --no-private",
     "prepare": "lerna run prepare --parallel"
   },
   "workspaces": [
