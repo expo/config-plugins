@@ -35,7 +35,6 @@ jobs:
         node: ["18"]
         package: [
             # Manually add packages here
-            detox,
             ios-stickers,
             react-native-blob-util,
             react-native-branch,
