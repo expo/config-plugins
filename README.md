@@ -18,7 +18,7 @@ These days, **most React Native libraries have a built-in Config Plugin** if nee
 - [react-native-health](https://github.com/agencyenterprise/react-native-health)
 - [@react-native-mapbox-gl/maps](https://github.com/rnmapbox/maps)
 - [@logrocket/react-native](https://www.npmjs.com/package/@logrocket/react-native)
-- [sentry-expo](https://www.npmjs.com/package/sentry-expo)
+- [@sentry/react-native](https://github.com/getsentry/sentry-react-native)
 - [@leanplum/react-native-sdk](https://github.com/Leanplum/Leanplum-ReactNative-SDK#readme)
 - [react-native-fbsdk-next](https://www.npmjs.com/package/react-native-fbsdk-next)
 - [@stripe/stripe-react-native](https://www.npmjs.com/package/@stripe/stripe-react-native)
