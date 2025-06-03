@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "detoxapp",
+    "name": "app",
     "slug": "app",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -29,7 +29,6 @@
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "@config-plugins/detox",
       "@config-plugins/react-native-adjust",
       "@config-plugins/react-native-callkeep",
       "@config-plugins/android-jsc-intl",
