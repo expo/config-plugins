@@ -1,6 +1,6 @@
 # Expo Config Plugins
 
-This repository is a collection of assorted [Expo config plugins](https://docs.expo.dev/guides/config-plugins/) for configuring the `npx expo prebuild` command.
+This repository is a collection of assorted [Expo config plugins](https://docs.expo.dev/guides/config-plugins/) for configuring the `npx expo prebuild` command. It is meant to be a temporary home for packages that don't have a built-in Config Plugin.
 
 - **We prefer packages to ship their own Expo config plugin**. This helps ensure that plugin and package versions are always aligned, and that new features are made available in both the package and plugin simultaneously. If packages haven't adopted config plugins yet, the community can add a package here as a temporary home.
 
@@ -10,7 +10,7 @@ This repository is a collection of assorted [Expo config plugins](https://docs.e
 
 ## First-party plugins
 
-The following are some examples of libraries that have a built-in Config Plugin. This is far from an exhaustive list, and most React Native libraries have a built-in Config Plugin if one is needed (in many cases, it is not required).
+These days, **most React Native libraries have a built-in Config Plugin** if needed. The following are some examples of libraries that have a built-in Config Plugin — this is far from an exhaustive list, but if you're looking to learn from existing packages, this is a good place to start.
 
 - [React Native Firebase](https://rnfirebase.io/) (`@react-native-firebase/perf`, `@react-native-firebase/app`, `@react-native-firebase/crashlytics`)
 - [react-native-google-cast](https://github.com/react-native-google-cast/react-native-google-cast)
