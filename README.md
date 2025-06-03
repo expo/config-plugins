@@ -6,7 +6,7 @@ This repository is a collection of assorted [Expo config plugins](https://docs.e
 
 - **All packages here are community maintained.** They are not maintained by Expo. Feel free to improve docs, packages, tests, etc.
 
-- We maintain a one-to-one mapping between **native packages** and `@config-plugins/*`. This means there should be no general utility packages here — those are better suited for a different repository or npm namespace.
+- **We maintain a one-to-one mapping between native packages and `@config-plugins/*`**. This means there should be no general utility packages here — those are better suited for a different repository or npm namespace.
 
 ## First-party plugins
 
