@@ -2,11 +2,11 @@
 
 This repository is a collection of assorted [Expo config plugins](https://docs.expo.dev/guides/config-plugins/) for configuring the `npx expo prebuild` command.
 
-- **We prefer packages ship their own Expo config plugin**. This helps to ensure that plugin and package versions are always aligned, and that features made available in the packages are made available at the same time in the plugin. If packages haven't adopted config plugins yet, the community can add a package here as a temporary home.
+- **We prefer packages to ship their own Expo config plugin**. This helps ensure that plugin and package versions are always aligned, and that new features are made available in both the package and plugin simultaneously. If packages haven't adopted config plugins yet, the community can add a package here as a temporary home.
 
-- **All packages here are community maintained.** - they are not maintained by Expo. Feel free to improve docs, packages, tests, etc.
+- **All packages here are community maintained.** They are not maintained by Expo. Feel free to improve docs, packages, tests, etc.
 
-- We maintain a 1-1 mapping of **native packages** ⇔ `@config-plugins/*`. This means there should be no general utility packages here -- those are better suited for a different repo / NPM namespace.
+- We maintain a one-to-one mapping between **native packages** and `@config-plugins/*`. This means there should be no general utility packages here — those are better suited for a different repository or npm namespace.
 
 ## First-party plugins
 
