@@ -10,7 +10,7 @@ Ensure you use versions that work together!
 
 | `expo` | `react-native-dynamic-app-icon` | `@config-plugins/react-native-dynamic-app-icon` |
 | ------ | ------------------------------- | ----------------------------------------------- |
-| 53.0.0 | 1.1.0                           | 10.0.0                                          |
+| 53.0.0 | 1.1.0                           | 11.0.0                                          |
 | 52.0.0 | 1.1.0                           | 9.0.0                                           |
 | 51.0.0 | 1.1.0                           | 8.0.0                                           |
 | 50.0.0 | 1.1.0                           | 7.0.0                                           |
