@@ -9,7 +9,8 @@ https://github.com/expo/config-plugins/assets/9664363/8be449b3-9aab-440c-b736-b4
 Ensure you use versions that work together!
 
 | `expo` | `@config-plugins/apple-settings` |
-| ------ | -------------------------------- |
+|--------|----------------------------------|
+| 54.0.0 | ^6.0.0                           |
 | 53.0.0 | ^4.0.0                           |
 | 52.0.0 | ^3.0.0                           |
 | 51.0.0 | ^2.0.0                           |
