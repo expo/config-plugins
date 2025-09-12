@@ -2,7 +2,7 @@
 🚨 We use semantic release (a bot publishes everything automatically)
 🚨 so please use conventional commit style for the PR title:
 🚨 https://www.conventionalcommits.org/en/v1.0.0/
-🚨 Example: feat(detox): add new step
+🚨 Example: feat(ios-stickers): add new step
 -->
 
 # Why

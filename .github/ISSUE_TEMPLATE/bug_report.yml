@@ -31,8 +31,6 @@ body:
       options:
         - '@config-plugins/android-jsc-intl'
         - '@config-plugins/apple-settings'
-        - '@config-plugins/detox'
-        - '@config-plugins/ffmpeg-kit-react-native'
         - '@config-plugins/ios-stickers'
         - '@config-plugins/react-native-adjust'
         - '@config-plugins/react-native-blob-util'
@@ -62,7 +60,7 @@ body:
       label: Reproducible demo
       description: >-
         This should include as little code as possible, do not simply link your
-        entire project. If a reproducible demo is not provided, it is very 
+        entire project. If a reproducible demo is not provided, it is very
         likely your issue will be closed. Read [here more
         guidance](https://stackoverflow.com/help/mcve).
     validations:
