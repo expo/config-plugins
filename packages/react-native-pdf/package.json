@@ -30,7 +30,7 @@
     "expo"
   ],
   "peerDependencies": {
-    "expo": "^53"
+    "expo": "^54"
   },
   "upstreamPackage": "react-native-pdf"
 }
