@@ -27,6 +27,6 @@
     "android-jsc-intl"
   ],
   "peerDependencies": {
-    "expo": "^53"
+    "expo": "^54"
   }
 }
