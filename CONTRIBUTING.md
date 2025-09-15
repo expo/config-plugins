@@ -22,6 +22,13 @@ Be sure to run the following scripts in the **root directory** to update automat
 - Update dependabot: `yarn update-dependabot-config`
 - Update the issue template: `yarn update-issue-template`
 
+## Upgrading plugins for a new Expo version
+
+- Ensure every project under `apps/` is updated to latest version of Expo
+- Ensure every library under `packages/` has a peer dependency on the same version of Expo
+- Update each library’s `README.md` for the same version of Expo
+- Update `SDK_VERSION` in [`scripts/generate-plugin.ts`](https://github.com/expo/config-plugins/blob/566f54e785147d88cb4c98490c3e536ee7ef3001/scripts/generate-plugin.ts#L67)
+
 ## Publishing a release
 
 All publishing should be handled automatically whenever code is merged to `main`.
