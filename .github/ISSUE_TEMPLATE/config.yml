@@ -6,12 +6,6 @@ contact_links:
       If you have a question about an Expo Config Plugin, please ask it on the
       forums, discord, Twitter, or Stack Overflow.
     url: https://forums.expo.io/
-  - about: E2E tests and automation for mobile
-    name: 📦 detox issues
-    url: https://github.com/wix/Detox/issues
-  - about: FFmpeg Kit for React Native
-    name: 📦 ffmpeg-kit-react-native issues
-    url: https://github.com/arthenica/ffmpeg-kit/issues
   - about: Adjust React Native SDK
     name: 📦 react-native-adjust issues
     url: https://github.com/adjust/react_native_sdk/issues
