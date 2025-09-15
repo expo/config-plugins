@@ -64,7 +64,7 @@ function convertOrgName(name: string) {
     MODULE_NAME: moduleName,
     CONFIG_PLUGIN: pluginName,
 
-    SDK_VERSION: "51",
+    SDK_VERSION: "54",
     NPM_MODULE: name,
   };
   console.log(`Module name: ${moduleName}`);
