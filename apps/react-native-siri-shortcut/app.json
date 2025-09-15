@@ -2,16 +2,31 @@
   "expo": {
     "name": "siri xcut",
     "icon": "https://github.com/expo.png",
-    "platforms": ["ios"],
+    "platforms": [
+      "ios"
+    ],
     "splash": {
       "image": "https://github.com/expo.png"
     },
     "plugins": [
       [
         "@config-plugins/react-native-siri-shortcut",
-        ["com.example.InitiateWorkout", "com.example.FinishWorkout"]
+        [
+          "com.github.gustash.SiriShortcutsModuleExample.sayHello",
+          "com.github.gustash.SiriShortcutsModuleExample.somethingElse"
+        ]
       ],
-      ["expo-build-properties", { "ios": { "ccacheEnabled": true } }]
-    ]
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "ccacheEnabled": true
+          }
+        }
+      ]
+    ],
+    "ios": {
+      "appleTeamId": "7PSDAY43Y6"
+    }
   }
 }

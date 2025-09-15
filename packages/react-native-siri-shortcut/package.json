@@ -31,7 +31,7 @@
     "glob": "^10.4.2"
   },
   "peerDependencies": {
-    "expo": "^53"
+    "expo": "^54"
   },
   "upstreamPackage": "react-native-siri-shortcut"
 }

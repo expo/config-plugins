@@ -37,7 +37,7 @@ Next, rebuild your app as described in the ["Adding custom native code"](https:/
 
 ## API
 
-When working with Siri Shorcuts, you need to define their identifiers on the Xcode project. To achieve the same result using this plugin, just pass an array of strings with the identifiers of your shortcuts, and they will be added automatically during the build cycle:
+When working with Siri Shortcuts, you need to define their identifiers on the Xcode project. To achieve the same result using this plugin, just pass an array of strings with the identifiers of your shortcuts, and they will be added automatically during the build cycle:
 
 #### Example
 
