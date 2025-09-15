@@ -16,7 +16,7 @@
     "packages/*"
   ],
   "resolutions": {
-    "expo": "^53"
+    "expo": "^54"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
@@ -28,8 +28,8 @@
     "expo-module-scripts": "^4.1.6",
     "expo-yarn-workspaces": "^2.3.2",
     "js-yaml": "^4.1.0",
-    "memfs": "^3.4.4",
     "lerna": "3.4.1",
+    "memfs": "^3.4.4",
     "prettier": "^3",
     "prompts": "^2.4.1",
     "remark-cli": "^9.0.0",
