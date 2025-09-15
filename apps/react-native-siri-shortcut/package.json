@@ -9,10 +9,11 @@
   },
   "dependencies": {
     "@config-plugins/react-native-siri-shortcut": "*",
-    "expo": "~53",
-    "expo-splash-screen": "~0.30.7",
-    "react": "19.0.0",
-    "react-native": "0.79.2",
+    "expo": "~54",
+    "expo-build-properties": "^1.0.8",
+    "expo-splash-screen": "~31.0.9",
+    "react": "19.1.0",
+    "react-native": "0.81.4",
     "react-native-siri-shortcut": "^3.2.4"
   },
   "private": true
