@@ -1,0 +1,35 @@
+{
+  "name": "@config-plugins/react-native-voip-push-notification",
+  "version": "1.0.0",
+  "description": "Config plugin to auto configure react-native-voip-push-notification on prebuild",
+  "main": "build/withVoipPushNotification.js",
+  "types": "build/withVoipPushNotification.d.ts",
+  "sideEffects": false,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/expo/config-plugins.git",
+    "directory": "packages/react-native-voip-push-notification"
+  },
+  "files": [
+    "build",
+    "app.plugin.js"
+  ],
+  "scripts": {
+    "build": "expo-module build",
+    "clean": "expo-module clean",
+    "lint": "expo-module lint",
+    "test": "expo-module test",
+    "prepare": "expo-module prepare",
+    "prepublishOnly": "expo-module prepublishOnly",
+    "expo-module": "expo-module"
+  },
+  "keywords": [
+    "react-native",
+    "expo"
+  ],
+  "peerDependencies": {
+    "expo": "^53"
+  },
+  "upstreamPackage": "react-native-voip-push-notification"
+}
