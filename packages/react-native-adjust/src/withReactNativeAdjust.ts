@@ -29,14 +29,19 @@ const withXcodeLinkBinaryWithLibraries: ConfigPlugin<{
   });
 };
 
-const addAndroidPackagingOptions = (src: string) => {
+const addAndroidPackagingOptions = (src: string, includeMetaReferrer?: boolean) => {
+  const baseImplementations = `
+      implementation 'com.google.android.gms:play-services-analytics:18.0.1'
+      implementation 'com.android.installreferrer:installreferrer:2.2'`;
+  
+  const metaImplementation = includeMetaReferrer 
+    ? `\n      implementation 'com.adjust.sdk:adjust-android-meta-referrer:5.4.0'`
+    : '';
+
   return mergeContents({
     tag: "react-native-play-services-analytics",
     src,
-    newSrc: `
-      implementation 'com.google.android.gms:play-services-analytics:18.0.1'
-      implementation 'com.android.installreferrer:installreferrer:2.2'
-    `,
+    newSrc: baseImplementations + metaImplementation,
     anchor: /dependencies(?:\s+)?\{/,
     // Inside the dependencies block.
     offset: 1,
@@ -44,11 +49,12 @@ const addAndroidPackagingOptions = (src: string) => {
   });
 };
 
-const withGradle: ConfigPlugin = (config) => {
+const withGradle: ConfigPlugin<{ metaInstallReferrer?: boolean }> = (config, { metaInstallReferrer }) => {
   return withAppBuildGradle(config, (config) => {
     if (config.modResults.language === "groovy") {
       config.modResults.contents = addAndroidPackagingOptions(
         config.modResults.contents,
+        metaInstallReferrer,
       ).contents;
     } else {
       throw new Error(
@@ -62,7 +68,10 @@ const withGradle: ConfigPlugin = (config) => {
 /**
  * Apply react-native-adjust configuration for Expo SDK +44 projects.
  */
-const withAdjustPlugin: ConfigPlugin<void | { targetAndroid12?: boolean }> = (
+const withAdjustPlugin: ConfigPlugin<void | { 
+  targetAndroid12?: boolean;
+  metaInstallReferrer?: boolean;
+}> = (
   config,
   _props,
 ) => {
@@ -99,7 +108,7 @@ const withAdjustPlugin: ConfigPlugin<void | { targetAndroid12?: boolean }> = (
     ]);
   }
 
-  config = withGradle(config);
+  config = withGradle(config, { metaInstallReferrer: props.metaInstallReferrer });
 
   // Return the modified config.
   return config;
