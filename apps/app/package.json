@@ -9,7 +9,6 @@
     "android": "expo run:android"
   },
   "dependencies": {
-    "@config-plugins/android-jsc-intl": "*",
     "@config-plugins/react-native-adjust": "*",
     "@config-plugins/react-native-callkeep": "*",
     "expo": "~54",
