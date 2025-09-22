@@ -15,14 +15,6 @@
           "com.github.gustash.SiriShortcutsModuleExample.sayHello",
           "com.github.gustash.SiriShortcutsModuleExample.somethingElse"
         ]
-      ],
-      [
-        "expo-build-properties",
-        {
-          "ios": {
-            "ccacheEnabled": true
-          }
-        }
       ]
     ],
     "ios": {

@@ -16,8 +16,7 @@
           "./assets/icons/fall.png",
           "./assets/icons/solstice.png"
         ]
-      ],
-      ["expo-build-properties", { "ios": { "ccacheEnabled": true } }]
+      ]
     ]
   }
 }

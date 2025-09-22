@@ -4202,7 +4202,7 @@ ajv@^6.1.0, ajv@^6.10.2, ajv@^6.12.3, ajv@^6.12.4, ajv@^6.12.5:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
-ajv@^8.0.0, ajv@^8.11.0, ajv@^8.9.0:
+ajv@^8.0.0, ajv@^8.9.0:
   version "8.17.1"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-8.17.1.tgz#37d9a5c776af6bc92d7f4f9510eba4c0a60d11a6"
   integrity sha512-B/gBuNg5SiMTrPkC+A2+cW0RszwxYmn6VYxB/inlBStS5nx6xHIt/ehKRhIMhqusl7a8LjQoZnjCs5vhwxOQ1g==
@@ -7848,14 +7848,6 @@ expo-asset@~12.0.8:
   dependencies:
     "@expo/image-utils" "^0.8.7"
     expo-constants "~18.0.8"
-
-expo-build-properties@^1.0.8, expo-build-properties@~1.0.8:
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/expo-build-properties/-/expo-build-properties-1.0.8.tgz#c973cc922ec6972df112eea76a1bf9ac0639216f"
-  integrity sha512-Ram9Jcg2WkbE7bRopWacMnXIhqUP6P13cQoj4rSfXLpJVOyGGvuMiw3rs1vzMbWSHxhvvsX2NvYXXIrZatexuw==
-  dependencies:
-    ajv "^8.11.0"
-    semver "^7.6.0"
 
 expo-constants@~18.0.8:
   version "18.0.8"
