@@ -8,6 +8,7 @@ Ensure you use versions that work together!
 
 | `expo` | `react-native-blob-util` | `@config-plugins/react-native-blob-util` |
 | ------ | ------------------------ | ---------------------------------------- |
+| 54.0.0 | 0.21.2                   | 12.0.0                                   |
 | 53.0.0 | 0.21.2                   | 11.0.0                                   |
 | 52.0.0 | 0.19.11                  | 9.0.0                                    |
 | 51.0.0 | 0.19.9                   | 8.0.0                                    |
