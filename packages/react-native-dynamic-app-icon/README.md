@@ -1,5 +1,6 @@
 # @config-plugins/react-native-dynamic-app-icon
 
+> [!IMPORTANT]
 > Consider using [`expo-quick-actions/icon`](https://github.com/evanbacon/expo-quick-actions) instead for both iOS and Android support, along with dark mode support for iOS.
 
 Config plugin to auto-configure `react-native-dynamic-app-icon` when the native code is generated (`npx expo prebuild`).
@@ -10,7 +11,8 @@ Ensure you use versions that work together!
 
 | `expo` | `react-native-dynamic-app-icon` | `@config-plugins/react-native-dynamic-app-icon` |
 | ------ | ------------------------------- | ----------------------------------------------- |
-| 53.0.0 | 1.1.0                           | 10.0.0                                          |
+| 54.0.0 | 1.1.0                           | 12.0.0                                          |
+| 53.0.0 | 1.1.0                           | 11.0.0                                          |
 | 52.0.0 | 1.1.0                           | 9.0.0                                           |
 | 51.0.0 | 1.1.0                           | 8.0.0                                           |
 | 50.0.0 | 1.1.0                           | 7.0.0                                           |

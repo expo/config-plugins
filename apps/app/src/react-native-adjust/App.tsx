@@ -4,6 +4,7 @@ import { Adjust, AdjustConfig } from "react-native-adjust";
 
 export default function App() {
   React.useEffect(() => {
+    // https://github.com/adjust/react_native_sdk/blob/bd4fe59403a57599767606b2bcaa116852df973d/example/App.js#L45
     const adjustConfig = new AdjustConfig(
       "APP_TOKEN",
       AdjustConfig.EnvironmentSandbox

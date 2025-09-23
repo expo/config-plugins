@@ -6,8 +6,7 @@
       "image": "https://github.com/expo.png"
     },
     "plugins": [
-      "@config-plugins/react-native-webrtc",
-      ["expo-build-properties", { "ios": { "ccacheEnabled": true } }]
+      "@config-plugins/react-native-webrtc"
     ]
   }
 }

@@ -25,15 +25,16 @@ const App = () => {
       <SettingsSwitch settingsKey="enabled_preference" />
       <SettingsSlider settingsKey="slider_preference" />
       <View />
-      <SettingsRadioGroup settingsKey="radio_preference">
-        <SettingsRadioGroup.Item label="Option 1" value="option1" />
-        <SettingsRadioGroup.Item label="Option 2" value="option2" />
-      </SettingsRadioGroup>
+      {/* Broken https://forums.developer.apple.com/forums/thread/764519 */}
+      {/*<SettingsRadioGroup settingsKey="radio_preference">*/}
+      {/*  <SettingsRadioGroup.Item label="Option 1" value="option1" />*/}
+      {/*  <SettingsRadioGroup.Item label="Option 2" value="option2" />*/}
+      {/*</SettingsRadioGroup>*/}
       <View />
       <Button
         title="Launch Settings"
         onPress={() => {
-          Linking.openSettings();
+          void Linking.openSettings();
         }}
       />
     </View>

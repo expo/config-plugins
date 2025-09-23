@@ -29,7 +29,6 @@ body:
     attributes:
       label: Config Plugin
       options:
-        - '@config-plugins/android-jsc-intl'
         - '@config-plugins/apple-settings'
         - '@config-plugins/ios-stickers'
         - '@config-plugins/react-native-adjust'

@@ -8,7 +8,8 @@ Ensure you use versions that work together!
 
 | `expo` | `react-native-siri-shortcut` | `@config-plugins/react-native-siri-shortcut` |
 | ------ | ---------------------------- | -------------------------------------------- |
-| 53.0.0 | 3.2.4                        | 9.0.0                                        |
+| 54.0.0 | 3.2.4                        | 11.0.0                                       |
+| 53.0.0 | 3.2.4                        | 10.0.0                                       |
 | 52.0.0 | 3.2.4                        | 8.0.0                                        |
 | 51.0.0 | 3.2.4                        | 7.0.0                                        |
 | 50.0.0 | 3.2.4                        | 6.0.0                                        |
@@ -37,7 +38,7 @@ Next, rebuild your app as described in the ["Adding custom native code"](https:/
 
 ## API
 
-When working with Siri Shorcuts, you need to define their identifiers on the Xcode project. To achieve the same result using this plugin, just pass an array of strings with the identifiers of your shortcuts, and they will be added automatically during the build cycle:
+When working with Siri Shortcuts, you need to define their identifiers on the Xcode project. To achieve the same result using this plugin, just pass an array of strings with the identifiers of your shortcuts, and they will be added automatically during the build cycle:
 
 #### Example
 

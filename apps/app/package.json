@@ -9,20 +9,19 @@
     "android": "expo run:android"
   },
   "dependencies": {
-    "@config-plugins/android-jsc-intl": "*",
     "@config-plugins/react-native-adjust": "*",
     "@config-plugins/react-native-callkeep": "*",
-    "expo": "~53",
-    "expo-localization": "~16.1.5",
-    "expo-splash-screen": "~0.30.7",
+    "expo": "~54",
+    "expo-localization": "~17.0.7",
+    "expo-splash-screen": "~31.0.10",
     "fbjs": "^0.8.18",
     "i18n-js": "^3.8.0",
     "luxon": "^1.27.0",
-    "react": "19.0.0",
-    "react-native": "0.79.2",
+    "react": "19.1.0",
+    "react-native": "0.81.4",
     "react-native-adjust": "^5.1.0",
     "react-native-callkeep": "^4.3.16",
-    "react-native-safe-area-context": "5.3.0"
+    "react-native-safe-area-context": "~5.6.0"
   },
   "devDependencies": {
     "@babel/plugin-syntax-jsx": "^7.16.0",
@@ -32,6 +31,6 @@
     "jest": "~29.7.0",
     "jest-circus": "^29.5.0",
     "ts-jest": "^29.0.5",
-    "typescript": "~5.8.3"
+    "typescript": "~5.9.2"
   }
 }
