@@ -119,7 +119,9 @@ const withCallkeep: ConfigPlugin = (config) => {
     "android.permission.BIND_TELECOM_CONNECTION_SERVICE",
     "android.permission.FOREGROUND_SERVICE",
     "android.permission.READ_PHONE_STATE",
+    "android.permission.READ_PHONE_NUMBERS",
     "android.permission.CALL_PHONE",
+    "android.permission.RECORD_AUDIO"
   ]);
 
   config = withAndroidManifestService(config);
