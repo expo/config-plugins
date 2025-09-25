@@ -42,6 +42,7 @@ The plugin provides props for extra customization. Every time you change the pro
 
 - `apiKey` (_string_): Branch API key. Optional.
 - `iosAppDomain` (_string_): App Domain for iOS. Optional.
+- `iosUniversalLinkDomains` (_string[]_): Universal link domains for iOS. Optional.
 
 #### Example
 
@@ -52,7 +53,8 @@ The plugin provides props for extra customization. Every time you change the pro
       "@config-plugins/react-native-branch",
       {
         "apiKey": "key_live_f9f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8",
-        "iosAppDomain": "awesome-alternate.app.link"
+        "iosAppDomain": "awesome-alternate.app.link",
+        "iosUniversalLinkDomains": ["awesome.app.link", "awesome-alternate.app.link", "awesome.test.app.link"]
       }
     ]
   ]
