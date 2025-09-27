@@ -72,3 +72,7 @@ In list format, icons are named after the item index (`'0', '1', '2'`), they can
 This isn't tied to `react-native-dynamic-app-icon` in any way, so any method of swapping icons works.
 
 <!-- Android support: https://github.com/myinnos/AppIconNameChanger -->
+
+## App Store usage
+
+This package is for programmatic use only. To use various app icon variations in the App Store listing (e.g., for A/B testing), consult to [this package](https://github.com/convychat/expo-app-icon-variations).
