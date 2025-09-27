@@ -1,0 +1,39 @@
+{
+  "name": "@config-plugins/react-native-permissions",
+  "version": "1.0.0",
+  "description": "Config plugin to auto configure react-native-permissions on prebuild",
+  "main": "build/withReactNativePermissions.js",
+  "types": "build/withReactNativePermissions.d.ts",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/expo/config-plugins.git",
+    "directory": "packages/react-native-permissions"
+  },
+  "scripts": {
+    "build": "expo-module build",
+    "clean": "expo-module clean",
+    "lint": "expo-module lint",
+    "test": "expo-module test",
+    "prepare": "expo-module prepare",
+    "prepublishOnly": "expo-module prepublishOnly",
+    "expo-module": "expo-module"
+  },
+  "keywords": [
+    "react",
+    "expo",
+    "config-plugins",
+    "prebuild",
+    "react-native-permissions"
+  ],
+  "jest": {
+    "preset": "expo-module-scripts"
+  },
+  "peerDependencies": {
+    "expo": "^46.0.2"
+  },
+  "devDependencies": {
+    "expo-module-scripts": "^2.0.0"
+  },
+  "upstreamPackage": "react-native-permissions"
+}
