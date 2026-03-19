@@ -16,7 +16,7 @@
     "packages/*"
   ],
   "resolutions": {
-    "expo": "^54"
+    "expo": "^55"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

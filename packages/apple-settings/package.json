@@ -35,7 +35,7 @@
     "schema-utils": "^4.2.0"
   },
   "peerDependencies": {
-    "expo": "^54"
+    "expo": "^55"
   },
   "devDependencies": {
     "json-schema-to-typescript": "^13.0.2"

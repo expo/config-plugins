@@ -5,16 +5,17 @@
   "scripts": {
     "start": "expo start --dev-client",
     "ios": "expo run:ios",
-    "android": "expo run:android"
+    "android": "expo run:android",
+    "e2e": "maestro test .maestro/"
   },
   "dependencies": {
     "@config-plugins/apple-settings": "*",
-    "@react-native-community/slider": "5.0.1",
-    "@react-native-picker/picker": "2.11.1",
-    "expo": "~54",
-    "expo-splash-screen": "~31.0.9",
-    "react": "19.1.0",
-    "react-native": "0.81.4"
+    "@react-native-community/slider": "5.1.2",
+    "@react-native-picker/picker": "2.11.4",
+    "expo": "~55",
+    "expo-splash-screen": "~55.0.12",
+    "react": "19.2.0",
+    "react-native": "0.83.2"
   },
   "private": true
 }
