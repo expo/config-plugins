@@ -30,7 +30,7 @@
     "react-native-branch"
   ],
   "peerDependencies": {
-    "expo": "^54"
+    "expo": "^55"
   },
   "upstreamPackage": "react-native-branch",
   "dependencies": {
