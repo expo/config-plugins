@@ -7,7 +7,8 @@ Config plugin to auto-configure `react-native-webrtc` when the native code is ge
 Ensure you use versions that work together!
 
 | `expo` | `react-native-webrtc` | `@config-plugins/react-native-webrtc` |
-| ------ | --------------------- | ------------------------------------- |
+|--------|-----------------------|---------------------------------------|
+| 55.0.0 | 124.0.7               | 14.0.0                                |
 | 54.0.0 | 124.0.6               | 13.0.0                                |
 | 53.0.0 | 124.0.5               | 12.0.0                                |
 | 52.0.0 | 124.0.4               | 10.0.0                                |
