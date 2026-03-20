@@ -7,7 +7,8 @@ Expo Config Plugin to auto-configure [`react-native-adjust`](https://www.npmjs.c
 Ensure you use versions that work together!
 
 | `expo` | `react-native-adjust` | `@config-plugins/react-native-adjust` |
-| ------ | --------------------- | ------------------------------------- |
+|--------| --------------------- |---------------------------------------|
+| 55.0.0 | 5.1.0                 | 13.0.0                                |
 | 54.0.0 | 5.1.0                 | 12.0.0                                |
 | 53.0.0 | 5.1.0                 | 11.0.0                                |
 | 52.0.0 | 5.0.2                 | 9.0.0                                 |
@@ -93,8 +94,8 @@ You can combine multiple options:
 {
   "plugins": [
     [
-      "@config-plugins/react-native-adjust", 
-      { 
+      "@config-plugins/react-native-adjust",
+      {
         "targetAndroid12": true,
         "metaInstallReferrer": true
       }

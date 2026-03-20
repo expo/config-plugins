@@ -2068,22 +2068,6 @@
     semver "^7.6.0"
     xml2js "0.6.0"
 
-"@expo/prebuild-config@^54.0.3":
-  version "54.0.3"
-  resolved "https://registry.yarnpkg.com/@expo/prebuild-config/-/prebuild-config-54.0.3.tgz#e3ac24bb1ec2ec348dfa98dc2ec5605b1fa49bf3"
-  integrity sha512-okf6Umaz1VniKmm+pA37QHBzB9XlRHvO1Qh3VbUezy07LTkz87kXUW7uLMmrA319WLavWSVORTXeR0jBRihObA==
-  dependencies:
-    "@expo/config" "~12.0.9"
-    "@expo/config-plugins" "~54.0.1"
-    "@expo/config-types" "^54.0.8"
-    "@expo/image-utils" "^0.8.7"
-    "@expo/json-file" "^10.0.7"
-    "@react-native/normalize-colors" "0.81.4"
-    debug "^4.3.1"
-    resolve-from "^5.0.0"
-    semver "^7.6.0"
-    xml2js "0.6.0"
-
 "@expo/prebuild-config@^55.0.10":
   version "55.0.10"
   resolved "https://registry.yarnpkg.com/@expo/prebuild-config/-/prebuild-config-55.0.10.tgz#5fc2f081a7c5f4ecba666857d15465fc76bff206"
@@ -8096,10 +8080,10 @@ expo-keep-awake@~55.0.4:
   resolved "https://registry.yarnpkg.com/expo-keep-awake/-/expo-keep-awake-55.0.4.tgz#8fe3685b75bda28e15268821a384e069f0395fab"
   integrity sha512-vwfdMtMS5Fxaon8gC0AiE70SpxTsHJ+rjeoVJl8kdfdbxczF7OIaVmfjFJ5Gfigd/WZiLqxhfZk34VAkXF4PNg==
 
-expo-localization@~17.0.7:
-  version "17.0.7"
-  resolved "https://registry.yarnpkg.com/expo-localization/-/expo-localization-17.0.7.tgz#24559be23cb7d9757fd8f8c88380d7b4ee2339a2"
-  integrity sha512-ACg1B0tJLNa+f8mZfAaNrMyNzrrzHAARVH1sHHvh+LolKdQpgSKX69Uroz1Llv4C71furpwBklVStbNcEwVVVA==
+expo-localization@~55.0.9:
+  version "55.0.9"
+  resolved "https://registry.yarnpkg.com/expo-localization/-/expo-localization-55.0.9.tgz#00b4150d24aa443d9bc210bee3bdae8556fa7730"
+  integrity sha512-ABRg4wEt15OCp9/3XOLC4ltPVvXmJgeCKNTJ4Nb8N6byuHITJHvZ3PwcC2YGpTzlAqfGbcs3rJdfg1ObT54PJQ==
   dependencies:
     rtl-detect "^1.0.2"
 
@@ -8159,13 +8143,6 @@ expo-server@^55.0.6:
   version "55.0.6"
   resolved "https://registry.yarnpkg.com/expo-server/-/expo-server-55.0.6.tgz#db8c2e13e82537a398ea4a420903499efe89235c"
   integrity sha512-xI72FTm469FfuuBL2R5aNtthgH+GR7ygOpsx/KcPS0K8AZaZd7VjtEExbzn9/qyyYkWW3T+3dAmCDKOMX8gdmQ==
-
-expo-splash-screen@~31.0.10:
-  version "31.0.10"
-  resolved "https://registry.yarnpkg.com/expo-splash-screen/-/expo-splash-screen-31.0.10.tgz#e0edd9782715b82a8eed34d5ebde778b79f850b4"
-  integrity sha512-i6g9IK798mae4yvflstQ1HkgahIJ6exzTCTw4vEdxV0J2SwiW3Tj+CwRjf0te7Zsb+7dDQhBTmGZwdv00VER2A==
-  dependencies:
-    "@expo/prebuild-config" "^54.0.3"
 
 expo-splash-screen@~31.0.9:
   version "31.0.9"
@@ -14925,10 +14902,10 @@ react-is@^19.0.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-19.1.0.tgz#805bce321546b7e14c084989c77022351bbdd11b"
   integrity sha512-Oe56aUPnkHyyDxxkvqtd7KkdQP5uIUfHxd5XTb3wE9d/kRnZLmKbDB0GWk919tdQ+mxxPtG6EAs6RMT6i1qtHg==
 
-react-native-adjust@^5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/react-native-adjust/-/react-native-adjust-5.1.0.tgz#6072b97cecc836123f86d503b16db51765e28bfc"
-  integrity sha512-FHNIkGzRkztWYNSfXEfIqaMSIAUu0dJDmUTeVI0g/VBaZsq+91MCMmOxX+OxW4AM0/f03HND1bW1nkxYe6J1CQ==
+react-native-adjust@^5.5.0:
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/react-native-adjust/-/react-native-adjust-5.5.0.tgz#a3ef90ffce8e371d825100c0cc84281426e0ec5a"
+  integrity sha512-mHisro3K08a9nJkcbWbvfh5hAK0pbXGc89MzKUVX+8QDBSleOs0Ncel7p3/7J656QCpGV9aHIK64xIUcV0hf4A==
 
 react-native-blob-util@^0.21.2:
   version "0.21.2"
@@ -14961,10 +14938,10 @@ react-native-pdf@^6.7.7:
     crypto-js "4.2.0"
     deprecated-react-native-prop-types "^2.3.0"
 
-react-native-safe-area-context@~5.6.0:
-  version "5.6.1"
-  resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-5.6.1.tgz#cb4d249ef1a6f7e8fd0cfdfa9764838dffda26b6"
-  integrity sha512-/wJE58HLEAkATzhhX1xSr+fostLsK8Q97EfpfMDKo8jlOc1QKESSX/FQrhk7HhQH/2uSaox4Y86sNaI02kteiA==
+react-native-safe-area-context@~5.6.2:
+  version "5.6.2"
+  resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-5.6.2.tgz#283e006f5b434fb247fcb4be0971ad7473d5c560"
+  integrity sha512-4XGqMNj5qjUTYywJqpdWZ9IG8jgkS3h06sfVjfw5yZQZfWnRFXczi0GnYyFyCc2EBps/qFmoCH8fez//WumdVg==
 
 react-native-siri-shortcut@^3.2.4:
   version "3.2.4"
