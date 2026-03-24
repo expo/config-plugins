@@ -5,38 +5,38 @@
 Monorepo of community-maintained Expo config plugins for React Native libraries. Plugins auto-configure native Android/iOS projects during `npx expo prebuild`.
 
 - **Namespace**: `@config-plugins/*`
-- **Package manager**: Yarn v1 with workspaces
-- **Orchestrator**: Lerna 3.4.1 (independent versioning)
+- **Package manager**: pnpm with workspaces
+- **Orchestrator**: Lerna (independent versioning, `npmClient: pnpm`)
 
 ## Common Commands
 
 ```bash
 # Install dependencies
-yarn
+pnpm install
 
 # Build all packages
-yarn prepare
+pnpm prepare
 
 # Watch build all packages
-yarn start
+pnpm start
 
 # Generate a new plugin
-yarn gen
+pnpm gen
 
 # Run tests for a specific package
-cd packages/<name> && yarn test
+cd packages/<name> && pnpm test
 
 # Lint a specific package
-cd packages/<name> && yarn lint --max-warnings 0
+cd packages/<name> && pnpm lint --max-warnings 0
 
 # Build a specific package
-cd packages/<name> && yarn build
+cd packages/<name> && pnpm build
 
 # Clean a specific package
-cd packages/<name> && yarn clean
+cd packages/<name> && pnpm clean
 
 # Rebuild an example app to test config plugins
-cd apps/<name> && yarn expo prebuild --clean
+cd apps/<name> && pnpm expo prebuild --clean
 ```
 
 ## Project Structure
@@ -65,7 +65,7 @@ For each package:
 
 1. **`package.json`** — Update `peerDependencies.expo` to `^<NEW_SDK>`.
 2. **`README.md`** — Add a new row to the version compatibility table with the new SDK version, the latest compatible upstream package version, and the next config plugin major version.
-3. **Build & test** — Run `yarn build` and `yarn test` (if tests exist) to verify nothing broke.
+3. **Build & test** — Run `pnpm build` and `pnpm test` (if tests exist) to verify nothing broke.
 
 ### Example app updates (`apps/<name>/`)
 
@@ -83,8 +83,8 @@ For each example app:
 
 ### Final steps
 
-1. Run `yarn` from the root to regenerate `yarn.lock`.
-2. Run `yarn prepare` to verify all packages build.
+1. Run `pnpm install` from the root to regenerate `pnpm-lock.yaml`.
+2. Run `pnpm prepare` to verify all packages build.
 3. Run tests for packages that have them.
 4. Update `CLAUDE.md` if any conventions changed (e.g., the peer dependency version listed under Conventions).
 
@@ -92,6 +92,6 @@ For each example app:
 
 Run these from the root:
 ```bash
-yarn update-dependabot-config
-yarn update-issue-template
+pnpm update-dependabot-config
+pnpm update-issue-template
 ```

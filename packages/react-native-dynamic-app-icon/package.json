@@ -25,7 +25,12 @@
     "expo"
   ],
   "dependencies": {
+    "@expo/image-utils": "^0.8.12",
     "xcode": "^3.0.1"
+  },
+  "devDependencies": {
+    "@expo/config-plugins": "^55",
+    "expo-module-scripts": "^55"
   },
   "peerDependencies": {
     "expo": "^55"

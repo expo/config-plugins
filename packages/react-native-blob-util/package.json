@@ -29,6 +29,10 @@
     "react-native",
     "expo"
   ],
+  "devDependencies": {
+    "@expo/config-plugins": "^55",
+    "expo-module-scripts": "^55"
+  },
   "peerDependencies": {
     "expo": "^55"
   },
