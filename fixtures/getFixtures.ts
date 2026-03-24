@@ -5,6 +5,7 @@ export function getFixture(
   name:
     | "AppDelegate.mm"
     | "AppDelegate.swift"
+    | "MainApplication.kt"
     | "app-build.gradle"
     | "build.gradle"
     | "Podfile"
