@@ -13,15 +13,17 @@ jobs:
         node: ["20", "22"]
     name: Build with Node ${{ matrix.node }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 1
+      - uses: pnpm/action-setup@v4
       - name: Setup node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
-      - run: yarn install --frozen-lockfile --check-files
-      - run: yarn lerna run prepare --stream
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter './packages/*' --parallel run prepare
       - uses: actions/cache@v4
         with:
           path: "*"
@@ -47,15 +49,17 @@ jobs:
         with:
           path: "*"
           key: v2-${{ github.sha }}-${{ matrix.node }}
+      - uses: pnpm/action-setup@v4
       - name: Set up Node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
+          cache: pnpm
       - name: Lint ${{ matrix.package }}
-        run: yarn lint --max-warnings 0
+        run: pnpm lint --max-warnings 0
         working-directory: packages/${{ matrix.package }}
       - name: Test ${{ matrix.package }}
-        run: yarn test
+        run: pnpm test
         working-directory: packages/${{ matrix.package }}
         env:
           CI: true

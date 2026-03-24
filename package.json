@@ -2,6 +2,7 @@
   "name": "@config-plugins/repo",
   "version": "1.0.0",
   "private": true,
+  "packageManager": "pnpm@10.7.0",
   "scripts": {
     "gen": "ts-node ./scripts/generate-plugin.ts",
     "update-issue-template": "ts-node ./scripts/gh-issues-config.ts",
@@ -10,12 +11,10 @@
     "publish": "lerna publish --no-private",
     "prepare": "lerna run prepare --parallel"
   },
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
-  "resolutions": {
-    "expo": "^55"
+  "pnpm": {
+    "overrides": {
+      "expo": "^55"
+    }
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
