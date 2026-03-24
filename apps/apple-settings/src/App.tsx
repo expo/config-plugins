@@ -14,6 +14,7 @@ const App = () => {
     <View style={styles.container}>
       {/* <SettingsTitle settingsKey="title_preference" /> */}
       <SettingsTextInput
+        testID="name-input"
         style={{
           height: 40,
           borderColor: "gray",
@@ -22,8 +23,8 @@ const App = () => {
         }}
         settingsKey="name_preference"
       />
-      <SettingsSwitch settingsKey="enabled_preference" />
-      <SettingsSlider settingsKey="slider_preference" />
+      <SettingsSwitch testID="enabled-switch" settingsKey="enabled_preference" />
+      <SettingsSlider testID="slider" settingsKey="slider_preference" />
       <View />
       {/* Broken https://forums.developer.apple.com/forums/thread/764519 */}
       {/*<SettingsRadioGroup settingsKey="radio_preference">*/}

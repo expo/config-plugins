@@ -28,7 +28,7 @@
     "xcode": "^3.0.1"
   },
   "peerDependencies": {
-    "expo": "^54"
+    "expo": "^55"
   },
   "upstreamPackage": "react-native-dynamic-app-icon"
 }

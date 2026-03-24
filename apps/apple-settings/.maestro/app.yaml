@@ -1,0 +1,49 @@
+appId: dev.bacon.applesettings
+---
+# Kill the Settings app to ensure a clean state
+- killApp: "com.apple.Preferences"
+
+# Launch the app
+- launchApp
+
+# Verify main UI elements are visible
+- assertVisible:
+    id: "name-input"
+- assertVisible:
+    id: "enabled-switch"
+- assertVisible:
+    id: "slider"
+
+# Clear any existing text and type a new value
+- tapOn:
+    id: "name-input"
+- eraseText: 50
+- inputText: "Maestro"
+
+# Toggle the switch on (default is off)
+- tapOn:
+    id: "enabled-switch"
+
+# Open iOS Settings for this app
+- tapOn: "Launch Settings"
+
+# Navigate to the app's settings page
+- scrollUntilVisible:
+    element: "Apps"
+    direction: DOWN
+- tapOn: "Apps"
+- scrollUntilVisible:
+    element: "apple-settings"
+    direction: DOWN
+- tapOn: "apple-settings"
+- scrollUntilVisible:
+    element: "apple-settings Settings"
+    direction: DOWN
+
+# Verify updated values in the iOS Settings app
+- assertVisible: "Maestro"
+
+# Verify the Enabled toggle is on (checked = true when on)
+- assertVisible:
+    id: "PSToggleSwitchSpecifier.enabled_preference.Enabled"
+    checked: true

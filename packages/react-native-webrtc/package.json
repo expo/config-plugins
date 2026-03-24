@@ -29,7 +29,7 @@
     "expo"
   ],
   "peerDependencies": {
-    "expo": "^54"
+    "expo": "^55"
   },
   "upstreamPackage": "react-native-webrtc"
 }

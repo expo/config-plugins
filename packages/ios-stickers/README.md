@@ -7,7 +7,8 @@ Config plugin to auto-configure iOS iMessage stickers
 Ensure you use versions that work together!
 
 | `expo` | `@config-plugins/ios-stickers` |
-| ------ | ------------------------------ |
+|--------|--------------------------------|
+| 55.0.0 | 13.0.0                         |
 | 54.0.0 | 12.0.0                         |
 | 53.0.0 | 11.0.0                         |
 | 52.0.0 | 9.0.0                          |

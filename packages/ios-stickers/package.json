@@ -32,6 +32,6 @@
     "xcode": "^3.0.1"
   },
   "peerDependencies": {
-    "expo": "^54"
+    "expo": "^55"
   }
 }

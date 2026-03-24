@@ -16,7 +16,7 @@
     "packages/*"
   ],
   "resolutions": {
-    "expo": "^54"
+    "expo": "^55"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
@@ -25,7 +25,7 @@
     "@types/prompts": "^2.0.13",
     "@types/react": "~18.3.12",
     "eslint": "^8.10.0",
-    "expo-module-scripts": "^4.1.6",
+    "expo-module-scripts": "^55.0.2",
     "expo-yarn-workspaces": "^2.3.2",
     "js-yaml": "^4.1.0",
     "lerna": "3.4.1",

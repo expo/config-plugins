@@ -7,7 +7,8 @@ Config plugin to auto-configure `react-native-callkeep` when the native code is 
 Ensure you use versions that work together!
 
 | `expo` | `react-native-callkeep` | `@config-plugins/react-native-callkeep` |
-| ------ | ----------------------- | --------------------------------------- |
+|--------| ----------------------- |-----------------------------------------|
+| 55.0.0 | 4.3.16                  | 13.0.0                                  |
 | 54.0.0 | 4.3.16                  | 12.0.0                                  |
 | 53.0.0 | 4.3.16                  | 11.0.0                                  |
 | 52.0.0 | 4.3.16                  | 9.0.0                                   |
