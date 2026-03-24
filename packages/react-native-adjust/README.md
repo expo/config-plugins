@@ -33,6 +33,10 @@ After installing this npm package, add the [config plugin](https://docs.expo.io/
 }
 ```
 
+## Configuration Options
+
+### Android 12+ Support
+
 If you are targeting Android 12 and above (API level 31), you need to add it in the options of the plugin:
 
 ```json
@@ -43,6 +47,60 @@ If you are targeting Android 12 and above (API level 31), you need to add it in 
 }
 ```
 
+### SDK Signature
+
 This will add the [appropriate permission](https://github.com/adjust/react_native_sdk#add-permission-to-gather-google-advertising-id) for you.
+
+To set up Adjust [SDK Signature](https://github.com/adjust/react_native_sdk/blob/master/README.md#sdk-signature) you need to specify the path for the xcframework and the aar file.
+```json
+{
+  "expo": {
+    "plugins": [
+      "@config-plugins/react-native-adjust",
+      {
+        "targetAndroid12": true ,
+        "sdkSignature" : {
+          "android" : "./path/to.aar",
+          "ios" : "./path/to.xcframework"
+        }
+      }
+    ]
+  }
+}
+```
+
+### Meta Install Referrer
+
+If you need to track Meta (Facebook) install referrers, you can enable the Meta install referrer dependency:
+
+```json
+{
+  "plugins": [
+    ["@config-plugins/react-native-adjust", { "metaInstallReferrer": true }]
+  ]
+}
+```
+
+This will add the `com.adjust.sdk:adjust-android-meta-referrer:5.4.0` dependency to your Android build.
+
+Doc: https://dev.adjust.com/en/sdk/react-native/plugins/meta-referrer-plugin
+
+### Combined Configuration
+
+You can combine multiple options:
+
+```json
+{
+  "plugins": [
+    [
+      "@config-plugins/react-native-adjust", 
+      { 
+        "targetAndroid12": true,
+        "metaInstallReferrer": true
+      }
+    ]
+  ]
+}
+```
 
 Next, rebuild your app as described in the ["Adding custom native code"](https://docs.expo.io/workflow/customizing/) guide.
