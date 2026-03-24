@@ -48,6 +48,9 @@ xcuserdata
 .project
 .settings
 
+# WebStorm
+.idea
+
 # VSCode
 .history/
 
