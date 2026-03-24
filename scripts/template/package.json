@@ -26,6 +26,6 @@
     "prebuild"
   ],
   "peerDependencies": {
-    "expo": "^54"
+    "expo": "^55"
   }
 }
