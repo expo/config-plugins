@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withReactNativeFeatureFlagsAndroid adds imports and override to MainApplication.kt 1`] = `
+"package com.example.app
+
+// @generated begin rn-feature-flags-import - expo prebuild (DO NOT MODIFY) sync-4385c6c195d7d2f7db2db0d13b4de8de5f4ace79
+import com.facebook.react.internal.featureflags.ReactNativeFeatureFlags
+import com.facebook.react.internal.featureflags.ReactNativeNewArchitectureFeatureFlagsDefaults
+// @generated end rn-feature-flags-import
+import android.app.Application
+import com.facebook.react.ReactApplication
+
+class MainApplication : Application(), ReactApplication {
+  override fun onCreate() {
+    super.onCreate()
+    loadReactNative(this)
+// @generated begin rn-feature-flags-override - expo prebuild (DO NOT MODIFY) sync-9d15e9381c9936fc6560201bc44e595b09eac8fb
+    ReactNativeFeatureFlags.dangerouslyForceOverride(object : ReactNativeNewArchitectureFeatureFlagsDefaults() {
+      override fun fuseboxFrameRecordingEnabled(): Boolean = true
+      override fun enableMicrotasks(): Boolean = false
+    })
+// @generated end rn-feature-flags-override
+  }
+}
+"
+`;

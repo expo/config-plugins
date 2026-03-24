@@ -38,6 +38,7 @@ jobs:
             ios-stickers,
             react-native-blob-util,
             react-native-branch,
+            react-native-feature-flags,
             react-native-siri-shortcut,
             react-native-pdf,
           ]
