@@ -64,7 +64,7 @@ async function applyXcodeChanges(
   // Prevent duplicate.
   if (
     mainResourceBuildPhase?.props.files.find(
-      (file) => file.props.fileRef.props.name === "Settings.bundle",
+      (file) => file.props.fileRef?.props.name === "Settings.bundle",
     )
   ) {
     return project;
