@@ -1,4 +1,4 @@
-import type { ExpoConfig } from "@expo/config";
+import type { ExpoConfig } from "expo/config";
 import { generateImageAsync } from "@expo/image-utils";
 import {
   type ConfigPlugin,

@@ -31,7 +31,12 @@
     "schema-utils": "^4.0.0",
     "xcode": "^3.0.1"
   },
+  "devDependencies": {
+    "expo-module-scripts": "^55"
+  },
   "peerDependencies": {
+    "@expo/image-utils": "^0.8.12",
+    "@expo/plist": "^0.5.2",
     "expo": "^55"
   }
 }

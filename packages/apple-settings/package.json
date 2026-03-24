@@ -34,10 +34,11 @@
     "iconv-lite": "^0.6.3",
     "schema-utils": "^4.2.0"
   },
+  "devDependencies": {
+    "json-schema-to-typescript": "^13.0.2",
+    "expo-module-scripts": "^55"
+  },
   "peerDependencies": {
     "expo": "^55"
-  },
-  "devDependencies": {
-    "json-schema-to-typescript": "^13.0.2"
   }
 }
