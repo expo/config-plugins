@@ -7,7 +7,6 @@ Monorepo of community-maintained Expo config plugins for React Native libraries.
 - **Namespace**: `@config-plugins/*`
 - **Package manager**: Yarn v1 with workspaces
 - **Orchestrator**: Lerna 3.4.1 (independent versioning)
-- **Workspaces**: `apps/*` (example apps), `packages/*` (published plugins)
 
 ## Common Commands
 
@@ -55,10 +54,6 @@ cd apps/<name> && yarn expo prebuild --clean
 - TypeScript source in `src/`, compiled output in `build/`
 - Peer dependency on `expo@^55`
 - Tests use Jest with `memfs` for virtual filesystem testing
-
-## CI
-
-GitHub Actions runs on Node 20 and 22. Build step runs `yarn lerna run prepare --stream`, then per-package lint and test. Not all packages have CI tests — check `.github/workflows/test.yml` for the matrix.
 
 ## Upgrading Plugins for a New Expo SDK Version
 
