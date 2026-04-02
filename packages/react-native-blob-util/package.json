@@ -31,6 +31,7 @@
   ],
   "devDependencies": {
     "@expo/config-plugins": "^55",
+    "eslint-config-universe":"^15.0.3",
     "expo-module-scripts": "^55",
     "jest": "^29"
   },
