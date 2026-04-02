@@ -27,6 +27,11 @@
     "prebuild",
     "react-native-adjust"
   ],
+  "devDependencies": {
+    "@expo/config-plugins": "^55",
+    "expo-module-scripts": "^55",
+    "jest": "^29"
+  },
   "peerDependencies": {
     "expo": "^55"
   },

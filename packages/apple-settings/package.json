@@ -20,7 +20,7 @@
     "lint": "expo-module lint",
     "test": "expo-module test",
     "generate-types": "json2ts -i ./src/schema/SettingsPlist.json -o ./src/schema/SettingsPlist.ts --additionalProperties=false --unknownAny=false",
-    "prepare": "expo-module prepare && yarn generate-types",
+    "prepare": "expo-module prepare && bun generate-types",
     "prepublishOnly": "expo-module prepublishOnly",
     "expo-module": "expo-module"
   },
@@ -34,10 +34,12 @@
     "iconv-lite": "^0.6.3",
     "schema-utils": "^4.2.0"
   },
+  "devDependencies": {
+    "expo-module-scripts": "^55",
+    "jest": "^29",
+    "json-schema-to-typescript": "^13.0.2"
+  },
   "peerDependencies": {
     "expo": "^55"
-  },
-  "devDependencies": {
-    "json-schema-to-typescript": "^13.0.2"
   }
 }

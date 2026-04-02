@@ -5,38 +5,35 @@
 Monorepo of community-maintained Expo config plugins for React Native libraries. Plugins auto-configure native Android/iOS projects during `npx expo prebuild`.
 
 - **Namespace**: `@config-plugins/*`
-- **Package manager**: Yarn v1 with workspaces
+- **Package manager**: Bun with workspaces
 - **Orchestrator**: Lerna 3.4.1 (independent versioning)
 
 ## Common Commands
 
 ```bash
 # Install dependencies
-yarn
+bun install
 
 # Build all packages
-yarn prepare
-
-# Watch build all packages
-yarn start
+bun prepare
 
 # Generate a new plugin
-yarn gen
+bun gen
 
 # Run tests for a specific package
-cd packages/<name> && yarn test
+cd packages/<name> && bun test
 
 # Lint a specific package
-cd packages/<name> && yarn lint --max-warnings 0
+cd packages/<name> && bun lint --max-warnings 0
 
 # Build a specific package
-cd packages/<name> && yarn build
+cd packages/<name> && bun build
 
 # Clean a specific package
-cd packages/<name> && yarn clean
+cd packages/<name> && bun clean
 
 # Rebuild an example app to test config plugins
-cd apps/<name> && yarn expo prebuild --clean
+cd apps/<name> && bun expo prebuild --clean
 ```
 
 ## Project Structure
@@ -65,7 +62,7 @@ For each package:
 
 1. **`package.json`** — Update `peerDependencies.expo` to `^<NEW_SDK>`.
 2. **`README.md`** — Add a new row to the version compatibility table with the new SDK version, the latest compatible upstream package version, and the next config plugin major version.
-3. **Build & test** — Run `yarn build` and `yarn test` (if tests exist) to verify nothing broke.
+3. **Build & test** — Run `bun build` and `bun test` (if tests exist) to verify nothing broke.
 
 ### Example app updates (`apps/<name>/`)
 
@@ -83,8 +80,8 @@ For each example app:
 
 ### Final steps
 
-1. Run `yarn` from the root to regenerate `yarn.lock`.
-2. Run `yarn prepare` to verify all packages build.
+1. Run `bun install` from the root to regenerate `bun.lock`.
+2. Run `bun prepare` to verify all packages build.
 3. Run tests for packages that have them.
 4. Update `CLAUDE.md` if any conventions changed (e.g., the peer dependency version listed under Conventions).
 
@@ -92,6 +89,6 @@ For each example app:
 
 Run these from the root:
 ```bash
-yarn update-dependabot-config
-yarn update-issue-template
+bun update-dependabot-config
+bun update-issue-template
 ```
