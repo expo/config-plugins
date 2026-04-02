@@ -15,6 +15,7 @@ jobs:
   lint-md:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: yarn install --frozen-lockfile --check-files
-      - run: npx remark --use validate-links . .github
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install --frozen-lockfile
+      - run: bunx remark --use validate-links . .github

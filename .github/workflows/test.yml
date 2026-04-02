@@ -13,15 +13,16 @@ jobs:
         node: ["20", "22"]
     name: Build with Node ${{ matrix.node }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 1
+      - uses: oven-sh/setup-bun@v2
       - name: Setup node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
-      - run: yarn install --frozen-lockfile --check-files
-      - run: yarn lerna run prepare --stream
+      - run: bun install --frozen-lockfile
+      - run: bun run lerna run prepare --stream
       - uses: actions/cache@v4
         with:
           path: "*"
@@ -47,15 +48,16 @@ jobs:
         with:
           path: "*"
           key: v2-${{ github.sha }}-${{ matrix.node }}
+      - uses: oven-sh/setup-bun@v2
       - name: Set up Node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
       - name: Lint ${{ matrix.package }}
-        run: yarn lint --max-warnings 0
+        run: bun lint --max-warnings 0
         working-directory: packages/${{ matrix.package }}
       - name: Test ${{ matrix.package }}
-        run: yarn test
+        run: bun run test
         working-directory: packages/${{ matrix.package }}
         env:
           CI: true

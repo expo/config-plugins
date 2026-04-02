@@ -97,7 +97,7 @@ function convertOrgName(name: string) {
     `module.exports = require("./build/${moduleName}");`
   );
 
-  const manager = new PackageManager.YarnPackageManager({
+  const manager = new PackageManager.BunPackageManager({
     cwd: outputDir,
     silent: false,
   });

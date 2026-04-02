@@ -9,7 +9,7 @@ web-build
 # Node
 node_modules
 npm-debug.log
-yarn-error.log
+bun-debug.log
 
 # Ruby
 .direnv
