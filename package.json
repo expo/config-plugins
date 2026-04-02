@@ -7,9 +7,9 @@
     "gen": "ts-node ./scripts/generate-plugin.ts",
     "update-issue-template": "ts-node ./scripts/gh-issues-config.ts",
     "update-dependabot-config": "ts-node ./scripts/update-dependabot-config.ts",
-    "start": "lerna run build --parallel -- --watch",
+    "start": "pnpm --filter './packages/*' --parallel run build -- --watch",
     "publish": "lerna publish --no-private",
-    "prepare": "lerna run prepare --parallel"
+    "prepare": "pnpm --filter './packages/*' --parallel run prepare"
   },
   "pnpm": {
     "overrides": {
