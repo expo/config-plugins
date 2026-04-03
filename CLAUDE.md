@@ -6,7 +6,7 @@ Monorepo of community-maintained Expo config plugins for React Native libraries.
 
 - **Namespace**: `@config-plugins/*`
 - **Package manager**: pnpm with workspaces
-- **Orchestrator**: Lerna (independent versioning, `npmClient: pnpm`)
+- **Publishing**: `pnpm publish` (independent versioning)
 
 ## Common Commands
 

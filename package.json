@@ -8,7 +8,8 @@
     "update-issue-template": "tsx ./scripts/gh-issues-config.ts",
     "update-dependabot-config": "tsx ./scripts/update-dependabot-config.ts",
     "start": "pnpm --filter './packages/*' --parallel run build -- --watch",
-    "publish": "lerna publish --no-private",
+    "bump": "pnpm --filter './packages/*' -r exec pnpm version major --no-git-tag-version",
+    "release": "pnpm publish -r --filter './packages/*'",
     "prepare": "pnpm --filter './packages/*' --parallel run prepare"
   },
   "pnpm": {
@@ -24,7 +25,6 @@
     "@types/react": "^19.1.1",
     "eslint": "^8.10.0",
     "js-yaml": "^4.1.0",
-    "lerna": "3.4.1",
     "memfs": "^3.4.4",
     "prettier": "^3",
     "prompts": "^2.4.1",

@@ -1,6 +1,0 @@
-{
-    "npmClient": "pnpm",
-    "registry": "https://registry.npmjs.org/",
-    "version": "independent",
-    "packages": ["packages/*"]
-  }
