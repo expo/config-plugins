@@ -5,22 +5,13 @@
     "splash": {
       "image": "https://github.com/expo.png"
     },
-    "ios": {
-      "config": {
-        "branch": {
-          "apiKey": "key_live_f9f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8"
-        }
-      }
-    },
-    "android": {
-      "config": {
-        "branch": {
-          "apiKey": "key_live_f9f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8"
-        }
-      }
-    },
     "plugins": [
-      "@config-plugins/react-native-branch"
+      [
+        "@config-plugins/react-native-branch",
+        {
+          "apiKey": "key_live_f9f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8"
+        }
+      ]
     ]
   }
 }
