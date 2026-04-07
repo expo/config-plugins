@@ -1,8 +1,4 @@
-import {
-  type ConfigPlugin,
-  IOSConfig,
-  withXcodeProject,
-} from "expo/config-plugins";
+import { type ConfigPlugin, IOSConfig, withXcodeProject } from "expo/config-plugins";
 
 import { Props } from "./withStickerAssets";
 import {
@@ -35,13 +31,6 @@ export const withStickerXcodeTarget: ConfigPlugin<
       stickerBundleId,
       teamId,
     );
-
-    if (teamId) {
-      IOSConfig.DevelopmentTeam.updateDevelopmentTeamForPbxproj(
-        config.modResults,
-        teamId,
-      );
-    }
 
     const stickersKey = addStickerResourceFile(
       config.modResults,
