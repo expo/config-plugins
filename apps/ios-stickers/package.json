@@ -7,7 +7,7 @@
     "android": "expo run:android"
   },
   "dependencies": {
-    "@config-plugins/ios-stickers": "*",
+    "@config-plugins/ios-stickers": "workspace:*",
     "expo": "~55",
     "expo-splash-screen": "~55.0.12",
     "react": "19.2.0",

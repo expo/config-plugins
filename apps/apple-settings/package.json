@@ -9,7 +9,7 @@
     "e2e": "maestro test .maestro/"
   },
   "dependencies": {
-    "@config-plugins/apple-settings": "*",
+    "@config-plugins/apple-settings": "workspace:*",
     "@react-native-community/slider": "5.1.2",
     "@react-native-picker/picker": "2.11.4",
     "expo": "~55",

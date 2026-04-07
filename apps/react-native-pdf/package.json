@@ -8,8 +8,8 @@
     "android": "expo run:android"
   },
   "dependencies": {
-    "@config-plugins/react-native-blob-util": "*",
-    "@config-plugins/react-native-pdf": "*",
+    "@config-plugins/react-native-blob-util": "workspace:*",
+    "@config-plugins/react-native-pdf": "workspace:*",
     "expo": "~55",
     "expo-splash-screen": "~55.0.12",
     "react": "19.2.0",
