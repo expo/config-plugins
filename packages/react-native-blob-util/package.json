@@ -21,7 +21,6 @@
     "lint": "expo-module lint",
     "test": "expo-module test",
     "prepare": "expo-module prepare",
-    "prepublishOnly": "expo-module prepublishOnly",
     "expo-module": "expo-module"
   },
   "keywords": [
@@ -29,8 +28,13 @@
     "react-native",
     "expo"
   ],
+  "devDependencies": {
+    "@expo/config-plugins": "catalog:",
+    "expo-module-scripts": "catalog:",
+    "jest": "catalog:"
+  },
   "peerDependencies": {
-    "expo": "^55"
+    "expo": "catalog:"
   },
   "upstreamPackage": "react-native-blob-util"
 }

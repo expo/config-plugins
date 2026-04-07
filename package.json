@@ -2,33 +2,24 @@
   "name": "@config-plugins/repo",
   "version": "1.0.0",
   "private": true,
+  "packageManager": "pnpm@10.7.0",
   "scripts": {
-    "postinstall": "expo-yarn-workspaces check-workspace-dependencies",
     "gen": "tsx ./scripts/generate-plugin.ts",
     "update-issue-template": "tsx ./scripts/gh-issues-config.ts",
     "update-dependabot-config": "tsx ./scripts/update-dependabot-config.ts",
-    "start": "lerna run build --parallel -- --watch",
-    "publish": "lerna publish --no-private",
-    "prepare": "lerna run prepare --parallel"
-  },
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
-  "resolutions": {
-    "expo": "^55"
+    "start": "pnpm --filter './packages/*' --parallel run build -- --watch",
+    "bump": "pnpm --filter './packages/*' -r exec pnpm version major --no-git-tag-version",
+    "release": "pnpm publish -r --filter './packages/*'",
+    "prepare": "pnpm --filter './packages/*' --parallel run prepare"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@expo/package-manager": "^1.8.4",
     "@types/js-yaml": "^4.0.5",
     "@types/prompts": "^2.0.13",
-    "@types/react": "~18.3.12",
+    "@types/react": "^19.1.1",
     "eslint": "^8.10.0",
-    "expo-module-scripts": "^55.0.2",
-    "expo-yarn-workspaces": "^2.3.2",
     "js-yaml": "^4.1.0",
-    "lerna": "3.4.1",
     "memfs": "^3.4.4",
     "prettier": "^3",
     "prompts": "^2.4.1",

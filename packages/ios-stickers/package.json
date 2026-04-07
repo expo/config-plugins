@@ -20,7 +20,6 @@
     "lint": "expo-module lint",
     "test": "expo-module test",
     "prepare": "expo-module prepare",
-    "prepublishOnly": "expo-module prepublishOnly",
     "expo-module": "expo-module"
   },
   "keywords": [
@@ -28,10 +27,16 @@
     "expo"
   ],
   "dependencies": {
-    "schema-utils": "^4.0.0",
-    "xcode": "^3.0.1"
+    "@expo/image-utils": "catalog:",
+    "@expo/plist": "catalog:",
+    "schema-utils": "catalog:",
+    "xcode": "catalog:"
+  },
+  "devDependencies": {
+    "expo-module-scripts": "catalog:",
+    "jest": "catalog:"
   },
   "peerDependencies": {
-    "expo": "^55"
+    "expo": "catalog:"
   }
 }

@@ -9,8 +9,8 @@
     "android": "expo run:android"
   },
   "dependencies": {
-    "@config-plugins/react-native-adjust": "*",
-    "@config-plugins/react-native-callkeep": "*",
+    "@config-plugins/react-native-adjust": "workspace:*",
+    "@config-plugins/react-native-callkeep": "workspace:*",
     "expo": "~55",
     "expo-localization": "~55.0.9",
     "expo-splash-screen": "~55.0.12",
