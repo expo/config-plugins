@@ -1,4 +1,4 @@
-#!/usr/bin/env ts-node
+#!/usr/bin/env tsx
 import JsonFile, { JSONObject, JSONValue } from "@expo/json-file";
 import spawnAsync from "@expo/spawn-async";
 import * as fs from "fs/promises";

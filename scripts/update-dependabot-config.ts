@@ -1,4 +1,4 @@
-#!/usr/bin/env ts-node
+#!/usr/bin/env tsx
 import * as fs from "fs/promises";
 import { sync as globSync } from "glob";
 import * as yaml from "js-yaml";
