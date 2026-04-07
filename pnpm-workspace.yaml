@@ -1,3 +1,13 @@
 packages:
   - 'apps/*'
   - 'packages/*'
+
+catalog:
+  '@expo/config-plugins': ^55
+  '@expo/image-utils': ^0.8.12
+  '@expo/plist': ^0.5.2
+  expo: ^55
+  expo-module-scripts: ^55
+  jest: ^29
+  schema-utils: ^4.2.0
+  xcode: ^3.0.1

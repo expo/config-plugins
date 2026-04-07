@@ -52,6 +52,7 @@ cd apps/<name> && pnpm expo prebuild --clean
 - Branch naming: `@your-github-username/type/description`
 - Each package delegates build/test/lint to `expo-module-scripts`
 - TypeScript source in `src/`, compiled output in `build/`
+- Shared dependency versions are defined in the `catalog:` block in `pnpm-workspace.yaml` and referenced with `catalog:` in each package's `package.json`
 - Peer dependency on `expo@^55`
 - Tests use Jest with `memfs` for virtual filesystem testing
 
@@ -59,13 +60,21 @@ cd apps/<name> && pnpm expo prebuild --clean
 
 When a new Expo SDK is released (e.g., SDK 54 → SDK 55), every package and example app must be updated. Use conventional commits scoped to the package name (e.g., `chore(react-native-foo): bump to expo@^55`).
 
+### Catalog updates (`pnpm-workspace.yaml`)
+
+Update the `catalog:` block with the new SDK versions for shared dependencies:
+
+1. **`expo`** — Update to `^<NEW_SDK>` (used as `peerDependencies` in all packages).
+2. **`expo-module-scripts`** — Update to `^<NEW_SDK>`.
+3. **`@expo/config-plugins`** — Update to `^<NEW_SDK>`.
+4. Review other catalog entries (`@expo/image-utils`, `@expo/plist`, etc.) and bump if needed.
+
 ### Per-package updates (`packages/<name>/`)
 
 For each package:
 
-1. **`package.json`** — Update `peerDependencies.expo` to `^<NEW_SDK>`.
-2. **`README.md`** — Add a new row to the version compatibility table with the new SDK version, the latest compatible upstream package version, and the next config plugin major version.
-3. **Build & test** — Run `pnpm build` and `pnpm test` (if tests exist) to verify nothing broke.
+1. **`README.md`** — Add a new row to the version compatibility table with the new SDK version, the latest compatible upstream package version, and the next config plugin major version.
+2. **Build & test** — Run `pnpm build` and `pnpm test` (if tests exist) to verify nothing broke.
 
 ### Example app updates (`apps/<name>/`)
 
@@ -77,9 +86,7 @@ For each example app:
 
 ### Monorepo root updates
 
-1. **`package.json`** — Update `expo-module-scripts` to the version matching the new SDK (e.g., `^55.0.2`).
-2. **`scripts/generate-plugin.ts`** — Update `SDK_VERSION` to the new SDK number.
-3. **`scripts/template/package.json`** — Update the `expo` peer dependency version.
+1. **`scripts/generate-plugin.ts`** — Update `SDK_VERSION` to the new SDK number.
 
 ### Final steps
 

@@ -29,16 +29,16 @@
   ],
   "dependencies": {
     "@bacons/xcode": "^1.0.0-alpha.12",
-    "@expo/plist": "^0.5.2",
+    "@expo/plist": "catalog:",
     "iconv-lite": "^0.6.3",
-    "schema-utils": "^4.2.0"
+    "schema-utils": "catalog:"
   },
   "devDependencies": {
-    "expo-module-scripts": "^55",
-    "jest": "^29",
+    "expo-module-scripts": "catalog:",
+    "jest": "catalog:",
     "json-schema-to-typescript": "^13.0.2"
   },
   "peerDependencies": {
-    "expo": "^55"
+    "expo": "catalog:"
   }
 }

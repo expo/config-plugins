@@ -12,11 +12,6 @@
     "release": "pnpm publish -r --filter './packages/*'",
     "prepare": "pnpm --filter './packages/*' --parallel run prepare"
   },
-  "pnpm": {
-    "overrides": {
-      "expo": "^55"
-    }
-  },
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@expo/package-manager": "^1.8.4",

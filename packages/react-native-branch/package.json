@@ -29,12 +29,12 @@
     "react-native-branch"
   ],
   "devDependencies": {
-    "@expo/config-plugins": "^55",
-    "expo-module-scripts": "^55",
-    "jest": "^29"
+    "@expo/config-plugins": "catalog:",
+    "expo-module-scripts": "catalog:",
+    "jest": "catalog:"
   },
   "peerDependencies": {
-    "expo": "^55"
+    "expo": "catalog:"
   },
   "upstreamPackage": "react-native-branch",
   "dependencies": {

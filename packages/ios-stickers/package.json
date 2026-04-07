@@ -27,16 +27,16 @@
     "expo"
   ],
   "dependencies": {
-    "@expo/image-utils": "^0.8.12",
-    "@expo/plist": "^0.5.2",
-    "schema-utils": "^4.0.0",
-    "xcode": "^3.0.1"
+    "@expo/image-utils": "catalog:",
+    "@expo/plist": "catalog:",
+    "schema-utils": "catalog:",
+    "xcode": "catalog:"
   },
   "devDependencies": {
-    "expo-module-scripts": "^55",
-    "jest": "^29"
+    "expo-module-scripts": "catalog:",
+    "jest": "catalog:"
   },
   "peerDependencies": {
-    "expo": "^55"
+    "expo": "catalog:"
   }
 }

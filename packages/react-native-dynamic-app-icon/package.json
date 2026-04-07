@@ -24,16 +24,16 @@
     "expo"
   ],
   "dependencies": {
-    "@expo/image-utils": "^0.8.12",
-    "xcode": "^3.0.1"
+    "@expo/image-utils": "catalog:",
+    "xcode": "catalog:"
   },
   "devDependencies": {
-    "@expo/config-plugins": "^55",
-    "expo-module-scripts": "^55",
-    "jest": "^29"
+    "@expo/config-plugins": "catalog:",
+    "expo-module-scripts": "catalog:",
+    "jest": "catalog:"
   },
   "peerDependencies": {
-    "expo": "^55"
+    "expo": "catalog:"
   },
   "upstreamPackage": "react-native-dynamic-app-icon"
 }
