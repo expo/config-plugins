@@ -84,37 +84,13 @@ const isaXCBuildConfiguration = "XCBuildConfiguration";
 const pbxTargetDependency = "PBXTargetDependency";
 const pbxContainerItemProxy = "PBXContainerItemProxy";
 
-function getMainTargetDevelopmentTeam(
-  proj: XcodeProject,
-): string | undefined {
-  const configs = proj.pbxXCBuildConfigurationSection();
-  for (const key in configs) {
-    const config = configs[key];
-    if (typeof config === "string") continue;
-    const bs = config.buildSettings;
-    if (!bs?.PRODUCT_NAME) continue;
-    const productName = bs.PRODUCT_NAME.replace(/"/g, "");
-    if (
-      productName.includes("Extension") ||
-      productName.includes("Widget") ||
-      productName.includes("Sticker")
-    ) {
-      continue;
-    }
-    const team = bs.DEVELOPMENT_TEAM?.replace(/"/g, "");
-    if (team) {
-      return team;
-    }
-  }
-  return undefined;
-}
-
 export function addStickersTarget(
   proj: XcodeProject,
   name: string,
   bundleId: string,
   subfolder: string,
   stickerBundleId?: string,
+  developmentTeam?: string,
 ) {
   // Setup uuid and name of new target
   const targetUuid = proj.generateUuid();
@@ -143,9 +119,7 @@ export function addStickersTarget(
     stickerBundleId ?? `"${bundleId}.${bundleName}"`;
   const INFOPLIST_FILE = `"${subfolder}/Info.plist"`;
 
-  const developmentTeam = getMainTargetDevelopmentTeam(proj);
-
-  const commonBuildSettings: Record<string, string> = {
+  const commonBuildSettings = {
     ASSETCATALOG_COMPILER_APPICON_NAME: '"iMessage App Icon"',
     CLANG_ANALYZER_NONNULL: "YES",
     CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION: "YES_AGGRESSIVE",
@@ -165,10 +139,6 @@ export function addStickersTarget(
     SKIP_INSTALL: "YES",
     TARGETED_DEVICE_FAMILY: `"1,2"`,
   };
-
-  if (developmentTeam) {
-    commonBuildSettings.DEVELOPMENT_TEAM = developmentTeam;
-  }
   // Build Configuration: Create
   const buildConfigurationsList = [
     {
@@ -295,18 +265,13 @@ export function addStickersTarget(
       proj.getFirstProject().uuid
     ].attributes.TargetAttributes = {};
   }
-  const targetAttributes: Record<string, string> = {
-    CreatedOnToolsVersion: "12.5",
-    ProvisioningStyle: "Automatic",
-  };
-
-  if (developmentTeam) {
-    targetAttributes.DevelopmentTeam = developmentTeam;
-  }
-
   proj.pbxProjectSection()[
     proj.getFirstProject().uuid
-  ].attributes.TargetAttributes[target.uuid] = targetAttributes;
+  ].attributes.TargetAttributes[target.uuid] = {
+    CreatedOnToolsVersion: "12.5",
+    ...(developmentTeam ? { DevelopmentTeam: developmentTeam } : {}),
+    ProvisioningStyle: "Automatic",
+  };
 
   return target;
 }
