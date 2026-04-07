@@ -14,6 +14,10 @@ contact_links:
       stream read/write for process large files.
     name: 📦 react-native-blob-util issues
     url: https://github.com/RonRadtke/react-native-blob-util/issues
+  - about: Branch Metrics React Native SDK
+    name: 📦 react-native-branch issues
+    url: >-
+      https://github.com/BranchMetrics/react-native-branch-deep-linking-attribution/issues
   - about: iOS 10 CallKit and Android ConnectionService Framework For React Native
     name: 📦 react-native-callkeep issues
     url: https://github.com/react-native-webrtc/react-native-callkeep/issues
