@@ -1,4 +1,8 @@
-import { type ConfigPlugin, IOSConfig, withXcodeProject } from "expo/config-plugins";
+import {
+  type ConfigPlugin,
+  IOSConfig,
+  withXcodeProject,
+} from "expo/config-plugins";
 
 import { Props } from "./withStickerAssets";
 import {
