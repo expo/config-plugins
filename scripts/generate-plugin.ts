@@ -1,11 +1,9 @@
-#!/usr/bin/env ts-node
+#!/usr/bin/env tsx
 
 import assert from "assert";
 import * as fs from "fs";
 import * as path from "path";
 import prompts from "prompts";
-// @ts-ignore
-import replaceAll from "string.prototype.replaceall";
 import * as PackageManager from "@expo/package-manager";
 const packagesDir = path.join(__dirname, "../packages");
 const templateDir = path.join(__dirname, "./template");
@@ -129,10 +127,10 @@ function createTemplatePlugin({
 }: Props) {
   let template = fs.readFileSync(path.join(templateDir, "index.ts"), "utf8");
 
-  template = replaceAll(template, /%NPM_MODULE%/g, NPM_MODULE);
-  template = replaceAll(template, /%CONFIG_PLUGIN%/g, CONFIG_PLUGIN);
-  template = replaceAll(template, /_MODULE_NAME_/g, MODULE_NAME);
-  template = replaceAll(template, /%SDK_VERSION%/g, SDK_VERSION);
+  template = template.replace(/%NPM_MODULE%/g, NPM_MODULE);
+  template = template.replace(/%CONFIG_PLUGIN%/g, CONFIG_PLUGIN);
+  template = template.replace(/_MODULE_NAME_/g, MODULE_NAME);
+  template = template.replace(/%SDK_VERSION%/g, SDK_VERSION);
 
   return template;
 }
@@ -145,10 +143,10 @@ function createTemplateREADME({
 }: Props) {
   let template = fs.readFileSync(path.join(templateDir, "README.md"), "utf8");
 
-  template = replaceAll(template, /%NPM_MODULE%/g, NPM_MODULE);
-  template = replaceAll(template, /%CONFIG_PLUGIN%/g, CONFIG_PLUGIN);
-  template = replaceAll(template, /%MODULE_NAME%/g, MODULE_NAME);
-  template = replaceAll(template, /%SDK_VERSION%/g, SDK_VERSION);
+  template = template.replace(/%NPM_MODULE%/g, NPM_MODULE);
+  template = template.replace(/%CONFIG_PLUGIN%/g, CONFIG_PLUGIN);
+  template = template.replace(/%MODULE_NAME%/g, MODULE_NAME);
+  template = template.replace(/%SDK_VERSION%/g, SDK_VERSION);
 
   return template;
 }
