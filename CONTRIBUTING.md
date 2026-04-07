@@ -34,4 +34,7 @@ Be sure to run the following scripts in the **root directory** to update automat
 
 ## Publishing a release
 
-All publishing should be handled automatically whenever code is merged to `main`.
+Packages are published manually using the scripts in the root `package.json`:
+
+1. `pnpm bump`: Increments the major version of all packages.
+2. `pnpm release`: Publishes all packages to npm.
