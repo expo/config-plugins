@@ -90,6 +90,7 @@ export function addStickersTarget(
   bundleId: string,
   subfolder: string,
   stickerBundleId?: string,
+  developmentTeam?: string,
 ) {
   // Setup uuid and name of new target
   const targetUuid = proj.generateUuid();
@@ -118,7 +119,7 @@ export function addStickersTarget(
     stickerBundleId ?? `"${bundleId}.${bundleName}"`;
   const INFOPLIST_FILE = `"${subfolder}/Info.plist"`;
 
-  const commonBuildSettings = {
+  const commonBuildSettings: Record<string, string> = {
     ASSETCATALOG_COMPILER_APPICON_NAME: '"iMessage App Icon"',
     CLANG_ANALYZER_NONNULL: "YES",
     CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION: "YES_AGGRESSIVE",
@@ -138,6 +139,10 @@ export function addStickersTarget(
     SKIP_INSTALL: "YES",
     TARGETED_DEVICE_FAMILY: `"1,2"`,
   };
+
+  if (developmentTeam) {
+    commonBuildSettings.DEVELOPMENT_TEAM = developmentTeam;
+  }
   // Build Configuration: Create
   const buildConfigurationsList = [
     {
@@ -268,6 +273,7 @@ export function addStickersTarget(
     proj.getFirstProject().uuid
   ].attributes.TargetAttributes[target.uuid] = {
     CreatedOnToolsVersion: "12.5",
+    ...(developmentTeam ? { DevelopmentTeam: developmentTeam } : {}),
     ProvisioningStyle: "Automatic",
   };
 

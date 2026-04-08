@@ -1,4 +1,8 @@
-import { type ConfigPlugin, withXcodeProject } from "expo/config-plugins";
+import {
+  type ConfigPlugin,
+  IOSConfig,
+  withXcodeProject,
+} from "expo/config-plugins";
 
 import { Props } from "./withStickerAssets";
 import {
@@ -20,6 +24,8 @@ export const withStickerXcodeTarget: ConfigPlugin<
     const stickerPackName = getProjectStickersName(
       config.modRequest.projectName!,
     );
+    const teamId =
+      IOSConfig.DevelopmentTeam.getDevelopmentTeam(config) ?? undefined;
 
     addStickersTarget(
       config.modResults,
@@ -27,6 +33,7 @@ export const withStickerXcodeTarget: ConfigPlugin<
       config.ios!.bundleIdentifier!,
       stickerPackName,
       stickerBundleId,
+      teamId,
     );
 
     const stickersKey = addStickerResourceFile(
