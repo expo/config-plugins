@@ -58,6 +58,12 @@ export const withBranchIOS: ConfigPlugin<ConfigData> = (config, data) => {
   // config. The `branch` property in the Expo Config is deprecated and will be
   // removed in SDK 56.
   // TODO(@hassankhan): Remove fallback when updating for SDK 56
+  if (config.ios?.config?.branch?.apiKey) {
+    console.warn(
+      "react-native-branch: Using `config.ios.config.branch.apiKey` is deprecated. " +
+        "Pass `apiKey` directly in the plugin config instead.",
+    );
+  }
   const apiKey = data.apiKey ?? config.ios?.config?.branch?.apiKey;
   const { testApiKey, enableTestEnvironment = false } = data;
 
