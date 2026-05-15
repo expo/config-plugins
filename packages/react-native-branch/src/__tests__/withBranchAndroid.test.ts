@@ -4,6 +4,7 @@ import { resolve } from "path";
 import {
   setBranchApiKeys,
   enableBranchTestEnvironment,
+  withBranchAndroid,
 } from "../withBranchAndroid";
 
 const { findMetaDataItem, getMainApplication, readAndroidManifestAsync } =
@@ -62,5 +63,19 @@ describe(enableBranchTestEnvironment, () => {
     expect(
       findMetaDataItem(mainApplication, "io.branch.sdk.TestMode"),
     ).toBeGreaterThan(-1);
+  });
+});
+
+describe(withBranchAndroid, () => {
+  it("does not require the api key while evaluating the config plugin", () => {
+    expect(() =>
+      withBranchAndroid(
+        {
+          name: "example",
+          slug: "example",
+        },
+        {},
+      ),
+    ).not.toThrow();
   });
 });

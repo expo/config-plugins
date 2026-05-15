@@ -1,6 +1,7 @@
 import {
   setBranchApiKeys,
   enableBranchTestEnvironment,
+  withBranchIOS,
 } from "../withBranchIOS";
 
 describe(setBranchApiKeys, () => {
@@ -32,5 +33,19 @@ describe(enableBranchTestEnvironment, () => {
     expect(enableBranchTestEnvironment(true, {})).toMatchObject({
       branch_test_environment: true,
     });
+  });
+});
+
+describe(withBranchIOS, () => {
+  it("does not require the api key while evaluating the config plugin", () => {
+    expect(() =>
+      withBranchIOS(
+        {
+          name: "example",
+          slug: "example",
+        },
+        {},
+      ),
+    ).not.toThrow();
   });
 });

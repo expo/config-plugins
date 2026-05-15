@@ -59,6 +59,14 @@ export function enableBranchTestEnvironment(
   return androidManifest;
 }
 
+function requireBranchApiKey(apiKey?: string): string {
+  if (!apiKey) {
+    throw new Error("Branch API key is required: apiKey must be provided");
+  }
+
+  return apiKey;
+}
+
 export const withBranchAndroid: ConfigPlugin<ConfigData> = (config, data) => {
   // Fall back to the Expo Config `branch.apiKey` if not provided in plugin
   // config. The `branch` property in the Expo Config is deprecated and will be
@@ -70,14 +78,13 @@ export const withBranchAndroid: ConfigPlugin<ConfigData> = (config, data) => {
         "Pass `apiKey` directly in the plugin config instead.",
     );
   }
-  const apiKey = data.apiKey ?? config.android?.config?.branch?.apiKey;
   const { testApiKey, enableTestEnvironment = false } = data;
 
-  if (!apiKey) {
-    throw new Error("Branch API key is required: apiKey must be provided");
-  }
-
   config = withAndroidManifest(config, (config) => {
+    const apiKey = requireBranchApiKey(
+      data.apiKey ?? config.android?.config?.branch?.apiKey,
+    );
+
     config.modResults = setBranchApiKeys(
       { apiKey, testApiKey },
       config.modResults,
