@@ -19,7 +19,6 @@
     "clean": "expo-module clean",
     "lint": "expo-module lint",
     "test": "expo-module test",
-    "prepare": "expo-module prepare",
     "expo-module": "expo-module"
   },
   "keywords": [

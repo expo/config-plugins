@@ -9,10 +9,11 @@
   },
   "dependencies": {
     "@config-plugins/react-native-dynamic-app-icon": "workspace:*",
-    "expo": "~55",
-    "expo-splash-screen": "~55.0.12",
-    "react": "19.2.0",
-    "react-native": "0.83.2",
+    "@expo/vector-icons": "^15.0.2",
+    "expo": "~56",
+    "expo-splash-screen": "~56.0.10",
+    "react": "19.2.3",
+    "react-native": "0.85.3",
     "react-native-dynamic-app-icon": "^1.1.0"
   },
   "private": true

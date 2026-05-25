@@ -10,11 +10,11 @@
   "dependencies": {
     "@config-plugins/react-native-blob-util": "workspace:*",
     "@config-plugins/react-native-pdf": "workspace:*",
-    "expo": "~55",
-    "expo-splash-screen": "~55.0.12",
-    "react": "19.2.0",
-    "react-native": "0.83.2",
-    "react-native-blob-util": "^0.24.7",
+    "expo": "~56",
+    "expo-splash-screen": "~56.0.10",
+    "react": "19.2.3",
+    "react-native": "0.85.3",
+    "react-native-blob-util": "^0.24.9",
     "react-native-pdf": "^7.0.4"
   },
   "private": true
