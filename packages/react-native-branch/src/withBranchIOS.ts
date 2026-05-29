@@ -48,6 +48,14 @@ export function enableBranchTestEnvironment(
   };
 }
 
+function requireBranchApiKey(apiKey?: string): string {
+  if (!apiKey) {
+    throw new Error("Branch API key is required: apiKey must be provided");
+  }
+
+  return apiKey;
+}
+
 export const withBranchIOS: ConfigPlugin<ConfigData> = (config, data) => {
   // Ensure object exist
   if (!config.ios) {
@@ -64,12 +72,7 @@ export const withBranchIOS: ConfigPlugin<ConfigData> = (config, data) => {
         "Pass `apiKey` directly in the plugin config instead.",
     );
   }
-  const apiKey = data.apiKey ?? config.ios?.config?.branch?.apiKey;
   const { testApiKey, enableTestEnvironment = false } = data;
-
-  if (!apiKey) {
-    throw new Error("Branch API key is required: apiKey must be provided");
-  }
 
   // Add `React/RCTBridge` to bridging header
   withDangerousMod(config, [
@@ -103,6 +106,10 @@ export const withBranchIOS: ConfigPlugin<ConfigData> = (config, data) => {
 
   // Update the infoPlist with the branch key and branch domain
   config = withInfoPlist(config, (config) => {
+    const apiKey = requireBranchApiKey(
+      data.apiKey ?? config.ios?.config?.branch?.apiKey,
+    );
+
     config.modResults = setBranchApiKeys(
       { apiKey, testApiKey },
       config.modResults,
