@@ -10,12 +10,12 @@
   },
   "dependencies": {
     "@config-plugins/apple-settings": "workspace:*",
-    "@react-native-community/slider": "5.1.2",
+    "@react-native-community/slider": "5.2.0",
     "@react-native-picker/picker": "2.11.4",
-    "expo": "~55",
-    "expo-splash-screen": "~55.0.12",
-    "react": "19.2.0",
-    "react-native": "0.83.2"
+    "expo": "~56",
+    "expo-splash-screen": "~56.0.10",
+    "react": "19.2.3",
+    "react-native": "0.85.3"
   },
   "private": true
 }

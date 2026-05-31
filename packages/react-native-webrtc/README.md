@@ -8,6 +8,7 @@ Ensure you use versions that work together!
 
 | `expo` | `react-native-webrtc` | `@config-plugins/react-native-webrtc` |
 |--------|-----------------------|---------------------------------------|
+| 56.0.0 | 124.0.7               | 15.0.0                                |
 | 55.0.0 | 124.0.7               | 14.0.0                                |
 | 54.0.0 | 124.0.6               | 13.0.0                                |
 | 53.0.0 | 124.0.5               | 12.0.0                                |

@@ -53,7 +53,7 @@ cd apps/<name> && pnpm expo prebuild --clean
 - Each package delegates build/test/lint to `expo-module-scripts`
 - TypeScript source in `src/`, compiled output in `build/`
 - Shared dependency versions are defined in the `catalog:` block in `pnpm-workspace.yaml` and referenced with `catalog:` in each package's `package.json`
-- Peer dependency on `expo@^55`
+- Peer dependency on `expo@^56`
 - Tests use Jest with `memfs` for virtual filesystem testing
 
 ## Upgrading Plugins for a New Expo SDK Version

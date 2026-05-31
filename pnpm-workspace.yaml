@@ -3,11 +3,16 @@ packages:
   - 'packages/*'
 
 catalog:
-  '@expo/config-plugins': ^55
+  '@expo/config-plugins': ^56
   '@expo/image-utils': ^0.8.12
   '@expo/plist': ^0.5.2
-  expo: ^55
-  expo-module-scripts: ^55
+  expo: ^56
+  expo-module-scripts: ^56.0.3
   jest: ^29
   schema-utils: ^4.2.0
   xcode: ^3.0.1
+
+packageExtensions:
+  expo-module-scripts:
+    dependencies:
+      babel-preset-expo: '*'

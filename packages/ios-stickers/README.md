@@ -8,6 +8,7 @@ Ensure you use versions that work together!
 
 | `expo` | `@config-plugins/ios-stickers` |
 |--------|--------------------------------|
+| 56.0.0 | 14.0.0                         |
 | 55.0.0 | 13.0.0                         |
 | 54.0.0 | 12.0.0                         |
 | 53.0.0 | 11.0.0                         |
