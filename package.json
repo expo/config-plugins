@@ -35,6 +35,8 @@
     "eslint-config-universe": "^15.2.0",
     "js-yaml": "^4.1.0",
     "memfs": "^3.4.4",
+    "oxfmt": "^0.52.0",
+    "oxlint": "^1.67.0",
     "prettier": "^3.9.10",
     "prompts": "^2.4.1",
     "remark-cli": "^9.0.0",
