@@ -62,16 +62,6 @@ export const withBranchIOS: ConfigPlugin<ConfigData> = (config, data) => {
     config.ios = {};
   }
 
-  // Fall back to the Expo Config `branch.apiKey` if not provided in plugin
-  // config. The `branch` property in the Expo Config is deprecated and will be
-  // removed in SDK 56.
-  // TODO(@hassankhan): Remove fallback when updating for SDK 56
-  if (config.ios?.config?.branch?.apiKey) {
-    console.warn(
-      "react-native-branch: Using `config.ios.config.branch.apiKey` is deprecated. " +
-        "Pass `apiKey` directly in the plugin config instead.",
-    );
-  }
   const { testApiKey, enableTestEnvironment = false } = data;
 
   // Add `React/RCTBridge` to bridging header
@@ -106,9 +96,7 @@ export const withBranchIOS: ConfigPlugin<ConfigData> = (config, data) => {
 
   // Update the infoPlist with the branch key and branch domain
   config = withInfoPlist(config, (config) => {
-    const apiKey = requireBranchApiKey(
-      data.apiKey ?? config.ios?.config?.branch?.apiKey,
-    );
+    const apiKey = requireBranchApiKey(data.apiKey);
 
     config.modResults = setBranchApiKeys(
       { apiKey, testApiKey },

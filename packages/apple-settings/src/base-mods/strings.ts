@@ -19,16 +19,18 @@ export function parse(data: string, wantComments?: boolean): ParsedStrings {
     if (m.index === re.lastIndex) {
       re.lastIndex++;
     }
-    if (m[2].substring(0, 1) === '"') {
-      m[2] = m[2].trim().slice(1, -1);
+    let key = m[2]!;
+    const value = m[3]!;
+    if (key.substring(0, 1) === '"') {
+      key = key.trim().slice(1, -1);
     }
     if (wantComments) {
-      res[m[2]] = {
-        value: unescapeString(m[3]),
+      res[key] = {
+        value: unescapeString(value),
         comment: m[1] || "",
       };
     } else {
-      res[m[2]] = unescapeString(m[3]);
+      res[key] = unescapeString(value);
     }
   }
   return res;
