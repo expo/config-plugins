@@ -4,14 +4,14 @@ const COMMENT_KEY = /_comment$/;
 
 function unquote(str: string) {
   if (str) return str.replace(/^"(.*)"$/, "$1");
+  return str;
 }
 function nonComments(obj: Record<string, any>) {
-  const keys = Object.keys(obj);
   const newObj: Record<string, any> = {};
 
-  for (let i = 0; i < keys.length; i++) {
-    if (!COMMENT_KEY.test(keys[i])) {
-      newObj[keys[i]] = obj[keys[i]];
+  for (const key of Object.keys(obj)) {
+    if (!COMMENT_KEY.test(key)) {
+      newObj[key] = obj[key];
     }
   }
 
