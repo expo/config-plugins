@@ -109,7 +109,8 @@ export function addStickersTarget(
   }
 
   // Check type against list of allowed target types
-  if (!producttypeForTargettype(targetType)) {
+  const computedProductType = producttypeForTargettype(targetType);
+  if (!computedProductType) {
     throw new Error("Target type invalid: " + targetType);
   }
 
@@ -189,7 +190,7 @@ export function addStickersTarget(
 
   // Product: Create
   const productName = targetName;
-  const productType = producttypeForTargettype(targetType);
+  const productType = computedProductType;
   const productFileType = filetypeForProducttype(productType);
   const productFile = proj.addProductFile(productName, {
     group: "Embed App Extensions",
@@ -215,7 +216,7 @@ export function addStickersTarget(
       name: quotedTargetName,
       productName: quotedTargetName,
       productReference: productFile.fileRef,
-      productType: quoted(producttypeForTargettype(targetType)),
+      productType: quoted(computedProductType),
       buildConfigurationList: buildConfigurations.uuid,
       buildPhases: [],
       buildRules: [],
@@ -316,7 +317,7 @@ function addToPbxCopyfilesBuildPhase(
   sources.files.push(pbxBuildPhaseObj(file));
 }
 
-function producttypeForTargettype(targetType: string): string {
+function producttypeForTargettype(targetType: string): string | undefined {
   const PRODUCTTYPE_BY_TARGETTYPE: Record<string, string> = {
     application: "com.apple.product-type.application",
     app_extension: "com.apple.product-type.app-extension",
