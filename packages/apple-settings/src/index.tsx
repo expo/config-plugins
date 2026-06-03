@@ -11,7 +11,7 @@ export {
   MultiValue,
 } from "./models";
 
-export { StaticSettings, AppleLocale };
+export type { StaticSettings, AppleLocale };
 
 export * from "./schema/SettingsPlist";
 

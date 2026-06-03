@@ -32,7 +32,11 @@ function getMainAppTarget(project: XcodeProject): PBXNativeTarget {
     );
   }
 
-  return mainAppTarget[0];
+  const target = mainAppTarget[0];
+  if (!target) {
+    throw new Error("No main app target found in Xcode project");
+  }
+  return target;
 }
 
 function getDefaultBuildConfigurationForTarget(target: PBXNativeTarget) {
