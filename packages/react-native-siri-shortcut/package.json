@@ -1,6 +1,6 @@
 {
   "name": "@config-plugins/react-native-siri-shortcut",
-  "version": "13.0.0",
+  "version": "13.0.1",
   "description": "Config plugin for react-native-siri-shortcut package",
   "main": "build/withReactNativeSiriShortcut.js",
   "types": "build/withReactNativeSiriShortcut.d.ts",
