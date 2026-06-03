@@ -2,7 +2,6 @@
   "name": "@config-plugins/repo",
   "version": "1.0.0",
   "private": true,
-  "packageManager": "pnpm@10.7.0",
   "scripts": {
     "gen": "tsx ./scripts/generate-plugin.ts",
     "update-issue-template": "tsx ./scripts/gh-issues-config.ts",
