@@ -299,13 +299,26 @@ importers:
     devDependencies:
       expo-module-scripts:
         specifier: 'catalog:'
-        version: 56.0.3(@babel/core@7.29.0)(@babel/runtime@7.29.2)(@jest/transform@29.7.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.29.0))(eslint@8.57.1)(expo@56.0.4)(jest-util@29.7.0)(jest@29.7.0(@types/node@25.9.1))(prettier@3.8.3)(react-native@0.85.3(@babel/core@7.29.0)(@react-native/jest-preset@0.85.3(@babel/core@7.29.0)(react@19.2.3))(@types/react@19.2.15)(react@19.2.3))(react-refresh@0.14.2)(react-test-renderer@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
+        version: 56.0.3(@babel/core@7.29.0)(@babel/runtime@7.29.2)(@jest/transform@29.7.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.29.0))(eslint@8.57.1)(expo@56.0.4)(jest-util@29.7.0)(jest@29.7.0(@types/node@25.9.1))(prettier@2.8.8)(react-native@0.85.3(@babel/core@7.29.0)(@react-native/jest-preset@0.85.3(@babel/core@7.29.0)(react@19.2.3))(@types/react@19.2.15)(react@19.2.3))(react-refresh@0.14.2)(react-test-renderer@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
       jest:
         specifier: 'catalog:'
         version: 29.7.0(@types/node@25.9.1)
       json-schema-to-typescript:
         specifier: ^13.0.2
         version: 13.1.2
+
+  packages/ios-metal-api-validation:
+    dependencies:
+      expo:
+        specifier: 'catalog:'
+        version: 56.0.4(@babel/core@7.29.0)(@expo/dom-webview@56.0.5)(react-native@0.85.3(@babel/core@7.29.0)(@react-native/jest-preset@0.85.3(@babel/core@7.29.0)(react@19.2.3))(@types/react@19.2.15)(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
+    devDependencies:
+      expo-module-scripts:
+        specifier: 'catalog:'
+        version: 56.0.3(@babel/core@7.29.0)(@babel/runtime@7.29.2)(@jest/transform@29.7.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.29.0))(eslint@8.57.1)(expo@56.0.4)(jest-util@29.7.0)(jest@29.7.0(@types/node@25.9.1))(prettier@2.8.8)(react-native@0.85.3(@babel/core@7.29.0)(@react-native/jest-preset@0.85.3(@babel/core@7.29.0)(react@19.2.3))(@types/react@19.2.15)(react@19.2.3))(react-refresh@0.14.2)(react-test-renderer@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
+      jest:
+        specifier: 'catalog:'
+        version: 29.7.0(@types/node@25.9.1)
 
   packages/ios-stickers:
     dependencies:
@@ -327,7 +340,7 @@ importers:
     devDependencies:
       expo-module-scripts:
         specifier: 'catalog:'
-        version: 56.0.3(@babel/core@7.29.0)(@babel/runtime@7.29.2)(@jest/transform@29.7.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.29.0))(eslint@8.57.1)(expo@56.0.4)(jest-util@29.7.0)(jest@29.7.0(@types/node@25.9.1))(prettier@3.8.3)(react-native@0.85.3(@babel/core@7.29.0)(@react-native/jest-preset@0.85.3(@babel/core@7.29.0)(react@19.2.3))(@types/react@19.2.15)(react@19.2.3))(react-refresh@0.14.2)(react-test-renderer@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
+        version: 56.0.3(@babel/core@7.29.0)(@babel/runtime@7.29.2)(@jest/transform@29.7.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.29.0))(eslint@8.57.1)(expo@56.0.4)(jest-util@29.7.0)(jest@29.7.0(@types/node@25.9.1))(prettier@2.8.8)(react-native@0.85.3(@babel/core@7.29.0)(@react-native/jest-preset@0.85.3(@babel/core@7.29.0)(react@19.2.3))(@types/react@19.2.15)(react@19.2.3))(react-refresh@0.14.2)(react-test-renderer@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
       jest:
         specifier: 'catalog:'
         version: 29.7.0(@types/node@25.9.1)
@@ -343,7 +356,7 @@ importers:
         version: 56.0.8(typescript@5.9.3)
       expo-module-scripts:
         specifier: 'catalog:'
-        version: 56.0.3(@babel/core@7.29.0)(@babel/runtime@7.29.2)(@jest/transform@29.7.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.29.0))(eslint@8.57.1)(expo@56.0.4)(jest-util@29.7.0)(jest@29.7.0(@types/node@25.9.1))(prettier@3.8.3)(react-native@0.85.3(@babel/core@7.29.0)(@react-native/jest-preset@0.85.3(@babel/core@7.29.0)(react@19.2.3))(@types/react@19.2.15)(react@19.2.3))(react-refresh@0.14.2)(react-test-renderer@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
+        version: 56.0.3(@babel/core@7.29.0)(@babel/runtime@7.29.2)(@jest/transform@29.7.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.29.0))(eslint@8.57.1)(expo@56.0.4)(jest-util@29.7.0)(jest@29.7.0(@types/node@25.9.1))(prettier@2.8.8)(react-native@0.85.3(@babel/core@7.29.0)(@react-native/jest-preset@0.85.3(@babel/core@7.29.0)(react@19.2.3))(@types/react@19.2.15)(react@19.2.3))(react-refresh@0.14.2)(react-test-renderer@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
       jest:
         specifier: 'catalog:'
         version: 29.7.0(@types/node@25.9.1)
@@ -359,7 +372,7 @@ importers:
         version: 56.0.8(typescript@5.9.3)
       expo-module-scripts:
         specifier: 'catalog:'
-        version: 56.0.3(@babel/core@7.29.0)(@babel/runtime@7.29.2)(@jest/transform@29.7.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.29.0))(eslint@8.57.1)(expo@56.0.4)(jest-util@29.7.0)(jest@29.7.0(@types/node@25.9.1))(prettier@3.8.3)(react-native@0.85.3(@babel/core@7.29.0)(@react-native/jest-preset@0.85.3(@babel/core@7.29.0)(react@19.2.3))(@types/react@19.2.15)(react@19.2.3))(react-refresh@0.14.2)(react-test-renderer@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
+        version: 56.0.3(@babel/core@7.29.0)(@babel/runtime@7.29.2)(@jest/transform@29.7.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.29.0))(eslint@8.57.1)(expo@56.0.4)(jest-util@29.7.0)(jest@29.7.0(@types/node@25.9.1))(prettier@2.8.8)(react-native@0.85.3(@babel/core@7.29.0)(@react-native/jest-preset@0.85.3(@babel/core@7.29.0)(react@19.2.3))(@types/react@19.2.15)(react@19.2.3))(react-refresh@0.14.2)(react-test-renderer@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
       jest:
         specifier: 'catalog:'
         version: 29.7.0(@types/node@25.9.1)
@@ -378,7 +391,7 @@ importers:
         version: 56.0.8(typescript@5.9.3)
       expo-module-scripts:
         specifier: 'catalog:'
-        version: 56.0.3(@babel/core@7.29.0)(@babel/runtime@7.29.2)(@jest/transform@29.7.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.29.0))(eslint@8.57.1)(expo@56.0.4)(jest-util@29.7.0)(jest@29.7.0(@types/node@25.9.1))(prettier@3.8.3)(react-native@0.85.3(@babel/core@7.29.0)(@react-native/jest-preset@0.85.3(@babel/core@7.29.0)(react@19.2.3))(@types/react@19.2.15)(react@19.2.3))(react-refresh@0.14.2)(react-test-renderer@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
+        version: 56.0.3(@babel/core@7.29.0)(@babel/runtime@7.29.2)(@jest/transform@29.7.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.29.0))(eslint@8.57.1)(expo@56.0.4)(jest-util@29.7.0)(jest@29.7.0(@types/node@25.9.1))(prettier@2.8.8)(react-native@0.85.3(@babel/core@7.29.0)(@react-native/jest-preset@0.85.3(@babel/core@7.29.0)(react@19.2.3))(@types/react@19.2.15)(react@19.2.3))(react-refresh@0.14.2)(react-test-renderer@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
       jest:
         specifier: 'catalog:'
         version: 29.7.0(@types/node@25.9.1)
@@ -391,7 +404,7 @@ importers:
     devDependencies:
       expo-module-scripts:
         specifier: 'catalog:'
-        version: 56.0.3(@babel/core@7.29.0)(@babel/runtime@7.29.2)(@jest/transform@29.7.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.29.0))(eslint@8.57.1)(expo@56.0.4)(jest-util@29.7.0)(jest@29.7.0(@types/node@25.9.1))(prettier@3.8.3)(react-native@0.85.3(@babel/core@7.29.0)(@react-native/jest-preset@0.85.3(@babel/core@7.29.0)(react@19.2.3))(@types/react@19.2.15)(react@19.2.3))(react-refresh@0.14.2)(react-test-renderer@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
+        version: 56.0.3(@babel/core@7.29.0)(@babel/runtime@7.29.2)(@jest/transform@29.7.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.29.0))(eslint@8.57.1)(expo@56.0.4)(jest-util@29.7.0)(jest@29.7.0(@types/node@25.9.1))(prettier@2.8.8)(react-native@0.85.3(@babel/core@7.29.0)(@react-native/jest-preset@0.85.3(@babel/core@7.29.0)(react@19.2.3))(@types/react@19.2.15)(react@19.2.3))(react-refresh@0.14.2)(react-test-renderer@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
       jest:
         specifier: 'catalog:'
         version: 29.7.0(@types/node@25.9.1)
@@ -407,7 +420,7 @@ importers:
         version: 56.0.8(typescript@5.9.3)
       expo-module-scripts:
         specifier: 'catalog:'
-        version: 56.0.3(@babel/core@7.29.0)(@babel/runtime@7.29.2)(@jest/transform@29.7.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.29.0))(eslint@8.57.1)(expo@56.0.4)(jest-util@29.7.0)(jest@29.7.0(@types/node@25.9.1))(prettier@3.8.3)(react-native@0.85.3(@babel/core@7.29.0)(@react-native/jest-preset@0.85.3(@babel/core@7.29.0)(react@19.2.3))(@types/react@19.2.15)(react@19.2.3))(react-refresh@0.14.2)(react-test-renderer@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
+        version: 56.0.3(@babel/core@7.29.0)(@babel/runtime@7.29.2)(@jest/transform@29.7.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.29.0))(eslint@8.57.1)(expo@56.0.4)(jest-util@29.7.0)(jest@29.7.0(@types/node@25.9.1))(prettier@2.8.8)(react-native@0.85.3(@babel/core@7.29.0)(@react-native/jest-preset@0.85.3(@babel/core@7.29.0)(react@19.2.3))(@types/react@19.2.15)(react@19.2.3))(react-refresh@0.14.2)(react-test-renderer@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
       jest:
         specifier: 'catalog:'
         version: 29.7.0(@types/node@25.9.1)
@@ -426,7 +439,7 @@ importers:
         version: 56.0.8(typescript@5.9.3)
       expo-module-scripts:
         specifier: 'catalog:'
-        version: 56.0.3(@babel/core@7.29.0)(@babel/runtime@7.29.2)(@jest/transform@29.7.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.29.0))(eslint@8.57.1)(expo@56.0.4)(jest-util@29.7.0)(jest@29.7.0(@types/node@25.9.1))(prettier@3.8.3)(react-native@0.85.3(@babel/core@7.29.0)(@react-native/jest-preset@0.85.3(@babel/core@7.29.0)(react@19.2.3))(@types/react@19.2.15)(react@19.2.3))(react-refresh@0.14.2)(react-test-renderer@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
+        version: 56.0.3(@babel/core@7.29.0)(@babel/runtime@7.29.2)(@jest/transform@29.7.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.29.0))(eslint@8.57.1)(expo@56.0.4)(jest-util@29.7.0)(jest@29.7.0(@types/node@25.9.1))(prettier@2.8.8)(react-native@0.85.3(@babel/core@7.29.0)(@react-native/jest-preset@0.85.3(@babel/core@7.29.0)(react@19.2.3))(@types/react@19.2.15)(react@19.2.3))(react-refresh@0.14.2)(react-test-renderer@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
       jest:
         specifier: 'catalog:'
         version: 29.7.0(@types/node@25.9.1)
@@ -439,7 +452,7 @@ importers:
     devDependencies:
       expo-module-scripts:
         specifier: 'catalog:'
-        version: 56.0.3(@babel/core@7.29.0)(@babel/runtime@7.29.2)(@jest/transform@29.7.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.29.0))(eslint@8.57.1)(expo@56.0.4)(jest-util@29.7.0)(jest@29.7.0(@types/node@25.9.1))(prettier@3.8.3)(react-native@0.85.3(@babel/core@7.29.0)(@react-native/jest-preset@0.85.3(@babel/core@7.29.0)(react@19.2.3))(@types/react@19.2.15)(react@19.2.3))(react-refresh@0.14.2)(react-test-renderer@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
+        version: 56.0.3(@babel/core@7.29.0)(@babel/runtime@7.29.2)(@jest/transform@29.7.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.29.0))(eslint@8.57.1)(expo@56.0.4)(jest-util@29.7.0)(jest@29.7.0(@types/node@25.9.1))(prettier@2.8.8)(react-native@0.85.3(@babel/core@7.29.0)(@react-native/jest-preset@0.85.3(@babel/core@7.29.0)(react@19.2.3))(@types/react@19.2.15)(react@19.2.3))(react-refresh@0.14.2)(react-test-renderer@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
       jest:
         specifier: 'catalog:'
         version: 29.7.0(@types/node@25.9.1)
@@ -3843,24 +3856,28 @@ packages:
     engines: {node: '>= 12.0.0'}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   lightningcss-linux-arm64-musl@1.32.0:
     resolution: {integrity: sha512-UpQkoenr4UJEzgVIYpI80lDFvRmPVg6oqboNHfoH4CQIfNA+HOrZ7Mo7KZP02dC6LjghPQJeBsvXhJod/wnIBg==}
     engines: {node: '>= 12.0.0'}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   lightningcss-linux-x64-gnu@1.32.0:
     resolution: {integrity: sha512-V7Qr52IhZmdKPVr+Vtw8o+WLsQJYCTd8loIfpDaMRWGUZfBOYEJeyJIkqGIDMZPwPx24pUMfwSxxI8phr/MbOA==}
     engines: {node: '>= 12.0.0'}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   lightningcss-linux-x64-musl@1.32.0:
     resolution: {integrity: sha512-bYcLp+Vb0awsiXg/80uCRezCYHNg1/l3mt0gzHnWV9XP1W5sKa5/TCdGWaR/zBM2PeF/HbsQv/j2URNOiVuxWg==}
     engines: {node: '>= 12.0.0'}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   lightningcss-win32-arm64-msvc@1.32.0:
     resolution: {integrity: sha512-8SbC8BR40pS6baCM8sbtYDSwEVQd4JlFTOlaD3gWGHfThTcABnNDBda6eTZeqbofalIJhFx0qKzgHJmcPTnGdw==}
@@ -8290,7 +8307,7 @@ snapshots:
     dependencies:
       eslint: 8.57.1
 
-  eslint-config-universe@15.2.0(eslint@8.57.1)(prettier@3.8.3)(typescript@5.9.3):
+  eslint-config-universe@15.2.0(eslint@8.57.1)(prettier@2.8.8)(typescript@5.9.3):
     dependencies:
       '@typescript-eslint/eslint-plugin': 8.59.4(@typescript-eslint/parser@8.59.4(eslint@8.57.1)(typescript@5.9.3))(eslint@8.57.1)(typescript@5.9.3)
       '@typescript-eslint/parser': 8.59.4(eslint@8.57.1)(typescript@5.9.3)
@@ -8299,12 +8316,12 @@ snapshots:
       eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.59.4(eslint@8.57.1)(typescript@5.9.3))(eslint@8.57.1)
       eslint-plugin-n: 17.24.0(eslint@8.57.1)(typescript@5.9.3)
       eslint-plugin-node: 11.1.0(eslint@8.57.1)
-      eslint-plugin-prettier: 5.5.5(eslint-config-prettier@9.1.2(eslint@8.57.1))(eslint@8.57.1)(prettier@3.8.3)
+      eslint-plugin-prettier: 5.5.5(eslint-config-prettier@9.1.2(eslint@8.57.1))(eslint@8.57.1)(prettier@2.8.8)
       eslint-plugin-react: 7.37.5(eslint@8.57.1)
       eslint-plugin-react-hooks: 7.1.1(eslint@8.57.1)
       globals: 16.5.0
     optionalDependencies:
-      prettier: 3.8.3
+      prettier: 2.8.8
     transitivePeerDependencies:
       - '@types/eslint'
       - eslint-import-resolver-typescript
@@ -8397,10 +8414,10 @@ snapshots:
       resolve: 1.22.12
       semver: 6.3.1
 
-  eslint-plugin-prettier@5.5.5(eslint-config-prettier@9.1.2(eslint@8.57.1))(eslint@8.57.1)(prettier@3.8.3):
+  eslint-plugin-prettier@5.5.5(eslint-config-prettier@9.1.2(eslint@8.57.1))(eslint@8.57.1)(prettier@2.8.8):
     dependencies:
       eslint: 8.57.1
-      prettier: 3.8.3
+      prettier: 2.8.8
       prettier-linter-helpers: 1.0.1
       synckit: 0.11.12
     optionalDependencies:
@@ -8599,7 +8616,7 @@ snapshots:
       react: 19.2.3
       rtl-detect: 1.1.2
 
-  expo-module-scripts@56.0.3(@babel/core@7.29.0)(@babel/runtime@7.29.2)(@jest/transform@29.7.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.29.0))(eslint@8.57.1)(expo@56.0.4)(jest-util@29.7.0)(jest@29.7.0(@types/node@25.9.1))(prettier@3.8.3)(react-native@0.85.3(@babel/core@7.29.0)(@react-native/jest-preset@0.85.3(@babel/core@7.29.0)(react@19.2.3))(@types/react@19.2.15)(react@19.2.3))(react-refresh@0.14.2)(react-test-renderer@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3):
+  expo-module-scripts@56.0.3(@babel/core@7.29.0)(@babel/runtime@7.29.2)(@jest/transform@29.7.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.29.0))(eslint@8.57.1)(expo@56.0.4)(jest-util@29.7.0)(jest@29.7.0(@types/node@25.9.1))(prettier@2.8.8)(react-native@0.85.3(@babel/core@7.29.0)(@react-native/jest-preset@0.85.3(@babel/core@7.29.0)(react@19.2.3))(@types/react@19.2.15)(react@19.2.3))(react-refresh@0.14.2)(react-test-renderer@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3):
     dependencies:
       '@babel/cli': 7.28.6(@babel/core@7.29.0)
       '@babel/plugin-transform-export-namespace-from': 7.27.1(@babel/core@7.29.0)
@@ -8612,7 +8629,7 @@ snapshots:
       babel-plugin-dynamic-import-node: 2.3.3
       babel-preset-expo: 56.0.12(@babel/core@7.29.0)(@babel/runtime@7.29.2)(expo@56.0.4)(react-refresh@0.14.2)
       commander: 12.1.0
-      eslint-config-universe: 15.2.0(eslint@8.57.1)(prettier@3.8.3)(typescript@5.9.3)
+      eslint-config-universe: 15.2.0(eslint@8.57.1)(prettier@2.8.8)(typescript@5.9.3)
       glob: 13.0.6
       jest-expo: 56.0.4(@babel/core@7.29.0)(@react-native/jest-preset@0.85.3(@babel/core@7.29.0)(react@19.2.3))(expo@56.0.4)(jest@29.7.0(@types/node@25.9.1))(react-native@0.85.3(@babel/core@7.29.0)(@react-native/jest-preset@0.85.3(@babel/core@7.29.0)(react@19.2.3))(@types/react@19.2.15)(react@19.2.3))(react@19.2.3)
       jest-snapshot-prettier: prettier@2.8.8

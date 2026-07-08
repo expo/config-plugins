@@ -21,9 +21,6 @@ contact_links:
   - about: iOS 10 CallKit and Android ConnectionService Framework For React Native
     name: 📦 react-native-callkeep issues
     url: https://github.com/react-native-webrtc/react-native-callkeep/issues
-  - about: Programmatically change the app icon in React Native.
-    name: 📦 react-native-dynamic-app-icon issues
-    url: https://github.com/idearockers/react-native-dynamic-app-icon/issues
   - about: A react native PDF view component, support ios and android platform
     name: 📦 react-native-pdf issues
     url: https://github.com/wonday/react-native-pdf/issues

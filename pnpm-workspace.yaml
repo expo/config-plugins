@@ -2,6 +2,11 @@ packages:
   - 'apps/*'
   - 'packages/*'
 
+allowBuilds:
+  es5-ext: false
+  esbuild: true
+  msgpackr-extract: false
+
 catalog:
   '@expo/config-plugins': ^56
   '@expo/image-utils': ^0.8.12

@@ -1,0 +1,41 @@
+{
+  "name": "@config-plugins/ios-metal-api-validation",
+  "version": "1.0.0",
+  "description": "Config plugin to disable Metal API validation in the generated Xcode scheme",
+  "main": "build/withMetalApiValidation.js",
+  "types": "build/withMetalApiValidation.d.ts",
+  "sideEffects": false,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/expo/config-plugins.git",
+    "directory": "packages/ios-metal-api-validation"
+  },
+  "files": [
+    "build",
+    "app.plugin.js"
+  ],
+  "scripts": {
+    "build": "expo-module build",
+    "clean": "expo-module clean",
+    "lint": "expo-module lint",
+    "test": "expo-module test",
+    "prepublishOnly": "expo-module prepublishOnly",
+    "expo-module": "expo-module"
+  },
+  "keywords": [
+    "react-native",
+    "expo",
+    "config-plugins",
+    "prebuild",
+    "metal",
+    "webgpu"
+  ],
+  "devDependencies": {
+    "expo-module-scripts": "catalog:",
+    "jest": "catalog:"
+  },
+  "peerDependencies": {
+    "expo": "catalog:"
+  }
+}
