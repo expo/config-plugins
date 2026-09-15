@@ -3,12 +3,14 @@ import {
   withAppDelegate,
   withInfoPlist,
 } from "expo/config-plugins";
+import semver from "semver";
 
 export type ExpoUIScenePluginOptions = {
   enabled?: boolean;
 };
 
 const PLUGIN_NAME = "expo-uiscene-lifecycle";
+const MINIMUM_EXPO_VERSION = "57.0.23";
 const ORIGINAL_APP_DELEGATE = "class AppDelegate: ExpoAppDelegate {";
 const SCENE_APP_DELEGATE =
   "class AppDelegate: ExpoAppDelegate, ExpoReactNativeFactoryProvider {";
@@ -33,9 +35,13 @@ const SCENE_MANIFEST = {
 };
 
 function assertSdk57(sdkVersion: string | undefined): void {
-  if (!sdkVersion || !/^57(?:\.|$)/.test(sdkVersion)) {
+  if (
+    !sdkVersion ||
+    semver.gt(MINIMUM_EXPO_VERSION, sdkVersion) ||
+    semver.gte(sdkVersion, "58.0.0")
+  ) {
     throw new Error(
-      `${PLUGIN_NAME} supports Expo SDK 57 only (received ${JSON.stringify(sdkVersion ?? "unknown")}).`,
+      `${PLUGIN_NAME} supports Expo ${MINIMUM_EXPO_VERSION} through SDK 57 only (received ${JSON.stringify(sdkVersion ?? "unknown")}).`,
     );
   }
 }

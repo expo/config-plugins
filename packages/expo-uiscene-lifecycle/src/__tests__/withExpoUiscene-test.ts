@@ -17,7 +17,7 @@ function loadProject() {
   vol.fromJSON(getSdk57ProjectWithoutUISceneLifecycle(), projectRoot);
 }
 
-async function runPlugin(enabled = true, sdkVersion = "57.0.0") {
+async function runPlugin(enabled = true, sdkVersion = "57.0.23") {
   let config: ExpoConfig = {
     name: "HelloWorld",
     slug: "hello-world",
@@ -81,8 +81,9 @@ describe(withExpoUIScene, () => {
     expect(fs.readFileSync(infoPlistPath, "utf8")).toBe(originalInfoPlist);
   });
 
-  it("rejects unsupported SDK versions", async () => {
+  it("requires Expo 57.0.23 or newer", async () => {
     loadProject();
+    await expect(runPlugin(true, "57.0.22")).rejects.toThrow(/57\.0\.23/);
     await expect(runPlugin(true, "58.0.0")).rejects.toThrow(/SDK 57 only/);
   });
 });

@@ -30,11 +30,13 @@
     "expo": ">=57 <58"
   },
   "dependencies": {
-    "@expo/plist": "catalog:"
+    "@expo/plist": "catalog:",
+    "semver": "^7.8.1"
   },
   "devDependencies": {
     "@expo/config-plugins": "catalog:",
     "@types/node": "^22.14.0",
+    "@types/semver": "^7.8.0",
     "expo-module-scripts": "catalog:",
     "jest": "catalog:",
     "memfs": "^3.6.0"

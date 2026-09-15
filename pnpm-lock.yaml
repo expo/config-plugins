@@ -315,6 +315,9 @@ importers:
       expo:
         specifier: '>=57 <58'
         version: 57.0.22(@babel/core@7.29.0)(@expo/dom-webview@56.0.5)(react-native@0.85.3(@babel/core@7.29.0)(@react-native/jest-preset@0.85.3(@babel/core@7.29.0)(react@19.2.3))(@types/react@19.2.15)(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
+      semver:
+        specifier: ^7.8.1
+        version: 7.8.1
     devDependencies:
       '@expo/config-plugins':
         specifier: 'catalog:'
@@ -322,6 +325,9 @@ importers:
       '@types/node':
         specifier: ^22.14.0
         version: 22.20.2
+      '@types/semver':
+        specifier: ^7.8.0
+        version: 7.8.0
       expo-module-scripts:
         specifier: 'catalog:'
         version: 56.0.3(@babel/core@7.29.0)(@babel/runtime@7.29.2)(@jest/transform@29.7.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.29.0))(eslint@8.57.1)(expo@57.0.22)(jest-util@29.7.0)(jest@29.7.0(@types/node@22.20.2))(prettier@3.8.3)(react-native@0.85.3(@babel/core@7.29.0)(@react-native/jest-preset@0.85.3(@babel/core@7.29.0)(react@19.2.3))(@types/react@19.2.15)(react@19.2.3))(react-refresh@0.14.2)(react-test-renderer@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
@@ -2016,6 +2022,9 @@ packages:
 
   '@types/react@19.2.15':
     resolution: {integrity: sha512-eRwcGNHve+E8qtEQSSRl6urh+rFop4v8gm6O8rGv25CodbvFdLjA1vVQ1KkiFE0w0UPOnb8tDiFKL5lp0rtY5Q==}
+
+  '@types/semver@7.8.0':
+    resolution: {integrity: sha512-1mAINjtQCXXeLkJ9ehXkwOcBpqtLxiVtKhpUf83DdRNdQKV0iXZpaHYqRr7nj+wvxuJzoAmAwXI+sCNMv1CzLQ==}
 
   '@types/stack-utils@2.0.3':
     resolution: {integrity: sha512-9aEbYZ3TbYMznPdcdr3SmIrLXwC/AKZXQeCf9Pgao5CKb8CyHuEX5jzWPTkvregvhRJHcpRO6BFoGW9ycaOkYw==}
@@ -8007,6 +8016,8 @@ snapshots:
   '@types/react@19.2.15':
     dependencies:
       csstype: 3.2.3
+
+  '@types/semver@7.8.0': {}
 
   '@types/stack-utils@2.0.3': {}
 
