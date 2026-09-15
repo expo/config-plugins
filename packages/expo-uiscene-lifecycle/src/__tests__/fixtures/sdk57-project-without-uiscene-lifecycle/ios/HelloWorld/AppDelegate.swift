@@ -3,7 +3,7 @@ import React
 import ReactAppDependencyProvider
 
 @main
-class AppDelegate: ExpoAppDelegate, ExpoReactNativeFactoryProvider {
+class AppDelegate: ExpoAppDelegate {
   var window: UIWindow?
 
   var reactNativeDelegate: ExpoReactNativeFactoryDelegate?
@@ -20,15 +20,17 @@ class AppDelegate: ExpoAppDelegate, ExpoReactNativeFactoryProvider {
     reactNativeDelegate = delegate
     reactNativeFactory = factory
 
-    // The window is created and React Native is started by `SceneDelegate` under the
-    // scene-based life cycle (required by the iOS 27 SDK).
+    window = UIWindow(frame: UIScreen.main.bounds)
+    factory.startReactNative(
+      withModuleName: "main",
+      in: window,
+      launchOptions: launchOptions)
+
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 }
 
 class ReactNativeDelegate: ExpoReactNativeFactoryDelegate {
-  // Extension point for config-plugins
-
   override func sourceURL(for bridge: RCTBridge) -> URL? {
     // needed to return the correct URL for expo-dev-client.
     bridge.bundleURL ?? bundleURL()

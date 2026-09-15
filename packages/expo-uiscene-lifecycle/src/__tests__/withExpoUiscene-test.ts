@@ -10,7 +10,7 @@ import { vol } from "memfs";
 import path from "path";
 
 import withExpoUIScene, { type ExpoUIScenePluginOptions } from "..";
-import getSdk57Project from "./fixtures/sdk57Project";
+import getSdk57ProjectWithoutUISceneLifecycle from "./fixtures/sdk57ProjectWithoutUISceneLifecycle";
 
 jest.mock("fs");
 
@@ -23,7 +23,7 @@ const generatedDirectory = "/app/ios/HelloWorld/ExpoUIScene";
 type ProjectMutation = (files: Record<string, string | Buffer>) => void;
 
 function loadProject(mutate?: ProjectMutation) {
-  const files = getSdk57Project();
+  const files = getSdk57ProjectWithoutUISceneLifecycle();
   mutate?.(files);
   vol.fromJSON(files, projectRoot);
 }
