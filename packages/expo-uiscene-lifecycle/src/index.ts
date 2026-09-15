@@ -21,6 +21,7 @@ const LEGACY_STARTUP = `    window = UIWindow(frame: UIScreen.main.bounds)
       in: window,
       launchOptions: launchOptions)
 `;
+const LEGACY_STARTUP_BLOCK = `#if os(iOS) || os(tvOS)\n${LEGACY_STARTUP}#endif\n`;
 
 const SCENE_MANIFEST = {
   UIApplicationSupportsMultipleScenes: false,
@@ -34,15 +35,23 @@ const SCENE_MANIFEST = {
   },
 };
 
-function assertSdk57(sdkVersion: string | undefined): void {
+export function assertSdk57(installedExpoVersion: string | undefined): void {
   if (
-    !sdkVersion ||
-    semver.gt(MINIMUM_EXPO_VERSION, sdkVersion) ||
-    semver.gte(sdkVersion, "58.0.0")
+    !installedExpoVersion ||
+    semver.gt(MINIMUM_EXPO_VERSION, installedExpoVersion) ||
+    semver.gte(installedExpoVersion, "58.0.0")
   ) {
     throw new Error(
-      `${PLUGIN_NAME} supports Expo ${MINIMUM_EXPO_VERSION} through SDK 57 only (received ${JSON.stringify(sdkVersion ?? "unknown")}).`,
+      `${PLUGIN_NAME} supports Expo ${MINIMUM_EXPO_VERSION} through SDK 57 only (installed: ${JSON.stringify(installedExpoVersion ?? "unknown")}).`,
     );
+  }
+}
+
+function getInstalledExpoVersion(): string | undefined {
+  try {
+    return (require("expo/package.json") as { version?: string }).version;
+  } catch {
+    return undefined;
   }
 }
 
@@ -61,7 +70,7 @@ function updateAppDelegate(contents: string, enabled: boolean): string {
   }
 
   if (enabled) {
-    const startup = `\n${LEGACY_STARTUP}`;
+    const startup = `\n${LEGACY_STARTUP_BLOCK}`;
     if (
       !contents.includes(ORIGINAL_APP_DELEGATE) ||
       !contents.includes(startup)
@@ -79,7 +88,7 @@ function updateAppDelegate(contents: string, enabled: boolean): string {
     .replace(SCENE_APP_DELEGATE, ORIGINAL_APP_DELEGATE)
     .replace(
       `${FACTORY_ASSIGNMENT}\n\n`,
-      `${FACTORY_ASSIGNMENT}\n\n${LEGACY_STARTUP}\n`,
+      `${FACTORY_ASSIGNMENT}\n\n${LEGACY_STARTUP_BLOCK}\n`,
     );
 }
 
@@ -87,7 +96,7 @@ const withExpoUIScene: ConfigPlugin<ExpoUIScenePluginOptions | void> = (
   config,
   options,
 ) => {
-  assertSdk57(config.sdkVersion);
+  assertSdk57(getInstalledExpoVersion());
   const enabled = options?.enabled !== false;
 
   config = withAppDelegate(config, (config) => {

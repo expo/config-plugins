@@ -4,10 +4,13 @@ import { compileModsAsync } from "expo/config-plugins";
 import fs from "fs";
 import { vol } from "memfs";
 
-import withExpoUIScene from "..";
+import withExpoUIScene, { assertSdk57 } from "..";
 import getSdk57ProjectWithoutUISceneLifecycle from "./fixtures/sdk57ProjectWithoutUISceneLifecycle";
 
 jest.mock("fs");
+jest.mock("expo/package.json", () => ({ version: "57.0.23" }), {
+  virtual: true,
+});
 
 const projectRoot = "/app";
 const appDelegatePath = "/app/ios/HelloWorld/AppDelegate.swift";
@@ -17,12 +20,11 @@ function loadProject() {
   vol.fromJSON(getSdk57ProjectWithoutUISceneLifecycle(), projectRoot);
 }
 
-async function runPlugin(enabled = true, sdkVersion = "57.0.23") {
+async function runPlugin(enabled = true) {
   let config: ExpoConfig = {
     name: "HelloWorld",
     slug: "hello-world",
-    sdkVersion,
-    _internal: { projectRoot },
+    _internal: { projectRoot } as ExpoConfig["_internal"],
   };
   config = withExpoUIScene(config, { enabled });
   return compileModsAsync(config, {
@@ -42,17 +44,21 @@ describe(withExpoUIScene, () => {
 
     await runPlugin();
 
-    expect(fs.readFileSync(appDelegatePath, "utf8")).toBe(
+    const updatedAppDelegate = fs.readFileSync(appDelegatePath, "utf8");
+    expect(updatedAppDelegate).toBe(
       originalAppDelegate
         .replace(
           "class AppDelegate: ExpoAppDelegate {",
           "class AppDelegate: ExpoAppDelegate, ExpoReactNativeFactoryProvider {",
         )
         .replace(
-          `\n    window = UIWindow(frame: UIScreen.main.bounds)\n    factory.startReactNative(\n      withModuleName: "main",\n      in: window,\n      launchOptions: launchOptions)\n`,
+          `\n#if os(iOS) || os(tvOS)\n    window = UIWindow(frame: UIScreen.main.bounds)\n    factory.startReactNative(\n      withModuleName: "main",\n      in: window,\n      launchOptions: launchOptions)\n#endif\n`,
           "",
         ),
     );
+    expect(updatedAppDelegate).not.toContain("#if os(iOS) || os(tvOS)");
+    expect(updatedAppDelegate).not.toContain("#endif");
+
     expect(plist.parse(fs.readFileSync(infoPlistPath, "utf8"))).toEqual({
       ...plist.parse(originalInfoPlist),
       UIApplicationSceneManifest: {
@@ -80,11 +86,26 @@ describe(withExpoUIScene, () => {
     expect(fs.readFileSync(appDelegatePath, "utf8")).toBe(originalAppDelegate);
     expect(fs.readFileSync(infoPlistPath, "utf8")).toBe(originalInfoPlist);
   });
+});
 
-  it("requires Expo >=57.0.23 <58.0.0", async () => {
-    loadProject();
-    await expect(runPlugin(true, "57.0.23")).resolves.toBeDefined();
-    await expect(runPlugin(true, "57.0.22")).rejects.toThrow(/57\.0\.23/);
-    await expect(runPlugin(true, "58.0.0")).rejects.toThrow(/SDK 57 only/);
+describe(assertSdk57, () => {
+  it("accepts 57.0.23 through <58.0.0", () => {
+    expect(() => assertSdk57("57.0.23")).not.toThrow();
+    expect(() => assertSdk57("57.1.4")).not.toThrow();
+    expect(() => assertSdk57("57.99.99")).not.toThrow();
+  });
+
+  it("rejects anything below 57.0.23, including other 57.0.x patches", () => {
+    expect(() => assertSdk57("57.0.0")).toThrow(/57\.0\.23/);
+    expect(() => assertSdk57("57.0.22")).toThrow(/57\.0\.23/);
+  });
+
+  it("rejects SDK 58 and newer", () => {
+    expect(() => assertSdk57("58.0.0")).toThrow(/SDK 57 only/);
+    expect(() => assertSdk57("59.0.0")).toThrow(/SDK 57 only/);
+  });
+
+  it("rejects a missing/undefined version", () => {
+    expect(() => assertSdk57(undefined)).toThrow(/SDK 57 only/);
   });
 });
