@@ -1,29 +1,43 @@
-import path from "path";
+import plist from "@expo/plist";
 
-const fs = jest.requireActual("fs") as typeof import("fs");
-const projectRoot = path.join(
-  __dirname,
-  "sdk57-project-without-uiscene-lifecycle",
-);
+const appDelegate = `internal import Expo
+import React
+import ReactAppDependencyProvider
 
-export default function getSdk57ProjectWithoutUISceneLifecycle(): Record<
-  string,
-  string
-> {
-  const files: Record<string, string> = {};
+@main
+class AppDelegate: ExpoAppDelegate {
+  var window: UIWindow?
 
-  function readEntry(relativePath: string) {
-    const absolutePath = path.join(projectRoot, relativePath);
-    if (fs.statSync(absolutePath).isDirectory()) {
-      for (const child of fs.readdirSync(absolutePath)) {
-        readEntry(path.join(relativePath, child));
-      }
-      return;
-    }
-    files[relativePath] = fs.readFileSync(absolutePath, "utf8");
+  var reactNativeDelegate: ExpoReactNativeFactoryDelegate?
+  var reactNativeFactory: RCTReactNativeFactory?
+
+  public override func application(
+    _ application: UIApplication,
+    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
+  ) -> Bool {
+    let delegate = ReactNativeDelegate()
+    let factory = ExpoReactNativeFactory(delegate: delegate)
+    delegate.dependencyProvider = RCTAppDependencyProvider()
+
+    reactNativeDelegate = delegate
+    reactNativeFactory = factory
+
+    window = UIWindow(frame: UIScreen.main.bounds)
+    factory.startReactNative(
+      withModuleName: "main",
+      in: window,
+      launchOptions: launchOptions)
+
+    return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
+}
+`;
 
-  readEntry("ios");
-
-  return files;
+export default function getSdk57ProjectWithoutUISceneLifecycle(): Record<string, string> {
+  return {
+    "ios/HelloWorld/AppDelegate.swift": appDelegate,
+    "ios/HelloWorld/Info.plist": plist.build({
+      CFBundleIdentifier: "dev.expo.HelloWorld",
+    }),
+  };
 }
