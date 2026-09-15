@@ -1,6 +1,6 @@
 {
   "name": "@config-plugins/expo-uiscene-lifecycle",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Experimental config plugin for adopting the UIKit scene lifecycle in Expo SDK 57 apps.",
   "author": "650 Industries, Inc.",
   "license": "MIT",
