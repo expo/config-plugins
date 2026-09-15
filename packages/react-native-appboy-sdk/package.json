@@ -1,0 +1,39 @@
+{
+  "name": "@config-plugins/react-native-appboy-sdk",
+  "version": "0.0.0",
+  "description": "Config plugin for react-native-appboy-sdk package",
+  "main": "build/withReactNativeAppboySdk.js",
+  "types": "build/withReactNativeAppboySdk.d.ts",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/expo/config-plugins.git",
+    "directory": "packages/react-native-appboy-sdk"
+  },
+  "scripts": {
+    "build": "expo-module build",
+    "clean": "expo-module clean",
+    "lint": "expo-module lint",
+    "test": "expo-module test",
+    "prepare": "expo-module prepare",
+    "prepublishOnly": "expo-module prepublishOnly",
+    "expo-module": "expo-module"
+  },
+  "keywords": [
+    "react",
+    "expo",
+    "config-plugins",
+    "prebuild",
+    "react-native-appboy-sdk",
+    "expo-42"
+  ],
+  "jest": {
+    "preset": "expo-module-scripts"
+  },
+  "dependencies": {
+    "@expo/config-plugins": "^4.1.0"
+  },
+  "devDependencies": {
+    "expo-module-scripts": "^2.0.0"
+  }
+}
