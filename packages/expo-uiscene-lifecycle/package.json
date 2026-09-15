@@ -27,7 +27,7 @@
     "uiscene"
   ],
   "peerDependencies": {
-    "expo": ">=57 <58"
+    "expo": ">=57.0.23 <58.0.0"
   },
   "dependencies": {
     "@expo/plist": "catalog:",
