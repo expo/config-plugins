@@ -2,10 +2,7 @@ import plist from "@expo/plist";
 import path from "path";
 
 const fs = jest.requireActual("fs") as typeof import("fs");
-const templateRoot = path.join(
-  __dirname,
-  "sdk57-template",
-);
+const templateRoot = path.join(__dirname, "sdk57-template");
 
 const sdk57AppDelegate = `internal import Expo
 import React
