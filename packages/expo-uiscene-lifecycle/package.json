@@ -1,0 +1,42 @@
+{
+  "name": "@config-plugins/expo-uiscene-lifecycle",
+  "version": "0.1.0",
+  "description": "Experimental config plugin for adopting the UIKit scene lifecycle in Expo SDK 57 apps.",
+  "author": "650 Industries, Inc.",
+  "license": "MIT",
+  "homepage": "https://github.com/expo/config-plugins/tree/main/packages/expo-uiscene-lifecycle",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "app.plugin.js",
+    "build"
+  ],
+  "scripts": {
+    "build": "expo-module build",
+    "clean": "expo-module clean",
+    "lint": "expo-module lint",
+    "test": "expo-module test",
+    "prepublishOnly": "expo-module prepublishOnly",
+    "expo-module": "expo-module"
+  },
+  "keywords": [
+    "expo",
+    "config-plugin",
+    "ios",
+    "uiscene"
+  ],
+  "peerDependencies": {
+    "expo": ">=57 <58"
+  },
+  "dependencies": {
+    "@expo/plist": "catalog:"
+  },
+  "devDependencies": {
+    "@expo/config-plugins": "catalog:",
+    "@types/node": "^22.14.0",
+    "expo-module-scripts": "catalog:",
+    "jest": "catalog:",
+    "memfs": "^3.6.0"
+  }
+}
