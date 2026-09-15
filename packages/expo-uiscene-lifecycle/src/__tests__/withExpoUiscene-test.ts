@@ -81,8 +81,9 @@ describe(withExpoUIScene, () => {
     expect(fs.readFileSync(infoPlistPath, "utf8")).toBe(originalInfoPlist);
   });
 
-  it("requires Expo 57.0.23 or newer", async () => {
+  it("requires Expo >=57.0.23 <58.0.0", async () => {
     loadProject();
+    await expect(runPlugin(true, "57.0.23")).resolves.toBeDefined();
     await expect(runPlugin(true, "57.0.22")).rejects.toThrow(/57\.0\.23/);
     await expect(runPlugin(true, "58.0.0")).rejects.toThrow(/SDK 57 only/);
   });
