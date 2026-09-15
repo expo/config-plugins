@@ -69,10 +69,7 @@ const withAndroidManifestService: ConfigPlugin = (config) => {
           "android:label": "Wazo",
           "android:permission":
             "android.permission.BIND_TELECOM_CONNECTION_SERVICE",
-          // Use this to target android >= 11
-          // "android:foregroundServiceType": "camera|microphone",
-          // For android < 11
-          "android:foregroundServiceType": "phoneCall",
+          "android:foregroundServiceType": "camera|microphone",
         },
         "intent-filter": [
           {
