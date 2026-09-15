@@ -56,7 +56,10 @@ function updateAppDelegate(contents: string, enabled: boolean): string {
 
   if (enabled) {
     const startup = `\n${LEGACY_STARTUP}`;
-    if (!contents.includes(ORIGINAL_APP_DELEGATE) || !contents.includes(startup)) {
+    if (
+      !contents.includes(ORIGINAL_APP_DELEGATE) ||
+      !contents.includes(startup)
+    ) {
       throw new Error(
         `${PLUGIN_NAME} requires the standard Expo SDK 57 Swift AppDelegate.`,
       );
@@ -83,9 +86,14 @@ const withExpoUIScene: ConfigPlugin<ExpoUIScenePluginOptions | void> = (
 
   config = withAppDelegate(config, (config) => {
     if (config.modResults.language !== "swift") {
-      throw new Error(`${PLUGIN_NAME} requires the standard Expo SDK 57 Swift AppDelegate.`);
+      throw new Error(
+        `${PLUGIN_NAME} requires the standard Expo SDK 57 Swift AppDelegate.`,
+      );
     }
-    config.modResults.contents = updateAppDelegate(config.modResults.contents, enabled);
+    config.modResults.contents = updateAppDelegate(
+      config.modResults.contents,
+      enabled,
+    );
     return config;
   });
 

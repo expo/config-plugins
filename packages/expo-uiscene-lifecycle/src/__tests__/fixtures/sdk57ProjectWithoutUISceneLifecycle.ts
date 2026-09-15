@@ -33,7 +33,10 @@ class AppDelegate: ExpoAppDelegate {
 }
 `;
 
-export default function getSdk57ProjectWithoutUISceneLifecycle(): Record<string, string> {
+export default function getSdk57ProjectWithoutUISceneLifecycle(): Record<
+  string,
+  string
+> {
   return {
     "ios/HelloWorld/AppDelegate.swift": appDelegate,
     "ios/HelloWorld/Info.plist": plist.build({
