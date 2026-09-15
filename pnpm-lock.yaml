@@ -312,9 +312,6 @@ importers:
       '@expo/plist':
         specifier: 'catalog:'
         version: 0.5.4
-      expo:
-        specifier: '>=57 <58'
-        version: 57.0.22(@babel/core@7.29.0)(@expo/dom-webview@56.0.5)(react-native@0.85.3(@babel/core@7.29.0)(@react-native/jest-preset@0.85.3(@babel/core@7.29.0)(react@19.2.3))(@types/react@19.2.15)(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
       semver:
         specifier: ^7.8.1
         version: 7.8.1
