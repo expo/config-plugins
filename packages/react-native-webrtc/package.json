@@ -2,9 +2,10 @@
   "name": "@config-plugins/react-native-webrtc",
   "version": "15.0.3",
   "description": "Config plugin to setup react-native-webrtc on prebuild",
-  "main": "build/withWebRTC.js",
-  "types": "build/withWebRTC.d.ts",
-  "sideEffects": false,
+  "keywords": [
+    "expo",
+    "react-native"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -15,17 +16,16 @@
     "build",
     "app.plugin.js"
   ],
+  "sideEffects": false,
+  "main": "build/withWebRTC.js",
+  "types": "build/withWebRTC.d.ts",
   "scripts": {
     "build": "tsc",
     "clean": "rm -rf build",
-    "lint": "eslint src",
+    "lint": "oxlint --config oxlint.config.mjs .",
     "test": "jest",
     "prepublishOnly": "pnpm run clean && pnpm run build"
   },
-  "keywords": [
-    "react-native",
-    "expo"
-  ],
   "devDependencies": {
     "jest": "catalog:"
   },

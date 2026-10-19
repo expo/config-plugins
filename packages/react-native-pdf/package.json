@@ -2,9 +2,11 @@
   "name": "@config-plugins/react-native-pdf",
   "version": "14.0.3",
   "description": "Config plugin to auto configure react-native-pdf on prebuild",
-  "main": "build/withPdf.js",
-  "types": "build/withPdf.d.ts",
-  "sideEffects": false,
+  "keywords": [
+    "expo",
+    "react-native",
+    "react-native-pdf"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -15,18 +17,16 @@
     "build",
     "app.plugin.js"
   ],
+  "sideEffects": false,
+  "main": "build/withPdf.js",
+  "types": "build/withPdf.d.ts",
   "scripts": {
     "build": "tsc",
     "clean": "rm -rf build",
-    "lint": "eslint src",
+    "lint": "oxlint --config oxlint.config.mjs .",
     "test": "jest",
     "prepublishOnly": "pnpm run clean && pnpm run build"
   },
-  "keywords": [
-    "react-native-pdf",
-    "react-native",
-    "expo"
-  ],
   "devDependencies": {
     "@expo/config-plugins": "catalog:",
     "jest": "catalog:"

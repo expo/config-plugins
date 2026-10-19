@@ -1,5 +1,5 @@
-import { XcodeProject } from "@bacons/xcode";
-import * as xcodeParse from "@bacons/xcode/json";
+import { XcodeProject } from '@bacons/xcode';
+import * as xcodeParse from '@bacons/xcode/json';
 import {
   type Mod,
   BaseMods,
@@ -7,17 +7,14 @@ import {
   createRunOncePlugin,
   IOSConfig,
   withMod,
-} from "expo/config-plugins";
-import * as fs from "fs";
+} from 'expo/config-plugins';
+import * as fs from 'fs';
 
-const customModName = "xcodeProjectBeta-apple-settings";
+const customModName = 'xcodeProjectBeta-apple-settings';
 
-export const withXcodeProjectBeta: ConfigPlugin<Mod<XcodeProject>> = (
-  config,
-  action,
-) => {
+export const withXcodeProjectBeta: ConfigPlugin<Mod<XcodeProject>> = (config, action) => {
   return withMod(config, {
-    platform: "ios",
+    platform: 'ios',
     mod: customModName,
     action,
   });
@@ -25,7 +22,7 @@ export const withXcodeProjectBeta: ConfigPlugin<Mod<XcodeProject>> = (
 
 const withXcodeProjectBetaBaseModInternal: ConfigPlugin = (config) => {
   return BaseMods.withGeneratedBaseMods(config, {
-    platform: "ios",
+    platform: 'ios',
     saveToInternal: true,
     skipEmptyMod: false,
     providers: {
@@ -40,9 +37,7 @@ const withXcodeProjectBetaBaseModInternal: ConfigPlugin = (config) => {
           try {
             return XcodeProject.open(filePath);
           } catch (error: any) {
-            throw new Error(
-              `Failed to parse the Xcode project: "${filePath}". ${error.message}}`,
-            );
+            throw new Error(`Failed to parse the Xcode project: "${filePath}". ${error.message}}`);
           }
         },
         async write(filePath, { modResults, modRequest: { introspect } }) {
@@ -61,5 +56,5 @@ const withXcodeProjectBetaBaseModInternal: ConfigPlugin = (config) => {
 
 export const withXcodeProjectBetaBaseMod = createRunOncePlugin(
   withXcodeProjectBetaBaseModInternal,
-  "withXcodeProjectBetaBaseMod",
+  'withXcodeProjectBetaBaseMod'
 );

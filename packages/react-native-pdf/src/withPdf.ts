@@ -1,30 +1,28 @@
-import { mergeContents } from "@expo/config-plugins/build/utils/generateCode";
+import { mergeContents } from '@expo/config-plugins/build/utils/generateCode';
 import {
   ConfigPlugin,
   createRunOncePlugin,
   WarningAggregator,
   withAppBuildGradle,
-} from "expo/config-plugins";
+} from 'expo/config-plugins';
 
 let pkg: { name: string; version?: string } = {
-  name: "react-native-pdf",
+  name: 'react-native-pdf',
 };
 try {
-  pkg = require("react-native-pdf/package.json");
+  pkg = require('react-native-pdf/package.json');
 } catch {
   // empty catch block
 }
 
 export const withAndroidPackagingOptions: ConfigPlugin = (config) => {
   return withAppBuildGradle(config, (config) => {
-    if (config.modResults.language === "groovy") {
-      config.modResults.contents = addAndroidPackagingOptions(
-        config.modResults.contents,
-      ).contents;
+    if (config.modResults.language === 'groovy') {
+      config.modResults.contents = addAndroidPackagingOptions(config.modResults.contents).contents;
     } else {
       WarningAggregator.addWarningAndroid(
-        "@config-plugins/react-native-pdf",
-        `Cannot automatically configure app build.gradle if it's not groovy`,
+        '@config-plugins/react-native-pdf',
+        `Cannot automatically configure app build.gradle if it's not groovy`
       );
     }
     return config;
@@ -33,13 +31,13 @@ export const withAndroidPackagingOptions: ConfigPlugin = (config) => {
 
 export function addAndroidPackagingOptions(src: string) {
   return mergeContents({
-    tag: "react-native-pdf-packaging-options",
+    tag: 'react-native-pdf-packaging-options',
     src,
     newSrc: packagingOptionsContents,
     anchor: /android(?:\s+)?\{/,
     // Inside the android block.
     offset: 1,
-    comment: "//",
+    comment: '//',
   });
 }
 

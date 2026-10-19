@@ -3,17 +3,17 @@
 
 /** @type {import('jest').Config} */
 module.exports = {
-  testEnvironment: "node",
-  testRegex: "/__tests__/.*(test|spec)\\.[jt]sx?$",
+  testEnvironment: 'node',
+  testRegex: '/__tests__/.*(test|spec)\\.[jt]sx?$',
   transform: {
-    "^.+\\.[jt]sx?$": [
-      require.resolve("@swc/jest"),
+    '^.+\\.[jt]sx?$': [
+      require.resolve('@swc/jest'),
       {
         jsc: {
-          parser: { syntax: "typescript", dynamicImport: true },
-          target: "es2022",
+          parser: { syntax: 'typescript', dynamicImport: true },
+          target: 'es2022',
         },
-        module: { type: "commonjs" },
+        module: { type: 'commonjs' },
       },
     ],
   },

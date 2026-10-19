@@ -2,29 +2,29 @@
   "name": "@config-plugins/react-native-siri-shortcut",
   "version": "13.0.3",
   "description": "Config plugin for react-native-siri-shortcut package",
-  "main": "build/withReactNativeSiriShortcut.js",
-  "types": "build/withReactNativeSiriShortcut.d.ts",
-  "sideEffects": false,
+  "keywords": [
+    "config-plugins",
+    "expo",
+    "prebuild",
+    "react",
+    "react-native-siri-shortcut"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/expo/config-plugins.git",
     "directory": "packages/react-native-siri-shortcut"
   },
+  "sideEffects": false,
+  "main": "build/withReactNativeSiriShortcut.js",
+  "types": "build/withReactNativeSiriShortcut.d.ts",
   "scripts": {
     "build": "tsc",
     "clean": "rm -rf build",
-    "lint": "eslint src",
+    "lint": "oxlint --config oxlint.config.mjs .",
     "test": "jest",
     "prepublishOnly": "pnpm run clean && pnpm run build"
   },
-  "keywords": [
-    "react",
-    "expo",
-    "config-plugins",
-    "prebuild",
-    "react-native-siri-shortcut"
-  ],
   "dependencies": {
     "glob": "11.1.0"
   },

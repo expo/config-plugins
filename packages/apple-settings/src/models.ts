@@ -11,7 +11,7 @@ import {
   ScalarType,
   SettingsPlist,
   UserInterfaceIdiom,
-} from "./schema/SettingsPlist";
+} from './schema/SettingsPlist';
 
 export function page(specs: AnyPreferenceSpecifier[]): { page: SettingsPlist } {
   return {
@@ -31,7 +31,7 @@ export function ChildPane({
   idioms?: UserInterfaceIdiom[];
 }): PSChildPaneSpecifier {
   const obj: PSChildPaneSpecifier = {
-    Type: "PSChildPaneSpecifier",
+    Type: 'PSChildPaneSpecifier',
     Title: title,
     File: file ?? title,
   };
@@ -57,7 +57,7 @@ export function Title({
   items?: { title: string; value: string }[];
 }): PSTitleValueSpecifier {
   const obj: PSTitleValueSpecifier = {
-    Type: "PSTitleValueSpecifier",
+    Type: 'PSTitleValueSpecifier',
     Title: title,
     DefaultValue: value,
     Key: key,
@@ -82,7 +82,7 @@ export function Group({
   idioms?: UserInterfaceIdiom[];
 }): PSGroupSpecifier {
   const obj: PSGroupSpecifier = {
-    Type: "PSGroupSpecifier",
+    Type: 'PSGroupSpecifier',
     Title: title,
     FooterText: footerText,
   };
@@ -107,13 +107,13 @@ export function TextField({
   title?: string;
   key: string;
   value?: string;
-  keyboardType?: PSTextFieldSpecifier["KeyboardType"];
-  autoCapitalize?: PSTextFieldSpecifier["AutocapitalizationType"];
-  autoCorrect?: PSTextFieldSpecifier["AutocorrectionType"];
+  keyboardType?: PSTextFieldSpecifier['KeyboardType'];
+  autoCapitalize?: PSTextFieldSpecifier['AutocapitalizationType'];
+  autoCorrect?: PSTextFieldSpecifier['AutocorrectionType'];
   idioms?: UserInterfaceIdiom[];
 }): PSTextFieldSpecifier {
   const obj: PSTextFieldSpecifier = {
-    Type: "PSTextFieldSpecifier",
+    Type: 'PSTextFieldSpecifier',
     Title: title,
     Key: key,
     DefaultValue: value,
@@ -147,7 +147,7 @@ export function Slider({
   idioms?: UserInterfaceIdiom[];
 }): PSSliderSpecifier {
   const obj: PSSliderSpecifier = {
-    Type: "PSSliderSpecifier",
+    Type: 'PSSliderSpecifier',
     DefaultValue: value,
     MaximumValue: maximumValue,
     MinimumValue: minimumValue,
@@ -174,7 +174,7 @@ export function Switch({
   idioms?: UserInterfaceIdiom[];
 }): PSToggleSwitchSpecifier {
   const obj: PSToggleSwitchSpecifier = {
-    Type: "PSToggleSwitchSpecifier",
+    Type: 'PSToggleSwitchSpecifier',
     Title: title,
     Key: key,
     DefaultValue: value,
@@ -207,7 +207,7 @@ export function RadioGroup({
   displaySortedByTitle?: boolean;
 }): PSRadioGroupSpecifier {
   const obj: PSRadioGroupSpecifier = {
-    Type: "PSRadioGroupSpecifier",
+    Type: 'PSRadioGroupSpecifier',
     Title: title,
     Key: key,
     FooterText: footerText,
@@ -239,14 +239,14 @@ export function MultiValue({
   idioms?: UserInterfaceIdiom[];
 }): PSMultiValueSpecifier {
   const obj: PSMultiValueSpecifier = {
-    Type: "PSMultiValueSpecifier",
+    Type: 'PSMultiValueSpecifier',
     Title: title,
     Key: key,
     DisplaySortedByTitle: displaySortedByTitle,
     DefaultValue: value,
     Titles: items.map(({ title }) => title),
     Values: items.map(({ value }) => value),
-    ShortTitles: items.map(({ short }) => short ?? ""),
+    ShortTitles: items.map(({ short }) => short ?? ''),
   };
 
   if (idioms) {

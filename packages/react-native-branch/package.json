@@ -2,12 +2,14 @@
   "name": "@config-plugins/react-native-branch",
   "version": "13.0.3",
   "description": "Config plugin to auto configure react-native-branch on prebuild",
-  "author": "650 Industries, Inc.",
-  "license": "MIT",
+  "keywords": [
+    "expo",
+    "react-native",
+    "react-native-branch"
+  ],
   "homepage": "https://docs.expo.dev/versions/latest/sdk/branch/",
-  "main": "build/withBranch.js",
-  "types": "build/withBranch.d.ts",
-  "sideEffects": false,
+  "license": "MIT",
+  "author": "650 Industries, Inc.",
   "files": [
     "android",
     "app.plugin.js",
@@ -15,18 +17,19 @@
     "expo-module.config.json",
     "ios"
   ],
+  "sideEffects": false,
+  "main": "build/withBranch.js",
+  "types": "build/withBranch.d.ts",
   "scripts": {
     "build": "tsc",
     "clean": "rm -rf build",
-    "lint": "eslint src",
+    "lint": "oxlint --config oxlint.config.mjs .",
     "test": "jest",
     "prepublishOnly": "pnpm run clean && pnpm run build"
   },
-  "keywords": [
-    "expo",
-    "react-native",
-    "react-native-branch"
-  ],
+  "dependencies": {
+    "glob": "^11.0.3"
+  },
   "devDependencies": {
     "@expo/config-plugins": "catalog:",
     "jest": "catalog:"
@@ -34,8 +37,5 @@
   "peerDependencies": {
     "expo": "catalog:"
   },
-  "upstreamPackage": "react-native-branch",
-  "dependencies": {
-    "glob": "^11.0.3"
-  }
+  "upstreamPackage": "react-native-branch"
 }

@@ -9,7 +9,7 @@ https://github.com/expo/config-plugins/assets/9664363/8be449b3-9aab-440c-b736-b4
 Ensure you use versions that work together!
 
 | `expo` | `@config-plugins/apple-settings` |
-|--------|----------------------------------|
+| ------ | -------------------------------- |
 | 56.0.0 | ^8.0.0                           |
 | 55.0.0 | ^7.0.0                           |
 | 54.0.0 | ^6.0.0                           |
@@ -43,7 +43,7 @@ const {
   Slider,
   ChildPane,
   Group,
-} = require("@config-plugins/apple-settings");
+} = require('@config-plugins/apple-settings');
 
 module.exports = (config) => {
   return withAppleSettings(config, {
@@ -54,7 +54,7 @@ module.exports = (config) => {
         // The Apple locale code. This will be used to generate the .strings file.
         en: {
           // Name of the localized key.
-          Name: "Text Field",
+          Name: 'Text Field',
         },
       },
       // The page object is required. It will be used to generate the .plist file.
@@ -65,25 +65,25 @@ module.exports = (config) => {
           // Helper models can be used to generate the UI elements using a syntax that's
           // similar to React Native.
           TextField({
-            title: "Name",
-            key: "name_preference",
-            value: "",
-            keyboardType: "Alphabet",
-            autoCapitalize: "None",
-            autoCorrect: "No",
+            title: 'Name',
+            key: 'name_preference',
+            value: '',
+            keyboardType: 'Alphabet',
+            autoCapitalize: 'None',
+            autoCorrect: 'No',
           }),
           Switch({
-            title: "Enabled",
-            key: "enabled_preference",
+            title: 'Enabled',
+            key: 'enabled_preference',
             value: true,
           }),
           Slider({
-            key: "slider_preference",
+            key: 'slider_preference',
             value: 0.5,
           }),
           // Child panes can be used to create nested pages.
           ChildPane({
-            title: "About",
+            title: 'About',
           }),
         ],
       },
@@ -92,7 +92,7 @@ module.exports = (config) => {
       page: {
         PreferenceSpecifiers: [
           Group({
-            title: "About Info",
+            title: 'About Info',
           }),
         ],
       },
@@ -117,7 +117,7 @@ const {
   // Group,
   // MultiValue,
   // RadioGroup,
-} = require("@config-plugins/apple-settings");
+} = require('@config-plugins/apple-settings');
 ```
 
 ## Types
@@ -143,7 +143,7 @@ import {
   AnyPreferenceSpecifier,
   UserInterfaceIdiom,
   ScalarType,
-} from "@config-plugins/apple-settings";
+} from '@config-plugins/apple-settings';
 ```
 
 ## Dynamic usage

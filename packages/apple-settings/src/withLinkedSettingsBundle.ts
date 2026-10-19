@@ -3,20 +3,20 @@ import {
   PBXResourcesBuildPhase,
   PBXNativeTarget,
   XcodeProject,
-} from "@bacons/xcode";
-import { type ConfigPlugin } from "expo/config-plugins";
-import path from "path";
+} from '@bacons/xcode';
+import { type ConfigPlugin } from 'expo/config-plugins';
+import path from 'path';
 
-import { withXcodeProjectBeta } from "./base-mods/withXcparse";
+import { withXcodeProjectBeta } from './base-mods/withXcparse';
 
 function getMainAppTarget(project: XcodeProject): PBXNativeTarget {
   const mainAppTarget = project.rootObject.props.targets.filter((target) => {
     if (
       PBXNativeTarget.is(target) &&
-      target.props.productType === "com.apple.product-type.application"
+      target.props.productType === 'com.apple.product-type.application'
     ) {
       return !(
-        "WATCHOS_DEPLOYMENT_TARGET" in
+        'WATCHOS_DEPLOYMENT_TARGET' in
         // @ts-expect-error
         getDefaultBuildConfigurationForTarget(target)?.props?.buildSettings
       );
@@ -28,13 +28,13 @@ function getMainAppTarget(project: XcodeProject): PBXNativeTarget {
     console.warn(
       `Multiple main app targets found, using first one: ${mainAppTarget
         .map((t) => t.getDisplayName())
-        .join(", ")}}`,
+        .join(', ')}}`
     );
   }
 
   const target = mainAppTarget[0];
   if (!target) {
-    throw new Error("No main app target found in Xcode project");
+    throw new Error('No main app target found in Xcode project');
   }
   return target;
 }
@@ -42,8 +42,7 @@ function getMainAppTarget(project: XcodeProject): PBXNativeTarget {
 function getDefaultBuildConfigurationForTarget(target: PBXNativeTarget) {
   return target.props.buildConfigurationList.props.buildConfigurations.find(
     (config) =>
-      config.props.name ===
-      target.props.buildConfigurationList.props.defaultConfigurationName,
+      config.props.name === target.props.buildConfigurationList.props.defaultConfigurationName
   );
 }
 
@@ -56,29 +55,24 @@ export const withLinkedSettingsBundle: ConfigPlugin = (config) => {
   });
 };
 
-async function applyXcodeChanges(
-  project: XcodeProject,
-  props: { projectName: string },
-) {
+async function applyXcodeChanges(project: XcodeProject, props: { projectName: string }) {
   const mainAppTarget = getMainAppTarget(project);
-  const mainResourceBuildPhase = mainAppTarget.getBuildPhase(
-    PBXResourcesBuildPhase,
-  );
+  const mainResourceBuildPhase = mainAppTarget.getBuildPhase(PBXResourcesBuildPhase);
 
   // Prevent duplicate.
   if (
     mainResourceBuildPhase?.props.files.find(
-      (file) => file.props.fileRef?.props.name === "Settings.bundle",
+      (file) => file.props.fileRef?.props.name === 'Settings.bundle'
     )
   ) {
     return project;
   }
 
   const ref = PBXFileReference.create(project, {
-    lastKnownFileType: "wrapper.plug-in",
-    name: "Settings.bundle",
-    path: path.join(props.projectName, "Settings.bundle"),
-    sourceTree: "<group>",
+    lastKnownFileType: 'wrapper.plug-in',
+    name: 'Settings.bundle',
+    path: path.join(props.projectName, 'Settings.bundle'),
+    sourceTree: '<group>',
   });
 
   mainResourceBuildPhase?.createFile({

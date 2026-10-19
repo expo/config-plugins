@@ -1,10 +1,6 @@
-import {
-  AndroidConfig,
-  ConfigPlugin,
-  withAndroidManifest,
-} from "expo/config-plugins";
+import { AndroidConfig, ConfigPlugin, withAndroidManifest } from 'expo/config-plugins';
 
-import { BranchKeys, ConfigData } from "./types";
+import { BranchKeys, ConfigData } from './types';
 
 const {
   addMetaDataItemToMainApplication,
@@ -12,13 +8,13 @@ const {
   removeMetaDataItemFromMainApplication,
 } = AndroidConfig.Manifest;
 
-const META_BRANCH_KEY = "io.branch.sdk.BranchKey";
-const META_BRANCH_KEY_TEST = "io.branch.sdk.BranchKey.test";
-const META_BRANCH_KEY_TEST_MODE = "io.branch.sdk.TestMode";
+const META_BRANCH_KEY = 'io.branch.sdk.BranchKey';
+const META_BRANCH_KEY_TEST = 'io.branch.sdk.BranchKey.test';
+const META_BRANCH_KEY_TEST_MODE = 'io.branch.sdk.TestMode';
 
 export function setBranchApiKeys(
   { apiKey, testApiKey }: BranchKeys,
-  androidManifest: AndroidConfig.Manifest.AndroidManifest,
+  androidManifest: AndroidConfig.Manifest.AndroidManifest
 ) {
   const mainApplication = getMainApplicationOrThrow(androidManifest);
 
@@ -29,16 +25,9 @@ export function setBranchApiKeys(
   }
 
   if (testApiKey) {
-    addMetaDataItemToMainApplication(
-      mainApplication,
-      META_BRANCH_KEY_TEST,
-      testApiKey,
-    );
+    addMetaDataItemToMainApplication(mainApplication, META_BRANCH_KEY_TEST, testApiKey);
   } else {
-    removeMetaDataItemFromMainApplication(
-      mainApplication,
-      META_BRANCH_KEY_TEST,
-    );
+    removeMetaDataItemFromMainApplication(mainApplication, META_BRANCH_KEY_TEST);
   }
 
   return androidManifest;
@@ -46,14 +35,14 @@ export function setBranchApiKeys(
 
 export function enableBranchTestEnvironment(
   enableTestEnvironment: boolean,
-  androidManifest: AndroidConfig.Manifest.AndroidManifest,
+  androidManifest: AndroidConfig.Manifest.AndroidManifest
 ) {
   const mainApplication = getMainApplicationOrThrow(androidManifest);
 
   addMetaDataItemToMainApplication(
     mainApplication,
     META_BRANCH_KEY_TEST_MODE,
-    `${enableTestEnvironment}`,
+    `${enableTestEnvironment}`
   );
 
   return androidManifest;
@@ -61,7 +50,7 @@ export function enableBranchTestEnvironment(
 
 function requireBranchApiKey(apiKey?: string): string {
   if (!apiKey) {
-    throw new Error("Branch API key is required: apiKey must be provided");
+    throw new Error('Branch API key is required: apiKey must be provided');
   }
 
   return apiKey;
@@ -73,15 +62,9 @@ export const withBranchAndroid: ConfigPlugin<ConfigData> = (config, data) => {
   config = withAndroidManifest(config, (config) => {
     const apiKey = requireBranchApiKey(data.apiKey);
 
-    config.modResults = setBranchApiKeys(
-      { apiKey, testApiKey },
-      config.modResults,
-    );
+    config.modResults = setBranchApiKeys({ apiKey, testApiKey }, config.modResults);
 
-    config.modResults = enableBranchTestEnvironment(
-      enableTestEnvironment,
-      config.modResults,
-    );
+    config.modResults = enableBranchTestEnvironment(enableTestEnvironment, config.modResults);
 
     return config;
   });

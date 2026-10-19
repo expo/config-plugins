@@ -1,1 +1,1 @@
-module.exports = require("./build/withPdf");
+module.exports = require('./build/withPdf');

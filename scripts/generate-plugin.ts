@@ -1,18 +1,18 @@
 #!/usr/bin/env tsx
 
-import assert from "assert";
-import * as fs from "fs";
-import * as path from "path";
-import prompts from "prompts";
-import * as PackageManager from "@expo/package-manager";
-const packagesDir = path.join(__dirname, "../packages");
-const templateDir = path.join(__dirname, "./template");
+import * as PackageManager from '@expo/package-manager';
+import assert from 'assert';
+import * as fs from 'fs';
+import * as path from 'path';
+import prompts from 'prompts';
+const packagesDir = path.join(__dirname, '../packages');
+const templateDir = path.join(__dirname, './template');
 
 // Style like DT: @foo/bar -> foo__bar
 function convertOrgName(name: string) {
   const match = name.match(/^@(\w+)\/(\w+)/gi);
   if (match?.length === 3) {
-    return [match[1], match[2]].join("__");
+    return [match[1], match[2]].join('__');
   }
   return name;
 }
@@ -20,14 +20,13 @@ function convertOrgName(name: string) {
 (async () => {
   const { name } = await prompts({
     initial: process.argv[2],
-    type: "text",
-    name: "name",
-    message: "Package to extend, ex: react-native-reanimated",
-    validate: (value) =>
-      /^(@[a-z0-9-~][a-z0-9-._~]*\/)?[a-z0-9-~][a-z0-9-._~]*$/.test(value),
+    type: 'text',
+    name: 'name',
+    message: 'Package to extend, ex: react-native-reanimated',
+    validate: (value) => /^(@[a-z0-9-~][a-z0-9-._~]*\/)?[a-z0-9-~][a-z0-9-._~]*$/.test(value),
   });
 
-  assert(name, "name must be defined");
+  assert(name, 'name must be defined');
   const pluginName = convertOrgName(name);
 
   const packageName = `@config-plugins/${pluginName}`;
@@ -42,10 +41,10 @@ function convertOrgName(name: string) {
     if (
       (
         await prompts({
-          type: "confirm",
-          message: "overwrite existing module?",
+          type: 'confirm',
+          message: 'overwrite existing module?',
           initial: true,
-          name: "value",
+          name: 'value',
         })
       ).value
     ) {
@@ -56,41 +55,35 @@ function convertOrgName(name: string) {
     }
   }
 
-  const moduleName = camelize(["with", name].join("-"));
+  const moduleName = camelize(['with', name].join('-'));
 
   const settings: Props = {
     MODULE_NAME: moduleName,
     CONFIG_PLUGIN: pluginName,
 
-    SDK_VERSION: "56",
+    SDK_VERSION: '56',
     NPM_MODULE: name,
   };
   console.log(`Module name: ${moduleName}`);
 
   fs.mkdirSync(outputDir, { recursive: true });
   fs.writeFileSync(
-    path.join(outputDir, "package.json"),
+    path.join(outputDir, 'package.json'),
     JSON.stringify(getPackageJson(settings), null, 2)
   );
 
-  for (const file of ["tsconfig.json", "jest.config.js", ".eslintrc.js"]) {
+  for (const file of ['tsconfig.json', 'jest.config.js', 'oxlint.config.mjs']) {
     fs.copyFileSync(path.join(templateDir, file), path.join(outputDir, file));
   }
 
-  const srcFolder = path.join(outputDir, "src");
+  const srcFolder = path.join(outputDir, 'src');
   fs.mkdirSync(srcFolder, { recursive: true });
 
-  fs.writeFileSync(
-    path.join(srcFolder, `${moduleName}.ts`),
-    createTemplatePlugin(settings)
-  );
+  fs.writeFileSync(path.join(srcFolder, `${moduleName}.ts`), createTemplatePlugin(settings));
 
+  fs.writeFileSync(path.join(outputDir, `README.md`), createTemplateREADME(settings));
   fs.writeFileSync(
-    path.join(outputDir, `README.md`),
-    createTemplateREADME(settings)
-  );
-  fs.writeFileSync(
-    path.join(outputDir, "app.plugin.js"),
+    path.join(outputDir, 'app.plugin.js'),
     `module.exports = require("./build/${moduleName}");`
   );
 
@@ -102,13 +95,11 @@ function convertOrgName(name: string) {
 })();
 
 function camelize(str: string) {
-  const arr = str.split("-");
+  const arr = str.split('-');
   const capital = arr.map((item, index) =>
-    index
-      ? item.charAt(0).toUpperCase() + item.slice(1).toLowerCase()
-      : item.toLowerCase()
+    index ? item.charAt(0).toUpperCase() + item.slice(1).toLowerCase() : item.toLowerCase()
   );
-  return capital.join("");
+  return capital.join('');
 }
 
 type Props = {
@@ -118,13 +109,8 @@ type Props = {
   CONFIG_PLUGIN: string;
 };
 
-function createTemplatePlugin({
-  MODULE_NAME,
-  SDK_VERSION,
-  CONFIG_PLUGIN,
-  NPM_MODULE,
-}: Props) {
-  let template = fs.readFileSync(path.join(templateDir, "index.ts"), "utf8");
+function createTemplatePlugin({ MODULE_NAME, SDK_VERSION, CONFIG_PLUGIN, NPM_MODULE }: Props) {
+  let template = fs.readFileSync(path.join(templateDir, 'index.ts'), 'utf8');
 
   template = template.replace(/%NPM_MODULE%/g, NPM_MODULE);
   template = template.replace(/%CONFIG_PLUGIN%/g, CONFIG_PLUGIN);
@@ -134,13 +120,8 @@ function createTemplatePlugin({
   return template;
 }
 
-function createTemplateREADME({
-  MODULE_NAME,
-  SDK_VERSION,
-  CONFIG_PLUGIN,
-  NPM_MODULE,
-}: Props) {
-  let template = fs.readFileSync(path.join(templateDir, "README.md"), "utf8");
+function createTemplateREADME({ MODULE_NAME, SDK_VERSION, CONFIG_PLUGIN, NPM_MODULE }: Props) {
+  let template = fs.readFileSync(path.join(templateDir, 'README.md'), 'utf8');
 
   template = template.replace(/%NPM_MODULE%/g, NPM_MODULE);
   template = template.replace(/%CONFIG_PLUGIN%/g, CONFIG_PLUGIN);
@@ -150,14 +131,9 @@ function createTemplateREADME({
   return template;
 }
 
-function getPackageJson({
-  MODULE_NAME,
-  SDK_VERSION,
-  CONFIG_PLUGIN,
-  NPM_MODULE,
-}: Props) {
+function getPackageJson({ MODULE_NAME, SDK_VERSION, CONFIG_PLUGIN, NPM_MODULE }: Props) {
   const templatePackageJson = JSON.parse(
-    fs.readFileSync(path.join(templateDir, "package.json"), "utf8")
+    fs.readFileSync(path.join(templateDir, 'package.json'), 'utf8')
   );
 
   templatePackageJson.name = `@config-plugins/${CONFIG_PLUGIN}`;

@@ -2,9 +2,11 @@
   "name": "@config-plugins/react-native-blob-util",
   "version": "14.0.3",
   "description": "Config plugin to auto configure react-native-blob-util on prebuild",
-  "main": "build/withReactNativeBlobUtil.js",
-  "types": "build/withReactNativeBlobUtil.d.ts",
-  "sideEffects": false,
+  "keywords": [
+    "expo",
+    "react-native",
+    "react-native-blob-util"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -15,18 +17,16 @@
     "build",
     "app.plugin.js"
   ],
+  "sideEffects": false,
+  "main": "build/withReactNativeBlobUtil.js",
+  "types": "build/withReactNativeBlobUtil.d.ts",
   "scripts": {
     "build": "tsc",
     "clean": "rm -rf build",
-    "lint": "eslint src",
+    "lint": "oxlint --config oxlint.config.mjs .",
     "test": "jest",
     "prepublishOnly": "pnpm run clean && pnpm run build"
   },
-  "keywords": [
-    "react-native-blob-util",
-    "react-native",
-    "expo"
-  ],
   "devDependencies": {
     "@expo/config-plugins": "catalog:",
     "jest": "catalog:"

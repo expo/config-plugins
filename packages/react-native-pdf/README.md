@@ -9,7 +9,7 @@ Config plugin to auto-configure [`react-native-pdf`][lib] when the native code i
 Ensure you use versions that work together!
 
 | `expo` | `react-native-pdf` | `@config-plugins/react-native-pdf` |
-|--------| ------------------ |------------------------------------|
+| ------ | ------------------ | ---------------------------------- |
 | 56.0.0 | 7.0.4              | 14.0.0                             |
 | 55.0.0 | 7.0.4              | 13.0.0                             |
 | 54.0.0 | 7.0.4              | 12.0.0                             |
@@ -34,10 +34,7 @@ After installing this npm package, add the [config plugin](https://docs.expo.io/
 
 ```json
 {
-  "plugins": [
-    "@config-plugins/react-native-blob-util",
-    "@config-plugins/react-native-pdf"
-  ]
+  "plugins": ["@config-plugins/react-native-blob-util", "@config-plugins/react-native-pdf"]
 }
 ```
 
@@ -50,18 +47,17 @@ Next, rebuild your app as described in the ["Adding custom native code"](https:/
 Consider opening a WebBrowser to display a PDF:
 
 ```js
-import * as WebBrowser from "expo-web-browser";
-import { Text } from "react-native";
+import * as WebBrowser from 'expo-web-browser';
+import { Text } from 'react-native';
 
 export default function HomeScreen() {
   return (
     <Text
       onPress={() => {
         WebBrowser.openBrowserAsync(
-          "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+          'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
         );
-      }}
-    >
+      }}>
       Open in-app browser
     </Text>
   );
@@ -71,14 +67,14 @@ export default function HomeScreen() {
 Or inside a `WebView` for a contained view:
 
 ```js
-import { WebView } from "react-native-webview";
+import { WebView } from 'react-native-webview';
 
 export default function HomeScreen() {
   return (
     <WebView
       style={{ width: 100, height: 100 }}
       source={{
-        uri: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+        uri: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
       }}
     />
   );

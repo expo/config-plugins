@@ -1,8 +1,5 @@
 {
-  "platforms": [
-    "android",
-    "ios"
-  ],
+  "platforms": ["android", "ios"],
   "ios": {
     "appDelegateSubscribers": ["BranchAppDelegate"]
   }

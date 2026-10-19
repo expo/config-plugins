@@ -2,29 +2,29 @@
   "name": "@config-plugins/ios-stickers",
   "version": "14.0.3",
   "description": "Config plugin to auto configure iOS iMessage stickers",
-  "main": "build/withStickerPack.js",
-  "types": "build/withStickerPack.d.ts",
-  "sideEffects": false,
-  "license": "MIT",
-  "files": [
-    "build"
+  "keywords": [
+    "expo",
+    "react"
   ],
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/expo/config-plugins.git",
     "directory": "packages/ios-stickers"
   },
+  "files": [
+    "build"
+  ],
+  "sideEffects": false,
+  "main": "build/withStickerPack.js",
+  "types": "build/withStickerPack.d.ts",
   "scripts": {
     "build": "tsc",
     "clean": "rm -rf build",
-    "lint": "eslint src",
+    "lint": "oxlint --config oxlint.config.mjs .",
     "test": "jest",
     "prepublishOnly": "pnpm run clean && pnpm run build"
   },
-  "keywords": [
-    "react",
-    "expo"
-  ],
   "dependencies": {
     "@expo/image-utils": "catalog:",
     "@expo/plist": "catalog:",

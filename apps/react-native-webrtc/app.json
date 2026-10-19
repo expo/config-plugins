@@ -5,8 +5,6 @@
     "splash": {
       "image": "https://github.com/expo.png"
     },
-    "plugins": [
-      "@config-plugins/react-native-webrtc"
-    ]
+    "plugins": ["@config-plugins/react-native-webrtc"]
   }
 }

@@ -1,5 +1,5 @@
-import React from "react";
-import { Button, Linking, StyleSheet, View } from "react-native";
+import React from 'react';
+import { Button, Linking, StyleSheet, View } from 'react-native';
 
 import {
   SettingsRadioGroup,
@@ -7,7 +7,7 @@ import {
   SettingsSwitch,
   SettingsTextInput,
   SettingsTitle,
-} from "./SettingsViews";
+} from './SettingsViews';
 
 const App = () => {
   return (
@@ -17,7 +17,7 @@ const App = () => {
         testID="name-input"
         style={{
           height: 40,
-          borderColor: "gray",
+          borderColor: 'gray',
           borderWidth: 1,
           padding: 8,
         }}
@@ -45,8 +45,8 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "stretch",
+    justifyContent: 'center',
+    alignItems: 'stretch',
     paddingHorizontal: 56,
     gap: 12,
   },

@@ -1,1 +1,1 @@
-module.exports = require("./build/withReactNativeAdjust");
+module.exports = require('./build/withReactNativeAdjust');

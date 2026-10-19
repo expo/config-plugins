@@ -1,4 +1,4 @@
-import { mergeContents } from "@expo/config-plugins/build/utils/generateCode";
+import { mergeContents } from '@expo/config-plugins/build/utils/generateCode';
 import {
   type ConfigPlugin,
   AndroidConfig,
@@ -7,16 +7,16 @@ import {
   withAppBuildGradle,
   withXcodeProject,
   withDangerousMod,
-} from "expo/config-plugins";
-import fs from "fs";
-import path from "path";
+} from 'expo/config-plugins';
+import fs from 'fs';
+import path from 'path';
 
 const withXcodeLinkBinaryWithLibraries: ConfigPlugin<{
   library: string;
   status?: string;
 }> = (config, { library, status }) => {
   return withXcodeProject(config, (config) => {
-    const options = status === "optional" ? { weak: true } : {};
+    const options = status === 'optional' ? { weak: true } : {};
 
     const target = IOSConfig.XcodeUtils.getApplicationNativeTarget({
       project: config.modResults,
@@ -32,50 +32,47 @@ const withXcodeLinkBinaryWithLibraries: ConfigPlugin<{
   });
 };
 
-const addAndroidPackagingOptions = (
-  src: string,
-  includeMetaReferrer?: boolean,
-) => {
+const addAndroidPackagingOptions = (src: string, includeMetaReferrer?: boolean) => {
   const baseImplementations = `
       implementation 'com.google.android.gms:play-services-analytics:18.0.1'
       implementation 'com.android.installreferrer:installreferrer:2.2'`;
 
   const metaImplementation = includeMetaReferrer
     ? `\n      implementation 'com.adjust.sdk:adjust-android-meta-referrer:5.4.0'`
-    : "";
+    : '';
 
   return mergeContents({
-    tag: "react-native-play-services-analytics",
+    tag: 'react-native-play-services-analytics',
     src,
     newSrc: baseImplementations + metaImplementation,
     anchor: /dependencies(?:\s+)?\{/,
     // Inside the dependencies block.
     offset: 1,
-    comment: "//",
+    comment: '//',
   });
 };
 
 const addSdkSignatureDependency = (src: string) => {
   return mergeContents({
-    tag: "react-native-adjust arr dependency",
+    tag: 'react-native-adjust arr dependency',
     src,
     newSrc: "implementation files('libs/adjust-lib.aar')",
     anchor: /dependencies(?:\s+)?\{/,
     // Inside the dependencies block.
     offset: 1,
-    comment: "//",
+    comment: '//',
   });
 };
 
 const addNdkAbiFilters = (src: string) => {
   return mergeContents({
-    tag: "react-native-adjust NDK abi filters",
+    tag: 'react-native-adjust NDK abi filters',
     src,
     newSrc: "ndk.abiFilters 'armeabi-v7a','arm64-v8a','x86','x86_64'",
     anchor: /defaultConfig(?:\s+)?\{/,
     // Inside the dependencies block.
     offset: 1,
-    comment: "//",
+    comment: '//',
   });
 };
 
@@ -84,75 +81,65 @@ const withGradle: ConfigPlugin<{
   metaInstallReferrer?: boolean;
 }> = (config, { isSdkSignatureSupported, metaInstallReferrer }) => {
   return withAppBuildGradle(config, (config) => {
-    if (config.modResults.language !== "groovy") {
+    if (config.modResults.language !== 'groovy') {
       throw new Error(
-        "Cannot add Play Services maven gradle because the project build.gradle is not groovy",
+        'Cannot add Play Services maven gradle because the project build.gradle is not groovy'
       );
     }
 
     if (isSdkSignatureSupported) {
-      config.modResults.contents = addNdkAbiFilters(
-        config.modResults.contents,
-      ).contents;
+      config.modResults.contents = addNdkAbiFilters(config.modResults.contents).contents;
 
-      config.modResults.contents = addSdkSignatureDependency(
-        config.modResults.contents,
-      ).contents;
+      config.modResults.contents = addSdkSignatureDependency(config.modResults.contents).contents;
     }
 
     config.modResults.contents = addAndroidPackagingOptions(
       config.modResults.contents,
-      metaInstallReferrer,
+      metaInstallReferrer
     ).contents;
 
     return config;
   });
 };
 
-const withAndroidSdkSignature: ConfigPlugin<{ sdkSignaturePath: string }> = (
-  config,
-  props,
-) => {
+const withAndroidSdkSignature: ConfigPlugin<{ sdkSignaturePath: string }> = (config, props) => {
   return withDangerousMod(config, [
-    "android",
+    'android',
     async (config) => {
       const projectRoot = config.modRequest.projectRoot;
       const libPath = path.join(projectRoot, props.sdkSignaturePath);
 
       if (!fs.existsSync(libPath)) {
-        throw new Error("Cannot find Adjust Android sdk signature library !");
+        throw new Error('Cannot find Adjust Android sdk signature library !');
       }
 
-      const libsDirectoryPath = path.join(projectRoot, "android/app/libs");
+      const libsDirectoryPath = path.join(projectRoot, 'android/app/libs');
 
       if (!fs.existsSync(libsDirectoryPath)) {
         fs.mkdirSync(libsDirectoryPath);
       }
 
-      fs.cpSync(libPath, path.join(libsDirectoryPath, "adjust-lib.aar"));
+      fs.cpSync(libPath, path.join(libsDirectoryPath, 'adjust-lib.aar'));
 
       return config;
     },
   ]);
 };
 
-const withIosSdkSignature: ConfigPlugin<{ sdkSignaturePath: string }> = (
-  config,
-  props,
-) => {
+const withIosSdkSignature: ConfigPlugin<{ sdkSignaturePath: string }> = (config, props) => {
   return withXcodeProject(config, (config) => {
     const projectRoot = config.modRequest.projectRoot;
     const libPath = path.join(projectRoot, props.sdkSignaturePath);
 
     if (!fs.existsSync(libPath)) {
-      throw new Error("Cannot find Adjust iOS sdk signature library !");
+      throw new Error('Cannot find Adjust iOS sdk signature library !');
     }
 
     const newLibPath = path.join(
       projectRoot,
-      "ios",
+      'ios',
       config.modRequest.projectName!,
-      path.basename(libPath),
+      path.basename(libPath)
     );
     const target = IOSConfig.XcodeUtils.getApplicationNativeTarget({
       project: config.modResults,
@@ -161,16 +148,17 @@ const withIosSdkSignature: ConfigPlugin<{ sdkSignaturePath: string }> = (
 
     fs.cpSync(libPath, newLibPath, { recursive: true });
 
-    const embedFrameworksBuildPhase =
-      config.modResults.pbxEmbedFrameworksBuildPhaseObj(target.uuid);
+    const embedFrameworksBuildPhase = config.modResults.pbxEmbedFrameworksBuildPhaseObj(
+      target.uuid
+    );
 
     if (!embedFrameworksBuildPhase) {
       config.modResults.addBuildPhase(
         [],
-        "PBXCopyFilesBuildPhase",
-        "Embed Frameworks",
+        'PBXCopyFilesBuildPhase',
+        'Embed Frameworks',
         target.uuid,
-        "frameworks",
+        'frameworks'
       );
     }
 
@@ -200,30 +188,30 @@ type Props = {
 const withAdjustPlugin: ConfigPlugin<void | Props> = (config, _props) => {
   const props = _props || {};
 
-  const androidSdkSignaturePath = props.sdkSignature?.android ?? "";
-  const iosSdkSignaturePath = props.sdkSignature?.ios ?? "";
-  const isAndroidSdkSignatureSupported = androidSdkSignaturePath !== "";
-  const isIosSdkSignatureSupported = iosSdkSignaturePath !== "";
+  const androidSdkSignaturePath = props.sdkSignature?.android ?? '';
+  const iosSdkSignaturePath = props.sdkSignature?.ios ?? '';
+  const isAndroidSdkSignatureSupported = androidSdkSignaturePath !== '';
+  const isIosSdkSignatureSupported = iosSdkSignaturePath !== '';
   const metaInstallReferrer = props.metaInstallReferrer ?? false;
 
   config = withXcodeLinkBinaryWithLibraries(config, {
-    library: "AdServices.framework",
-    status: "optional",
+    library: 'AdServices.framework',
+    status: 'optional',
   });
 
   config = withXcodeLinkBinaryWithLibraries(config, {
-    library: "AdSupport.framework",
-    status: "optional",
+    library: 'AdSupport.framework',
+    status: 'optional',
   });
 
   config = withXcodeLinkBinaryWithLibraries(config, {
-    library: "StoreKit.framework",
-    status: "optional",
+    library: 'StoreKit.framework',
+    status: 'optional',
   });
 
   config = withXcodeLinkBinaryWithLibraries(config, {
-    library: "AppTrackingTransparency.framework",
-    status: "optional",
+    library: 'AppTrackingTransparency.framework',
+    status: 'optional',
   });
 
   if (isIosSdkSignatureSupported) {
@@ -234,7 +222,7 @@ const withAdjustPlugin: ConfigPlugin<void | Props> = (config, _props) => {
 
   if (props.targetAndroid12) {
     config = AndroidConfig.Permissions.withPermissions(config, [
-      "com.google.android.gms.permission.AD_ID",
+      'com.google.android.gms.permission.AD_ID',
     ]);
   }
 
@@ -258,10 +246,10 @@ const pkg = {
   // This pattern enables users to safely migrate off of this
   // out-of-tree `@config-plugins/react-native-adjust` to a future
   // upstream plugin in `react-native-adjust`
-  name: "react-native-adjust",
+  name: 'react-native-adjust',
   // Indicates that this plugin is dangerously linked to a module,
   // and might not work with the latest version of that module.
-  version: "UNVERSIONED",
+  version: 'UNVERSIONED',
 };
 
 export default createRunOncePlugin(withAdjustPlugin, pkg.name, pkg.version);

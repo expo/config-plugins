@@ -6,17 +6,17 @@ Config plugin to auto-configure `react-native-branch` when the native code is ge
 
 Ensure you use versions that work together!
 
-| `expo` | `react-native-branch`   | `@config-plugins/react-native-branch` |
-|--------|-------------------------|---------------------------------------|
-| 56.0.0 | 6.10.0                  | 13.0.0                                |
-| 55.0.0 | 6.9.0                   | 12.0.0                                |
-| 54.0.0 | 6.8.0                   | 11.0.0                                |
-| 53.0.0 | 6.6.0                   | 10.0.0                                |
-| 52.0.0 | 6.4.0                   | 9.0.0                                 |
-| 51.0.0 | 6.2.1                 3 | 8.0.0                                 |
-| 50.0.0 | 6.0.0                   | 7.0.0                                 |
-| 49.0.0 | 5.9.0                   | 6.0.0                                 |
-| 48.0.0 | 5.7.0                   | 5.0.0                                 |
+| `expo` | `react-native-branch` | `@config-plugins/react-native-branch` |
+| ------ | --------------------- | ------------------------------------- |
+| 56.0.0 | 6.10.0                | 13.0.0                                |
+| 55.0.0 | 6.9.0                 | 12.0.0                                |
+| 54.0.0 | 6.8.0                 | 11.0.0                                |
+| 53.0.0 | 6.6.0                 | 10.0.0                                |
+| 52.0.0 | 6.4.0                 | 9.0.0                                 |
+| 51.0.0 | 6.2.1 3               | 8.0.0                                 |
+| 50.0.0 | 6.0.0                 | 7.0.0                                 |
+| 49.0.0 | 5.9.0                 | 6.0.0                                 |
+| 48.0.0 | 5.7.0                 | 5.0.0                                 |
 
 ## Expo installation
 
@@ -56,7 +56,11 @@ The plugin provides props for extra customization. Every time you change the pro
       {
         "apiKey": "key_live_f9f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8",
         "iosAppDomain": "awesome-alternate.app.link",
-        "iosUniversalLinkDomains": ["awesome.app.link", "awesome-alternate.app.link", "awesome.test.app.link"]
+        "iosUniversalLinkDomains": [
+          "awesome.app.link",
+          "awesome-alternate.app.link",
+          "awesome.test.app.link"
+        ]
       }
     ]
   ]

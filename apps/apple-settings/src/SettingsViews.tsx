@@ -1,7 +1,7 @@
-import Slider from "@react-native-community/slider";
-import { Picker } from "@react-native-picker/picker";
-import React from "react";
-import { Settings, Switch, Text, TextInput } from "react-native";
+import Slider from '@react-native-community/slider';
+import { Picker } from '@react-native-picker/picker';
+import React from 'react';
+import { Settings, Switch, Text, TextInput } from 'react-native';
 
 export function useSetting<T = string>(key: string): [T, (value: T) => void] {
   const [value, setValue] = React.useState<T>(() => Settings.get(key));
@@ -32,7 +32,7 @@ export function SettingsSlider({
   ...props
 }: { settingsKey: string } & Omit<
   React.ComponentProps<typeof Slider>,
-  "selectedValue" | "onValueChange"
+  'selectedValue' | 'onValueChange'
 >) {
   const [value, setValue] = useSetting<number>(settingsKey);
   return <Slider {...props} value={value ?? 0} onValueChange={setValue} />;
@@ -43,16 +43,10 @@ export function SettingsRadioGroup({
   ...props
 }: { settingsKey: string } & Omit<
   React.ComponentProps<typeof Picker>,
-  "selectedValue" | "onValueChange"
+  'selectedValue' | 'onValueChange'
 >) {
   const [value, setValue] = useSetting<string>(settingsKey);
-  return (
-    <Picker
-      {...props}
-      selectedValue={value ?? "option1"}
-      onValueChange={setValue}
-    />
-  );
+  return <Picker {...props} selectedValue={value ?? 'option1'} onValueChange={setValue} />;
 }
 
 SettingsRadioGroup.Item = Picker.Item;
@@ -60,10 +54,7 @@ SettingsRadioGroup.Item = Picker.Item;
 export function SettingsSwitch({
   settingsKey,
   ...props
-}: { settingsKey: string } & Omit<
-  React.ComponentProps<typeof Switch>,
-  "value" | "onValueChange"
->) {
+}: { settingsKey: string } & Omit<React.ComponentProps<typeof Switch>, 'value' | 'onValueChange'>) {
   const [value, setValue] = useSetting<boolean>(settingsKey);
   return <Switch {...props} value={!!value} onValueChange={setValue} />;
 }
@@ -71,10 +62,7 @@ export function SettingsSwitch({
 export function SettingsTitle({
   settingsKey,
   ...props
-}: { settingsKey: string } & Omit<
-  React.ComponentProps<typeof Text>,
-  "children"
->) {
+}: { settingsKey: string } & Omit<React.ComponentProps<typeof Text>, 'children'>) {
   const [value] = useSetting<string>(settingsKey);
   return <Text {...props} children={value} />;
 }
@@ -84,7 +72,7 @@ export function SettingsTextInput({
   ...props
 }: { settingsKey: string } & Omit<
   React.ComponentProps<typeof TextInput>,
-  "value" | "onChangeText"
+  'value' | 'onChangeText'
 >) {
   const [value, setValue] = useSetting<string>(settingsKey);
   return <TextInput {...props} value={value} onChangeText={setValue} />;

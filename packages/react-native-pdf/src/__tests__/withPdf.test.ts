@@ -1,4 +1,4 @@
-import { addAndroidPackagingOptions } from "../withPdf";
+import { addAndroidPackagingOptions } from '../withPdf';
 
 describe(addAndroidPackagingOptions, () => {
   it(`adds packaging options to the app build.gradle`, () => {

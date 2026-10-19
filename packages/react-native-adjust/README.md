@@ -7,7 +7,7 @@ Expo Config Plugin to auto-configure [`react-native-adjust`](https://www.npmjs.c
 Ensure you use versions that work together!
 
 | `expo` | `react-native-adjust` | `@config-plugins/react-native-adjust` |
-|--------| --------------------- |---------------------------------------|
+| ------ | --------------------- | ------------------------------------- |
 | 56.0.0 | 5.6.0                 | 14.0.0                                |
 | 55.0.0 | 5.1.0                 | 13.0.0                                |
 | 54.0.0 | 5.1.0                 | 12.0.0                                |
@@ -43,9 +43,7 @@ If you are targeting Android 12 and above (API level 31), you need to add it in 
 
 ```json
 {
-  "plugins": [
-    ["@config-plugins/react-native-adjust", { "targetAndroid12": true }]
-  ]
+  "plugins": [["@config-plugins/react-native-adjust", { "targetAndroid12": true }]]
 }
 ```
 
@@ -54,16 +52,17 @@ If you are targeting Android 12 and above (API level 31), you need to add it in 
 This will add the [appropriate permission](https://github.com/adjust/react_native_sdk#add-permission-to-gather-google-advertising-id) for you.
 
 To set up Adjust [SDK Signature](https://github.com/adjust/react_native_sdk/blob/master/README.md#sdk-signature) you need to specify the path for the xcframework and the aar file.
+
 ```json
 {
   "expo": {
     "plugins": [
       "@config-plugins/react-native-adjust",
       {
-        "targetAndroid12": true ,
-        "sdkSignature" : {
-          "android" : "./path/to.aar",
-          "ios" : "./path/to.xcframework"
+        "targetAndroid12": true,
+        "sdkSignature": {
+          "android": "./path/to.aar",
+          "ios": "./path/to.xcframework"
         }
       }
     ]
@@ -77,9 +76,7 @@ If you need to track Meta (Facebook) install referrers, you can enable the Meta 
 
 ```json
 {
-  "plugins": [
-    ["@config-plugins/react-native-adjust", { "metaInstallReferrer": true }]
-  ]
+  "plugins": [["@config-plugins/react-native-adjust", { "metaInstallReferrer": true }]]
 }
 ```
 

@@ -1,7 +1,8 @@
 {
   "name": "@config-plugins-app/react-native-webrtc",
-  "main": "./index.js",
   "version": "1.0.0",
+  "private": true,
+  "main": "./index.js",
   "scripts": {
     "start": "expo start --dev-client",
     "ios": "expo run:ios",
@@ -14,6 +15,5 @@
     "react": "19.2.3",
     "react-native": "0.85.3",
     "react-native-webrtc": "^124.0.7"
-  },
-  "private": true
+  }
 }
