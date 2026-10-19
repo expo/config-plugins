@@ -24,7 +24,7 @@ Be sure to run the following scripts in the **root directory** to update automat
 
 ## Upgrading plugins for a new Expo version
 
-- Update the `catalog:` block in `pnpm-workspace.yaml` with the new SDK versions for `expo`, `expo-module-scripts`, `@expo/config-plugins`, and any other shared dependencies
+- Update the `catalog:` block in `pnpm-workspace.yaml` with the new SDK versions for `expo`, `@expo/config-plugins`, and any other shared dependencies
 - Ensure every project under `apps/` is updated to latest version of Expo
 - Update each library’s `README.md`
   - Ensuring the latest version of Expo is listed

@@ -16,12 +16,11 @@
     "ios"
   ],
   "scripts": {
-    "build": "expo-module build",
-    "clean": "expo-module clean",
-    "lint": "expo-module lint",
-    "test": "expo-module test",
-    "prepublishOnly": "expo-module prepublishOnly",
-    "expo-module": "expo-module"
+    "build": "tsc",
+    "clean": "rm -rf build",
+    "lint": "eslint src",
+    "test": "jest",
+    "prepublishOnly": "pnpm run clean && pnpm run build"
   },
   "keywords": [
     "expo",
@@ -30,7 +29,6 @@
   ],
   "devDependencies": {
     "@expo/config-plugins": "catalog:",
-    "expo-module-scripts": "catalog:",
     "jest": "catalog:"
   },
   "peerDependencies": {

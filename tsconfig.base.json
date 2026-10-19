@@ -1,0 +1,31 @@
+{
+  // Shared compiler options for every package under packages/. Each package sets
+  // its own rootDir, outDir and include list.
+  "compilerOptions": {
+    "lib": ["es2023"],
+    "types": ["jest", "node"],
+
+    "target": "es2022",
+    "module": "nodenext",
+    "moduleResolution": "node16",
+    "moduleDetection": "force",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+
+    "declaration": true,
+    "sourceMap": false,
+
+    "skipLibCheck": true,
+
+    "strict": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noUncheckedIndexedAccess": true,
+    "noUncheckedSideEffectImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": false
+  }
+}

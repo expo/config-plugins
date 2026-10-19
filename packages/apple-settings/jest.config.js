@@ -3,7 +3,7 @@ const path = require("path");
 const roots = ["__mocks__", "src"];
 
 module.exports = {
-  ...require("expo-module-scripts/jest-preset-plugin"),
+  ...require("../../jest.config.base.js"),
   rootDir: path.resolve(__dirname),
   displayName: require("./package").name,
   roots,
