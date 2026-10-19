@@ -1,16 +1,30 @@
 {
   "$schema": "./node_modules/oxfmt/configuration_schema.json",
-  "ignorePatterns": [
-    "**/.expo",
-    "**/android",
-    "**/ios",
-    "**/dist",
-    "node_modules",
-    "**/expo-env.d.ts"
-  ],
   "printWidth": 100,
   "tabWidth": 2,
   "singleQuote": true,
   "bracketSameLine": true,
-  "trailingComma": "es5"
+  "trailingComma": "es5",
+  "ignorePatterns": [
+    "**/node_modules/**",
+    "**/build/**",
+    "**/dist/**",
+    "**/__generated__/**",
+    "**/fixtures/**",
+    "**/.expo/**",
+    "**/assets/**",
+    "**/android/**",
+    "**/ios/**",
+    "**/expo-env.d.ts",
+    "packages/apple-settings/src/schema/SettingsPlist.ts"
+  ],
+  "sortImports": {
+    "groups": [
+      ["builtin", "external"],
+      ["internal", "subpath"],
+      ["parent", "sibling", "index"],
+      "unknown"
+    ],
+    "ignoreCase": false
+  }
 }

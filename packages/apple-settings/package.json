@@ -2,31 +2,31 @@
   "name": "@config-plugins/apple-settings",
   "version": "8.0.3",
   "description": "Config plugin to generate custom Apple settings UI",
-  "license": "MIT",
-  "main": "build/index.js",
-  "types": "build/index.d.ts",
-  "sideEffects": false,
-  "files": [
-    "build"
+  "keywords": [
+    "expo",
+    "react"
   ],
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/expo/config-plugins.git",
     "directory": "packages/apple-settings"
   },
+  "files": [
+    "build"
+  ],
+  "sideEffects": false,
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
   "scripts": {
     "build": "tsc",
     "clean": "rm -rf build",
-    "lint": "eslint src",
+    "lint": "oxlint --config oxlint.config.mjs .",
     "test": "jest",
     "generate-types": "json2ts -i ./src/schema/SettingsPlist.json -o ./src/schema/SettingsPlist.ts --additionalProperties=false --unknownAny=false",
     "prepare": "pnpm generate-types",
     "prepublishOnly": "pnpm generate-types && pnpm run clean && pnpm run build"
   },
-  "keywords": [
-    "react",
-    "expo"
-  ],
   "dependencies": {
     "@bacons/xcode": "^1.0.0-alpha.12",
     "@expo/plist": "catalog:",

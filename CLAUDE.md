@@ -27,7 +27,10 @@ pnpm gen
 cd packages/<name> && pnpm test
 
 # Lint a specific package
-cd packages/<name> && pnpm lint --max-warnings 0
+cd packages/<name> && pnpm lint --deny-warnings
+
+# Format the whole repo (add --check to only verify)
+pnpm format
 
 # Build a specific package
 cd packages/<name> && pnpm build
@@ -50,7 +53,7 @@ cd apps/<name> && pnpm expo prebuild --clean
 
 - Use [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) (e.g., `feat(react-native-foo): add bar`)
 - Branch naming: `@your-github-username/type/description`
-- Each package runs `tsc`, `jest` and `eslint` directly. Shared config lives at the root: `tsconfig.base.json`, `jest.config.base.js`, `eslintrc.base.js`
+- Each package runs `tsc`, `jest` and `oxlint` directly. Shared config lives at the root: `tsconfig.base.json`, `jest.config.base.js`, `oxlint.config.mjs`. Formatting is `oxfmt` with `.oxfmtrc.json`
 - TypeScript source in `src/`, compiled output in `build/`
 - Shared dependency versions are defined in the `catalog:` block in `pnpm-workspace.yaml` and referenced with `catalog:` in each package's `package.json`
 - Peer dependency on `expo@^56`
@@ -97,6 +100,7 @@ For each example app:
 ## After Adding/Removing Packages
 
 Run these from the root:
+
 ```bash
 pnpm update-dependabot-config
 pnpm update-issue-template

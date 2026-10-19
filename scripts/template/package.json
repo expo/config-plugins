@@ -2,27 +2,27 @@
   "name": "@config-plugins/template",
   "version": "0.0.0",
   "description": "Config plugin to auto configure iOS iMessage stickers",
-  "main": "build/index.js",
-  "types": "build/index.d.ts",
-  "sideEffects": false,
+  "keywords": [
+    "config-plugins",
+    "expo",
+    "prebuild",
+    "react"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/expo/config-plugins.git",
     "directory": "packages/template"
   },
+  "sideEffects": false,
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
   "scripts": {
     "build": "tsc",
     "clean": "rm -rf build",
-    "lint": "eslint src",
+    "lint": "oxlint --config oxlint.config.mjs .",
     "test": "jest",
     "prepublishOnly": "pnpm run clean && pnpm run build"
   },
-  "keywords": [
-    "react",
-    "expo",
-    "config-plugins",
-    "prebuild"
-  ],
   "devDependencies": {
     "jest": "catalog:"
   },
