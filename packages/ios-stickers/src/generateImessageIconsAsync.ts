@@ -3,10 +3,7 @@ import fs from "fs";
 import { join } from "path";
 
 export type ContentsJsonImageIdiom =
-  | "iphone"
-  | "ipad"
-  | "ios-marketing"
-  | "universal";
+  "iphone" | "ipad" | "ios-marketing" | "universal";
 
 export type ContentsJsonImageAppearance = {
   appearance: "luminosity";

@@ -37,7 +37,7 @@
   "devDependencies": {
     "expo-module-scripts": "catalog:",
     "jest": "catalog:",
-    "json-schema-to-typescript": "^13.0.2"
+    "json-schema-to-typescript": "^16.0.0"
   },
   "peerDependencies": {
     "expo": "catalog:"
