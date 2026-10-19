@@ -1,1 +1,1 @@
-module.exports = require("./build/withReactNativeSiriShortcut");
+module.exports = require('./build/withReactNativeSiriShortcut');

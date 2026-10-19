@@ -1,16 +1,16 @@
 #!/usr/bin/env tsx
-import JsonFile, { JSONObject, JSONValue } from "@expo/json-file";
-import spawnAsync from "@expo/spawn-async";
-import * as fs from "fs/promises";
-import { sync as globSync } from "glob";
-import * as yaml from "js-yaml";
-import * as path from "path";
+import JsonFile, { JSONObject, JSONValue } from '@expo/json-file';
+import spawnAsync from '@expo/spawn-async';
+import * as fs from 'fs/promises';
+import { sync as globSync } from 'glob';
+import * as yaml from 'js-yaml';
+import * as path from 'path';
 
 async function npmViewAsync(...props: string[]): Promise<JSONValue> {
-  const cmd = ["view", ...props, "--json"];
-  const results = (await spawnAsync("npm", cmd)).stdout?.trim();
-  const cmdString = `npm ${cmd.join(" ")}`;
-  console.debug("Run:", cmdString);
+  const cmd = ['view', ...props, '--json'];
+  const results = (await spawnAsync('npm', cmd)).stdout?.trim();
+  const cmdString = `npm ${cmd.join(' ')}`;
+  console.debug('Run:', cmdString);
   if (!results) {
     return null;
   }
@@ -25,26 +25,18 @@ async function npmViewAsync(...props: string[]): Promise<JSONValue> {
 
 async function getAllPackageJsonFiles(root: string): Promise<JSONObject[]> {
   // "upstreamPackage": "react-native-webrtc"
-  const packageJsonFiles = globSync("packages/*/package.json", {
+  const packageJsonFiles = globSync('packages/*/package.json', {
     absolute: true,
     cwd: root,
   });
 
-  return await Promise.all(
-    packageJsonFiles.map((value) => JsonFile.readAsync(value))
-  );
+  return await Promise.all(packageJsonFiles.map((value) => JsonFile.readAsync(value)));
 }
 
-async function updateBugReportTemplateAsync(
-  root: string,
-  configPluginNames: string[]
-) {
-  const bugReportFilePath = path.resolve(
-    root,
-    ".github/ISSUE_TEMPLATE/bug_report.yml"
-  );
+async function updateBugReportTemplateAsync(root: string, configPluginNames: string[]) {
+  const bugReportFilePath = path.resolve(root, '.github/ISSUE_TEMPLATE/bug_report.yml');
 
-  const data = await fs.readFile(bugReportFilePath, "utf-8");
+  const data = await fs.readFile(bugReportFilePath, 'utf-8');
 
   const input = yaml.load(data) as {
     body: {
@@ -54,7 +46,7 @@ async function updateBugReportTemplateAsync(
   };
 
   input.body.forEach((element) => {
-    if (element.attributes.label === "Config Plugin") {
+    if (element.attributes.label === 'Config Plugin') {
       element.attributes.options = configPluginNames;
     }
     console.log(element.attributes);
@@ -64,13 +56,10 @@ async function updateBugReportTemplateAsync(
 }
 
 (async () => {
-  const root = path.join(__dirname, "../");
+  const root = path.join(__dirname, '../');
   const packageJsons = await getAllPackageJsonFiles(root);
 
-  await updateBugReportTemplateAsync(
-    root,
-    packageJsons.map((value) => value.name) as string[]
-  );
+  await updateBugReportTemplateAsync(root, packageJsons.map((value) => value.name) as string[]);
 
   // Only get the packages that reference an upstream package.
   const pkgWithUpstream = packageJsons.filter((pkg) => pkg.upstreamPackage);
@@ -78,13 +67,11 @@ async function updateBugReportTemplateAsync(
   const upstreamInfos = await Promise.all(
     pkgWithUpstream
       .map(async (pkg) => {
-        if (typeof pkg.upstreamPackage === "string") {
+        if (typeof pkg.upstreamPackage === 'string') {
           try {
             return await npmViewAsync(pkg.upstreamPackage);
           } catch (error) {
-            console.error(
-              "Failed to get info for package: " + pkg.upstreamPackage
-            );
+            console.error('Failed to get info for package: ' + pkg.upstreamPackage);
             console.error(error);
           }
         }
@@ -101,10 +88,10 @@ async function updateBugReportTemplateAsync(
     contact_links: [
       // Add the Q&A link first.
       {
-        name: "🤔 Question about an Expo Config Plugin",
+        name: '🤔 Question about an Expo Config Plugin',
         about:
-          "If you have a question about an Expo Config Plugin, please ask it on the forums, discord, Twitter, or Stack Overflow.",
-        url: "https://forums.expo.io/",
+          'If you have a question about an Expo Config Plugin, please ask it on the forums, discord, Twitter, or Stack Overflow.',
+        url: 'https://forums.expo.io/',
       },
     ],
   };
@@ -122,7 +109,7 @@ async function updateBugReportTemplateAsync(
     const redirect = pkg.bugs?.url ?? pkg.homepage;
 
     if (!redirect) {
-      console.warn("No redirect URL found for package:", pkg.name);
+      console.warn('No redirect URL found for package:', pkg.name);
     }
 
     config.contact_links.push({
@@ -132,15 +119,12 @@ async function updateBugReportTemplateAsync(
     });
   }
 
-  const issuesConfigFilePath = path.join(
-    root,
-    ".github/ISSUE_TEMPLATE/config.yml"
-  );
+  const issuesConfigFilePath = path.join(root, '.github/ISSUE_TEMPLATE/config.yml');
 
   const results = yaml.dump(config);
 
-  console.log("Results:\n", results);
-  console.log("");
-  console.log("Writing to:", issuesConfigFilePath);
-  await fs.writeFile(issuesConfigFilePath, "---\n" + results);
+  console.log('Results:\n', results);
+  console.log('');
+  console.log('Writing to:', issuesConfigFilePath);
+  await fs.writeFile(issuesConfigFilePath, '---\n' + results);
 })();

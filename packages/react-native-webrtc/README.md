@@ -7,7 +7,7 @@ Config plugin to auto-configure `react-native-webrtc` when the native code is ge
 Ensure you use versions that work together!
 
 | `expo` | `react-native-webrtc` | `@config-plugins/react-native-webrtc` |
-|--------|-----------------------|---------------------------------------|
+| ------ | --------------------- | ------------------------------------- |
 | 56.0.0 | 124.0.7               | 15.0.0                                |
 | 55.0.0 | 124.0.7               | 14.0.0                                |
 | 54.0.0 | 124.0.6               | 13.0.0                                |
@@ -54,8 +54,8 @@ React Native uses `event-target-shim@5` which is not compatible with `react-nati
 // metro.config.js
 
 // Learn more https://docs.expo.io/guides/customizing-metro
-const { getDefaultConfig } = require("expo/metro-config");
-const resolveFrom = require("resolve-from");
+const { getDefaultConfig } = require('expo/metro-config');
+const resolveFrom = require('resolve-from');
 
 /** @type {import('expo/metro-config').MetroConfig} */
 const config = getDefaultConfig(__dirname);
@@ -63,19 +63,16 @@ const config = getDefaultConfig(__dirname);
 config.resolver.resolveRequest = (context, moduleName, platform) => {
   if (
     // If the bundle is resolving "event-target-shim" from a module that is part of "react-native-webrtc".
-    moduleName.startsWith("event-target-shim") &&
-    context.originModulePath.includes("react-native-webrtc")
+    moduleName.startsWith('event-target-shim') &&
+    context.originModulePath.includes('react-native-webrtc')
   ) {
     // Resolve event-target-shim relative to the react-native-webrtc package to use v6.
     // React Native requires v5 which is not compatible with react-native-webrtc.
-    const eventTargetShimPath = resolveFrom(
-      context.originModulePath,
-      moduleName
-    );
+    const eventTargetShimPath = resolveFrom(context.originModulePath, moduleName);
 
     return {
       filePath: eventTargetShimPath,
-      type: "sourceFile",
+      type: 'sourceFile',
     };
   }
 
@@ -99,10 +96,10 @@ The plugin provides props for extra customization. Every time you change the pro
 export default {
   plugins: [
     [
-      "@config-plugins/react-native-webrtc",
+      '@config-plugins/react-native-webrtc',
       {
-        cameraPermission: "Allow $(PRODUCT_NAME) to access your camera",
-        microphonePermission: "Allow $(PRODUCT_NAME) to access your microphone",
+        cameraPermission: 'Allow $(PRODUCT_NAME) to access your camera',
+        microphonePermission: 'Allow $(PRODUCT_NAME) to access your microphone',
       },
     ],
   ],

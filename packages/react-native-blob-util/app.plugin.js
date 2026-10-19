@@ -1,1 +1,1 @@
-module.exports = require("./build/withReactNativeBlobUtil");
+module.exports = require('./build/withReactNativeBlobUtil');

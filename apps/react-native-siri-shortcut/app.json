@@ -2,9 +2,7 @@
   "expo": {
     "name": "siri xcut",
     "icon": "https://github.com/expo.png",
-    "platforms": [
-      "ios"
-    ],
+    "platforms": ["ios"],
     "splash": {
       "image": "https://github.com/expo.png"
     },

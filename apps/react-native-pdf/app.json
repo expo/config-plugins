@@ -5,9 +5,6 @@
     "splash": {
       "image": "https://github.com/expo.png"
     },
-    "plugins": [
-      "@config-plugins/react-native-blob-util",
-      "@config-plugins/react-native-pdf"
-    ]
+    "plugins": ["@config-plugins/react-native-blob-util", "@config-plugins/react-native-pdf"]
   }
 }

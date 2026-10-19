@@ -1,7 +1,7 @@
-const path = require("path");
+const path = require('path');
 const folderName = path.basename(__dirname);
-const cleanName = folderName.replace(/[_\s-]/g, "");
-const appId = "dev.bacon." + cleanName;
+const cleanName = folderName.replace(/[_\s-]/g, '');
+const appId = 'dev.bacon.' + cleanName;
 
 module.exports = ({ config }) => {
   if (!config.extra) config.extra = {};

@@ -1,28 +1,21 @@
-import {
-  setBranchApiKeys,
-  enableBranchTestEnvironment,
-  withBranchIOS,
-} from "../withBranchIOS";
+import { setBranchApiKeys, enableBranchTestEnvironment, withBranchIOS } from '../withBranchIOS';
 
 describe(setBranchApiKeys, () => {
   it(`sets branch_key.live if the api key is given`, () => {
-    expect(setBranchApiKeys({ apiKey: "LIVE-API-KEY" }, {})).toMatchObject({
+    expect(setBranchApiKeys({ apiKey: 'LIVE-API-KEY' }, {})).toMatchObject({
       branch_key: {
-        live: "LIVE-API-KEY",
+        live: 'LIVE-API-KEY',
       },
     });
   });
 
   it(`sets branch_key.test if the test api key is given`, () => {
     expect(
-      setBranchApiKeys(
-        { apiKey: "LIVE-API-KEY", testApiKey: "TEST-API-KEY" },
-        {},
-      ),
+      setBranchApiKeys({ apiKey: 'LIVE-API-KEY', testApiKey: 'TEST-API-KEY' }, {})
     ).toMatchObject({
       branch_key: {
-        live: "LIVE-API-KEY",
-        test: "TEST-API-KEY",
+        live: 'LIVE-API-KEY',
+        test: 'TEST-API-KEY',
       },
     });
   });
@@ -37,15 +30,15 @@ describe(enableBranchTestEnvironment, () => {
 });
 
 describe(withBranchIOS, () => {
-  it("does not require the api key while evaluating the config plugin", () => {
+  it('does not require the api key while evaluating the config plugin', () => {
     expect(() =>
       withBranchIOS(
         {
-          name: "example",
-          slug: "example",
+          name: 'example',
+          slug: 'example',
         },
-        {},
-      ),
+        {}
+      )
     ).not.toThrow();
   });
 });

@@ -1,1 +1,1 @@
-module.exports = require("./build/withBranch");
+module.exports = require('./build/withBranch');

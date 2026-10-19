@@ -1,5 +1,5 @@
 export const generateImageAsync = jest.fn(async (input: any, { src }) => {
-  const fs = require("fs");
+  const fs = require('fs');
   return { source: fs.readFileSync(src) };
 });
 

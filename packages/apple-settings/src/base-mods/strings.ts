@@ -1,15 +1,15 @@
 // Ports https://github.com/iteufel/node-strings-file/blob/master/index.js to TyeScript and ESM:
 
-import fs from "fs";
-import iconv from "iconv-lite";
+import fs from 'fs';
+import iconv from 'iconv-lite';
 
 type ParsedStrings = {
   [key: string]: string | { value: string; comment: string };
 };
 
 export function parse(data: string, wantComments?: boolean): ParsedStrings {
-  if (data.indexOf("\n") === -1) {
-    data += "\n";
+  if (data.indexOf('\n') === -1) {
+    data += '\n';
   }
   const re = /(?:\/\*(.+)\*\/\n)?(.+)\s*=\s*"(.+)";\n/gim;
   const res: ParsedStrings = {};
@@ -27,7 +27,7 @@ export function parse(data: string, wantComments?: boolean): ParsedStrings {
     if (wantComments) {
       res[key] = {
         value: unescapeString(value),
-        comment: m[1] || "",
+        comment: m[1] || '',
       };
     } else {
       res[key] = unescapeString(value);
@@ -37,14 +37,14 @@ export function parse(data: string, wantComments?: boolean): ParsedStrings {
 }
 
 export function build(obj: ParsedStrings): string {
-  let data = "";
+  let data = '';
   for (const i in obj) {
-    if (typeof obj[i] === "object") {
-      if (obj[i]["comment"] && obj[i]["comment"].length > 0) {
-        data += `\n/*${obj[i]["comment"]}*/\n`;
+    if (typeof obj[i] === 'object') {
+      if (obj[i]['comment'] && obj[i]['comment'].length > 0) {
+        data += `\n/*${obj[i]['comment']}*/\n`;
       }
-      data += `"${i}" = "${escapeString(obj[i]["value"])}";\n`;
-    } else if (typeof obj[i] === "string") {
+      data += `"${i}" = "${escapeString(obj[i]['value'])}";\n`;
+    } else if (typeof obj[i] === 'string') {
       data += `\n"${i}" = "${escapeString(obj[i])}";\n`;
     }
   }
@@ -61,13 +61,9 @@ function unescapeString(str: string): string {
 
 export async function openAsync(file: string, wantComments?: boolean) {
   const data = await fs.promises.readFile(file);
-  return parse(iconv.decode(data, "utf-16"), wantComments);
+  return parse(iconv.decode(data, 'utf-16'), wantComments);
 }
 
 export function writeAsync(filename: string, data: ParsedStrings) {
-  return fs.promises.writeFile(
-    filename,
-    iconv.encode(build(data), "utf-16"),
-    "binary",
-  );
+  return fs.promises.writeFile(filename, iconv.encode(build(data), 'utf-16'), 'binary');
 }

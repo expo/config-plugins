@@ -1,27 +1,24 @@
-import * as plist from "@expo/plist";
+import * as plist from '@expo/plist';
 import {
   BaseMods,
   type ConfigPlugin,
   createRunOncePlugin,
   type Mod,
   withMod,
-} from "expo/config-plugins";
-import * as fs from "fs";
-import path from "path";
-import { validate } from "schema-utils";
+} from 'expo/config-plugins';
+import * as fs from 'fs';
+import path from 'path';
+import { validate } from 'schema-utils';
 
-import { SettingsPlist } from "../schema/SettingsPlist";
-import schema from "../schema/SettingsPlist.json";
+import { SettingsPlist } from '../schema/SettingsPlist';
+import schema from '../schema/SettingsPlist.json';
 
 export function createModSetForSettingsPage({ name }: { name: string }) {
-  const customModName = "settings" + name + "Plist";
+  const customModName = 'settings' + name + 'Plist';
 
-  const withSettingsPlist: ConfigPlugin<Mod<SettingsPlist>> = (
-    config,
-    action,
-  ) => {
+  const withSettingsPlist: ConfigPlugin<Mod<SettingsPlist>> = (config, action) => {
     return withMod(config, {
-      platform: "ios",
+      platform: 'ios',
       mod: customModName,
       action,
     });
@@ -29,7 +26,7 @@ export function createModSetForSettingsPage({ name }: { name: string }) {
 
   const withBaseModInternal: ConfigPlugin = (config) => {
     return BaseMods.withGeneratedBaseMods(config, {
-      platform: "ios",
+      platform: 'ios',
       saveToInternal: true,
       skipEmptyMod: false,
       providers: {
@@ -40,7 +37,7 @@ export function createModSetForSettingsPage({ name }: { name: string }) {
             return path.join(
               modRequest.platformProjectRoot,
               modRequest.projectName!,
-              `Settings.bundle/${name}.plist`,
+              `Settings.bundle/${name}.plist`
             );
           },
           async read(filePath) {
@@ -50,12 +47,10 @@ export function createModSetForSettingsPage({ name }: { name: string }) {
                   PreferenceSpecifiers: [],
                 };
               }
-              return plist.default.parse(
-                await fs.promises.readFile(filePath, "utf-8"),
-              );
+              return plist.default.parse(await fs.promises.readFile(filePath, 'utf-8'));
             } catch (error: any) {
               throw new Error(
-                `Failed to parse the iOS Settings.bundle/${name}.plist: "${filePath}". ${error.message}}`,
+                `Failed to parse the iOS Settings.bundle/${name}.plist: "${filePath}". ${error.message}}`
               );
             }
           },

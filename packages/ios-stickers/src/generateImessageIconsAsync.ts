@@ -1,16 +1,15 @@
-import { generateImageAsync } from "@expo/image-utils";
-import fs from "fs";
-import { join } from "path";
+import { generateImageAsync } from '@expo/image-utils';
+import fs from 'fs';
+import { join } from 'path';
 
-export type ContentsJsonImageIdiom =
-  "iphone" | "ipad" | "ios-marketing" | "universal";
+export type ContentsJsonImageIdiom = 'iphone' | 'ipad' | 'ios-marketing' | 'universal';
 
 export type ContentsJsonImageAppearance = {
-  appearance: "luminosity";
-  value: "dark";
+  appearance: 'luminosity';
+  value: 'dark';
 };
 
-export type ContentsJsonImageScale = "1x" | "2x" | "3x";
+export type ContentsJsonImageScale = '1x' | '2x' | '3x';
 
 export interface ContentsJsonImage {
   appearances?: ContentsJsonImageAppearance[];
@@ -21,7 +20,7 @@ export interface ContentsJsonImage {
   platform?: string;
 }
 
-const IMAGE_CACHE_NAME = "ios-stickers-icons";
+const IMAGE_CACHE_NAME = 'ios-stickers-icons';
 
 // Hard-coding seemed like the clearest and safest way to implement the sizes.
 const ICON_CONTENTS: {
@@ -33,7 +32,7 @@ const ICON_CONTENTS: {
   }[];
 }[] = [
   {
-    idiom: "iphone",
+    idiom: 'iphone',
     sizes: [
       {
         size: 29,
@@ -46,7 +45,7 @@ const ICON_CONTENTS: {
     ],
   },
   {
-    idiom: "ipad",
+    idiom: 'ipad',
     sizes: [
       {
         size: 29,
@@ -63,16 +62,16 @@ const ICON_CONTENTS: {
     ],
   },
   {
-    idiom: "universal",
+    idiom: 'universal',
     sizes: [
       {
-        platform: "ios",
+        platform: 'ios',
 
         size: [27, 20],
         scales: [2, 3],
       },
       {
-        platform: "ios",
+        platform: 'ios',
 
         size: [32, 24],
         scales: [2, 3],
@@ -80,14 +79,14 @@ const ICON_CONTENTS: {
     ],
   },
   {
-    idiom: "ios-marketing",
+    idiom: 'ios-marketing',
     sizes: [
       {
         size: 1024,
         scales: [1],
       },
       {
-        platform: "ios",
+        platform: 'ios',
         size: [1024, 768],
         scales: [1],
       },
@@ -98,7 +97,7 @@ const ICON_CONTENTS: {
 export async function generateImessageIconsAsync(
   projectRoot: string,
   icon: string,
-  iconsPath: string,
+  iconsPath: string
 ): Promise<ContentsJsonImage[]> {
   // Ensure the Images.xcassets/AppIcon.appiconset path exists
   fs.mkdirSync(iconsPath, { recursive: true });
@@ -132,11 +131,11 @@ export async function generateImessageIconsAsync(
               height: iconHSizePx,
               removeTransparency: true,
               // The icon should be square, but if it's not then it will be cropped.
-              resizeMode: "cover",
+              resizeMode: 'cover',
               // Force the background color to solid white to prevent any transparency.
               // TODO: Maybe use a more adaptive option based on the icon color?
-              backgroundColor: "#ffffff",
-            },
+              backgroundColor: '#ffffff',
+            }
           );
           // Write image buffer to the file system.
           const assetPath = join(iconsPath, filename);
@@ -162,11 +161,7 @@ export async function generateImessageIconsAsync(
   return imagesJson;
 }
 
-function getAppleIconName(
-  size: number | [number, number],
-  scale: number,
-  idiom: string,
-) {
+function getAppleIconName(size: number | [number, number], scale: number, idiom: string) {
   const [width, height] = Array.isArray(size) ? size : [size, size];
   return `App-Icon-${idiom}-${width}x${height}@${scale}x.png`;
 }

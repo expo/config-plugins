@@ -5,9 +5,9 @@ import {
   withAndroidManifest,
   withInfoPlist,
   withXcodeProject,
-} from "expo/config-plugins";
+} from 'expo/config-plugins';
 
-import { ensureHeaderSearchPath } from "./ensureHeaderSearchPath";
+import { ensureHeaderSearchPath } from './ensureHeaderSearchPath';
 
 const withCallkeepHeaderSearchPath: ConfigPlugin = (config) => {
   const headerSearchPath = `"$(SRCROOT)/../node_modules/react-native-callkeep/ios/RNCallKeep"`;
@@ -33,53 +33,46 @@ const withAndroidManifestService: ConfigPlugin = (config) => {
     //   </intent-filter>
     // </service>;
 
-    const app = AndroidConfig.Manifest.getMainApplicationOrThrow(
-      config.modResults,
-    );
+    const app = AndroidConfig.Manifest.getMainApplicationOrThrow(config.modResults);
 
     if (!Array.isArray(app.service)) app.service = [];
 
     if (
       !app.service.find(
-        (item) =>
-          item.$["android:name"] ===
-          "io.wazo.callkeep.RNCallKeepBackgroundMessagingService",
+        (item) => item.$['android:name'] === 'io.wazo.callkeep.RNCallKeepBackgroundMessagingService'
       )
     ) {
       app.service.push({
         $: {
-          "android:name":
-            "io.wazo.callkeep.RNCallKeepBackgroundMessagingService",
-          "android:exported": "true",
+          'android:name': 'io.wazo.callkeep.RNCallKeepBackgroundMessagingService',
+          'android:exported': 'true',
         },
       });
     }
     // TODO: Update item
     if (
       !app.service.find(
-        (item) =>
-          item.$["android:name"] === "io.wazo.callkeep.VoiceConnectionService",
+        (item) => item.$['android:name'] === 'io.wazo.callkeep.VoiceConnectionService'
       )
     ) {
       app.service.push({
         $: {
-          "android:name": "io.wazo.callkeep.VoiceConnectionService",
-          "android:exported": "true",
+          'android:name': 'io.wazo.callkeep.VoiceConnectionService',
+          'android:exported': 'true',
           // @ts-ignore
-          "android:label": "Wazo",
-          "android:permission":
-            "android.permission.BIND_TELECOM_CONNECTION_SERVICE",
+          'android:label': 'Wazo',
+          'android:permission': 'android.permission.BIND_TELECOM_CONNECTION_SERVICE',
           // Use this to target android >= 11
           // "android:foregroundServiceType": "camera|microphone",
           // For android < 11
-          "android:foregroundServiceType": "phoneCall",
+          'android:foregroundServiceType': 'phoneCall',
         },
-        "intent-filter": [
+        'intent-filter': [
           {
             action: [
               {
                 $: {
-                  "android:name": "android.telecom.ConnectionService",
+                  'android:name': 'android.telecom.ConnectionService',
                 },
               },
             ],
@@ -98,8 +91,8 @@ const withCallkeep: ConfigPlugin = (config) => {
       config.modResults.UIBackgroundModes = [];
     }
 
-    if (!config.modResults.UIBackgroundModes.includes("voip")) {
-      config.modResults.UIBackgroundModes.push("voip");
+    if (!config.modResults.UIBackgroundModes.includes('voip')) {
+      config.modResults.UIBackgroundModes.push('voip');
     }
     return config;
   });
@@ -107,21 +100,21 @@ const withCallkeep: ConfigPlugin = (config) => {
   withCallkeepHeaderSearchPath(config);
 
   withXcodeLinkBinaryWithLibraries(config, {
-    library: "Intents.framework",
-    status: "optional",
+    library: 'Intents.framework',
+    status: 'optional',
   });
 
   withXcodeLinkBinaryWithLibraries(config, {
-    library: "CallKit.framework",
+    library: 'CallKit.framework',
   });
 
   config = AndroidConfig.Permissions.withPermissions(config, [
-    "android.permission.BIND_TELECOM_CONNECTION_SERVICE",
-    "android.permission.FOREGROUND_SERVICE",
-    "android.permission.READ_PHONE_STATE",
-    "android.permission.READ_PHONE_NUMBERS",
-    "android.permission.CALL_PHONE",
-    "android.permission.RECORD_AUDIO",
+    'android.permission.BIND_TELECOM_CONNECTION_SERVICE',
+    'android.permission.FOREGROUND_SERVICE',
+    'android.permission.READ_PHONE_STATE',
+    'android.permission.READ_PHONE_NUMBERS',
+    'android.permission.CALL_PHONE',
+    'android.permission.RECORD_AUDIO',
   ]);
 
   config = withAndroidManifestService(config);
@@ -133,7 +126,7 @@ const withXcodeLinkBinaryWithLibraries: ConfigPlugin<{
   status?: string;
 }> = (config, { library, status }) => {
   return withXcodeProject(config, (config) => {
-    const options = status === "optional" ? { weak: true } : {};
+    const options = status === 'optional' ? { weak: true } : {};
 
     const target = IOSConfig.XcodeUtils.getApplicationNativeTarget({
       project: config.modResults,

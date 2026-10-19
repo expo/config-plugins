@@ -1,8 +1,8 @@
-import { SafeAreaView, StyleSheet, useWindowDimensions } from "react-native";
-import Pdf from "react-native-pdf";
+import { SafeAreaView, StyleSheet, useWindowDimensions } from 'react-native';
+import Pdf from 'react-native-pdf';
 
 const source = {
-  uri: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+  uri: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
   cache: true,
 };
 export default function App() {
@@ -34,7 +34,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "flex-start",
-    alignItems: "center",
+    justifyContent: 'flex-start',
+    alignItems: 'center',
   },
 });

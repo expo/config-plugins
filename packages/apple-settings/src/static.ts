@@ -1,10 +1,10 @@
-import { type ConfigPlugin, withPlugins } from "expo/config-plugins";
+import { type ConfigPlugin, withPlugins } from 'expo/config-plugins';
 
-import { createModSetForSettingsPage } from "./base-mods/withSettingsPlist";
-import { createModSetForSettingsStrings } from "./base-mods/withSettingsStrings";
-import { withXcodeProjectBetaBaseMod } from "./base-mods/withXcparse";
-import { SettingsPlist } from "./schema/SettingsPlist";
-import { withLinkedSettingsBundle } from "./withLinkedSettingsBundle";
+import { createModSetForSettingsPage } from './base-mods/withSettingsPlist';
+import { createModSetForSettingsStrings } from './base-mods/withSettingsStrings';
+import { withXcodeProjectBetaBaseMod } from './base-mods/withXcparse';
+import { SettingsPlist } from './schema/SettingsPlist';
+import { withLinkedSettingsBundle } from './withLinkedSettingsBundle';
 
 /**
  * Locale codes used in `lproj` directories for Apple software.
@@ -13,52 +13,52 @@ import { withLinkedSettingsBundle } from "./withLinkedSettingsBundle";
  * - [Preferences doc](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/UserDefaults/Preferences/Preferences.html#//apple_ref/doc/uid/10000059i-CH6-SW9)
  */
 export type AppleLocale =
-  | "ar"
-  | "ca"
-  | "zh_Hans"
-  | "zh_Hant"
-  | "zh_HK"
-  | "hr"
-  | "cs"
-  | "da"
-  | "nl"
-  | "en"
-  | "en_GB"
-  | "en_AU"
-  | "en_CA"
-  | "en_IN"
-  | "en_IE"
-  | "en_NZ"
-  | "en_SG"
-  | "en_ZA"
-  | "fi"
-  | "fr"
-  | "fr_CA"
-  | "de"
-  | "el"
-  | "he"
-  | "hi"
-  | "hu"
-  | "id"
-  | "it"
-  | "ja"
-  | "ko"
-  | "ms"
-  | "nb"
-  | "pl"
-  | "pt"
-  | "pt_BR"
-  | "ro"
-  | "ru"
-  | "sk"
-  | "es"
-  | "es_419"
-  | "es_MX"
-  | "sv"
-  | "th"
-  | "tr"
-  | "uk"
-  | "vi";
+  | 'ar'
+  | 'ca'
+  | 'zh_Hans'
+  | 'zh_Hant'
+  | 'zh_HK'
+  | 'hr'
+  | 'cs'
+  | 'da'
+  | 'nl'
+  | 'en'
+  | 'en_GB'
+  | 'en_AU'
+  | 'en_CA'
+  | 'en_IN'
+  | 'en_IE'
+  | 'en_NZ'
+  | 'en_SG'
+  | 'en_ZA'
+  | 'fi'
+  | 'fr'
+  | 'fr_CA'
+  | 'de'
+  | 'el'
+  | 'he'
+  | 'hi'
+  | 'hu'
+  | 'id'
+  | 'it'
+  | 'ja'
+  | 'ko'
+  | 'ms'
+  | 'nb'
+  | 'pl'
+  | 'pt'
+  | 'pt_BR'
+  | 'ro'
+  | 'ru'
+  | 'sk'
+  | 'es'
+  | 'es_419'
+  | 'es_MX'
+  | 'sv'
+  | 'th'
+  | 'tr'
+  | 'uk'
+  | 'vi';
 
 export type StaticSettings = Record<
   /** Name of the file / bundle. */
@@ -77,12 +77,9 @@ export type StaticSettings = Record<
 >;
 
 export const withStaticSettings: ConfigPlugin<
-  Record<
-    string,
-    { page: SettingsPlist; locales?: Record<string, Record<string, string>> }
-  >
+  Record<string, { page: SettingsPlist; locales?: Record<string, Record<string, string>> }>
 > = (config, panes) => {
-  if (!panes || !("Root" in panes)) {
+  if (!panes || !('Root' in panes)) {
     throw new Error("Panes must include a 'Root' pane");
   }
 

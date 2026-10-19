@@ -1,1 +1,1 @@
-module.exports = require("./build/withWebRTC");
+module.exports = require('./build/withWebRTC');

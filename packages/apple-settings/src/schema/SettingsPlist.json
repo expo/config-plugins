@@ -6,11 +6,7 @@
       "enum": ["Pad", "Phone"]
     },
     "ScalarType": {
-      "oneOf": [
-        { "type": "string" },
-        { "type": "number" },
-        { "type": "boolean" }
-      ]
+      "oneOf": [{ "type": "string" }, { "type": "number" }, { "type": "boolean" }]
     },
     "PSGroupSpecifier": {
       "type": "object",
@@ -61,13 +57,7 @@
           "description": "The type of keyboard to display to the user.",
           "default": "Alphabet",
           "type": "string",
-          "enum": [
-            "Alphabet",
-            "NumbersAndPunctuation",
-            "NumberPad",
-            "URL",
-            "EmailAddress"
-          ]
+          "enum": ["Alphabet", "NumbersAndPunctuation", "NumberPad", "URL", "EmailAddress"]
         },
         "AutocapitalizationType": {
           "description": "The auto-capitalization style to apply to typed text.",
@@ -136,13 +126,7 @@
     },
     "PSSliderSpecifier": {
       "type": "object",
-      "required": [
-        "Type",
-        "Key",
-        "DefaultValue",
-        "MinimumValue",
-        "MaximumValue"
-      ],
+      "required": ["Type", "Key", "DefaultValue", "MinimumValue", "MaximumValue"],
       "additionalProperties": false,
       "properties": {
         "Type": { "type": "string", "enum": ["PSSliderSpecifier"] },
@@ -364,9 +348,7 @@
       "description": "An array of dictionaries, each of which contains the data for a single preference element. The order of the elements in the array defines the order that they are displayed on the screen.",
       "type": "array",
       "items": {
-        "oneOf": [
-          { "$ref": "#/definitions/AnyPreferenceSpecifier" }
-        ]
+        "oneOf": [{ "$ref": "#/definitions/AnyPreferenceSpecifier" }]
       }
     }
   }
