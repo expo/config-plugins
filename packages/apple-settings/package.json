@@ -15,14 +15,13 @@
     "directory": "packages/apple-settings"
   },
   "scripts": {
-    "build": "expo-module build",
-    "clean": "expo-module clean",
-    "lint": "expo-module lint",
-    "test": "expo-module test",
+    "build": "tsc",
+    "clean": "rm -rf build",
+    "lint": "eslint src",
+    "test": "jest",
     "generate-types": "json2ts -i ./src/schema/SettingsPlist.json -o ./src/schema/SettingsPlist.ts --additionalProperties=false --unknownAny=false",
     "prepare": "pnpm generate-types",
-    "prepublishOnly": "pnpm generate-types && expo-module prepublishOnly",
-    "expo-module": "expo-module"
+    "prepublishOnly": "pnpm generate-types && pnpm run clean && pnpm run build"
   },
   "keywords": [
     "react",
@@ -35,7 +34,6 @@
     "schema-utils": "catalog:"
   },
   "devDependencies": {
-    "expo-module-scripts": "catalog:",
     "jest": "catalog:",
     "json-schema-to-typescript": "^16.0.0"
   },

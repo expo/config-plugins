@@ -50,7 +50,7 @@ cd apps/<name> && pnpm expo prebuild --clean
 
 - Use [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) (e.g., `feat(react-native-foo): add bar`)
 - Branch naming: `@your-github-username/type/description`
-- Each package delegates build/test/lint to `expo-module-scripts`
+- Each package runs `tsc`, `jest` and `eslint` directly. Shared config lives at the root: `tsconfig.base.json`, `jest.config.base.js`, `eslintrc.base.js`
 - TypeScript source in `src/`, compiled output in `build/`
 - Shared dependency versions are defined in the `catalog:` block in `pnpm-workspace.yaml` and referenced with `catalog:` in each package's `package.json`
 - Peer dependency on `expo@^56`
@@ -65,9 +65,8 @@ When a new Expo SDK is released (e.g., SDK 54 → SDK 55), every package and exa
 Update the `catalog:` block with the new SDK versions for shared dependencies:
 
 1. **`expo`** — Update to `^<NEW_SDK>` (used as `peerDependencies` in all packages).
-2. **`expo-module-scripts`** — Update to `^<NEW_SDK>`.
-3. **`@expo/config-plugins`** — Update to `^<NEW_SDK>`.
-4. Review other catalog entries (`@expo/image-utils`, `@expo/plist`, etc.) and bump if needed.
+2. **`@expo/config-plugins`** — Update to `^<NEW_SDK>`.
+3. Review other catalog entries (`@expo/image-utils`, `@expo/plist`, etc.) and bump if needed.
 
 ### Per-package updates (`packages/<name>/`)
 

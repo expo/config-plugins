@@ -73,10 +73,9 @@ function convertOrgName(name: string) {
     JSON.stringify(getPackageJson(settings), null, 2)
   );
 
-  fs.copyFileSync(
-    path.join(templateDir, "tsconfig.json"),
-    path.join(outputDir, "tsconfig.json")
-  );
+  for (const file of ["tsconfig.json", "jest.config.js", ".eslintrc.js"]) {
+    fs.copyFileSync(path.join(templateDir, file), path.join(outputDir, file));
+  }
 
   const srcFolder = path.join(outputDir, "src");
   fs.mkdirSync(srcFolder, { recursive: true });
