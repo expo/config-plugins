@@ -5,7 +5,7 @@
 Monorepo of community-maintained Expo config plugins for React Native libraries. Plugins auto-configure native Android/iOS projects during `npx expo prebuild`.
 
 - **Namespace**: `@config-plugins/*`
-- **Package manager**: pnpm with workspaces
+- **Package manager**: pnpm 12 with workspaces (version pinned in `devEngines.packageManager` in the root `package.json`)
 - **Publishing**: `pnpm publish` (independent versioning)
 
 ## Common Commands

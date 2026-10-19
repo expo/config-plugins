@@ -2,9 +2,11 @@ packages:
   - 'apps/*'
   - 'packages/*'
 
+virtualStoreType: global
+
 allowBuilds:
-  esbuild: set this to true or false
-  msgpackr-extract: set this to true or false
+  esbuild: true
+  msgpackr-extract: true
 
 catalog:
   '@expo/config-plugins': ^56
